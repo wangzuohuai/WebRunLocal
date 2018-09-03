@@ -1,0 +1,149 @@
+7z SFX Builder Version History
+-----------------------------------
+
+
+Version 2.1	26-02-2014
+-----------------------------------
+-  No more 64 bit versions
+-  Added: Now "Change version info" checkbox is automatically checked when loading parameters from file
+-  Added conversion of single slashes into double slashes in paths, such as extraction path etc.
+-  Added VolumeNameStyle in language file  
+-  Added Spanish, Russian and Ukrainian languages
+-  Fixed: When moving down last item in the list, it was getting empty  
+-  Fixed: Gui/Misc flags preset was still created when all flags were unchecked
+-  Fixed some bugs
+
+Version 2.0.5	02-05-2013
+-----------------------------------
+-  Added Chinese language
+-  Fixed: Program was crashing when testing more than one SFX GUI at the same time
+
+Version 2.0.3	07-04-2013
+-----------------------------------
+-  Added Korean and Hungarian languages
+-  Fixed: Reload button wasn't working
+-  Improved some options
+
+
+Version 2.0	22-02-2013
+-----------------------------------
+-  Updated modified module to version 1.6 build 2712
+-  Improved stability of the program
+-  Added %longVers% and %shortVers% variables support while parsing version info
+    ::  %longVers%  = 2.0.0.0
+    ::  %shortVers% = 2.0
+    ::  Values of these variables will be changed according to version of 7z SFX Builder
+-  Many little changes
+-  Changed icons
+-  Fixed some bugs
+-  Removed all languages except English and Georgian
+-  Removed ResHacker and verpatch. Now program updates resource itself
+
+Version 1.9	13-11-2012
+-----------------------------------
+-  Created one installer for both x86 and x64 versions
+-  Added english version of help file
+-  Added option to automatically use default SFX module
+-  Added button to open location of current file
+-  Added button for archive information
+-  Added settings export option
+-  Fully changed Preset Manager
+-  Changed program icon
+-  Changed style of Main tab
+-  Fixed: Menuitems weren't showed on x64 versions
+-  Fixed some bugs
+-  Removed limit from GuiFlags' profiles
+
+Version 1.8	08-10-2012
+-----------------------------------
+-  Added buttons to show SFX module information
+-  Added ability to save SFX files in the MRU list
+-  Added ability to test warning and error messages
+-  Added ability to archive only files/folders from folder added to the archive files' list
+-  Some changes in the installer
+-  Changed icons
+-  Fixed: Removed limit for input controls in version info editor dialog
+-  Fixed: Value name wasn't set as default when editing SetEnvironment item
+-  Fixed: 7-Zip options was saved and loaded incorrectly from INI file
+-  Fixed: 7-Zip path wasn't saved at all
+-  Fixed some bugs
+-  Removed PPMd and BZip2 compression methods' support (maybe temporarily)
+
+Version 1.7	21-09-2012
+-----------------------------------
+-  Some little changes
+-  Some changes in interface
+-  Changed MenuItem's style
+-  Changed toolbar icons
+-  Changed SFX creation window
+-  Added 'ExecuteFile' parameter support
+-  Added help file for modified module
+-  Added ability to create custom archive during SFX creation
+-  Added ability to type variables declared in 'SetEnvironment' in version info
+-  Added ability to move ListView items up and down
+-  Added ability to choose most used variable names in 'SetEnvironment' Dialog
+-  Added 'verpatch' for better version info update
+-  Fixed some bugs
+
+Version 1.6	04-09-2012
+-----------------------------------
+-  Some modifications in about dialog
+-  Added German localization file
+-  Added ability to choose language in options dialog
+-  Added button for language info in options dialog
+-  Added '7zsd_LZMA_Dialogs.sfx' and '7zsd_LZMA_Dialogs_x64.sfx' modules
+-  Fixed: 'Shortcut' parameter wasn't loaded correctly in some situations
+-  Fixed: 'CancelPrompt' wasn't showed correctly
+-  Fixed some bugs
+
+Version 1.5	24-07-2012
+-----------------------------------
+-  Started to publish x64 versions
+-  Some changes in menu 'File'
+-  Added ability to save and load values for some commands (like BeginPrompt and etc.)
+-  Added ability to save settings in registry
+-  Added program options and presets button on the toolbar
+-  Fixed: 'RunProgram\AutoInstall' command wasn't loaded correctly in some situations
+-  Fixed some bugs
+
+Version 1.4.1	26-06-2012
+-----------------------------------
+-  Changed algorithm of loading 'RunProgram\AutoInstall' command
+-  Fixed font problems
+-  Fixed some bugs
+
+Version 1.4	28-05-2012
+-----------------------------------
+-  Changed toolbar icons and its sizes
+-  Changed program icon
+-  Added ability to choose UPX compression levels
+
+Version 1.3	09-05-2012
+-----------------------------------
+-  Improved quality of 32x32 and 16x16 icons
+-  Toolbar images included in program's main executable file (7z SFX Builder.exe)
+-  Added 'VolumeNameStyle' command support
+-  Fixed: SFX file wasn't created with current configuration in some situations
+-  Fixed: Incorrect creation of 'Shortcut' parameter
+
+Version 1.2	25-04-2012
+-----------------------------------
+-  Changed 'Dialogs' tab's buttons to TreeView items
+-  Now created shortcuts are displayed as ListView controls
+-  Added menu item 'Reload'
+-  Added x64 modules
+-  Fixed some bugs
+
+Version 1.1	15-04-2012
+-----------------------------------
+-  Optimized TempDir creation
+-  Some little changes
+-  Improved language file
+-  Added ToolBar
+-  Fixed: When specified configuration file didn't exist, SFX file was still created with built configuration file
+-  Removed 'UseUpx' option from settings file
+
+
+Version 1.0	09-04-2012
+-----------------------------------
+First release
