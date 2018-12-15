@@ -1,0 +1,1 @@
+"WrlService.exe" /UnregServer
