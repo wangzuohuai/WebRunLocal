@@ -1,0 +1,26 @@
+HKCR
+{
+	PluginComDll.SysInfo.1 = s 'SysInfo Class'
+	{
+		CLSID = s '{6D7595BD-BFB0-4D2C-906B-247028691A50}'
+	}
+	PluginComDll.SysInfo = s 'SysInfo Class'
+	{		
+		CurVer = s 'PluginComDll.SysInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6D7595BD-BFB0-4D2C-906B-247028691A50} = s 'SysInfo Class'
+		{
+			ProgID = s 'PluginComDll.SysInfo.1'
+			VersionIndependentProgID = s 'PluginComDll.SysInfo'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{A22E18F1-95F8-4FDB-99D2-188E5FB12B23}'
+			Version = s '1.0'
+		}
+	}
+}
