@@ -112,7 +112,7 @@ public:
 		return S_FALSE;
 	}
 
-	STDMETHOD(HttpRequst)(BSTR bstrPara, BSTR* pVal)
+	STDMETHOD(HttpRequst)(BSTR bstrUrl,BSTR bstrPara, BSTR* pVal)
 	{
 		/// HTTP服务请求响应
 		return E_NOTIMPL;

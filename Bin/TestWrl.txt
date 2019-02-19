@@ -26,18 +26,24 @@ flag是连接控制掩码，1指定输出调试日志，2指示通讯数据进�
 4)、安装插件
 请在输入框中，分别输入如下请求，然后点击发送，完成三个范例插件的安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Dll无界面插件范例","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2019-02-11","Desc":"本网通DLL版COM插件范例-读写TXT记事本及获取当前系统信息","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginComDll.pid","MD5":"31F0F2AABDF7E348464E391AC358AF5A","Version":"1.0.1.1","Size":524288,"Type":1}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Dll无界面插件范例","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2019-02-19","Desc":"牛插DLL版COM插件范例-读写TXT记事本及获取当前系统信息","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginComDll.pid","MD5":"638771375662CC9F0188642DC8EA4FD9","Version":"1.0.1.1","Size":524288,"Type":1}}
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"c++有界面插件范例","PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2019-02-11","Desc":"本网通Windows程序插件范例","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginWinExe.pid","MD5":"1D9970FFD35957E94FA5055F5E9708D0","Version":"1.0.1.1","Size":622592,"Type":2}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"c++有界面插件范例","PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2019-02-19","Desc":"牛插C++程序插件范例-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginWinExe.pid","MD5":"E35E98BFAF8F84A7594815C4A8CEFA70","Version":"1.0.1.1","Size":622592,"Type":2}}
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"c#有界面插件范例","PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2019-02-11","Desc":"本网通Windows程序插件范例","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginExeDemo.pid","MD5":"10C941D21BBD89A071265A60DCDB5B3E","Version":"1.0.1.1","Size":524288,"Type":2}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"c#有界面插件范例","PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2019-02-19","Desc":"牛插Windows程序插件范例-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginExeDemo.pid","MD5":"38425A8E18E20A5939D7A1583AB8C7DB","Version":"1.0.1.1","Size":524288,"Type":2}}
 
-5)、卸载插件：
+5)、插件升级：
 举例：
 
-{"req":"Plugin_Remove","rid":1,"para":{"PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2018-12-30","Type":1}}
-{"req":"Plugin_Remove","rid":1,"para":{"PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2018-12-30","Type":1}}
-{"req":"Plugin_Remove","rid":1,"para":{"PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2018-12-30","Type":1}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Dll无界面插件范例","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2019-02-19","Desc":"牛插DLL版COM插件范例-读写TXT记事本及获取当前系统信息","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginComDll_Update.pid","MD5":"A1FD94D20070B9B073F1A8F7FE7D35EF","Version":"1.0.1.1","Size":524288,"Type":1}}
+
+6)、卸载插件：
+举例：
+
+{"req":"Plugin_Remove","rid":1,"para":{"PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Type":1}}
+{"req":"Plugin_Remove","rid":1,"para":{"PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Type":1}}
+{"req":"Plugin_Remove","rid":1,"para":{"PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Type":1}}
+
 
 4、连接请求指定有界面的插件(exe)服务，下面以IE控件(ActiveX)演示调用流程及范例：
 1)、打开测试网页，输入连接地址：ws://wrl.zorrosoft.com?sid=321&pid=F90B1CF0-8485-40ec-B4E8-B87598AAB35D&flag=1，执行连接，会直接启动插件PluginWinExe.exe，界面会返回插件使用的端口，默认12800；

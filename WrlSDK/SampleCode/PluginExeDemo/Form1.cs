@@ -191,7 +191,7 @@ namespace PluginExeDemo
             /// <param name="bstrSID"></param>
             /// <param name="Content"></param>
             /// <param name="nLen"></param>
-            public void RecByteEvent(string bstrSID, ref byte Content, uint nLen)
+            public void RecByteEvent(string bstrSID, Object Content, uint nLen)
             {
             }
 
