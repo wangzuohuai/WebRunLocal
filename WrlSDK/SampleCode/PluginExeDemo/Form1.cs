@@ -196,6 +196,16 @@ namespace PluginExeDemo
             }
 
             /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="nSessionID"></param>
+            /// <param name="strUrl"></param>
+            /// <param name="strPara"></param>
+            public void HttpReqEvent(uint nSessionID, string strUrl, string strPara)
+            {
+            }
+
+            /// <summary>
             /// 通知关闭连接
             /// </summary>
             /// <param name="bstrSID"></param>
