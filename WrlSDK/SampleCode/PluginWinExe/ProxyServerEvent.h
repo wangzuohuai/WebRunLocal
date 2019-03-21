@@ -21,6 +21,12 @@ protected:
 	/// 消息窗口
 	HWND		m_hMsgWnd;
 
+	/// 当前会话ID
+	CString		m_strSID;
+
+	/// 当前请求序号
+	ULONG		m_nReqID;
+
 public:
 	CProxyServerEvent()
 		:m_hMsgWnd(NULL)
@@ -29,6 +35,16 @@ public:
 
 	~CProxyServerEvent()
 	{
+	}
+
+	CString GetCurSID()
+	{
+		return m_strSID;
+	}
+
+	ULONG GetCurReqID()
+	{
+		return m_nReqID;
 	}
 
 	void SetCallPara(HWND hMsgWnd)

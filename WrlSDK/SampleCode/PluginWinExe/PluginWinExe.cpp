@@ -61,6 +61,10 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	{
 		/// 接收命令行传递的开始侦听端口，同时接收PID参数(如果有的话)
 		CString strCmd(lpstrCmdLine);
+		if(L'\"' == strCmd.GetAt(0))
+			strCmd.Delete(0);
+		if(strCmd.Right(1) == L'\"')
+			strCmd.Delete(strCmd.GetLength()-1);
 		CSTRING_MAP mapPara;
 		int nFind = strCmd.Find(L"&");
 		while(-1 != nFind)
@@ -76,13 +80,16 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 			strParaName.Empty();
 			nFind = strCmd.Find(L"&");
 		}
-		nFind = strCmd.Find(L"=");
-		ATLASSERT(-1 != nFind);
-		CString strParaName(strCmd.Left(nFind));
-		strCmd.Delete(0,nFind+1);
-		mapPara[strParaName] = strCmd;
-		strCmd.Empty();
-		strParaName.Empty();
+		if(strCmd.GetLength())
+		{
+			nFind = strCmd.Find(L"=");
+			ATLASSERT(-1 != nFind);
+			CString strParaName(strCmd.Left(nFind));
+			strCmd.Delete(0,nFind+1);
+			mapPara[strParaName] = strCmd;
+			strCmd.Empty();
+			strParaName.Empty();
+		}
 
 		/// 配置浏览器
 		InitBrowerConfig();
@@ -91,7 +98,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 		dlgMain.SetListenPara(mapPara);
 		nRet = (int)dlgMain.DoModal();
 	}
-
+	AtlAxWinTerm();
 	_Module.Term();
 	::CoUninitialize();
 

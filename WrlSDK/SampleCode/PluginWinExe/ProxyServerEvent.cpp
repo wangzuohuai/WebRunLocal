@@ -164,6 +164,9 @@ STDMETHODIMP CProxyServerEvent::RecMsgEvent(BSTR bstrSID,ULONG nReqID,BSTR bstrR
 	}
 	if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
 	{
+		m_nReqID = nReqID;
+		if(0 != m_strSID.CompareNoCase(bstrSID))
+			m_strSID = bstrSID;
 		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_RECMESSAGE,(WPARAM)bstrReqName,(LPARAM)bstrRecInfo);
 	}
 	return hRet;
@@ -188,6 +191,8 @@ STDMETHODIMP CProxyServerEvent::RecByte(BSTR bstrSID,BYTE* pContent,ULONG nLen)
 		return hRet;
 	if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
 	{
+		if(0 != m_strSID.CompareNoCase(bstrSID))
+			m_strSID = bstrSID;
 		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_BYTE,(WPARAM)pContent,(LPARAM)nLen);
 	}
 	return hRet;

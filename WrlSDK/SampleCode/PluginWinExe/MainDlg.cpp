@@ -75,14 +75,17 @@ void CMainDlg::InitWebCtrl()
 		//Create the WebBrowser control(IE) with CLSID
 		CComPtr<IUnknown> spUnkWebBrowser = NULL;
 		HRESULT hr = spUnkWebBrowser.CoCreateInstance(CLSID_WebBrowser);
+		ATLASSERT(SUCCEEDED(hr));
 		//Attach the WebBrowser control to host window
-		CComPtr<IUnknown> spUnkContainer;
-		m_ctlWebWindow.AttachControl(spUnkWebBrowser,&spUnkContainer);
-		spUnkContainer = NULL;
-		spUnkWebBrowser = NULL;
+		if(NULL != spUnkWebBrowser)
+		{
+			m_ctlWebWindow.AttachControl(spUnkWebBrowser,NULL);
+			spUnkWebBrowser = NULL;
+		}
 
 		//Advise sink map
-		AtlAdviseSinkMap(this,true);
+		hr = AtlAdviseSinkMap(this,true);
+		ATLASSERT(SUCCEEDED(hr));
 
 		//Query interface
 		hr = m_ctlWebWindow.QueryControl(&m_spiWebBrowser);
