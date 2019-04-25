@@ -1,0 +1,24 @@
+{
+  "Type": 1,
+  "OS": 1,
+  "Control": 0,
+  "Asm": 1,
+  "OSMinVer": "5.0",
+  "Version": "1.0.1.1",
+  "Name": "C#语言无界面插件范例",
+  "Corp": "WRL",
+  "Icon": "",
+  "Date": "2019.04.25",
+  "Desc": "C#开发的DLL版无界面插件范例",
+  "Home": "http://zorrosoft.com/WRL",
+  "Down": "http://zorrosoft.com/WRL",
+  "Module": "PluginNetDll.dll",
+  "PID": "D10495F4-DF0F-44FA-8647-91275347214A",
+  "Objects": [
+    {
+      "ProgID": "FCADA8A7-D975-42c6-B5D3-FA40F6FE1286",
+      "ClassID": "5DDA3CFF-6AD1-4836-B378-628B43748626"
+    }
+  ],
+  "Updates": []
+}
