@@ -1,1 +1,2 @@
-"WrlSetup.exe" /U
+cd /d %~dp0
+WrlSetup.exe /U
