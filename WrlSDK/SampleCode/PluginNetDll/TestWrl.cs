@@ -55,6 +55,7 @@ namespace PluginNetDll
         void IWrlConn.RecByte(ref byte pContent, uint nLen)
         {
             /// 收到二进制数据流，特殊用途
+            WriteLog("PluginNetDll", "我不是机器人！");
         }
         /// <summary>
         /// 重点处理此函数
@@ -67,7 +68,8 @@ namespace PluginNetDll
             /// 创建JSON解析器
             JsonServiceClass JsonService = new JsonServiceClass();
 
-            JsonService.ParseString(bstrContent);
+            bool bRet = JsonService.ParseString(bstrContent);
+            string strTest = JsonService.GetStringValue("test");
             /// 根据请求名称bstrPushName和请求参数bstrContent分别定义自己的协议进行处理。
             string strReturn;
             if (bstrPushName == "Demo_Return")
@@ -81,13 +83,14 @@ namespace PluginNetDll
             }
             else
                 strReturn = "收到未知请求:" + bstrPushName;
-
+            /// 给前端回复请求
             m_WebSocketConnect.AsynSendText(strReturn);
         }
 
         void IWrlConn.RecText(string bstrContent)
         {
             /// 收到文本请求，一般都是JSON包
+            m_WebSocketConnect.AsynSendText("你确定没发错？");
         }
 
         /// <summary>
