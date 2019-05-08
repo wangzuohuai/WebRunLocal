@@ -1,10 +1,9 @@
 ﻿# WebRunLocal
-   牛插中间件(原名:本网通WebRunLocal)是一个实现浏览器网页(web page)与本地程序(local app)之间进行双向调用的轻量级、强兼容、安全可控、可扩展的插件开发框架。通过牛插中间件，可实现在网页中的JavaScript脚本无障碍访问本地电脑的硬件、调用本地系统的API及相关组件，同时可彻底解决ActiveX组件在Chrome、FireFox、Opera、Edge等浏览器各版本中的兼容使用问题。
+   牛插中间件(原名:本网通WebRunLocal)是一个实现浏览器网页(web page)与本地程序(local app)之间进行双向调用的轻量级、强兼容、低成本、易开发、安全可控、可扩展的插件开发框架。集成牛插中间件，可轻松实现在网页中的JavaScript脚本无障碍访问本地电脑的硬件、调用本地系统的API及相关组件，同时可彻底解决ActiveX组件在Chrome、FireFox、Opera、Edge等浏览器各版本中的兼容使用问题。
 
 系统兼容性：
 1、全面兼容Windows XP、Vista、7、8、10等各版本微软桌面系统；
-2、全面兼容Windows Server 2003、2008、2012、2016等各版本服务器系统；
-3、Linux、安卓等系统暂未实现，技术上可行，欢迎熟悉这些平台伙伴的积极参与。
+2、全面兼容Windows Server 2003、2008、2012、2016等各版本服务器系统。
 
 浏览器兼容性：
 1、IE 6及以上版本；
@@ -38,4 +37,4 @@
 
 开发交流QQ群：23126938，点击链接加入交流群【牛插中间件】：https://jq.qq.com/?_wv=1027&k=5FxgskL
 
-牛插中间件由成都佐罗软件有限公司研发并销售，商务联系电子邮箱：wzh@zorrosoft.com
+牛插中间件由成都佐罗软件有限公司研发并销售，公司网站：http://zorrosfot.com 商务联系电子邮箱：wzh@zorrosoft.com
