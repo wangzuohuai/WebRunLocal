@@ -1,0 +1,107 @@
+兼容Chrome等浏览器的方正影像采集插件测试：
+1、从http://local.zorrosoft.com下载演示版程序包Wrl.zip，然后解压到某个磁盘目录，点击InstallWrl.bat进行安装，安装完成时会启动牛插(PluginOK)中间件系统服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况；
+
+2、安装服务成功后击连接牛插(PluginOK)中间件主服务
+A、先安装插件 :
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"方正影像采集插件","PID":"5C25CD41-C775-4993-8CB9-28B58120B779","Date":"2019-06-02","Desc":"兼容于谷歌Chrome等浏览器的方正高影仪影像采集插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FICamera.pid","MD5":"D18063AD07CF227640485C3A9595CBB7","Version":"1.0.1.1","Size":13631488,"Type":2,"Cookie":"","Auth":"","TK":"B6B1553777707045FD657D13EA3C9CB488683520BE916B320449C08DED66C24BE6F58108E34AD3FF3A59DA35EC5974A4E9E14E8DD1BBE7D33AC95D04D5E40A30AF5B2C2876FD195F0102F9850D1434E2E70B823B1359D79C40D9250606865B67F29247773C0AA14BBB9123E275B419A4447195CA271123A7A4618DE4A833906C449991E7727C69078C098A3BE4A44ED8FF64C9543532B6FEF265482394941D34AD58BFC9325746808DCF9AD6DFAF18A57F78D8EF793FE11E33DB484D79E34184122D32D28D2131F421E4F51059CD40E8C6258BF141A4D4E3F168D3D0ED6E8E04BA373A7F4BD027FB36F3441F4D3A77438C87BC04D840736A9BFDE2B47DE4C577"}}
+
+B、请求插件更新：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"方正影像采集插件","PID":"5C25CD41-C775-4993-8CB9-28B58120B779","Date":"2019-06-02","Desc":"兼容于谷歌Chrome等浏览器的方正高影仪影像采集插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FICamera_Update.pid","MD5":"90441EE3D2D48D6913F964F61B5EE4B4","Version":"1.0.1.1","Size":655360,"Type":2,"Cookie":"","Auth":"","TK":"0489FF679478FB39D772CE43D5BB1D5819833076B6CB3199AB80CB1B846953DCC597EC61A654F40467456A74C1C94FBDBEAAAAFB1120C4EF053DABE3F9BEDD9B5E39DF24C353FF94DC63EEA1217FF1B7C9A6337534E5C585CFE28B104A3A7508E5940195CE24A6A3368AC473CF08BCC6E499FC53E333F707B3BDD1263DC0B1083B72A5804C64DE9CEB5A8D897877117636E8C0DADF5F0FC572AA74B5427491741D553AC26B8E639452DE97286FAE747FF1EA627B2F603BC21F2C8533158DFEA4A178AAC404FCD4A7B5412711E43925DC814D4CD33BC7E1D04AF35D30B17E49FBDD9032123C647A11189C33A114734EA0154BA88F8D194FBB03B80845DC8069F0"}}
+
+3、连接请求影像采集插件服务：
+打开http://local.zorrosoft.com测试网页，输入地址：ws://localhost?sid=9001&pid=5C25CD41-C775-4993-8CB9-28B58120B779&flag=1 点击连接，会自动启动插件进程，然后中间件会给你返回插件进程当前的侦听端口，再请求连接 ws://localhost:19300?sid=377flag=1  完成；
+
+支持的协议功能如下：
+
+1)、设置参数
+{"req":"FIC_PutPara","rid":1,"para":{"DeviceID":0,"ResolutionID":0,"AutoCrop":0,"ColorMode":0,"DeviceAngle":0,"ShowVideo":0,"ShowCard":0,"ShowBar":0,"Video":".avi","DevicePara":{"Type0":0,"Type1":0,"Type2":0},"ImgPara":{"Type0":200,"Type1":200,"Type2":200,"Type3":50,"Type4":0,"Type5":0}}}  
+设置高影仪参数，DeviceID 设置摄像头：0文档 1人像 2附加，不传不设置。
+ResolutionID分辨率显示序号，不传不设置。
+AutoCrop为切边方式，0完整 1自动 2自定义 3人脸捕捉 4人脸捕捉并自动出图。
+ColorMode色彩模式,0彩色1灰度2黑白。
+DeviceAngle 设置指定设备的视频流方向：0设备初始方向，90顺时针旋转90度，180顺时针旋转180度，270逆时针旋转90度。
+ShowVideo、ShowCard、ShowBar分别控制是否显示录制视频、识别身份证件、识别条形码码的按钮，1显示，0不显示，不传不设置。Video设置录制的视频文件格式。
+DevicePara节点设置设备参数，对应OCX中的SetDevicePara方法，Type0-2分别对应高速模式、鼠标滚轮、放大缩小。
+ImgPara节点设置图像参数，对应OCX中的方法SetImagePara，Type0-5分别对应DPI、xDPI、yDPI、JQuality、去除阴影、形变校正。
+请求返回举例：{"ret":0,"rid":1,"data":{"Ret":"1"}} Ret返回1设置成功
+
+2)、获取当前参数
+{"req":"FIC_GetPara","rid":2,"para":{}}  
+获取高影仪当前使用参数
+DeviceID选择摄像头0主1副，不传不设置。
+ResolutionID分辨率显示序号，不传不设置。
+举例返回： {"ret":0,"rid":2,"data":{"DeviceID":0,"ResolutionID":2,"AutoCrop":0}} 
+OCX不提供设备参数和图像参数的值，所以这里不返回。
+
+3)、获取分辨率列表
+{"req":"FIC_ResolutionList","rid":3,"para":{}} 
+ 获取当前摄像头支持的分辨率列表 
+返回 {"ret":0,"rid":3,"data":{"Items":[{"Width":1024,"Height":768}]}}
+
+4)、{"req":"FIC_IDCard","rid":4,"para":{"FileName":"c:/test.jpg"}}  
+身份证识别请求，File指定时识别图片文件中的身份证信息，不指定时通过设备芯片识别。读取到内容后会在data数据包中返回节点Info，解析这个节点获得二代证信息。如果错误取Err的内容描述；
+
+5)、{"req":"FIC_BarCode","rid":5,"para":{"FileName":"c:/test.jpg"}} 
+ 指定图片文件路径识别条码，如果为空值，表示使用当前打开的设备进行识别条码；
+
+6)、{"req":"FIC_FaceVertify","rid":6,"para":{"FileName1":"c:/test1.jpg","FileName2":"c:/test2.jpg"}}  
+分别指定人脸图片文件路径1和2，执行人脸比对；
+返回 {"ret":0,"rid":6,"data":{"Ret":80}]}}
+Ret返回值含义：0~100：匹配度
+
+7)、{"req":"FIC_EncodeBase64","rid":7,"para":{"FileName":"c:/test.jpg","Width":123,"Height":123}}  
+指定图片文件路径进行Base64编码并返回，可指定获取图像像素获取，不指定获取原图；
+返回 {"ret":0,"rid":7,"data":{"Ret":0}}
+
+8)、{"req":"FIC_MakeMultiPageFile","rid":8,"para":{"FileName":"","PageNumber":"1","Flag":"0"}}  
+指定文件和页面记下来多页文件流程；
+Flag含义：0将名为 szFileName 的图像文件加入多页图像序列 1将名为 szFileName 的图像文件从多页图像序列中移除 2清空多页图像序列 3生成以 szFileName 为名的多页文件（仅.tif 或.pdf）
+返回 {"ret":0,"rid":8,"data":{"Ret":0}}
+Ret返回值含义：0成功 其它失败
+
+9)、{"req":"FIC_Merge2Images","rid":9,"para":{"FileName1":"c:/test1.jpg","FileName2":"c:/test2.jpg","FileName":"c:/test.jpg","MergeType":"0"}}  
+指定文件1和2合并到文件FileName，MergeType为合并类型 0左右合并 1上下合并
+返回 {"ret":0,"rid":6,"data":{"Ret":0}}
+Ret返回值含义：0成功 其它失败
+
+10)、{"req":"FIC_DetectDocPage","rid":10,"para":{"Timer":1000,"GetStatus":0}}  
+活体识别，GetStatus为1时只取获取识别是否正在进行，为0时如果正在识别就停止，如果是停止状态就开始识别，Timer为定时周期；
+返回 {"ret":0,"rid":10,"data":{"Ret":0,"Status","0"}} Ret为调用返回值，Status为活体识别状态
+
+11)、{"req":"FIC_CaptureFinger","rid":11,"para":{"Number":1}} 
+ 采集指纹，Number为指纹序号生成指纹文件；
+返回 {"ret":0,"rid":11,"data":{"Ret":0,"Path":""}} Ret为调用返回值，Path指纹文件路径
+
+12)、{"req":"FIC_MatchFinger","rid":12,"para":{"FingerFile1":"","FingerFile2":""}}  
+匹配指纹，FingerFile分别指定两个不同的指纹文件；
+返回 {"ret":0,"rid":11,"data":{"Ret":0}} Ret为调用返回值，0代表匹配
+
+13)、{"req":"FIC_MatchCardFinger","rid":12,"para":{}}  
+二代证指纹匹配，分别获取指纹仪和二代证中指纹对比 ；
+返回 {"ret":0,"rid":11,"data":{"Ret":0}} Ret为调用返回值，0代表匹配
+
+19)、{"req":"FIC_Info","rid":5,"para":{}}  
+获取OCX版本及设备信息，分别返回Version和Device节点信息；
+
+20)、{"req":"FIC_Exit","rid":5,"para":{}}  
+请求退出此插件程序，连接将被自动关闭；
+
+插件运行过程中，您可能收到如下事件通知：
+
+1)、{"event":"FIC_ImgFile","data":{"File":"","Size":5123,"Width":123,"Height":123"}} 
+通知用户点击了 抓取图像按钮操作，File为当前视图窗口图像文件保存全路径，JPG格式。
+
+2)、{"event":"FIC_VideoFile","data":{"File":"","Size":111}} 通知用户操作录制视频的结果文件全路径。
+
+3)、{"event":"FIC_CardInfo","data":{"Info":""}} 通知用户操作识别身份证结果。
+
+4)、{"event":"FIC_BarInfo","data":{"Info":""}} 通知用户操作识别条码结果。
+
+5)、{"event":"FIC_DetectDocPage","data":{"Status":1}} 通知活体识别状态，Status为1正在识别，0停止识别。
+
+6)、{"event":"FIC_DetectImgFile","data":{"File":"","Size":5123,"Width":123,"Height":123"}} 
+通知活体识别定时生成的图像文件，File为当前视图窗口图像文件保存全路径，JPG格式。
+
+7)、{"event":"FIC_Exit","data":{}} 通知用户手工退出了插件程序。

@@ -1,0 +1,45 @@
+Chrome对讲插件测试：
+1、从http://local.zorrosoft.com下载演示版程序包Wrl.zip，然后解压到某个磁盘目录，点击InstallWrl.bat进行安装，安装完成时会启动PluginOK中间件系统服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况；
+
+2、启动谷歌浏览器打开网页http://local.zorrosoft.com 输入 ws://localhost?sid=123&flag=1 点击连接，然后执行安装插件
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"方正手写签署屏插件","PID":"17C6CBB7-4155-4816-9647-91F7B0D6EBEC","Date":"2019-06-03","Desc":"兼容于谷歌Chrome等浏览器的方正手写签署屏插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FISignScreen.pid","MD5":"3DE4BFB3DB55F6352397142AD7DBEC39","Version":"1.0.1.1","Size":8519680,"Type":1,"Cookie":"","Auth":"","TK":"A9F496C6E58CD6B854D6C81A8ECC505301CC28FC7A51700049C215AA383D4952AE98FC76B5F896FB4A75779A3F77E2ECD04D8A2F4A18FCDFD71BF402D1CF90CE4563B75DF66A2A6DBF644CDA7C7F4C3CB86DC9E0C154181F0DBC9094234B66798FD358822924844E29C1F87D924728230C02D3044FE0A7C5A5EC40BDB3087AD924C4947F8358CD241C9AF655AD2561CD3CF7B250BECA94302B8D2424E6B35A529EAB6C3AE971693A974AF6C1371DA70155C9C29765A973435917CA4333C0F80E964FC363EB04A00F3471A5AAA0DFE9B9E061B0F5C8209EFCD733EB57D97F433AD2E9B5FB05FBC9D70DA1D08CD6AE2E986013580026FB2BCDA0F9CB84EA4C9952"}}
+
+请求插件更新：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"方正手写签署屏插件","PID":"17C6CBB7-4155-4816-9647-91F7B0D6EBEC","Date":"2019-06-03","Desc":"兼容于谷歌Chrome等浏览器的方正手写签署屏插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FISignScreen_Update.pid","MD5":"6C53E834A8BA342817D3BC39613FA04A","Version":"1.0.1.1","Size":589824,"Type":1,"Cookie":"","Auth":"","TK":"51A5F8A4D6FA17AF17D4341AAE55D9B6854C3DE7E9D096D61BBE93F03AE704681A647A624B963201E147969A90326B3BEBD851A25B6317D647727E5FA5F5A8198546F76802F3A906D5CDA341972FC329E4D025E4E7BA14451E3CEB49A02F51EE4162151FE92BF5E3A579867E6C48F46EA5858981AB30E0905506335ED259B3503A9A040D98C3C06A702D421DED0E610A9134A4929FB92318DA438EC7DAA74CF1C666D597303285DE0916E95C239D205A6A9585C5A89F85FF1C42917FC402C8C0A7950CA639A42D69F189A17B4EFE60F6DFC2039A56C7B379E8481A5201B36887B41833EBBAC60A01C6DA67CB7EFDA99500D9AC45C176D152F641A6B21E8618B3"}}
+
+3、连接请求对讲插件服务：
+打开测试网页，输入地址：ws://localhost?sid=666&pid=9DD0D4C2-E963-4817-B297-40CF8EE12325&flag=1 点击连接；
+连接成功后，可支持的请求协议功能如下：
+
+1)、{"req":"FIC_StartShow","rid":1,"para":{"html":""}}  
+对应OCX中的方法StartShow，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":1,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+2)、{"req":"FIC_GetSignPic","rid":2,"para":{}}  
+对应OCX中的方法GetSignPic，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":2,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+3)、{"req":"FIC_SetSignWindowPos","rid":3,"para":{"left":"0","top":"0","width":"800","height":"600"}}  
+对应OCX中的方法SetSignWindowPos，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":3,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+4)、{"req":"FIC_CancelSign","rid":4,"para":{}}  
+对应OCX中的方法CancelSign，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":4,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+5)、{"req":"FIC_GetSignDeviceStatus","rid":5,"para":{}}  
+对应OCX中的方法GetSignDeviceStatus，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":5,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+6)、{"req":"FIC_GetZoomScale","rid":6,"para":{}}  
+对应OCX中的方法GetZoomScale，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":6,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+7)、{"req":"FIC_ReleaseSignDevice","rid":7,"para":{}}  
+对应OCX中的方法ReleaseSignDevice，需要输入html参数。
+请求返回：返回 {"ret":0,"rid":7,"data":{"Ret":""}} Ret为OCX方法调用返回值
+
+事件通知：
+{"event":"FIC_CommitSignature","data":{"Signature":""}} 通知签名内容Signature
