@@ -2,5 +2,7 @@
   "WS": 80,
   "WSS": 443,
   "HTTP": 90,
-  "HTTPS": 450
+  "HTTPS": 450,
+  "ValidHour": 24,
+  "UDisk": 1
 }
