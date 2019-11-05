@@ -1,44 +1,72 @@
-串口通信Chrome插件，基于跨平台的插件通用开发框架-牛插中间件(https://github.com/wangzuohuai/WebRunLocal)开发，底层实现调用了微软串口通讯控件MSComm32.ocx。虽然主要适配谷歌浏览器，也可以用在FireFox、Opera、Edge、IE等浏览器中。通过此插件，可以在各种浏览器中通过JS非常方便的操作com口打印机、GSM 猫、手机、串口扫描枪、串口屏显、钱箱等设备。插件中涉及到的属性等含义，请直接参考 微软串口通讯控件MSComm32.ocx中的定义，也可以参考这里：https://www.cnblogs.com/cmooon/articles/2378658.html
+Chrome内核浏览器串口通信插件，基于跨平台的插件通用开发框架-牛插(PluginOK)中间件(https://github.com/wangzuohuai/WebRunLocal)开发，底层实现调用了微软串口通讯控件MSComm32.ocx。也可以用在FireFox、Opera、Edge、IE等浏览器中。通过此插件，可以在各种浏览器中通过JS非常方便的操作com口打印机、GSM 猫、手机、串口扫描枪、串口屏显、钱箱等设备。插件中涉及到的属性等含义，请直接参考 微软串口通讯控件MSComm32.ocx中的定义，也可以参考这里：https://blog.csdn.net/shenziheng1/article/details/52884444
 
 以下是体验插件步骤：
-1、访问 https://local.zorrosoft.com/ 下载最新的演示版并按TestWrl.txt说明安装好中间件；
+1、访问测试网页 http://local.zorrosoft.com/ 下载最新的演示版并按TestWrl.txt说明安装好中间件；
 
-2、请求安装串口插件，在页面https://local.zorrosoft.com先连接上中间件服务，然后输入一下内容点击发送：
+2、请求安装串口插件，在测试页面上输入 ws://localhost?sid=123&flag=1 先连接上中间件服务，然后输入一下内容点击发送：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"串口通讯插件","PID":"C0B01CD6-7DD9-4D3C-B668-04168D5236FC","Date":"2019-10-11","Desc":"基于牛插中间之上用于串口通信的Chrome浏览器插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlComm.pid","MD5":"A94CB2405A9BD323CFC273B0B182E72F","Version":"1.0.1.8","Size":720896,"Type":1,"Cookie":"","Auth":"","TK":"A382D7FC2F42D65C2484C1BA8CE67370AADA974C1BE7F6756E8646ABC855F085B1B78CA69E67B6A255146FC35C009B0CB88791FE654022FD896178D09097909FD8E60D1DEF7285F4D5E2BA697AA7BB68F01EBA9F0F0FDA93859A12DB39F35F79EF81F6472FBD69DA8FC6A209AF54F18D690188E8F87CE3F07527B1F86EE1456D87ADCA96CF94AE75C9764440BB6EB72E1094898D535AB8125837E7996F9AC81FA15C9DE71D58C4CD728ABD8676A5C98D0B019142094F67989E0C79395E0CB00FFF276E4FC498CAF1646E7695C6DA36087923762888F8BCD9C0A52F186F287C56974BAE588B6F662DE5801C247DBCE592D23D77652F9950A6988C6D7F7ED9368D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Chrome串口通讯插件","PID":"C0B01CD6-7DD9-4D3C-B668-04168D5236FC","Date":"2019-11-05","Desc":"基于PluginOK中间件之上用于串口通信的Chrome浏览器插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlComm.pid","MD5":"A9E536D1B7AD9A8F2B7484BD072D4A23","Version":"1.1.1.1","Size":753664,"Type":1,"Cookie":"","Auth":"","TK":"30182D0AC5374F2B58E1D68A4436683F0185639F603EC1AD6BD3FDA959821AD8C76D9DB39CD67A2604FA56B317CE2996FC3C95755DB3BD93B72CCB33FB72E220D76A9F9771F1F19397E74AB1C8628DC3BDA59F25C80A05B9A3DB76BAB2120BDB35C01B707CC365FF39DC87C3825629FB6B18632C795004EF1B40DE684541C2E62C773EDBB5705BEFC8B49A0BB2B9E9F54CAE15ED2E49F29F23B7DF3821B520B3FC66425F2847DED09B519D5E3B2C4E9B3E73BC739E1F8D0B15B51A3EA559C12057D6EA7051C743EAA413377915582C3472283639B75A560D9563F54F0D4C8EF88F590016351714373E98FBA1D97E479DFBDC5F297A2A4D480E9AA032C409DDDC"}}
 
 3、请求串口插件更新：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"串口通讯插件","PID":"C0B01CD6-7DD9-4D3C-B668-04168D5236FC","Date":"2019-10-11","Desc":"基于牛插中间之上用于串口通信的Chrome浏览器插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlComm_Update.pid","MD5":"71EFA14FFF139FCDE11C3802D559075B","Version":"1.0.1.8","Size":557056,"Type":1,"Cookie":"","Auth":"","TK":"07E9A60E76B134C73E56EFAD1A0FCFD07E9532EB62EF0B516CC2F02773FFBAE2924DDBA2BE85A9005879453AB912E5728E82B746CC3787A075E3649F9EDFAB68E3832609A37B102E9395B4197A3F10E8B5AB17D56A5E02D0058995B20AC625BB849664A02D0DAD441BFECCC0E9739E93105E41C3E95785C0AF0E5EBA6AF91759B5EA3C03645462970569F7C4934E90CCBFFDFEB4DA7B84E43E7DEB8545604B615E8BA0ABD6D81133621923605B875A88343205DBCC8F32C628E8FBF694722483173C20B7E854E6276845BC1CA0B348F0F083B2E865ED720DC5A324B2C6ED060F0FE792150C55268A70BFD9250F9C03C59F53DCFD471CE83E33DE255BA9605E51"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Chrome串口通讯插件","PID":"C0B01CD6-7DD9-4D3C-B668-04168D5236FC","Date":"2019-11-05","Desc":"基于PluginOK中间件之上用于串口通信的Chrome浏览器插件","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlComm_Update.pid","MD5":"1002F6869E31FC796502B86750E07782","Version":"1.1.1.1","Size":622592,"Type":1,"Cookie":"","Auth":"","TK":"9872220ADEA1F2317DE734B1C5779939D646A075B017459FE7D80F6AE36A1F0FC2975835F6E68D0345C380BD3A57244BF078AE51DA8A50261F328371A4B4AAED6941190514D81749C5064C8581659A5F49273545A114D743EF34B18C91A1F20A9207443AD04FAEA9212E0817E482C51477CAB18D71BA970145FE32A5B4429D81474D8BFAC35EDCEECD142330498455F365538DDE6281F224C462D42860967239915186F8C26FA42C36E2B33E2A96DCBC52AF34C3DA6B6F89EEC78E0D566D53D4487B01E310DEF1CB51B68A2D73D0DE29B2C3C953D603A71181AFAEB91FD977DAEF2E8CCFB8243F2252FA1FCE22FF51077DB60D1F1400F7D3DFF5EB546712E228"}}
 
 4、连接请求串口通讯插件服务：
 打开测试网页，输入地址：wss://wrl.zorrosoft.com?sid=668&pid=407F58DA-67A5-4C74-B9F9-44A02A20B205&flag=1 点击连接；
 支持的协议功能如下：
 
 A、获取参数
-{"req":"SP_Get","rid":1,"para":{"Items":["OutFlag","Base64","CDHolding","CDTimeout","CommID","CommPort","CTSHolding","CTSTimeout","DSRHolding","DSRTimeout","DTREnable","Handshaking","InBufferSize","InBufferCount","Break","InputLen","Interval","NullDiscard","OutBufferSize","OutBufferCount","ParityReplace","PortOpen","RThreshold","RTSEnable","Settings","SThreshold","Output","Input","CommEvent","EOFEnable","InputMode"]}} 
-获取指定名称的参数值，可批量获取，也可以获取单个。其中OutFlag设置SP_Event通知中未1时是否自动通知到前端，默认0，Base64指定通讯内容是否经过Base64编码后传输，默认0，如果通讯内容是二进制推荐设置为1。其它都是串口通讯的属性，Output和Input内容如果Base64设置为1表示是Base64编码后的结果，原通讯控件中布尔值规则1为真，0为假。
+{"req":"SP_Get","rid":1,"para":{"Items":["EventFlag","Base64","CDHolding","CDTimeout","CommID","CommPort","CTSHolding","CTSTimeout","DSRHolding","DSRTimeout","DTREnable","Handshaking","InBufferSize","InBufferCount","Break","InputLen","Interval","NullDiscard","OutBufferSize","OutBufferCount","ParityReplace","PortOpen","RThreshold","RTSEnable","Settings","SThreshold","Output","Input","CommEvent","EOFEnable","InputMode"]}} 
+获取指定名称的参数值，可批量获取，也可以获取单个。其中EventFlag默认0，为1时采用事件驱动模式，收到内容自动通知到前端(SP_Event事件)，Base64指定通讯内容是否经过Base64编码后传输，默认0，如果通讯内容是二进制推荐设置为1，Output和Input内容如果Base64设置为1表示是Base64编码后的结果，原通讯控件中布尔值规则1为真，0为假。其它参数都是串口通讯的属性。
 返回内容格式如下：
-{"ret":0,"rid":1,"data":{"OutFlag":0,"Base64":0,"CDHolding":0,"CDTimeout":0,"CommID":-1,"CommPort":1,"CTSHolding":0,"CTSTimeout":0,"DSRHolding":0,"DSRTimeout":0,"DTREnable":0,"Handshaking":0,"InBufferSize":1024,"InBufferCount":0,"Break":0,"InputLen":0,"Interval":1000,"NullDiscard":0,"OutBufferSize":512,"OutBufferCount":0,"OutBufferCount":"?","PortOpen":0,"RThreshold":0,"RTSEnable":0,"Settings":"9600,n,8,1","SThreshold":0,"Output":"","Input":"","CommEvent":-4083,"EOFEnable":0,"InputMode":0}} 
+{"ret":0,"rid":1,"data":{"EventFlag":0,"Base64":0,"CDHolding":0,"CDTimeout":0,"CommID":-1,"CommPort":1,"CTSHolding":0,"CTSTimeout":0,"DSRHolding":0,"DSRTimeout":0,"DTREnable":0,"Handshaking":0,"InBufferSize":1024,"InBufferCount":0,"Break":0,"InputLen":0,"Interval":1000,"NullDiscard":0,"OutBufferSize":1024,"OutBufferCount":0,"OutBufferCount":"?","PortOpen":0,"RThreshold":0,"RTSEnable":0,"Settings":"9600,n,8,1","SThreshold":0,"Output":"","Input":"","CommEvent":-4083,"EOFEnable":0,"InputMode":0}} 
 请求Items中的每个名称都对应自己名称的值
 
-简单举例，获取当前操作COM端口及波特率：{"req":"SP_Get","rid":1,"para":{"Items":["CommPort","Settings"]}}
+简单举例1，获取当前操作的COM端口、波特率及是否打开：{"req":"SP_Get","rid":2,"para":{"Items":["PortOpen","CommPort","Settings"]}}
+{"ret":0,"rid":2,"data":{"PortOpen":1,"CommPort":1,"Settings":"9600,n,8,1"}}  代表当前打开了COM1端口，使用的波特率是9600,n,8,1
+简单举例2，获取端口收到的内容：{"req":"SP_Get","rid":3,"para":{"Items":["Output"]}} 
+{"ret":0,"rid":3,"data":{"Output":"OK"}}  代表当前端口收到内容OK
 
 B、设置参数
-{"req":"SP_Put","rid":2,"para":{"OutFlag":0,"Base64":0,"CDHolding":0,"CDTimeout":0,"CommID":-1,"CommPort":1,"CTSHolding":0,"CTSTimeout":0,"DSRHolding":0,"DSRTimeout":0,"DTREnable":0,"Handshaking":0,"InBufferSize":1024,"InBufferCount":0,"Break":0,"InputLen":0,"Interval":1000,"NullDiscard":0,"OutBufferSize":512,"OutBufferCount":0,"OutBufferCount":"?","PortOpen":0,"RThreshold":0,"RTSEnable":0,"Settings":"9600,n,8,1","SThreshold":0,"Output":"","Input":"","CommEvent":-4083,"EOFEnable":0,"InputMode":0}} 
-设置指定名称的参数值，规则和获取参数类似，Output和Input设置内容如果Base64设置为1，则必须是经过Base64编码后的内容。
+{"req":"SP_Put","rid":6,"para":{"CommPort":1,"CDTimeout":0,"CTSTimeout":0,"DSRTimeout":0,"DTREnable":0,"Handshaking":0,"InBufferCount":0,"Break":0,"Interval":1000,"NullDiscard":0,"OutBufferCount":0,"OutBufferCount":"?","RThreshold":0,"RTSEnable":0,"SThreshold":0,"CommEvent":0,"EOFEnable":0}} 
+设置指定名称的参数值，规则和获取参数类似。
 返回内容格式如下：
-{"ret":0,"rid":2,"data":{"OutFlag":1,"Base64":1,"CDHolding":0,"CDTimeout":1,"CommID":0,"CommPort":1,"CTSHolding":0,"CTSTimeout":1,"DSRHolding":0,"DSRTimeout":1,"DTREnable":1,"Handshaking":1,"InBufferSize":1,"InBufferCount":1,"Break":1,"InputLen":1,"Interval":1,"OutBufferSize":1,"OutBufferCount":1,"PortOpen":0,"RThreshold":1,"RTSEnable":1,"Settings":1,"SThreshold":1,"CommEvent":0,"EOFEnable":1,"InputMode":1}} 
+{"ret":0,"rid":6,"data":{"CommPort":1,"CDTimeout":1,"CTSTimeout":1,"DSRTimeout":1,"DTREnable":1,"Handshaking":1,"InBufferCount":1,"Break":1,"Interval":1,"OutBufferCount":1,"RThreshold":1,"RTSEnable":1,"SThreshold":1,"CommEvent":0,"EOFEnable":1}} 
 每个设置结果，在对应的结果中，1成功，0失败
 
-简单举例：{"req":"SP_Put","rid":2,"para":{"CommPort":2,"Settings":"115200,n,8,1"}} 用波特率115200打开COM2口。
+C、指定参数打开端口
+EventFlag为1时收到内容自动通知到前端(SP_Event事件)
+Base64 接收和发送的内容是否经过Base64编码
+ 用波特率115200打开COM2口，
+读写缓冲区大小都是1024，
+InputLen设置当前接收区数据长度为0，表示全部读取
+InputMode 串口接收数据的模式 0文本，1二进制内容
+RThreshold  接收缓冲区有1个以及1个以上字符时，将引发接收数据的OnComm事件
+协议举例：
+{"req":"SP_Open","rid":15,"para":{"EventFlag":0,"Base64":0,"CommPort":2,"Settings":"115200,n,8,1","InBufferSize":1024,"OutBufferSize":1024,"InputLen":0,"InputMode":0,"RThreshold":16}}
+{"ret":0,"rid":19,"data":{"Ret":1,"Code":0}}  Ret为1代表打开成功，Code为错误时错误码
+
+D、读取端口数据
+{"req":"SP_Read","rid":18,"para":{}}
+如果Base64设置为1，Content为Base64编码后的内容
+{"ret":0,"rid":18,"data":{"Content":"OK"}}  取到Content内容为OK
+
+E、写数据端口
+如果Base64设置为1，则Content必须是经过Base64编码后的内容(用于二进制流) 写端口：
+{"req":"SP_Write","rid":19,"para":{"Content":"AT"}}
+{"ret":0,"rid":19,"data":{"Ret":1,"Code":0}}  Ret为1代表关闭成功，Code为错误时错误码
+
+F、关闭端口协议：
+{"req":"SP_Close","rid":20,"para":{}}
+请求返回：
+{"ret":0,"rid":20,"data":{"Ret":1,"Code":0}}  Ret为1代表关闭成功，Code为错误时错误码
 
 5、事件通知
 5.1 收到内容通知
-{"event":"SP_Input","data":{"Content":""}} 如果Base64为1，内容Content里是Base64编码后的结果，实际使用时请用Base64编码还原内容
+{"event":"SP_Rec","data":{"Content":""}} 如果Base64为1，内容Content里是Base64编码后的结果，实际使用时请用Base64编码还原内容
 
 5.2 发送内容通知
-{"event":"SP_Output","data":{"Content":""}} 如果Base64为1，内容Content里是Base64编码后的结果，实际使用时请用Base64编码还原内容
+{"event":"SP_Send","data":{"Content":""}} 如果Base64为1，内容Content里是Base64编码后的结果，实际使用时请用Base64编码还原内容
 
 5.3  通讯事件通知
 {"event":"SP_Event","data":{"ID":""}} "ID为事件类型 1发送事件、3 clear-to-send 线变化、4 data-set ready 线变化、5 carrier detect 线变化、6 振铃检测、7 文件结束
