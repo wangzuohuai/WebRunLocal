@@ -354,13 +354,11 @@ BOOL CreatePath(const ATL::CString& strLocalDir)
 		if(!IsPathExist(strWorkDir+_T("\\")))
 			bCreateFlag = ::CreateDirectory(strWorkDir,NULL);
 	}
-#ifdef APP_LOG_ENABLE
 	if(!bCreateFlag)
 	{
 		DWORD dwErrCode = ::GetLastError();
 		::Sleep(100);
 	}
-#endif
 	return bCreateFlag;
 }
 

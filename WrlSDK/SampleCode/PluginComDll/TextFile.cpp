@@ -30,11 +30,6 @@ ATL::CString GetSpecialFolderPath(long lFoldID)
 	BOOL bGetFlag = ::SHGetSpecialFolderPath(NULL,szSpecialPath,lFoldID,TRUE);
 	if(!bGetFlag)
 	{
-#ifdef APP_LOG_ENABLE
-		ATL::CString strLogInfo(_T(""));
-		strLogInfo.Format(_T("SHGetSpecialFolderPathµ÷ÓÃ %d Ê§°Ü£¬´íÎóÂë£º%ld"),lFoldID,::GetLastError());
-		WriteLogToFile(strLogInfo);
-#endif
 		return _T("");
 	}
 
