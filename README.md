@@ -37,4 +37,4 @@
 
 开发交流QQ群：23126938，点击链接加入：https://jq.qq.com/?_wv=1027&k=5FxgskL
 
-牛插(PluginOK)中间件由成都佐罗软件有限公司研发并销售，热线电话：4006831589/18081958957，公司网站：http://zorrosoft.com 商务联系电子邮箱：wzh@zorrosoft.com
+牛插(PluginOK)中间件由成都佐罗软件有限公司研发并销售，热线电话：15201358223/18081958957，公司网站：http://zorrosoft.com 商务联系电子邮箱：wzh@zorrosoft.com
