@@ -22,11 +22,11 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\PluginOK
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=E:\WRL\WebRunLocal\Bin\license.txt
-InfoAfterFile=E:\WRL\WebRunLocal\TestWrl.txt
+LicenseFile=D:\Zorro\WebRunLocal\Bin\license.txt
+InfoAfterFile=D:\Zorro\WebRunLocal\TestWrl.txt
 ; 以下行取消注释，以在非管理安装模式下运行（仅为当前用户安装）。
 PrivilegesRequired=admin
-OutputDir=E:\WRL\WebRunLocal
+OutputDir=D:\Zorro\WebRunLocal
 OutputBaseFilename=PluginOKInstall
 Compression=lzma
 SolidCompression=yes
@@ -36,7 +36,7 @@ WizardStyle=modern
 Name: "chinesesimp"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "E:\WRL\WebRunLocal\Bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Zorro\WebRunLocal\Bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
 [Icons]
