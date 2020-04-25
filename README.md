@@ -1,5 +1,5 @@
 ﻿# WebRunLocal
-   牛插(PluginOK)中间件(原名:本网通WebRunLocal)是一个实现网页浏览器(Web Browser)与本地程序(Local Application)之间进行双向调用的低成本、强兼容、安全可控、轻量级、易集成、可扩展的浏览器小程序框架。通过本中间件可实现JavaScript脚本无障碍访问本地电脑的硬件、调用本地系统API及相关组件，可彻底解决ActiveX组件及Office桌面程序等在Chrome、Edge、360、FireFox、IE、Opera等浏览器各版本中的兼容嵌入使用问题。
+   牛插(PluginOK)中间件(原名:本网通WebRunLocal)是一个实现网页浏览器(Web Browser)与本地程序(Local Application)之间进行双向调用的低成本、强兼容、安全可控、轻量级、易集成、可扩展的浏览器小程序框架。通过本本中间件可实现网页前端JS脚本无障碍操作本地电脑的各种硬件、调用本地系统API及相关组件功能，彻底解决ActiveX组件及Office桌面程序等在Chrome、Edge、360、FireFox、IE、Opera等浏览器各版本中的嵌入使用问题，媲美原Java Applet效果，提供的开发接口与语言无关，前端只需使用JS+JSON+Web Socket相关技术即可实现与B/S系统完美对接。
 
 牛插(PluginOK)中间件及相关小程序由成都佐罗软件有限公司研发并销售，咨询热线电话：15201358223/18081958957/18051018685，公司网站：http://www.zorrosoft.com 商务沟通邮箱：wzh@zorrosoft.com 微信在线沟通：ZorroSoft
 
