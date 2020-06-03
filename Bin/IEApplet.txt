@@ -1,0 +1,107 @@
+﻿IE内核内嵌小程序：基于跨浏览器的插件通用框架-牛插(PluginOK)中间件(https://github.com/wangzuohuai/WebRunLocal)开发，底层调用IE的ActiveX控件实现程序化驱动的双内核浏览器。最低可用在Chrome 45、Firefox 52、Oprea 36、Edge 80(Chromium内核)、360极速/安全、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、牛插(PluginOK)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装。
+
+2、IE内核内嵌小程序控制相关接口：
+说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
+在线测试网页：http://local.zorrosoft.com/
+
+1)、请求安装IE内核内嵌小程序
+请在输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE内核内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-06-03","Desc":"PluginOK中间件上Chrome等浏览器中内嵌IE内核小程序","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IEApplet.pid","MD5":"C27C431F95407980E58B8E26CC20DD21","Version":"1.0.7.1","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"1846F6F463C9245691835E2D3AE22FCA4AA1933667D77F7EF18EB4A622C6440FDB995193F6A49D4697C9C9F8107C32D7EDE25BD9B29335B70717922D9F4BC5DE0FFB3B7478F1488C5BFA2B174DA4182EC1A56CE107AE5C2C1A2E217D90F32A5970D885F3F79232DD7EB2FCB3126BDB16AA47C0DCDD525308E83F603333CC0A97C442A0A6FE50AC50259D6F80E43F3E7D627BB37C26B5D07EA813461E856F2501772591AB738629AFCA75FF119A1EE1E6870B3A6F0E08124F56C29B5B5827FB39ADB506867AD95FB858A27C1070C2A9A1D2E37FD88A747A786B167A70E66C8C65F344A127D9B55EF63854CFD350EE5AB7B7214A87A4B10A6A88D187E8F03A77B5"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+
+2)、请求启动IE内核内嵌小程序实现网页中局部加载IE内核网页显示：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Flag掩码标记：1新打开指定网页加载(不指定时当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口
+IframeX和IframeY分别为iframe嵌套的横竖坐标，小程序实际显示位置加上网页中margin指定的偏移坐标
+Zoom 浏览器设置的缩放比例，默认100不缩放
+Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
+注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器启动：
+{"req":"Wrl_IEApplet","rid":7,"para":{"Type":"0","Title":"IE Applet","Flag":3,"Version":"0","IframeX":0,"IframeY":0,"Zoom":100,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
+
+启动后会收到两个JSON数据包
+A、{"ret":0,"rid":1,"data":{"ID":3}}
+返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+B、{"event":"Wrl_Listen","data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Port":985}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
+
+3)、请求控制IE内核内嵌小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏
+ID为启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序，其中2全屏显示，可直接通过热键切换Ctrl+F11
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+4)、请求滚动IE内核内嵌小程序：
+当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回的ID值，OffsetX为横向滚动偏移，正值为向右滚动，OffsetY为纵向滚动偏移，正值为向下滚动
+{"req":"Wrl_AppletScroll","rid":9,"para":{"ID":"1","OffsetY":30}}
+
+5)、请求改变IE内核内嵌小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为启动小程序时返回的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变
+{"req":"Wrl_AppletResize","rid":10,"para":{"ID":1,"Width":500,"Height":600}}
+{"req":"Wrl_AppletResize","rid":10,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+6)、请求缩放IE内核内嵌小程序，用于浏览器网页按比例缩放：
+ID为启动小程序时返回的ID值，Scall为缩放百分比
+{"req":"Wrl_AppletScale","rid":10,"para":{"ID":1,"Scale":120}}
+
+4)、请求升级IE内核内嵌小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE内核内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-06-03","Desc":"PluginOK中间件上Chrome等浏览器中内嵌IE内核小程序","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IEApplet_Update.pid","MD5":"A950EA934536E0B5044022D9A7671281","Version":"1.0.7.1","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"7691FB57E5A9943CA4B2B1C9F56ECBB74805ACC37EE947A48617BB3ADB7CFC346674310FF6463D2138A4414514BA585FE1111E5C0F97273692989E8ED4C7E7FD2A915638AB4ED852FAF783A4981060654CBC1BEB2911E89EF4CA4A03AC64AB1D6145A6E45DFCB0DC0818D4ED63DE09E3781A6850388AB816366F29D636771003E24039102E55D8BFAE54AC386141BAA179DB5F6BB756334A0CBC4A2F0CF851222F036F23E4DE9164AA4526B37CF4F69BA862D27916D43622303CC7D3113919B236049CFBCF78D5A14F7B0699B5C8EB4B1F6C4514815EF1B20A4F3C18127A09A0619993F95326FF8A608E6232B96CF191AC17A4B40DC188D64746BA2596D2548C"}}
+
+5)、请求卸载IE内核内嵌小程序：
+
+{"req":"Plugin_Remove","rid":30,"para":{"PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Type":8}}
+
+3、IE内核内嵌小程序转调用ActiveX接口，先根据Wrl_IEApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+1) 停止
+请求：{"req":"IE_Stop","rid":50,"para":{}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+2) 刷新网页
+请求：{"req":"IE_Refresh","rid":51,"para":{"Loop":"1"}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+3) 回退
+请求：{"req":"IE_GoBack","rid":52,"para":{}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+4) 前进
+请求：{"req":"IE_GoForward","rid":53,"para":{}}
+返回：{"ret":0,"rid":53,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+5) 导航到主页
+请求：{"req":"IE_GoHome","rid":54,"para":{}}
+返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+6) 导航到指定网页
+请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com"}}
+返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+B、事件通知：
+
+1) IE_FullScreen 小程序是否响应了热键全屏
+{"event":"Flash_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+5、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“牛插开发者手册.doc”。
+如还有疑问，请加QQ群：23126938联系客服 或微信客服：ZorroSoft

@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "牛插(PluginOK)中间件"
-#define MyAppVersion "1.1.1"
+#define MyAppVersion "1.2.7"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "WrlSetup.exe"
@@ -19,7 +19,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={autopf}\PluginOK
+DefaultDirName={pf}\PluginOK
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 LicenseFile=D:\Zorro\WebRunLocal\Bin\license.txt

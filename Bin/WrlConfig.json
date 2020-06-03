@@ -3,6 +3,9 @@
   "WSS": 443,
   "HTTP": 90,
   "HTTPS": 450,
-  "ValidHour": 24,
+  "Localhost": 1,
+  "WSErrTime": 15,
+  "ValidHour": 48,
+  "Mac": 1,
   "UDisk": 1
 }

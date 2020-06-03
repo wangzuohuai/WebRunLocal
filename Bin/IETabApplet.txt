@@ -1,0 +1,90 @@
+﻿IE新标签小程序：基于跨浏览器的插件通用框架-牛插(PluginOK)中间件(https://github.com/wangzuohuai/WebRunLocal)开发，底层调用IE的ActiveX控件实现程序化驱动的双内核浏览器。最低可用在Chrome 49、Firefox 52、Oprea 36、Edge 80(Chromium内核)、360极速/安全、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、牛插(PluginOK)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装。
+
+2、IE新标签小程序控制相关接口：
+说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
+在线测试网页：http://local.zorrosoft.com/
+
+1)、请求安装IE新标签小程序
+请在输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE标签小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Date":"2020-06-03","Desc":"PluginOK中间件上Chrome、FireFox等浏览器中内嵌IE内核的标签小程序","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IENewTab.pid","MD5":"275E06FBE3693597ADC025C4EACEC5B3","Version":"1.0.7.1","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"1F3D20184FEDC3F672EFB066F0E9FB44E4BC9FA8F8325991E73F987A3F739F231546DF48EF0A11606CAC1622D7E528DB0C2A791B56484F66E0D594F9721DDA483343B2870BCDC36B7864AF4D1545E42F78009471C07AA0CD445D1627881AE1D07BF1AD4672B2C2BC1F214AAB16A094A80EDE69BA0A75BAB5B3E42E8D374F7BA220B961926191EE4F0BCE6A817A87C99D02C5396468CBB86322466D86CE6252DE61DCD9E89D87262CAB88C5CAEB022614375AE179060597CF95EB7E7B17C6769C91174DB793891099C1A77867BBE7AECB1CEE46FE75B710CC485EAEFDB8EA9C5CDD0F3BAEEFC5ADDA0E01DE0FFE1D08AD17C71265A0E8A1276E81A3B5F52091AB"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+
+2)、请求启动IE新标签小程序：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Zoom 浏览器设置的缩放比例，默认100不缩放
+Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
+注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器启动：
+{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Title":"IE Tab","Version":"0","Open":"http://xiuxiu.web.meitu.com/main.html"}}
+
+启动后会收到两个JSON数据包
+A、{"ret":0,"rid":1,"data":{"ID":1}}
+返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl命令。
+B、{"event":"Wrl_Listen","data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Port":980}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
+
+3)、请求控制IE新标签小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏
+ID为Wrl_IETab启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示，其中2全屏显示，可直接通过热键切换Ctrl+F11
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+4)、请求升级IE新标签小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE标签小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Date":"2020-06-03","Desc":"PluginOK中间件上Chrome、FireFox等浏览器中内嵌IE内核的标签小程序","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IENewTab_Update.pid","MD5":"9148126DCF9374E7DF213973D1BBB321","Version":"1.0.7.1","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"342BD9F823E7AE00CB6B84AB23DF1D8F47A8D807B225732819E303FBABB78C3D13F59BA5F66899CCE9506DF3913125728E6CED9AFB1F81907E5EB8A9ADC9EC24264ACE116909C1C15E826D086CE60BCA3B0BB614911C46B8266134D3DC6F2AAAD78655ABD7E9BE5B4AB68AA572EF82192EB8DAFFF85320E8A3C4DDDAFD5A211F200093895D5D603B9DEB74BE90052090B3BC110FD11CBF1A43E58637EDF0D3EB57263F3DFF9225ABEAA929B6D4E5E740AB8AC87333575F8A25024F735929529B7F925C7950923EB8223AB6A0EADBE303F16F4B143CFFA7B9A18AF36E1CFA786180F5537B5F974BC66B139E248F43C6FE5E29A29AF842F18A0A934A760451DE60"}}
+
+5)、请求卸载IE新标签小程序：
+
+{"req":"Plugin_Remove","rid":30,"para":{"PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Type":8}}
+
+3、IE新标签小程序转调用ActiveX接口，先根据Wrl_IETab请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+1) 停止
+请求：{"req":"IE_Stop","rid":50,"para":{}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+2) 刷新网页
+请求：{"req":"IE_Refresh","rid":51,"para":{"Loop":"1"}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+3) 回退
+请求：{"req":"IE_GoBack","rid":52,"para":{}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+4) 前进
+请求：{"req":"IE_GoForward","rid":53,"para":{}}
+返回：{"ret":0,"rid":53,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+5) 导航到主页
+请求：{"req":"IE_GoHome","rid":54,"para":{}}
+返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+6) 导航到指定网页
+请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com"}}
+返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+B、事件通知：
+
+1) IE_FullScreen 小程序是否响应了热键全屏
+{"event":"Flash_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+5、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“牛插开发者手册.doc”。
+如还有疑问，请加QQ群：23126938联系客服 或微信客服：ZorroSoft
