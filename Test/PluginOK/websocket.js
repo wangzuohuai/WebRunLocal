@@ -113,15 +113,25 @@ function getrandom(nums) {
 			var jsondata = $.parseJSON(Data);
 			if(jsondata.rid == nRequstAppletID)
 			{
-				nAppletRunID = jsondata.data.ID;
-				showmessage('小程序运行ID：' + nAppletRunID);
-			}
-			if(jsondata.req == 'Wrl_AppletScroll')
-			{
-				console.log(Data);
+				if(0 == jsondata.ret)
+				{
+					nAppletRunID = jsondata.data.ID;
+					showmessage('小程序运行ID：' + nAppletRunID);
+				}
+				else
+				{
+					showmessage('小程序运行错误：' + jsondata.err);
+				}
 			}
 			else
-				showmessage(Data, 'receive');
+			{
+				if(jsondata.req == 'Wrl_AppletScroll')
+				{
+					console.log(Data);
+				}
+				else
+					showmessage(Data, 'receive');
+			}
 
 		}
 		// 处理发送的JSON数据包
