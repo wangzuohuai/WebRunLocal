@@ -24,8 +24,24 @@ function isFirefox()
 		return false;
 }
 
+function hasScrollbar() 
+{
+    return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
+}
+
+function getScrollbarWidth() 
+{
+    var scrollDiv = document.createElement("div");
+    scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
+    document.body.appendChild(scrollDiv);
+    var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    return scrollbarWidth;
+}
+
 // 获取随机数
-function getrandom(nums) {
+function getrandom(nums) 
+{
     return ('000000'+ Math.floor(Math.random() * 999999)).slice(-6);
 }
 
@@ -88,6 +104,9 @@ function getrandom(nums) {
 		{
 			if(!nAppletRunID)
 				return;
+			if(!hasScrollbar())
+				return;
+			// 测试IE内嵌小程序滚动
 			var oDivRect = $("#IEApplet").get(0).getBoundingClientRect();
 			if(iOldTop == 'undefined')
 			{
@@ -205,19 +224,16 @@ function getrandom(nums) {
 			socket.send(msg);
 			showmessage(msg, 'send');
 		}
-		
-        $win.find('#refresh_clearcache').click(function () 
-		{
-            $.yszrefresh();
-        });
 
         $win.find('#btn_conn').attr('disabled', false);
         $win.find('#btn_close').attr('disabled', true);
+        $win.find('#btn_max').attr('disabled', true);
 
         $win.find('#btn_conn').click(function () 
 		{
             $win.find('#btn_conn').attr('disabled', true);
             $win.find('#btn_close').attr('disabled', false);
+			$win.find('#btn_max').attr('disabled', false);
             var url = $win.find('#inp_url').val();
 			
 			if(!isIE())
@@ -225,6 +241,7 @@ function getrandom(nums) {
 				// 创建一个Socket实例
 				socket = new WebSocket(url);
 				showmessage('开始连接');
+				
 				// 打开Socket 
 				socket.onopen = function (event) {
 					// 发送一个初始化消息
@@ -232,10 +249,12 @@ function getrandom(nums) {
 					WrlVisibilityListener(true);
 					WrlScrollListener(true);
 				};
+				
 				// 监听消息
 				socket.onmessage = function (eve) {
 					DealRecMessage(eve.data);
 				};
+				
 				// 监听Socket的关闭
 				socket.onclose = function (event) {
 					WrlVisibilityListener(false);
@@ -253,7 +272,7 @@ function getrandom(nums) {
 				 socket = document.getElementById("WrlWS");
 				 if(socket)
 				 {
-					 socket.EnableLog = true;
+					socket.EnableLog = true;
 					if(socket.ReadyState > 1)
 					{
 						// 还未连接
@@ -262,11 +281,13 @@ function getrandom(nums) {
 				 }
 			}
         });
+		
         $win.find('#btn_close').click(function ()
 		{
 			if(!isIE())
 			{
-				if (socket) {
+				if (socket) 
+				{
 					socket.close();
 				}
 			}
@@ -279,6 +300,7 @@ function getrandom(nums) {
 				}
 			}
         });
+		
         $win.find('#btn_send').click(function ()
 		{
             var msg = $win.find('#inp_send').val();
@@ -304,14 +326,38 @@ function getrandom(nums) {
 				}
 			}
         });
-        $win.find('#inp_send').keyup(function () {
-            if (event.ctrlKey && event.keyCode == 13) {
+		
+        $win.find('#inp_send').keyup(function () 
+		{
+            if (event.ctrlKey && event.keyCode == 13) 
+			{
                 $win.find('#btn_send').trigger('click');
             }
         });
 
-        $win.find('#btn_clear').click(function () {
+        $win.find('#btn_clear').click(function () 
+		{
             $win.find('#div_msg').empty();
+        });
+		
+		$win.find('#btn_max').click(function () 
+		{
+            if(nAppletRunID < 1)
+				return;// 未启动小程序
+			var W = $(document).width();
+			var H = $(document).height();
+			// 小程序显示到整个客户区
+			var msg = '{"req":"Wrl_AppletResize","rid":';
+			msg += getrandom(5).toLocaleString();
+			msg += ',"para":{"ID":';
+			msg += nAppletRunID;
+			msg += ',"X":0,"Y":0,"Width":';
+			msg += W;
+			msg += ',"Height":';
+			msg += H;
+			msg += '}}';
+			socket.send(msg);
+			showmessage(msg, 'send');
         }); 
     });
 })(window);

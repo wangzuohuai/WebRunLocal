@@ -39,10 +39,11 @@
     showmessage(param2);
 	$('body').find('#btn_conn').attr('disabled', false);
     $('body').find('#btn_close').attr('disabled', true);
+	$('body').find('#btn_max').attr('disabled', true);
 </script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onmessage(param)">
-	DealRecMessage(eve.data);
+	DealRecMessage(param);
 	showmessage(param, 'receive');
 </script>
 
@@ -67,10 +68,11 @@
                     <button type="button" id="btn_conn" class="btn btn-primary">连接</button>
                     <button type="button" id="btn_close" class="btn btn-danger" disabled="disabled">断开</button>
                     <button type="button" id="btn_clear" class="btn btn-danger">清空消息</button>
+                    <button type="button" id="btn_max" class="btn btn-danger" disabled="disabled">充满客户区</button>
                 </div>
                 <br />
                 <div style="margin-bottom:20px;">
-                    <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:300px;" placeholder="请输入发送的内容">{"req":"Wrl_IEApplet","rid":5,"para":{"Type":"0","Title":"IE OCX","Flag":2,"IframeX":-9,"IframeY":20,"Version":"0","Zoom":100,"Url": "http://zorrosoft.com/ieocx.html","Open":"http://www.weibo.com"}}</textarea>
+                    <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:300px;" placeholder="请输入发送的内容">{"req":"Wrl_IEApplet","rid":5,"para":{"Type":"0","Title":"IE OCX","Flag":2,"IframeX":0,"IframeY":0,"Version":"0","Zoom":100,"Url": "http://zorrosoft.com/ieocx.html","Open":"http://www.weibo.com"}}</textarea>
                     <button type="button" id="btn_send" class="btn btn-info btn-block">发送（ctrl+回车）</button>
                 </div>
             </div>
