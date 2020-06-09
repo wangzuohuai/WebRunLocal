@@ -24,9 +24,14 @@ function isFirefox()
 		return false;
 }
 
-function hasScrollbar() 
+function hasVerticalScrollbar() 
 {
     return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
+}
+
+function hasHorizontalScrollbar() 
+{
+    return document.body.scrollWidth > (window.innerWidth || document.documentElement.clientWidth);
 }
 
 function getScrollbarWidth() 
@@ -135,6 +140,8 @@ function getrandom(nums)
 				if(0 == jsondata.ret)
 				{
 					nAppletRunID = jsondata.data.ID;
+					$win.find('#btn_max').attr('disabled', false);
+					$win.find('#btn_fitpage').attr('disabled', false);					
 					showmessage('小程序运行ID：' + nAppletRunID);
 				}
 				else
@@ -226,14 +233,15 @@ function getrandom(nums)
 		}
 
         $win.find('#btn_conn').attr('disabled', false);
+        $win.find('#btn_send').attr('disabled', true);	
         $win.find('#btn_close').attr('disabled', true);
         $win.find('#btn_max').attr('disabled', true);
+        $win.find('#btn_fitpage').attr('disabled', true);
 
         $win.find('#btn_conn').click(function () 
 		{
             $win.find('#btn_conn').attr('disabled', true);
             $win.find('#btn_close').attr('disabled', false);
-			$win.find('#btn_max').attr('disabled', false);
             var url = $win.find('#inp_url').val();
 			
 			if(!isIE())
@@ -246,6 +254,7 @@ function getrandom(nums)
 				socket.onopen = function (event) {
 					// 发送一个初始化消息
 					showmessage(url + ' 连接成功');
+					$win.find('#btn_send').attr('disabled', false);	
 					WrlVisibilityListener(true);
 					WrlScrollListener(true);
 				};
@@ -264,7 +273,10 @@ function getrandom(nums)
 					
 					showmessage('连接已断开');
 					$win.find('#btn_conn').attr('disabled', false);
+					$win.find('#btn_send').attr('disabled', true);	
 					$win.find('#btn_close').attr('disabled', true);
+					$win.find('#btn_max').attr('disabled', true);
+					$win.find('#btn_fitpage').attr('disabled', true);
 				};
 			}
 			else
@@ -344,20 +356,64 @@ function getrandom(nums)
 		{
             if(nAppletRunID < 1)
 				return;// 未启动小程序
-			var W = $(document).width();
-			var H = $(document).height();
+			var msg;
+			// 设置滚动条的宽度和高度，可实现显示区底部或右侧预留区域的显示
+			//msg = '{"req":"Wrl_ScrollBar","rid":';
+			//msg += getrandom(5).toLocaleString();
+			//msg += ',"para":{"ID":';
+			//msg += nAppletRunID;
+			//msg += ',"Width":';
+			//msg += 13;
+			//msg += ',"Height":';
+			//msg += 0;
+			//msg += '}}';
+			//socket.send(msg);
+			//showmessage(msg, 'send');
+			
+			var W = $(window).width();
+			var H = $(window).height();
 			// 小程序显示到整个客户区
-			var msg = '{"req":"Wrl_AppletResize","rid":';
+			msg = '{"req":"Wrl_AppletResize","rid":';
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';
 			msg += nAppletRunID;
-			msg += ',"X":0,"Y":0,"Width":';
+			msg += ',"X":0,"Y":0,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
 			msg += W;
 			msg += ',"Height":';
 			msg += H;
 			msg += '}}';
 			socket.send(msg);
 			showmessage(msg, 'send');
-        }); 
+        });
+
+		$win.find('#btn_fitpage').click(function () 
+		{
+            if(nAppletRunID < 1)
+				return;// 未启动小程序
+			var msg;
+			// 设置滚动条的宽度和高度，可实现显示区底部或右侧预留区域的显示
+			//msg = '{"req":"Wrl_ScrollBar","rid":';
+			//msg += getrandom(5).toLocaleString();
+			//msg += ',"para":{"ID":';
+			//msg += nAppletRunID;
+			//msg += ',"Width":';
+			//msg += 13;
+			//msg += ',"Height":';
+			//msg += 0;
+			//msg += '}}';
+			//socket.send(msg);
+			//showmessage(msg, 'send');
+			
+			// 小程序自动适配网页大小显示切换
+			msg = '{"req":"Wrl_AppletControl","rid":';
+			msg += getrandom(5).toLocaleString();
+			msg += ',"para":{"ID":';
+			msg += nAppletRunID;
+			msg += ',"Code":';
+			msg += 16;
+			msg += '}}';
+			socket.send(msg);
+			showmessage(msg, 'send');
+        }); 		
     });
 })(window);

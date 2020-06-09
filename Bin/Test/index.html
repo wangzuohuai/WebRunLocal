@@ -15,14 +15,18 @@
     showmessage('连接成功');
 	WrlVisibilityListener(true);
 	WrlScrollListener(true);
+	$('body').find('#btn_send').attr('disabled', false);
 </script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onclose(param1,param2,param3)"> 
-    showmessage(param2);
 	WrlVisibilityListener(false);
 	WrlScrollListener(false);
+	nAppletRunID = 0;
+	nRequstAppletID = 0;
+    showmessage(param2);	
 	$('body').find('#btn_conn').attr('disabled', false);
     $('body').find('#btn_close').attr('disabled', true);
+	$('body').find('#btn_send').attr('disabled', true);
 </script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onmessage(param)">
@@ -37,39 +41,16 @@
     $(document).ready(function(){  
         $("#inp_url").attr("value",GetDefaultConn());
     });  
-</script> 
+</script>
 </head>
-<style>
-.IEApplet
-{
-margin: 20px 0 0 50px;
-width: 480px;
-height: 320px;
-border: 1px solid blue;
-}
-</style>
 <body>
-<div id="IEApplet" class="IEApplet"</div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>       
+<object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>    
 <div class="container">
     <div class="page-header">
         <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">牛插(PluginOK)中间件在线体验</h2>
         <a href=http://local.zorrosoft.com/Files/PluginOK.pdf>产品介绍</a>
         <a href=http://local.zorrosoft.com/Files/PluginOK.zip>中间件安装包</a>
-        <a href=http://local.zorrosoft.com/Files/WrlSDK.zip>中间件开发包(SDK)</a>
+        <a href=http://local.zorrosoft.com/Files/WrlSDK.zip>中间件二次开发包(SDK)</a>
         <br />
         <br />
     </div>
@@ -85,7 +66,7 @@ sid=123&flag=1" />
             </div>
             <br />
             <div style="margin-bottom:20px;">
-                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_IEApplet","rid":99,"para":{"Type":"0","Title":"IE OCX","Flag":2,"IframeX":-8,"IframeY":0,"Version":"0","Zoom":100,"Url": "http://zorrosoft.com/indexS.html","Open":"http://zorrosoft.com"}}</textarea>
+                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容"></textarea>
                 <button type="button" id="btn_send" class="btn btn-info btn-block">发送（ctrl+回车）</button>
             </div>
         </div>

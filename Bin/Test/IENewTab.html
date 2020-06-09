@@ -27,6 +27,7 @@
     showmessage('连接成功');
 	WrlVisibilityListener(true);
 	WrlScrollListener(true);
+	$('body').find('#btn_send').attr('disabled', false);
 </script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onclose(param1,param2,param3)"> 
@@ -37,6 +38,7 @@
     showmessage(param2);
 	$('body').find('#btn_conn').attr('disabled', false);
     $('body').find('#btn_close').attr('disabled', true);
+	$('body').find('#btn_send').attr('disabled', true);
 </script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onmessage(param)">
