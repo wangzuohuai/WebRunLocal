@@ -10,7 +10,7 @@
 
 1)、请求启动IE新标签小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
-Flag掩码标记：1新打开指定网页加载(不指定时当前页加载) 2小程序显示窗口边框
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 16指定新窗口加载(仅Chrome/Firefox/IE支持) 64根据标题避免重复加载小程序
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
 举例：
