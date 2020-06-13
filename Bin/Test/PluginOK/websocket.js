@@ -237,6 +237,7 @@ function getrandom(nums)
         $win.find('#btn_close').attr('disabled', true);
         $win.find('#btn_max').attr('disabled', true);
         $win.find('#btn_fitpage').attr('disabled', true);
+		$win.find('#btn_restore').attr('disabled', true);
 
         $win.find('#btn_conn').click(function () 
 		{
@@ -277,6 +278,7 @@ function getrandom(nums)
 					$win.find('#btn_close').attr('disabled', true);
 					$win.find('#btn_max').attr('disabled', true);
 					$win.find('#btn_fitpage').attr('disabled', true);
+					$win.find('#btn_restore').attr('disabled', true);
 				};
 			}
 			else
@@ -363,9 +365,9 @@ function getrandom(nums)
 			//msg += ',"para":{"ID":';
 			//msg += nAppletRunID;
 			//msg += ',"Width":';
-			//msg += 13;
+			//msg += 16;
 			//msg += ',"Height":';
-			//msg += 0;
+			//msg += 16;
 			//msg += '}}';
 			//socket.send(msg);
 			//showmessage(msg, 'send');
@@ -377,12 +379,13 @@ function getrandom(nums)
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';
 			msg += nAppletRunID;
-			msg += ',"X":0,"Y":0,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
+			msg += ',"X":8,"Y":150,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
 			msg += W;
 			msg += ',"Height":';
 			msg += H;
 			msg += '}}';
 			socket.send(msg);
+			$win.find('#btn_restore').attr('disabled', false);	
 			showmessage(msg, 'send');
         });
 
@@ -397,7 +400,7 @@ function getrandom(nums)
 			//msg += ',"para":{"ID":';
 			//msg += nAppletRunID;
 			//msg += ',"Width":';
-			//msg += 13;
+			//msg += 16;
 			//msg += ',"Height":';
 			//msg += 0;
 			//msg += '}}';
@@ -411,6 +414,37 @@ function getrandom(nums)
 			msg += nAppletRunID;
 			msg += ',"Code":';
 			msg += 16;
+			msg += '}}';
+			socket.send(msg);
+			showmessage(msg, 'send');
+        });
+
+		$win.find('#btn_restore').click(function () 
+		{
+            if(nAppletRunID < 1)
+				return;// 未启动小程序
+			var msg;
+			// 设置滚动条的宽度和高度，可实现显示区底部或右侧预留区域的显示
+			//msg = '{"req":"Wrl_ScrollBar","rid":';
+			//msg += getrandom(5).toLocaleString();
+			//msg += ',"para":{"ID":';
+			//msg += nAppletRunID;
+			//msg += ',"Width":';
+			//msg += 0;
+			//msg += ',"Height":';
+			//msg += 0;
+			//msg += '}}';
+			//socket.send(msg);
+			//showmessage(msg, 'send');
+
+			msg = '{"req":"Wrl_AppletResize","rid":';
+			msg += getrandom(5).toLocaleString();
+			msg += ',"para":{"ID":';
+			msg += nAppletRunID;
+			msg += ',"X":0,"Y":28,"Width":';
+			msg += 480;
+			msg += ',"Height":';
+			msg += 320;
 			msg += '}}';
 			socket.send(msg);
 			showmessage(msg, 'send');

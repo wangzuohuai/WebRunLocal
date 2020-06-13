@@ -11,16 +11,16 @@
 1)、请求启动IE内核内嵌小程序实现网页中局部加载IE内核网页显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 16指定新窗口加载(仅Chrome/Firefox/IE支持) 64根据标题避免重复加载小程序
-IframeX和IframeY分别为iframe嵌套的横竖坐标，小程序实际显示位置加上网页中margin指定的偏移坐标
+IframeX和IframeY分别为iframe嵌套的横竖偏移坐标，BarW和BarH分别是网页右侧和底部预留的比如滚动条位置，小程序实际显示首先会基于网页中margin指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Zoom 浏览器设置的缩放比例，默认100不缩放
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":3,"Version":"0","IframeX":0,"IframeY":0,"Zoom":100,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
+{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":3,"Version":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Zoom":100,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":11,"Version":"0","IframeX":0,"IframeY":0,"Zoom":100,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
+{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":11,"Version":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Zoom":100,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
 
 启动后会收到两个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
@@ -35,13 +35,13 @@ ID为启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
 3)、请求滚动IE内核内嵌小程序：
-当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
+当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动，处于自动适配网页模式时不生效
 ID为启动小程序时返回的ID值，OffsetX为横向滚动偏移，正值为向右滚动，OffsetY为纵向滚动偏移，正值为向下滚动
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","OffsetY":30}}
 
 4)、请求改变IE内核内嵌小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
-ID为启动小程序时返回的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变
+ID为启动小程序时返回的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
 或同时设置小程序显示起始坐标
 {"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
