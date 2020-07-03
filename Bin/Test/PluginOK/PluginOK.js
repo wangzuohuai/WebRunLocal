@@ -103,7 +103,7 @@ function getrandom(nums)
 					document.removeEventListener("scroll");
 			}
 		}
-	
+		
 		// 内嵌小程序滚动
 		scrollFunc = function (e)
 		{
@@ -374,7 +374,7 @@ function getrandom(nums)
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';
 			msg += nAppletRunID;
-			msg += ',"X":8,"Y":148,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
+			msg += ',"X":18,"Y":150,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
 			msg += W;
 			msg += ',"Height":';
 			msg += H;
@@ -436,10 +436,10 @@ function getrandom(nums)
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';
 			msg += nAppletRunID;
-			msg += ',"X":0,"Y":28,"Width":';
-			msg += 480;
+			msg += ',"X":10,"Y":70,"Width":';
+			msg += 600;
 			msg += ',"Height":';
-			msg += 320;
+			msg += 450;
 			msg += '}}';
 			socket.send(msg);
 			showmessage(msg, 'send');
