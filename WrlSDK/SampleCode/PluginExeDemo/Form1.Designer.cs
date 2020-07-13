@@ -78,7 +78,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.IEBrowser);
             this.Name = "Form1";
-            this.Text = "C#插件范例";
+            this.Text = "C#弹窗小程序范例";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

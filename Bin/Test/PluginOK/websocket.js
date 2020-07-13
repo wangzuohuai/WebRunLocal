@@ -54,11 +54,15 @@ function getrandom(nums)
 {
     $(function ()
 	{
+        //////////////////////	目前脚本只支持一个网页内启动单个小程序	/////////////////////////
         var $win = $('body');
-		var socket;						// Web Socket连接对象
-		var nRequstAppletID = 0;  		// 启动小程序序号
-		var nAppletRunID = 0;  			// 小程序运行ID
-		var nScrollOld = 0;				// 原滚动位置
+		var socket;							// Web Socket连接对象
+		var nRequstAppletID 	= 0;  		// 请求启动小程序的序号
+		var nAppletRunID 		= 0;  		// 小程序启动后的实例序号
+		var bIsSendScrollInfo 	= false;	// 是否已发送滚动条信息
+		var bRunInCurrentPage	= true;		// 是否为当前页面加载的小程序
+		var nScrollLeftOld 		= 0;		// 原横向滚动位置
+		var nScrollTopOld 		= 0;		// 原纵向滚动位置
 
         showmessage = function (msg, type)
 		{
@@ -78,7 +82,7 @@ function getrandom(nums)
 
 		WrlVisibilityListener = function (AddEvent)
 		{
-			if (isFirefox())
+			if (isFirefox() && bRunInCurrentPage)
 			{
 				// 只有Firefox需要处理
 				if(AddEvent)
@@ -93,7 +97,12 @@ function getrandom(nums)
 			if(!isFirefox())
 			{
 				if(AddEvent)
-					document.onscroll = scrollFunc;
+				{
+					if(window.pageXOffset != undefined)
+						document.onscroll = scrollFunc;
+					else
+						window.onscroll = scrollFunc;
+				}
 			}
 			else
 			{
@@ -104,25 +113,103 @@ function getrandom(nums)
 			}
 		}
 	
-		// 内嵌小程序滚动
+		// 滚动内嵌小程序
 		scrollFunc = function (e)
 		{
-			if(!nAppletRunID)
+			if(!nAppletRunID || !bRunInCurrentPage)
 				return;
-			if(!hasVerticalScrollbar())
-				return;
-			var nOffsetY = 0;
-			//获取页面的scrollTop,scrollLeft(兼容写法)
-		    var scrollTop = Math.round(window.pageYOffset || document.body.scrollTop);
-			// 一次最少滚动1个像素
-			if(Math.abs(nScrollOld - scrollTop) >= 1)
+			var nOffsetX = 0,nScrollLeft = 0;
+			var nOffsetY = 0,nScrollTop = 0;
+			if(window.pageXOffset != undefined)
+				nScrollLeft = Math.round(window.pageXOffset);
+			else
 			{
-				nOffsetY = nScrollOld - scrollTop;
-				nScrollOld = scrollTop;
-
-				WrlScrollApplet(0,nOffsetY);
+				//获取页面的scrollTop,scrollLeft(兼容写法)
+				nScrollLeft = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
+			}
+			if(window.pageYOffset != undefined)
+				nScrollTop = Math.round(window.pageYOffset);
+			else
+			{
+				//获取页面的scrollTop,scrollLeft(兼容写法)
+				nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
+			}	
+			nOffsetX = nScrollLeftOld - nScrollLeft;
+			nOffsetY = nScrollTopOld - nScrollTop;		
+			nScrollLeftOld = nScrollLeft;
+			nScrollTopOld = nScrollTop;
+			if(nOffsetX || nOffsetY)
+				WrlScrollApplet(nScrollLeft,nScrollTop,nOffsetX,nOffsetY);
+		}
+		
+		function SendScrollInfo()
+		{
+			if(nAppletRunID)
+			{
+				var nScrollTop = 0,nScrollLeft = 0,BarCode = 0;
+				var bHorizontalBar = hasHorizontalScrollbar();
+				var bVerticalBar = hasVerticalScrollbar();
+				if(bHorizontalBar)
+				{
+					if(window.pageXOffset != undefined)
+						nScrollLeft = Math.round(window.pageXOffset);
+					else
+					{
+						//获取页面的scrollLeft(兼容写法)
+						nScrollLeft = Math.round(document.documentElement.scrollLeft || document.body.
+						scrollLeft);
+					}
+					nScrollLeftOld = nScrollLeft;
+				}
+				if(bVerticalBar)
+				{
+					if(window.pageYOffset != undefined)
+						nScrollTop = Math.round(window.pageYOffset);
+					else
+					{
+						//获取页面的scrollTop(兼容写法)
+						nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
+					}
+					nScrollTopOld = nScrollTop;
+				}
+				var msg = '{"req":"Wrl_ScrollBar","rid":';
+				msg += getrandom(5).toLocaleString();
+				msg += ',"para":{"ID":';
+				msg += nAppletRunID;
+				msg += ',"BarH":';
+				if(bHorizontalBar)
+					BarCode = 1;
+				msg += 0;			// 有水平滚动条，可设置预留底部高度
+				msg += ',"BarW":';
+				if(bVerticalBar)
+					BarCode += 2;
+				msg += 0; 			// 有垂直滚动条，可设置预留右侧宽度
+				msg += ',"Code":';
+				msg += BarCode; 	// 滚动条是否存在信息
+				msg += ',"Top":';
+				msg += nScrollTop;	// 垂直滚动位置
+				msg += ',"Left":';	// 水平滚动位置
+				msg += nScrollLeft;
+				msg += '}}';
+				if(!isIE())
+				{
+					socket.send(msg);
+				}
+				else
+				{
+					socket = document.getElementById("WrlWS");
+					socket.send(msg);
+				}
+				bIsSendScrollInfo = true;
+				console.log(msg);
 			}
 		}
+		
+		// 监听窗口大小改变事件，使滚动状况匹配
+		$(window).resize(function () 
+		{
+            SendScrollInfo();
+        });
 		
 		// 处理接收到的JSON数据包
 		DealRecMessage = function (Data)
@@ -135,7 +222,6 @@ function getrandom(nums)
 					nAppletRunID = jsondata.data.ID;
 					$win.find('#btn_max').attr('disabled', false);
 					$win.find('#btn_fitpage').attr('disabled', false);					
-					showmessage('小程序运行ID：' + nAppletRunID);
 				}
 				else
 				{
@@ -144,12 +230,21 @@ function getrandom(nums)
 			}
 			else
 			{
-				if(jsondata.req == 'Wrl_AppletScroll')
+				if(bRunInCurrentPage && jsondata.aid == nAppletRunID && jsondata.event == 'Wrl_Listen')
+				{
+					// 小程序启动成功，发送页面滚动信息
+					SendScrollInfo();
+				}
+				if(jsondata.req == 'Wrl_AppletScroll'
+					|| jsondata.req == 'Wrl_ScrollBar'
+					|| jsondata.req == 'Wrl_AppletResize')
 				{
 					console.log(Data);
 				}
 				else
+				{
 					showmessage(Data, 'receive');
+				}
 			}
 
 		}
@@ -164,29 +259,36 @@ function getrandom(nums)
 				|| jsondata.req == "Wrl_AppletStart")
 			{
 				nRequstAppletID = jsondata.rid;
+				if(1 == (1 & jsondata.para.Flag) || 16 == (16 & jsondata.para.Flag))
+					bRunInCurrentPage = false; // 新标签或新窗口加载小程序
 			}
 		}
 		
-		WrlScrollApplet = function (DeltaX,DeltaY)
+		WrlScrollApplet = function (nScrollLeft,nScrollTop,nOffsetX,nOffsetY)
 		{
-			//return;// 屏蔽滚动小程序
 			if(nAppletRunID)
 			{
+				var nCode = 0;
+				if(nOffsetX && nOffsetY)
+					nCode = 3; // 同时滚动
+				else
+				{
+					if(nOffsetX)
+						nCode = 1; // 横向滚动
+					if(nOffsetY)
+						nCode = 2; // 纵向滚动
+				}
 				var msg = '{"req":"Wrl_AppletScroll","rid":';
 				msg += getrandom(5).toLocaleString();
 				msg += ',"para":{"ID":';
 				msg += nAppletRunID;
-				if(Math.abs(DeltaY) >= 1)
-				{
-					msg += ',"OffsetY":';
-					msg += DeltaY;
-				}
-				if(Math.abs(DeltaX) >= 1)
-				{
-					msg += ',"OffsetX":';
-					msg += DeltaX;
-				}
-				msg += ',"NoLog":1';
+				msg += ',"Top":';
+				msg += nScrollTop;
+				msg += ',"Left":';
+				msg += nScrollLeft;
+				msg += ',"Code":';
+				msg += nCode;		 // 滚动方向
+				msg += ',"NoLog":1'; // 不输出日志
 				msg += '}}';
 				if(!isIE())
 				{
@@ -281,7 +383,9 @@ function getrandom(nums)
 				 socket = document.getElementById("WrlWS");
 				 if(socket)
 				 {
-					socket.EnableLog = true;
+					// 设置是否输出日志 
+					socket.EnableLog = false;
+					//socket.EnableLog = true;
 					if(socket.ReadyState > 1)
 					{
 						// 还未连接
@@ -353,20 +457,9 @@ function getrandom(nums)
 		{
             if(nAppletRunID < 1)
 				return;// 未启动小程序
+			if(!bIsSendScrollInfo)
+				SendScrollInfo();
 			var msg;
-			// 设置滚动条的宽度和高度，可实现显示区底部或右侧预留区域的显示
-			//msg = '{"req":"Wrl_ScrollBar","rid":';
-			//msg += getrandom(5).toLocaleString();
-			//msg += ',"para":{"ID":';
-			//msg += nAppletRunID;
-			//msg += ',"Width":';
-			//msg += 16;
-			//msg += ',"Height":';
-			//msg += 16;
-			//msg += '}}';
-			//socket.send(msg);
-			//showmessage(msg, 'send');
-			
 			var W = $(window).width();
 			var H = $(window).height();
 			// 小程序显示到整个客户区
@@ -374,7 +467,7 @@ function getrandom(nums)
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';
 			msg += nAppletRunID;
-			msg += ',"X":8,"Y":148,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
+			msg += ',"X":8,"Y":310,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
 			msg += W;
 			msg += ',"Height":';
 			msg += H;
@@ -388,20 +481,9 @@ function getrandom(nums)
 		{
             if(nAppletRunID < 1)
 				return;// 未启动小程序
+			if(!bIsSendScrollInfo)
+				SendScrollInfo();
 			var msg;
-			// 设置滚动条的宽度和高度，可实现显示区底部或右侧预留区域的显示
-			//msg = '{"req":"Wrl_ScrollBar","rid":';
-			//msg += getrandom(5).toLocaleString();
-			//msg += ',"para":{"ID":';
-			//msg += nAppletRunID;
-			//msg += ',"Width":';
-			//msg += 16;
-			//msg += ',"Height":';
-			//msg += 0;
-			//msg += '}}';
-			//socket.send(msg);
-			//showmessage(msg, 'send');
-			
 			// 小程序自动适配网页大小显示切换
 			msg = '{"req":"Wrl_AppletControl","rid":';
 			msg += getrandom(5).toLocaleString();
@@ -419,19 +501,6 @@ function getrandom(nums)
             if(nAppletRunID < 1)
 				return;// 未启动小程序
 			var msg;
-			// 设置滚动条的宽度和高度，可实现显示区底部或右侧预留区域的显示
-			//msg = '{"req":"Wrl_ScrollBar","rid":';
-			//msg += getrandom(5).toLocaleString();
-			//msg += ',"para":{"ID":';
-			//msg += nAppletRunID;
-			//msg += ',"Width":';
-			//msg += 0;
-			//msg += ',"Height":';
-			//msg += 0;
-			//msg += '}}';
-			//socket.send(msg);
-			//showmessage(msg, 'send');
-
 			msg = '{"req":"Wrl_AppletResize","rid":';
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';

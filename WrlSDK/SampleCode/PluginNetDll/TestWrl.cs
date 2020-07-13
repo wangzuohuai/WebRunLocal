@@ -43,7 +43,7 @@ namespace PluginNetDll
         void IWrlConn.Unload(WrlBase.EWrlCloseConnType eCloseConnType, string bstrReason)
         {
             m_WebSocketConnect = null;
-            WriteLog("PluginNetDll", "请求卸载插件");
+            WriteLog("PluginNetDll", "请求卸载小程序");
         }
 
         string IWrlConn.HttpRequst(string bstrUrl, string bstrPara)

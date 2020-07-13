@@ -1,8 +1,8 @@
 ; 脚本由 Inno Setup 脚本向导 生成！
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
-#define MyAppName "牛插(PluginOK)中间件"
-#define MyAppVersion "1.2.10.1"
+#define MyAppName "PluginOK(牛插)中间件"
+#define MyAppVersion "1.2.11.1"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "WrlSetup.exe"
@@ -22,8 +22,9 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\PluginOK
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
+; 以下行修改为实际的路径。
 LicenseFile=D:\Zorro\WebRunLocal\Bin\license.txt
-InfoAfterFile=D:\Zorro\WebRunLocal\TestWrl.txt
+InfoAfterFile=D:\Zorro\WebRunLocal\Bin\TestWrl.txt
 ; 以下行取消注释，以在非管理安装模式下运行（仅为当前用户安装）。
 PrivilegesRequired=admin
 OutputDir=D:\Zorro\WebRunLocal

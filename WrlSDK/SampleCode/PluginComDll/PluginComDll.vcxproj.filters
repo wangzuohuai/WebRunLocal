@@ -98,6 +98,9 @@
     <None Include="SysInfo.rgs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="PluginConfig.json">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="PluginComDll.idl">

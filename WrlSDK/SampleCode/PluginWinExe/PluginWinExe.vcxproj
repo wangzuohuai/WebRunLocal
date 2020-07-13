@@ -253,6 +253,7 @@
     <ResourceCompile Include="PluginWinExe.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PluginConfig.json" />
     <None Include="res\PluginWinExe.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

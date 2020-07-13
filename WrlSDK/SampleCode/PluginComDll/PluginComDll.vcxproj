@@ -302,6 +302,7 @@
   <ItemGroup>
     <None Include="PluginComDll.def" />
     <None Include="PluginComDll.rgs" />
+    <None Include="PluginConfig.json" />
     <None Include="ReadMe.txt" />
     <None Include="SysInfo.rgs" />
     <None Include="TextFile.rgs" />

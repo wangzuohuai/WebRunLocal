@@ -219,7 +219,7 @@ LRESULT CMainDlg::OnInitConn(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 	ATLASSERT(SUCCEEDED(hRet));
 	if(FAILED(hRet))
 	{
-		this->MessageBox(L"基础插件还未正常注册成功！");
+		this->MessageBox(L"Web Socket基础组件还未正常注册成功！");
 		InitWebCtrl();
 		return 0;
 	}
