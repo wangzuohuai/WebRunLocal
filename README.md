@@ -1,5 +1,5 @@
 ﻿# WebRunLocal
-   PluginOK(牛插)中间件(原名:本网通WebRunLocal)是一个实现网页浏览器(Web Browser)与本地程序(Local Application)之间进行双向调用的低成本、强兼容、安全可控、轻量级、易集成、可扩展、跨浏览器的小程序系统。通过本中间件可实现网页前端JS脚本无障碍操作本地电脑的各种硬件、调用本地系统API及相关组件功能，彻底解决DLL模块、ActiveX控件及自动化程序(如MSOffice、AutoCAD等)在Chrome、Edge新内核、360系列、FireFox、IE、Opera等桌面浏览器各版本中的嵌入使用问题，媲美原Java Applet效果，提供的开发接口与语言无关，前端只需使用JS+JSON+Web Socket相关技术即可实现与B/S系统完美对接。
+   PluginOK(牛插)中间件(原名:本网通WebRunLocal)是一个实现网页浏览器(Web Browser)与本地程序(Local Application)之间进行双向调用的低成本、强兼容、安全可控、轻量级、易集成、可扩展、跨浏览器的小程序系统，是浏览器功能扩展的最佳利器。通过本中间件可实现网页前端JS脚本无障碍操控本地电脑的各种硬件、调用本地系统API及相关组件功能，彻底解决DLL、ActiveX控件及自动化程序(如MSOffice、AutoCAD等)在Chrome、Edge新内核、360极速/安全/企业、FireFox、IE、Opera等浏览器各版本中的嵌入运行问题，媲美Java Applet的运行效果，并且提供的开发接口与前端语言无关，前端只需使用JS+JSON+Web Socket相关技术即可实现与B/S系统完美对接。
 
 PluginOK(牛插)中间件及相关小程序由成都佐罗软件有限公司研发并销售，咨询热线电话：15201358223/18081958957/18051018685，公司网站：http://www.zorrosoft.com 商务沟通邮箱：wzh@zorrosoft.com 微信在线沟通：ZorroSoft
 
@@ -22,7 +22,7 @@ PluginOK(牛插)中间件及相关小程序由成都佐罗软件有限公司研�
    在IE中实现网页和本地系统双向调用的方法是使用ActiveX控件技术，而在Chrome、FireFox等浏览器有类似的NPAPI插件技术。因为安全隐患及稳定性等问题，微软新内核浏览器Edge不再支持ActiveX控件，而目前最主流的Chrome浏览器也从45版开始NPAPI插件技术也被抛弃，导致原来很多依赖这些技术实现的业务无法在新版浏览器中继续使用。
 
 目前浏览器网页与本地程序之间双向调用的知名解决方案有以下两个：
-1、FireBreath，底层实现采用的是ActiveX和NPAPI技术，已面临新版浏览器不能全面兼容使用的问题；
+1、FireBreath，底层实现采用的是ActiveX和NPAPI技术，已面临2015年发布的浏览器不能兼容使用的问题；
 2、Node.js，是一个基于Chrome V8引擎的 JavaScript 运行环境，其中FFI模块可实现在JavaScript中调用本地C语言风格的动态链接库。运行及部署依赖Python和npm，另外需要区别处理32位和64位的程序调用，尤其是不能支持ActiveX控件等面向对象的组件调用。
 
 使用PluginOK(牛插)中间件的理由：
@@ -46,6 +46,6 @@ C、有界面交互的内嵌窗口小程序(EXE)，此类型小程序也是普�
 中间件授权使用：商业用途需付费使用，非商业用途可申请免费使用授权。
 
 PluginOK(牛插)中间件已于2019年5月发布第一个正式版，支持无界面交互的无窗口小程序及有界面交互的弹窗小程序。
-2020年7月13日发布网页支持内嵌窗口的小程序版，同时发布了Flash播放、IE内嵌、IE标签等小程序供大家体验，欢迎申请试用！
+2020年7月13日发布网页中可内嵌窗口运行的小程序版本，同时发布了Flash Player、IE控件及新标签等内嵌窗口小程序供大家体验，欢迎申请试用！
 
 技术咨询及获取报价信息请微信联系：ZorroSoft，开发交流QQ群：23126938，点击链接加入：https://jq.qq.com/?_wv=1027&k=5FxgskL
