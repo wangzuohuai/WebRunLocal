@@ -31,3 +31,8 @@
 *.out
 *.app
 /Test/websocket.html
+/Net/ServerConfig.json
+/Net/StopService.bat
+/Net/RemoveService.bat
+/Server/ZbaAuth.wdb
+/Net/ZbaAuth.wdb

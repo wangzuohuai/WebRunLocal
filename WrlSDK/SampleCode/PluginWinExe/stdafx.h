@@ -49,10 +49,5 @@ using namespace ATL;
 #pragma warning( disable : 4610 )
 #pragma warning( disable : 4206 )
 
-#ifndef _WIN64
-#import "..\\..\\..\\Release\\Win32\\WrlEngine.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids
-#import "..\\..\\..\\Release\\Win32\\WrlBase.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids
-#else
-#import "..\\..\\..\\Release\\X64\\WrlEngine.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids
-#import "..\\..\\..\\Release\\X64\\WrlBase.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids
-#endif
+#import "..\\Bin\\WrlEngine.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids
+#import "..\\Bin\\WrlBase.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids

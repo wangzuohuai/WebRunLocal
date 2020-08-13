@@ -19,10 +19,10 @@ Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":3,"Version":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
+{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":3,"Version":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":11,"Version":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.baidu.com"}}
+{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":11,"Version":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
 
 启动后会收到两个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
@@ -65,14 +65,14 @@ ID为启动小程序时返回的ID值，Scall为缩放百分比
 1)、请求安装IE控件内嵌窗口小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序(内嵌窗口)","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-07-16","Desc":"PluginOK之上跨浏览器的IE控件通用小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IEApplet.pid","MD5":"0F6E0B1BBCC34D077F17002B46F17D8D","Version":"1.2.11.3","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"521C141F6C8AD8E08E8D6C321AE28F7A44F2613558AC3EE1A8578B53658FAEFB1CE72600EB63A32A69F60D33283B92C92BC627A8927630B9B51019A5781F4906DBC0A0B9D7A3DC84E2A0211CC09FF92D7AF07CBD838D57893B8FB9287C810166D13FB1C176E06F0B1D8D4699CC1A00C27932512E42DDFABB931094E85B0EADE2A93CB15E6A0951B3CD47EC89CA67294BC923106CD54779FB640464F2806DBD2B853314BB28FD2576875D164482E7DC8B787FEEA6D9275DB6AAC499902F6722743A18C3CE3A1BD49D4862359D727F312DF32A61B01BA222767C47986FE664340072398A5210D3772F38A2C734AE597FB715DA9FC3BDDFB6C5AFA1B94F88ADBDE9"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件内嵌窗口小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-08-13","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IEApplet.pid","MD5":"F0BB4489EB6A0E6583CF3FC077B2501E","Version":"2.0.1.1","Size":557056,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"63B5E63DEEDF69D9161D8C12E1A791FCE94028AECF7762C45FBCE34D6DD4D61C7C759DA7FD420C58398D9E1220747ABA3372E5D18AE837EE3F91DAC27C1ACF99DB4157C67D84A4DEFE2DFFFEF693679775D915B3FBA69417D14B9777360B30E4EB10E437948623D3EC67E356D8A75B355CBE27172E0D52626EA640948F0800A2D8862AF2E8016BA979B6B178009C84FF410A590588489C1970879526DAB89C45A71C2EAF410875FC12D5FF08832462E39F56FC4A00ACEF4BA1D314107A78ADDF9A33DE09AEE209DFA458CC7D6CA002337581A554CA581E5C18AA2A6F30EBB7B249088CCAE2409DC37E496F05EAC4EB359FD3B978AAA55BC43A39A0AF57203F86"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级IE内核内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序(内嵌窗口)","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-07-16","Desc":"PluginOK之上跨浏览器的IE控件通用小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/IEApplet_Update.pid","MD5":"9EBA04BD5D89EB674B5B54A185087CF0","Version":"1.2.11.3","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"411263C0109D12690C66F6D1CA0E7F781F0A16F03203F979D2E5E1EF44B385D9A9681C5E22A39E7CB1580E08317511790BCB24431A44709389BF7568A8817FCC57AB1987090711C0508B8FD3C11B6FD6933CC482D5B054671D9CAA66A5EAD67D7C09F6F18F9242171047AE40880D66035EA4A6271C46BD368BC5A3C1E0ADCB270B30204C68EFCBB519F48A3677A46149FA50E2A452B4830B04E28FDA006E4E2B1895DC9BB05D6D53FFB19A88806607F3F2EBCD83069D530E737BE0903EB12A333F42D0B4943C3C587F2CDBC7E06CD151916F7F3293DDD3E208705D85A4440901EAA013219C7A028855F76A7CD9C970C86A87263B9AA07781BA951E2747BAB1BE"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件内嵌窗口小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-08-13","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/IEApplet_Update.pid","MD5":"9596B108294AA4258B6DB1B6E51C22F7","Version":"2.0.1.1","Size":557056,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"5F3E157FBAB6A5E5978FAF1F51BE577588FAC81CF691539136BAFF929EDB038623D9396E9858A1211AF28BDF3478BE2CF50364EA073D676ADC611B34A6B6F7C553D6AEAE4580C506EBDD2B223852E3099F978B3D1EECB90F763C110B11C62AFC7972C23860F92823A30281264BD5244D76C3517CE9ED2A58C63BE106660AD81F63570C82F4BB56A2C153FB880DE9526097BDEA7EE596597C5EBBA12A45647509BFAC9474C1648AB0D1008C6C54FC7619A78A5B12CD412921F7D69AB449DCC9BEBF5AF8EE6198AB5D6DED4F46E1AC27894F5F47562ADF584B7D569147958EC61E49A0429E06B34CA984336608F25DAB00EA45585C529CC1ACE7E3A7141D4DEFCB"}}
 
 3)、请求卸载IE控件内嵌窗口小程序：
 
@@ -110,6 +110,28 @@ Ret为调用ActiveX对应函数返回值，0代表正常
 请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com"}}
 返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
 Ret为调用ActiveX对应函数返回值，0代表正常
+
+7) 请求执行脚本，必须等文档加载完成后
+Code为需要执行的脚本内容
+Language 脚本类型
+请求：{"req":"IE_ExecScript","rid":56,"para":{"Code":"alert(\"hello\");","Language":"javascript"}}
+返回：{"ret":0,"rid":56,"data":{"Ret":"0","ScriptRet":""}}
+Ret为调用返回值，0代表正常
+ScriptRet执行脚本返回内容，只支持字符型，非字符型先用BASE64编码
+
+8) 请求注入脚本，必须等文档加载完成后
+Code为需要注入的脚本内容
+请求：{"req":"IE_AddScript","rid":57,"para":{"Code":"alert(\"hello\");"}}
+返回：{"ret":0,"rid":57,"data":{"Ret":"0"}}
+Ret为调用返回值，0代表正常
+
+9) 请求调用脚本(已在打开的网页中)，必须等文档加载完成后
+FuncName脚本函数名称
+Para函数参数
+请求：{"req":"IE_InvokeScript","rid":58,"para":{"FuncName":"HelloWord";","Para":["My","Name"]}}
+返回：{"ret":0,"rid":58,"data":{"Ret":"0","FuncRet":""}}
+Ret为调用返回值，0代表正常
+FuncRet调用函数返回内容，只支持字符型，非字符型先用BASE64编码
 
 5、事件通知：
 A、IE控件事件

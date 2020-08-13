@@ -1,0 +1,10 @@
+@charset "utf-8";
+/*默认样式，主要是position:fixed实现屏幕绝对定位*/
+#gotoTop{
+	display:none;position:fixed;top:200px;right:50px;
+	cursor:pointer;width: 22px;height:70px;
+	background-image: url(./top.png);
+}
+
+/*用CSS表达式(expression)来实现ie6下position:fixed效果*/
+#gotoTop{_position:absolute;_top:expression(documentElement.scrollTop + documentElement.clientHeight * 3/4 + "px")}

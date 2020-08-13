@@ -1,0 +1,26 @@
+HKCR
+{
+	PluginComDll.TextFile.1 = s 'TextFile Class'
+	{
+		CLSID = s '{40613676-C8A5-4879-A59B-9CE6406476F6}'
+	}
+	PluginComDll.TextFile = s 'TextFile Class'
+	{		
+		CurVer = s 'PluginComDll.TextFile.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {40613676-C8A5-4879-A59B-9CE6406476F6} = s 'TextFile Class'
+		{
+			ProgID = s 'PluginComDll.TextFile.1'
+			VersionIndependentProgID = s 'PluginComDll.TextFile'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{A22E18F1-95F8-4FDB-99D2-188E5FB12B23}'
+			Version = s '1.0'
+		}
+	}
+}
