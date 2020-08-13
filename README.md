@@ -52,10 +52,10 @@ PluginOK(牛插)中间件已于2019年5月发布第一个正式版，实现支�
 技术咨询及获取报价信息请微信联系：ZorroSoft、qq972340118，开发交流QQ群：23126938，点击链接加入：https://jq.qq.com/?_wv=1027&k=5FxgskL
 
 目录说明：
-Bin目录，单机绿色版程序包，InstallWrl.bat执行安装中间件，RemoveWrl.bat执行卸载中间件，功能测试请参考TestWrl.txt
-WrlSDK目录，单机版SDK，包含开发接口说明、开发小程序范例工程、小程序打包工具等
+Bin目录，单机绿色版程序包，InstallWrl.bat执行安装中间件，RemoveWrl.bat执行卸载中间件，功能测试请参考TestWrl.txt。
+WrlSDK目录，单机版SDK，包含开发接口说明、开发小程序范例工程、小程序打包工具等。
 
-Net目录，网络版版程序包，InstallWrl.bat执行安装中间件，RemoveWrl.bat执行卸载中间件，功能测试请参考TestWrl.txt
-Server目录，网络版服务端绿色版程序，InstallService.bat执行安装服务，RemoveService.bat执行卸载服务
-ZbaSDK目录，网络版SDK，包含开发接口说明、开发小程序范例工程、小程序打包工具等
+Net目录，网络版版程序包，InstallWrl.bat执行安装中间件，RemoveWrl.bat执行卸载中间件，功能测试请参考TestWrl.txt。
+Server目录，网络版服务端绿色版程序，InstallService.bat执行安装服务，RemoveService.bat执行卸载服务。
+ZbaSDK目录，网络版SDK，包含开发接口说明、开发小程序范例工程、小程序打包工具等。
 
