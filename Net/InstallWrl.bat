@@ -1,2 +1,2 @@
 cd /d %~dp0
-WrlSetup.exe /I
+ZbaSetup.exe /I
