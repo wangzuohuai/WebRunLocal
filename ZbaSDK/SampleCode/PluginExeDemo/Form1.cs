@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 /// 添加核心组件引用
@@ -97,12 +98,13 @@ namespace PluginExeDemo
         private void button1_Click(object sender, EventArgs e)
         {
             string strLastSID = WebSocketEvent.GetLastSID();
-            if(0 == strLastSID.Length)
+            if (null == strLastSID || 0 == strLastSID.Length)
             {
                 MessageBox.Show("还未有来自网页的连接！");
                 return;
             }
             Send(strLastSID, this.textBox1.Text);
+            this.textBox1.Text = "";
          }
 
         /// <summary>
@@ -126,6 +128,19 @@ namespace PluginExeDemo
             public string GetLastSID()
             {
                 return m_strLastSID;
+            }
+
+            public void WriteLog(string documentName, string msg)
+            {
+                string LogFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+                if (!System.IO.Directory.Exists(LogFilePath))
+                    System.IO.Directory.CreateDirectory(LogFilePath);
+                string logFile = System.IO.Path.Combine(LogFilePath, documentName + "@" + DateTime.Today.ToString("yyyy-MM-dd") + ".txt");
+                bool writeBaseInfo = System.IO.File.Exists(logFile);
+                StreamWriter swLogFile = new StreamWriter(logFile, true, Encoding.Unicode);
+                swLogFile.WriteLine(DateTime.Now.ToString("HH:mm:ss") + "\t" + msg);
+                swLogFile.Close();
+                swLogFile.Dispose();
             }
 
             /// <summary>
@@ -178,7 +193,7 @@ namespace PluginExeDemo
             /// <param name="bstrText"></param>
             public void RecTextEvent(string bstrSID, string bstrText)
             {
-                 m_Form.textBox2.AppendText("收到文本内容：");
+                m_Form.textBox2.AppendText("收到文本内容：");
                 m_Form.textBox2.AppendText(bstrText);
                 m_Form.textBox2.AppendText("\r\n");
                 /// 回传给网页内容

@@ -66,6 +66,16 @@ protected:
 	void __stdcall DocumentComplete(IDispatch *pDisp, VARIANT *pvarURL);
 
 public:
+	CMainDlg()
+		:m_nPort(12900)
+		,m_spiWebBrowser(NULL)
+		,m_spiHtmlDoc(NULL)
+		,m_spiSocketProxy(NULL)
+		,m_spiSocketProxyEvent(NULL)
+		,m_nSocketProxyCookie(0)
+	{
+	}
+
 	enum { IDD = IDD_MAINDLG };
 
 	void SetListenPara(CSTRING_MAP& mapPara)

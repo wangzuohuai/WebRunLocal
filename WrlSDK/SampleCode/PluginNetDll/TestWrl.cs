@@ -40,7 +40,7 @@ namespace PluginNetDll
                  WriteLog("PluginNetDll", "获取WS接口失败");
         }
 
-        void IWrlConn.Unload(WrlBase.EWrlCloseConnType eCloseConnType, string bstrReason)
+        void IWrlConn.Unload(EWrlCloseConnType eCloseConnType, string bstrReason)
         {
             m_WebSocketConnect = null;
             WriteLog("PluginNetDll", "请求卸小程序");

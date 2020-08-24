@@ -364,13 +364,31 @@ LRESULT CMainDlg::OnOK(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /
 	CComBSTR bstrContent;
 	this->GetDlgItem(IDC_EDIT_CONTENT).GetWindowText(&bstrContent);
 	ULONG nReqID = 0;
+	CString strContent(bstrContent.m_str);
 	if(!m_mapConnID.size())
 	{
 		this->MessageBox(L"还未有活动连接！");
 		return 0;
 	}
-	m_spiSocketProxy->AsynSendText(CComBSTR(m_mapConnID.begin()->first),\
-		bstrContent,&nReqID);
+	if(strContent.IsEmpty())
+		return 0;
+	CString strReturn;
+	strContent.Replace(L"\"",L"\\\"");
+	strReturn.Format(_T("{\"rid\":%ld,\"req\":\"Send\",\"data\":{\"Content\":\"%s\"}}"), \
+		nReqID,strContent);
+	HRESULT hRet = m_spiSocketProxy->AsynSendText(CComBSTR(m_mapConnID.begin()->first),\
+		CComBSTR(strReturn),&nReqID);
+	if(!nReqID || FAILED(hRet))
+	{
+		CComBSTR bstrErrInfo;
+		m_spiSocketProxy->get_LastErrInfo(CComBSTR(m_mapConnID.begin()->first),&bstrErrInfo);
+		this->MessageBox(bstrErrInfo.m_str);
+		bstrErrInfo.Empty();
+	}
+	else
+	{
+		this->GetDlgItem(IDC_EDIT_CONTENT).SetWindowText(L"");
+	}
 	return 0;
 }
 

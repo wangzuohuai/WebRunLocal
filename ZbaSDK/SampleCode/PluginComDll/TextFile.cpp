@@ -76,7 +76,12 @@ STDMETHODIMP CTextFile::RecJson(ULONG nReqID,BSTR bstrReqName,BSTR bstrContent)
 		CTextFileWrite WriteFile(strFilePath);
 		WriteFile.Write(strContent);
 		WriteFile.Close();
-		m_spiSocketConnect->AsynSendText(CComBSTR(strFilePath + L" 文件写入完成"),NULL);
+		CString strReturn;
+		strContent.Replace(L"\"",L"\\\"");
+		strFilePath.Replace(L"\\",L"/");
+		strReturn.Format(_T("{\"rid\":%ld,\"data\":{\"Content\":\"%s\"}}"), \
+			nReqID,strFilePath + L" 文件写入完成");
+		m_spiSocketConnect->AsynSendText(CComBSTR(strReturn),NULL);
 	}
 	else if(0 == strReqName.CompareNoCase(L"Demo_ReadFile"))
 	{
@@ -86,22 +91,32 @@ STDMETHODIMP CTextFile::RecJson(ULONG nReqID,BSTR bstrReqName,BSTR bstrContent)
 		strFilePath += bstrVal.m_str;
 		bstrVal.Empty();
 
+		CString strReturn;
 		CTextFileRead ReadFile(strFilePath);
 		string strLine;
 		while(ReadFile.ReadLine(strLine))
 		{
 			if(!strLine.length())
 				continue;/// 空行不发送
-			m_spiSocketConnect->AsynSendText(CComBSTR(strLine.c_str()),NULL);
+			strReturn.Empty();
+			strReturn.Format(_T("{\"rid\":%ld,\"data\":{\"ReadLine\":\"%s\"}}"), \
+				nReqID,CString(strLine.c_str()));
+			m_spiSocketConnect->AsynSendText(CComBSTR(strReturn),NULL);
 			strLine.clear();
 		}
 		ReadFile.Close();
-		m_spiSocketConnect->AsynSendText(L"读取完成", NULL);
+		strReturn.Empty();
+		strReturn.Format(_T("{\"rid\":%ld,\"data\":{\"End\":\"%s\"}}"), \
+			nReqID,L"读取完成");
+		m_spiSocketConnect->AsynSendText(CComBSTR(strReturn), NULL);
 	}
 	else
 	{
-		m_spiSocketConnect->AsynSendText(CComBSTR(CString(L"收到请求:")+bstrReqName),NULL);
-		m_spiSocketConnect->AsynSendText(CComBSTR(CString(L"收到内容:") + bstrContent), NULL);
+		CString strReturn,strContent(bstrContent);
+		strContent.Replace(L"\"",L"\\\"");
+		strReturn.Format(L"{\"rid\":%ld,\"data\":{\"Req\":\"%s\",\"Content\":\"%s\",\"Status\":\"不识别的请求\"}}",\
+			nReqID,strReqName,strContent);
+		m_spiSocketConnect->AsynSendText(CComBSTR(strReturn), NULL);
 	}
 	return S_OK;
 }
