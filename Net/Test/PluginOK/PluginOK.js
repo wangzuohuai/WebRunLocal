@@ -26,12 +26,16 @@ function isFirefox()
 
 function hasVerticalScrollbar() 
 {
-    return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
+	if(document.documentElement.clientHeight)
+		return document.body.scrollHeight > document.documentElement.clientHeight;
+   return document.body.scrollHeight > window.innerHeight;
 }
 
 function hasHorizontalScrollbar() 
 {
-    return document.body.scrollWidth > (window.innerWidth || document.documentElement.clientWidth);
+	if(document.documentElement.clientWidth)
+		return document.body.scrollWidth > document.documentElement.clientWidth;
+    return document.body.scrollWidth > window.innerWidth;
 }
 
 function getScrollbarWidth() 
@@ -225,7 +229,10 @@ function getrandom(nums)
 				}
 				else
 				{
-					showmessage('小程序运行错误：' + jsondata.err);
+					if(undefined == jsondata.err)
+						showmessage(Data, 'receive');
+					else
+						showmessage('小程序运行错误：' + jsondata.err);
 				}
 			}
 			else

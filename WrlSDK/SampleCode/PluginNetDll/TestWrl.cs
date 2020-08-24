@@ -43,7 +43,7 @@ namespace PluginNetDll
         void IWrlConn.Unload(WrlBase.EWrlCloseConnType eCloseConnType, string bstrReason)
         {
             m_WebSocketConnect = null;
-            WriteLog("PluginNetDll", "请求卸载小程序");
+            WriteLog("PluginNetDll", "请求卸小程序");
         }
 
         string IWrlConn.HttpRequst(string bstrUrl, string bstrPara)
@@ -69,10 +69,9 @@ namespace PluginNetDll
             JsonServiceClass JsonService = new JsonServiceClass();
 
             bool bRet = JsonService.ParseString(bstrContent);
-            string strTest = JsonService.GetStringValue("test");
-            /// 根据请求名称bstrPushName和请求参数bstrContent分别定义自己的协议进行处理。
-            string strReturn;
-            if (bstrPushName == "Demo_Return")
+             /// 根据请求名称bstrPushName和请求参数bstrContent分别定义自己的协议进行处理。
+            string strReturn = "";
+            if(bstrPushName == "Demo_Return")
             {
                 strReturn = "收到请求 ";
                 strReturn += bstrPushName;
@@ -81,8 +80,24 @@ namespace PluginNetDll
                 strReturn += " 序号：";
                 strReturn += nReqID.ToString();
             }
+            else if(bstrPushName == "Demo_WriteFile")
+            {
+                string strName = JsonService.GetStringValue("Name");
+                string strContent = JsonService.GetStringValue("Content");
+
+                string strAppPath = this.GetType().Assembly.Location;
+                strAppPath.Replace(".exe","");
+                strAppPath += "\\Data\\";
+                StreamWriter swFile = new StreamWriter(strAppPath + strName, true, Encoding.Unicode);
+                swFile.WriteLine(strContent);
+                swFile.Close();
+                swFile.Dispose();
+                strReturn = strAppPath + strName + "写入内容" ;
+            }
             else
                 strReturn = "收到未知请求:" + bstrPushName;
+
+            WriteLog(bstrPushName, strReturn);
             /// 给前端回复请求
             m_WebSocketConnect.AsynSendText(strReturn);
         }
