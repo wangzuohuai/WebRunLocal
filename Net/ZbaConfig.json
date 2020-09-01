@@ -8,6 +8,7 @@
   "ValidHour": 48,
   "Mac": 1,
   "Language": "CHS",
+  "NoService": 0,
   "UDisk": 0,
   "ServerPort": 888,
   "ServerAddr": "www.zorrosoft.com"
