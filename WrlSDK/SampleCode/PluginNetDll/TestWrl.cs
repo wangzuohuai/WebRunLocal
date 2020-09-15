@@ -85,19 +85,18 @@ namespace PluginNetDll
                 string strName = JsonService.GetStringValue("Name");
                 string strContent = JsonService.GetStringValue("Content");
 
-                string strAppPath = this.GetType().Assembly.Location;
-                strAppPath.Replace(".exe","");
-                strAppPath += "\\Data\\";
-                StreamWriter swFile = new StreamWriter(strAppPath + strName, true, Encoding.Unicode);
+                string strAppPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+                if (!System.IO.Directory.Exists(strAppPath))
+                    System.IO.Directory.CreateDirectory(strAppPath);
+                StreamWriter swFile = new StreamWriter(strAppPath + "\\" + strName, true, Encoding.Unicode);
                 swFile.WriteLine(strContent);
                 swFile.Close();
                 swFile.Dispose();
-                strReturn = strAppPath + strName + "写入内容" ;
+                strReturn = strAppPath + "\\" + strName + " 文件中写入内容";
             }
             else
                 strReturn = "收到未知请求:" + bstrPushName;
 
-            WriteLog(bstrPushName, strReturn);
             /// 给前端回复请求
             m_WebSocketConnect.AsynSendText(strReturn);
         }
