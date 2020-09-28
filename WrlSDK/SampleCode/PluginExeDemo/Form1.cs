@@ -69,7 +69,9 @@ namespace PluginExeDemo
                 return;
             WebSocketEvent.SetForm(this);
             ushort nPort = ushort.Parse(m_Para["PORT"]);
-            ushort nListenPort = WebSocketServer.Listen(nPort, m_Para["SID"], m_Para["AI"]);
+            string strSID = m_Para["SID"];
+            string strAI = m_Para["AI"];
+            ushort nListenPort = WebSocketServer.Listen(nPort, strSID, strAI);
 
                 /// 建立事件通知
             WebSocketServer.NewConnEvent += WebSocketEvent.NewConnEvent;

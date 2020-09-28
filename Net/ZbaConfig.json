@@ -6,10 +6,11 @@
   "Localhost": 1,
   "WSErrTime": 15,
   "ValidHour": 48,
+  "Monitor": 15,
   "Mac": 1,
   "Language": "CHS",
   "NoService": 0,
   "UDisk": 0,
-  "ServerPort": 888,
+  "ServerPort": 800,
   "ServerAddr": "www.zorrosoft.com"
 }

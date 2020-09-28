@@ -12,10 +12,11 @@ flag是连接控制掩码，1指定输出调试日志，2指示通讯数据进�
 
 连接PluginOK(牛插)主服务后支持的功能协议：
 
-1)、获取或对比版本信息，Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)：
+1)、获取或对比版本信息：
+Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)，Router为1时获取当前网络路由器MAC地址。
 说明：连接主服务后可执行，返回当前软件版本、当前系统版本、唯一标识、授权有效期、授权客户名称、当前系统启动后运行时间、程序运行路径等；
 获取版本信息举例：
-{"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 1}}
+{"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 1,"Router" : 1}}
 
 返回：{"ret":0,"rid":1,"data":{"Version":"1.1.1.2","Lang":"CHS","ValidDay":"2020-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"6.2.9200.2","Win64":1,"UniID":"AF4D1A1623D03399E3E2F63449CF9B18","Time":9182568,"TickCount":163797640,"RunPath":"W:/WRL/","Mac":[{"Card":"Qualcomm QCA9377 802.11ac Wireless Adapter","Mac":"AC:6C:68:89:EC:9B"}],"More":{"ComputerName":"hello","Manufacturer":"Dell Inc.","ProductName":" 3580","LoginUser":"test"}}}
 
@@ -155,7 +156,7 @@ Type为浏览器类型 PID为当前进程ID Ver为版本
 
 4、PluginOK(牛插)中间件升级请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK升级包","Date":"2020-09-15","Desc":"1、实现在浏览器网页中内嵌窗口小程序运行，支持同时加载多个运行，支持上下左右滚动小程序；2、实现在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器网页可加载IE指定版本内核的控件小程序或标签小程序运行；3、发布在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器中运行的Flash Player网页内嵌小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"C50E0001968BECA2381B988DADEC0DEE","Version":"1.2.17.1","Size":11534336,"HideIns":0,"Cookie":"","Auth":"","TK":"0FC51612DE90794C3622EB1B0FDC4233444F70E7652C54577693E54E34685FBA732061B2AF8CE35712A83086FC95DA64C3829410B827493436F50D5027FB69CCEC000562BDF28B7286D851C90BC3B614C1D8498879B3410B4803215A666887A981489EF196F9CB6890AC0A5A17E6DCD9299025E8D8FE361556DD8FA6FCDF7F9B6D535B3C205432EF6C9862C10A9052BE23E399AD4AC6569FD183FB27D346B6E88BDD3726E994643F838FCC7BD128680693914CDBA9E656C0439CD5AD84028D2991C52F8319843D579310EDAC22656C4406B93757341786C3D3B3101A7F3C2B30B51661686E262AB5DE9FFFBA4D5C224EEF4CA4EA02D7680E3D0875B79F34259D"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK升级包","Date":"2020-09-28","Desc":"1、实现在浏览器网页中内嵌窗口小程序运行，支持同时加载多个运行，支持上下左右滚动小程序；2、实现在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器网页可加载IE指定版本内核的控件小程序或标签小程序运行；3、发布在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器中运行的Flash Player网页内嵌小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"06A3270B20680D34EED3C515B86F7F07","Version":"1.2.17.3","Size":11534336,"HideIns":0,"Cookie":"","Auth":"","TK":"4EF0D4764092FC6BE40AB39C9EB232082748C12427575C6F767A87C1D0FFC6AC840A6522CF937935134CB2984A287AD9F1413308F3121C94F5CD7EB131AF2994420188ABE4F9DCD9A5AF81360F3B58F27BF5BFB10E8A8D8A3C7DFAB591904E2A2B94E26AFAED52B15AB266104C94100CEEB9FD9E28618E7FFD87FF17D9F16A6007DB97501CD11E72D782A3C9C34838AE8DB7020816D2A6FEE68D74666C5F7463E87F0EBEDB2877E0009E4EBEE08CD13E4A667BB0D16D3CD28F9E7BBCCBC0D633D1B85382C047A09CE112C5A8F308CBD5D78EDB784BF36158800EA883E67AD488E1881F24B3CDF2CAE8C6BC5949F7259F73123C8D33B66422B5642FC93A9816ED"}}
 
 单机版中间件的授权文件，可以放到此协议中进行升级，也可以单独请求升级，如下指令：
 分别指定授权文件在服务器上的地址及文件MD5校验码、文件大小和下载验证权限Auth及Cookie，其中Cookie和Auth可为空，根据自己网站情况设置。
