@@ -1,0 +1,363 @@
+﻿VLC实时视频内嵌播放小程序(支持多路)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用VLC的ActiveX控件axvlc.dll(需安装VLC media player)实现网页内嵌播放。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK(牛插)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
+
+2、VLC实时视频内嵌播放小程序控制相关接口：
+说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
+HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
+
+1)、请求启动VLC实时视频内嵌播放小程序：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
+IframeX和IframeY分别为iframe嵌套的横竖偏移坐标
+BarW和BarH分别是网页右侧和底部预留区域
+小程序实际显示首先会基于网页中margin指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+ShowType 播放窗口类型，默认1只显示一个播放窗口，支持1-21 24 25等多达20种多窗口播放。
+注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器指定位置和大小启动：
+{"req":"Wrl_VLCApplet","rid":4,"para":{"Type":"0","Title":"VLC Applet","Flag":3,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/VLCApplet.html","ShowType":1,"Open":"https://vjs.zencdn.net/v/oceans.mp4"}}
+
+自动识别当前浏览器自动适配网页大小启动：
+{"req":"Wrl_VLCApplet","rid":4,"para":{"Type":"0","Title":"VLC Applet","Flag":11,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/VLCApplet.html","ShowType":1,"Open":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4"}}
+
+当前页指定位置自动适配网页加载测试
+http://zorrosoft.com/vlcframe.html
+
+启动后会收到两个JSON数据包
+A、{"ret":0,"rid":1,"data":{"ID":2}}
+返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Port":930}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如重新指定播放一个视频。
+
+2)、请求控制VLC实时视频内嵌播放小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏
+ID为Wrl_VLCApplet启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序 16自动适配网页高度和宽度显示切换
+其中2全屏显示，可直接通过热键切换Ctrl+F11
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动网页中VLC实时视频内嵌播放小程序：
+当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变网页中VLC实时视频内嵌播放小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为Wrl_VLCApplet启动小程序时返回的ID值，Width和Height分别为新的宽度和高度
+X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或，同时修改小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为启动小程序时返回的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求缩放网页中VLC实时视频内嵌播放小程序，用于浏览器网页按比例缩放时响应：
+ID为Wrl_VLCApplet启动小程序时返回的ID值，Scall为缩放百分比
+{"req":"Wrl_AppletScale","rid":7,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装VLC实时视频内嵌播放小程序
+请在输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC实时视频内嵌播放小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的VLC多媒体内嵌播放小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中直接内嵌使用，可播放海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Plugin/VlcWebPlayer.pid","MD5":"516134155C7CD11BE193B50BEFC8500C","Version":"2.0.3.6","Size":786432,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"4B46A34229AD41A0771BBAD1A9045C9249842387693F8A62E489FC562FCB222901B95D3565893FD7D243A045B7CC05424BC0D5CBC07824E5A167E3D9F8601BB5A8DB8B11A3A79B6196EDF7F1A1B434D2DEEFAD82ED7D1D2C320DFC57194F83EF8AA9C2255B0B296C7E02AA3D4A04D46D9F17F4146B565CBA9ECBB4E4A3FD094DE4AC68E3493D3B2465A5FD7E85E7AABCEA9139A5480E4E3336290863112362FCA9E11F2029A2C617180B7776A69571C58959E9A3FD500EAF3425D1BBD4D7556B8552EC3A7703A2153383648BB87BAFD4FAE608423A801891A0124423CE74A68EB1442E1AC87CA3FABDFBF2E709128E55760D97976BD2A8500EEE72C87D8ADE9A"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+
+2)、请求升级VLC实时视频内嵌播放小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC实时视频内嵌播放小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的VLC多媒体内嵌播放小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中直接内嵌使用，可播放海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Plugin/VlcWebPlayer_Update.pid","MD5":"A527BB3C12C09322EDDFD048A463F25D","Version":"2.0.3.6","Size":786432,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"6FB43851DDB8A86B88F0429DF920EE9239CB210E2F369FD78AE2CFFAE9CF3071F9E7974C6D957CBAD5EC052DA0BDE1CFF645AD5C4406757FB23CB812A53FDD107D1262971E60E155A729E3E6826D32753D087A1633F125820E8AAE82CDC9EC7BC6E570D0A6462A7CF0EC5231F30C8CB184DF7B5D32EFA2333F0728F6CE7536A57F6069AB634A7AEC816F4D68EAEA50AD02142C1ADB414E0A8FE5CA02228972679C06CF17B88AA7124701622D0E232B057FCD7D672A58A5BF413E08752FD080B2ABDDC9D418D7F2C75EE22AB8BF6C04CED0454BB4CECE8E529A56CF5414C4F876ED52240E58060FA46D66718E1E97BB91BC8428C77AF7B6B0892DB919AA852B0E"}}
+
+3)、请求卸载VLC实时视频内嵌播放小程序：
+
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Type":8}}
+
+4、VLC实时视频内嵌播放小程序转调用ActiveX接口(接口说明：https://wiki.videolan.org/Documentation:WebPlugin )，先根据Wrl_VLCApplet请求启动后返回的端口号，针对此端口新建一个WebSocket连接后可执行如下指令：
+
+A、ActiveX接口功能请求：
+支持创建多个VLC的ActiveX控件窗口同时播放多路实时视频，所以请求参数里需要指定窗口序号ID，从1开始，序号原则是从左向右开始编号，然后从上到下开始顺序编号，如遇右侧多层排列窗口时，知道右侧窗口序号排序完成
+
+1) 取指定ID播放窗口属性AutoLoop(自动循环)值，举例：
+请求：{"req":"VLC_GetAutoLoop","rid":41,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":41,"ID":1,"data":{"Ret":0,"AutoLoop":0}} 和 {"ret":0,"rid":41,"ID":2,"data":{"Ret":0,"AutoLoop":0}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+2) 设置指定ID控件窗口AutoLoop(自动循环)值，举例：
+请求：{"req":"VLC_PutAutoLoop","rid":42,"para":[{"ID":1,"AutoLoop":1},{"ID":2,"AutoLoop":0}]}
+分别返回：{"ret":0,"rid":42,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":42,"ID":2,"data":{"Ret":0}}
+
+3) 取指定ID控件窗口AutoPlay(自动播放)值，举例：
+请求：{"req":"VLC_GetAutoPlay","rid":43,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":43,"ID":1,"data":{"Ret":0,"AutoPlay":0}} 和 {"ret":0,"rid":43,"ID":2,"data":{"Ret":0,"AutoPlay":0}}
+
+4) 设置指定ID窗口AutoPlay(自动播放)值，举例：
+请求：{"req":"VLC_PutAutoPlay","rid":44,"para":[{"ID":1,"AutoPlay":1},{"ID":2,"AutoPlay":0}]}
+分别返回：{"ret":0,"rid":44,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":44,"ID":2,"data":{"Ret":0}}
+
+5) 取指定ID窗口StartTime(开始时间)值，举例：
+请求：{"req":"VLC_GetStartTime","rid":45,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":45,"ID":1,"data":{"Ret":0,"StartTime":0}} 和 {"ret":0,"rid":45,"ID":2,"data":{"Ret":0,"StartTime":0}}
+
+6) 设置指定ID窗口StartTime(开始时间)值，举例：
+请求：{"req":"VLC_PutStartTime","rid":46,"para":[{"ID":1,"StartTime":0},{"ID":2,"StartTime":0}]}
+分别返回：{"ret":0,"rid":46,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":46,"ID":2,"data":{"Ret":0}}
+
+7) 取指定ID窗口MRL(播放源)值，举例：
+请求：{"req":"VLC_GetMRL","rid":47,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":47,"ID":1,"data":{"Ret":0,"MRL":""}} 和 {"ret":0,"rid":47,"ID":2,"data":{"Ret":0,"MRL":""}}
+
+8) 设置指定ID窗口MRL(播放源)值，举例：
+请求：{"req":"VLC_PutMRL","rid":48,"para":[{"ID":1,"MRL":""},{"ID":2,"MRL":""}]}
+分别返回：{"ret":0,"rid":48,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":48,"ID":2,"data":{"Ret":0}}
+
+9) 取指定ID窗口Visible(可见性)，举例：
+请求：{"req":"VLC_GetVisible","rid":49,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":49,"ID":1,"data":{"Ret":0,"Visible":1}} 和 {"ret":0,"rid":49,"ID":2,"data":{"Ret":0,"Visible":0}}
+
+10) 设置指定ID窗口Visible(可见性)，举例：
+请求：{"req":"VLC_PutVisible","rid":48,"para":[{"ID":1,"Visible":1},{"ID":2,"Visible":0}]}
+分别返回：{"ret":0,"rid":50,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":50,"ID":2,"data":{"Ret":0}}
+
+11) 取指定ID窗口Volume(音量)，举例：
+请求：{"req":"VLC_GetVolume","rid":51,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":51,"ID":1,"data":{"Ret":0,"Volume":0}} 和 {"ret":0,"rid":51,"ID":2,"data":{"Ret":0,"Volume":0}}
+
+12) 设置指定ID窗口Volume(音量)，举例：
+请求：{"req":"VLC_PutVolume","rid":52,"para":[{"ID":1,"Volume":0},{"ID":2,"Volume":0}]}
+分别返回：{"ret":0,"rid":52,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":52,"ID":2,"data":{"Ret":0}}
+
+13) 取指定ID窗口BackColor(背景色)，举例：
+请求：{"req":"VLC_GetBackColor","rid":53,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":53,"ID":1,"data":{"Ret":0,"BackColor":0}} 和 {"ret":0,"rid":53,"ID":2,"data":{"Ret":0,"BackColor":0}}
+
+14) 设置指定ID窗口BackColor(背景色)，举例：
+请求：{"req":"VLC_PutBackColor","rid":54,"para":[{"ID":1,"BackColor":0},{"ID":2,"BackColor":0}]}
+分别返回：{"ret":0,"rid":54,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":54,"ID":2,"data":{"Ret":0}}
+
+15) 取指定ID窗口Toolbar(工具栏)显示与否，举例：
+请求：{"req":"VLC_GetToolbar","rid":55,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":55,"ID":1,"data":{"Ret":0,"Toolbar":0}} 和 {"ret":0,"rid":55,"ID":2,"data":{"Ret":0,"Toolbar":0}}
+
+16) 设置指定ID窗口Toolbar(工具栏)显示与否，举例：
+请求：{"req":"VLC_PutToolbar","rid":56,"para":[{"ID":1,"Toolbar":0},{"ID":2,"Toolbar":0}]}
+分别返回：{"ret":0,"rid":56,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":56,"ID":2,"data":{"Ret":0}}
+
+17) 取指定ID窗口FullScreenEnabled(全屏启用)，举例：
+请求：{"req":"VLC_GetFullScreenEnabled","rid":57,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":57,"ID":1,"data":{"Ret":0,"FullScreenEnabled":0}} 和 {"ret":0,"rid":57,"ID":2,"data":{"Ret":0,"FullScreenEnabled":0}}
+
+18) 设置指定ID窗口FullScreenEnabled(全屏启用)，举例：
+请求：{"req":"VLC_PutFullScreenEnabled","rid":58,"para":[{"ID":1,"FullScreenEnabled":0},{"ID":2,"FullScreenEnabled":0}]}
+分别返回：{"ret":0,"rid":58,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":58,"ID":2,"data":{"Ret":0}}
+
+19) 取指定ID窗口版本信息，举例：
+请求：{"req":"VLC_GetVersionInfo","rid":59,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":59,"ID":1,"data":{"Ret":0,"VersionInfo":""}} 和 {"ret":0,"rid":59,"ID":2,"data":{"Ret":0,"VersionInfo":""}}
+
+20) 取指定ID窗口多媒体描述信息，举例：
+请求：{"req":"VLC_MediaDescGet","rid":60,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":60,"ID":1,"data":{"Ret":0,"Title":"","Artist":"","Genre":"","Copyright":"","Album":"","TrackNumber":"","Desc":"","Rating":"","Date":"","Setting":"","Url":"","Language":"","NowPlaying":"","Publisher":"","EncodedBy":"","ArtworkURL":"","TrackID":""}} 和 {"ret":0,"rid":60,"ID":2,"data":{"Ret":0,"Title":"","Artist":"","Genre":"","Copyright":"","Album":"","TrackNumber":"","Desc":"","Rating":"","Date":"","Setting":"","Url":"","Language":"","NowPlaying":"","Publisher":"","EncodedBy":"","ArtworkURL":"","TrackID":""}}
+
+21) 取指定ID窗口音频信息，举例：
+取时自动获得全部属性
+请求：{"req":"VLC_AudioGet","rid":61,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":61,"ID":1,"data":{"Ret":0,"Mute":0,"Volume":100,"Track":"","TrackNumber":"","Channel":"","Desc":""}} 和 {"ret":0,"rid":61,"ID":2,"data":{"Ret":0,"Mute":"","Volume":"","Track":"","TrackNumber":"","Channel":"","Desc":""}}
+
+22) 设置指定ID窗口音频信息，举例：
+设置时不要求全部属性，只设置需要设置的
+请求：{"req":"VLC_AudioPut","rid":62,"para":[{"ID":1,"Mute":0,"Volume":100,"Track":"","TrackNumber":"","Channel":"","Desc":""},{"ID":2,"Mute":"","Volume":""}]}
+分别返回：{"ret":0,"rid":62,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":62,"ID":2,"data":{"Ret":0}}
+
+23) 取指定ID窗口播放信息，举例：
+取时自动获得全部属性
+请求：{"req":"VLC_GetPlay","rid":63,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":63,"ID":1,"data":{"Ret":0,"IsPlay":1,"ItemCount":3,"CurrentItem":1}} 和 {"ret":0,"rid":63,"ID":2,"data":{"Ret":0,"IsPlay":1,"ItemCount":5,"CurrentItem":2}}
+
+24) 指定ID窗口添加播放内容，举例：
+Uri需要进行UrlEncode编码，Options可不设置用缺省值
+请求：{"req":"VLC_AddPlay","rid":64,"para":[{"ID":1,"Uri":"","Name":"","Options":""},{"ID":2,"Uri":"","Name":"","Options":""}]}
+分别返回：{"ret":0,"rid":64,"ID":1,"data":{"Ret":0,"Item":1}} 和 {"ret":0,"rid":64,"ID":2,"data":{"Ret":0,"Item":2}}
+
+25) 指定ID窗口播放(指定多媒体)，举例：
+ItemId是序号，可缺省
+请求：{"req":"VLC_Play","rid":65,"para":[{"ID":1,"ItemId":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":65,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":65,"ID":2,"data":{"Ret":0}}
+
+26) 控制指定ID窗口播放器，举例：
+Type可以是这些值：Pause,Play,Stop,StopAsync,Next,Prev,Clear,TogglePause
+请求：{"req":"VLC_Control","rid":66,"para":[{"ID":1,"Type":"Pause"},{"ID":2,"Type":"Play"}]}
+分别返回：{"ret":0,"rid":66,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":66,"ID":2,"data":{"Ret":0}}
+
+27) 指定ID窗口移除多媒体内容，举例：
+ItemId是当前已存在的序号
+请求：{"req":"VLC_RemoveItem","rid":67,"para":[{"ID":1,"ItemId":1},{"ID":2,"ItemId":2}]}
+分别返回：{"ret":0,"rid":67,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":67,"ID":2,"data":{"Ret":0}}
+
+28) 指定ID窗口解析选项，举例：
+请求：{"req":"VLC_Parse","rid":68,"para":[{"ID":1,"Options":0,"Timeout":0},{"ID":2,,"Options":0,"Timeout":0}]}
+分别返回：{"ret":0,"rid":68,"ID":1,"data":{"Ret":0,"Status":0}} 和 {"ret":0,"rid":68,"ID":2,"data":{"Ret":0,"Status":0}}
+
+29) 取指定ID窗口SubTitle信息，举例：
+NameID指定时获取描述信息
+请求：{"req":"VLC_GetSubTitle","rid":69,"para":[{"ID":1,"NameID":0},{"ID":2}]}
+分别返回：{"ret":0,"rid":69,"ID":1,"data":{"Ret":0,"Spu":1,"SpuNumber":0,"Desc":""}} 和 {"ret":0,"rid":69,"ID":2,"data":{"Ret":0,"Spu":1,"SpuNumber":0}}
+
+30) 设置指定ID窗口SubTitleSpu，举例：
+请求：{"req":"VLC_PutSubTitle","rid":70,"para":[{"ID":1,"Spu":0},{"ID":2,"Spu":0}]}
+分别返回：{"ret":0,"rid":70,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":70,"ID":2,"data":{"Ret":0}}
+
+31) 取指定ID窗口视频信息，举例：
+TrackID指定时获取描述信息
+请求：{"req":"VLC_VideoGet","rid":71,"para":[{"ID":1,"TrackID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":71,"ID":1,"data":{"Ret":0,"FullScreent":0,"Width":0,"Height":0,"SubTitle":0,"Track":0,"TrackCount":0,"TeleText":0,"Scale":100,"AspectRatio":"","Crop":"","Desc":""}} 和 {"ret":0,"rid":71,"ID":2,"data":{"Ret":0,"Width":0,"Height":0,"SubTitle":0,"Track":0,"TrackCount":0,"TeleText":0,"Scale":100,"AspectRatio":"","Crop":""}}
+
+32) 设置指定ID窗口视频信息，举例：
+需要的才设置
+请求：{"req":"VLC_VideoPut","rid":72,"para":[{"ID":1,"FullScreen":1,"Scale":100,"AspectRatio":0,"SubTitle":0,"TeleText":0,"Track":0},{"ID":2,"FullScreen":0}]}
+分别返回：{"ret":0,"rid":72,"data":{"Ret":0}} 和 {"ret":0,"rid":72,"ID":2,"data":{"Ret":0}}
+
+33) 切换指定ID窗口视频全屏，举例：
+请求：{"req":"VLC_VideoToggleFullscreen","rid":73,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":73,"data":{"Ret":0}} 和 {"ret":0,"rid":73,"ID":2,"data":{"Ret":0}}
+
+34) 切换指定ID窗口视频图文，举例：
+请求：{"req":"VLC_VideoToggleTeletext","rid":74,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":74,"data":{"Ret":0}} 和 {"ret":0,"rid":74,"ID":2,"data":{"Ret":0}}
+
+35) 取指定ID窗口字幕信息，举例：
+Text指定时获取文字信息 Position指定时获取位置信息
+请求：{"req":"VLC_MarqueeGet","rid":75,"para":[{"ID":1,"Text":1,"Position":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":75,"ID":1,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":"","Text":"","Position":""}} 和 {"ret":0,"rid":75,"ID":2,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":""}}
+
+36) 设置指定ID窗口字幕信息，举例：
+需要的才设置
+请求：{"req":"VLC_MarqueePut","rid":76,"para":[{"ID":1,"Text":"Hello","Position":"","Color":0,"Opacity":0,"Refresh":0,"Size":0,"X":0,"Y":0},{"ID":2,"Opacity":50}]}
+分别返回：{"ret":0,"rid":76,"data":{"Ret":0}} 和 {"ret":0,"rid":76,"ID":2,"data":{"Ret":0}}
+
+37) 控制指定ID窗口字幕，举例：
+请求：{"req":"VLC_MarqueeControl","rid":77,"para":[{"ID":1,"Enable":1},{"ID":2,"Enable":0}]}
+分别返回：{"ret":0,"rid":77,"data":{"Ret":0}} 和 {"ret":0,"rid":77,"ID":2,"data":{"Ret":0}}
+
+38) 指定ID窗口帧速控制工具，举例：
+Mode为空时禁用
+请求：{"req":"VLC_DeinterlaceControl","rid":78,"para":[{"ID":1,"Mode":"my_mode"},{"ID":2,"Mode":""}]}
+分别返回：{"ret":0,"rid":78,"data":{"Ret":0}} 和 {"ret":0,"rid":78,"ID":2,"data":{"Ret":0}}
+
+40) 指定ID窗口截图
+Type 指定图像类型，默认4(PNG) 可指定1(BMP)、3(JPG)
+Count截取图数量，默认截取一张，Delay指定延迟毫秒数开始，Interval多张时间隔毫秒数
+多窗口播放情况下，只能指定某个窗口截图，不能同时指定多个窗口
+请求：{"req":"VLC_VideoSnapshot","rid":80,"para":[{"ID":1,"Type":4,"Count":3,"Delay":1000,"Interval":200}]}
+分别返回：{"ret":0,"rid":80,"data":{"Ret":0,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}} 和 {"ret":0,"rid":80,"ID":2,"data":{"Ret":0,,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}}
+
+5、VLC实时视频内嵌播放小程序接收的通知：
+这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
+A、ActiveX事件：
+
+1) Idle state
+{"event":"VLC_MediaPlayerNothingSpeciale","ID":1,"data":{}} 
+
+2) Opening media
+{"event":"VLC_MediaPlayerOpening","ID":1,"data":{}} 
+
+3) Buffering media
+{"event":"VLC_MediaPlayerBuffering","ID":1,"data":{"cache":0}} 
+
+4) Media is playing
+{"event":"VLC_MediaPlayerPlaying","ID":1,"data":{}} 
+
+5) Media is paused
+{"event":"VLC_MediaPlayerPaused","ID":1,"data":{}} 
+
+6) Forward playback
+{"event":"VLC_MediaPlayerForward","ID":1,"data":{}} 
+
+7) Backward playback
+{"event":"VLC_MediaPlayerBackward","ID":1,"data":{}} 
+
+8) An error has been encountered
+{"event":"VLC_MediaPlayerEncounteredError","ID":1,"data":{}} 
+
+9) End of playback reached
+{"event":"VLC_MediaPlayerEndReached","ID":1,"data":{}} 
+
+10) Playback stopped
+{"event":"VLC_MediaPlayerStopped","ID":1,"data":{}} 
+
+11) Playback stop async done
+{"event":"VLC_MediaPlayerStopAsyncDone","ID":1,"data":{}} 
+
+12) Seek changed
+{"event":"VLC_MediaPlayerSeekableChanged","ID":1,"data":{"seekable":0}} 
+
+13) Pause setting changed
+{"event":"VLC_MediaPlayerPausableChanged","ID":1,"data":{"pausable":0}} 
+
+14) Media changed
+{"event":"VLC_MediaPlayerMediaChanged","ID":1,"data":{}} 
+
+15) Title changed
+{"event":"VLC_MediaPlayerTitleChanged","ID":1,"data":{"title":0}} 
+
+16) Length changed
+{"event":"VLC_MediaPlayerLengthChanged","ID":1,"data":{"length":0}} 
+
+17) Chapter changed
+{"event":"VLC_MediaPlayerChapterChanged","ID":1,"data":{"chapter":0}} 
+
+18) Number of vout changed
+{"event":"VLC_MediaPlayerVout","ID":1,"data":{"count":0}} 
+
+19) Audio muted
+{"event":"VLC_MediaPlayerMuted","ID":1,"data":{}} 
+
+20) Audio unmuted
+{"event":"VLC_MediaPlayerUnmuted","ID":1,"data":{}} 
+
+21) Audio volume changed
+{"event":"VLC_MediaPlayerAudioVolume","ID":1,"data":{"volume":0}} 
+
+22) Click
+{"event":"VLC_Click","ID":1,"data":{}} 
+
+23) DblClick
+{"event":"VLC_DblClick","ID":1,"data":{}} 
+
+23) KeyDown
+{"event":"VLC_KeyDown","ID":1,"data":{"KeyCode":0,"Shift":0}} 
+
+24) KeyPress
+{"event":"VLC_KeyPress","ID":1,"data":{"KeyCode":0}} 
+
+25) KeyUp
+{"event":"VLC_KeyUp","ID":1,"data":{"KeyCode":0,"Shift":0}} 
+
+26) MouseDown
+{"event":"VLC_MouseDown","ID":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+
+27) MouseUp
+{"event":"VLC_MouseUp","ID":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+
+B、PluginOK支持的事件通知：
+
+1) VLC_FullScreen 小程序是否响应了热键全屏
+{"event":"VLC_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“PluginOK开发者手册.doc”。
+如还有疑问，请加QQ群：23126938联系客服 或微信客服：ZorroSoft

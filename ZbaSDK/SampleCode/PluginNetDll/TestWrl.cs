@@ -6,8 +6,8 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-using WrlEngine;
-using WrlBase;
+using ZbaEngine;
+using ZbaBase;
 
 [Guid("FCADA8A7-D975-42c6-B5D3-FA40F6FE1286")]
 [TypeLibType(4160)]

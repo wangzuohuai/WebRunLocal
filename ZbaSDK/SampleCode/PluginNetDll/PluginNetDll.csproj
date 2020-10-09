@@ -94,6 +94,15 @@
     <None Include="PluginConfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ZbaApplet">
+      <Guid>{6F537FD7-5E6D-4061-B8AE-7C343DF0F965}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="ZbaBase">
       <Guid>{633D01A0-8A82-40CB-9CE6-8BA26B9C778C}</Guid>
       <VersionMajor>1</VersionMajor>

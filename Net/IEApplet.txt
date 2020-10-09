@@ -1,16 +1,16 @@
-﻿IE控件小程序(内嵌窗口)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用IE的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿IE控件小程序(内嵌窗口)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
-3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、IE控件内嵌窗口小程序控制相关接口：
 说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
-在线测试网页：http://local.zorrosoft.com/
+HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
 
 1)、请求启动IE控件内嵌窗口小程序实现网页中局部加载IE内核网页显示：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
 IframeX和IframeY分别为iframe嵌套的横竖偏移坐标
@@ -27,6 +27,9 @@ Open为需要用IE内核打开的Url地址；
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
 {"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":11,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
+
+当前页指定位置自动适配网页加载测试
+http://zorrosoft.com/ieframe.html
 
 启动后会收到两个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
@@ -69,14 +72,14 @@ ID为启动小程序时返回的ID值，Scall为缩放百分比
 1)、请求安装IE控件内嵌窗口小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件窗口内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-09-29","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet.pid","MD5":"72FA54EC5E913E3A3176C4889D6CFE2D","Version":"2.0.3.5","Size":688128,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"92A112CA8F1C8C25D83F6AAE254D607F08E10F8AAF2E29869625C1A7E38873D702C3CE6105F9ACCE11E8FBBD6AA7CE9B19AA5CD8B510EFD14E23B02A7CFB3AA66C5E5A09C08D03D27E1843224AB190B62941D22F99D0F81A1888F2D679B2DE650B72CDEAC70F67C9D12924570D99763132C413BEFCD5A52DC884C24F52846EE284CED6D70D988839E0EB7BFB948DF2391C2EAFB31242D43727128A9D5C6849B8556B02BC85F27623BF53A45BD80046C6E7908708AF7C9B8B4EF477E42C488249CB6079DE88858BB0F5AFFF0A88C7340723E426C033C1D342B835FB481C3D235E511FAFCD26175C4CADD0ED9BF650E4016FEFF138C7FF99C25491E48D9FD5F228"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件窗口内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet.pid","MD5":"93340E42A6618D8A4E59927E916AB6DB","Version":"2.0.3.6","Size":688128,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"AB5772887EC5D2FE6F2523C0B72FFCEC2CE4CB4F577303FE926592EA3ACDF8045C79A0E053685CEF7D55EE29F8A7F8CEAE65532944A1836F9846888F05BA1B51AC9D18A5E52B8AA92F8D28244DA8BC8FE4EDF18B578E44978CD815E3F8040F14D19A02DC59728399B674D6E2621FF511DDDA6F6A99DEA29D676F7D4AA41D88682B878D6CD25B7823FB353274D6F88E0A6806D9394F6F18D3EA3FE2AF4093DA0DE48ED93D8E3ECAE0D5407034DF720AD1F4D4F4BE70161A1E381DA9F95103364C6F77DF6DE08F576613967B839CE6F03D312958BED4DD427818F69D84B7019D581823E4E3E0E220DF57D0643120DCF602E2A6BCE8EF3920FA448CC11EC155B103"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级IE内核内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件窗口内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-09-29","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet_Update.pid","MD5":"57B1B274817835952131ABB45B426FCF","Version":"2.0.3.5","Size":688128,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"46C5E34686D4EDC3AF811BC02EC15B4A2DA58F683E1BC9A6A8309769122D0122187623090FB50ED799439B9E716D59FCE689AAC53EE037C3B4352F0857786A0FB3AC5AA9387DA778B5F5F61307832012752EFAA6C462E2ACBB2FD635B86D799779DE39D27E0EB4374DA25F2F64B8D077317AABAC370B8BB4E8F99F6347B4C8C471DD324B1753FF9B65ECD8565718AEDA4504C65AD01CCED279C6F0555BBAA98BCAE3002F4F65DF7F8BA832815CDEEA0C63516E44FDA64952C7D663630A4A5C0DCD02951D127F524EF85FEDB341EA44AE5A78007AAF9483B2818F188BE52427147854C1AA45856640EC8FBB71ED6BF268BC2FF774F6CF1C35E7147D86D08DDAA8"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件窗口内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet_Update.pid","MD5":"333233124BFD4BC4FA479D0F7F0C7D29","Version":"2.0.3.6","Size":688128,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"0264C62216704DCC719B0EB777DEC1B8DECA8703D156537C3B02C34DD4E245F2CCF951B69AE890E5ED7D72D3DDAE2DFE418A32A89BAF6E7A2AEE339ECB54C3149388034022500D0D26EAE6EFBDDA382ECA0C5EBACF98A8FB41948770244BF427B368B13DD266A716D25B64D2BEF10FD1AA8FF3ECD74211028F14F34A55D3EDC716391DF36EF843B9BD5D25646950A223ABE11A83E2B5A01BFB0D3EEDA5668C68F1C54A854C4A393CAF019E27FD3942593A7AD2CCAD65ABA8A265EABB225F772570B68B800777C56AEC8195B70E2E8BBFF9B5FE2162CFDEEB4B412B2ADCFBBAFE8C9B9FA261271E8E2188B5FA949BE56CA46A1510EA6823FF9271FB22E077E2F6"}}
 
 3)、请求卸载IE控件内嵌窗口小程序：
 
@@ -169,7 +172,8 @@ A、IE控件事件
 10) IE_CommandStateChange 命令状态变化
 {"event":"IE_CommandStateChange","data":{"Command":0,"Enable":0}} Command命令ID，Enable是否启用
 
-B、其他事件通知：
+B、PluginOK支持的事件通知：
+
 1) IE_FullScreen 小程序是否响应了热键全屏
 {"event":"IE_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 

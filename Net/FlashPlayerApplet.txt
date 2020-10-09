@@ -1,17 +1,16 @@
-﻿Flash Player小程序(内嵌窗口)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用Adobe公司的ActiveX控件Flash.ocx(Windows 7及以下版本下载URL: http://get.adobe.com/flashplayer )实现播放。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿Flash Player小程序(内嵌窗口)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用Adobe公司的ActiveX控件Flash.ocx(Windows 7及以下版本下载URL: http://get.adobe.com/flashplayer )实现播放。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、牛插(PluginOK)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
-3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、Flash Player内嵌窗口小程序控制相关接口：
 说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
-非IE浏览器中在线测试网页：http://local.zorrosoft.com/
-IE浏览器中在线测试网页：http://local.zorrosoft.com/indexie.html 
+HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
 
 1)、请求启动Flash Player内嵌窗口小程序：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
 IframeX和IframeY分别为iframe嵌套的横竖偏移坐标
@@ -24,6 +23,9 @@ BarW和BarH分别是网页右侧和底部预留区域
 
 自动识别当前浏览器自动适配网页大小启动：
 {"req":"Wrl_FlashApplet","rid":3,"para":{"Type":"0","Title":"Flash Applet","Flag":9,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url":"http://zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
+
+当前页指定位置自动适配网页加载测试
+http://zorrosoft.com/flashframe.html
 
 启动后会收到两个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
@@ -68,13 +70,13 @@ ID为Wrl_FlashApplet启动小程序时返回的ID值，Scall为缩放百分比
 1)、请求安装Flash Player内嵌窗口小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-09-29","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashApplet.pid","MD5":"29854B75888AFA250B94EF04E0D663FF","Version":"2.0.3.5","Size":1900544,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"88C7EC8E2150D8548F3FD443A74AD10C81BC9A806535EC690C2D7BFB717EC45E4D917F1E4B101F1227722E88ED10C8A09827C2205C3FC111FAAC2403B4ED42D092741FDEEBC655926C4C8C7FDD98D034EC0F4B855C8A2A01534B940B13AEFA27F6308540937F0793D8F45521B9E015ADA5222FCA2E54D05D9A5853F5140BB96FDFA4D41298BECA9762D8A1FF7FD4130AF706CAE06D0BB0749DB01930AA1B2D216698F3F69B808734E10C9422E7887A7018C9B5023E2D1EE4A3830375F46D30EB800F1C1FEE74F64E5353CBD5E69BC265CA4659FE1FF6119C23392A4A8B8830B93924D1E1B71D21EA1F5839EE69DEDCC398FCD3E5EC5F526025FBC2C0AC73A078"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashApplet.pid","MD5":"F2FD5EC7B97A5AF664512502CF26E59F","Version":"2.0.3.6","Size":1900544,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"1F1B9A4CB091639922576D9EECADE6F0ECF87D180641E429B43EEFBFC2539E90544308E00C987F09638556834E4F6D9E09ABAEB6F1EEC0B8DB93300C9E0626917C25277AEB6B0F0F36CDD438B1A1F24E75D344C750531B48820C371F0E071C1A5E83F63B7F183285FB9FF7D83FCFCBA54EC313CCC902C0833E802606DC95E3A1EAFF8AB5573BBD37B8E6AA67C3B2AB698C297141CE3D957BD6329FCDD155F6D33D8A034819568795BA34D2AF2EEE48566E341BE9481A8939AE155AB6CCEBC8B12A2FA956945BB1075CFDAC3BDA0ECEADA22099C2971A5651CD964FF617CEA1E610BB095A10323D0692B19E72E0C4EA157CB4CFC892B1F49BC25BC4560B9589A2"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级Flash Player小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-09-29","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashApplet_Update.pid","MD5":"1CCBCC17E77649B4287F1C93B1B34F99","Version":"2.0.3.5","Size":557056,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"ACD8D01459DD637C1DE8CB30ACEC846F1AB45248766E513B43A4CEF1274FC91A6EDE12F8F46F1AC47451C471366651E63DF10A90036E87F9BE17B2BFA090920261152723FA2808C3EFD471539801C130710ECC7D24FE3ABA2F7BF8A828729FB1F680C80CD0C92154CCC91BFEC7DE259C04FB351471D3807F55661C37BCCE290CB098FE131C60E6027E80F939D18360D27B8AD0377745625790A3F3DDA6880040996481816C6BF2D72FCB9F5A6DCF78158C1A1D0C906C6566FE2C3206451F9C056AFCE639D42418E124820A2BBC23CAF717ECA407A74E548FD8EAAD72BA957B27E1DB335E4D8BBDD9FBF62D3043E628032448562ED1915DEA27778061FCDDAD3A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashApplet_Update.pid","MD5":"76892B1EB608288B6B8852932C64FD5D","Version":"2.0.3.6","Size":557056,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"8826261573F7C57AAE5B49FE3E52B0E3E87056D66B177ECB2941341D6625A4C0E60B77DE0B7B0A250D461D21E6ABB5895E081BFA6DCA6381F1B7ED7E8B42EB3A59B7280B374D45E86A0D792D8F96407A842EEF5A6722DA7ECC47144E18AA09564A9ECF6D65887BECBBD6C713053DF1D89D54C5D13C7B2A3BF6C27F9EF1E5A3747E12B69500E24BFB7DA7706820CA6FBC294851A617B77EF5862857FE90FBD524F8F4A6DAFF09A16E7DA597F4C205B351213D73E61ADA529DC10382440EF13BA48FA51D1D2649B6D7794A166D6059BA33A5F550033E41FBC8925BCEAEA30D78B52BAB0F53C2347F97FEC6A002A6280135246C9D8275CEBCCB66BBDD865292B34F"}}
 
 3)、请求卸载Flash Player内嵌窗口小程序：
 
@@ -209,7 +211,7 @@ A、ActiveX事件：
 4) Call事件通知
 {"event":"Flash_Call","data":{"Request":""}} Request为请求
 
-B、其他事件通知：
+B、PluginOK支持的事件通知：
 
 1) Flash_FullScreen 小程序是否响应了热键全屏
 {"event":"Flash_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
