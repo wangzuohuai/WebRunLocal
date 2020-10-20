@@ -1,15 +1,15 @@
-﻿Flash Player小程序(内嵌窗口)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用Adobe公司的ActiveX控件Flash.ocx(Windows 7及以下版本下载URL: http://get.adobe.com/flashplayer )实现播放。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿Flash Player小程序(内嵌网页)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用Adobe公司的ActiveX控件Flash.ocx(Windows 7及以下版本下载URL: http://get.adobe.com/flashplayer )实现播放。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、牛插(PluginOK)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
 
-2、Flash Player内嵌窗口小程序控制相关接口：
+2、Flash Player内嵌网页小程序控制相关接口：
 说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
 HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
 
-1)、请求启动Flash Player内嵌窗口小程序：
+1)、请求启动Flash Player内嵌网页小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
@@ -33,20 +33,20 @@ A、{"ret":0,"rid":1,"data":{"ID":2}}
 B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Port":990}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Flash。
 
-2)、请求控制Flash Player内嵌窗口小程序：
+2)、请求控制Flash Player内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏
 ID为Wrl_FlashApplet启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序 16自动适配网页高度和宽度显示切换
 其中2全屏显示，可直接通过热键切换Ctrl+F11
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动网页中Flash Player内嵌窗口小程序：
+3)、请求滚动网页中Flash Player内嵌网页小程序：
 当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变网页中Flash Player内嵌窗口小程序显示位置或大小：
+4)、请求改变网页中Flash Player内嵌网页小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为Wrl_FlashApplet启动小程序时返回的ID值，Width和Height分别为新的宽度和高度
 X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
@@ -61,24 +61,24 @@ Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
 ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
-6)、请求缩放网页中Flash Player内嵌窗口小程序，用于浏览器网页按比例缩放时响应：
+6)、请求缩放网页中Flash Player内嵌网页小程序，用于浏览器网页按比例缩放时响应：
 ID为Wrl_FlashApplet启动小程序时返回的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":7,"para":{"ID":1,"Scale":120}}
 
 
 3、小程序安装、升级、卸载
-1)、请求安装Flash Player内嵌窗口小程序
+1)、请求安装Flash Player内嵌网页小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FlashApplet.pid","MD5":"8BEB04062E8D48EEE72ED338EC25D6A4","Version":"2.0.3.6","Size":1900544,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"589F766FF3D9FACF9F57A31BD635CC5DFD9988F193DA55A0D4442F5F91EFCA29E4429A3A099AB187A4D9BFD5E065D08E1E809AC0FEA08C10A496058BC0E90E2806060D7842B12E8448A6886D241F1312C403B23CCD55ABF003EC047F1FAC29D7DDF7B011FFC094D5FB95F62925DAE9E8B8DD7FFC57E72D69FE8DCCBCDDFA7D7F9E4F4590DD31D4CDA6F80CAC2C79338B93A420521DE7A548606739C595ED2FA59F07F9FD9F171001AEA59CBA42277D0376D61CCFE6C3183FD1C7E0B2DDEB26021ABFEF50FD028CB0FCBCF84424F0563E9F5BF38E85958C6EFEB5F2962968CA4EE73B12C008B7909187CD9048E7E4AE09B6DB1A02B6925BC8B7B0B7B8FDEFA5B4"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-10-20","Desc":"PluginOK之上跨浏览器的Flash Player内嵌网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FlashApplet.pid","MD5":"AE46557FAAF418A08E07D770A18E0F64","Version":"2.0.3.7","Size":1867776,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"56A38E8033547BC596A7A3102B3FAE94BF70CCB16F7D3CD3F771AA4594BD409378668D62B9A2D5100D55D358629D67E75DFD7D8DDBC0379A440B693D026A72BCA94C7BBB3CF6B75CC30783EC6BC917D550D58BEAF78DD1A645FF7F977DFF46F5BE850F6080CEE77F7C55434230C87D21905D37C78E343D15447CBD6B036A82647E14A0032FD4297597E2FF4CDD35F0B19158149919ED9A591229E877BF5FC0B7C91033A7287D2A25E3985F881361FFEFEFC50B9F35B0E5B47014FBBA34D887803F5FF3FA3AAF910FC5931706E096E59FBA676601DE0A8D2AE6A574B34726E8C868037EC610B465D137507E2E8646F17655A3C4B18C6714E0DB2AB7C522B6F2EF"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级Flash Player小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FlashApplet_Update.pid","MD5":"5F6D9F78BBB58BF2044B5BE081F3FB34","Version":"2.0.3.6","Size":557056,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"61187CAA41963127DDFE5C69B24EA597D3F14DC9F41AD1ACE4FAEEBB556AF2E9E93E25C4660249D3EC1826B1857D996A3D109D18E9F9476393F265581C81E7E0A1002218ECE161101FDDCEEA14E43E7EED16475224693822786A7689B59B6BDB8529F0E231F2B71ECBC319837C6DD1F4401291C3A016D3C2F971D8B02ABBE14766B800FD01415AC138B32F423AAAF6272D3F5B47233DF82FF0A3DFD77E23E6014CADD7AB61A5409AC878B40156475746BA96257FCE6C428D2E96220FB89A3FB63745C4014E59F8220341EFFE1627E090DCFE454D77B3684B2054DDBBFF98943CCCEE735FCF04902B681C255924F2DDB2C5ED7A305B4885B4EDB0D7652AAD2BB3"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2020-10-20","Desc":"PluginOK之上跨浏览器的Flash Player内嵌网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/FlashApplet_Update.pid","MD5":"C070EE8611FE37EC27CFD0D0C0FD4EC5","Version":"2.0.3.7","Size":524288,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"BB8D747FB0DD3C7DD85B82ACE87063CB93FA37DD9AA62CE5762EA02E2DFEE8070D0B91BC5548A4DCCF23ED64212AA113CF3931F0B61F4079912A3CF1619E0302A541E83DB990B4FC4EFD5A3DD15D8F47D668B72E0318E4B639E0DCC709D78F2A450DBBCD73B12F3104CF85FD99A5953747649E86E91F0AA2609CC0B5FAC7AB51841D3AE9E2586A455314131D440345833481CAB0C01FFC40CF8233291FD26C0EAEB6CDFC6088C8E1D745FD0EC2BF224BF25966B6E74D5013C52DA163BE503266DFDAA2F08DD08B587F1715810ED4BBA92CF8E61CDFDB9D12A2F009971223FB4176FD3EB8B6A24B3BA8FBA70FFBD15077BAF7C97EC10A3954E1F175B94FE5973A"}}
 
-3)、请求卸载Flash Player内嵌窗口小程序：
+3)、请求卸载Flash Player内嵌网页小程序：
 
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Type":8}}
 
@@ -195,7 +195,7 @@ Ret为调用ActiveX对应函数返回值，0代表正常
 
 如您需要更多的接口，请联系我们。
 
-5、Flash Player内嵌窗口小程序接收的通知：
+5、Flash Player内嵌网页小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 A、ActiveX事件：
 

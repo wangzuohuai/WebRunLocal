@@ -1,17 +1,24 @@
 {
-  "Type": 2,
+  "Type": 1,
   "OS": 1,
   "Control": 0,
+  "Asm": 1,
   "OSMinVer": "5.0",
-  "Version": "2.0.2.1",
-  "Name": "弹窗小程序范例(C++语言)",
+  "Version": "2.0.2.2",
+  "Name": "无窗口小程序范例(C#语言)",
   "Corp": "ZorroSoft",
   "Icon": "",
-  "Date": "2020.08.25",
-  "Desc": "弹窗小程序(C++语言)-演示脚本请求打开指定网站",
+  "Date": "2020.10.20",
+  "Desc": "无窗口小程序范例(C#语言)",
   "Home": "http://zorrosoft.com/WRL",
   "Down": "http://zorrosoft.com/WRL",
-  "Module": "PluginWinExe.exe",
-  "PID": "F90B1CF0-8485-40ec-B4E8-B87598AAB35D",
+  "Module": "PluginNetDll.dll",
+  "PID": "D10495F4-DF0F-44FA-8647-91275347214A",
+  "Objects": [
+    {
+      "ProgID": "FCADA8A7-D975-42c6-B5D3-FA40F6FE1286",
+      "ClassID": "5DDA3CFF-6AD1-4836-B378-628B43748626"
+    }
+  ],
   "Updates": []
 }

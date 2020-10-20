@@ -1,14 +1,14 @@
-﻿点聚AIP电子签章网页内嵌小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用北京点聚信息技术有限公司的ActiveX控件(3.1版)HWPostil.ocx(此控件版权归北京点聚信息技术有限公司所有)实现。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿点聚AIP电子签章内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用北京点聚信息技术有限公司的ActiveX控件(3.1版)HWPostil.ocx(此控件版权归北京点聚信息技术有限公司所有)实现。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装。
 
-2、AIP电子签章网页内嵌小程序控制相关接口：
+2、AIP电子签章内嵌网页小程序控制相关接口：
 说明：以下功能连接PluginOK主服务(ws://localhost?sid=123456&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
 HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
 
-1)、请求启动AIP电子签章网页内嵌小程序：
+1)、请求启动AIP电子签章内嵌网页小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
@@ -29,7 +29,7 @@ A、{"ret":0,"rid":1,"data":{"ID":2}}
 B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Port":1200}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能。
 
-2)、请求控制AIP电子签章网页内嵌小程序：
+2)、请求控制AIP电子签章内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏
 ID为Wrl_AIPSignApplet启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序 16自动适配网页高度和宽度显示切换
 其中2全屏显示，可直接通过热键切换Ctrl+F11
@@ -42,7 +42,7 @@ Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变网页中AIP电子签章网页内嵌小程序显示位置或大小：
+4)、请求改变网页中AIP电子签章内嵌网页小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为Wrl_AIPSignApplet启动小程序时返回的ID值，Width和Height分别为新的宽度和高度
 X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
@@ -57,27 +57,27 @@ Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
 ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
-6)、请求缩放网页中AIP电子签章网页内嵌小程序，用于浏览器网页按比例缩放时响应：
+6)、请求缩放网页中AIP电子签章内嵌网页小程序，用于浏览器网页按比例缩放时响应：
 ID为Wrl_AIPSignApplet启动小程序时返回的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":7,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装AIP电子签章网页内嵌小程序
+1)、请求安装AIP电子签章内嵌网页小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"AIP签章内嵌网页小程序","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/AIPSignApplet.pid","MD5":"A86E3C2D72A695E01691912FDFE47B5B","Version":"2.0.3.6","Size":5799936,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"614F0E0A801805FD8425DCA37A007BEC237A56716FFEDBCCB87978FB9C00A81A85C65D5091F21A28E8241FB36B755FF000BA382D36A00FA8ABD60C129C1B1EFE252825460342B4E97C0A990B90260E1E6D0DAC6E7D3748A6D18D0566E0AEFE8DF8D890BB7A8E8B951079D8C52E65D1019A66225144637515C382ABCBC3828F4BA7B8CC9558053D1CF6EFFE330501DEA13CB9CCCAA0470A290677063EA5B34FBD4709F8609D83A8984FE76E1766EBF39021EFD422EAF838B80A17863C3F219028F4B3502CAE56C362669007C3384AC317E971040CA346E82624EF936228A95C125E3482137F1ED3850D4B8323A51FD7B35A844C3A4F1B46E4F524032B06BB37C5"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"AIP电子签章内嵌网页小程序","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Date":"2020-10-20","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/AIPSignApplet.pid","MD5":"22AF3690CC6A02FF79E9653B0094556D","Version":"2.0.3.7","Size":5799936,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"1672F5409F5A0A26C266E041BCEE1DEE1A795A411C7D21849513BB2F46161C64E8DF704B1FC5736279A1865A3B6CEA85334C94037B554D129715F089FB2EE43D25C35C7177D56F69F54E322586E359C2025B94518383CAF5F0B0E62359AEB41D7BE4E02F01AA7445BA9A1631887E77B61DCD59BDD6A799BED1E12D3BBEC937921AF533363162F970556DA72A6CA07EC14F1B7D1FDDF17BDAAD136B23AFE29A82067DDE86417DCA40BA86B31BCA046F65CAE2D620637E916B9AC55076AE1442B21E50E88C456F1C05D096032ED8A00D3DDD1C8DC8E844F471C2A6AFDA531F4D86F2C77FCAF137306C26ABABAEAF91F9EBD358E25DBCFB2AAA07E4D4B9DD874831"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
-2)、请求升级点聚AIP电子签章网页内嵌小程序：
+2)、请求升级点聚AIP电子签章内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"AIP签章内嵌网页小程序","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/AIPSignApplet_Update.pid","MD5":"E3996C70CD9EA67D0BA5B7B418D3E442","Version":"2.0.3.6","Size":524288,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"810E7DEAADFE6C7E6B8BCC3FBC10B17ED5F4E4D8088CD739C0F267B1661C7403B04B751947B1358AC9C052C212415D7FBC95DF825EC51C3EE9778DD08ED2A41B012C699B97F423EB1C4E84CBFF4380258FDE15C52BFDFDAD99D3D71536C78E6F7DE12F2C770BA9BFB6ECCBC06A2F44DE0CF260973FB06ABE2B72933E8FD1959A2DB29AD22848DCB67D7D4F0C2C059D79A496811FC34DD6D8B3BE1BCB6521CE13F53DAF23C0196B5AA31C57A436DC1A53ECA63AC8CE92629448E8D8B7115A32983443B16197231D0EDB65E89EEE3928EEE1B3D76B73FAFC6A35D4C78FBE338EB1D9A156E21E1C2047FA1A82E16EC8AE646A9402854044CA4C0B47F3A0786157DC"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"AIP电子签章内嵌网页小程序","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Date":"2020-10-20","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/AIPSignApplet_Update.pid","MD5":"61D1BA05CB5DFC212BDB84661BEED4CB","Version":"2.0.3.7","Size":589824,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"BEFB51793503D72F7879F4DA97209167B381137A0181FC9917630CEA6E80EF1EADA7FADBB4F90CFD4F213F499F5299AA79C1A460F4E10B4A678532AF56A3CB294C2924AFA91D703B2087BE80DE7519E2CCC32327F4D581B16A02689B9842EE4A53CD0C31AA3E66936165E56BE4639CE5BD742E00C4832B9A108611367EB322C2BDF967E787C4853F947C04C1AF8EFD3DAE0CAD9C34B50628D006C0DEABBB86270B73C97C664A1E300300C64CB9D0FBDBEEE595B23F81F09E9243A7C1038B6DCE22DC9EA6E12436FBF4130F0F15564DB5D7A8F7FDAD29A2F3DBA069452FF43AB4279DC091AC5D16E881023912A638AB0E2F36E403C9D11594A33D16B1477A85BD"}}
 
-3)、请求卸载AIP电子签章网页内嵌小程序：
+3)、请求卸载AIP电子签章内嵌网页小程序：
 
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Type":8}}
 
-4、AIP电子签章网页内嵌小程序转调用ActiveX接口(接口函数及方法说明详情请参考文档“AIP电子签名系统开发接口.chm”)，先根据Wrl_AppletStart请求启动后返回侦听端口号，针对此端口新建一个WebSocket连接后可执行如下指令：
+4、AIP电子签章内嵌网页小程序转调用ActiveX接口(接口函数及方法说明详情请参考文档“AIP电子签名系统开发接口.chm”)，先根据Wrl_AppletStart请求启动后返回侦听端口号，针对此端口新建一个WebSocket连接后可执行如下指令：
 A、属性操作：
 
 1) 返回附加信息
@@ -1190,7 +1190,7 @@ FileName需先进行UrlEncode编辑
 请求：{"req":"AIP_PlayFlash","rid":272,"para":{"FileName":"","LoopPlay":""}}
 返回：{"ret":0,"rid":272,"data":{"Ret":""}}
 
-5、AIP电子签章网页内嵌小程序接收的通知：
+5、AIP电子签章内嵌网页小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 A、ActiveX事件：
 

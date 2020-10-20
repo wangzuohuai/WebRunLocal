@@ -87,13 +87,12 @@ function getrandom(nums)
 
 		WrlVisibilityListener = function (AddEvent)
 		{
-			if (isFirefox() && bRunInCurrentPage)
+			if(bRunInCurrentPage)
 			{
-				// 只有Firefox需要处理
 				if(AddEvent)
-					document.addEventListener('visibilitychange',FirefoxVisibilityState,false);
+					document.addEventListener('visibilitychange',PageVisibilityState,false);
 				else
-					document.removeEventListener('visibilitychange',FirefoxVisibilityState,false);
+					document.removeEventListener('visibilitychange',PageVisibilityState,false);
 			}
 		}
 		
@@ -320,11 +319,11 @@ function getrandom(nums)
 			}
 		}
 
-		FirefoxVisibilityState = function ()
+		PageVisibilityState = function ()
 		{
 			if(nAppletRunID < 1)
 				return;// 未启动小程序
-			// 控制小程序显示、目前仅对网页内加载小程序正常，新网页加载的小程序控制还不对
+			// 控制小程序显示、仅对当前网页内加载的小程序
 			var msg = '{"req":"Wrl_AppletControl","rid":';
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';

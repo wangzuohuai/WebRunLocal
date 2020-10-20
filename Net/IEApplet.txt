@@ -1,15 +1,15 @@
-﻿IE控件小程序(内嵌窗口)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿IE控件内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、IE控件内嵌窗口小程序控制相关接口：
+2、IE控件小程序控制相关接口：
 说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
 HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
 
-1)、请求启动IE控件内嵌窗口小程序实现网页中局部加载IE内核网页显示：
+1)、请求启动IE控件小程序实现网页中局部加载IE内核网页显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
@@ -37,20 +37,20 @@ A、{"ret":0,"rid":1,"data":{"ID":3}}
 B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Port":985}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
 
-2)、请求控制IE控件内嵌窗口小程序：
+2)、请求控制IE控件小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏
 ID为启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序 16自动适配网页高度和宽度显示切换
 其中2全屏显示，可直接通过热键切换Ctrl+F11
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动IE控件内嵌窗口小程序：
+3)、请求滚动IE控件小程序：
 当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变IE控件内嵌窗口小程序显示位置或大小：
+4)、请求改变IE控件小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为启动小程序时返回的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -64,28 +64,28 @@ Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
 ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
-6)、请求缩放IE控件内嵌窗口小程序，用于浏览器网页按比例缩放：
+6)、请求缩放IE控件小程序，用于浏览器网页按比例缩放：
 ID为启动小程序时返回的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":7,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装IE控件内嵌窗口小程序
+1)、请求安装IE控件小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件窗口内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet.pid","MD5":"93340E42A6618D8A4E59927E916AB6DB","Version":"2.0.3.6","Size":688128,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"AB5772887EC5D2FE6F2523C0B72FFCEC2CE4CB4F577303FE926592EA3ACDF8045C79A0E053685CEF7D55EE29F8A7F8CEAE65532944A1836F9846888F05BA1B51AC9D18A5E52B8AA92F8D28244DA8BC8FE4EDF18B578E44978CD815E3F8040F14D19A02DC59728399B674D6E2621FF511DDDA6F6A99DEA29D676F7D4AA41D88682B878D6CD25B7823FB353274D6F88E0A6806D9394F6F18D3EA3FE2AF4093DA0DE48ED93D8E3ECAE0D5407034DF720AD1F4D4F4BE70161A1E381DA9F95103364C6F77DF6DE08F576613967B839CE6F03D312958BED4DD427818F69D84B7019D581823E4E3E0E220DF57D0643120DCF602E2A6BCE8EF3920FA448CC11EC155B103"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-10-20","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet.pid","MD5":"46D48773421D9659E50BFEDBBDA032A4","Version":"2.0.3.7","Size":720896,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"1723149AD55D44830E897EE33E65BA22ABE4F357CF9472C0F524A393C7CAF2378F158E2C1C82AB451623C7BEE65F7C2E5C3C04A191BFC6F749F5BE872E1FA5DDDD8DEE45AF9F540F72D5B2732008E4F901009F6FA0B154D36EC6A620F018503EEC96A148F4D509D7305A6EFB6AEF438482DE0A54E6515B07E574C1434574A2EE89A295CAB18ACC784AB9F6602DDC0526DC9D3E67509230210A87E75650945870D74B6981E1E7831066D44CA6EBA20555E89AC9D31D502275EAE9B79DA6EEE85DCCC63900826248653B581AEBC9D144620660D6B74DEF1DB45A1253D77447DD1FCCB7742DC1D9A0F165BFE5B511DA028AAFF815669F7F89533DE220E358605E61"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级IE内核内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件窗口内嵌小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-10-09","Desc":"PluginOK之上跨浏览器的IE控件小程序，支持在Chrome、Firefox、Edge、IE、Oprea、360等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet_Update.pid","MD5":"333233124BFD4BC4FA479D0F7F0C7D29","Version":"2.0.3.6","Size":688128,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"0264C62216704DCC719B0EB777DEC1B8DECA8703D156537C3B02C34DD4E245F2CCF951B69AE890E5ED7D72D3DDAE2DFE418A32A89BAF6E7A2AEE339ECB54C3149388034022500D0D26EAE6EFBDDA382ECA0C5EBACF98A8FB41948770244BF427B368B13DD266A716D25B64D2BEF10FD1AA8FF3ECD74211028F14F34A55D3EDC716391DF36EF843B9BD5D25646950A223ABE11A83E2B5A01BFB0D3EEDA5668C68F1C54A854C4A393CAF019E27FD3942593A7AD2CCAD65ABA8A265EABB225F772570B68B800777C56AEC8195B70E2E8BBFF9B5FE2162CFDEEB4B412B2ADCFBBAFE8C9B9FA261271E8E2188B5FA949BE56CA46A1510EA6823FF9271FB22E077E2F6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-10-20","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet_Update.pid","MD5":"FBB5B469D5C52EAD67119FE549C15CA8","Version":"2.0.3.7","Size":720896,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"284965753C5A8B9CD15629C18F3FBE56F152E2BD0A16D8722BE7980C1D842A2489159D088FD66F9DAA4A457C3C101D7501C5BF78D7DEDE533B98C9E0F824B4C8E17926CA2DFAC2CC3F3DD5D0A61B0240FD3DCBB75A2F8836E1EE41461B8377499306ACEEC1341DA9C10D501C661DE597621A4F5F74B719FF745242EC0DBF0C32C9165DEBB22304DD80F0BF98F7D5518089FA315BB1528ED7AE2C6C680EF18D18436A5F5FB7EB2A14AE7257A71B1E6686E9BB82FB18F50897AD6768FE4837E20B5A7ED8371010D3CC73DDE8B8CCF816117185D553B7C936E26B378729A06843EC878D83BF2F18A6E4DBC3269CA2A23C371215FEB1FFA8B43CEDD361ABADBAB3F7"}}
 
-3)、请求卸载IE控件内嵌窗口小程序：
+3)、请求卸载IE控件小程序：
 
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Type":8}}
 
-4、IE控件内嵌窗口小程序转调用ActiveX接口，先根据Wrl_IEApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、IE控件小程序转调用ActiveX接口，先根据Wrl_IEApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 1) 停止
 请求：{"req":"IE_Stop","rid":50,"para":{}}
