@@ -5,7 +5,7 @@
   "HTTPS": 460,
   "Localhost": 1,
   "ListenIP": "",
-  "WSErrTime": 15,
+  "WSErrTime": 30,
   "ValidHour": 48,
   "Monitor": 60,
   "Mac": 1,

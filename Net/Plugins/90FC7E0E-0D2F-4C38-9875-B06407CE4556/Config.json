@@ -1,5 +1,5 @@
 {
   "FirstInstall":"VLCIns.exe",
-  "Caching":200,
+  "Caching":500,
   "PORT": 930
 }
