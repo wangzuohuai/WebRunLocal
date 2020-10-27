@@ -381,7 +381,8 @@ function getrandom(nums)
 				};
 				
 				// 监听Socket的关闭
-				PluginOKSocket.onclose = function (event) {
+				PluginOKSocket.onclose = function (event) 
+				{
 					WrlVisibilityListener(false);
 					WrlScrollListener(false);
 					nAppletRunID = 0;
@@ -420,6 +421,21 @@ function getrandom(nums)
 				if (PluginOKSocket) 
 				{
 					PluginOKSocket.close();
+					
+					if(isFirefox())
+					{
+						/// 收不到通知，自己处理
+						nAppletRunID = 0;
+						nRequstAppletID = 0;
+						
+						showmessage('连接已断开');
+						$win.find('#btn_conn').attr('disabled', false);
+						$win.find('#btn_send').attr('disabled', true);	
+						$win.find('#btn_close').attr('disabled', true);
+						$win.find('#btn_max').attr('disabled', true);
+						$win.find('#btn_fitpage').attr('disabled', true);
+						$win.find('#btn_restore').attr('disabled', true);
+					}
 				}
 			}
 			else
