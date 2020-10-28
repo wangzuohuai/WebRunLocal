@@ -113,7 +113,7 @@ function getrandom(nums)
 				if(AddEvent)
 					document.addEventListener("scroll",scrollFunc,false);
 				else
-					document.removeEventListener("scroll");
+					document.removeEventListener("scroll",scrollFunc);
 			}
 		}
 		
@@ -231,7 +231,7 @@ function getrandom(nums)
 					if(undefined == jsondata.err)
 						showmessage(Data, 'receive');
 					else
-						showmessage('小程序运行错误：' + jsondata.err);
+						showmessage('小程序请求错误：' + jsondata.err);
 				}
 			}
 			else
@@ -365,7 +365,8 @@ function getrandom(nums)
 				showmessage('开始连接');
 				
 				// 打开Socket 
-				PluginOKSocket.onopen = function (event) {
+				PluginOKSocket.onopen = function (event) 
+				{
 					// 发送一个初始化消息
 					showmessage(url + ' 连接成功');
 					$win.find('#btn_send').attr('disabled', false);	
@@ -374,12 +375,14 @@ function getrandom(nums)
 				};
 				
 				// 监听消息
-				PluginOKSocket.onmessage = function (eve) {
+				PluginOKSocket.onmessage = function (eve) 
+				{
 					DealRecMessage(eve.data);
 				};
 				
 				// 监听Socket的关闭
-				PluginOKSocket.onclose = function (event) {
+				PluginOKSocket.onclose = function (event) 
+				{
 					WrlVisibilityListener(false);
 					WrlScrollListener(false);
 					nAppletRunID = 0;
@@ -418,21 +421,6 @@ function getrandom(nums)
 				if (PluginOKSocket) 
 				{
 					PluginOKSocket.close();
-					
-					if(isFirefox())
-					{
-						/// 收不到通知，自己处理
-						nAppletRunID = 0;
-						nRequstAppletID = 0;
-						
-						showmessage('连接已断开');
-						$win.find('#btn_conn').attr('disabled', false);
-						$win.find('#btn_send').attr('disabled', true);	
-						$win.find('#btn_close').attr('disabled', true);
-						$win.find('#btn_max').attr('disabled', true);
-						$win.find('#btn_fitpage').attr('disabled', true);
-						$win.find('#btn_restore').attr('disabled', true);
-					}
 				}
 			}
 			else
