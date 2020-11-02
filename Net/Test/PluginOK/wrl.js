@@ -330,13 +330,13 @@ function getrandom(nums)
 			msg += getrandom(5).toLocaleString();
 			msg += ',"para":{"ID":';
 			msg += nAppletRunID;
-			if(document.visibilityState == 'visible')
+			if (document.visibilityState == 'visible')
 			{
 				/// 恢复显示
 				msg += ',"Code":';
 				msg += 8;
 			}
-			else
+			else if (document.visibilityState == 'hidden')
 			{
 				/// 需要隐藏
 				msg += ',"Code":';

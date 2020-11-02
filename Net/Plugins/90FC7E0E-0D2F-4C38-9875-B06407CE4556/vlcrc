@@ -1,0 +1,5257 @@
+﻿###
+###  vlc 3.0.11
+###
+
+###
+### lines beginning with a '#' character are comments
+###
+
+[visual] # Visualizer filter
+
+# Effects list (字符串)
+#effect-list=spectrum
+
+# Video width (整数)
+#effect-width=800
+
+# Video height (整数)
+#effect-height=500
+
+# FFT window (字符串)
+#effect-fft-window=flat
+
+# Kaiser window parameter (浮点)
+#effect-kaiser-param=3.000000
+
+# Show 80 bands instead of 20 (布尔)
+#visual-80-bands=1
+
+# Draw peaks in the analyzer (布尔)
+#visual-peaks=1
+
+# Enable original graphic spectrum (布尔)
+#spect-show-original=0
+
+# Draw the base of the bands (布尔)
+#spect-show-base=1
+
+# Base pixel radius (整数)
+#spect-radius=42
+
+# Spectral sections (整数)
+#spect-sections=3
+
+# V-plane color (整数)
+#spect-color=80
+
+# Draw bands in the spectrometer (布尔)
+#spect-show-bands=1
+
+# Show 80 bands instead of 20 (布尔)
+#spect-80-bands=1
+
+# Number of blank pixels between bands. (整数)
+#spect-separ=1
+
+# Amplification (整数)
+#spect-amp=8
+
+# Draw peaks in the analyzer (布尔)
+#spect-show-peaks=1
+
+# Peak extra width (整数)
+#spect-peak-width=61
+
+# Peak height (整数)
+#spect-peak-height=1
+
+[projectm] # libprojectM effect
+
+# projectM preset path (字符串)
+#projectm-preset-path=
+
+# Title font (字符串)
+#projectm-title-font=C:\WINDOWS\Fonts\arial.ttf
+
+# Font menu (字符串)
+#projectm-menu-font=C:\WINDOWS\Fonts\arial.ttf
+
+# Video width (整数)
+#projectm-width=800
+
+# Video height (整数)
+#projectm-height=500
+
+# Mesh width (整数)
+#projectm-meshx=32
+
+# Mesh height (整数)
+#projectm-meshy=24
+
+# Texture size (整数)
+#projectm-texture-size=1024
+
+[goom] # Goom effect
+
+# Goom display width (整数)
+#goom-width=800
+
+# Goom display height (整数)
+#goom-height=500
+
+# Goom animation speed (整数)
+#goom-speed=6
+
+[glspectrum] # 3D OpenGL spectrum visualization
+
+# Video width (整数)
+#glspectrum-width=400
+
+# Video height (整数)
+#glspectrum-height=300
+
+[wall] # Wall video filter
+
+# Number of columns (整数)
+#wall-cols=3
+
+# Number of rows (整数)
+#wall-rows=3
+
+# Active windows (字符串)
+#wall-active=
+
+# Element aspect ratio (字符串)
+#wall-element-aspect=16:9
+
+[panoramix] # Panoramix: wall with overlap video filter
+
+# Number of columns (整数)
+#panoramix-cols=-1
+
+# Number of rows (整数)
+#panoramix-rows=-1
+
+# length of the overlapping area (in %) (整数)
+#panoramix-bz-length=100
+
+# height of the overlapping area (in %) (整数)
+#panoramix-bz-height=100
+
+# Attenuation (布尔)
+#panoramix-attenuate=1
+
+# Attenuation, begin (in %) (整数)
+#panoramix-bz-begin=0
+
+# Attenuation, middle (in %) (整数)
+#panoramix-bz-middle=50
+
+# Attenuation, end (in %) (整数)
+#panoramix-bz-end=100
+
+# middle position (in %) (整数)
+#panoramix-bz-middle-pos=50
+
+# Gamma (Red) correction (浮点)
+#panoramix-bz-gamma-red=1.000000
+
+# Gamma (Green) correction (浮点)
+#panoramix-bz-gamma-green=1.000000
+
+# Gamma (Blue) correction (浮点)
+#panoramix-bz-gamma-blue=1.000000
+
+# Black Crush for Red (整数)
+#panoramix-bz-blackcrush-red=140
+
+# Black Crush for Green (整数)
+#panoramix-bz-blackcrush-green=140
+
+# Black Crush for Blue (整数)
+#panoramix-bz-blackcrush-blue=140
+
+# White Crush for Red (整数)
+#panoramix-bz-whitecrush-red=200
+
+# White Crush for Green (整数)
+#panoramix-bz-whitecrush-green=200
+
+# White Crush for Blue (整数)
+#panoramix-bz-whitecrush-blue=200
+
+# Black Level for Red (整数)
+#panoramix-bz-blacklevel-red=150
+
+# Black Level for Green (整数)
+#panoramix-bz-blacklevel-green=150
+
+# Black Level for Blue (整数)
+#panoramix-bz-blacklevel-blue=150
+
+# White Level for Red (整数)
+#panoramix-bz-whitelevel-red=0
+
+# White Level for Green (整数)
+#panoramix-bz-whitelevel-green=0
+
+# White Level for Blue (整数)
+#panoramix-bz-whitelevel-blue=0
+
+# Active windows (字符串)
+#panoramix-active=
+
+[clone] # Clone video filter
+
+# Number of clones (整数)
+#clone-count=2
+
+# Video output modules (字符串)
+#clone-vout-list=
+
+[yuv] # YUV video output
+
+# device, fifo or filename (字符串)
+#yuv-file=stream.yuv
+
+# Chroma used (字符串)
+#yuv-chroma=
+
+# Add a YUV4MPEG2 header (布尔)
+#yuv-yuv4mpeg2=0
+
+[wgl] # WGL extension for OpenGL
+
+# GPU affinity (整数)
+#gpu-affinity=-1
+
+[vmem] # Video memory output
+
+# Width (整数)
+#vmem-width=320
+
+# Height (整数)
+#vmem-height=200
+
+# Pitch (整数)
+#vmem-pitch=640
+
+# Chroma (字符串)
+#vmem-chroma=RV16
+
+[vdummy] # Dummy video output
+
+# Dummy image chroma format (字符串)
+#dummy-chroma=
+
+[gl] # OpenGL video output
+
+# OpenGL extension (字符串)
+#gl=
+
+# Open GL/GLES hardware converter (字符串)
+#glconv=
+
+# Rendering intent for color conversion (整数)
+#rendering-intent=1
+
+# Display primaries (整数)
+#target-prim=0
+
+# Display gamma / transfer function (整数)
+#target-trc=0
+
+# Tone-mapping algorithm (整数)
+#tone-mapping=3
+
+# Tone-mapping parameter (浮点)
+#tone-mapping-param=0.000000
+
+# Highlight clipped pixels (布尔)
+#tone-mapping-warn=0
+
+# Dithering algorithm (整数)
+#dither-algo=-1
+
+# Dither depth override (0 = framebuffer depth) (整数)
+#dither-depth=0
+
+# Tone-mapping desaturation coefficient (浮点)
+#tone-mapping-desat=0.500000
+
+[glwin32] # OpenGL video output for Windows
+
+# Open GL/GLES hardware converter (字符串)
+#glconv=
+
+# Rendering intent for color conversion (整数)
+#rendering-intent=1
+
+# Display primaries (整数)
+#target-prim=0
+
+# Display gamma / transfer function (整数)
+#target-trc=0
+
+# Tone-mapping algorithm (整数)
+#tone-mapping=3
+
+# Tone-mapping parameter (浮点)
+#tone-mapping-param=0.000000
+
+# Highlight clipped pixels (布尔)
+#tone-mapping-warn=0
+
+# Dithering algorithm (整数)
+#dither-algo=-1
+
+# Dither depth override (0 = framebuffer depth) (整数)
+#dither-depth=0
+
+# Tone-mapping desaturation coefficient (浮点)
+#tone-mapping-desat=0.500000
+
+[flaschen] # Flaschen-Taschen video output
+
+# Flaschen-Taschen display address (字符串)
+#flaschen-display=
+
+# Width (整数)
+#flaschen-width=25
+
+# Height (整数)
+#flaschen-height=20
+
+[drawable] # Embedded window video
+
+[directdraw] # DirectX (DirectDraw) video output
+
+# Use hardware YUV->RGB conversions (布尔)
+#directx-hw-yuv=1
+
+# Overlay video output (布尔)
+#directx-overlay=1
+
+# Use video buffers in system memory (布尔)
+#directx-use-sysmem=0
+
+# Use triple buffering for overlays (布尔)
+#directx-3buffering=1
+
+# Name of desired display device (字符串)
+#directx-device=
+
+[direct3d9] # Direct3D9 video output
+
+# Use hardware blending support (布尔)
+#direct3d9-hw-blending=1
+
+# Pixel Shader (字符串)
+#direct3d9-shader=
+
+# Path to HLSL file (字符串)
+#direct3d9-shader-file=
+
+[direct3d11] # Direct3D11 video output
+
+# Use hardware blending support (布尔)
+#direct3d11-hw-blending=1
+
+[transform] # Video transformation filter
+
+# Transform type (字符串)
+#transform-type=90
+
+[sharpen] # Sharpen video filter
+
+# Sharpen strength (0-2) (浮点)
+#sharpen-sigma=0.050000
+
+[sepia] # Sepia video filter
+
+# Sepia intensity (整数)
+#sepia-intensity=120
+
+[scene] # Scene video filter
+
+# Image format (字符串)
+#scene-format=png
+
+# Image width (整数)
+#scene-width=-1
+
+# Image height (整数)
+#scene-height=-1
+
+# Filename prefix (字符串)
+#scene-prefix=scene
+
+# Directory path prefix (字符串)
+#scene-path=
+
+# Always write to the same file (布尔)
+#scene-replace=0
+
+# Recording ratio (整数)
+#scene-ratio=50
+
+[rotate] # Rotate video filter
+
+# Angle in degrees (浮点)
+#rotate-angle=30.000000
+
+# Use motion sensors (布尔)
+#rotate-use-motion=0
+
+[puzzle] # Puzzle interactive game video filter
+
+# Number of puzzle rows (整数)
+#puzzle-rows=4
+
+# Number of puzzle columns (整数)
+#puzzle-cols=4
+
+# Border (整数)
+#puzzle-border=3
+
+# Small preview (布尔)
+#puzzle-preview=0
+
+# Small preview size (整数)
+#puzzle-preview-size=15
+
+# Piece edge shape size (整数)
+#puzzle-shape-size=90
+
+# Auto shuffle (整数)
+#puzzle-auto-shuffle=0
+
+# Auto solve (整数)
+#puzzle-auto-solve=0
+
+# Rotation (整数)
+#puzzle-rotation=0
+
+# Game mode (整数)
+#puzzle-mode=0
+
+[postproc] # Video post processing filter
+
+# Post processing quality (整数)
+#postproc-q=6
+
+# FFmpeg post processing filter chains (字符串)
+#postproc-name=default
+
+[posterize] # Posterize video filter
+
+# Posterize level (整数)
+#posterize-level=6
+
+[motionblur] # Motion blur filter
+
+# Blur factor (1-127) (整数)
+#blur-factor=80
+
+[mirror] # Mirror video filter
+
+# Mirror orientation (整数)
+#mirror-split=0
+
+# Direction (整数)
+#mirror-direction=0
+
+[hqdn3d] # High Quality 3D Denoiser filter
+
+# Spatial luma strength (0-254) (浮点)
+#hqdn3d-luma-spat=4.000000
+
+# Spatial chroma strength (0-254) (浮点)
+#hqdn3d-chroma-spat=3.000000
+
+# Temporal luma strength (0-254) (浮点)
+#hqdn3d-luma-temp=6.000000
+
+# Temporal chroma strength (0-254) (浮点)
+#hqdn3d-chroma-temp=4.500000
+
+[grain] # Grain video filter
+
+# Variance (浮点)
+#grain-variance=2.000000
+
+# Minimal period (整数)
+#grain-period-min=1
+
+# Maximal period (整数)
+#grain-period-max=48
+
+[gradient] # Gradient video filter
+
+# Distort mode (字符串)
+#gradient-mode=gradient
+
+# Gradient image type (整数)
+#gradient-type=0
+
+# Apply cartoon effect (布尔)
+#gradient-cartoon=1
+
+[gradfun] # Gradfun video filter
+
+# Radius (整数)
+#gradfun-radius=16
+
+# Strength (浮点)
+#gradfun-strength=1.200000
+
+[gaussianblur] # Gaussian blur video filter
+
+# Gaussian's std deviation (浮点)
+#gaussianblur-sigma=2.000000
+
+[fps] # FPS conversion video filter
+
+# Frame rate (字符串)
+#fps-fps=
+
+[extract] # Extract RGB component video filter
+
+# RGB component to extract (整数)
+#extract-component=16711680
+
+[erase] # Erase video filter
+
+# Image mask (字符串)
+#erase-mask=
+
+# X coordinate (整数)
+#erase-x=0
+
+# Y coordinate (整数)
+#erase-y=0
+
+[deinterlace] # Deinterlacing video filter
+
+# Streaming deinterlace mode (字符串)
+#sout-deinterlace-mode=blend
+
+# Phosphor chroma mode for 4:2:0 input (整数)
+#sout-deinterlace-phosphor-chroma=2
+
+# Phosphor old field dimmer strength (整数)
+#sout-deinterlace-phosphor-dimmer=2
+
+[croppadd] # Video cropping filter
+
+# Pixels to crop from top (整数)
+#croppadd-croptop=0
+
+# Pixels to crop from bottom (整数)
+#croppadd-cropbottom=0
+
+# Pixels to crop from left (整数)
+#croppadd-cropleft=0
+
+# Pixels to crop from right (整数)
+#croppadd-cropright=0
+
+# Pixels to padd to top (整数)
+#croppadd-paddtop=0
+
+# Pixels to padd to bottom (整数)
+#croppadd-paddbottom=0
+
+# Pixels to padd to left (整数)
+#croppadd-paddleft=0
+
+# Pixels to padd to right (整数)
+#croppadd-paddright=0
+
+[colorthres] # Color threshold filter
+
+# Color (整数)
+#colorthres-color=16711680
+
+# Saturation threshold (整数)
+#colorthres-saturationthres=20
+
+# Similarity threshold (整数)
+#colorthres-similaritythres=15
+
+[canvas] # Canvas video filter
+
+# Output width (整数)
+#canvas-width=0
+
+# Output height (整数)
+#canvas-height=0
+
+# Output picture aspect ratio (字符串)
+#canvas-aspect=
+
+# Pad video (布尔)
+#canvas-padd=1
+
+[bluescreen] # Bluescreen video filter
+
+# Bluescreen U value (整数)
+#bluescreen-u=120
+
+# Bluescreen V value (整数)
+#bluescreen-v=90
+
+# Bluescreen U tolerance (整数)
+#bluescreen-ut=17
+
+# Bluescreen V tolerance (整数)
+#bluescreen-vt=17
+
+[blendbench] # Blending benchmark filter
+
+# Number of time to blend (整数)
+#blendbench-loops=1000
+
+# Alpha of the blended image (整数)
+#blendbench-alpha=128
+
+# Image to be blended onto (字符串)
+#blendbench-base-image=
+
+# Chroma for the base image (字符串)
+#blendbench-base-chroma=I420
+
+# Image which will be blended (字符串)
+#blendbench-blend-image=
+
+# Chroma for the blend image (字符串)
+#blendbench-blend-chroma=YUVA
+
+[ball] # Ball video filter
+
+# Ball color (字符串)
+#ball-color=red
+
+# Ball speed (整数)
+#ball-speed=4
+
+# Ball size (整数)
+#ball-size=10
+
+# Gradient threshold (整数)
+#ball-gradient-threshold=40
+
+# Edge visible (布尔)
+#ball-edge-visible=1
+
+[antiflicker] # antiflicker video filter
+
+# Window size (整数)
+#antiflicker-window-size=10
+
+# Softening value (整数)
+#antiflicker-softening-size=10
+
+[anaglyph] # Convert 3D picture to anaglyph image video filter
+
+# Color scheme (字符串)
+#anaglyph-scheme=red-cyan
+
+[alphamask] # Alpha mask video filter
+
+# Transparency mask (字符串)
+#alphamask-mask=
+
+[adjust] # Image properties filter
+
+# Image contrast (0-2) (浮点)
+#contrast=1.000000
+
+# Image brightness (0-2) (浮点)
+#brightness=1.000000
+
+# Image hue (-180..180) (浮点)
+#hue=0.000000
+
+# Image saturation (0-3) (浮点)
+#saturation=1.000000
+
+# Image gamma (0-10) (浮点)
+#gamma=1.000000
+
+# Brightness threshold (布尔)
+#brightness-threshold=0
+
+[swscale] # Video scaling filter
+
+# Scaling mode (整数)
+#swscale-mode=2
+
+[sapi] # Speech synthesis for Windows
+
+# Voice Index (整数)
+#sapi-voice=-1
+
+[freetype] # Freetype2 font renderer
+
+# Font (字符串)
+#freetype-font=Arial
+
+# Monospace Font (字符串)
+#freetype-monofont=Courier New
+
+# Font size in pixels (整数)
+#freetype-fontsize=0
+
+# Relative font size (整数)
+#freetype-rel-fontsize=0
+
+# Text opacity (整数)
+#freetype-opacity=255
+
+# Text default color (整数)
+#freetype-color=16777215
+
+# Force bold (布尔)
+#freetype-bold=0
+
+# Background opacity (整数)
+#freetype-background-opacity=0
+
+# Background color (整数)
+#freetype-background-color=0
+
+# Outline opacity (整数)
+#freetype-outline-opacity=255
+
+# Outline color (整数)
+#freetype-outline-color=0
+
+# Outline thickness (整数)
+#freetype-outline-thickness=4
+
+# Shadow opacity (整数)
+#freetype-shadow-opacity=128
+
+# Shadow color (整数)
+#freetype-shadow-color=0
+
+# Shadow angle (浮点)
+#freetype-shadow-angle=-45.000000
+
+# Shadow distance (浮点)
+#freetype-shadow-distance=0.060000
+
+# Use YUVP renderer (布尔)
+#freetype-yuvp=0
+
+# Text direction (整数)
+#freetype-text-direction=0
+
+[stream_out_transcode] # Transcode stream output
+
+# Video encoder (字符串)
+#sout-transcode-venc=
+
+# Destination video codec (字符串)
+#sout-transcode-vcodec=
+
+# Video bitrate (整数)
+#sout-transcode-vb=0
+
+# Video scaling (浮点)
+#sout-transcode-scale=0.000000
+
+# Video frame-rate (字符串)
+#sout-transcode-fps=
+
+# Deinterlace video (布尔)
+#sout-transcode-deinterlace=0
+
+# Deinterlace module (字符串)
+#sout-transcode-deinterlace-module=deinterlace
+
+# Video width (整数)
+#sout-transcode-width=0
+
+# Video height (整数)
+#sout-transcode-height=0
+
+# Maximum video width (整数)
+#sout-transcode-maxwidth=0
+
+# Maximum video height (整数)
+#sout-transcode-maxheight=0
+
+# Video filter (字符串)
+#sout-transcode-vfilter=
+
+# Audio encoder (字符串)
+#sout-transcode-aenc=
+
+# Destination audio codec (字符串)
+#sout-transcode-acodec=
+
+# Audio bitrate (整数)
+#sout-transcode-ab=96
+
+# Audio language (字符串)
+#sout-transcode-alang=
+
+# Audio channels (整数)
+#sout-transcode-channels=0
+
+# Audio sample rate (整数)
+#sout-transcode-samplerate=0
+
+# Audio filter (字符串)
+#sout-transcode-afilter=
+
+# Subtitle encoder (字符串)
+#sout-transcode-senc=
+
+# Destination subtitle codec (字符串)
+#sout-transcode-scodec=
+
+# Destination subtitle codec (布尔)
+#sout-transcode-soverlay=0
+
+# Overlays (字符串)
+#sout-transcode-sfilter=
+
+# Number of threads (整数)
+#sout-transcode-threads=0
+
+# Picture pool size (整数)
+#sout-transcode-pool-size=10
+
+# High priority (布尔)
+#sout-transcode-high-priority=0
+
+[stats] # Writes statistic info about stream
+
+# Output file (字符串)
+#sout-stats-output=
+
+# Prefix to show on output line (字符串)
+#sout-stats-prefix=stats
+
+[stream_out_standard] # Standard stream output
+
+# Output access method (字符串)
+#sout-standard-access=
+
+# Output muxer (字符串)
+#sout-standard-mux=
+
+# Output destination (字符串)
+#sout-standard-dst=
+
+# Address to bind to (helper setting for dst) (字符串)
+#sout-standard-bind=
+
+# Filename for stream (helper setting for dst) (字符串)
+#sout-standard-path=
+
+# SAP announcing (布尔)
+#sout-standard-sap=0
+
+# Session name (字符串)
+#sout-standard-name=
+
+# Session description (字符串)
+#sout-standard-description=
+
+# Session URL (字符串)
+#sout-standard-url=
+
+# Session email (字符串)
+#sout-standard-email=
+
+[smem] # Stream output to memory buffer
+
+# Time Synchronized output (布尔)
+#sout-smem-time-sync=1
+
+[setid] # Change the id of an elementary stream
+
+# Elementary Stream ID (整数)
+#sout-setid-id=0
+
+# New ES ID (整数)
+#sout-setid-new-id=0
+
+# Elementary Stream ID (整数)
+#sout-setlang-id=0
+
+# Language (字符串)
+#sout-setlang-lang=eng
+
+[stream_out_rtp] # RTP stream output
+
+# Destination (字符串)
+#sout-rtp-dst=
+
+# SDP (字符串)
+#sout-rtp-sdp=
+
+# Muxer (字符串)
+#sout-rtp-mux=
+
+# SAP announcing (布尔)
+#sout-rtp-sap=0
+
+# Session name (字符串)
+#sout-rtp-name=
+
+# Session category (字符串)
+#sout-rtp-cat=
+
+# Session description (字符串)
+#sout-rtp-description=
+
+# Session URL (字符串)
+#sout-rtp-url=
+
+# Session email (字符串)
+#sout-rtp-email=
+
+# Transport protocol (字符串)
+#sout-rtp-proto=udp
+
+# Port (整数)
+#sout-rtp-port=5004
+
+# Audio port (整数)
+#sout-rtp-port-audio=0
+
+# Video port (整数)
+#sout-rtp-port-video=0
+
+# Hop limit (TTL) (整数)
+#sout-rtp-ttl=-1
+
+# RTP/RTCP multiplexing (布尔)
+#sout-rtp-rtcp-mux=0
+
+# Caching value (ms) (整数)
+#sout-rtp-caching=300
+
+# SRTP key (hexadecimal) (字符串)
+#sout-rtp-key=
+
+# SRTP salt (hexadecimal) (字符串)
+#sout-rtp-salt=
+
+# MP4A LATM (布尔)
+#sout-rtp-mp4a-latm=0
+
+# RTSP session timeout (s) (整数)
+#rtsp-timeout=60
+
+# Username (字符串)
+#sout-rtsp-user=
+
+# Password (字符串)
+#sout-rtsp-pwd=
+
+[record] # Record stream output
+
+# Destination prefix (字符串)
+#sout-record-dst-prefix=
+
+[mosaic_bridge] # Mosaic bridge stream output
+
+# ID (字符串)
+#sout-mosaic-bridge-id=Id
+
+# Video width (整数)
+#sout-mosaic-bridge-width=0
+
+# Video height (整数)
+#sout-mosaic-bridge-height=0
+
+# Sample aspect ratio (字符串)
+#sout-mosaic-bridge-sar=1:1
+
+# Image chroma (字符串)
+#sout-mosaic-bridge-chroma=
+
+# Video filter (字符串)
+#sout-mosaic-bridge-vfilter=
+
+# Transparency (整数)
+#sout-mosaic-bridge-alpha=255
+
+# X offset (整数)
+#sout-mosaic-bridge-x=-1
+
+# Y offset (整数)
+#sout-mosaic-bridge-y=-1
+
+[es] # Elementary stream output
+
+# Output access method (字符串)
+#sout-es-access=
+
+# Output muxer (字符串)
+#sout-es-mux=
+
+# Output URL (字符串)
+#sout-es-dst=
+
+# Audio output access method (字符串)
+#sout-es-access-audio=
+
+# Audio output muxer (字符串)
+#sout-es-mux-audio=
+
+# Audio output URL (字符串)
+#sout-es-dst-audio=
+
+# Video output access method (字符串)
+#sout-es-access-video=
+
+# Video output muxer (字符串)
+#sout-es-mux-video=
+
+# Video output URL (字符串)
+#sout-es-dst-video=
+
+[display] # Display stream output
+
+# Enable audio (布尔)
+#sout-display-audio=1
+
+# Enable video (布尔)
+#sout-display-video=1
+
+# Delay (ms) (整数)
+#sout-display-delay=100
+
+[delay] # Delay a stream
+
+# Elementary Stream ID (整数)
+#sout-delay-id=0
+
+# Delay of the ES (ms) (整数)
+#sout-delay-delay=0
+
+[stream_out_chromecast] # Chromecast stream output
+
+# ? (字符串)
+#sout-chromecast-ip=
+
+# ? (整数)
+#sout-chromecast-port=8009
+
+# ? (布尔)
+#sout-chromecast-video=1
+
+# HTTP port (整数)
+#sout-chromecast-http-port=8010
+
+# Performance warning (整数)
+#sout-chromecast-show-perf-warning=1
+
+# Enable Audio passthrough (布尔)
+#sout-chromecast-audio-passthrough=0
+
+# Conversion quality (整数)
+#sout-chromecast-conversion-quality=1
+
+[stream_out_chromaprint] # Chromaprint stream output
+
+# Duration of the fingerprinting (整数)
+#duration=90
+
+[bridge] # Bridge stream output
+
+# ID (整数)
+#sout-bridge-out-id=0
+
+# Destination bridge-in name (字符串)
+#sout-bridge-out-in-name=default
+
+# Delay (整数)
+#sout-bridge-in-delay=0
+
+# ID Offset (整数)
+#sout-bridge-in-id-offset=8192
+
+# Name of current instance (字符串)
+#sout-bridge-in-name=default
+
+# Fallback to placeholder stream when out of data (布尔)
+#sout-bridge-in-placeholder=0
+
+# Placeholder delay (整数)
+#sout-bridge-in-placeholder-delay=200
+
+# Wait for I frame before toggling placeholder (布尔)
+#sout-bridge-in-placeholder-switch-on-iframe=1
+
+[prefetch] # Stream prefetch filter
+
+# Buffer size (整数)
+#prefetch-buffer-size=16384
+
+# Read size (整数)
+#prefetch-read-size=16777216
+
+# Seek threshold (整数)
+#prefetch-seek-threshold=16384
+
+[subsdelay] # Subtitle delay
+
+# Delay calculation mode (整数)
+#subsdelay-mode=1
+
+# Calculation factor (浮点)
+#subsdelay-factor=2.000000
+
+# Maximum overlapping subtitles (整数)
+#subsdelay-overlap=3
+
+# Minimum alpha value (整数)
+#subsdelay-min-alpha=70
+
+# Interval between two disappearances (整数)
+#subsdelay-min-stops=1000
+
+# Interval between appearance and disappearance (整数)
+#subsdelay-min-start-stop=1000
+
+# Interval between disappearance and appearance (整数)
+#subsdelay-min-stop-start=1000
+
+[rss] # RSS and Atom feed display
+
+# Feed URLs (字符串)
+#rss-urls=
+
+# X offset (整数)
+#rss-x=0
+
+# Y offset (整数)
+#rss-y=0
+
+# Text position (整数)
+#rss-position=-1
+
+# Opacity (整数)
+#rss-opacity=255
+
+# Color (整数)
+#rss-color=16777215
+
+# Font size, pixels (整数)
+#rss-size=0
+
+# Speed of feeds (整数)
+#rss-speed=100000
+
+# Max length (整数)
+#rss-length=60
+
+# Refresh time (整数)
+#rss-ttl=1800
+
+# Feed images (布尔)
+#rss-images=1
+
+# Title display mode (整数)
+#rss-title=-1
+
+[remoteosd] # Remote-OSD over VNC
+
+# VNC Host (字符串)
+#rmtosd-host=myvdr
+
+# VNC Port (整数)
+#rmtosd-port=20001
+
+# VNC Password (字符串)
+#rmtosd-password=
+
+# VNC poll interval (整数)
+#rmtosd-update=1000
+
+# VNC polling (布尔)
+#rmtosd-vnc-polling=0
+
+# Mouse events (布尔)
+#rmtosd-mouse-events=0
+
+# Key events (布尔)
+#rmtosd-key-events=0
+
+# Alpha transparency value (default 255) (整数)
+#rmtosd-alpha=255
+
+[mosaic] # Mosaic video sub source
+
+# Transparency (整数)
+#mosaic-alpha=255
+
+# Height (整数)
+#mosaic-height=100
+
+# Width (整数)
+#mosaic-width=100
+
+# Mosaic alignment (整数)
+#mosaic-align=5
+
+# Top left corner X coordinate (整数)
+#mosaic-xoffset=0
+
+# Top left corner Y coordinate (整数)
+#mosaic-yoffset=0
+
+# Border width (整数)
+#mosaic-borderw=0
+
+# Border height (整数)
+#mosaic-borderh=0
+
+# Positioning method (整数)
+#mosaic-position=0
+
+# Number of rows (整数)
+#mosaic-rows=2
+
+# Number of columns (整数)
+#mosaic-cols=2
+
+# Keep aspect ratio (布尔)
+#mosaic-keep-aspect-ratio=0
+
+# Keep original size (布尔)
+#mosaic-keep-picture=0
+
+# Elements order (字符串)
+#mosaic-order=
+
+# Offsets in order (字符串)
+#mosaic-offsets=
+
+# Delay (整数)
+#mosaic-delay=0
+
+[marq] # Marquee display
+
+# Text (字符串)
+#marq-marquee=VLC
+
+# Text file (字符串)
+#marq-file=
+
+# X offset (整数)
+#marq-x=0
+
+# Y offset (整数)
+#marq-y=0
+
+# Marquee position (整数)
+#marq-position=-1
+
+# Opacity (整数)
+#marq-opacity=255
+
+# Color (整数)
+#marq-color=16777215
+
+# Font size, pixels (整数)
+#marq-size=0
+
+# Timeout (整数)
+#marq-timeout=0
+
+# Refresh period in ms (整数)
+#marq-refresh=1000
+
+[logo] # Logo sub source
+
+# Logo filenames (字符串)
+#logo-file=
+
+# X coordinate (整数)
+#logo-x=-1
+
+# Y coordinate (整数)
+#logo-y=-1
+
+# Logo individual image time in ms (整数)
+#logo-delay=1000
+
+# Logo animation # of loops (整数)
+#logo-repeat=-1
+
+# Opacity of the logo (整数)
+#logo-opacity=255
+
+# Logo position (整数)
+#logo-position=-1
+
+[audiobargraph_v] # Audio Bar Graph Video sub source
+
+# X coordinate (整数)
+#audiobargraph_v-x=0
+
+# Y coordinate (整数)
+#audiobargraph_v-y=0
+
+# Transparency of the bargraph (整数)
+#audiobargraph_v-transparency=255
+
+# Bargraph position (整数)
+#audiobargraph_v-position=-1
+
+# Bar width in pixel (整数)
+#audiobargraph_v-barWidth=10
+
+# Bar Height in pixel (整数)
+#audiobargraph_v-barHeight=400
+
+[upnp] # Universal Plug'n'Play
+
+# SAT>IP channel list (字符串)
+#satip-channelist=auto
+
+# Custom SAT>IP channel list URL (字符串)
+#satip-channellist-url=
+
+[sap] # Network streams (SAP)
+
+# SAP multicast address (字符串)
+#sap-addr=
+
+# SAP timeout (seconds) (整数)
+#sap-timeout=1800
+
+# Try to parse the announce (布尔)
+#sap-parse=1
+
+# SAP Strict mode (布尔)
+#sap-strict=0
+
+[podcast] # Podcasts
+
+# Podcast URLs list (字符串)
+#podcast-urls=
+
+[mpegvideo] # MPEG-I/II video packetizer
+
+# Sync on Intra Frame (布尔)
+#packetizer-mpegvideo-sync-iframe=0
+
+[mux_ts] # TS muxer (libdvbpsi)
+
+# Digital TV Standard (字符串)
+#sout-ts-standard=dvb
+
+# Video PID (整数)
+#sout-ts-pid-video=100
+
+# Audio PID (整数)
+#sout-ts-pid-audio=200
+
+# SPU PID (整数)
+#sout-ts-pid-spu=300
+
+# PMT PID (整数)
+#sout-ts-pid-pmt=32
+
+# TS ID (整数)
+#sout-ts-tsid=0
+
+# NET ID (整数)
+#sout-ts-netid=0
+
+# PMT Program numbers (字符串)
+#sout-ts-program-pmt=
+
+# Set PID to ID of ES (布尔)
+#sout-ts-es-id-pid=0
+
+# Mux PMT (requires --sout-ts-es-id-pid) (字符串)
+#sout-ts-muxpmt=
+
+# SDT Descriptors (requires --sout-ts-es-id-pid) (字符串)
+#sout-ts-sdtdesc=
+
+# Data alignment (布尔)
+#sout-ts-alignment=1
+
+# Shaping delay (ms) (整数)
+#sout-ts-shaping=200
+
+# Use keyframes (布尔)
+#sout-ts-use-key-frames=0
+
+# PCR interval (ms) (整数)
+#sout-ts-pcr=70
+
+# Minimum B (deprecated) (整数)
+#sout-ts-bmin=0
+
+# Maximum B (deprecated) (整数)
+#sout-ts-bmax=0
+
+# DTS delay (ms) (整数)
+#sout-ts-dts-delay=400
+
+# Crypt audio (布尔)
+#sout-ts-crypt-audio=1
+
+# Crypt video (布尔)
+#sout-ts-crypt-video=1
+
+# CSA Key (字符串)
+#sout-ts-csa-ck=
+
+# Second CSA Key (字符串)
+#sout-ts-csa2-ck=
+
+# CSA Key in use (字符串)
+#sout-ts-csa-use=1
+
+# Packet size in bytes to encrypt (整数)
+#sout-ts-csa-pkt=188
+
+[ps] # PS muxer
+
+# DTS delay (ms) (整数)
+#sout-ps-dts-delay=200
+
+# PES maximum size (整数)
+#sout-ps-pes-max-size=65500
+
+[mux_ogg] # Ogg/OGM muxer
+
+# Index interval (整数)
+#sout-ogg-indexintvl=1000
+
+# Index size ratio (浮点)
+#sout-ogg-indexratio=1.000000
+
+[mp4] # MP4/MOV muxer
+
+# Create "Fast Start" files (布尔)
+#sout-mp4-faststart=1
+
+[avi] # AVI muxer
+
+# Artist (字符串)
+#sout-avi-artist=
+
+# Date (字符串)
+#sout-avi-date=
+
+# Genre (字符串)
+#sout-avi-genre=
+
+# Copyright (字符串)
+#sout-avi-copyright=
+
+# Comment (字符串)
+#sout-avi-comment=
+
+# Name (字符串)
+#sout-avi-name=
+
+# Subject (字符串)
+#sout-avi-subject=
+
+# Encoder (字符串)
+#sout-avi-encoder=VLC Media Player - 3.0.11 Vetinari
+
+# Keywords (字符串)
+#sout-avi-keywords=
+
+[asf] # ASF muxer
+
+# Title (字符串)
+#sout-asf-title=
+
+# Author (字符串)
+#sout-asf-author=
+
+# Copyright (字符串)
+#sout-asf-copyright=
+
+# Comment (字符串)
+#sout-asf-comment=
+
+# Rating (字符串)
+#sout-asf-rating=
+
+# Packet Size (整数)
+#sout-asf-packet-size=4096
+
+# Bitrate override (整数)
+#sout-asf-bitrate-override=0
+
+[rtsp] # Legacy RTSP VoD server
+
+# MUX for RAW RTSP transport (字符串)
+#rtsp-raw-mux=ts
+
+# Maximum number of connections (整数)
+#rtsp-throttle-users=0
+
+# Sets the timeout option in the RTSP session string (整数)
+#rtsp-session-timeout=5
+
+[logger] # File logging
+
+[gnutls] # GNU TLS transport layer security
+
+# Use system trust database (布尔)
+#gnutls-system-trust=1
+
+# Trust directory (字符串)
+#gnutls-dir-trust=
+
+# TLS cipher priorities (字符串)
+#gnutls-priorities=NORMAL
+
+[audioscrobbler] # Submission of played songs to last.fm
+
+# Username (字符串)
+#lastfm-username=
+
+# Password (字符串)
+#lastfm-password=
+
+# Scrobbler URL (字符串)
+#scrobbler-url=post.audioscrobbler.com
+
+[folder] # Folder meta data
+
+# Album art filename (字符串)
+#album-art-filename=
+
+[lua] # Lua interpreter
+
+# Lua interface (字符串)
+#lua-intf=dummy
+
+# Lua interface configuration (字符串)
+#lua-config=
+
+# Password (字符串)
+#http-password=
+
+# Source directory (字符串)
+#http-src=
+
+# Directory index (布尔)
+#http-index=0
+
+# TCP command input (字符串)
+#rc-host=
+
+# CLI input (字符串)
+#cli-host=
+
+# Host (字符串)
+#telnet-host=localhost
+
+# Port (整数)
+#telnet-port=4212
+
+# Password (字符串)
+#telnet-password=
+
+[file] # File logger
+
+# Log to file (布尔)
+#file-logging=0
+
+# Log filename (字符串)
+#logfile=
+
+# Log format (字符串)
+#logmode=text
+
+# Verbosity (整数)
+#log-verbose=-1
+
+[console] # Console logger
+
+[file] # Secrets are stored on a file without any encryption
+
+# ? (字符串)
+#keystore-file=
+
+[skins2] # Skinnable Interface
+
+# Skin to use (字符串)
+#skins2-last=
+
+# Config of last used skin (字符串)
+#skins2-config=
+
+# Systray icon (布尔)
+#skins2-systray=1
+
+# Show VLC on the taskbar (布尔)
+#skins2-taskbar=1
+
+# Enable transparency effects (布尔)
+#skins2-transparency=0
+
+# Use a skinned playlist (布尔)
+#skinned-playlist=1
+
+# Display video in a skinned window if any (布尔)
+#skinned-video=1
+
+[qt] # Qt interface
+
+# Start in minimal view (without menus) (布尔)
+#qt-minimal-view=0
+
+# Systray icon (布尔)
+#qt-system-tray=1
+
+# Show notification popup on track change (整数)
+#qt-notification=1
+
+# Start VLC with only a systray icon (布尔)
+#qt-start-minimized=0
+
+# Pause the video playback when minimized (布尔)
+#qt-pause-minimized=0
+
+# Windows opacity between 0.1 and 1 (浮点)
+#qt-opacity=1.000000
+
+# Fullscreen controller opacity between 0.1 and 1 (浮点)
+#qt-fs-opacity=0.800000
+
+# Resize interface to the native video size (布尔)
+#qt-video-autoresize=1
+
+# Show playing item name in window title (布尔)
+#qt-name-in-title=1
+
+# Show a controller in fullscreen mode (布尔)
+#qt-fs-controller=1
+
+# Save the recently played items in the menu (布尔)
+#qt-recentplay=1
+
+# List of words separated by | to filter (字符串)
+#qt-recentplay-filter=
+
+# Continue playback? (整数)
+#qt-continue=1
+
+# Activate the updates availability notification (布尔)
+#qt-updates-notif=1
+
+# Number of days between two update checks (整数)
+#qt-updates-days=3
+
+# Ignore keyboard volume buttons. (布尔)
+#qt-disable-volume-keys=1
+
+# Embed the file browser in open dialog (布尔)
+#qt-embedded-open=0
+
+# Show advanced preferences over simple ones (布尔)
+#qt-advanced-pref=0
+
+# Show unimportant error and warnings dialogs (布尔)
+#qt-error-dialogs=1
+
+# Define the colors of the volume slider (字符串)
+#qt-slider-colours=153;210;153;20;210;20;255;199;15;245;39;29
+
+# Ask for network policy at start (布尔)
+qt-privacy-ask=0
+
+# Define which screen fullscreen goes (整数)
+#qt-fullscreen-screennumber=-1
+
+# Load extensions on startup (布尔)
+#qt-autoload-extensions=1
+
+# Display background cone or art (布尔)
+#qt-bgcone=1
+
+# Expanding background cone or art (布尔)
+#qt-bgcone-expands=0
+
+# Allow automatic icon changes (布尔)
+#qt-icon-change=1
+
+# Maximum Volume displayed (整数)
+#qt-max-volume=125
+
+# Fullscreen controller mouse sensitivity (整数)
+#qt-fs-sensitivity=3
+
+# When to raise the interface (整数)
+#qt-auto-raise=1
+
+[vc1] # VC1 video demuxer
+
+# Frames per Second (浮点)
+#vc1-fps=25.000000
+
+[ts] # MPEG Transport Stream demuxer
+
+# Digital TV Standard (字符串)
+#ts-standard=auto
+
+# Extra PMT (字符串)
+#ts-extra-pmt=
+
+# Trust in-stream PCR (布尔)
+#ts-trust-pcr=1
+
+# Set id of ES to PID (布尔)
+#ts-es-id-pid=1
+
+# CSA Key (字符串)
+#ts-csa-ck=
+
+# Second CSA Key (字符串)
+#ts-csa2-ck=
+
+# Packet size in bytes to decrypt (整数)
+#ts-csa-pkt=188
+
+# Separate sub-streams (布尔)
+#ts-split-es=1
+
+# Seek based on percent not time (布尔)
+#ts-seek-percent=0
+
+# Check packets continuity counter (布尔)
+#ts-cc-check=1
+
+# Only create ES on program sending data (布尔)
+#ts-pmtfix-waitdata=1
+
+# Try to generate PAT/PMT if missing (布尔)
+#ts-patfix=1
+
+# Try to fix too early PCR (or late DTS) (布尔)
+#ts-pcr-offsetfix=1
+
+[subtitle] # Text subtitle parser
+
+# Frames per Second (浮点)
+#sub-fps=0.000000
+
+# Subtitle delay (整数)
+#sub-delay=0
+
+# Subtitle format (字符串)
+#sub-type=auto
+
+# Subtitle description (字符串)
+#sub-description=
+
+[rawvid] # Raw video demuxer
+
+# Frames per Second (字符串)
+#rawvid-fps=
+
+# Width (整数)
+#rawvid-width=0
+
+# Height (整数)
+#rawvid-height=0
+
+# Force chroma (Use carefully) (字符串)
+#rawvid-chroma=
+
+# Aspect ratio (字符串)
+#rawvid-aspect-ratio=
+
+[rawdv] # DV (Digital Video) demuxer
+
+# Hurry up (布尔)
+#rawdv-hurry-up=0
+
+[rawaud] # Raw audio demuxer
+
+# Audio channels (整数)
+#rawaud-channels=2
+
+# Audio samplerate (Hz) (整数)
+#rawaud-samplerate=48000
+
+# FOURCC code of raw input format (字符串)
+#rawaud-fourcc=s16l
+
+# Forces the audio language (字符串)
+#rawaud-lang=eng
+
+[ps] # MPEG-PS demuxer
+
+# Trust MPEG timestamps (布尔)
+#ps-trust-timestamps=1
+
+[playlist] # Playlist
+
+# Skip ads (布尔)
+#playlist-skip-ads=1
+
+# Show shoutcast adult content (布尔)
+#shoutcast-show-adult=0
+
+[mp4] # MP4 stream demuxer
+
+# M4A audio only (布尔)
+#mp4-m4a-audioonly=0
+
+[mod] # MOD demuxer (libmodplug)
+
+# Noise reduction (布尔)
+#mod-noisereduction=1
+
+# Reverb (布尔)
+#mod-reverb=0
+
+# Reverberation level (整数)
+#mod-reverb-level=0
+
+# Reverberation delay (整数)
+#mod-reverb-delay=40
+
+# Mega bass (布尔)
+#mod-megabass=0
+
+# Mega bass level (整数)
+#mod-megabass-level=0
+
+# Mega bass cutoff (整数)
+#mod-megabass-range=10
+
+# Surround (布尔)
+#mod-surround=0
+
+# Surround level (整数)
+#mod-surround-level=0
+
+# Surround delay (ms) (整数)
+#mod-surround-delay=5
+
+[mkv] # Matroska stream demuxer
+
+# Respect ordered chapters (布尔)
+#mkv-use-ordered-chapters=1
+
+# Chapter codecs (布尔)
+#mkv-use-chapter-codec=1
+
+# Preload MKV files in the same directory (布尔)
+#mkv-preload-local-dir=1
+
+# Seek based on percent not time (布尔)
+#mkv-seek-percent=0
+
+# Dummy Elements (布尔)
+#mkv-use-dummy=0
+
+# Preload clusters (布尔)
+#mkv-preload-clusters=0
+
+[mjpeg] # M-JPEG camera demuxer
+
+# Frames per Second (浮点)
+#mjpeg-fps=0.000000
+
+[image] # Image demuxer
+
+# ES ID (整数)
+#image-id=-1
+
+# Group (整数)
+#image-group=0
+
+# Decode (布尔)
+#image-decode=1
+
+# Forced chroma (字符串)
+#image-chroma=
+
+# Duration in seconds (浮点)
+#image-duration=10.000000
+
+# Frame rate (字符串)
+#image-fps=10/1
+
+# Real-time (布尔)
+#image-realtime=0
+
+[h26x] # H264 video demuxer
+
+# Frames per Second (浮点)
+#h264-fps=0.000000
+
+# Frames per Second (浮点)
+#hevc-fps=0.000000
+
+[es] # MPEG-I/II/4 / A52 / DTS / MLP audio
+
+# Frames per Second (浮点)
+#es-fps=25.000000
+
+[diracsys] # Dirac video demuxer
+
+# Value to adjust dts by (整数)
+#dirac-dts-offset=0
+
+[demuxdump] # File dumper
+
+# Dump module (字符串)
+#demuxdump-access=file
+
+# Dump filename (字符串)
+#demuxdump-file=stream-demux.dump
+
+# Append to existing file (布尔)
+#demuxdump-append=0
+
+[avi] # AVI demuxer
+
+# Force interleaved method (布尔)
+#avi-interleaved=0
+
+# Force index creation (整数)
+#avi-index=0
+
+[adaptive] # Unified adaptive streaming for DASH/HLS
+
+# Adaptive Logic (字符串)
+#adaptive-logic=
+
+# Maximum device width (整数)
+#adaptive-maxwidth=0
+
+# Maximum device height (整数)
+#adaptive-maxheight=0
+
+# Fixed Bandwidth in KiB/s (整数)
+#adaptive-bw=250
+
+# Use regular HTTP modules (布尔)
+#adaptive-use-access=0
+
+# Live Playback delay (ms) (整数)
+#adaptive-livedelay=15000
+
+# Max buffering (ms) (整数)
+#adaptive-maxbuffer=30000
+
+# Low latency (整数)
+#adaptive-lowlatency=-1
+
+[d3d9_filters] # Direct3D9 adjust filter
+
+# Image contrast (0-2) (浮点)
+#contrast=1.000000
+
+# Image brightness (0-2) (浮点)
+#brightness=1.000000
+
+# Image hue (0-360) (浮点)
+#hue=0.000000
+
+# Image saturation (0-3) (浮点)
+#saturation=1.000000
+
+# Image gamma (0-10) (浮点)
+#gamma=1.000000
+
+# Brightness threshold (布尔)
+#brightness-threshold=0
+
+[d3d11_filters] # Direct3D11 adjust filter
+
+# Image contrast (0-2) (浮点)
+#contrast=1.000000
+
+# Image brightness (0-2) (浮点)
+#brightness=1.000000
+
+# Image hue (0-360) (浮点)
+#hue=0.000000
+
+# Image saturation (0-3) (浮点)
+#saturation=1.000000
+
+# Image gamma (0-10) (浮点)
+#gamma=1.000000
+
+# Brightness threshold (布尔)
+#brightness-threshold=0
+
+[oldrc] # Remote control interface
+
+# Show stream position (布尔)
+#rc-show-pos=0
+
+# Do not open a DOS command box interface (布尔)
+#rc-quiet=0
+
+# TCP command input (字符串)
+#rc-host=
+
+[ntservice] # Windows Service interface
+
+# Install Windows Service (布尔)
+#ntservice-install=0
+
+# Uninstall Windows Service (布尔)
+#ntservice-uninstall=0
+
+# Display name of the Service (字符串)
+#ntservice-name=VLC media player
+
+# Configuration options (字符串)
+#ntservice-options=
+
+# Extra interface modules (字符串)
+#ntservice-extraintf=
+
+[netsync] # Network synchronization
+
+# Network master clock (布尔)
+#netsync-master=0
+
+# Master server IP address (字符串)
+#netsync-master-ip=
+
+# UDP timeout (in ms) (整数)
+#netsync-timeout=500
+
+[gestures] # Mouse gestures control interface
+
+# Motion threshold (10-100) (整数)
+#gestures-threshold=30
+
+# Trigger button (字符串)
+#gestures-button=left
+
+[dummy] # Dummy interface
+
+# Do not open a DOS command box interface (布尔)
+#dummy-quiet=0
+
+[zvbi] # VBI and Teletext decoder
+
+# Teletext page (整数)
+#vbi-page=100
+
+# Opacity (布尔)
+#vbi-opaque=0
+
+# Teletext alignment (整数)
+#vbi-position=8
+
+# Teletext text subtitles (布尔)
+#vbi-text=0
+
+# Presentation Level (整数)
+#vbi-level=3
+
+[x264] # H.264/MPEG-4 Part 10/AVC encoder (x264)
+
+# Maximum GOP size (整数)
+#sout-x264-keyint=250
+
+# Minimum GOP size (整数)
+#sout-x264-min-keyint=25
+
+# Use recovery points to close GOPs (布尔)
+#sout-x264-opengop=0
+
+# Enable compatibility hacks for Blu-ray support (布尔)
+#sout-x264-bluray-compat=0
+
+# Extra I-frames aggressivity (整数)
+#sout-x264-scenecut=40
+
+# B-frames between I and P (整数)
+#sout-x264-bframes=3
+
+# Adaptive B-frame decision (整数)
+#sout-x264-b-adapt=1
+
+# Influence (bias) B-frames usage (整数)
+#sout-x264-b-bias=0
+
+# Keep some B-frames as references (字符串)
+#sout-x264-bpyramid=normal
+
+# CABAC (布尔)
+#sout-x264-cabac=1
+
+# Use fullrange instead of TV colorrange (布尔)
+#sout-x264-fullrange=0
+
+# Number of reference frames (整数)
+#sout-x264-ref=3
+
+# Skip loop filter (布尔)
+#sout-x264-nf=0
+
+# Loop filter AlphaC0 and Beta parameters alpha:beta (字符串)
+#sout-x264-deblock=0:0
+
+# Strength of psychovisual optimization, default is "1.0:0.0" (字符串)
+#sout-x264-psy-rd=1.0:0.0
+
+# Use Psy-optimizations (布尔)
+#sout-x264-psy=1
+
+# H.264 level (字符串)
+#sout-x264-level=0
+
+# H.264 profile (字符串)
+#sout-x264-profile=high
+
+# Interlaced mode (布尔)
+#sout-x264-interlaced=0
+
+# Frame packing (整数)
+#sout-x264-frame-packing=-1
+
+# Force number of slices per frame (整数)
+#sout-x264-slices=0
+
+# Limit the size of each slice in bytes (整数)
+#sout-x264-slice-max-size=0
+
+# Limit the size of each slice in macroblocks (整数)
+#sout-x264-slice-max-mbs=0
+
+# HRD-timing information (字符串)
+#sout-x264-hrd=none
+
+# Set QP (整数)
+#sout-x264-qp=-1
+
+# Quality-based VBR (整数)
+#sout-x264-crf=23
+
+# Min QP (整数)
+#sout-x264-qpmin=10
+
+# Max QP (整数)
+#sout-x264-qpmax=51
+
+# Max QP step (整数)
+#sout-x264-qpstep=4
+
+# Average bitrate tolerance (浮点)
+#sout-x264-ratetol=1.000000
+
+# Max local bitrate (整数)
+#sout-x264-vbv-maxrate=0
+
+# VBV buffer (整数)
+#sout-x264-vbv-bufsize=0
+
+# Initial VBV buffer occupancy (浮点)
+#sout-x264-vbv-init=0.900000
+
+# QP factor between I and P (浮点)
+#sout-x264-ipratio=1.400000
+
+# QP factor between P and B (浮点)
+#sout-x264-pbratio=1.300000
+
+# QP difference between chroma and luma (整数)
+#sout-x264-chroma-qp-offset=0
+
+# Multipass ratecontrol (整数)
+#sout-x264-pass=0
+
+# QP curve compression (浮点)
+#sout-x264-qcomp=0.600000
+
+# Reduce fluctuations in QP (浮点)
+#sout-x264-cplxblur=20.000000
+
+# Reduce fluctuations in QP (浮点)
+#sout-x264-qblur=0.500000
+
+# How AQ distributes bits (整数)
+#sout-x264-aq-mode=1
+
+# Strength of AQ (浮点)
+#sout-x264-aq-strength=1.000000
+
+# Partitions to consider (字符串)
+#sout-x264-partitions=normal
+
+# Direct MV prediction mode (字符串)
+#sout-x264-direct=spatial
+
+# Direct prediction size (整数)
+#sout-x264-direct-8x8=1
+
+# Weighted prediction for B-frames (布尔)
+#sout-x264-weightb=1
+
+# Weighted prediction for P-frames (整数)
+#sout-x264-weightp=2
+
+# Integer pixel motion estimation method (字符串)
+#sout-x264-me=hex
+
+# Maximum motion vector search range (整数)
+#sout-x264-merange=16
+
+# Maximum motion vector length (整数)
+#sout-x264-mvrange=-1
+
+# Minimum buffer space between threads (整数)
+#sout-x264-mvrange-thread=-1
+
+# Subpixel motion estimation and partition decision quality (整数)
+#sout-x264-subme=7
+
+# Decide references on a per partition basis (布尔)
+#sout-x264-mixed-refs=1
+
+# Chroma in motion estimation (布尔)
+#sout-x264-chroma-me=1
+
+# Adaptive spatial transform size (布尔)
+#sout-x264-8x8dct=1
+
+# Trellis RD quantization (整数)
+#sout-x264-trellis=1
+
+# Framecount to use on frametype lookahead (整数)
+#sout-x264-lookahead=40
+
+# Use Periodic Intra Refresh (布尔)
+#sout-x264-intra-refresh=0
+
+# Use mb-tree ratecontrol (布尔)
+#sout-x264-mbtree=1
+
+# Early SKIP detection on P-frames (布尔)
+#sout-x264-fast-pskip=1
+
+# Coefficient thresholding on P-frames (布尔)
+#sout-x264-dct-decimate=1
+
+# Noise reduction (整数)
+#sout-x264-nr=0
+
+# Inter luma quantization deadzone (整数)
+#sout-x264-deadzone-inter=21
+
+# Intra luma quantization deadzone (整数)
+#sout-x264-deadzone-intra=11
+
+# Non-deterministic optimizations when threaded (布尔)
+#sout-x264-non-deterministic=0
+
+# CPU optimizations (布尔)
+#sout-x264-asm=1
+
+# PSNR computation (布尔)
+#sout-x264-psnr=0
+
+# SSIM computation (布尔)
+#sout-x264-ssim=0
+
+# Quiet mode (布尔)
+#sout-x264-quiet=0
+
+# SPS and PPS id numbers (整数)
+#sout-x264-sps-id=0
+
+# Access unit delimiters (布尔)
+#sout-x264-aud=0
+
+# Statistics (布尔)
+#sout-x264-verbose=0
+
+# Filename for 2 pass stats file (字符串)
+#sout-x264-stats=x264_2pass.log
+
+# Default preset setting used (字符串)
+sout-x264-preset=ultrafast
+
+# Default tune setting used (字符串)
+sout-x264-tune=film
+
+# x264 advanced options (字符串)
+#sout-x264-options=
+
+[x26410b] # H.264/MPEG-4 Part 10/AVC encoder (x264 10-bit)
+
+# Maximum GOP size (整数)
+#sout-x26410b-keyint=250
+
+# Minimum GOP size (整数)
+#sout-x26410b-min-keyint=25
+
+# Use recovery points to close GOPs (布尔)
+#sout-x26410b-opengop=0
+
+# Enable compatibility hacks for Blu-ray support (布尔)
+#sout-x26410b-bluray-compat=0
+
+# Extra I-frames aggressivity (整数)
+#sout-x26410b-scenecut=40
+
+# B-frames between I and P (整数)
+#sout-x26410b-bframes=3
+
+# Adaptive B-frame decision (整数)
+#sout-x26410b-b-adapt=1
+
+# Influence (bias) B-frames usage (整数)
+#sout-x26410b-b-bias=0
+
+# Keep some B-frames as references (字符串)
+#sout-x26410b-bpyramid=normal
+
+# CABAC (布尔)
+#sout-x26410b-cabac=1
+
+# Use fullrange instead of TV colorrange (布尔)
+#sout-x26410b-fullrange=0
+
+# Number of reference frames (整数)
+#sout-x26410b-ref=3
+
+# Skip loop filter (布尔)
+#sout-x26410b-nf=0
+
+# Loop filter AlphaC0 and Beta parameters alpha:beta (字符串)
+#sout-x26410b-deblock=0:0
+
+# Strength of psychovisual optimization, default is "1.0:0.0" (字符串)
+#sout-x26410b-psy-rd=1.0:0.0
+
+# Use Psy-optimizations (布尔)
+#sout-x26410b-psy=1
+
+# H.264 level (字符串)
+#sout-x26410b-level=0
+
+# H.264 profile (字符串)
+#sout-x26410b-profile=high
+
+# Interlaced mode (布尔)
+#sout-x26410b-interlaced=0
+
+# Frame packing (整数)
+#sout-x26410b-frame-packing=-1
+
+# Force number of slices per frame (整数)
+#sout-x26410b-slices=0
+
+# Limit the size of each slice in bytes (整数)
+#sout-x26410b-slice-max-size=0
+
+# Limit the size of each slice in macroblocks (整数)
+#sout-x26410b-slice-max-mbs=0
+
+# HRD-timing information (字符串)
+#sout-x26410b-hrd=none
+
+# Set QP (整数)
+#sout-x26410b-qp=-1
+
+# Quality-based VBR (整数)
+#sout-x26410b-crf=23
+
+# Min QP (整数)
+#sout-x26410b-qpmin=10
+
+# Max QP (整数)
+#sout-x26410b-qpmax=51
+
+# Max QP step (整数)
+#sout-x26410b-qpstep=4
+
+# Average bitrate tolerance (浮点)
+#sout-x26410b-ratetol=1.000000
+
+# Max local bitrate (整数)
+#sout-x26410b-vbv-maxrate=0
+
+# VBV buffer (整数)
+#sout-x26410b-vbv-bufsize=0
+
+# Initial VBV buffer occupancy (浮点)
+#sout-x26410b-vbv-init=0.900000
+
+# QP factor between I and P (浮点)
+#sout-x26410b-ipratio=1.400000
+
+# QP factor between P and B (浮点)
+#sout-x26410b-pbratio=1.300000
+
+# QP difference between chroma and luma (整数)
+#sout-x26410b-chroma-qp-offset=0
+
+# Multipass ratecontrol (整数)
+#sout-x26410b-pass=0
+
+# QP curve compression (浮点)
+#sout-x26410b-qcomp=0.600000
+
+# Reduce fluctuations in QP (浮点)
+#sout-x26410b-cplxblur=20.000000
+
+# Reduce fluctuations in QP (浮点)
+#sout-x26410b-qblur=0.500000
+
+# How AQ distributes bits (整数)
+#sout-x26410b-aq-mode=1
+
+# Strength of AQ (浮点)
+#sout-x26410b-aq-strength=1.000000
+
+# Partitions to consider (字符串)
+#sout-x26410b-partitions=normal
+
+# Direct MV prediction mode (字符串)
+#sout-x26410b-direct=spatial
+
+# Direct prediction size (整数)
+#sout-x26410b-direct-8x8=1
+
+# Weighted prediction for B-frames (布尔)
+#sout-x26410b-weightb=1
+
+# Weighted prediction for P-frames (整数)
+#sout-x26410b-weightp=2
+
+# Integer pixel motion estimation method (字符串)
+#sout-x26410b-me=hex
+
+# Maximum motion vector search range (整数)
+#sout-x26410b-merange=16
+
+# Maximum motion vector length (整数)
+#sout-x26410b-mvrange=-1
+
+# Minimum buffer space between threads (整数)
+#sout-x26410b-mvrange-thread=-1
+
+# Subpixel motion estimation and partition decision quality (整数)
+#sout-x26410b-subme=7
+
+# Decide references on a per partition basis (布尔)
+#sout-x26410b-mixed-refs=1
+
+# Chroma in motion estimation (布尔)
+#sout-x26410b-chroma-me=1
+
+# Adaptive spatial transform size (布尔)
+#sout-x26410b-8x8dct=1
+
+# Trellis RD quantization (整数)
+#sout-x26410b-trellis=1
+
+# Framecount to use on frametype lookahead (整数)
+#sout-x26410b-lookahead=40
+
+# Use Periodic Intra Refresh (布尔)
+#sout-x26410b-intra-refresh=0
+
+# Use mb-tree ratecontrol (布尔)
+#sout-x26410b-mbtree=1
+
+# Early SKIP detection on P-frames (布尔)
+#sout-x26410b-fast-pskip=1
+
+# Coefficient thresholding on P-frames (布尔)
+#sout-x26410b-dct-decimate=1
+
+# Noise reduction (整数)
+#sout-x26410b-nr=0
+
+# Inter luma quantization deadzone (整数)
+#sout-x26410b-deadzone-inter=21
+
+# Intra luma quantization deadzone (整数)
+#sout-x26410b-deadzone-intra=11
+
+# Non-deterministic optimizations when threaded (布尔)
+#sout-x26410b-non-deterministic=0
+
+# CPU optimizations (布尔)
+#sout-x26410b-asm=1
+
+# PSNR computation (布尔)
+#sout-x26410b-psnr=0
+
+# SSIM computation (布尔)
+#sout-x26410b-ssim=0
+
+# Quiet mode (布尔)
+#sout-x26410b-quiet=0
+
+# SPS and PPS id numbers (整数)
+#sout-x26410b-sps-id=0
+
+# Access unit delimiters (布尔)
+#sout-x26410b-aud=0
+
+# Statistics (布尔)
+#sout-x26410b-verbose=0
+
+# Filename for 2 pass stats file (字符串)
+#sout-x26410b-stats=x264_2pass.log
+
+# Default preset setting used (字符串)
+#sout-x26410b-preset=
+
+# Default tune setting used (字符串)
+#sout-x26410b-tune=
+
+# x264 advanced options (字符串)
+#sout-x26410b-options=
+
+[vpx] # WebM video decoder
+
+# Quality mode (整数)
+#sout-vpx-quality-mode=1000000
+
+[vorbis] # Vorbis audio decoder
+
+# Encoding quality (整数)
+#sout-vorbis-quality=0
+
+# Maximum encoding bitrate (整数)
+#sout-vorbis-max-bitrate=0
+
+# Minimum encoding bitrate (整数)
+#sout-vorbis-min-bitrate=0
+
+# CBR encoding (布尔)
+#sout-vorbis-cbr=0
+
+[twolame] # Libtwolame audio encoder
+
+# Encoding quality (浮点)
+#sout-twolame-quality=0.000000
+
+# Stereo mode (整数)
+#sout-twolame-mode=0
+
+# VBR mode (布尔)
+#sout-twolame-vbr=0
+
+# Psycho-acoustic model (整数)
+#sout-twolame-psy=3
+
+[ttml] # TTML subtitles decoder
+
+# Subtitle justification (整数)
+#ttml-align=0
+
+[theora] # Theora video decoder
+
+# Post processing quality (整数)
+#theora-postproc=-1
+
+# Encoding quality (整数)
+#sout-theora-quality=2
+
+[svcdsub] # Philips OGT (SVCD subtitle) decoder
+
+[subsusf] # USF subtitles decoder
+
+# Formatted Subtitles (布尔)
+#subsdec-formatted=1
+
+[subsdec] # Text subtitle decoder
+
+# Subtitle justification (整数)
+#subsdec-align=-1
+
+# Subtitle text encoding (字符串)
+#subsdec-encoding=
+
+# UTF-8 subtitle autodetection (布尔)
+#subsdec-autodetect-utf8=1
+
+[spudec] # DVD subtitles decoder
+
+# Disable DVD subtitle transparency (布尔)
+#dvdsub-transparency=0
+
+[speex] # Speex audio decoder
+
+# Mode (整数)
+#sout-speex-mode=0
+
+# Encoding complexity (整数)
+#sout-speex-complexity=3
+
+# CBR encoding (布尔)
+#sout-speex-cbr=0
+
+# Encoding quality (浮点)
+#sout-speex-quality=8.000000
+
+# Maximal bitrate (整数)
+#sout-speex-max-bitrate=0
+
+# Voice activity detection (布尔)
+#sout-speex-vad=1
+
+# Discontinuous Transmission (布尔)
+#sout-speex-dtx=0
+
+[schroedinger] # Dirac video decoder using libschroedinger
+
+# Rate control method (字符串)
+#sout-schro-rate-control=
+
+# Constant quality factor (浮点)
+#sout-schro-quality=-1.000000
+
+# Noise Threshold (浮点)
+#sout-schro-noise-threshold=-1.000000
+
+# CBR bitrate (kbps) (整数)
+#sout-schro-bitrate=-1
+
+# Maximum bitrate (kbps) (整数)
+#sout-schro-max-bitrate=-1
+
+# Minimum bitrate (kbps) (整数)
+#sout-schro-min-bitrate=-1
+
+# GOP structure (字符串)
+#sout-schro-gop-structure=
+
+# GOP length (整数)
+#sout-schro-gop-length=-1
+
+# Chroma format (字符串)
+#sout-schro-chroma-fmt=420
+
+# Picture coding mode (字符串)
+#sout-schro-coding-mode=auto
+
+# Motion Vector precision (字符串)
+#sout-schro-mv-precision=
+
+# Size of motion compensation blocks (字符串)
+#sout-schro-motion-block-size=
+
+# Overlap of motion compensation blocks (字符串)
+#sout-schro-motion-block-overlap=
+
+# Three component motion estimation (整数)
+#sout-schro-me-combined=-1
+
+# Enable hierarchical Motion Estimation (整数)
+#sout-schro-enable-hierarchical-me=-1
+
+# Number of levels of downsampling (整数)
+#sout-schro-downsample-levels=-1
+
+# Enable Global Motion Estimation (整数)
+#sout-schro-enable-global-me=-1
+
+# Enable Phase Correlation Estimation (整数)
+#sout-schro-enable-phasecorr-me=-1
+
+# Intra picture DWT filter (字符串)
+#sout-schro-intra-wavelet=
+
+# Inter picture DWT filter (字符串)
+#sout-schro-inter-wavelet=
+
+# Number of DWT iterations (整数)
+#sout-schro-transform-depth=-1
+
+# Enable multiple quantizers (整数)
+#sout-schro-enable-multiquant=-1
+
+# Size of code blocks in each subband (字符串)
+#sout-schro-codeblock-size=
+
+# Prefilter (字符串)
+#sout-schro-filtering=
+
+# Amount of prefiltering (浮点)
+#sout-schro-filter-value=-1.000000
+
+# Enable Scene Change Detection (整数)
+#sout-schro-enable-scd=-1
+
+# perceptual weighting method (字符串)
+#sout-schro-perceptual-weighting=
+
+# perceptual distance (浮点)
+#sout-schro-perceptual-distance=-1.000000
+
+# Disable arithmetic coding (整数)
+#sout-schro-enable-noarith=-1
+
+# Horizontal slices per frame (整数)
+#sout-schro-horiz-slices=-1
+
+# Vertical slices per frame (整数)
+#sout-schro-vert-slices=-1
+
+# Force Profile (字符串)
+#sout-schro-force-profile=
+
+[qsv] # Intel QuickSync Video encoder for MPEG4-Part10/MPEG2 (aka H.264/H.262)
+
+# Enable software mode (布尔)
+#sout-qsv-software=0
+
+# Codec Profile (字符串)
+#sout-qsv-h264-profile=unspecified
+
+# Codec Level (字符串)
+#sout-qsv-h264-level=unspecified
+
+# Codec Profile (字符串)
+#sout-qsv-mpeg2-profile=unspecified
+
+# Codec Level (字符串)
+#sout-qsv-mpeg2-level=unspecified
+
+# Group of Picture size (整数)
+#sout-qsv-gop-size=32
+
+# Group of Picture Reference Distance (整数)
+#sout-qsv-gop-refdist=4
+
+# IDR interval (整数)
+#sout-qsv-idr-interval=0
+
+# Target Usage (字符串)
+#sout-qsv-target-usage=quality
+
+# Rate Control Method (字符串)
+#sout-qsv-rc-method=vbr
+
+# Quantization parameter (整数)
+#sout-qsv-qp=0
+
+# Quantization parameter for I-frames (整数)
+#sout-qsv-qpi=0
+
+# Quantization parameter for P-frames (整数)
+#sout-qsv-qpp=0
+
+# Quantization parameter for B-frames (整数)
+#sout-qsv-qpb=0
+
+# Maximum Bitrate (整数)
+#sout-qsv-bitrate-max=0
+
+# Accuracy of RateControl (整数)
+#sout-qsv-accuracy=0
+
+# Convergence time of 'avbr' RateControl (整数)
+#sout-qsv-convergence=0
+
+# Number of slices per frame (整数)
+#sout-qsv-num-slice=0
+
+# Number of reference frames (整数)
+#sout-qsv-num-ref-frame=0
+
+# Number of parallel operations (整数)
+#sout-qsv-async-depth=4
+
+[kate] # Kate overlay decoder
+
+# Formatted Subtitles (布尔)
+#kate-formatted=1
+
+[jpeg] # JPEG image decoder
+
+# Quality level (整数)
+#sout-jpeg-quality=95
+
+[fluidsynth] # FluidSynth MIDI synthesizer
+
+# SoundFont file (字符串)
+#soundfont=
+
+# Chorus (布尔)
+#synth-chorus=1
+
+# Synthesis gain (浮点)
+#synth-gain=0.500000
+
+# Polyphony (整数)
+#synth-polyphony=256
+
+# Reverb (布尔)
+#synth-reverb=1
+
+# Sample rate (整数)
+#synth-sample-rate=44100
+
+[dvbsub] # DVB subtitles decoder
+
+# Subpicture position (整数)
+#dvbsub-position=8
+
+# Decoding X coordinate (整数)
+#dvbsub-x=-1
+
+# Decoding Y coordinate (整数)
+#dvbsub-y=-1
+
+# Encoding X coordinate (整数)
+#sout-dvbsub-x=-1
+
+# Encoding Y coordinate (整数)
+#sout-dvbsub-y=-1
+
+[ddummy] # Dummy decoder
+
+# Save raw codec data (布尔)
+#dummy-save-es=0
+
+[dca] # DTS Coherent Acoustics audio decoder
+
+# DTS dynamic range compression (布尔)
+#dts-dynrng=1
+
+[dav1d] # Dav1d video decoder
+
+# Frames Threads (整数)
+#dav1d-thread-frames=0
+
+# Tiles Threads (整数)
+#dav1d-thread-tiles=0
+
+[cc] # Closed Captions decoder
+
+# Opacity (布尔)
+#cc-opaque=1
+
+[avcodec] # FFmpeg audio/video decoder
+
+# Direct rendering (布尔)
+#avcodec-dr=1
+
+# Show corrupted frames (布尔)
+#avcodec-corrupted=1
+
+# Error resilience (整数)
+#avcodec-error-resilience=1
+
+# Workaround bugs (整数)
+#avcodec-workaround-bugs=1
+
+# Hurry up (布尔)
+#avcodec-hurry-up=1
+
+# Skip frame (default=0) (整数)
+#avcodec-skip-frame=0
+
+# Skip idct (default=0) (整数)
+#avcodec-skip-idct=0
+
+# Allow speed tricks (布尔)
+#avcodec-fast=0
+
+# Skip the loop filter for H.264 decoding (整数)
+#avcodec-skiploopfilter=0
+
+# Debug mask (整数)
+#avcodec-debug=0
+
+# Codec name (字符串)
+#avcodec-codec=
+
+# Hardware decoding (字符串)
+#avcodec-hw=any
+
+# Threads (整数)
+#avcodec-threads=0
+
+# Advanced options (字符串)
+#avcodec-options=
+
+# Codec name (字符串)
+#sout-avcodec-codec=
+
+# Quality level (字符串)
+#sout-avcodec-hq=rd
+
+# Ratio of key frames (整数)
+#sout-avcodec-keyint=0
+
+# Ratio of B frames (整数)
+#sout-avcodec-bframes=0
+
+# Hurry up (布尔)
+#sout-avcodec-hurry-up=0
+
+# Interlaced encoding (布尔)
+#sout-avcodec-interlace=0
+
+# Interlaced motion estimation (布尔)
+#sout-avcodec-interlace-me=1
+
+# Video bitrate tolerance (整数)
+#sout-avcodec-vt=0
+
+# Pre-motion estimation (布尔)
+#sout-avcodec-pre-me=0
+
+# Rate control buffer size (整数)
+#sout-avcodec-rc-buffer-size=0
+
+# Rate control buffer aggressiveness (浮点)
+#sout-avcodec-rc-buffer-aggressivity=1.000000
+
+# I quantization factor (浮点)
+#sout-avcodec-i-quant-factor=0.000000
+
+# Noise reduction (整数)
+#sout-avcodec-noise-reduction=0
+
+# MPEG4 quantization matrix (布尔)
+#sout-avcodec-mpeg4-matrix=0
+
+# Minimum video quantizer scale (整数)
+#sout-avcodec-qmin=0
+
+# Maximum video quantizer scale (整数)
+#sout-avcodec-qmax=0
+
+# Trellis quantization (布尔)
+#sout-avcodec-trellis=0
+
+# Fixed quantizer scale (浮点)
+#sout-avcodec-qscale=3.000000
+
+# Strict standard compliance (整数)
+#sout-avcodec-strict=0
+
+# Luminance masking (浮点)
+#sout-avcodec-lumi-masking=0.000000
+
+# Darkness masking (浮点)
+#sout-avcodec-dark-masking=0.000000
+
+# Motion masking (浮点)
+#sout-avcodec-p-masking=0.000000
+
+# Border masking (浮点)
+#sout-avcodec-border-masking=0.000000
+
+# Luminance elimination (整数)
+#sout-avcodec-luma-elim-threshold=0
+
+# Chrominance elimination (整数)
+#sout-avcodec-chroma-elim-threshold=0
+
+# Specify AAC audio profile to use (字符串)
+#sout-avcodec-aac-profile=low
+
+# Advanced options (字符串)
+#sout-avcodec-options=
+
+# Format name (字符串)
+#avformat-format=
+
+# Advanced options (字符串)
+#avformat-options=
+
+# Avformat mux (字符串)
+#sout-avformat-mux=
+
+# Advanced options (字符串)
+#sout-avformat-options=
+
+# Reset timestamps (布尔)
+#sout-avformat-reset-ts=0
+
+# Advanced options (字符串)
+#avio-options=
+
+# Advanced options (字符串)
+#sout-avio-options=
+
+[aribsub] # ARIB subtitles decoder
+
+# Ignore ruby (furigana) (布尔)
+#aribsub-ignore-ruby=0
+
+# Use Core Text renderer (布尔)
+#aribsub-use-coretext=0
+
+[a52] # ATSC A/52 (AC-3) audio decoder
+
+# A/52 dynamic range compression (布尔)
+#a52-dynrng=1
+
+[waveout] # WaveOut audio output
+
+# Select Audio Device (字符串)
+#waveout-audio-device=wavemapper
+
+# Audio volume (浮点)
+#waveout-volume=1.000000
+
+# Use float32 output (布尔)
+#waveout-float32=1
+
+# Audio output channels (整数)
+#waveout-audio-channels=9
+
+[mmdevice] # Windows Multimedia Device output
+
+# Output back-end (字符串)
+#mmdevice-backend=any
+
+# HDMI/SPDIF audio passthrough (整数)
+#mmdevice-passthrough=0
+
+# Output device (字符串)
+#mmdevice-audio-device=
+
+# Audio volume (浮点)
+#mmdevice-volume=1.000000
+
+[directsound] # DirectX audio output
+
+# Output device (字符串)
+#directx-audio-device=
+
+# Use float32 output (布尔)
+#directx-audio-float32=1
+
+# Speaker configuration (字符串)
+#directx-audio-speaker=Windows default
+
+# Audio volume (浮点)
+#directx-volume=1.000000
+
+[amem] # Audio memory output
+
+# Sample format (字符串)
+#amem-format=S16N
+
+# Sample rate (整数)
+#amem-rate=44100
+
+# Channels count (整数)
+#amem-channels=2
+
+[afile] # File audio output
+
+# Output file (字符串)
+#audiofile-file=audiofile.wav
+
+# Output format (字符串)
+#audiofile-format=s16
+
+# Number of output channels (整数)
+#audiofile-channels=0
+
+# Add WAVE header (布尔)
+#audiofile-wav=1
+
+[stereo_widen] # Simple stereo widening effect
+
+# Delay time (浮点)
+#stereowiden-delay=20.000000
+
+# Feedback gain (浮点)
+#stereowiden-feedback=0.300000
+
+# Crossfeed (浮点)
+#stereowiden-crossfeed=0.300000
+
+# Dry mix (浮点)
+#stereowiden-dry-mix=0.800000
+
+[speex_resampler] # Speex resampler
+
+# Resampling quality (整数)
+#speex-resampler-quality=4
+
+[spatializer] # Audio Spatializer
+
+# Room size (浮点)
+#spatializer-roomsize=0.850000
+
+# Room width (浮点)
+#spatializer-width=1.000000
+
+# Wet (浮点)
+#spatializer-wet=0.400000
+
+# Dry (浮点)
+#spatializer-dry=0.500000
+
+# Damp (浮点)
+#spatializer-damp=0.500000
+
+[spatialaudio] # Ambisonics renderer and binauralizer
+
+# Headphones mode (binaural) (布尔)
+#spatialaudio-headphones=0
+
+# HRTF file for the binauralization (字符串)
+#hrtf-file=
+
+[scaletempo] # Audio tempo scaler synched with rate
+
+# Stride Length (整数)
+#scaletempo-stride=30
+
+# Overlap Length (浮点)
+#scaletempo-overlap=0.200000
+
+# Search Length (整数)
+#scaletempo-search=14
+
+[scaletempo_pitch] # Pitch Shifter
+
+# Stride Length (整数)
+#scaletempo-stride=30
+
+# Overlap Length (浮点)
+#scaletempo-overlap=0.200000
+
+# Search Length (整数)
+#scaletempo-search=14
+
+# Pitch Shift (浮点)
+#pitch-shift=0.000000
+
+[samplerate] # Secret Rabbit Code (libsamplerate) resampler
+
+# Sample rate converter type (整数)
+#src-converter-type=2
+
+[remap] # Audio channel remapper
+
+# Left (整数)
+#aout-remap-channel-left=0
+
+# Center (整数)
+#aout-remap-channel-center=1
+
+# Right (整数)
+#aout-remap-channel-right=2
+
+# Rear left (整数)
+#aout-remap-channel-rearleft=3
+
+# Rear center (整数)
+#aout-remap-channel-rearcenter=4
+
+# Rear right (整数)
+#aout-remap-channel-rearright=5
+
+# Side left (整数)
+#aout-remap-channel-middleleft=6
+
+# Side right (整数)
+#aout-remap-channel-middleright=7
+
+# Low-frequency effects (整数)
+#aout-remap-channel-lfe=8
+
+# Normalize channels (布尔)
+#aout-remap-normalize=1
+
+[param_eq] # Parametric Equalizer
+
+# Low freq (Hz) (浮点)
+#param-eq-lowf=100.000000
+
+# Low freq gain (dB) (浮点)
+#param-eq-lowgain=0.000000
+
+# High freq (Hz) (浮点)
+#param-eq-highf=10000.000000
+
+# High freq gain (dB) (浮点)
+#param-eq-highgain=0.000000
+
+# Freq 1 (Hz) (浮点)
+#param-eq-f1=300.000000
+
+# Freq 1 gain (dB) (浮点)
+#param-eq-gain1=0.000000
+
+# Freq 1 Q (浮点)
+#param-eq-q1=3.000000
+
+# Freq 2 (Hz) (浮点)
+#param-eq-f2=1000.000000
+
+# Freq 2 gain (dB) (浮点)
+#param-eq-gain2=0.000000
+
+# Freq 2 Q (浮点)
+#param-eq-q2=3.000000
+
+# Freq 3 (Hz) (浮点)
+#param-eq-f3=3000.000000
+
+# Freq 3 gain (dB) (浮点)
+#param-eq-gain3=0.000000
+
+# Freq 3 Q (浮点)
+#param-eq-q3=3.000000
+
+[normvol] # Volume normalizer
+
+# Number of audio buffers (整数)
+#norm-buff-size=20
+
+# Maximal volume level (浮点)
+#norm-max-level=2.000000
+
+[mono] # Stereo to mono downmixer
+
+# Use downmix algorithm (布尔)
+#sout-mono-downmix=1
+
+# Select channel to keep (整数)
+#sout-mono-channel=-1
+
+[headphone] # Headphone virtual spatialization effect
+
+# Characteristic dimension (整数)
+#headphone-dim=10
+
+# Compensate delay (布尔)
+#headphone-compensate=0
+
+# No decoding of Dolby Surround (布尔)
+#headphone-dolby=0
+
+[gain] # Gain control filter
+
+# Gain multiplier (浮点)
+#gain-value=1.000000
+
+[equalizer] # Equalizer with 10 bands
+
+# Equalizer preset (字符串)
+#equalizer-preset=flat
+
+# Bands gain (字符串)
+#equalizer-bands=
+
+# Two pass (布尔)
+#equalizer-2pass=0
+
+# Use VLC frequency bands (布尔)
+#equalizer-vlcfreqs=1
+
+# Global gain (浮点)
+#equalizer-preamp=12.000000
+
+[compressor] # Dynamic range compressor
+
+# RMS/peak (浮点)
+#compressor-rms-peak=0.200000
+
+# Attack time (浮点)
+#compressor-attack=25.000000
+
+# Release time (浮点)
+#compressor-release=100.000000
+
+# Threshold level (浮点)
+#compressor-threshold=-11.000000
+
+# Ratio (浮点)
+#compressor-ratio=4.000000
+
+# Knee radius (浮点)
+#compressor-knee=5.000000
+
+# Makeup gain (浮点)
+#compressor-makeup-gain=7.000000
+
+[chorus_flanger] # Sound Delay
+
+# Delay time (浮点)
+#delay-time=20.000000
+
+# Sweep Depth (浮点)
+#sweep-depth=6.000000
+
+# Sweep Rate (浮点)
+#sweep-rate=6.000000
+
+# Feedback gain (浮点)
+#feedback-gain=0.500000
+
+# Wet mix (浮点)
+#wet-mix=0.400000
+
+# Dry Mix (浮点)
+#dry-mix=0.400000
+
+[audiobargraph_a] # Audio part of the BarGraph function
+
+# Defines if BarGraph information should be sent (整数)
+#audiobargraph_a-bargraph=1
+
+# Sends the barGraph information every n audio packets (整数)
+#audiobargraph_a-bargraph_repetition=4
+
+# Defines if silence alarm information should be sent (整数)
+#audiobargraph_a-silence=1
+
+# Time window to use in ms (整数)
+#audiobargraph_a-time_window=5000
+
+# Minimum Audio level to raise the alarm (浮点)
+#audiobargraph_a-alarm_threshold=0.020000
+
+# Time between two alarm messages in ms (整数)
+#audiobargraph_a-repetition_time=2000
+
+[udp] # UDP stream output
+
+# Caching value (ms) (整数)
+#sout-udp-caching=300
+
+# Group packets (整数)
+#sout-udp-group=1
+
+[access_output_srt] # SRT stream output
+
+# SRT chunk size (bytes) (整数)
+#chunk-size=1316
+
+# Return poll wait after timeout milliseconds (-1 = infinite) (整数)
+#poll-timeout=100
+
+# SRT latency (ms) (整数)
+#latency=125
+
+# Password for stream encryption (字符串)
+#passphrase=
+
+# Crypto key length in bytes (整数)
+#key-length=16
+
+[access_output_shout] # IceCAST output
+
+# Stream name (字符串)
+#sout-shout-name=VLC media player - Live stream
+
+# Stream description (字符串)
+#sout-shout-description=Live stream from VLC media player
+
+# Stream MP3 (布尔)
+#sout-shout-mp3=0
+
+# Genre description (字符串)
+#sout-shout-genre=Alternative
+
+# URL description (字符串)
+#sout-shout-url=http://www.videolan.org/vlc
+
+# Bitrate (字符串)
+#sout-shout-bitrate=
+
+# Samplerate (字符串)
+#sout-shout-samplerate=
+
+# Number of channels (字符串)
+#sout-shout-channels=
+
+# Ogg Vorbis Quality (字符串)
+#sout-shout-quality=
+
+# Stream public (布尔)
+#sout-shout-public=0
+
+[access_output_livehttp] # HTTP Live streaming output
+
+# Segment length (整数)
+#sout-livehttp-seglen=10
+
+# Number of segments (整数)
+#sout-livehttp-numsegs=0
+
+# Number of first segment (整数)
+#sout-livehttp-initial-segment-number=1
+
+# Split segments anywhere (布尔)
+#sout-livehttp-splitanywhere=0
+
+# Delete segments (布尔)
+#sout-livehttp-delsegs=1
+
+# Use muxers rate control mechanism (布尔)
+#sout-livehttp-ratecontrol=0
+
+# Allow cache (布尔)
+#sout-livehttp-caching=0
+
+# Use randomized IV for encryption (布尔)
+#sout-livehttp-generate-iv=0
+
+# Index file (字符串)
+#sout-livehttp-index=
+
+# Full URL to put in index file (字符串)
+#sout-livehttp-index-url=
+
+# AES key URI to place in playlist (字符串)
+#sout-livehttp-key-uri=
+
+# AES key file (字符串)
+#sout-livehttp-key-file=
+
+# File where vlc reads key-uri and keyfile-location (字符串)
+#sout-livehttp-key-loadfile=
+
+[http] # HTTP stream output
+
+# Username (字符串)
+#sout-http-user=
+
+# Password (字符串)
+#sout-http-pwd=
+
+# Mime (字符串)
+#sout-http-mime=
+
+# Metacube (布尔)
+#sout-http-metacube=0
+
+[file] # File stream output
+
+# Overwrite existing file (布尔)
+#sout-file-overwrite=1
+
+# Append to file (布尔)
+#sout-file-append=0
+
+# Format time and date (布尔)
+#sout-file-format=0
+
+[vnc] # VNC client access
+
+# Username (字符串)
+#rfb-user=
+
+# Password (字符串)
+#rfb-password=
+
+# X.509 Certificate Authority (字符串)
+#rfb-x509-ca=
+
+# X.509 Certificate Revocation List (字符串)
+#rfb-x509-crl=
+
+# X.509 Client certificate (字符串)
+#rfb-x509-client-cert=
+
+# X.509 Client private key (字符串)
+#rfb-x509-client-key=
+
+# Frame rate (浮点)
+#rfb-fps=5.000000
+
+# Frame buffer depth (字符串)
+#rfb-chroma=RV32
+
+# Compression level (整数)
+#rfb-compress-level=0
+
+# Image quality (整数)
+#rfb-quality-level=9
+
+[vdr] # VDR recordings
+
+# Chapter offset in ms (整数)
+#vdr-chapter-offset=0
+
+# Frame rate (浮点)
+#vdr-fps=25.000000
+
+[udp] # UDP input
+
+# UDP Source timeout (sec) (整数)
+#udp-timeout=-1
+
+[timecode] # Time code subpicture elementary stream generator
+
+# Frame rate (字符串)
+#timecode-fps=25/1
+
+[smb] # SMB input
+
+# Username (字符串)
+#smb-user=
+
+# Password (字符串)
+#smb-pwd=
+
+# SMB domain (字符串)
+#smb-domain=
+
+[shm] # Shared memory framebuffer
+
+# Frame rate (浮点)
+#shm-fps=10.000000
+
+# Frame buffer depth (整数)
+#shm-depth=0
+
+# Frame buffer width (整数)
+#shm-width=800
+
+# Frame buffer height (整数)
+#shm-height=480
+
+[sftp] # SFTP input
+
+# SFTP port (整数)
+#sftp-port=22
+
+# Username (字符串)
+#sftp-user=
+
+# Password (字符串)
+#sftp-pwd=
+
+[screen] # Screen Input
+
+# Frame rate (浮点)
+#screen-fps=1.000000
+
+# Region top row (整数)
+#screen-top=0
+
+# Region left column (整数)
+#screen-left=0
+
+# Capture region width (整数)
+#screen-width=0
+
+# Capture region height (整数)
+#screen-height=0
+
+# Follow the mouse (布尔)
+#screen-follow-mouse=0
+
+# Mouse pointer image (字符串)
+#screen-mouse-image=
+
+# Capture fragment size (整数)
+#screen-fragment-size=0
+
+[satip] # SAT>IP Receiver Plugin
+
+# Receive buffer (整数)
+#satip-buffer=4194304
+
+# Request multicast stream (布尔)
+#satip-multicast=0
+
+# Host (字符串)
+#satip-host=
+
+[rtp] # Real-Time Protocol (RTP) input
+
+# RTCP (local) port (整数)
+#rtcp-port=0
+
+# SRTP key (hexadecimal) (字符串)
+#srtp-key=
+
+# SRTP salt (hexadecimal) (字符串)
+#srtp-salt=
+
+# Maximum RTP sources (整数)
+#rtp-max-src=1
+
+# RTP source timeout (sec) (整数)
+#rtp-timeout=5
+
+# Maximum RTP sequence number dropout (整数)
+#rtp-max-dropout=3000
+
+# Maximum RTP sequence number misordering (整数)
+#rtp-max-misorder=100
+
+# RTP payload format assumed for dynamic payloads (字符串)
+#rtp-dynamic-pt=
+
+[nfs] # NFS input
+
+# Set NFS uid/guid automatically (布尔)
+#nfs-auto-guid=1
+
+[live555] # RTP/RTSP/SDP demuxer (using Live555)
+
+# Use RTP over RTSP (TCP) (布尔)
+rtsp-tcp=1
+
+# Client port (整数)
+#rtp-client-port=-1
+
+# Force multicast RTP via RTSP (布尔)
+#rtsp-mcast=0
+
+# Tunnel RTSP and RTP over HTTP (布尔)
+#rtsp-http=0
+
+# HTTP tunnel port (整数)
+#rtsp-http-port=80
+
+# Kasenna RTSP dialect (布尔)
+#rtsp-kasenna=0
+
+# WMServer RTSP dialect (布尔)
+#rtsp-wmserver=0
+
+# Username (字符串)
+#rtsp-user=
+
+# Password (字符串)
+#rtsp-pwd=
+
+# RTSP frame buffer size (整数)
+#rtsp-frame-buffer-size=250000
+
+[libbluray] # Blu-ray Disc support (libbluray)
+
+# Blu-ray menus (布尔)
+#bluray-menu=1
+
+# Region code (字符串)
+#bluray-region=B
+
+[http] # HTTP input
+
+# Auto re-connect (布尔)
+#http-reconnect=0
+
+[access] # HTTPS input
+
+# Cookies forwarding (布尔)
+#http-forward-cookies=1
+
+# User agent (字符串)
+#http-user-agent=
+
+[ftp] # FTP input
+
+# Username (字符串)
+#ftp-user=
+
+# Password (字符串)
+#ftp-pwd=
+
+# FTP account (字符串)
+#ftp-account=anonymous
+
+[filesystem] # File input
+
+# List special files (布尔)
+#list-special-files=0
+
+[dvdread] # DVDRead Input (no menu support)
+
+# DVD angle (整数)
+#dvdread-angle=1
+
+[dvdnav] # DVDnav Input
+
+# DVD angle (整数)
+#dvdnav-angle=1
+
+# Start directly in menu (布尔)
+#dvdnav-menu=1
+
+[dtv] # Digital Television and Radio
+
+# DVB adapter (整数)
+#dvb-adapter=-1
+
+# Network name (字符串)
+#dvb-network-name=
+
+# Network name to create (字符串)
+#dvb-create-name=
+
+# Frequency (Hz) (整数)
+#dvb-frequency=0
+
+# Spectrum inversion (整数)
+#dvb-inversion=-1
+
+# Bandwidth (MHz) (整数)
+#dvb-bandwidth=0
+
+# Transmission mode (整数)
+#dvb-transmission=0
+
+# Guard interval (字符串)
+#dvb-guard=
+
+# High-priority code rate (字符串)
+#dvb-code-rate-hp=
+
+# Low-priority code rate (字符串)
+#dvb-code-rate-lp=
+
+# Hierarchy mode (整数)
+#dvb-hierarchy=-1
+
+# DVB-T2 Physical Layer Pipe (整数)
+#dvb-plp-id=0
+
+# Layer A modulation (字符串)
+#dvb-a-modulation=
+
+# Layer A code rate (字符串)
+#dvb-a-fec=
+
+# Layer A segments count (整数)
+#dvb-a-count=0
+
+# Layer A time interleaving (整数)
+#dvb-a-interleaving=0
+
+# Layer B modulation (字符串)
+#dvb-b-modulation=
+
+# Layer B code rate (字符串)
+#dvb-b-fec=
+
+# Layer B segments count (整数)
+#dvb-b-count=0
+
+# Layer B time interleaving (整数)
+#dvb-b-interleaving=0
+
+# Layer C modulation (字符串)
+#dvb-c-modulation=
+
+# Layer C code rate (字符串)
+#dvb-c-fec=
+
+# Layer C segments count (整数)
+#dvb-c-count=0
+
+# Layer C time interleaving (整数)
+#dvb-c-interleaving=0
+
+# Modulation / Constellation (字符串)
+#dvb-modulation=
+
+# Symbol rate (bauds) (整数)
+#dvb-srate=0
+
+# FEC code rate (字符串)
+#dvb-fec=
+
+# Stream identifier (整数)
+#dvb-stream=0
+
+# Pilot (整数)
+#dvb-pilot=-1
+
+# Roll-off factor (整数)
+#dvb-rolloff=-1
+
+# Transport stream ID (整数)
+#dvb-ts-id=0
+
+# Polarization (Voltage) (字符串)
+#dvb-polarization=
+
+#  (整数)
+#dvb-voltage=13
+
+# Local oscillator low frequency (kHz) (整数)
+#dvb-lnb-low=0
+
+# Local oscillator high frequency (kHz) (整数)
+#dvb-lnb-high=0
+
+# Universal LNB switch frequency (kHz) (整数)
+#dvb-lnb-switch=11700000
+
+# Network identifier (整数)
+#dvb-network-id=0
+
+# Satellite azimuth (整数)
+#dvb-azimuth=0
+
+# Satellite elevation (整数)
+#dvb-elevation=0
+
+# Satellite longitude (整数)
+#dvb-longitude=0
+
+# Satellite range code (字符串)
+#dvb-range=
+
+# Major channel (整数)
+#dvb-major-channel=0
+
+# ATSC minor channel (整数)
+#dvb-minor-channel=0
+
+# Physical channel (整数)
+#dvb-physical-channel=0
+
+[dshow] # DirectShow input
+
+# Video device name (字符串)
+#dshow-vdev=
+
+# Audio device name (字符串)
+#dshow-adev=
+
+# Video size (字符串)
+#dshow-size=
+
+# Picture aspect-ratio n:m (字符串)
+#dshow-aspect-ratio=4:3
+
+# Video input chroma format (字符串)
+#dshow-chroma=
+
+# Video input frame rate (浮点)
+#dshow-fps=0.000000
+
+# Device properties (布尔)
+#dshow-config=0
+
+# Tuner properties (布尔)
+#dshow-tuner=0
+
+# Tuner TV Channel (整数)
+#dshow-tuner-channel=0
+
+# Tuner Frequency (整数)
+#dshow-tuner-frequency=0
+
+# Tuner country code (整数)
+#dshow-tuner-country=0
+
+# Video standard (整数)
+#dshow-tuner-standard=0
+
+# Tuner input type (整数)
+#dshow-tuner-input=0
+
+# Video input pin (整数)
+#dshow-video-input=-1
+
+# Video output pin (整数)
+#dshow-video-output=-1
+
+# Audio input pin (整数)
+#dshow-audio-input=-1
+
+# Audio output pin (整数)
+#dshow-audio-output=-1
+
+# AM Tuner mode (整数)
+#dshow-amtuner-mode=1
+
+# Number of audio channels (整数)
+#dshow-audio-channels=0
+
+# Audio sample rate (整数)
+#dshow-audio-samplerate=0
+
+# Audio bits per sample (整数)
+#dshow-audio-bitspersample=0
+
+[dcp] # Digital Cinema Package module
+
+# KDM file (字符串)
+#kdm=
+
+[cdda] # Audio CD input
+
+# Audio CD device (字符串)
+#cd-audio=D:
+
+# CDDB Server (字符串)
+#cddb-server=freedb.videolan.org
+
+# CDDB port (整数)
+#cddb-port=80
+
+[wasapi] # Windows Audio Session API input
+
+# Loopback mode (布尔)
+#wasapi-loopback=0
+
+[access_srt] # SRT input
+
+# SRT chunk size (bytes) (整数)
+#chunk-size=1316
+
+# Return poll wait after timeout milliseconds (-1 = infinite) (整数)
+#poll-timeout=-1
+
+# SRT latency (ms) (整数)
+#latency=125
+
+# Password for stream encryption (字符串)
+#passphrase=
+
+# Crypto key length in bytes (整数)
+#key-length=16
+
+[access_mms] # Microsoft Media Server (MMS) input
+
+# TCP/UDP timeout (ms) (整数)
+#mms-timeout=5000
+
+# Force selection of all streams (布尔)
+#mms-all=0
+
+# Maximum bitrate (整数)
+#mms-maxbitrate=0
+
+[imem] # Memory input
+
+# ID (整数)
+#imem-id=-1
+
+# Group (整数)
+#imem-group=0
+
+# Category (整数)
+#imem-cat=0
+
+# Codec (字符串)
+#imem-codec=
+
+# Language (字符串)
+#imem-language=
+
+# Sample rate (整数)
+#imem-samplerate=0
+
+# Channels count (整数)
+#imem-channels=0
+
+# Width (整数)
+#imem-width=0
+
+# Height (整数)
+#imem-height=0
+
+# Display aspect ratio (字符串)
+#imem-dar=
+
+# Frame rate (字符串)
+#imem-fps=
+
+# Size (整数)
+#imem-size=0
+
+[concat] # Concatenated inputs
+
+# Inputs list (字符串)
+#concat-list=
+
+[core] # core program
+
+# Enable audio (布尔)
+#audio=1
+
+# Audio gain (浮点)
+#gain=1.000000
+
+# Audio output volume step (浮点)
+#volume-step=12.800000
+
+# Remember the audio volume (布尔)
+#volume-save=1
+
+# Force S/PDIF support (布尔)
+#spdif=0
+
+# Force detection of Dolby Surround (整数)
+#force-dolby-surround=0
+
+# Stereo audio output mode (整数)
+#stereo-mode=0
+
+# Audio desynchronization compensation (整数)
+#audio-desync=0
+
+# Replay gain mode (字符串)
+#audio-replay-gain-mode=none
+
+# Replay preamp (浮点)
+#audio-replay-gain-preamp=0.000000
+
+# Default replay gain (浮点)
+#audio-replay-gain-default=-7.000000
+
+# Peak protection (布尔)
+#audio-replay-gain-peak-protection=1
+
+# Enable time stretching audio (布尔)
+#audio-time-stretch=1
+
+# Audio output module (字符串)
+#aout=
+
+# Media role (字符串)
+#role=video
+
+# Audio filters (字符串)
+#audio-filter=
+
+# Audio visualizations (字符串)
+#audio-visual=none
+
+# Audio resampler (字符串)
+#audio-resampler=
+
+# Enable video (布尔)
+#video=1
+
+# Grayscale video output (布尔)
+#grayscale=0
+
+# Fullscreen video output (布尔)
+#fullscreen=0
+
+# Embedded video (布尔)
+#embedded-video=1
+
+#  (布尔)
+#xlib=1
+
+# Drop late frames (布尔)
+#drop-late-frames=1
+
+# Skip frames (布尔)
+#skip-frames=1
+
+# Quiet synchro (布尔)
+#quiet-synchro=0
+
+# Key press events (布尔)
+#keyboard-events=1
+
+# Mouse events (布尔)
+#mouse-events=1
+
+# Always on top (布尔)
+#video-on-top=0
+
+# Enable wallpaper mode (布尔)
+#video-wallpaper=0
+
+# Disable screensaver (布尔)
+#disable-screensaver=1
+
+# Show media title on video (布尔)
+#video-title-show=1
+
+# Show video title for x milliseconds (整数)
+#video-title-timeout=5000
+
+# Position of video title (整数)
+#video-title-position=8
+
+# Hide cursor and fullscreen controller after x milliseconds (整数)
+#mouse-hide-timeout=1000
+
+# Video snapshot directory (or filename) (字符串)
+#snapshot-path=
+
+# Video snapshot file prefix (字符串)
+#snapshot-prefix=vlcsnap-
+
+# Video snapshot format (字符串)
+#snapshot-format=png
+
+# Display video snapshot preview (布尔)
+#snapshot-preview=1
+
+# Use sequential numbers instead of timestamps (布尔)
+#snapshot-sequential=0
+
+# Video snapshot width (整数)
+#snapshot-width=-1
+
+# Video snapshot height (整数)
+#snapshot-height=-1
+
+# Video width (整数)
+#width=-1
+
+# Video height (整数)
+#height=-1
+
+# Video X coordinate (整数)
+#video-x=0
+
+# Video Y coordinate (整数)
+#video-y=0
+
+# Video cropping (字符串)
+#crop=
+
+# Custom crop ratios list (字符串)
+#custom-crop-ratios=
+
+# Source aspect ratio (字符串)
+#aspect-ratio=
+
+# Video Auto Scaling (布尔)
+#autoscale=1
+
+# Monitor pixel aspect ratio (字符串)
+#monitor-par=
+
+# Custom aspect ratios list (字符串)
+#custom-aspect-ratios=
+
+# Fix HDTV height (布尔)
+#hdtv-fix=1
+
+# Window decorations (布尔)
+#video-deco=1
+
+# Video title (字符串)
+#video-title=
+
+# Video alignment (整数)
+#align=0
+
+# Zoom video (浮点)
+#zoom=1.000000
+
+# Deinterlace (整数)
+#deinterlace=-1
+
+# Deinterlace mode (字符串)
+#deinterlace-mode=auto
+
+# Video output module (字符串)
+#vout=
+
+# Video filter module (字符串)
+#video-filter=
+
+# Video splitter module (字符串)
+#video-splitter=
+
+# Enable sub-pictures (布尔)
+#spu=1
+
+# On Screen Display (布尔)
+#osd=1
+
+# Text rendering module (字符串)
+#text-renderer=
+
+# Use subtitle file (字符串)
+#sub-file=
+
+# Autodetect subtitle files (布尔)
+#sub-autodetect-file=1
+
+# Subtitle autodetection fuzziness (整数)
+#sub-autodetect-fuzzy=3
+
+# Subtitle autodetection paths (字符串)
+#sub-autodetect-path=.\subtitles, .\subs
+
+# Force subtitle position (整数)
+#sub-margin=0
+
+# Subpictures source module (字符串)
+#sub-source=
+
+# Subpictures filter module (字符串)
+#sub-filter=
+
+# Program (整数)
+#program=0
+
+# Programs (字符串)
+#programs=
+
+# Audio track (整数)
+#audio-track=-1
+
+# Subtitle track (整数)
+#sub-track=-1
+
+# Audio language (字符串)
+#audio-language=
+
+# Subtitle language (字符串)
+#sub-language=
+
+# Menu language (字符串)
+#menu-language=
+
+# Audio track ID (整数)
+#audio-track-id=-1
+
+# Subtitle track ID (整数)
+#sub-track-id=-1
+
+# Preferred Closed Captions decoder (整数)
+#captions=608
+
+# Preferred video resolution (整数)
+#preferred-resolution=-1
+
+# Input repetitions (整数)
+#input-repeat=0
+
+# Start time (浮点)
+#start-time=0.000000
+
+# Stop time (浮点)
+#stop-time=0.000000
+
+# Run time (浮点)
+#run-time=0.000000
+
+# Fast seek (布尔)
+#input-fast-seek=0
+
+# Playback speed (浮点)
+#rate=1.000000
+
+# Input list (字符串)
+#input-list=
+
+# Input slave (experimental) (字符串)
+#input-slave=
+
+# Bookmarks list for a stream (字符串)
+#bookmarks=
+
+# DVD device (字符串)
+#dvd=
+
+# VCD device (字符串)
+#vcd=D:
+
+# MTU of the network interface (整数)
+#mtu=1400
+
+# TCP connection timeout (整数)
+#ipv4-timeout=5000
+
+# HTTP server address (字符串)
+#http-host=
+
+# HTTP server port (整数)
+#http-port=8080
+
+# HTTPS server port (整数)
+#https-port=8443
+
+# RTSP server address (字符串)
+#rtsp-host=
+
+# RTSP server port (整数)
+#rtsp-port=554
+
+# HTTP/TLS server certificate (字符串)
+#http-cert=
+
+# HTTP/TLS server private key (字符串)
+#http-key=
+
+# HTTP proxy (字符串)
+#http-proxy=
+
+# HTTP proxy password (字符串)
+#http-proxy-pwd=
+
+# SOCKS server (字符串)
+#socks=
+
+# SOCKS user name (字符串)
+#socks-user=
+
+# SOCKS password (字符串)
+#socks-pwd=
+
+# Title metadata (字符串)
+#meta-title=
+
+# Author metadata (字符串)
+#meta-author=
+
+# Artist metadata (字符串)
+#meta-artist=
+
+# Genre metadata (字符串)
+#meta-genre=
+
+# Copyright metadata (字符串)
+#meta-copyright=
+
+# Description metadata (字符串)
+#meta-description=
+
+# Date metadata (字符串)
+#meta-date=
+
+# URL metadata (字符串)
+#meta-url=
+
+# File caching (ms) (整数)
+#file-caching=1000
+
+# Live capture caching (ms) (整数)
+#live-caching=300
+
+# Disc caching (ms) (整数)
+#disc-caching=300
+
+# Network caching (ms) (整数)
+#network-caching=1000
+
+# Clock reference average counter (整数)
+#cr-average=40
+
+# Clock synchronisation (整数)
+#clock-synchro=-1
+
+# Clock jitter (整数)
+#clock-jitter=5000
+
+# Network synchronisation (布尔)
+#network-synchronisation=0
+
+# Record directory (字符串)
+#input-record-path=
+
+# Prefer native stream recording (布尔)
+#input-record-native=1
+
+# Timeshift directory (字符串)
+#input-timeshift-path=
+
+# Timeshift granularity (整数)
+#input-timeshift-granularity=-1
+
+# Change title according to current media (字符串)
+#input-title-format=$Z
+
+# Disable all lua plugins (布尔)
+#lua=1
+
+# Preferred decoders list (字符串)
+#codec=
+
+# Preferred encoders list (字符串)
+#encoder=
+
+# Access module (字符串)
+#access=
+
+# Demux module (字符串)
+#demux=any
+
+# Stream filter module (字符串)
+#stream-filter=
+
+# Demux filter module (字符串)
+#demux-filter=
+
+# Default stream output chain (字符串)
+#sout=
+
+# Display while streaming (布尔)
+#sout-display=0
+
+# Keep stream output open (布尔)
+#sout-keep=0
+
+# Enable streaming of all ES (布尔)
+#sout-all=1
+
+# Enable audio stream output (布尔)
+#sout-audio=1
+
+# Enable video stream output (布尔)
+#sout-video=1
+
+# Enable SPU stream output (布尔)
+#sout-spu=1
+
+# Stream output muxer caching (ms) (整数)
+#sout-mux-caching=1500
+
+# VLM configuration file (字符串)
+#vlm-conf=
+
+# SAP announcement interval (整数)
+#sap-interval=5
+
+# Mux module (字符串)
+#mux=
+
+# Access output module (字符串)
+#access_output=
+
+# Hop limit (TTL) (整数)
+#ttl=-1
+
+# Multicast output interface (字符串)
+#miface=
+
+# DiffServ Code Point (整数)
+#dscp=0
+
+# Preferred packetizer list (字符串)
+#packetizer=
+
+# VoD server module (字符串)
+#vod-server=
+
+# Use a plugins cache (布尔)
+#plugins-cache=1
+
+# Scan for new plugins (布尔)
+#plugins-scan=1
+
+# Preferred keystore list (字符串)
+#keystore=
+
+# Increase the priority of the process (布尔)
+#high-priority=0
+
+# Clock source (字符串)
+#clock-source=
+
+# Play files randomly forever (布尔)
+#random=0
+
+# Repeat all (布尔)
+#loop=0
+
+# Repeat current item (布尔)
+#repeat=0
+
+# Play and exit (布尔)
+#play-and-exit=0
+
+# Play and stop (布尔)
+#play-and-stop=0
+
+# Play and pause (布尔)
+#play-and-pause=0
+
+# Start paused (布尔)
+#start-paused=0
+
+# Auto start (布尔)
+#playlist-autostart=1
+
+# Pause on audio communication (布尔)
+#playlist-cork=1
+
+# Allow only one running instance (布尔)
+#one-instance=0
+
+# Use only one instance when started from file manager (布尔)
+#one-instance-when-started-from-file=1
+
+# Enqueue items into playlist in one instance mode (布尔)
+#playlist-enqueue=0
+
+# Use media library (布尔)
+#media-library=0
+
+# Display playlist tree (布尔)
+#playlist-tree=0
+
+# Default stream (字符串)
+#open=
+
+# Automatically preparse items (布尔)
+#auto-preparse=1
+
+# Preparsing timeout (整数)
+#preparse-timeout=5000
+
+# Allow metadata network access (布尔)
+metadata-network-access=1
+
+# Subdirectory behavior (字符串)
+#recursive=collapse
+
+# Ignored extensions (字符串)
+#ignore-filetypes=m3u,db,nfo,ini,jpg,jpeg,ljpg,gif,png,pgm,pgmyuv,pbm,pam,tga,bmp,pnm,xpm,xcf,pcx,tif,tiff,lbm,sfv,txt,sub,idx,srt,cue,ssa
+
+# Show hidden files (布尔)
+#show-hiddenfiles=0
+
+# Services discovery modules (字符串)
+#services-discovery=
+
+# Show advanced options (布尔)
+#advanced=0
+
+# Interface interaction (布尔)
+#interact=1
+
+# Locally collect statistics (布尔)
+#stats=1
+
+# Interface module (字符串)
+#intf=
+
+# Extra interface modules (字符串)
+#extraintf=
+
+# Control interfaces (字符串)
+#control=
+
+# Mouse wheel vertical axis control (整数)
+#hotkeys-y-wheel-mode=0
+
+# Mouse wheel horizontal axis control (整数)
+#hotkeys-x-wheel-mode=2
+
+# Fullscreen (字符串)
+#global-key-toggle-fullscreen=
+
+# Fullscreen (字符串)
+#key-toggle-fullscreen=f
+
+# Exit fullscreen (字符串)
+#global-key-leave-fullscreen=
+
+# Exit fullscreen (字符串)
+#key-leave-fullscreen=Esc
+
+# Play/Pause (字符串)
+#global-key-play-pause=
+
+# Play/Pause (字符串)
+#key-play-pause=Space
+
+# Pause only (字符串)
+#global-key-pause=
+
+# Pause only (字符串)
+#key-pause=Browser Stop
+
+# Play only (字符串)
+#global-key-play=
+
+# Play only (字符串)
+#key-play=Browser Refresh
+
+# Faster (字符串)
+#global-key-faster=
+
+# Faster (字符串)
+#key-faster=+
+
+# Slower (字符串)
+#global-key-slower=
+
+# Slower (字符串)
+#key-slower=-
+
+# Normal rate (字符串)
+#global-key-rate-normal=
+
+# Normal rate (字符串)
+#key-rate-normal==
+
+# Faster (fine) (字符串)
+#global-key-rate-faster-fine=
+
+# Faster (fine) (字符串)
+#key-rate-faster-fine=]
+
+# Slower (fine) (字符串)
+#global-key-rate-slower-fine=
+
+# Slower (fine) (字符串)
+#key-rate-slower-fine=[
+
+# Next (字符串)
+#global-key-next=
+
+# Next (字符串)
+#key-next=n
+
+# Previous (字符串)
+#global-key-prev=
+
+# Previous (字符串)
+#key-prev=p
+
+# Stop (字符串)
+#global-key-stop=
+
+# Stop (字符串)
+#key-stop=s
+
+# Position (字符串)
+#global-key-position=
+
+# Position (字符串)
+#key-position=t
+
+# Very short backwards jump (字符串)
+#global-key-jump-extrashort=
+
+# Very short backwards jump (字符串)
+#key-jump-extrashort=Shift+Left
+
+# Very short forward jump (字符串)
+#global-key-jump+extrashort=
+
+# Very short forward jump (字符串)
+#key-jump+extrashort=Shift+Right
+
+# Short backwards jump (字符串)
+#global-key-jump-short=
+
+# Short backwards jump (字符串)
+#key-jump-short=Alt+Left
+
+# Short forward jump (字符串)
+#global-key-jump+short=
+
+# Short forward jump (字符串)
+#key-jump+short=Alt+Right
+
+# Medium backwards jump (字符串)
+#global-key-jump-medium=
+
+# Medium backwards jump (字符串)
+#key-jump-medium=Ctrl+Left
+
+# Medium forward jump (字符串)
+#global-key-jump+medium=
+
+# Medium forward jump (字符串)
+#key-jump+medium=Ctrl+Right
+
+# Long backwards jump (字符串)
+#global-key-jump-long=
+
+# Long backwards jump (字符串)
+#key-jump-long=Ctrl+Alt+Left
+
+# Long forward jump (字符串)
+#global-key-jump+long=
+
+# Long forward jump (字符串)
+#key-jump+long=Ctrl+Alt+Right
+
+# Next frame (字符串)
+#global-key-frame-next=
+
+# Next frame (字符串)
+#key-frame-next=e
+
+# Activate (字符串)
+#global-key-nav-activate=
+
+# Activate (字符串)
+#key-nav-activate=Enter
+
+# Navigate up (字符串)
+#global-key-nav-up=
+
+# Navigate up (字符串)
+#key-nav-up=Up
+
+# Navigate down (字符串)
+#global-key-nav-down=
+
+# Navigate down (字符串)
+#key-nav-down=Down
+
+# Navigate left (字符串)
+#global-key-nav-left=
+
+# Navigate left (字符串)
+#key-nav-left=Left
+
+# Navigate right (字符串)
+#global-key-nav-right=
+
+# Navigate right (字符串)
+#key-nav-right=Right
+
+# Go to the DVD menu (字符串)
+#global-key-disc-menu=
+
+# Go to the DVD menu (字符串)
+#key-disc-menu=Shift+m
+
+# Select previous DVD title (字符串)
+#global-key-title-prev=
+
+# Select previous DVD title (字符串)
+#key-title-prev=Shift+o
+
+# Select next DVD title (字符串)
+#global-key-title-next=
+
+# Select next DVD title (字符串)
+#key-title-next=Shift+b
+
+# Select prev DVD chapter (字符串)
+#global-key-chapter-prev=
+
+# Select prev DVD chapter (字符串)
+#key-chapter-prev=Shift+p
+
+# Select next DVD chapter (字符串)
+#global-key-chapter-next=
+
+# Select next DVD chapter (字符串)
+#key-chapter-next=Shift+n
+
+# Quit (字符串)
+#global-key-quit=
+
+# Quit (字符串)
+#key-quit=Ctrl+q
+
+# Volume up (字符串)
+#global-key-vol-up=
+
+# Volume up (字符串)
+#key-vol-up=Ctrl+Up
+
+# Volume down (字符串)
+#global-key-vol-down=
+
+# Volume down (字符串)
+#key-vol-down=Ctrl+Down
+
+# Mute (字符串)
+#global-key-vol-mute=
+
+# Mute (字符串)
+#key-vol-mute=m
+
+# Subtitle delay up (字符串)
+#global-key-subdelay-up=
+
+# Subtitle delay up (字符串)
+#key-subdelay-up=h
+
+# Subtitle delay down (字符串)
+#global-key-subdelay-down=
+
+# Subtitle delay down (字符串)
+#key-subdelay-down=g
+
+# Subtitle sync / bookmark audio timestamp (字符串)
+#global-key-subsync-markaudio=
+
+# Subtitle sync / bookmark audio timestamp (字符串)
+#key-subsync-markaudio=Shift+h
+
+# Subtitle sync / bookmark subtitle timestamp (字符串)
+#global-key-subsync-marksub=
+
+# Subtitle sync / bookmark subtitle timestamp (字符串)
+#key-subsync-marksub=Shift+j
+
+# Subtitle sync / synchronize audio & subtitle timestamps (字符串)
+#global-key-subsync-apply=
+
+# Subtitle sync / synchronize audio & subtitle timestamps (字符串)
+#key-subsync-apply=Shift+k
+
+# Subtitle sync / reset audio & subtitle synchronization (字符串)
+#global-key-subsync-reset=
+
+# Subtitle sync / reset audio & subtitle synchronization (字符串)
+#key-subsync-reset=Ctrl+Shift+k
+
+# Subtitle position up (字符串)
+#global-key-subpos-up=
+
+# Subtitle position up (字符串)
+#key-subpos-up=
+
+# Subtitle position down (字符串)
+#global-key-subpos-down=
+
+# Subtitle position down (字符串)
+#key-subpos-down=
+
+# Audio delay up (字符串)
+#global-key-audiodelay-up=
+
+# Audio delay up (字符串)
+#key-audiodelay-up=k
+
+# Audio delay down (字符串)
+#global-key-audiodelay-down=
+
+# Audio delay down (字符串)
+#key-audiodelay-down=j
+
+# Cycle audio track (字符串)
+#global-key-audio-track=
+
+# Cycle audio track (字符串)
+#key-audio-track=b
+
+# Cycle through audio devices (字符串)
+#global-key-audiodevice-cycle=
+
+# Cycle through audio devices (字符串)
+#key-audiodevice-cycle=Shift+a
+
+# Cycle subtitle track in reverse order (字符串)
+#global-key-subtitle-revtrack=
+
+# Cycle subtitle track in reverse order (字符串)
+#key-subtitle-revtrack=Alt+v
+
+# Cycle subtitle track (字符串)
+#global-key-subtitle-track=
+
+# Cycle subtitle track (字符串)
+#key-subtitle-track=v
+
+# Toggle subtitles (字符串)
+#global-key-subtitle-toggle=
+
+# Toggle subtitles (字符串)
+#key-subtitle-toggle=Shift+v
+
+# Cycle next program Service ID (字符串)
+#global-key-program-sid-next=
+
+# Cycle next program Service ID (字符串)
+#key-program-sid-next=x
+
+# Cycle previous program Service ID (字符串)
+#global-key-program-sid-prev=
+
+# Cycle previous program Service ID (字符串)
+#key-program-sid-prev=Shift+x
+
+# Cycle source aspect ratio (字符串)
+#global-key-aspect-ratio=
+
+# Cycle source aspect ratio (字符串)
+#key-aspect-ratio=a
+
+# Cycle video crop (字符串)
+#global-key-crop=
+
+# Cycle video crop (字符串)
+#key-crop=c
+
+# Toggle autoscaling (字符串)
+#global-key-toggle-autoscale=
+
+# Toggle autoscaling (字符串)
+#key-toggle-autoscale=o
+
+# Increase scale factor (字符串)
+#global-key-incr-scalefactor=
+
+# Increase scale factor (字符串)
+#key-incr-scalefactor=Alt+o
+
+# Decrease scale factor (字符串)
+#global-key-decr-scalefactor=
+
+# Decrease scale factor (字符串)
+#key-decr-scalefactor=Alt+Shift+o
+
+# Toggle deinterlacing (字符串)
+#global-key-deinterlace=
+
+# Toggle deinterlacing (字符串)
+#key-deinterlace=d
+
+# Cycle deinterlace modes (字符串)
+#global-key-deinterlace-mode=
+
+# Cycle deinterlace modes (字符串)
+#key-deinterlace-mode=Shift+d
+
+# Show controller in fullscreen (字符串)
+#global-key-intf-show=
+
+# Show controller in fullscreen (字符串)
+#key-intf-show=i
+
+# Boss key (字符串)
+#global-key-intf-boss=
+
+# Boss key (字符串)
+#key-intf-boss=
+
+# Context menu (字符串)
+#global-key-intf-popup-menu=
+
+# Context menu (字符串)
+#key-intf-popup-menu=Menu
+
+# Take video snapshot (字符串)
+#global-key-snapshot=
+
+# Take video snapshot (字符串)
+#key-snapshot=Shift+s
+
+# Record (字符串)
+#global-key-record=
+
+# Record (字符串)
+#key-record=Shift+r
+
+# Zoom (字符串)
+#global-key-zoom=
+
+# Zoom (字符串)
+#key-zoom=z
+
+# Un-Zoom (字符串)
+#global-key-unzoom=
+
+# Un-Zoom (字符串)
+#key-unzoom=Shift+z
+
+# Toggle wallpaper mode in video output (字符串)
+#global-key-wallpaper=
+
+# Toggle wallpaper mode in video output (字符串)
+#key-wallpaper=w
+
+# Crop one pixel from the top of the video (字符串)
+#global-key-crop-top=
+
+# Crop one pixel from the top of the video (字符串)
+#key-crop-top=Alt+r
+
+# Uncrop one pixel from the top of the video (字符串)
+#global-key-uncrop-top=
+
+# Uncrop one pixel from the top of the video (字符串)
+#key-uncrop-top=Alt+Shift+r
+
+# Crop one pixel from the left of the video (字符串)
+#global-key-crop-left=
+
+# Crop one pixel from the left of the video (字符串)
+#key-crop-left=Alt+d
+
+# Uncrop one pixel from the left of the video (字符串)
+#global-key-uncrop-left=
+
+# Uncrop one pixel from the left of the video (字符串)
+#key-uncrop-left=Alt+Shift+d
+
+# Crop one pixel from the bottom of the video (字符串)
+#global-key-crop-bottom=
+
+# Crop one pixel from the bottom of the video (字符串)
+#key-crop-bottom=Alt+c
+
+# Uncrop one pixel from the bottom of the video (字符串)
+#global-key-uncrop-bottom=
+
+# Uncrop one pixel from the bottom of the video (字符串)
+#key-uncrop-bottom=Alt+Shift+c
+
+# Crop one pixel from the right of the video (字符串)
+#global-key-crop-right=
+
+# Crop one pixel from the right of the video (字符串)
+#key-crop-right=Alt+f
+
+# Uncrop one pixel from the right of the video (字符串)
+#global-key-uncrop-right=
+
+# Uncrop one pixel from the right of the video (字符串)
+#key-uncrop-right=Alt+Shift+f
+
+# Random (字符串)
+#global-key-random=
+
+# Random (字符串)
+#key-random=r
+
+# Normal/Loop/Repeat (字符串)
+#global-key-loop=
+
+# Normal/Loop/Repeat (字符串)
+#key-loop=l
+
+# Shrink the viewpoint field of view (360°) (字符串)
+#global-key-viewpoint-fov-in=
+
+# Shrink the viewpoint field of view (360°) (字符串)
+#key-viewpoint-fov-in=Page Up
+
+# Expand the viewpoint field of view (360°) (字符串)
+#global-key-viewpoint-fov-out=
+
+# Expand the viewpoint field of view (360°) (字符串)
+#key-viewpoint-fov-out=Page Down
+
+# Roll the viewpoint clockwise (360°) (字符串)
+#global-key-viewpoint-roll-clock=
+
+# Roll the viewpoint clockwise (360°) (字符串)
+#key-viewpoint-roll-clock=
+
+# Roll the viewpoint anti-clockwise (360°) (字符串)
+#global-key-viewpoint-roll-anticlock=
+
+# Roll the viewpoint anti-clockwise (360°) (字符串)
+#key-viewpoint-roll-anticlock=
+
+# 1:4 Quarter (字符串)
+#global-key-zoom-quarter=
+
+# 1:4 Quarter (字符串)
+#key-zoom-quarter=Alt+1
+
+# 1:2 Half (字符串)
+#global-key-zoom-half=
+
+# 1:2 Half (字符串)
+#key-zoom-half=Alt+2
+
+# 1:1 Original (字符串)
+#global-key-zoom-original=
+
+# 1:1 Original (字符串)
+#key-zoom-original=Alt+3
+
+# 2:1 Double (字符串)
+#global-key-zoom-double=
+
+# 2:1 Double (字符串)
+#key-zoom-double=Alt+4
+
+# Very short jump length (整数)
+#extrashort-jump-size=3
+
+# Short jump length (整数)
+#short-jump-size=10
+
+# Medium jump length (整数)
+#medium-jump-size=60
+
+# Long jump length (整数)
+#long-jump-size=300
+
+# Set playlist bookmark 1 (字符串)
+#global-key-set-bookmark1=
+
+# Set playlist bookmark 1 (字符串)
+#key-set-bookmark1=Ctrl+F1
+
+# Set playlist bookmark 2 (字符串)
+#global-key-set-bookmark2=
+
+# Set playlist bookmark 2 (字符串)
+#key-set-bookmark2=Ctrl+F2
+
+# Set playlist bookmark 3 (字符串)
+#global-key-set-bookmark3=
+
+# Set playlist bookmark 3 (字符串)
+#key-set-bookmark3=Ctrl+F3
+
+# Set playlist bookmark 4 (字符串)
+#global-key-set-bookmark4=
+
+# Set playlist bookmark 4 (字符串)
+#key-set-bookmark4=Ctrl+F4
+
+# Set playlist bookmark 5 (字符串)
+#global-key-set-bookmark5=
+
+# Set playlist bookmark 5 (字符串)
+#key-set-bookmark5=Ctrl+F5
+
+# Set playlist bookmark 6 (字符串)
+#global-key-set-bookmark6=
+
+# Set playlist bookmark 6 (字符串)
+#key-set-bookmark6=Ctrl+F6
+
+# Set playlist bookmark 7 (字符串)
+#global-key-set-bookmark7=
+
+# Set playlist bookmark 7 (字符串)
+#key-set-bookmark7=Ctrl+F7
+
+# Set playlist bookmark 8 (字符串)
+#global-key-set-bookmark8=
+
+# Set playlist bookmark 8 (字符串)
+#key-set-bookmark8=Ctrl+F8
+
+# Set playlist bookmark 9 (字符串)
+#global-key-set-bookmark9=
+
+# Set playlist bookmark 9 (字符串)
+#key-set-bookmark9=Ctrl+F9
+
+# Set playlist bookmark 10 (字符串)
+#global-key-set-bookmark10=
+
+# Set playlist bookmark 10 (字符串)
+#key-set-bookmark10=Ctrl+F10
+
+# Play playlist bookmark 1 (字符串)
+#global-key-play-bookmark1=
+
+# Play playlist bookmark 1 (字符串)
+#key-play-bookmark1=F1
+
+# Play playlist bookmark 2 (字符串)
+#global-key-play-bookmark2=
+
+# Play playlist bookmark 2 (字符串)
+#key-play-bookmark2=F2
+
+# Play playlist bookmark 3 (字符串)
+#global-key-play-bookmark3=
+
+# Play playlist bookmark 3 (字符串)
+#key-play-bookmark3=F3
+
+# Play playlist bookmark 4 (字符串)
+#global-key-play-bookmark4=
+
+# Play playlist bookmark 4 (字符串)
+#key-play-bookmark4=F4
+
+# Play playlist bookmark 5 (字符串)
+#global-key-play-bookmark5=
+
+# Play playlist bookmark 5 (字符串)
+#key-play-bookmark5=F5
+
+# Play playlist bookmark 6 (字符串)
+#global-key-play-bookmark6=
+
+# Play playlist bookmark 6 (字符串)
+#key-play-bookmark6=F6
+
+# Play playlist bookmark 7 (字符串)
+#global-key-play-bookmark7=
+
+# Play playlist bookmark 7 (字符串)
+#key-play-bookmark7=F7
+
+# Play playlist bookmark 8 (字符串)
+#global-key-play-bookmark8=
+
+# Play playlist bookmark 8 (字符串)
+#key-play-bookmark8=F8
+
+# Play playlist bookmark 9 (字符串)
+#global-key-play-bookmark9=
+
+# Play playlist bookmark 9 (字符串)
+#key-play-bookmark9=F9
+
+# Play playlist bookmark 10 (字符串)
+#global-key-play-bookmark10=
+
+# Play playlist bookmark 10 (字符串)
+#key-play-bookmark10=F10
+
+# Clear the playlist (字符串)
+#global-key-clear-playlist=
+
+# Clear the playlist (字符串)
+#key-clear-playlist=Ctrl+w
+
+# Reset subtitles text scale (字符串)
+#global-key-subtitle-text-scale-normal=
+
+# Reset subtitles text scale (字符串)
+#key-subtitle-text-scale-normal=Ctrl+0
+
+# Scale down subtitles text (字符串)
+#global-key-subtitle-text-scale-up=
+
+# Scale down subtitles text (字符串)
+#key-subtitle-text-scale-up=Ctrl+Mouse Wheel Up
+
+# Scale up subtitles text (字符串)
+#global-key-subtitle-text-scale-down=
+
+# Scale up subtitles text (字符串)
+#key-subtitle-text-scale-down=Ctrl+Mouse Wheel Down
+
+# Playlist bookmark 1 (字符串)
+#bookmark1=
+
+# Playlist bookmark 2 (字符串)
+#bookmark2=
+
+# Playlist bookmark 3 (字符串)
+#bookmark3=
+
+# Playlist bookmark 4 (字符串)
+#bookmark4=
+
+# Playlist bookmark 5 (字符串)
+#bookmark5=
+
+# Playlist bookmark 6 (字符串)
+#bookmark6=
+
+# Playlist bookmark 7 (字符串)
+#bookmark7=
+
+# Playlist bookmark 8 (字符串)
+#bookmark8=
+
+# Playlist bookmark 9 (字符串)
+#bookmark9=
+
+# Playlist bookmark 10 (字符串)
+#bookmark10=
+

@@ -334,7 +334,7 @@ function getrandom(nums)
 				msg += ',"Code":';
 				msg += 8;
 			}
-			else
+			else if (document.visibilityState == 'hidden')
 			{
 				/// 需要隐藏
 				msg += ',"Code":';

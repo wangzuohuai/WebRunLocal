@@ -1,5 +1,7 @@
 {
   "FirstInstall":"VLCIns.exe",
+  "COM": "axvlc.dll",
   "Caching":500,
+  "RTSPTCP":1,
   "PORT": 930
 }
