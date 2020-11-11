@@ -13,10 +13,10 @@ flag是连接控制掩码，1指定输出调试日志，2指示通讯数据进�
 连接PluginOK(牛插)主服务后支持的功能协议：
 
 1)、获取或对比版本信息：
-Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)，Router为1时获取当前网络路由器MAC地址。
+Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)，Router为1时获取当前网络路由器MAC地址，Config为1时获取中间件的一些配置参数。
 说明：连接主服务后可执行，返回当前软件版本、当前系统版本、唯一标识、授权有效期、授权客户名称、当前系统启动后运行时间、程序运行路径等；
 获取版本信息举例：
-{"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Router" : 1}}
+{"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Config" : 1,"Router" : 1}}
 
 返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"1.2.18.1","Lang":"CHS","ValidDay":"2020-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"NoService":0,"Localhost":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"]}}
 

@@ -1,8 +1,8 @@
 {
   "WS": 80,
   "WSS": 443,
-  "HTTP": 98,
-  "HTTPS": 460,
+  "HTTP": 90,
+  "HTTPS": 450,
   "Localhost": 1,
   "ListenIP": "",
   "WSErrTime": 30,
@@ -12,7 +12,5 @@
   "Mac": 1,
   "Language": "CHS",
   "NoService": 0,
-  "UDisk": 0,
-  "ServerPort": 800,
-  "ServerAddr": "www.zorrosoft.com"
+  "UDisk": 0
 }
