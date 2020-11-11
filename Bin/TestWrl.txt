@@ -18,7 +18,7 @@ Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户�
 获取版本信息举例：
 {"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Config" : 1,"Router" : 1}}
 
-返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"1.2.18.1","Lang":"CHS","ValidDay":"2020-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"NoService":0,"Localhost":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"]}}
+返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"1.2.18.1","ValidDay":"2020-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
 
 对比是否有新版本举例：
 {"req":"Wrl_Version","rid":1,"para":{"Version" : "1.0.1.1"}}  给定新版本号，判断当前中间件版本是否需要升级，返回节点字段Update为1时需要升级，0不需要升级
