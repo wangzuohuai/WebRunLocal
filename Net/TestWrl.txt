@@ -13,10 +13,10 @@ flag是连接控制掩码，1指定输出调试日志，2指示通讯数据进�
 连接PluginOK(牛插)主服务后支持的功能协议：
 
 1)、获取或对比版本信息：
-Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)，Router为1时获取当前网络路由器MAC地址。
+Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)，Router为1时获取当前网络路由器MAC地址，Config为1时获取中间件的一些配置参数。
 说明：连接主服务后可执行，返回当前软件版本、当前系统版本、唯一标识、授权有效期、授权客户名称、当前系统启动后运行时间、程序运行路径等；
 获取版本信息举例：
-{"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Router" : 1}}
+{"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Config" : 1,"Router" : 1}}
 
 返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"2.0.7.1","Lang":"CHS","ValidDay":"2020-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"NoService":0,"Localhost":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"]}}
 
@@ -164,7 +164,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 4、PluginOK(牛插)中间件升级：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2020-10-26","Desc":"1、实现在浏览器网页中内嵌窗口小程序运行，支持同时加载多个运行，支持上下左右滚动小程序；2、实现在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器网页可加载IE指定版本内核的控件小程序或标签小程序运行；3、发布在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器中运行的Flash Player网页内嵌小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"3F6F30B9CCE88D9BC274BE13C3EC4A0C","Version":"2.0.7.2","Size":11862016,"HideIns":0,"Cookie":"","Auth":"","TK":"59A07BE979554D59F8C6CB68D74B0E71925D42CE8E8282C0CD97B5B39B4369BA17FE95976AC5032B214E7C4A470305ED869A0473F03CD8D02A1CFBEBA7C265D5C633D977BAFDE39A04502548FD12EE54219F836D8BE7E8923819DEC8B88B6D74F6F7C4AB9905D1E44A4730551284C73C49DAC203D7459FC410B99481C8F0214F72FD34AE80846BB2CE5DE5CB0BC22CF6D165764117E2F93B52D5C7AAC6E0BFD4154A965D800131C8CDD0E3B04C20ACFD9349379E9D0E99455C7D397668AE250A53A4FDD9DC896CCA955E0FAE9F3641D9B0D0C787F1362414E91D0D39C1C6E4BD3B2A2CEADFA1F6978FAD01BDE4791E52FFA65FCA3492C92FA5724ABB8C1533B7"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2020-11-11","Desc":"1、实现在浏览器网页中内嵌窗口小程序运行，支持同时加载多个运行，支持上下左右滚动小程序；2、实现在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器网页可加载IE指定版本内核的控件小程序或标签小程序运行；3、发布在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器中运行的Flash Player网页内嵌小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"87830DD96E300FF4F1D4B0352CDE260C","Version":"2.0.7.5","Size":11829248,"HideIns":0,"Cookie":"","Auth":"","TK":"884E6A2EB640E593B20E71594915847F05BDEC31E66D8431793028DFB6B51C1F713FB4129FAE24588663DE7ED49C445DCC81CE75149563D7E4C654950754EE457342ED2B7B73518D7AC43D8031981ACA96338C846A5D352DEF323FC54B58C8A0C101A35BEF45E3A197F137A0BCCA95263FA8FED36A4A5323B8318EA6C5CCEB2425BAA9A509627D8269B405F63D24F3FCE7D8E18E9E7C8C3101302454F9B02989FAA71CAF790A3D8FC5F3CD6BA871F492EEF1ED73697816A1318494B9AEDECBAB858371A19B06D03BDEF3AD1B9F6A13256F8E8907A827F3006493DDB18A9CB6031EE8AE573405ADCDC25B109AE2C0998F70A0E49C62DD6BCF6BDCC8CE00F4FF7C"}}
 
 2)、导入SSL新证书到授权文件：
 {"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}

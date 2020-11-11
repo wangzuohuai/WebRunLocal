@@ -8,6 +8,7 @@
   "WSErrTime": 30,
   "ValidHour": 48,
   "Monitor": 60,
+  "Delay": 0,
   "Mac": 1,
   "Language": "CHS",
   "NoService": 0,
