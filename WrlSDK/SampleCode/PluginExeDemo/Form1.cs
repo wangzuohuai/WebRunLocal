@@ -69,9 +69,7 @@ namespace PluginExeDemo
                 return;
             WebSocketEvent.SetForm(this);
             ushort nPort = ushort.Parse(m_Para["PORT"]);
-            string strSID = m_Para["SID"];
-            string strAI = m_Para["AI"];
-            ushort nListenPort = WebSocketServer.Listen(nPort, strSID, strAI);
+            ushort nListenPort = WebSocketServer.Listen(nPort, m_Para["SID"], m_Para["AI"]);
 
                 /// 建立事件通知
             WebSocketServer.NewConnEvent += WebSocketEvent.NewConnEvent;
@@ -105,7 +103,7 @@ namespace PluginExeDemo
                 MessageBox.Show("还未有来自网页的连接！");
                 return;
             }
-            Send(strLastSID, this.textBox1.Text);
+            Send(strLastSID,this.textBox1.Text);
             this.textBox1.Text = "";
          }
 
@@ -146,7 +144,7 @@ namespace PluginExeDemo
             }
 
             /// <summary>
-            /// 通知新连接
+            /// 通知收到新连接
             /// </summary>
             /// <param name="bstrSID"></param>
             public void NewConnEvent(string bstrSID)
@@ -166,7 +164,7 @@ namespace PluginExeDemo
             /// <param name="bstrContent"></param>
             public void RecMsgEvent(string bstrSID, uint nReqID, string bstrPushName, string bstrMsg)
             {
-                m_Form.textBox2.AppendText("收到新数据包，请求序号：");
+                 m_Form.textBox2.AppendText("收到新数据包，请求序号：");
                 m_Form.textBox2.AppendText(nReqID.ToString());
                 m_Form.textBox2.AppendText("协议名：");
                 m_Form.textBox2.AppendText(bstrPushName);
@@ -203,31 +201,64 @@ namespace PluginExeDemo
             }
 
             /// <summary>
-            /// 
+            /// 通知连接收到字节流内容
             /// </summary>
             /// <param name="bstrSID"></param>
             /// <param name="Content"></param>
             /// <param name="nLen"></param>
             public void RecByteEvent(string bstrSID, Object Content, uint nLen)
             {
+                m_Form.textBox2.AppendText("收到二进制流：");
+                m_Form.textBox2.AppendText(Content.ToString());
+                m_Form.textBox2.AppendText("\r\n");
             }
 
             /// <summary>
-            /// 
+            /// 通知HTTP同步请求处理
             /// </summary>
-            /// <param name="nSessionID"></param>
             /// <param name="strUrl"></param>
             /// <param name="strPara"></param>
-            public void HttpReqEvent(uint nSessionID, string strUrl, string strPara)
+            /// <param name="pVal"></param>
+            public void HttpReqEvent(string bstrSID, string bstrProtocol, string bstrUrl, string bstrPara, out string pVal)
             {
+                /// 收到HTTP协议请求，主要用于前端同步请求，比如前端需要等待请求完成浏览器才能继续操作
+                /// 这里执行阻塞操作，比如弹出模态对话框
+                pVal = "{\"ret\":0,\"data\":{\"Ret\":0,\"Code\":1}}";
+            }
+
+            /// <summary>
+            /// 通知HTTP侦听端口
+            /// </summary>
+            /// <param name="nPort"></param>
+            public void HttpPortEvent(ushort nPort)
+            {
+                m_Form.textBox2.AppendText("HTTP侦听端口：");
+                m_Form.textBox2.AppendText(nPort.ToString());
+                m_Form.textBox2.AppendText("\r\n");
+            }
+
+            /// <summary>
+            /// WS连接请求中出现错误
+            /// </summary>
+            /// <param name="strUrl"></param>
+            /// <param name="strPara"></param>
+            /// <param name="pVal"></param>
+            public void RecErrEvent(string bstrSID, uint nReqID, string bstrErrInfo)
+            {
+                m_Form.textBox2.AppendText("连接出现错误：");
+                m_Form.textBox2.AppendText(bstrErrInfo);
+                m_Form.textBox2.AppendText("\r\n");
             }
 
             /// <summary>
             /// 通知关闭连接
             /// </summary>
             /// <param name="bstrSID"></param>
-            public void ConnCloseEvent(string bstrSID)
+            public void ConnCloseEvent(string bstrSID, string bstrReason)
             {
+                m_Form.textBox2.AppendText("关闭连接：");
+                m_Form.textBox2.AppendText(bstrReason);
+                m_Form.textBox2.AppendText("\r\n");
             }
         }
     }

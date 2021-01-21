@@ -30,6 +30,9 @@
     <ClCompile Include="WRLRegKey.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BaseFuncLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -48,6 +51,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WRLRegKey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseFuncLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WRLBaseDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppletVersionDef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

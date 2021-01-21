@@ -3940,7 +3940,9 @@ public:
 		this->SetRedraw(TRUE);
 		this->RedrawWindow(NULL, NULL, RDW_FRAME | RDW_INVALIDATE | RDW_UPDATENOW | RDW_ALLCHILDREN);
 
-		if(::GetFocus() != m_tab.m_hWnd)
+		HWND hWndFocus = ::GetFocus();
+		ATL::CWindow wndTop = this->GetTopLevelWindow();
+		if((hWndFocus == wndTop.m_hWnd) || ((wndTop.IsChild(hWndFocus) != FALSE) && (hWndFocus != m_tab.m_hWnd)))
 			::SetFocus(GetPageHWND(m_nActivePage));
 
 		pT->UpdateTitleBar();
@@ -4307,7 +4309,7 @@ public:
 			CMenuItemInfo mii;
 			mii.fMask = MIIM_TYPE;
 			menu.GetMenuItemInfo(nFirstPos - 1, TRUE, &mii);
-			if((nFirstPos <= 0) || ((mii.fType & MFT_SEPARATOR) == 0))
+			if((mii.fType & MFT_SEPARATOR) == 0)
 			{
 				menu.AppendMenu(MF_SEPARATOR);
 				nFirstPos++;

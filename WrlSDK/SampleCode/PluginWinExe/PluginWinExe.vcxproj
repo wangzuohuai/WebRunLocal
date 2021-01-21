@@ -230,6 +230,7 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseFuncLib.cpp" />
     <ClCompile Include="MainDlg.cpp" />
     <ClCompile Include="PluginWinExe.cpp" />
     <ClCompile Include="ProxyServerEvent.cpp" />
@@ -242,11 +243,14 @@
     <ClCompile Include="WRLRegKey.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppletVersionDef.h" />
+    <ClInclude Include="BaseFuncLib.h" />
     <ClInclude Include="BrowserHost.h" />
     <ClInclude Include="MainDlg.h" />
     <ClInclude Include="ProxyServerEvent.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="WRLBaseDef.h" />
     <ClInclude Include="WRLRegKey.h" />
   </ItemGroup>
   <ItemGroup>

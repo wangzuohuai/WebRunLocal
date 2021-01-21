@@ -27,7 +27,11 @@ class ATL_NO_VTABLE CTextFile :
 #else
 	public IDispatchImpl<ITextFile, &IID_ITextFile, &LIBID_PluginComExeLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
 #endif
+#ifdef WRL_VRSION_STANDALONE
+	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_WrlBase, /* wMajor = */ 1>
+#else
 	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_ZbaBase, /* wMajor = */ 1>
+#endif
 {
 protected:
 
@@ -44,9 +48,9 @@ public:
 
 	BEGIN_COM_MAP(CTextFile)
 		COM_INTERFACE_ENTRY(ITextFile)
-		COM_INTERFACE_ENTRY2(IDispatch, IWrlConn)
-		COM_INTERFACE_ENTRY(IConnectionPointContainer)
 		COM_INTERFACE_ENTRY(IWrlConn)
+		COM_INTERFACE_ENTRY(IConnectionPointContainer)
+		COM_INTERFACE_ENTRY2(IDispatch, IWrlConn)
 	END_COM_MAP()
 
 	BEGIN_CONNECTION_POINT_MAP(CTextFile)
@@ -112,10 +116,16 @@ public:
 		return S_FALSE;
 	}
 
-	STDMETHOD(HttpRequst)(BSTR bstrUrl,BSTR bstrPara, BSTR* pVal)
+	STDMETHOD(HttpRequst)(BSTR bstrUrl,BSTR bstrPara,BSTR* pVal)
 	{
-		/// HTTP服务请求响应
-		return E_NOTIMPL;
+		/// 收到HTTP协议请求，主要用于前端同步请求，比如前端需要等待请求完成浏览器才能继续操作
+		/// 可根据传递的参数分别执行不同的功能，在DLL小程序中，如需要弹窗执行，请先修改中间件配置文件参数NoService为1后再重新安装中间件生效！
+		::MessageBox(NULL,L"阻塞执行测试",L"提示",MB_OK);
+		/// 设置返回内容，建议都用JSON格式，便于解析
+		CComBSTR bstrVal(L"{\"ret\":0,\"data\":{\"Ret\":0,\"Code\":1}}");
+		bstrVal.CopyTo(pVal);
+		bstrVal.Empty();
+		return S_OK;
 	}
 };
 

@@ -48,7 +48,96 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	m_spiSocketProxyEvent = NULL;
 
 	this->PostMessage(WM_APP,0,0);	/// 异步初始化侦听服务
+	SetCheckTimer(500);
 	return TRUE;
+}
+
+BOOL FindProName(DWORD dwPID,ATL::CString& strFileName)
+{
+	BOOL bFindFlag = FALSE;
+	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
+	ATLASSERT(hSnapshot);
+
+	PROCESSENTRY32  pe = {0};
+	pe.dwSize = sizeof(pe);
+	BOOL fok = Process32First(hSnapshot, &pe);
+	DWORD dwGetProcessID = dwPID;
+	if(!dwGetProcessID)
+		dwGetProcessID = ::GetCurrentProcessId();
+	for(;fok ;fok = Process32Next(hSnapshot , &pe))
+	{
+		if(pe.th32ProcessID == dwGetProcessID)
+		{
+			strFileName = _wcsupr(pe.szExeFile);
+			strFileName.MakeLower();
+			bFindFlag = TRUE;
+			break;
+		}
+	}	
+	
+	CloseHandle(hSnapshot);
+	hSnapshot = NULL;
+	return bFindFlag;
+}
+
+LRESULT CMainDlg::OnTimer ( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/ )
+{
+	if(wParam == WRL_BROWSER_CHECKTIMER)
+	{
+		DWORD dwPID = 0;
+		/// 检查最顶层窗口是否为谷歌浏览器
+		HWND hWnd = ::GetForegroundWindow();
+		::GetWindowThreadProcessId(hWnd,&dwPID);
+		if(dwPID != ::GetCurrentProcessId())
+		{
+			/// 根据进程ID获得执行程序文件名，判断是否为对应的谷歌浏览器
+			CString strExeFile;
+			FindProName(dwPID,strExeFile);
+			CString strExeName;
+			switch(m_eBrowserType)
+			{
+			case BROWSERTYPE_IE:
+				strExeName = L"iexplore.exe";
+				break;
+			case BROWSERTYPE_EDGE:
+				strExeName = L"msedge.exe";
+				break;
+			case BROWSERTYPE_FIREFOX:
+				strExeName = L"firefox.exe";
+				break;
+			case BROWSERTYPE_OPERA:
+				strExeName = L"opera.exe";
+				break;
+			case BROWSERTYPE_360:
+				strExeName = L"360chrome.exe";
+				break;
+			case BROWSERTYPE_360SE:
+				strExeName = L"360se.exe";
+				break;
+			case BROWSERTYPE_360ENTSE:
+				strExeName = L"360ent.exe";
+				break;
+			case BROWSERTYPE_QQ:
+				strExeName = L"qqbrowser.exe";
+				break;
+			case BROWSERTYPE_SOGOU:
+				strExeName = L"sogouexplorer.exe";
+				break;
+			default:
+				strExeName = L"chrome.exe";
+				break;
+			}
+			if(-1 != strExeFile.CompareNoCase(strExeName))
+			{
+				SetWindowPos(HWND_TOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+			}
+			else
+			{
+				SetWindowPos(HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+			}
+		}
+	}
+	return 0;
 }
 
 void CMainDlg::InitWebCtrl()
@@ -100,6 +189,21 @@ void CMainDlg::InitWebCtrl()
 			m_spiWebBrowser->Navigate(CComBSTR(L"about:blank"),&varVal,&varVal,&varVal,&g_varWebHeader);
 		}
 	}
+}
+
+void CMainDlg::SetCheckTimer(UINT nElapse)
+{
+	if(m_nTimerID)
+		return;
+	m_nTimerID = ::SetTimer(this->m_hWnd,WRL_BROWSER_CHECKTIMER,nElapse,NULL);
+}
+
+void CMainDlg::KillCheckTimer()
+{
+	if(!m_nTimerID)
+		return;
+	::KillTimer(this->m_hWnd,m_nTimerID);
+	m_nTimerID = 0;
 }
 
 LRESULT CMainDlg::OnOpenUrl(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, BOOL& /*bHandled*/)
@@ -215,12 +319,12 @@ LRESULT CMainDlg::OnInitConn(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 {
 	if(NULL != m_spiSocketProxy)
 		return 0;/// 已经初始化
-	HRESULT hRet = m_spiSocketProxy.CreateInstance(__uuidof(SocketProxy));
-	ATLASSERT(SUCCEEDED(hRet));
-	if(FAILED(hRet))
+	HRESULT hRet(E_FAIL);
+	hRet = m_spiSocketProxy.CreateInstance(__uuidof(SocketProxy));
+	if(NULL == m_spiSocketProxy)
 	{
-		this->MessageBox(L"Web Socket基础组件还未正常注册成功！");
 		InitWebCtrl();
+		this->MessageBox(L"Web Socket组件还未正常注册成功！");
 		return 0;
 	}
 #ifdef NEED_FINAL_CONSTRUCT
@@ -256,34 +360,71 @@ LRESULT CMainDlg::OnNewConnect(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, 
 {
 	BSTR bstrSID = (BSTR)lParam;
 	/// 这里记录连接标识，然后可以调用通知发送信息
-	m_mapConnID[bstrSID] = bstrSID;
+	m_mapConnID[bstrSID] = NULL;
 	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(CString(L"收到新连接通知：") + bstrSID);
+	return 0;
+}
+
+LRESULT CMainDlg::OnHttpReq(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+{
+    /// 收到HTTP协议请求，主要用于前端同步请求，比如前端需要等待请求完成浏览器才能继续操作
+	HttpReqData* phd = (HttpReqData*)lParam;
+	if(NULL != phd)
+	{
+		/// 这里执行阻塞操作，比如弹出模态对话框
+		this->MessageBox(L"阻塞执行",L"提示",MB_OK);
+		/// 设置返回值
+		phd->strRet = L"{\"ret\":0,\"data\":{\"Ret\":0,\"Code\":1}}";
+	}
+	return 0;
+}
+
+LRESULT CMainDlg::OnHttpPort(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+{
+	m_nHttpPort = (USHORT)lParam;
+	return 0;
+}
+
+LRESULT CMainDlg::OnRecError(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+{
 	return 0;
 }
 
 LRESULT CMainDlg::OnRecMessage(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
 {
-	CString strReqName = (BSTR)wParam;
-	BSTR bstrContent = (BSTR)lParam;
-
-	CString strMsg;
-	strMsg.Format(L"收到请求为 %s 的JSON数据包:%s",strReqName,(CString)bstrContent);
-	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(strMsg);
-	strMsg.Empty();
-	ULONG nReqID = 0;
-	m_spiSocketProxy->AsynSendText(CComBSTR(m_mapConnID.begin()->first),\
-		CComBSTR(CString(L"桌面APP收到请求参数:")+bstrContent),&nReqID);
-	/// 解析收到的命令
+	if(NULL == m_spiSocketProxyEvent)
+		return 0;
 	IJsonServicePtr spiJsonService = NULL;
 	HRESULT hRet = spiJsonService.CreateInstance(__uuidof(JsonService));
 	if(NULL == spiJsonService)
 		return 0;
+	BSTR bstrSID = (BSTR)wParam;
+	ULONG nReqID = (ULONG)lParam;
+	CRecData* pRecData = m_spiSocketProxyEvent->GetCatchData(bstrSID,nReqID,TRUE);
+	if(NULL == pRecData)
+	{
+		spiJsonService = NULL;
+		return 0;
+	}
+	CString strReqName = pRecData->strReqName;
+
+	CString strMsg;
+	strMsg.Format(L"收到请求为 %s 的JSON数据包:%s",strReqName,pRecData->strRecText);
+	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(strMsg);
+	strMsg.Empty();
+
+	ULONG nSendID = 0;
+	m_spiSocketProxy->AsynSendText(bstrSID,\
+		CComBSTR(CString(L"桌面APP收到请求参数:")+pRecData->strRecText),&nSendID);
+	/// 解析收到的命令
 	VARIANT_BOOL bLoadFlag = VARIANT_FALSE;
 	spiJsonService->put_CodingType(CODINGTYPE_US2);
-	spiJsonService->ParseString(bstrContent,&bLoadFlag);
+	spiJsonService->ParseString(CComBSTR(pRecData->strRecText),&bLoadFlag);
 	if(VARIANT_FALSE == bLoadFlag)
 	{
 		spiJsonService = NULL;
+		delete pRecData;
+		pRecData = NULL;
 		return 0;
 	}
 	if(0 == strReqName.CompareNoCase(L"Demo_OpenUrl"))
@@ -296,7 +437,19 @@ LRESULT CMainDlg::OnRecMessage(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL
 		/// 通知打开网站
 		this->PostMessage(WM_APP_OPENURL,0,0);
 	}
+	else if(0 == strReqName.CompareNoCase(L"Demo_HttpPort"))
+	{
+		/// 请求返回HTTP服务的侦听端口
+		nSendID = 0;
+		CString strRetInfo;
+		strRetInfo.Format(L"{\"ret\":0,\"data\":{\"Port\":%ld}}",m_nHttpPort);
+		m_spiSocketProxy->AsynSendText(bstrSID,\
+			CComBSTR(strRetInfo),&nSendID);
+		strRetInfo.Empty();
+	}
 	spiJsonService = NULL;
+	delete pRecData;
+	pRecData = NULL;
 	return 0;
 }
 

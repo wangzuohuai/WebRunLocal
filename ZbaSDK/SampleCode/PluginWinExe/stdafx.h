@@ -6,10 +6,12 @@
 #pragma once
 
 // Change these values to use different versions
-#define WINVER			0x0502
-#define _WIN32_WINNT	0x0502
-#define _WIN32_IE		0x0600
+#define WINVER			0x0501
+#define _WIN32_WINNT	0x0501
+#define _WIN32_IE		0x0800
 #define _RICHEDIT_VER	0x0500
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <atlbase.h>
 /// 定义使用ATL的CString
@@ -48,6 +50,9 @@ using namespace ATL;
 #pragma warning( disable : 4510 )
 #pragma warning( disable : 4610 )
 #pragma warning( disable : 4206 )
+
+#include <tlhelp32.h>
+#include <Psapi.h>
 
 #import "..\\Bin\\ZbaEngine.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids
 #import "..\\Bin\\ZbaBase.dll" no_namespace, raw_interfaces_only, raw_native_types, named_guids

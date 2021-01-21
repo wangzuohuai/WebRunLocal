@@ -117,6 +117,8 @@ public:
 // Constructor
 	CRecentDocumentListBase() : m_nMaxEntries(4), m_hMenu(NULL), m_cchMaxItemLen(-1)
 	{
+		m_szNoEntries[0] = 0;
+
 		// These ASSERTs verify values of the template arguments
 		ATLASSERT(t_cchItemLen > m_cchMaxItemLen_Min);
 		ATLASSERT(m_nMaxEntries_Max > m_nMaxEntries_Min);
@@ -470,7 +472,9 @@ public:
 
 // Constructor/destructor
 	CFindFile() : m_hFind(NULL), m_lpszRoot(NULL), m_chDirSeparator(_T('\\')), m_bFound(FALSE)
-	{ }
+	{
+		memset(&m_fd, 0, sizeof(m_fd));
+	}
 
 	~CFindFile()
 	{
@@ -543,7 +547,7 @@ public:
 		if(!GetFileName(szBuff, MAX_PATH))
 			return FALSE;
 
-		if((lstrlen(szBuff) >= cchLength) || (cchLength < 1))
+		if(lstrlen(szBuff) >= cchLength)
 			return FALSE;
 
 		// find the last dot
@@ -1176,10 +1180,10 @@ public:
 	}
 
 // Overrideable handlers
-	void OnRead(LPCTSTR /*lpstrRegValue*/)
+	void OnRead(LPCTSTR /*lpstrRegKey*/)
 	{ }
 
-	void OnWrite(LPCTSTR /*lpstrRegValue*/)
+	void OnWrite(LPCTSTR /*lpstrRegKey*/)
 	{ }
 
 	void OnReadError(LPCTSTR /*lpstrRegValue*/, LSTATUS /*lError*/)

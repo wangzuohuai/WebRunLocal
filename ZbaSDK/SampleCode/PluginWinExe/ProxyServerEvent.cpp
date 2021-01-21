@@ -28,14 +28,13 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 
 			CComVariant varSID;
 			VariantInit(&varSID);
-			hRet = VariantChangeTypeEx( &varSID,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
 			hRet = NewConn(varSID.bstrVal);
 			VariantClear(&varSID);
 			break;
 		}
-
 		case 0x00000002:
 		{
 			if ( pDispParams->cArgs != 4 )
@@ -48,16 +47,16 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			VariantInit(&varReqID);
 			VariantInit(&varReqName);
 			VariantInit(&varMsgInfo);
-			hRet = VariantChangeTypeEx( &varSID,&(pDispParams->rgvarg[3]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[3]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varReqID,&(pDispParams->rgvarg[2]),lcid,0,VT_I4);
+			hRet = VariantChangeTypeEx(&varReqID,&(pDispParams->rgvarg[2]),lcid,0,VT_I4);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varReqName,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varReqName,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varMsgInfo,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varMsgInfo,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
 			hRet = RecMsgEvent(varSID.bstrVal,varReqID.ulVal,varReqName.bstrVal,varMsgInfo.bstrVal);
@@ -77,10 +76,10 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			CComVariant varText,varSID;
 			VariantInit(&varText);
 			VariantInit(&varSID);
-			hRet = VariantChangeTypeEx( &varSID,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varText,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varText,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
 			hRet = RecTextEvent(varSID.bstrVal,varText.bstrVal);
@@ -99,13 +98,13 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			VariantInit(&varSID);
 			VariantInit(&varByte);
 			VariantInit(&varLen);
-			hRet = VariantChangeTypeEx( &varSID,&(pDispParams->rgvarg[2]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[2]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varByte,&(pDispParams->rgvarg[1]),lcid,0,VT_PTR);
+			hRet = VariantChangeTypeEx(&varByte,&(pDispParams->rgvarg[1]),lcid,0,VT_PTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varLen,&(pDispParams->rgvarg[0]),lcid,0,VT_UI4);
+			hRet = VariantChangeTypeEx(&varLen,&(pDispParams->rgvarg[0]),lcid,0,VT_UI4);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
 			hRet = RecByte(varSID.bstrVal,varByte.pbVal,varLen.uiVal);
@@ -114,7 +113,6 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			VariantClear(&varLen);
 			break;
 		}
-
 		case 0x00000005:
 		{
 			if ( pDispParams->cArgs != 2 )
@@ -125,10 +123,10 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			CComVariant varReason,varSID;
 			VariantInit(&varReason);
 			VariantInit(&varSID);
-			hRet = VariantChangeTypeEx( &varSID,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx( &varReason,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varReason,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
 			hRet = CloseEvent(varSID.bstrVal,varReason.bstrVal);
@@ -136,8 +134,106 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			VariantClear(&varSID);
 			break;
 		}
+		case 0x00000006:
+		{
+			if ( pDispParams->cArgs != 5 )
+				return DISP_E_BADPARAMCOUNT;
+			if ( pDispParams->cNamedArgs )
+				return DISP_E_NONAMEDARGS;
+
+			CComVariant varSID,varProtocol,varUrl,varPara;
+			VariantInit(&varSID);
+			VariantInit(&varProtocol);
+			VariantInit(&varUrl);
+			VariantInit(&varPara);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[4]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varProtocol,&(pDispParams->rgvarg[3]),lcid,0,VT_BSTR);
+			hRet = VariantChangeTypeEx(&varUrl,&(pDispParams->rgvarg[2]),lcid,0,VT_BSTR);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			hRet = VariantChangeTypeEx(&varPara,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			pDispParams->rgvarg[0].bstrVal = NULL;
+			pDispParams->rgvarg[0].vt = VT_BSTR;
+			if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
+			{
+				/// 同步请求，必须用SendMessage
+				HttpReqData hd;
+				hd.strProtocol = varProtocol.bstrVal;
+				hd.strUri = varUrl.bstrVal;
+				hd.strPara = varPara.bstrVal;
+				::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_HTTPREQ,0,(LPARAM)&hd);
+				CComBSTR bstrRet(hd.strRet);
+				bstrRet.CopyTo(&(pDispParams->rgvarg[0].bstrVal));
+				bstrRet.Empty();
+			}
+			VariantClear(&varSID);
+			VariantClear(&varProtocol);
+			VariantClear(&varUrl);
+			VariantClear(&varPara);
+			break;
+		}
+		case 0x00000007:
+		{
+			if ( pDispParams->cArgs != 3 )
+				return DISP_E_BADPARAMCOUNT;
+			if ( pDispParams->cNamedArgs )
+				return DISP_E_NONAMEDARGS;
+
+			CComVariant varReason,varReqID,varSessionID;
+			VariantInit(&varReason);
+			VariantInit(&varReqID);
+			VariantInit(&varSessionID);
+			hRet = VariantChangeTypeEx( &varSessionID,&(pDispParams->rgvarg[2]),lcid,0,VT_UI4);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			hRet = VariantChangeTypeEx( &varReqID,&(pDispParams->rgvarg[1]),lcid,0,VT_UI4);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			hRet = VariantChangeTypeEx( &varReason,&(pDispParams->rgvarg[0]),lcid,0,VT_BSTR);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			hRet = RecErrEvent(varSessionID.ulVal,varReqID.ulVal,varReason.bstrVal);
+			VariantClear(&varReason);
+			VariantClear(&varReqID);
+			VariantClear(&varSessionID);
+			break;
+		}
+		case 0x00000008:
+		{
+			if ( pDispParams->cArgs != 1 )
+				return DISP_E_BADPARAMCOUNT;
+			if ( pDispParams->cNamedArgs )
+				return DISP_E_NONAMEDARGS;
+
+			CComVariant varPort;
+			VariantInit(&varPort);
+			hRet = VariantChangeTypeEx(&varPort,&(pDispParams->rgvarg[0]),lcid,0,VT_UI2);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
+			{
+				/// 通知HTTP服务侦听端口
+				::PostMessage(m_hMsgWnd,WM_PROXYSEREREVENT_HTTPPORT,0,(LPARAM)varPort.uiVal);
+			}
+			VariantClear(&varPort);
+			break;
+		}
 		default:
 			break;
+	}
+	return hRet;
+}
+
+STDMETHODIMP CProxyServerEvent::RecErrEvent(ULONG nSocketID,ULONG nReqID,BSTR bstrText)
+{
+	HRESULT hRet(E_FAIL);
+	if(NULL == bstrText)
+		return hRet;
+	if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
+	{
+		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_RECERR,nSocketID,(LPARAM)bstrText);
 	}
 	return hRet;
 }
@@ -155,19 +251,27 @@ STDMETHODIMP CProxyServerEvent::NewConn(BSTR bstrSID)
 	return hRet;
 }
 
-STDMETHODIMP CProxyServerEvent::RecMsgEvent(BSTR bstrSID,ULONG nReqID,BSTR bstrReqName,BSTR bstrRecInfo)
+STDMETHODIMP CProxyServerEvent::RecMsgEvent(BSTR bstrSID,ULONG nReqID,\
+	BSTR bstrReqName,BSTR bstrRecInfo)
 {
 	HRESULT hRet(E_FAIL);
 	if(!nReqID || NULL == bstrSID)
-	{
 		return hRet;
-	}
 	if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
 	{
-		m_nReqID = nReqID;
-		if(0 != m_strSID.CompareNoCase(bstrSID))
-			m_strSID = bstrSID;
-		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_RECMESSAGE,(WPARAM)bstrReqName,(LPARAM)bstrRecInfo);
+		CString strKey;
+		strKey.Format(L"%ld_%s",nReqID,(CString)bstrSID);
+		CRecData* pRecData = new CRecData();
+		if(NULL != pRecData)
+		{
+			pRecData->pbContent = NULL;
+			pRecData->strReqName = bstrReqName;
+			pRecData->strRecText = bstrRecInfo;
+		}
+		m_DataLock.Lock(L"RecMsgEvent");
+		m_CatchData[strKey] = pRecData;
+		m_DataLock.Unlock(L"RecMsgEvent");
+		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_RECMESSAGE,(WPARAM)bstrSID,(LPARAM)nReqID);
 	}
 	return hRet;
 }
@@ -191,9 +295,15 @@ STDMETHODIMP CProxyServerEvent::RecByte(BSTR bstrSID,BYTE* pContent,ULONG nLen)
 		return hRet;
 	if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
 	{
-		if(0 != m_strSID.CompareNoCase(bstrSID))
-			m_strSID = bstrSID;
-		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_BYTE,(WPARAM)pContent,(LPARAM)nLen);
+		CString strKey;
+		strKey.Format(L"%ld_%s",nLen,(CString)bstrSID);
+		CRecData* pRecData = new CRecData();
+		if(NULL != pRecData)
+			pRecData->pbContent = pContent;
+		m_DataLock.Lock(L"RecByte");
+		m_CatchData[strKey] = pRecData;
+		m_DataLock.Unlock(L"RecByte");
+		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_BYTE,(WPARAM)bstrSID,(LPARAM)nLen);
 	}
 	return hRet;
 }

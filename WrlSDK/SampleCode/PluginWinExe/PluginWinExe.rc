@@ -46,7 +46,7 @@ END
 
 IDD_MAINDLG DIALOGEX 0, 0, 400, 362
 STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
-CAPTION "C++弹窗小程序演示"
+CAPTION "弹窗小程序演示(C++)"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     EDITTEXT        IDC_EDIT_CONTENT,17,279,171,52,ES_MULTILINE | ES_AUTOVSCROLL
@@ -89,8 +89,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,0,1,1
- PRODUCTVERSION 2,0,1,1
+ FILEVERSION 2,1,1,1
+ PRODUCTVERSION 2,1,1,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -105,13 +105,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "弹窗小程序演示(C++语言)"
-            VALUE "FileVersion", "2,0,1,1"
+            VALUE "FileDescription", "弹窗小程序演示(C++)"
+            VALUE "FileVersion", "2,1,1,1"
             VALUE "InternalName", "PluginWinExe"
             VALUE "LegalCopyright", "Copyright(C) 2013-? ZorroSoft. All Rights Reserved."
             VALUE "OriginalFilename", "PluginWinExe.exe"
             VALUE "ProductName", "PluginOK"
-            VALUE "ProductVersion", "2,0,1,1"
+            VALUE "ProductVersion", "2,1,1,1"
         END
     END
     BLOCK "VarFileInfo"

@@ -187,7 +187,8 @@ public:
 	{
 		// You can override all of this in a derived class
 
-		TFindReplaceDialog* findReplaceDialog = new TFindReplaceDialog();
+		TFindReplaceDialog* findReplaceDialog = NULL;
+		ATLTRY(findReplaceDialog = new TFindReplaceDialog());
 		if(findReplaceDialog == NULL)
 		{
 			::MessageBeep(MB_ICONHAND);

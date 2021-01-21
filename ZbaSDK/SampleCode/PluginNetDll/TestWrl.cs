@@ -48,8 +48,10 @@ namespace PluginNetDll
 
         string IWrlConn.HttpRequst(string bstrUrl, string bstrPara)
         {
-            /// 收到HTTP类型请求，暂未实现
-            return "";
+            WriteLog(bstrUrl, bstrPara);
+            /// 收到HTTP协议请求，主要用于前端同步请求，比如前端需要等待请求完成浏览器才能继续操作
+            /// 可根据传递的参数分别执行不同的功能，在DLL小程序中，如需要弹窗执行，请先修改中间件配置文件参数NoService为1后再重新安装中间件生效！
+            return "{\"ret\":0,\"data\":{\"Ret\":0,\"Code\":1}}";
         }
 
         void IWrlConn.RecByte(ref byte pContent, uint nLen)
