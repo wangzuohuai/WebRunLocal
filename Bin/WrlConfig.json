@@ -12,5 +12,6 @@
   "Mac": 1,
   "Language": "CHS",
   "NoService": 0,
+  "HttpServer":0,
   "UDisk": 0
 }

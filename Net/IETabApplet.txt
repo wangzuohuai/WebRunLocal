@@ -1,4 +1,4 @@
-﻿IE标签页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿IE标签页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE内核的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -6,8 +6,8 @@
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、IE标签页小程序控制相关接口：
-说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
-HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://zorrosoft.com/ienewtab.html  HTTPS网页在线测试：https://zorrosoft.com/ienewtab.html
 
 1)、请求启动IE标签页小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
@@ -15,7 +15,7 @@ Flag掩码标记：1指定标签页加载(1和16都不指定时为当前页加�
 Title：标签页页时为创建的网页标题
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 X64：是否启动64位版
-Open为需要用IE内核打开的Url地址；
+Open为需要用IE内核打开的Url实际地址或本地网页地址；
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
 
 举例：
@@ -25,28 +25,30 @@ Open为需要用IE内核打开的Url地址；
 浏览器当前页面启动演示
 http://zorrosoft.com/IENewTab.html
 
-启动后会收到两个JSON数据包
+启动后会先后收到两个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":1}}
 返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl命令。
 B、{"event":"Wrl_Listen","aid":1,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Port":980}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
 
 2)、请求控制IE标签页小程序：
-当前端不再需要小程序时可指定关闭，或者显示/隐藏
-ID为Wrl_IETab启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示，其中2全屏显示，可直接通过热键切换Ctrl+F11
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为Wrl_IETab启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示。其中全屏显示2，可直接通过热键ESC或取消,4隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
 3、小程序安装、升级、卸载
 1)、请求安装IE标签页小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE标签页小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Date":"2020-11-11","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab.pid","MD5":"7AAB31D9BDB16E47B50F68C843411C7A","Version":"2.0.3.10","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"313B820993C8B39C45AD9A57AA991A1372C41F2A129BA15324C50B749364FC1C2D8DC34E1A4734A7592A187A4DAE9136F88D3A44C13E1E364009064DDF7BEF8E1AA6A9FFAB9E779B0E572D6C92E20938D6C131DDF5B7521EE9EA488592D31D7B67B88281C0C1E171A28326A4FD01600CA7992846C04F15115EB954F543E5F121C715B6C746A2CEC128878F1EF8E04084219BB8EAB457AAA5538AFB60E5C0593D29C99ED4970CCB57B455B573D689383024BA6ECA0A25AE360C18E0BCFB8C3B4B2DA8B97E9F60C500319D0AEC621A96F6CD694F1509A8006A88BD4B409C2A9B433D50C7FBF8D8B4061DE38B7B879710A325389A6FA91E5983C892BE07E1034407"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE标签页小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Date":"2021-01-20","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab.pid","MD5":"E88ED054510D3489AEE4A2D92765E5C3","Version":"2.1.1.1","Size":720896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"26C839FB7C17F8B2E2479923B55AB0553DE68C54400C15AD5F68BC322B3179EAE6877AE63B95199FB8263AEE1223C7C37054767BF6AA779FAFDAE3EB67864BBCF649565CDA30CD3E1B63A155288C1988669A2B77010280B3E86B43F4BBBDA646DEEE2F666FE0D8BCFD8F5A3665C068B672A5A8F9B0F93CF2A4AB5002DDF5BD67BCC886879F3CB25B81FD3975476AE01136BED0D75038D473DCFC1970FF8BDFDFE9E806D0F0A04341CAB05FFC1E586FF706D973535997E5A0D5C2ECFE13F584DCD994FA38EB2D35BE7ADED648614BC16AA7A582C7FAFF490A9B0E07BA6228AD05BC6B598F500342257475DF72278D68C352F9D111B970BD661B46EBE6B8AB8354"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级IE标签页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE标签页小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Date":"2020-11-11","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab_Update.pid","MD5":"770AED21795BB8E16E6852F24BE5F8FD","Version":"2.0.3.10","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3C245E75C9D0C4D5E6DDF1448AC6D4AC8D22CB3EF601855462B555735DF08C0A277C601B8CCEB540AF3D04F9EC28E224A38D8585639B305B29AC2FFD3F3921092D127DFA3E80CB6178986A2277FAE6218CE6CA3A9104857656315475E51A6220AAFF5C4A48BF4AE24B8813F19E786AC1E8944CB2ED7E2E14D5334CF358D015A4EB665B88913EAFAF1F4667688F2EAFE56A1B01D79DC3556DDFACAA54A50CAA27B4773C8A158EDA1F2354DAB73616C1C8A648F845B0D3EB4F92DDD8C52A77BC48E18C2A845130B2383E6E7BC75274BA6EC8B7BADEBC70EF0F64AA999A40A8A68E30A74FDD51667922B463E6F8D6CA2999836F98A47A72D1CD6F5B352C09437BEF"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE标签页小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Date":"2021-01-20","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab_Update.pid","MD5":"C9CF042731D990E0BCDB7BD7459C4AF7","Version":"2.1.1.1","Size":720896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B695B10C82C4644AA29A18EE951CFB6FEA67B30B0074C0E33D93DEB5349A010AA179367158A7D87F465519CF940B8F76C50122273B3C77E55BBAF3259CF29494E7F1AEF96AFF7EDBF1DDC007E5F1BCACB363E03DB5CE40E9650F44DF4AD7D83B3309FA0607E327EB4006161F41A3DB7435AD14265564E1F184F37D3CF7724E643B00DAD8E79AE4ACB7FA61DED68B60E1697D9D2DE72DE7DF34849D8ACD9E4660389C13487ACF3F848FD285B5176A76D789A176F3592E322CFE293675BFA4F6051990372FA9D827B59D7590541F918ECBEFD3CD1F6718424D094980B7BD9CE69322E2E36E4DE66E2628A3280A9B3BE81992DEF7C90B2B89DAAFBC1D304C02C2BC"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 3)、请求卸载IE标签页小程序：
 
@@ -81,6 +83,7 @@ Ret为调用ActiveX对应函数返回值，0代表正常
 Ret为调用ActiveX对应函数返回值，0代表正常
 
 6) 导航到指定网页
+Url为网页地址，需进行URLCode编码，如额外指定Type为0或具体的浏览器类型，代表用非IE浏览器新标签页来打开
 请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com"}}
 返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
 Ret为调用ActiveX对应函数返回值，0代表正常
@@ -152,5 +155,5 @@ B、PluginOK支持的事件通知：
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“PluginOK开发者手册.doc”。
-如还有疑问，请加QQ群：23126938联系客服 或微信客服：ZorroSoft
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.doc”及“PluginOK中间件安全解决方案”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

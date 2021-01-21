@@ -1,6 +1,6 @@
 {
   "WS": 83,
-  "WSS": 445,
+  "WSS": 453,
   "HTTP": 98,
   "HTTPS": 460,
   "Localhost": 1,
@@ -12,6 +12,7 @@
   "Mac": 1,
   "Language": "CHS",
   "NoService": 0,
+  "HttpServer":0,
   "UDisk": 0,
   "ServerPort": 800,
   "ServerAddr": "www.zorrosoft.com"

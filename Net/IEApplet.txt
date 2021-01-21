@@ -1,4 +1,4 @@
-﻿IE控件内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿IE控件内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用IE内核的ActiveX控件实现可程序化驱动的双内核浏览器。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -6,19 +6,42 @@
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、IE控件小程序控制相关接口：
-说明：以下功能连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
-HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://zorrosoft.com/iefull.html  HTTPS网页在线测试：https://zorrosoft.com/ieframe.html
+前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
+A、标记小程序的显示位置和大小
+.IEApplet {
+            margin: 20px 0 0 20px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+        }
+或者
+.IEApplet {
+            width: 480px;
+            height: 320px;
+            top: 20px;
+            left: 20px;
+            border: 1px solid blue;
+        }
+B、嵌入
+支持IFrame的：
+<iframe name="IEApplet" id="IEApplet" src="IEApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no">
+或者直接用
+<div id="IEApplet" class="IEApplet"</div>
+
+另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
 1)、请求启动IE控件小程序实现网页中局部加载IE内核网页显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
-IframeX和IframeY分别为iframe嵌套的横竖偏移坐标
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域
-小程序实际显示首先会基于网页中margin指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 X64：是否启动64位版
-Url：加载小程序所在的网页地址
+Url：加载小程序所在的网页实际地址
 Open：为需要用IE内核打开的Url地址或本地网页地址
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
 
@@ -32,55 +55,66 @@ Open：为需要用IE内核打开的Url地址或本地网页地址
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/ieframe.html
 
-启动后会收到两个JSON数据包
+启动后会先后收到两个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
 返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Port":985}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
 
 2)、请求控制IE控件小程序：
-当前端不再需要小程序时可指定关闭，或者显示/隐藏
-ID为启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序 16自动适配网页高度和宽度显示切换
-其中2全屏显示，可直接通过热键切换Ctrl+F11
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
 3)、请求滚动IE控件小程序：
-当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
-ID为启动小程序时返回的ID值
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
 4)、请求改变IE控件小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
-ID为启动小程序时返回的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
 或同时设置小程序显示起始坐标
 {"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
 
 5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
 当小程序显示区域超过当前网页时，需去除滚动条的显示影响
-ID为启动小程序时返回的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+ID为启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
 Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
 ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
-6)、请求缩放IE控件小程序，用于浏览器网页按比例缩放：
-ID为启动小程序时返回的ID值，Scall为缩放百分比
-{"req":"Wrl_AppletScale","rid":7,"para":{"ID":1,"Scale":120}}
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为Wrl_IEApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
+
+8)、请求缩放IE控件内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装IE控件小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-11-11","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet.pid","MD5":"72D7FDBA42FBAAC1CF44824E38E22E94","Version":"2.0.3.10","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A9FDAF6AB891824B5E545B5F0E5EF104C17C58ABB157769826321F6DA21C9A8B3F1252851E5CA2830F2D3AB686650CC36B16235D4B6ECDACCD0DCB1D4CA6A791285A7751EC466A21E0A230721A35A2283E4A208127C1F881DD61F37ACAC7A5BD8A3FCBADEE7CAA4CE814428329AECC74657C8A101E6BD471AB497A9E28BB511BBF871E5343722AD1B56FE8948C9C4CD347C689353F5375C1CD51156744792D2B358077144B5562484C44C669DB4D4166491816B845E7E8A5BE6D78A742077840B5ACEB8CEAE89AD2A3E08821AC02E51EA7FE73D490590E73751273AEDFA682AD6F2D017FE97B035EB128182D5E3FA807F816596C3FC15C114B898777B1887B03"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2021-01-20","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet.pid","MD5":"AC7B9303CED3B56BFCF3FE2A60F3EA58","Version":"2.1.1.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"02FD4A592ACCE2C88FAD9E90E503A729B5905F8F2B6B6AAD41C92D227AF7A2739B7C66C22D240B202140032C1B0D38C25529879FBB6795B1FD9003D0BBA9596C7634437019EEE833CA0EB45D9F4F245A33D4065EA3698F7DB5050909062A9BEC55BBE36F64478AC6A6ECE57B746A960A4915B172F87DFC511E710D44123FAA1F27C2BD11DC4E55F0D480D2D5D87729E3F3BC56A8EB8E5F9A3FDB79F7F62739094239543B4D2CB828CBF1E67610EE1DD3E5C570B2CD5D0237536D35D95C422F714FAFA50BDB6DF8E889BC7614912821BCD918193C4322A2CCF2D49D829E16E02B846707C5E58F6DAFA48FE2AF1F4B728812A5113B60470BFEA2A61BEFD073D190"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级IE内核内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2020-11-11","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet_Update.pid","MD5":"BB2771BCB8357DF9650895B9B5659ACD","Version":"2.0.3.10","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8ADB07745034C846D2E5F258799C671F167201B91B6DBEBB6835917DE3268BADFCBE9C9A09782783BA117AE133EA53CAD5AB23EFE53191B76901EAED69ED05FCDD6E81A4E3156C88D5F4E68574785960FE1EEAEC5A100F6C43C2FDF1C34ABDDE07FE97934A6AF0D107D350615613C6621200E87012518C25C7986EACEDB8CA3D911903EB63EBD7FE17E6D6876D651665AA9148FF9505CB3608E8C1B8406CDA158A75AD9DBCE6D757F180A11C1CD6815FBBB3502EE287F6D1A92DE6C037EA8B47FFCA1CA84C97E7CE0AFD4C9542182964E10DA6DE7F547EFB736CD29F49F87D9CBB1584D0342F34B69D3D91A95491E2718C0583204DF3BCAC66EAFF5DFD3B0CB9"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Date":"2021-01-20","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEApplet_Update.pid","MD5":"2A1592333BDD4EE639A4E6A65FB1CECB","Version":"2.1.1.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"752513628C5CB5A19083F479F8CB90BC588A1829123244B83EE3449186DECF4D8B7B308711C90C4BC85CE5D06CF59F9862ACD812558E73FA894AE273621FF8B9753B8D46C216E333D1346985848C583D6A4F46E7F53EE4E18469DEF5707CB8EEC80933B3DDFF1640311C458C3D5F1CD9D65215956F4B2F53913C03032AA2C0A70E689C296870358C6D48BF5463DA5EECC156A95BC7A5A2D4312F9719E5B584366A501C4AFCDA314F2DF4211C35A7887814C3DBFB8E82C0476FA88A38FCCF167759C321FDAF6580C87EFC9E93FFFC37860D48F3E96AE4AFB45045C71D4312A956A741E63E1737D5EB8A530D1EE3A9BC824E5B0E51348666B24AEAC3CC1AD5755F"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 3)、请求卸载IE控件小程序：
 
@@ -115,6 +149,7 @@ Ret为调用ActiveX对应函数返回值，0代表正常
 Ret为调用ActiveX对应函数返回值，0代表正常
 
 6) 导航到指定网页
+Url为网页地址，需进行URLCode编码，如额外指定Type为0或具体的浏览器类型，代表用非IE浏览器新标签页来打开
 请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com"}}
 返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
 Ret为调用ActiveX对应函数返回值，0代表正常
@@ -186,5 +221,5 @@ B、PluginOK支持的事件通知：
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“PluginOK开发者手册.doc”。
-如还有疑问，请加QQ群：23126938联系客服 或微信客服：ZorroSoft
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.doc”及“PluginOK中间件安全解决方案”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

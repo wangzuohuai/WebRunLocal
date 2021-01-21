@@ -1,0 +1,100 @@
+文件操作浏览器小程序，基于跨浏览器的小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)开发，提供本地文件HTTP协议的上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK(牛插)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
+
+2、请求安装文件操作小程序：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-01-22","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet.pid","MD5":"0A169C026A1E43889B9D6E777D636A37","Version":"2.1.1.1","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"3F4CA380181A4AA4E71E83C0F2B31ED8C7D3EEE5DCA31AEB9D826B411E7BC4F3D3A9125BB4DDBCA99C1B1A010B1741327652926451142F15664EA990ADFA75477C723393FCCA94B44D0B63C71854F501EF1FDE8EDF808AF0EC40D09B8581A89564DAC915813233C972AF60FE21120AA347EBAECF6D55AF7509D33EBCFC1DCFDC28D210619B9146E14ACF5A31F4D0CB61D42531E269FDCEEA7D57D14C7CD1991EE0B16B6186409ABE423B2AC090107F8D6A58BDB64F052DCA3C0C12724B4B77B54A41EA92A46A048251CC8706402875F581394565E53CDC8494D9E69CBFF4554D8719880B57024845A9B0FB7B5D86BE87720F9B4D74B5B0C35F0C4D501BF243A4"}}
+
+3、请求更新文件操作小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-01-22","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet_Update.pid","MD5":"164B9F396DE013B8BD5848607DC88F5D","Version":"2.1.1.1","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"0454FCFE681C919931AF565C5E9196EB315DBE09E10390CDD7255E267F46D0688662735BF9997CADB3506E87901A079F74064BED38E7C98A3BABA220E498ACE928CEEB31D332B62EE190287395312C4BACD25E23A7DDF2C234EB03D0B16F703A06195C633DA216A263F9F25442BBC60B303BAB78E848D7E3A094295B76D0F38FCA1118D0F6195F448F82324AEC3E97DA7DE89F66D1B23AD025A3166D7668ACB4C79C845696DEC5D8127B039C64559ED51C5152235680ADD197CC6A9BFFDEA06FBFE8D5BDEBE838188A6D6C40C6ADBB9B7255C6050A6520457495407E0DAEBEA2313EB478CA07B8790528C6400E19469C88315509A5B8451CF02E3C6B561E5E6A"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+4、连接请求文件操作小程序服务：
+1)、图像文件处理及本地文件操作服务
+说明：以下功能请通过Web Socket连接后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+打开测试网页，输入地址：ws://localhost?sid=667&pid=D325C871-AB46-479B-B20E-1D861D26CA89&flag=1 点击连接；
+
+支持的协议功能如下：
+A、批量旋转图像文件
+SrcFile、DestFile传入前需进行UrlEncode编码
+{"req":"File_RotateImg","rid":1,"para":{"Angle":90,"Items":[{"ID":"11","SrcFile":"C:/Users/trade/Pictures/test/test.png","DestFile":"C:/Users/trade/Pictures/test/testnew.png"}]}} 
+旋转指定文件SrcFile指定角度Angle，DestFile为指定时代表生成新图像文件，不指定时直接覆盖到原图
+返回内容 {"ret":0,"rid":1,"data":{"Ret":[{"ID":"","Ret":1},{"ID":"","Ret":1}]}} Ret代表是否成功
+
+B、请求指定图像文件的BASE64编码数据
+File传入前需进行UrlEncode编码
+{"req":"File_GetImg","rid":2,"para":{"File":"C:/test.jpg","Original":1,"Thumb":{"Width":200,"Height":300,"File":"C:/Newtest.jpg"}}}  
+指定Original为1时代表同时取原图，有Thumb节点时取指定大小的缩略图，Thumb节点中指定File文件名代表保存到本地，不指定时取原图数据 {"ret":0,"rid":2,"data":{"Thumb":"","Original":"","ThumbFile":"","Ret":1}}
+
+C、关联打开指定文件或指定执行程序打开
+File传入前需进行UrlEncode编码
+{"req":"File_Open","rid":3,"para":{"File":"D:/Zorro/WRL/Data/WrlService.txt"}}  File为本地路径
+指定执行程序打开指定文件
+{"req":"File_Open","rid":4,"para":{"File":"C:/Windows/System32/notepad.exe D:/Zorro/WRL/Data/WrlService.txt"}}
+
+D、删除本地文件
+Items子项目传入前需进行UrlEncode编码
+{"req":"File_Delete","rid":5,"para":{"Day":7,"Items":["c:/Newtest.jpg","c:/test.jpg"]}} 删除Items指定的本地文件，可支持多个
+
+E、创建指定目录
+Dir传入前需进行UrlEncode编码
+{"req":"File_CreateDir","rid":6,"para":{"Dir":"D:/Zorro/WRL/Data/Temp"}}  Dir为本地路径
+返回如下信息：
+{"ret":0,"rid":6,"data":{"Ret":"1","ErrCode":0}}
+
+F、删除指定目录及子目录所有文件
+Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
+{"req":"File_DelDir","rid":7,"para":{"Dir":"D:/Zorro/WRL/Data/Temp"}}  Dir为本地路径
+返回如下信息：
+{"ret":0,"rid":7,"data":{"Ret":"1"}}
+
+G、取指定文件属性
+Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
+{"req":"File_Info","rid":8,"para":{"File":"C:/Users/trade/Pictures/test/test.png"}}  File为本地路径
+返回如下类似信息：
+{"ret":0,"rid":8,"data":{"Ret":"1","Size":92095,"MD5":"B28B987EC70E1E7853F89A52CEDE68F0","Attribute":32,"CreateTime":"2020-10-07 13:07:20","LastWriteTime":"2020-07-14 10:09:43","Ver":"","CorpName":"","Desc":"","Width":1280,"Height":720}}
+
+H、取指定目录下文件和目录列表
+Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
+{"req":"File_List","rid":8,"para":{"Dir":"D:/Zorro/WRL","Find":"*.*"}}  Dir为本地路径
+返回如下类似信息：
+{"ret":0,"rid":8,"data":[{"Name":"WrlSetup.exe","Size":157184,"Attr":2080,"Write":"2020-10-07 15:00:15"},{"Name":"X64"}]}
+无属性Attr、大小Size和文件修改时间Write的是目录，否则是文件
+
+2)、文件HTTP上传与下载服务
+打开测试网页，输入地址：ws://localhost?sid=678&pid=762C3400-B3E5-4F00-8AA7-18E00F13E414&flag=1 点击连接；
+支持的协议功能如下：
+
+A、下载文件
+Url、File传入前需进行UrlEncode编码
+{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","Items":[{"ID":"","Url":"","File":"","MD5":"","Size":300}]}} 批量下载指定URL及文件名File等参数的文件,ID是前端指定的唯一ID，返回添加成功数量，重复的不计算，增加下载权限参数Cookie及Auth
+
+B、上传文件
+Url、Items子项目传入前需进行UrlEncode编码
+{"req":"File_Upload","rid":2,"para":{"ID":"","Url":"","Cookie":"","Auth":"","Para":{},"Items":["c:/Newtest.jpg","c:/test.jpg"]}} 批量上传到指定URL的本地文件，返回添加成功数量，重复的不计算
+
+C、停止上传/下载 一般用于页面退出
+{"req":"File_Stop","rid":3,"para":{""Type":1}} 不指定停止所有，指定Type时1代表下载 2代表上传
+
+D、删除数据记录
+{"req":"File_Delete","rid":4,"para":{"Day":7}} 删除指定Day前数据库中的上传下载任务记录
+
+/// 单个下载任务通知
+{"event":"File_Status","data":{"ID":"","Url":"","File":"","Type":1,"Status":0,"Percent":0,"Error":""}} Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述
+/// 单个上传任务通知
+{"event":"File_Status","data":{"ID":"","Ret":"","Type":2,"Status":0,"Percent":0,"Error":""}} Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述 Ret为上传成功服务器返回的数据包
+
+/// 上传或下载全部结束通知
+{"event":"File_OK","data":{"Type":1"}} 通知上传或下载结束，Type 1代表下载全部完成 2代码上传全部完成
+
+
+5、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.doc”及“PluginOK中间件安全解决方案”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938
