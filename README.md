@@ -1,7 +1,7 @@
 ﻿# WebRunLocal
-   PluginOK(牛插)中间件是一个实现WEB浏览器(Web Browser)与本地程序(Local Application)之间进行双向调用的低成本、强兼容、安全可控、轻量级、易集成、可扩展、跨浏览器的小程序系统，是对浏览器进行功能扩展的最佳利器。通过此中间件可实现前端JS脚本无障碍操控本地电脑连接的各类设备、调用本地系统的API函数及已安装的各种组件功能，支持ActiveX控件、NPAPI插件及自动化程序(如MSOffice、金山WPS、AutoCAD等)在Chrome、Edge(Chromium内核)、360极速/安全/企业、FireFox、IE、Opera、QQ等浏览器最新版中的完美嵌入运行，媲美ActiveX和NPAPI的运行效果，并且提供的集成接口与前端开发语言无关，网页前端只需使用JS+JSON+Web Socket相关技术即可完成与B/S系统的完美对接，实现信息化系统的最佳用户体验。
+   PluginOK(牛插)中间件是一个实现WEB浏览器(Web Browser)与本地程序(Local Application)之间进行双向调用的低成本、强兼容、安全可控、轻量级、易集成、可扩展、跨浏览器的原生小程序系统，是对浏览器进行功能扩展的最佳利器。通过此中间件可实现前端JS脚本无障碍操控本地电脑连接的各类设备、调用本地系统的API函数及已安装的各种组件功能，支持ActiveX控件、NPAPI插件及自动化程序(如MSOffice、金山WPS、AutoCAD等)在Chrome、Edge(Chromium内核)、360极速/安全/企业、FireFox、IE、Opera、QQ等浏览器最新版中的完美嵌入运行，媲美ActiveX和NPAPI的运行效果，并且提供的集成接口与前端开发语言无关，网页前端只需使用JS+JSON+Web Socket相关技术即可完成与B/S系统的完美对接，实现信息化系统的最佳用户体验。
 
-PluginOK(牛插)中间件及相关小程序由成都佐罗软件有限公司研发并销售，咨询热线电话：18081958957、15201358223、18051018685，公司网站：http://www.zorrosoft.com 商务邮箱：wzh@zorrosoft.com 微信在线沟通：ZorroSoft、qq972340118 咨询报价请优先通过微信或邮箱进行，谢谢！
+PluginOK(牛插)中间件及相关小程序由成都佐罗软件有限公司研发并销售，咨询热线电话：18081958957、13801155369、18051018685，公司网站：http://www.zorrosoft.com 商务邮箱：wzh@zorrosoft.com 微信在线沟通：ZorroSoft、qq972340118 咨询报价请优先通过微信或邮箱进行，谢谢！
 
 操作系统兼容性： 1、全面兼容Windows XP、Vista、7、8、8.1、10等各版本32及64位桌面系统； 2、全面兼容Windows Server 2008、2012、2016、2019等各版本32及64位服务系统。
 
