@@ -261,9 +261,12 @@ function getrandom(nums)
 		{
 			var jsondata = $.parseJSON(Data);
 			if(jsondata.req == "Wrl_IEApplet"
+				|| jsondata.req == "Wrl_IETab"
 				|| jsondata.req == "Wrl_VLCApplet"
 				|| jsondata.req == "Wrl_FlashApplet"
 				|| jsondata.req == "Wrl_OfficeApplet"
+				|| jsondata.req == "Wrl_ACADApplet"
+				|| jsondata.req == "Wrl_TXWebApplet"
 				|| jsondata.req == "Wrl_AppletStart")
 			{
 				nRequstAppletID = jsondata.rid;

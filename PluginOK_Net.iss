@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "PluginOK中间件网络版"
-#define MyAppVersion "2.0.7.5"
+#define MyAppVersion "2.1.1.2"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "ZbaSetup.exe"
@@ -23,11 +23,11 @@ DefaultDirName={pf}\PluginOKNet
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 ; 以下行修改为实际的路径。
-LicenseFile=D:\Zorro\WebRunLocal\Net\license.txt
-InfoAfterFile=D:\Zorro\WebRunLocal\Net\TestWrl.txt
+LicenseFile=F:\WebRunLocal\Net\license.txt
+InfoAfterFile=F:\WebRunLocal\Net\TestWrl.txt
 ; 以下行取消注释，以在非管理安装模式下运行（仅为当前用户安装）。
 PrivilegesRequired=admin
-OutputDir=D:\Zorro\WebRunLocal
+OutputDir=F:\WebRunLocal
 OutputBaseFilename=PluginOKNet
 Compression=lzma
 SolidCompression=yes
@@ -37,7 +37,7 @@ WizardStyle=modern
 Name: "chinesesimp"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "D:\Zorro\WebRunLocal\Net\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\WebRunLocal\Net\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
 [Icons]

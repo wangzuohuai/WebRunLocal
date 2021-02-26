@@ -1,0 +1,106 @@
+﻿
+<!DOCTYPE html>
+<html manifest="/websocket.appcache">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Flash Applet Test</title>
+    <script type="text/javascript">
+    </script>
+
+    <link href="css/res.css" rel="stylesheet" />
+    <script src="PluginOK/base.js"></script>
+    <script src="PluginOK/wrl.js"></script>
+    <style>
+        .FlashApplet {
+            margin: 10px 0 0 600px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+            /*top: 50px;*/
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        function sendmsg(msg) {
+            //var msg = $win.find('#inp_send').val();
+            if (socket && msg) {
+                socket.send(msg);
+                //showmessage(msg, 'send');
+                //$win.find('#inp_send').val('');
+            }
+        }
+
+        function movemsg(sign) {
+            var msg = '{"req":"Wrl_AppletScroll","rid":9,"para":{"ID":"';
+            if (socket && id != "") {
+                msg += id;
+                msg += '","OffsetY":';
+                msg += sign;
+                msg += "}}";
+                sendmsg(msg);
+            }
+        }
+
+        function scrolldo() {
+
+        }
+
+        var scrollFunc = function (e) {
+            e = e || window.event;
+            if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件
+                movemsg(e.wheelDelta);
+                if (e.wheelDelta > 0) { //当滑轮向上滚动时
+                    //console.log("滑轮向上滚动");
+                }
+                if (e.wheelDelta < 0) { //当滑轮向下滚动时
+                    //console.log("滑轮向下滚动");
+                }
+            } else if (e.detail) { //Firefox滑轮事件
+                movemsg(e.detail);
+                if (e.detail > 0) { //当滑轮向上滚动时
+                    //console.log("滑轮向上滚动");
+                }
+                if (e.detail < 0) { //当滑轮向下滚动时
+                    //console.log("滑轮向下滚动");
+                }
+            }
+        }
+        ////给页面绑定滑轮滚动事件
+        //if (document.addEventListener) {//firefox
+        //    document.addEventListener('DOMMouseScroll', scrollFunc, false);
+        //}
+        ////滚动滑轮触发scrollFunc方法 //ie 谷歌
+        //window.onmousewheel = document.onmousewheel = scrollFunc;
+
+    </script>
+</head>
+
+<body onscroll="scrolldo()">
+
+    <div id="FlashApplet" class="FlashApplet"></div>
+    <div class="container">
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-sm-6 col-md-5 col-lg-4">
+                <div>
+                    <input type="text" class="form-control" size="50" style="margin-bottom:3px;" id="inp_url" placeholder="连接" value="ws://localhost:80?sid=54321&flag=1" />
+                    <button type="button" id="btn_conn" class="btn btn-primary">连接</button>
+                    <button type="button" id="btn_close" class="btn btn-danger" disabled="disabled">断开</button>
+                    <button type="button" id="btn_clear" class="btn btn-danger">清空消息</button>
+                </div>
+                <br />
+                <div style="margin-bottom:20px;">
+                    <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:500px;min-height:300px;" placeholder="请输入发送的内容">{"req":"Wrl_FlashApplet","rid":9,"para":{"Type":"0","Title":"Flash Applet","Flag":2,"IframeX":0,"IframeY":8,"Version":"0","Zoom":100,"Url": "file:///D:/Zorro/WebRunLocal/Test/flashframe.html","Open":"http://zorrosoft.com/Files/test.swf"}}</textarea>
+                    <button type="button" id="btn_send" class="btn btn-info btn-block">发送（ctrl+回车）</button>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-7 col-lg-8">
+                <div id="div_msgzone" class="panel panel-default">
+                    <div class="panel-heading">通讯记录</div>
+                    <div id="div_msg" class="panel-body" style="min-height:300px;width:500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

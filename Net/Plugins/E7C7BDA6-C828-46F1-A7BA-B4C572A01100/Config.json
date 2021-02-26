@@ -1,4 +1,5 @@
 {
-  "FirstInstall":"flashplayer.exe",
+  "COM": "Reg.bat",
+  "FirstInstall":"Clear.bat",
   "PORT": 990
 }

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html manifest="/websocket.appcache">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>牛插中间件是一个实现浏览器网页与本地应用之间可双向调用的轻量级、强兼容、可扩展、安全可控的通用浏览器插件开发框架</title>    
+    <link href="res.css" rel="stylesheet"/>
+    <script language="javascript" type="text/javascript" src="jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="wrl.js"></script>
+    <!--[if lte IE 10]>
+    <script language="javascript" type="text/javascript">
+    	$(document).ready(function(){
+	    	initWebSocketOcx();
+	    });
+    </script>
+    <![endif]-->
+</head>
+<body>
+    
+<div class="container">
+    <div class="page-header">
+        <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">牛插在线测试</h2>
+        <a href=http://local.zorrosoft.com/Files/WRL.zip>演示版下载</a>
+        <br />
+        <br />
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            <div>
+                <input type="text" class="form-control" size="80" style="margin-bottom:3px;" id="inp_url" placeholder="连接" value="ws://wrl.zorrosoft.com?sid=111&flag=1" />
+                <button type="button" id="btn_conn" class="btn btn-primary">连接</button>
+                <button type="button" id="btn_close" class="btn btn-danger" disabled="disabled">断开</button>
+                <button type="button" id="btn_clear" class="btn btn-danger">清空记录</button>
+            </div>
+            <br />
+            <div style="margin-bottom:20px;">
+                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:700px;min-height:300px;" placeholder="发送的内容"></textarea>
+                <button type="button" id="btn_send" class="btn btn-info btn-block">发送（ctrl+回车）</button>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-7 col-lg-8">
+            <div id="div_msgzone" class="panel panel-default">
+                <div class="panel-heading">通讯记录</div>
+                <div id="div_msg" class="panel-body" style="min-height:400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
