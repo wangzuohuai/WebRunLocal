@@ -56,18 +56,19 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 自动识别当前浏览器并启动Design Review程序在线审阅dwg、dxf文档
 {"req":"Wrl_ACADApplet","rid":7,"para":{"Type":"0","Title":"Autodesk Applet","Flag":1,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/acadframe.html","App":"2","Open":"D:/Zorro/test.dwg"}}
 
-
 自动识别当前浏览器指定位置自动适配网页大小启动：
 {"req":"Wrl_ACADApplet","rid":8,"para":{"Type":"0","Title":"Autodesk Applet","Flag":9,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/acadfull.html","App":"0","Open":"D:/Zorro/test.dwg"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/acadframe.html
 
-启动后会前后收到两个JSON数据包
+启动后会前后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
-返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"997599C3-3C4D-445E-B741-0AD934B45459","Port":990}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"997599C3-3C4D-445E-B741-0AD934B45459","port":990}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
+代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":3,"data":{"SID":"123","PID":"997599C3-3C4D-445E-B741-0AD934B45459","Port":990}}
 
 2)、请求控制Autodesk内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等

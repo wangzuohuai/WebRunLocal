@@ -25,11 +25,13 @@ Open为需要用IE内核打开的Url实际地址或本地网页地址；
 浏览器当前页面启动演示
 http://zorrosoft.com/IENewTab.html
 
-启动后会先后收到两个JSON数据包
+启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":1}}
-返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl命令。
-B、{"event":"Wrl_Listen","aid":1,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Port":980}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":1,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","port":980}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
+返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl命令。
+C、{"event":"Wrl_AppletOK","aid":1,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE281","Port":980}}
 
 2)、请求控制IE标签页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等

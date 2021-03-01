@@ -51,11 +51,13 @@ Open：为需要签章的文件路径，磁盘目录斜杠用/
 指定页面内加载后适配网页切换显示：
 http://zorrosoft.com/aipframe.html
 
-启动后会先后收到两个JSON数据包
+启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
-返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Port":1200}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","port":1200}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能。
+代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":2,"data":{"SID":"123","PID":"62978E9A-9B00-4E42-9E70-0BE7526E14C0","Port":1200}}
 
 2)、请求控制AIP电子签章内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等

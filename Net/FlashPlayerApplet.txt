@@ -55,11 +55,13 @@ Open：为需要播放的多媒体路径，磁盘目录斜杠用/
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/flashframe.html
 
-启动后会先后收到两个JSON数据包
+启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
-返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Port":990}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","port":990}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Flash。
+代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":2,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Port":990}}
 
 2)、请求控制Flash Player内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等

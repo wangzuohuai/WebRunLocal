@@ -9,8 +9,8 @@ using System.IO;
 using System.Windows.Forms;
 
 /// 添加核心组件引用
-using ZbaEngine;
-using ZbaBase;
+using WrlEngine;
+using WrlBase;
 
 namespace PluginExeDemo
 {
@@ -69,9 +69,10 @@ namespace PluginExeDemo
                 return;
             WebSocketEvent.SetForm(this);
             ushort nPort = ushort.Parse(m_Para["PORT"]);
+            /// 开始WebSocket侦听服务，返回实际侦听端口
             ushort nListenPort = WebSocketServer.Listen(nPort, m_Para["SID"], m_Para["AI"]);
 
-                /// 建立事件通知
+            /// 建立事件通知
             WebSocketServer.NewConnEvent += WebSocketEvent.NewConnEvent;
             WebSocketServer.RecMsgEvent += WebSocketEvent.RecMsgEvent;
             WebSocketServer.RecTextEvent += WebSocketEvent.RecTextEvent;
@@ -216,8 +217,10 @@ namespace PluginExeDemo
             /// <summary>
             /// 通知HTTP同步请求处理
             /// </summary>
-            /// <param name="strUrl"></param>
-            /// <param name="strPara"></param>
+            /// <param name="bstrSID"></param>
+            /// <param name="bstrProtocol"></param>
+            /// <param name="bstrUrl"></param>
+            /// <param name="bstrPara"></param>
             /// <param name="pVal"></param>
             public void HttpReqEvent(string bstrSID, string bstrProtocol, string bstrUrl, string bstrPara, out string pVal)
             {
@@ -240,9 +243,9 @@ namespace PluginExeDemo
             /// <summary>
             /// WS连接请求中出现错误
             /// </summary>
-            /// <param name="strUrl"></param>
-            /// <param name="strPara"></param>
-            /// <param name="pVal"></param>
+            /// <param name="bstrSID"></param>
+            /// <param name="nReqID"></param>
+            /// <param name="bstrErrInfo"></param>
             public void RecErrEvent(string bstrSID, uint nReqID, string bstrErrInfo)
             {
                 m_Form.textBox2.AppendText("连接出现错误：");
@@ -254,6 +257,7 @@ namespace PluginExeDemo
             /// 通知关闭连接
             /// </summary>
             /// <param name="bstrSID"></param>
+            /// <param name="bstrReason"></param>
             public void ConnCloseEvent(string bstrSID, string bstrReason)
             {
                 m_Form.textBox2.AppendText("关闭连接：");
