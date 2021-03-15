@@ -80,6 +80,7 @@
             this.Name = "Form1";
             this.Text = "C#弹窗小程序范例";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_Closed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

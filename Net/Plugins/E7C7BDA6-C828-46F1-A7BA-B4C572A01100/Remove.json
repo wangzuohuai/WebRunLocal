@@ -1,1 +1,10 @@
-[]
+[
+   {
+      "File" : "[SYSTEM]activex.vch",
+      "Remove" : 1
+   },
+   {
+      "File" : "[SYSTEM]mms.cfg",
+      "Remove" : 1
+   }
+]
