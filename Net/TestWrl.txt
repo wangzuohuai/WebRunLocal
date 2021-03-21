@@ -1,217 +1,206 @@
-﻿PluginOK(牛插)中间件网络版-跨浏览器的小程序系统标准版功能测试：
+PluginOK(ţ��)�м�������-���������ԭ��С����ϵͳ��׼�湦�ܲ��ԣ�
 
-1、请下载中间件网络版安装包(http://local.zorrosoft.com/Files/PluginOKNet.zip)后执行安装，安装时需要管理员权限运行，安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况；
+1���������м������氲װ��(http://local.zorrosoft.com/Files/PluginOKNet.zip)��ִ�а�װ����װʱ��Ҫ����ԱȨ�����У���װ���ʱ������PluginOK�м�������ڰ�װĿ¼�µ�Data��Ŀ¼��ZbaService.txt(��������WrlService.txt)��־�ļ�������������
 
-2、启动Chrome等浏览器并打开网页 http://local.zorrosoft.com 进行测试(HTTPS网站测试请打开 https://local.zorrosoft.com ，HTTPS网站请把连接的通讯协议 ws: 改为 wss: 再执行)，如在IE等浏览器中测试，如提示启用ActiveX控件，请选择是；
+2������Chrome�������������ҳ http://local.zorrosoft.com ���в���(HTTPS��վ������� https://local.zorrosoft.com ��HTTPS��վ������ӵ�ͨѶЭ�� ws: ��Ϊ wss: ��ִ��)������IE��������в��ԣ�����ʾ��������������ActiveX�ؼ�����ѡ���ǣ�
 
-3、测试连接PluginOK(牛插)系统服务，下面是参数说明：
-sid是唯一连接标识(小程序服务支持同时多个连接，需要用唯一标识进行区分)
-pid是连接小程序的唯一标识(在小程序配置文件PluginConfig.json中定义的PID值)，不传时表示连接主服务
-flag是连接控制掩码，1指定输出调试日志，2指示通讯数据进行GZip压缩(网页JS需要进行同步处理)，3代表1+2，4用管理员权限启动(仅限于启动弹窗或内嵌窗口小程序)。
-请求连接PluginOK(牛插)主服务：ws://wrl.zorrosoft.com:83?sid=123&flag=1 点击连接按钮会输出连接结果，在HTTP网页中，wrl.zorrosoft.com可替换为localhost进行连接，如果您的电脑83端口已经被占用，服务侦听端口会自动切换为89，那么连接地址请修改为：ws://wrl.zorrosoft.com:84?sid=123&flag=1；
+3����������PluginOK(ţ��)ϵͳ���������ǲ���˵����
+sid��Ψһ���ӱ�ʶ(С�������֧��ͬʱ������ӣ���Ҫ��Ψһ��ʶ��������)
+pid������С�����Ψһ��ʶ(��С���������ļ�PluginConfig.json�ж����PIDֵ)������ʱ��ʾ����������
+flag�����ӿ������룬1ָ�����������־��2ָʾͨѶ���ݽ���GZipѹ��(��ҳJS��Ҫ����ͬ������)��3����1+2��4�ù���ԱȨ������(������������������Ƕ����С����)��
+��������PluginOK(ţ��)������ws://wrl.zorrosoft.com:83?sid=123&flag=1 ������Ӱ�ť��������ӽ������HTTP��ҳ�У�wrl.zorrosoft.com���滻Ϊlocalhost�������ӣ�������ĵ���83�˿��Ѿ���ռ�ã����������˿ڻ��Զ��л�Ϊ84����ô���ӵ�ַ���޸�Ϊ��ws://wrl.zorrosoft.com:84?sid=123&flag=1��
 
-连接PluginOK(牛插)主服务后支持的功能协议：
+����PluginOK(ţ��)�������֧�ֵĹ���Э�飺
 
-1)、获取或对比版本信息
-Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当前电脑制造商及型号等)，Router为1时获取当前网络路由器MAC地址，Config为1时获取中间件的一些配置参数。
-说明：连接主服务后可执行，返回当前软件版本、当前系统版本、唯一标识、授权有效期、授权客户名称、当前系统启动后运行时间、程序运行路径等；
-获取版本信息举例：
+1)����ȡ��ԱȰ汾��Ϣ
+MacΪ1ʱ��ȡ����Mac��ַ��Ϣ��Moreȡ������Ϣ(��ǰ��¼�û������̺�������ʱ�䡢��ǰ���������̼��ͺŵ�)��RouterΪ1ʱ��ȡ��ǰ����·����MAC��ַ��ConfigΪ1ʱ��ȡ�м����һЩ���ò�����
+˵����������������ִ�У����ص�ǰ�����汾����ǰϵͳ�汾��Ψһ��ʶ����Ȩ��Ч�ڡ���Ȩ�ͻ����ơ���ǰϵͳ����������ʱ�䡢��������·���ȣ�
+��ȡ�汾��Ϣ������
 {"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Config" : 1,"Router" : 1}}
-协议中的rid代表此请求序号(长整型)，请求返回的结果json中也会带这个参数，因为ws请求和返回是异步执行的，这样可以确保请求和结果的一一对应关系，下同
-返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"1.2.18.1","ValidDay":"2020-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
+Э���е�rid�������������(������)�����󷵻صĽ��json��Ҳ��������������Ϊws����ͷ������첽ִ�еģ���������ȷ������ͽ����һһ��Ӧ��ϵ����ͬ
+���أ�{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"2.1.2.2","ValidDay":"2021-03-21","AuthName":"�ɶ���������","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
 
-对比是否有新版本举例：
-{"req":"Wrl_Version","rid":1,"para":{"Version" : "1.0.1.1"}}  给定新版本号，判断当前中间件版本是否需要升级，返回节点字段Update为1时需要升级，0不需要升级
-{"req":"Wrl_Version","rid":1,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Version" : "1.0.1.1"}}  指定PID的小程序新版本号，判断小程序是否需要升级，返回节点字段Update为1时需要升级，0不需要升级，2代表小程序还未安装
+�Ա��Ƿ����°汾������
+{"req":"Wrl_Version","rid":1,"para":{"Version" : "1.0.1.1"}}  �����°汾�ţ��жϵ�ǰ�м���汾�Ƿ���Ҫ���������ؽڵ��ֶ�UpdateΪ1ʱ��Ҫ������0����Ҫ����
+{"req":"Wrl_Version","rid":1,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Version" : "1.0.1.1"}}  ָ��PID��С�����°汾�ţ��ж�С�����Ƿ���Ҫ���������ؽڵ��ֶ�UpdateΪ1ʱ��Ҫ������0����Ҫ������2����С����δ��װ
 
-2)、指定浏览器打开指定Url：
-分别指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360急速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)和Url地址；
-Flag意义：0代表标签页打开，1代表新窗口打开(360等不支持)；
-Show显示窗口类型，默认1正常显示，2最小化显示 3最大化显示。
-此功能主要用于强制IE打开指定网页，Chrome命令行加载PPAPI插件等使用；
-举例1：
-强制用IE9兼容模式内核浏览器打开 http://www.zorrosoft.com 
-9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
+2)��ָ���������ָ��Url��
+�ֱ�ָ�����������Type(1����IE 2����Chrome 4����Firefox 8����Opera 16����Edge(Chromium�ں�) 32����360��������� 33����360��ȫ����� 34����360��ҵ��ȫ����� 50����QQ����� 60�����ѹ������)��Url��ַ��
+Flag���壺0������ǩҳ�򿪣�1�����´��ڴ�(360�Ȳ�֧��)��
+Show��ʾ�������ͣ�Ĭ��1������ʾ��2��С����ʾ 3�����ʾ��
+�˹�����Ҫ����ǿ��IE��ָ����ҳ��
+����1��
+ǿ����IE9����ģʽ�ں�������� http://www.zorrosoft.com 
+9999��IE9��׼ģʽ 8888��IE8��׼ģʽ 8000��IE8����ģʽ 7000��IE7 ��ϸ����ο���https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 {"req":"Wrl_OpenUrl","rid":2,"para":{"Type":"1","Url": "http://www.zorrosoft.com","Flag":"1","Version":"9000"}}
 
-举例2：
-Chrome浏览器新窗口打开http://www.zorrosoft.com Flag为1新窗口打开，否则是新标签打开
+����2��
+Chrome������´��ڴ�http://www.zorrosoft.com FlagΪ1�´��ڴ򿪣��������±�ǩ��
 {"req":"Wrl_OpenUrl","rid":3,"para":{"Type":"2","Url": "http://www.zorrosoft.com","Flag":"0"}}
 
-举例3：
-重启Chrome命令行加载PPAPI插件，插件路径如有空格的情况，空格要用%20代替，路径单斜杠用双斜杠
-{"req":"Wrl_OpenUrl","rid":4,"para":{"Type":"2","Url": "--register-pepper-plugins=\"C:\\Program%20Files%20(x86)\\ChromePlugin\\ChromePlugin.dll;application/my-plugin\" --disable-infobars --disable-hang-monitor --flag-switches-begin --enable-nacl --ignore-gpu-blacklist --flag-switches-end http://www.zorrosoft.com"}}
-
-举例4，请求FireFox浏览器打开指定URL：
+����3������FireFox�������ָ��URL��
 {"req":"Wrl_OpenUrl","rid":5,"para":{"Type":"4","Url": "http://www.zorrosoft.com"}}
-举例5，请求360极速浏览器打开指定URL：
+����4������360�����������ָ��URL��
 {"req":"Wrl_OpenUrl","rid":6,"para":{"Type":"32","Url": "http://www.zorrosoft.com"}}
-举例6，请求360安全浏览器打开指定URL：
+����5������360��ȫ�������ָ��URL��
 {"req":"Wrl_OpenUrl","rid":7,"para":{"Type":"33","Url": "http://www.zorrosoft.com"}}
-举例7，请求Edge新内核浏览器打开指定URL：
+����6������Edge���ں��������ָ��URL��
 {"req":"Wrl_OpenUrl","rid":8,"para":{"Type":"16","Url": "http://www.zorrosoft.com"}}
 
-3)、请求使用关联程序打开指定文件：
-指定本地文件全路径，使用本地电脑默认关联的程序打开，路径用反斜杠或双斜杠。
-为安全起见，这些扩展名文件不支持：*.exe *.msi *.js *.jar *.inf *.com *.bat *.vbs *.py
-举例：
+3)������ʹ�ù��������ָ���ļ���
+ָ�������ļ�ȫ·����ʹ�ñ��ص���Ĭ�Ϲ����ĳ���򿪣�·���÷�б�ܻ�˫б�ܡ�
+Ϊ��ȫ�������Щ��չ���ļ���֧�֣�*.exe *.msi *.js *.jar *.inf *.com *.bat *.vbs *.py
+������
 {"req":"Wrl_OpenFile","rid":9,"para":{"File" : "D:/Zorro/Ver/TestWrl.txt"}}
-说明：连接主服务后可执行；
+˵����������������ִ�У�
 
-4)、单选(多选)磁盘文件/设置文件保存位置：
-可指定选择文件对话框标题、筛选文件类型、最大可选文件数量、初始化路径等参数。
-Type 操作方式 0代表选择文件 1代表设置文件保存路径
-Single 是否单选 选择文件时有效
-Ext 文件类型，默认为 图像文件(*.jpg;*.gif;*.bmp;*.png;*.tif)\r*.jpg;*.gif;*.bmp;*.png;*.tif;*.jpeg\r所有文件(*.*)\r*.*
-Title 对话框标题，默认为 请选择文件
-Name 文件保存默认名称 选择文件时无效
-BtnText 按钮文字 设置文件保存位置时无效
-Path 初始化显示路径，默认为 当前用户文档目录
-举例：
-选择文件
-{"req":"Wrl_SelectFile","rid":10,"para":{"Type" : 0,"Single" : 1,"Title" : "单选文件","BtnText" : "确定(&O)","Ext" : "所有文件(*.*)\r*.*","Path" : "E:/WRL/"}}
-设置文件保存位置
-{"req":"Wrl_SelectFile","rid":11,"para":{"Type" : 1,"Title" : "请选择文件保存位置","Ext" : "文本文件(*.txt)\r*.txt","Path" : "E:/WRL/","Name" : "测试"}}
-说明：连接主服务后可执行，由于此请求有对话框阻塞行为，执行后的结果通过事件推送方式返回，定义如下：
-{"event":"Wrl_SelectFile","rid":12,"data":[{"File":"E:/WRL/测试.txt"}]}
-取消时推送：{"event":"Wrl_SelectFile","rid":12,"err":"被取消"}
+4)����ѡ(��ѡ)�����ļ�/�����ļ�����λ�ã�
+��ָ��ѡ���ļ��Ի�����⡢ɸѡ�ļ����͡�����ѡ�ļ���������ʼ��·���Ȳ�����
+Type ������ʽ 0����ѡ���ļ� 1���������ļ�����·��
+Single �Ƿ�ѡ ѡ���ļ�ʱ��Ч
+Ext �ļ����ͣ�Ĭ��Ϊ ͼ���ļ�(*.jpg;*.gif;*.bmp;*.png;*.tif)\r*.jpg;*.gif;*.bmp;*.png;*.tif;*.jpeg\r�����ļ�(*.*)\r*.*
+Title �Ի�����⣬Ĭ��Ϊ ��ѡ���ļ�
+Name �ļ�����Ĭ������ ѡ���ļ�ʱ��Ч
+BtnText ��ť���� �����ļ�����λ��ʱ��Ч
+Path ��ʼ����ʾ·����Ĭ��Ϊ ��ǰ�û��ĵ�Ŀ¼
+������
+ѡ���ļ�
+{"req":"Wrl_SelectFile","rid":10,"para":{"Type" : 0,"Single" : 1,"Title" : "��ѡ�ļ�","BtnText" : "ȷ��(&O)","Ext" : "�����ļ�(*.*)\r*.*","Path" : "E:/WRL/"}}
+�����ļ�����λ��
+{"req":"Wrl_SelectFile","rid":11,"para":{"Type" : 1,"Title" : "��ѡ���ļ�����λ��","Ext" : "�ı��ļ�(*.txt)\r*.txt","Path" : "E:/WRL/","Name" : "����"}}
+˵����������������ִ�У����ڴ������жԻ���������Ϊ��ִ�к�Ľ��ͨ���¼����ͷ�ʽ���أ��������£�
+{"event":"Wrl_SelectFile","rid":12,"data":[{"File":"E:/WRL/����.txt"}]}
+ȡ��ʱ���ͣ�{"event":"Wrl_SelectFile","rid":12,"err":"��ȡ��"}
 
-5)、选择目录：
-可指定对话框标题等参数。
-Title 对话框标题，默认为 请选择文件
-BtnText 按钮文字 设置文件保存位置时无效
-举例：
-{"req":"Wrl_SelectFolder","rid":13,"para":{"Title" : "选择本地目录","BtnText" : "确定(&O)"}}
-说明：连接主服务后可执行，由于此请求有对话框阻塞行为，执行后的结果通过事件推送方式返回，定义如下：
+5)��ѡ��Ŀ¼��
+��ָ���Ի������Ȳ�����
+Title �Ի�����⣬Ĭ��Ϊ ��ѡ���ļ�
+BtnText ��ť���� �����ļ�����λ��ʱ��Ч
+������
+{"req":"Wrl_SelectFolder","rid":13,"para":{"Title" : "ѡ�񱾵�Ŀ¼","BtnText" : "ȷ��(&O)"}}
+˵����������������ִ�У����ڴ������жԻ���������Ϊ��ִ�к�Ľ��ͨ���¼����ͷ�ʽ���أ��������£�
 {"event":"Wrl_SelectFolder","rid":13,"data":[{"Folder":"E:/WRL/"}]}
-取消时推送：{"event":"Wrl_SelectFolder","rid":6,"err":"被取消"}
+ȡ��ʱ���ͣ�{"event":"Wrl_SelectFolder","rid":6,"err":"��ȡ��"}
 
-6)、请求获取指定文件大小、版本、文件属性、MD5、创建时间、修改时间等信息：
-指定本地文件全路径，路径用反斜杠或双斜杠，如果是图片文件，还会返回高度和宽度信息。
-举例：
+6)�������ȡָ���ļ���С���汾���ļ����ԡ�MD5������ʱ�䡢�޸�ʱ�����Ϣ��
+ָ�������ļ�ȫ·����·���÷�б�ܻ�˫б�ܣ������ͼƬ�ļ������᷵�ظ߶ȺͿ�����Ϣ��
+������
 {"req":"Wrl_GetFileInfo","rid":14,"para":{"File" : "D:/Zorro/WebRunLocal/Bin/Test/css/top.png"}}
-说明：连接主服务后可执行；
+˵����������������ִ�У�
 
-7)、请求重新注册中间件或小程序：
-如指定PID代表重新注册指定的小程序，否则执行重新执行中间件安装批处理(连接会断开)，可能因为一些工具或手工误删除了注册表等，用于修复本中间件使用配置。如用于重新配置中间件正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
-举例：
-{"req":"Wrl_RegCom","rid":15,"para":{"PID" : "A22E18F1-95F8-4FDB-99D2-188E5FB12B23"}} 重新注册小程序
+7)����������ע���м����С����
+��ָ��PID��������ע��ָ����С���򣬷���ִ������ִ���м����װ������(���ӻ�Ͽ�)��������ΪһЩ���߻��ֹ���ɾ����ע����ȣ������޸����м��ʹ�����á����������������м����ʽ����Ҫ����TKУ�飬���������ο�SDK�����ĵ���PluginOK�м����ȫ�������.doc��������SDK���еĴ������ZbaPackage.exe���м��ά�����ɴ�TK������
+������
+{"req":"Wrl_RegCom","rid":15,"para":{"PID" : "A22E18F1-95F8-4FDB-99D2-188E5FB12B23"}} ����ע��С����
 
-{"req":"Wrl_RegCom","rid":15,"para":{"NoService" : "1"}} 以非系统服务方式重新安装中间件
-说明：连接主服务后可执行；
+{"req":"Wrl_RegCom","rid":15,"para":{"NoService" : "1"}} �Է�ϵͳ����ʽ���°�װ�м��
+˵����������������ִ�У�
 
-8)、请求当前浏览器类型和版本等信息：
-举例：
+8)������ǰ��������ͺͰ汾����Ϣ��
+������
 {"req":"Wrl_BrowserInfo","rid":16,"para":{}}
-说明：连接主服务后可执行；
-返回：{"ret":0,"rid":16,"data":{"Type":2,"PID":6324,"Ver":"83.0.4103.61"}}
-Type为浏览器类型 PID为当前进程ID Ver为版本
+˵����������������ִ�У�
+���أ�{"ret":0,"rid":16,"data":{"Type":2,"PID":6324,"Ver":"83.0.4103.61"}}
+TypeΪ��������� PIDΪ��ǰ����ID VerΪ�汾
 
-9)、列出当前已授权的小程序列表：
-举例：{"req":"Plugin_Authed","rid":17,"para":{}}
-说明：连接主服务后可执行，可获取当前已授权所有小程序列表；
+9)���г���ǰ����Ȩ��С�����б���
+������{"req":"Plugin_Authed","rid":17,"para":{}}
+˵����������������ִ�У��ɻ�ȡ��ǰ����Ȩ����С�����б���
 
-10)、列出已安装所有小程序：
-举例：{"req":"Plugin_List","rid":18,"para":{"Detail" : 0}}
-说明：连接主服务后可执行，可获取当前已安装所有小程序信息，Detail为1时返回小程序程序全路径；
+10)���г��Ѱ�װ����С����
+������{"req":"Plugin_List","rid":18,"para":{"Detail" : 0}}
+˵����������������ִ�У��ɻ�ȡ��ǰ�Ѱ�װ����С������Ϣ��DetailΪ1ʱ����С�������ȫ·����
 
-11)、判断某个小程序是否已存在
-举例：{"req":"Plugin_Exist","rid":19,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D"}}
-说明：连接主服务后可执行，PID为小程序唯一标识；
+11)���ж�ĳ��С�����Ƿ��Ѵ���
+������{"req":"Plugin_Exist","rid":19,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D"}}
+˵����������������ִ�У�PIDΪС����Ψһ��ʶ��
 
-12)、请求重新加载指定小程序
-使用场景：不用重启服务即可扫描新增小程序使用；或小程序调试时，程序及配置更新需要重新加载时
-举例：{"req":"Plugin_Refresh","rid":20,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D"}}
-说明：连接主服务后可执行，PID为小程序唯一标识；
+12)���������¼���ָ��С����
+ʹ�ó����������������񼴿�ɨ������С����ʹ�ã���С�������ʱ���������ø�����Ҫ���¼���ʱ
+������{"req":"Plugin_Refresh","rid":20,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D"}}
+˵����������������ִ�У�PIDΪС����Ψһ��ʶ��
 
-13)、前端请求配置参数。
-举例：{"req":"Wrl_Config","rid":21,"para":{"Monitor" : "30"}}
-Monitor配置服务无响应超时时间，一旦超过服务会自动重启
-说明：连接主服务后可执行；
+13)��ǰ���������ò�����
+������{"req":"Wrl_Config","rid":21,"para":{"Monitor" : "30"}}
+Monitor���÷�������Ӧ��ʱʱ�䣬һ������������Զ�����
+˵����������������ִ�У�
 
-14)、前端请求启动中间件，网页中点击以下链接，可启动中间件主程序。
-<a href="BrowserApplet://DeskRun">点击这里启动PluginOK网络版</a>
+14)��ǰ�����������м������ҳ�е���������ӣ��������м��������
+<a href="BrowserApplet://DeskRun">�����������PluginOK�����</a>
 
-15)、安装范例小程序
-请在输入框中，分别输入如下请求，然后点击发送，完成四个范例小程序的安装：
+15)����װ����С����
+����������У��ֱ�������������Ȼ�������ͣ�����ĸ�����С����İ�װ��
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"DLL小程序范例(C++语言)","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2021-01-20","Desc":"无窗小程序(C++语言)-读写TXT记事本及获取当前系统信息","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginComDll.pid","MD5":"66B7141091B79FD24C1D9AF3FCD3A6E1","Version":"2.1.1.1","Size":557056,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"434B1AA94F9C0EACBB6623016B68816445AF26472EFF054114C3C556BF915D73A47FE0DC38FE2E8AB4270BD6C2AEECCCE97C32B94C6AF69F121D774AE418D11A7063201097E56DB182423CF831192293A8E13B43D3075732D808E40E960FDF59162E2CBAA420B7FF55FE0DBDEDD8654D8AA3094910380710B777BF19BC3A3DF6642033B093F83DEA519B8E31E9804EE41FEE296B0F584466D08EDDC828DB1E0FAF4C1F0EBF4CEDF5A6DA321DFB44947643E6ABCCAFFF39E850A86B2D45E804E33B779661FCFAE5774540D5839EB6E0E43AAD983A9CDB08A8FC14FA1D1426293FC8793C11D4EBCAB0693FA5A04FB884F12F01D137443FBE6FC8004FB978DAB28D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"DLLС������(C++����)","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2021-01-20","Desc":"�޴�С����(C++����)-��дTXT���±�����ȡ��ǰϵͳ��Ϣ","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginComDll.pid","MD5":"66B7141091B79FD24C1D9AF3FCD3A6E1","Version":"2.1.1.1","Size":557056,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"434B1AA94F9C0EACBB6623016B68816445AF26472EFF054114C3C556BF915D73A47FE0DC38FE2E8AB4270BD6C2AEECCCE97C32B94C6AF69F121D774AE418D11A7063201097E56DB182423CF831192293A8E13B43D3075732D808E40E960FDF59162E2CBAA420B7FF55FE0DBDEDD8654D8AA3094910380710B777BF19BC3A3DF6642033B093F83DEA519B8E31E9804EE41FEE296B0F584466D08EDDC828DB1E0FAF4C1F0EBF4CEDF5A6DA321DFB44947643E6ABCCAFFF39E850A86B2D45E804E33B779661FCFAE5774540D5839EB6E0E43AAD983A9CDB08A8FC14FA1D1426293FC8793C11D4EBCAB0693FA5A04FB884F12F01D137443FBE6FC8004FB978DAB28D"}}
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"弹窗小程序范例(C++语言)","PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2021-01-20","Desc":"弹窗小程序(C++语言)-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginWinExe.pid","MD5":"F71E7FEE4D3F9F87E0B06D5FDB643984","Version":"2.1.1.1","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"4234FE7A4C5555C493011A8D89DD7F129B97DBBBDFBAE90E1714CCBE212399B723CD06AF39CDAE02859B104C3E1FD746ECB0ED26126C7BE237775F5180CC7BC0F351FEF063F6EB8A020D0C87D7EFDC35D75A310F5816C73E20A950C6E365FA633557242A63205E2E8591BA49AB0134B4513B981375D97A4338C8A3E2DEADDDC09F774289A70D2FDA2409DBCE7E27FD5313FD74B37E243CD42D71AFC6815FD71CE85A0AAEAE944A4B397D3D958100EAD7B07BB83248016445E3897F27A93E1C1695CC894CB1FE6AF986285774B57738B1032195B1B4ABB1FD177E3F4865C8A04372AF3A59E72419EB269A7BA55444204EAA18C5431262FB30848D6B4D1DFC0F15"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"����С������(C++����)","PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2021-01-20","Desc":"����С����(C++����)-��ʾ�ű������ָ����վ","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginWinExe.pid","MD5":"F71E7FEE4D3F9F87E0B06D5FDB643984","Version":"2.1.1.1","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"4234FE7A4C5555C493011A8D89DD7F129B97DBBBDFBAE90E1714CCBE212399B723CD06AF39CDAE02859B104C3E1FD746ECB0ED26126C7BE237775F5180CC7BC0F351FEF063F6EB8A020D0C87D7EFDC35D75A310F5816C73E20A950C6E365FA633557242A63205E2E8591BA49AB0134B4513B981375D97A4338C8A3E2DEADDDC09F774289A70D2FDA2409DBCE7E27FD5313FD74B37E243CD42D71AFC6815FD71CE85A0AAEAE944A4B397D3D958100EAD7B07BB83248016445E3897F27A93E1C1695CC894CB1FE6AF986285774B57738B1032195B1B4ABB1FD177E3F4865C8A04372AF3A59E72419EB269A7BA55444204EAA18C5431262FB30848D6B4D1DFC0F15"}}
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"DLL小程序范例(C#语言)","PID":"D10495F4-DF0F-44FA-8647-91275347214A","Date":"2021-01-20","Desc":"无窗口小程序范例(C#语言)","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginNetDll.pid","MD5":"55658771EFD3085323DE517BAC825D46","Version":"2.1.1.1","Size":393216,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"4DDEB00DD4B3A4AF316306967A4AB5BC95AE3E469095CCFF828C8928CC6EE04523ADAC6C2E063A86415C079C67172F8AE0669189C6CECA23642FA20D1E54B0D857BE129274E9ABABBF4F822CC2758BF88DFE24E931FE62920E0AA0D16B486F415C6EDD219372345AD063A803435046ADB087967B0DB02B43AD0A2519C0FC7F9E700571B0306429FCA14FE9359B732B950267A0ACA0EE3AED4A57573742511594EF26004F42CD350C38A7B9C98834B9C59C756811C59CE0C6E2FD04C6A0137246DC943401283FF0C924E26A3AF556CA45CDC4DF33E3EB98CEE1D5B6E0222DB8D049A8B78D10848BD690069BF6CF98110BDE3CE67FD5F144676ED096D43D6BDBA3"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"DLLС������(C#����)","PID":"D10495F4-DF0F-44FA-8647-91275347214A","Date":"2021-01-20","Desc":"�޴���С������(C#����)","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginNetDll.pid","MD5":"55658771EFD3085323DE517BAC825D46","Version":"2.1.1.1","Size":393216,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"4DDEB00DD4B3A4AF316306967A4AB5BC95AE3E469095CCFF828C8928CC6EE04523ADAC6C2E063A86415C079C67172F8AE0669189C6CECA23642FA20D1E54B0D857BE129274E9ABABBF4F822CC2758BF88DFE24E931FE62920E0AA0D16B486F415C6EDD219372345AD063A803435046ADB087967B0DB02B43AD0A2519C0FC7F9E700571B0306429FCA14FE9359B732B950267A0ACA0EE3AED4A57573742511594EF26004F42CD350C38A7B9C98834B9C59C756811C59CE0C6E2FD04C6A0137246DC943401283FF0C924E26A3AF556CA45CDC4DF33E3EB98CEE1D5B6E0222DB8D049A8B78D10848BD690069BF6CF98110BDE3CE67FD5F144676ED096D43D6BDBA3"}}
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"弹窗小程序范例(C#语言)","PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2021-03-10","Desc":"弹窗小程序范例(C#语言)-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Net/Test/PluginExeDemo.pid","MD5":"5ADE22B1E923B16FFDAA16F83FF2D57E","Version":"2.1.1.3","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"4C2E6CCE4DBCC485E38668DD4F85295A3568FEAEBDD805E9C712F00CC9C287FF85FC844ADF078FFD3AD1F748D69B27896A0C380E0F453EF4E08DC4317519948E510A1465B7551DCC6CEA086822E2E1E5EB9CF0DB65F897CC7F3DA5874E880F7C9F10276F28457177EB74766FC525CF01BFB12D21C9C698F2D79C7349EF1DABBE3FDAD968547C73744BE0AE6FB22E3572A15249E6F5CD054FAB8EE4EB22C2DFD13284DAE041A28079D91CEF2929F3EAAB6DA14BEA49F2241165830DE91D9C52C79298CA71CCF3ECBAA26FF31AB304ADA1793DD266AF436E4BBE0739B354EDC56F747117B6B9364FDF0BB1056D8CCA3850DF7C18539FBB0E4B1AD6F10D90C586E5"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"����С������(C#����)","PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2021-03-10","Desc":"����С������(C#����)-��ʾ�ű������ָ����վ","DownAddr":"http://local.zorrosoft.com/Files/Net/Test/PluginExeDemo.pid","MD5":"5ADE22B1E923B16FFDAA16F83FF2D57E","Version":"2.1.1.3","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"4C2E6CCE4DBCC485E38668DD4F85295A3568FEAEBDD805E9C712F00CC9C287FF85FC844ADF078FFD3AD1F748D69B27896A0C380E0F453EF4E08DC4317519948E510A1465B7551DCC6CEA086822E2E1E5EB9CF0DB65F897CC7F3DA5874E880F7C9F10276F28457177EB74766FC525CF01BFB12D21C9C698F2D79C7349EF1DABBE3FDAD968547C73744BE0AE6FB22E3572A15249E6F5CD054FAB8EE4EB22C2DFD13284DAE041A28079D91CEF2929F3EAAB6DA14BEA49F2241165830DE91D9C52C79298CA71CCF3ECBAA26FF31AB304ADA1793DD266AF436E4BBE0739B354EDC56F747117B6B9364FDF0BB1056D8CCA3850DF7C18539FBB0E4B1AD6F10D90C586E5"}}
 
-16)、范例小程序升级请求：
+16)������С������������
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"DLL小程序范例(C++语言)","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2021-01-20","Desc":"无窗小程序(C++语言)-读写TXT记事本及获取当前系统信息","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginComDll_Update.pid","MD5":"DB5F0413F6F511F354BDA13BA495DDD7","Version":"2.1.1.1","Size":557056,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"3A63F5D2A905BA0BBE51345AF75D8BF2F2BE7DC8D318F16CA2BCF569428F9E755F02A46B7EFA470DFADD0BF00003FC915DB1799BE173846C92310874070E996842155573B548EC43616073B3A6436DAE140990FA72897EAA85C73E3E78C6CB0322E2EE69AF3D8BA10A1F6B3F03E779AF15133FB75DCE48C996730396EE5375C880B4D770A74917D598A0FC4E6C3E038774DFE6F549801C7F7C649B25C9C99BAE4BA34561A349ED8DF4073AC3EF0D4448B98D9A2B398025DB5BA50916B5724660AF546A59D8AAD61830F8012A30C47091CF5DD6F48A4601E52F9134E8D0711D6B77229EE1C81B95D7B15E98EA869AA5035DA86BADB267EF21ED8AC04534EAEB1A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"DLLС������(C++����)","PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Date":"2021-01-20","Desc":"�޴�С����(C++����)-��дTXT���±�����ȡ��ǰϵͳ��Ϣ","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginComDll_Update.pid","MD5":"DB5F0413F6F511F354BDA13BA495DDD7","Version":"2.1.1.1","Size":557056,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"3A63F5D2A905BA0BBE51345AF75D8BF2F2BE7DC8D318F16CA2BCF569428F9E755F02A46B7EFA470DFADD0BF00003FC915DB1799BE173846C92310874070E996842155573B548EC43616073B3A6436DAE140990FA72897EAA85C73E3E78C6CB0322E2EE69AF3D8BA10A1F6B3F03E779AF15133FB75DCE48C996730396EE5375C880B4D770A74917D598A0FC4E6C3E038774DFE6F549801C7F7C649B25C9C99BAE4BA34561A349ED8DF4073AC3EF0D4448B98D9A2B398025DB5BA50916B5724660AF546A59D8AAD61830F8012A30C47091CF5DD6F48A4601E52F9134E8D0711D6B77229EE1C81B95D7B15E98EA869AA5035DA86BADB267EF21ED8AC04534EAEB1A"}}
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"弹窗小程序范例(C++语言)","PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2021-01-20","Desc":"弹窗小程序(C++语言)-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginWinExe_Update.pid","MD5":"D74A7729BC33809D5C2FEB201561A1BF","Version":"2.1.1.1","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"A4E3A733B5DDBBFF5DBE3A429EB77198846C9259F660118826019D1B6C9DD65E713BA418D8C92B762B41C0FE87850B0BC64DC0F11BA42EA0640649BD0C72F6B592775CE2EFD3115CB887BB47BD4880F367410FCCCB73E41204A344CF553896D63AA511F0172ECB6F05B2D829A1DDE74996EBDCEDE88C4D16F4BD0BA350EE4DCE574C27292FEDA27D6F5F9A1C91B3EF3B04B4E35E9B03F6205458A807850481C3C7C74F7213D117923AEDDE34CED039F493467F6657C404121DE339FC2F7CEB2BDEFB709FCF729C50391C376983978C72ADC33A7B585A0066C9A6848A287E4DCA907AD6EF4125A5F5E3E19BE0B25BF0A3BEFF17E9BBAE298849DFCF43D9D24B61"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"����С������(C++����)","PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Date":"2021-01-20","Desc":"����С����(C++����)-��ʾ�ű������ָ����վ","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginWinExe_Update.pid","MD5":"D74A7729BC33809D5C2FEB201561A1BF","Version":"2.1.1.1","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"A4E3A733B5DDBBFF5DBE3A429EB77198846C9259F660118826019D1B6C9DD65E713BA418D8C92B762B41C0FE87850B0BC64DC0F11BA42EA0640649BD0C72F6B592775CE2EFD3115CB887BB47BD4880F367410FCCCB73E41204A344CF553896D63AA511F0172ECB6F05B2D829A1DDE74996EBDCEDE88C4D16F4BD0BA350EE4DCE574C27292FEDA27D6F5F9A1C91B3EF3B04B4E35E9B03F6205458A807850481C3C7C74F7213D117923AEDDE34CED039F493467F6657C404121DE339FC2F7CEB2BDEFB709FCF729C50391C376983978C72ADC33A7B585A0066C9A6848A287E4DCA907AD6EF4125A5F5E3E19BE0B25BF0A3BEFF17E9BBAE298849DFCF43D9D24B61"}}
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"DLL小程序范例(C#语言)","PID":"D10495F4-DF0F-44FA-8647-91275347214A","Date":"2021-01-20","Desc":"无窗口小程序范例(C#语言)","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginNetDll_Update.pid","MD5":"1BEE5D5EFF2D873579C2D1FC9E5C3489","Version":"2.1.1.1","Size":393216,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"49207247B479D072599D64D65F2F07F078D8515621F473F3981A64F6E63AA5DF1F3A7B6B5DF5D14516EED2496C9EE22C4F3096F074DD1D37C32C2A2CFD022A1EE4B8F0E635F4E589CE0E62C28ADA00E027361B3D44309D5E4A0E5932E38E39E746BA4D7ACA66E3FD4BAD048E0FEDC3488DE9B1FDA46BBDDA7AD8493F7F9223DB8CA88703147F6E9CED914CE61FA4E6171E2BA6ECBFC7EC27D6648D77E819AC188425BA3B9EBCC3A2ADBC1B44903FB513E949EC0BC15FA1025B23A8FAF16715920F61E010940A411853A764F1CD3B0A13D769B9050D39480AD561F6893A017EBEE1BDD39E20D6E5E8681580E59A4149C5B0249C56A0F5A2DF65182561C4C4C943"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"DLLС������(C#����)","PID":"D10495F4-DF0F-44FA-8647-91275347214A","Date":"2021-01-20","Desc":"�޴���С������(C#����)","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginNetDll_Update.pid","MD5":"1BEE5D5EFF2D873579C2D1FC9E5C3489","Version":"2.1.1.1","Size":393216,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"49207247B479D072599D64D65F2F07F078D8515621F473F3981A64F6E63AA5DF1F3A7B6B5DF5D14516EED2496C9EE22C4F3096F074DD1D37C32C2A2CFD022A1EE4B8F0E635F4E589CE0E62C28ADA00E027361B3D44309D5E4A0E5932E38E39E746BA4D7ACA66E3FD4BAD048E0FEDC3488DE9B1FDA46BBDDA7AD8493F7F9223DB8CA88703147F6E9CED914CE61FA4E6171E2BA6ECBFC7EC27D6648D77E819AC188425BA3B9EBCC3A2ADBC1B44903FB513E949EC0BC15FA1025B23A8FAF16715920F61E010940A411853A764F1CD3B0A13D769B9050D39480AD561F6893A017EBEE1BDD39E20D6E5E8681580E59A4149C5B0249C56A0F5A2DF65182561C4C4C943"}}
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"弹窗小程序范例(C#语言)","PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2021-03-10","Desc":"弹窗小程序范例(C#语言)-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Net/Test/PluginExeDemo_Update.pid","MD5":"2358AA44B4510B912C010D51DE21AD0B","Version":"2.1.1.3","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"9E9EB9373B0FE0CB4E1C1C5443FEE13DCC9B8DB9AFF72BC2BD8A400A13B82D3206252B00FE144E4032ABBCDF51DB0829A1592494CDCAE0CB19B694E1CA25B3949C24C8A70FE83ED84F5FDAD45CE284ECF9814BDC1ABB0A8E9E777BEFA77C5C8CF0DAB6CF6079BA2D2CB9D5B9FA6B063CAB733B8DFD5D6CF695557571D9C97EADBDF06016F9DA2C051E7716AC0C9F2221103B9968958D1C69654D6BF4199B027A1B2E38129DDDB0EAC59FD427968AEE14B67167BCB9C6AE9B3BDC27411D06C2F26B79CF6FB3D046D0A474B59EB4ACF6BE692CDC320A171ED83615CDBD06016F936263619FD7A545204D1F4E54CA94E87D7098D5C9BA59E04D1F5C5B08FD1F0F4E"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"����С������(C#����)","PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Date":"2021-03-10","Desc":"����С������(C#����)-��ʾ�ű������ָ����վ","DownAddr":"http://local.zorrosoft.com/Files/Net/Test/PluginExeDemo_Update.pid","MD5":"2358AA44B4510B912C010D51DE21AD0B","Version":"2.1.1.3","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"9E9EB9373B0FE0CB4E1C1C5443FEE13DCC9B8DB9AFF72BC2BD8A400A13B82D3206252B00FE144E4032ABBCDF51DB0829A1592494CDCAE0CB19B694E1CA25B3949C24C8A70FE83ED84F5FDAD45CE284ECF9814BDC1ABB0A8E9E777BEFA77C5C8CF0DAB6CF6079BA2D2CB9D5B9FA6B063CAB733B8DFD5D6CF695557571D9C97EADBDF06016F9DA2C051E7716AC0C9F2221103B9968958D1C69654D6BF4199B027A1B2E38129DDDB0EAC59FD427968AEE14B67167BCB9C6AE9B3BDC27411D06C2F26B79CF6FB3D046D0A474B59EB4ACF6BE692CDC320A171ED83615CDBD06016F936263619FD7A545204D1F4E54CA94E87D7098D5C9BA59E04D1F5C5B08FD1F0F4E"}}
 
-17)、卸载小程序：
-举例：
+17)��ж��С����
+������
 
 {"req":"Plugin_Remove","rid":50,"para":{"PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Type":2}}
 {"req":"Plugin_Remove","rid":51,"para":{"PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Type":2}}
 {"req":"Plugin_Remove","rid":52,"para":{"PID":"A22E18F1-95F8-4FDB-99D2-188E5FB12B23","Type":1}}
 {"req":"Plugin_Remove","rid":53,"para":{"PID":"D10495F4-DF0F-44FA-8647-91275347214A","Type":1}}
 
-18)、前端请求卸载中间件：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
-举例：
+18)��ǰ������ж���м����
+��ʽ����Ҫ����TKУ�飬���������ο�SDK�����ĵ���PluginOK�м����ȫ�������.doc��������SDK���еĴ������ZbaPackage.exe���м��ά�����ɴ�TK������
+������
 {"req":"Wrl_Remove","rid":22,"para":{}}
-说明：连接主服务后可执行；
+˵����������������ִ�У�
 
-19)、移除本机中间件授权并卸载程序：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
-举例：
+19)���Ƴ������м����Ȩ��ж�س���
+��ʽ����Ҫ����TKУ�飬���������ο�SDK�����ĵ���PluginOK�м����ȫ�������.doc��������SDK���еĴ������ZbaPackage.exe���м��ά�����ɴ�TK������
+������
 {"req":"Wrl_RemoveAuth","rid":23,"para":{}}
-说明：连接主服务后可执行；
+˵����������������ִ�У�
 
-4、PluginOK(牛插)中间件升级请求：
+4��PluginOK(ţ��)�м����������
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2021-03-15","Desc":"1、实现在浏览器网页中内嵌窗口小程序运行，支持同时加载多个运行，支持上下左右滚动小程序；2、实现在Chrome、Firefox、Edge、Opera、IE、360、QQ等浏览器网页可加载IE指定版本内核的控件小程序或标签小程序运行；3、发布在主流浏览器中可运行的腾讯桌面软件网页版...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"403292560FCA4A0BC0421ABDAD35F6AC","Version":"2.1.2.1","Size":15400960,"HideIns":0,"Cookie":"","Auth":"","TK":"9D7A5AE8D220C776E4635FFD8131923A3CBD94832E6E1077549490955DFB0B182BD5F74FBC10EB1C1A1F09807F2166BF62565F65A01007B584E9CE37E5B97A32B747570CDBE2B71B208092347CA4003CACDC3F3EBA0E76662F300FAED09E0D1126B045E4B370BDF95C470534E3E2FA621405E38AEE4C33AC2C0CF16E650FC5CBA8B217B772E082B2BC4285DEB9EB29A4D4660C920305EDBD05D837C4B058801BE01F944F48C1C84814BC79255C3740C30A5BBB914FBFF80911F1510392563C740A9B6F6031A6AA1253DCAA24894E95B9EC01D9E51723623EB1EFB8D13BD77B6B8641D3EF4AB99393CD5196208CA358042389DB4124C66BD666A939F402C24E6A"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet������","Date":"2021-03-21","Desc":"1��ʵ�����������ҳ����Ƕ����С�������У�֧��ͬʱ���ض�����У�֧���������ҹ���С����2��ʵ����Chrome��Firefox��Edge��Opera��IE��360��QQ�����������IEָ���汾�ں˵Ŀؼ�С������ǩС�������У�3������������������п���Ƕ���е�΢��Office����ɽWPSС����...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"41F48284E073BA4D6E1F98F66F5F1948","Version":"2.1.2.2","Size":15532032,"HideIns":0,"Cookie":"","Auth":"","TK":"1B0AF96C3ABDDABFDD64775C4D23C0D37D162446C88EDE81BCF4C3C845185D0C788B98BF104C4D994530EAC6127AC60DF0F48433A9667AEE38528961ADC78AFDF8738EFB793428C9F465C4CB5BA4D9C509AA3A61C6DD616662B93AC1C0538B4E86AC757E8ED79BD14355CC9148A6798BD1BF159C5A8E77660B2FDCCE36977DE68F999D598A4E31C3EACCC9C0AF5BB9EED4D381904CB390715627920CA243676E88579985766345C321328B414B1179863A9791EB6DF461D1967D405DE578DC4543088342E929247370E42F8C0D6487C61454576523D16C1AD2200C3BBC07D3DFD00BEDB3BC54E894E37285DD38FBC65FB6B83D50652D21BB71B9943EDADF26D0"}}
 
-单机版中间件的授权文件，可以放到此协议中进行升级，也可以单独请求升级，如下指令：
-分别指定授权文件在服务器上的地址及文件MD5校验码、文件大小和下载验证权限Auth及Cookie，其中Cookie和Auth可为空，根据自己网站情况设置。
-举例：
-{"req":"Wrl_UpdateAuth","rid":2,"para":{"Url" : "http://local.zorrosoft.com/Files/Update/wrlauth.pid","MD5":"8BBCD7EAD95EFC034B724C4D8A961C03","Size":262144,"Cookie" : "","Auth" : ""}}
-说明：连接主服务后可执行，可下载Url指定的授权文件并更新到本地。
-注意：网络版不需要单独升级终端电脑的授权，系统会自动进行。
-
-5、请求启动弹窗小程序(C++语言)服务，下面以IE控件(ActiveX)演示调用流程及范例：
-1)、打开测试网页，输入连接地址：
+5��������������С����(C++����)����������IE�ؼ�(ActiveX)��ʾ�������̼�������
+1)���򿪲�����ҳ���������ӵ�ַ��
 ws://wrl.zorrosoft.com:83?sid=321&pid=F90B1CF0-8485-40ec-B4E8-B87598AAB35D&flag=1 
-执行连接，会直接启动PluginWinExe.exe程序，界面会返回小程序使用的端口，默认12800；
-2)、再次打开一个测试网页，输入连接地址：
+ִ�����ӣ���ֱ������PluginWinExe.exe���򣬽���᷵��С����ʹ�õĶ˿ڣ�Ĭ��12800��
+2)���ٴδ�һ��������ҳ���������ӵ�ַ��
 ws://wrl.zorrosoft.com:12800?sid=888&flag=1 
-执行连接，小程序会提示有新连接；
-3)、请求打开指定网站：
-在测试网页中输入内容：
+ִ�����ӣ�С�������ʾ�������ӣ�
+3)�������ָ����վ��
+�ڲ�����ҳ���������ݣ�
 {"req":"Demo_OpenUrl","rid":1,"para":{"url" : "http://www.baidu.com"}} 
-然后点击发送，小程序PluginWinExe.exe会自动打开指定的网页
-4)、将连接pid替换为99225C6D-B7A3-441c-AEFB-3EE23ACA2209，可以测试C#版实现的类似小程序功能，默认侦听端口是12900。
+Ȼ�������ͣ�С����PluginWinExe.exe���Զ���ָ������ҳ
+4)��������pid�滻Ϊ99225C6D-B7A3-441c-AEFB-3EE23ACA2209�����Բ���C#��ʵ�ֵ�����С�����ܣ�Ĭ�������˿���12900��
 
-6、请求启动无窗口小程序(C++语言)服务：
-1)、打开测试网页，输入连接地址：
+6�����������޴���С����(C++����)����
+1)���򿪲�����ҳ���������ӵ�ַ��
 ws://wrl.zorrosoft.com:83?sid=666&pid=C38672FA-B5C8-4D9D-89B5-2D71F0760661&flag=1 
-连接请求指定pid的服务；
-2)、发送框输入内容以下内容并发送，实现写入内容到我的文档目录记事本文件中：
-{"req":"Demo_WriteFile","rid":20,"para":{"Name" : "文件小程序.txt","Content" : "这是测试写入的内容！"}}
-3)、发送框输入内容以下内容并发送，实现写读取指定文件内容：
-{"req":"Demo_ReadFile","rid":21,"para":{"Name" : "文件小程序.txt"}}
+��������ָ��pid�ķ���
+2)�����Ϳ����������������ݲ����ͣ�ʵ��д�����ݵ��ҵ��ĵ�Ŀ¼���±��ļ��У�
+{"req":"Demo_WriteFile","rid":20,"para":{"Name" : "�ļ�С����.txt","Content" : "���ǲ���д������ݣ�"}}
+3)�����Ϳ����������������ݲ����ͣ�ʵ��д��ȡָ���ļ����ݣ�
+{"req":"Demo_ReadFile","rid":21,"para":{"Name" : "�ļ�С����.txt"}}
 
-7、请求启动无窗口小程序(C#语言)服务，连接地址：
+7�����������޴���С����(C#����)�������ӵ�ַ��
 ws://wrl.zorrosoft.com:83?sid=666&pid=FCADA8A7-D975-42c6-B5D3-FA40F6FE1286&flag=1 
-其它步骤参考 无窗口小程序(C++语言)。
+��������ο� �޴���С����(C++����)��
 
-8、请求启动弹窗小程序(C#语言)服务，连接地址：
+8��������������С����(C#����)�������ӵ�ַ��
 ws://wrl.zorrosoft.com:83?sid=666&pid=99225C6D-B7A3-441c-AEFB-3EE23ACA2209&flag=1 
-其它步骤参考 弹窗小程序(C++语言)。
+��������ο� ����С����(C++����)��
 
-请求参数的JSON数据包，请确保是UTF-8无签名的编码。如还有疑问，请加微信客服：ZorroSoft 或QQ群：23126938联系客服
+���������JSON���ݰ�����ȷ����UTF-8��ǩ���ı��롣�绹�����ʣ����΢�ţ�ZorroSoft ��QQȺ��23126938��ϵ����Ա�ṩ����֧�ַ���

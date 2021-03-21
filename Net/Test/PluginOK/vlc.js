@@ -58,16 +58,16 @@ function getrandom(nums)
 {
     $(function ()
 	{
-		//////////////////////	目前脚本只支持一个网页内启动单个小程序	/////////////////////////
+		//////////////////////	目前脚本只支持一个网页内启动2个VLC小程序	/////////////////////////
         var $win = $('body');
-		var PluginOKSocket;					// WebSocket主连接对象
-		var appletsocket;					// WebSocket连接小程序对象
-		var nRequstAppletID 	= 0;  		// 请求启动小程序的序号
-		var nAppletRunID 		= 0;  		// 小程序启动后的实例序号
-		var bIsSendScrollInfo 	= false;	// 是否已发送滚动条信息
-		var bRunInCurrentPage	= true;		// 是否为当前页面加载的小程序
-		var nScrollLeftOld 		= 0;		// 原横向滚动位置
-		var nScrollTopOld 		= 0;		// 原纵向滚动位置
+		var PluginOKSocket;					    // WebSocket主连接对象
+		var appletsocket;					    // WebSocket连接小程序对象
+		var nReqVlcID1 	= 0,nReqVlcID2 	= 0;  	// 请求启动小程序的序号
+		var nRunID1 = 0,nRunID2 = 0;  			// 小程序启动后的实例序号
+		var bIsSendScrollInfo1 	= false;		// 是否已发送滚动条信息
+		var bIsSendScrollInfo2 	= false;		// 是否已发送滚动条信息
+		var nScrollLeftOld 		= 0;			// 原横向滚动位置
+		var nScrollTopOld 		= 0;			// 原纵向滚动位置
 		
         showmessage = function (msg, type)
 		{
@@ -87,13 +87,10 @@ function getrandom(nums)
 
 		WrlVisibilityListener = function (AddEvent)
 		{
-			if(bRunInCurrentPage)
-			{
-				if(AddEvent)
-					document.addEventListener('visibilitychange',PageVisibilityState,false);
-				else
-					document.removeEventListener('visibilitychange',PageVisibilityState,false);
-			}
+			if(AddEvent)
+				document.addEventListener('visibilitychange',PageVisibilityState,false);
+			else
+				document.removeEventListener('visibilitychange',PageVisibilityState,false);
 		}
 		
 		WrlScrollListener = function (AddEvent)
@@ -120,8 +117,6 @@ function getrandom(nums)
 		// 滚动内嵌小程序
 		scrollFunc = function (e)
 		{
-			if(!nAppletRunID || !bRunInCurrentPage)
-				return;
 			var nOffsetX = 0,nScrollLeft = 0;
 			var nOffsetY = 0,nScrollTop = 0;
 			if(window.pageXOffset != undefined)
@@ -148,7 +143,7 @@ function getrandom(nums)
 		
 		function SendScrollInfo()
 		{
-			if(nAppletRunID)
+			if(nRunID1)
 			{
 				var nScrollTop = 0,nScrollLeft = 0,BarCode = 0;
 				var bHorizontalBar = hasHorizontalScrollbar();
@@ -178,7 +173,7 @@ function getrandom(nums)
 				var msg = '{"req":"Wrl_ScrollBar","rid":';
 				msg += getrandom(5).toLocaleString();
 				msg += ',"para":{"ID":';
-				msg += nAppletRunID;
+				msg += nRunID1;
 				msg += ',"BarH":';
 				if(bHorizontalBar)
 					BarCode = 1;
@@ -203,7 +198,65 @@ function getrandom(nums)
 					PluginOKSocket = document.getElementById("WrlWS");
 					PluginOKSocket.send(msg);
 				}
-				bIsSendScrollInfo = true;
+				bIsSendScrollInfo1 = true;
+				console.log(msg);
+			}
+			if(nRunID2)
+			{
+				var nScrollTop = 0,nScrollLeft = 0,BarCode = 0;
+				var bHorizontalBar = hasHorizontalScrollbar();
+				var bVerticalBar = hasVerticalScrollbar();
+				if(bHorizontalBar)
+				{
+					if(window.pageXOffset != undefined)
+						nScrollLeft = Math.round(window.pageXOffset);
+					else
+					{
+						//获取页面的scrollLeft(兼容写法)
+						nScrollLeft = Math.round(document.documentElement.scrollLeft || document.body.scrollLeft);
+					}
+					nScrollLeftOld = nScrollLeft;
+				}
+				if(bVerticalBar)
+				{
+					if(window.pageYOffset != undefined)
+						nScrollTop = Math.round(window.pageYOffset);
+					else
+					{
+						//获取页面的scrollTop(兼容写法)
+						nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
+					}
+					nScrollTopOld = nScrollTop;
+				}
+				var msg = '{"req":"Wrl_ScrollBar","rid":';
+				msg += getrandom(5).toLocaleString();
+				msg += ',"para":{"ID":';
+				msg += nRunID2;
+				msg += ',"BarH":';
+				if(bHorizontalBar)
+					BarCode = 1;
+				msg += 0;			// 有水平滚动条，可设置预留底部高度
+				msg += ',"BarW":';
+				if(bVerticalBar)
+					BarCode += 2;
+				msg += 0; 			// 有垂直滚动条，可设置预留右侧宽度
+				msg += ',"Code":';
+				msg += BarCode; 	// 滚动条是否存在信息
+				msg += ',"Top":';
+				msg += nScrollTop;	// 垂直滚动位置
+				msg += ',"Left":';	// 水平滚动位置
+				msg += nScrollLeft;
+				msg += '}}';
+				if(!isIE())
+				{
+					PluginOKSocket.send(msg);
+				}
+				else
+				{
+					PluginOKSocket = document.getElementById("WrlWS");
+					PluginOKSocket.send(msg);
+				}
+				bIsSendScrollInfo2 = true;
 				console.log(msg);
 			}
 		}
@@ -218,13 +271,25 @@ function getrandom(nums)
 		DealRecMessage = function (Data)
 		{
 			var jsondata = $.parseJSON(Data);
-			if(jsondata.rid == nRequstAppletID)
+			if(jsondata.rid == nReqVlcID1)
 			{
 				if(0 == jsondata.ret)
 				{
-					nAppletRunID = jsondata.data.ID;
-					$win.find('#btn_max').attr('disabled', false);
-					$win.find('#btn_fitpage').attr('disabled', false);					
+					nRunID1 = jsondata.data.ID;				
+				}
+				else
+				{
+					if(undefined == jsondata.err)
+						showmessage(Data, 'receive');
+					else
+						showmessage('小程序请求错误：' + jsondata.err);
+				}
+			}
+			else if(jsondata.rid == nReqVlcID2)
+			{
+				if(0 == jsondata.ret)
+				{
+					nRunID2 = jsondata.data.ID;					
 				}
 				else
 				{
@@ -236,12 +301,13 @@ function getrandom(nums)
 			}
 			else
 			{
-				if(bRunInCurrentPage && jsondata.aid == nAppletRunID && jsondata.event == 'Wrl_Listen')
+				if(jsondata.event == 'Wrl_Listen')
 				{
 					// 小程序启动成功，发送页面滚动信息
-					SendScrollInfo();
+					if(jsondata.aid == nRunID1 || jsondata.aid == nRunID2)
+						SendScrollInfo();
 				}
-				if(jsondata.req == 'Wrl_AppletScroll'
+				else if(jsondata.req == 'Wrl_AppletScroll'
 					|| jsondata.req == 'Wrl_ScrollBar'
 					|| jsondata.req == 'Wrl_AppletResize')
 				{
@@ -258,19 +324,14 @@ function getrandom(nums)
 		DealSendMessage = function (Data)
 		{
 			var jsondata = $.parseJSON(Data);
-			if(jsondata.req == "Wrl_IEApplet"
-				|| jsondata.req == "Wrl_IETab"
-				|| jsondata.req == "Wrl_VLCApplet"
-				|| jsondata.req == "Wrl_VLCWebPlayer"
-				|| jsondata.req == "Wrl_FlashApplet"
-				|| jsondata.req == "Wrl_OfficeApplet"
-				|| jsondata.req == "Wrl_ACADApplet"
-				|| jsondata.req == "Wrl_TXWebApplet"
-				|| jsondata.req == "Wrl_AppletStart")
+            // 请确保两次请求的rid不一样
+			if(jsondata.req == "Wrl_VLCApplet")
 			{
-				nRequstAppletID = jsondata.rid;
-				if(1 == (1 & jsondata.para.Flag) || 16 == (16 & jsondata.para.Flag))
-					bRunInCurrentPage = false; // 新标签或新窗口加载小程序
+				nReqVlcID1 = jsondata.rid;
+			}
+			else if(jsondata.req == "Wrl_VLCWebPlayer")
+			{
+				nReqVlcID2 = jsondata.rid;
 			}
 		}
 		
@@ -286,7 +347,7 @@ function getrandom(nums)
 		
 		WrlScrollApplet = function (nScrollLeft,nScrollTop,nOffsetX,nOffsetY)
 		{
-			if(nAppletRunID)
+			if(nRunID1)
 			{
 				var nCode = 0;
 				if(nOffsetX && nOffsetY)
@@ -301,14 +362,50 @@ function getrandom(nums)
 				var msg = '{"req":"Wrl_AppletScroll","rid":';
 				msg += getrandom(5).toLocaleString();
 				msg += ',"para":{"ID":';
-				msg += nAppletRunID;
+				msg += nRunID1;
 				msg += ',"Top":';
 				msg += nScrollTop;
 				msg += ',"Left":';
 				msg += nScrollLeft;
 				msg += ',"Code":';
 				msg += nCode;		 // 滚动方向
-				msg += ',"NoLog":1'; // 不输出日志
+				msg += ',"NoLog":0'; // 不输出日志
+				msg += '}}';
+				if(!isIE())
+				{
+					PluginOKSocket.send(msg);
+				}
+				else
+				{
+					PluginOKSocket = document.getElementById("WrlWS");
+					PluginOKSocket.send(msg);
+				}
+				console.log(msg);
+			}
+
+			if(nRunID2)
+			{
+				var nCode = 0;
+				if(nOffsetX && nOffsetY)
+					nCode = 3; // 同时滚动
+				else
+				{
+					if(nOffsetX)
+						nCode = 1; // 横向滚动
+					if(nOffsetY)
+						nCode = 2; // 纵向滚动
+				}
+				var msg = '{"req":"Wrl_AppletScroll","rid":';
+				msg += getrandom(5).toLocaleString();
+				msg += ',"para":{"ID":';
+				msg += nRunID2;
+				msg += ',"Top":';
+				msg += nScrollTop;
+				msg += ',"Left":';
+				msg += nScrollLeft;
+				msg += ',"Code":';
+				msg += nCode;		 // 滚动方向
+				msg += ',"NoLog":0'; // 不输出日志
 				msg += '}}';
 				if(!isIE())
 				{
@@ -325,36 +422,58 @@ function getrandom(nums)
 
 		PageVisibilityState = function ()
 		{
-			if(nAppletRunID < 1)
-				return;// 未启动小程序
-			// 控制小程序显示、仅对当前网页内加载的小程序
-			var msg = '{"req":"Wrl_AppletControl","rid":';
-			msg += getrandom(5).toLocaleString();
-			msg += ',"para":{"ID":';
-			msg += nAppletRunID;
-			if (document.visibilityState == 'visible')
+			if(nRunID1)
 			{
-				/// 恢复显示
-				msg += ',"Code":';
-				msg += 8;
+				// 控制小程序显示、仅对当前网页内加载的小程序
+				var msg = '{"req":"Wrl_AppletControl","rid":';
+				msg += getrandom(5).toLocaleString();
+				msg += ',"para":{"ID":';
+				msg += nRunID1;
+				if (document.visibilityState == 'visible')
+				{
+					/// 恢复显示
+					msg += ',"Code":';
+					msg += 8;
+				}
+				else if (document.visibilityState == 'hidden')
+				{
+					/// 需要隐藏
+					msg += ',"Code":';
+					msg += 4;
+				}
+				msg += '}}';
+				PluginOKSocket.send(msg);
+				showmessage(msg, 'send');
 			}
-			else if (document.visibilityState == 'hidden')
+
+			if(nRunID2)
 			{
-				/// 需要隐藏
-				msg += ',"Code":';
-				msg += 4;
+				// 控制小程序显示、仅对当前网页内加载的小程序
+				var msg = '{"req":"Wrl_AppletControl","rid":';
+				msg += getrandom(5).toLocaleString();
+				msg += ',"para":{"ID":';
+				msg += nRunID2;
+				if (document.visibilityState == 'visible')
+				{
+					/// 恢复显示
+					msg += ',"Code":';
+					msg += 8;
+				}
+				else if (document.visibilityState == 'hidden')
+				{
+					/// 需要隐藏
+					msg += ',"Code":';
+					msg += 4;
+				}
+				msg += '}}';
+				PluginOKSocket.send(msg);
+				showmessage(msg, 'send');
 			}
-			msg += '}}';
-			PluginOKSocket.send(msg);
-			showmessage(msg, 'send');
 		}
 
         $win.find('#btn_conn').attr('disabled', false);
         $win.find('#btn_send').attr('disabled', true);	
         $win.find('#btn_close').attr('disabled', true);
-        $win.find('#btn_max').attr('disabled', true);
-        $win.find('#btn_fitpage').attr('disabled', true);
-		$win.find('#btn_restore').attr('disabled', true);
 
         $win.find('#btn_conn').click(function () 
 		{
@@ -389,16 +508,15 @@ function getrandom(nums)
 				{
 					WrlVisibilityListener(false);
 					WrlScrollListener(false);
-					nAppletRunID = 0;
-					nRequstAppletID = 0;
+					nRunID1 = 0;
+					nRunID2 = 0;
+					nReqVlcID1 = 0;
+					nReqVlcID2 = 0;
 					
 					showmessage('连接已断开');
 					$win.find('#btn_conn').attr('disabled', false);
 					$win.find('#btn_send').attr('disabled', true);	
 					$win.find('#btn_close').attr('disabled', true);
-					$win.find('#btn_max').attr('disabled', true);
-					$win.find('#btn_fitpage').attr('disabled', true);
-					$win.find('#btn_restore').attr('disabled', true);
 				};
 			}
 			else
@@ -474,67 +592,6 @@ function getrandom(nums)
         $win.find('#btn_clear').click(function () 
 		{
             $win.find('#div_msg').empty();
-        });
-		
-		$win.find('#btn_max').click(function () 
-		{
-            if(nAppletRunID < 1)
-				return;// 未启动小程序
-			if(!bIsSendScrollInfo)
-				SendScrollInfo();
-			var msg;
-			var W = $(window).width();
-			var H = $(window).height();
-			// 小程序显示到整个客户区
-			msg = '{"req":"Wrl_AppletResize","rid":';
-			msg += getrandom(5).toLocaleString();
-			msg += ',"para":{"ID":';
-			msg += nAppletRunID;
-			msg += ',"X":18,"Y":293,"Width":';// 这里X和Y可分别实现视图区左侧和顶部预留局域
-			msg += W;
-			msg += ',"Height":';
-			msg += H;
-			msg += '}}';
-			PluginOKSocket.send(msg);
-			$win.find('#btn_restore').attr('disabled', false);	
-			showmessage(msg, 'send');
-        });
-
-		$win.find('#btn_fitpage').click(function () 
-		{
-            if(nAppletRunID < 1)
-				return;// 未启动小程序
-			if(!bIsSendScrollInfo)
-				SendScrollInfo();
-			var msg;
-			// 小程序自动适配网页大小显示切换
-			msg = '{"req":"Wrl_AppletControl","rid":';
-			msg += getrandom(5).toLocaleString();
-			msg += ',"para":{"ID":';
-			msg += nAppletRunID;
-			msg += ',"Code":';
-			msg += 16;
-			msg += '}}';
-			PluginOKSocket.send(msg);
-			showmessage(msg, 'send');
-        });
-
-		$win.find('#btn_restore').click(function () 
-		{
-            if(nAppletRunID < 1)
-				return;// 未启动小程序
-			var msg;
-			msg = '{"req":"Wrl_AppletResize","rid":';
-			msg += getrandom(5).toLocaleString();
-			msg += ',"para":{"ID":';
-			msg += nAppletRunID;
-			msg += ',"X":10,"Y":70,"Width":';
-			msg += 600;
-			msg += ',"Height":';
-			msg += 450;
-			msg += '}}';
-			PluginOKSocket.send(msg);
-			showmessage(msg, 'send');
-        }); 		
+        });	
     });
 })(window);

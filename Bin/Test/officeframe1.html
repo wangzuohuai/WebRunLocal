@@ -5,6 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Office Applet Test</title>
+	<style>
+        .OfficeApplet {
+            margin: 20px 0 0 20px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+        }
+    </style>
+
     <link href="css/res.css" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'Files/favicon.ico' %}" type="image/x-icon">
 
@@ -64,7 +73,7 @@
                </div>
                 <br />
                 <div style="margin-bottom:20px;">
-                    <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:250px;" placeholder="请输入发送的内容">{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":2,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"0","Url": "http://zorrosoft.com/officeframe1.html","OType":"1","Open":"D:/Zorro/test.doc"}}</textarea>
+                    <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:250px;" placeholder="请输入发送的内容">{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":2,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"0","Url": "http://zorrosoft.com/officeframe1.html","OType":"1","Open":"D:/Zorro/test.doc"}}</textarea>
                     <button type="button" id="btn_send" class="btn btn-info btn-block">发送(Ctrl+Enter)</button>
                 </div>
             </div>

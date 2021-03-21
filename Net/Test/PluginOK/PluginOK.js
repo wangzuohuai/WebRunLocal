@@ -261,6 +261,7 @@ function getrandom(nums)
 			if(jsondata.req == "Wrl_IEApplet"
 				|| jsondata.req == "Wrl_IETab"
 				|| jsondata.req == "Wrl_VLCApplet"
+				|| jsondata.req == "Wrl_VLCWebPlayer"
 				|| jsondata.req == "Wrl_FlashApplet"
 				|| jsondata.req == "Wrl_OfficeApplet"
 				|| jsondata.req == "Wrl_ACADApplet"
