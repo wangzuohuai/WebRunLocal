@@ -1,13 +1,13 @@
-﻿金山WPS内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用金山WPS的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿金山WPS内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用金山WPS的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
-3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、金山WPS内嵌网页小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://zorrosoft.com/wordfull.html  HTTPS网页在线测试：https://zorrosoft.com/officeframe.html
+HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
 .OfficeApplet {
@@ -42,7 +42,7 @@ Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加�
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-OType 11启动WPS 文字处理;OType 12启动WPS 表格;OType 13启动WPS 演示;
+OType 11启动WPS 文字处理;OType 12启动WPS 表格;OType 13启动WPS 演示
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
@@ -114,14 +114,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装金山WPS内嵌网页小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS内嵌网页小程序","PID":"60E61D43-503A-470B-9DAA-8E703E1F8BE8","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet.pid","MD5":"4D7070797A2FE644CAE6A13FF2F0D858","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"41B5DEA6E661C51C182627B556AB5748DDDB05A7C8E8DBE2D0B0B2EDAAC9864FD0371105A961469F5249091D9C1ED0A21E221FAD27F33665E4364D218CB68ACFDDF5DEBAFBA8162F3BB8CD38066D3CB3612E0CBF6829F9DF8876C15D6A55C37E7A819A265966B1A5C276CCA4BE180D4206AEB459E01363C9CCF13D94258AC1D1EE77EA74061EC8ACC329FC67995173A64BC2FA953A6A1861BBEA20A6091153347E63BF35CC78DFF2BEE6DA8C3F0AC0D05663758A7C3E16B8DB43708FB8F73D3F1A7EFEE8CC53C9C7C077740D6D47F2382A95F349DDAA079EF39030E095FCADBEA5A8E7642E88CAE6D9B70F4235F86B48BE8E7D3697A4E3BB557E3898481846CA"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS内嵌网页小程序","PID":"60E61D43-503A-470B-9DAA-8E703E1F8BE8","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"C36526D31C5D9B394033D10B8C78D163","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B43E6A01A3F4181E7A6C27CB8D4A9DB85F726E3557478700F3EB61E9C91A22D307C3429AC03B406696B74F275B3AE8EB12D261CB2944331E3FD61E39C48E6B881B579B8FBB2C61830A2A3FD053489C3E8DC5A5849039F7B140881DDA740445FA226A4810C800BEA135DACC95B736B36939281A625664228F862A507BE355A0405C7097BF8E414F82BEDB55DCA46FDFDB78AEB6E60CF509ED9C5ACC6A76DB57B69BC4B3E05BEF94656ECD95949431EF969C60B7E661A82F377B10C517141D09D96542F56CE43F224815EBA362E22DEE45443E0536436D953A15682E5EFE98D720F80C43640D3E61DCA2895E55791EE057847EB31B386810E80CE86849EF0E4E8A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS内嵌网页小程序","PID":"60E61D43-503A-470B-9DAA-8E703E1F8BE8","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet_Update.pid","MD5":"1AF407BB19A29992572F7F05161ED092","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6D1145AF5C7DED7BD862E5EB2536D71384B878EAE50CC759C02AD61B4CD87D65F3D1CBE466E58078B1877FA899DEFED4D7F6059F51F001A90235267E7147CD5D5AA9548817EF386D26F84F1BA899827CA7A4EFA1A645237266F70E449651DD821EEB4D3A26067C53DB2F128CDC6A87A67F473C97E3401E161556CF65679B6BE07020E26723422EB140AD02DF54E7114F3D2595FCF28B477D26FBE747D6967B64626E445456371AC29FB9C7A338522BCD3EE5C8B7907C148B51B91774733CBD058AEF61F45D734133DB26E8455BDF0C11FC9F72187FB55F456F419264A0882C57E4CC2B221765CF0587050370981BE8CF6617BFAEE8C671022498CF70462EDAE0"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS内嵌网页小程序","PID":"60E61D43-503A-470B-9DAA-8E703E1F8BE8","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"C28C310BD627BE575BEFA191277A977A","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"35F1E3B251730532C1CE85674A11210EF8095F724F457D38FE16ED7DA3D36A1BB098F75FEDE3E0DCF93C2EC4EC84C7E0E0499470C6CDDC2E05BF8820FA8EBD271A68E5B0CB2828B0D44778FD08443DE83C5F1EADB4DEC7B2FAE6607CF67971B02E4303B33D6C38C9BBFF5D247990CC9D0FC2FEDF6CC6C2B8A292B0B18342F7B0E99935B52DE88887F46BA10168CD85E609F63BBEDF3ADBDD2DBDA411CF21695B251655A6B8E6A6F6AACD21BA5C6569F119F5591CE18CD0F64D96707D13FAF4285E669A500B2E4D8C54385F9D8FF67E0C9D123389843468B5F2C099E7236CBECA693B2709F2E9500C36ADBE06A2BBF3876AA697466A295C05872590DD9F396064"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -140,15 +140,11 @@ A、常用功能请求：
 请求打开文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
 
-请求转换当前文档为pdf格式
-{"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
-
 /// 请求转换为PDF格式
 {"req":"Office_SaveAs","rid":4,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 
 5、事件通知：
 A、
-
 B、PluginOK支持的事件通知：
 
 1) 小程序是否响应了热键全屏

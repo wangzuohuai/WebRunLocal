@@ -1,9 +1,9 @@
-﻿微软Office内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿微软Office内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
-3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、微软Office内嵌网页小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
@@ -42,7 +42,7 @@ Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加�
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-OType 1启动微软Word;OType 2启动微软Excel;OType 3启动微软PPT;
+OType 1启动微软Word;OType 2启动微软Excel;OType 3启动微软PPT
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
@@ -114,14 +114,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装微软Office内嵌网页小程序
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office内嵌网页小程序","PID":"EF720B55-787B-4CBC-AD0A-AE219CFD52C9","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Plugin/OfficeApplet.pid","MD5":"00CC4FB0ADC0F2F055287885A694D31C","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"37D7F697E67DB56539B5B9616ADA0EE13ED6824125F7B8B27BA63B482C18B7C78829222F48E8F8CAE93FB9A8FA7B6AC16CE41661430DB9F62FA7B46ADBA947E3C5A1BE9F7B231F908EB5BAD0A8944B8781012A235AE47BB29A72D48532E408D8D1B927D33F32465E255755CB6D3D4E344CDF17936D7ADB846589B17CF51E05EF3CD94DE4211220D072D926FC9CB5AF6C1C658C3A9A639163C2B14ECAABDC4028EDC1E3FDA116F6279661D0A6308613898B8DEFAEE23027CC04A726DF442BD27FE6A9A826299E935387C56CEA7E16D030C2B1BE80023168B5A82A9807F436AE7BC87341F12C5418F15CF8F22F176053C9D5E98185BD8DCD52759DC73CDFD847FC"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office内嵌网页小程序","PID":"EF720B55-787B-4CBC-AD0A-AE219CFD52C9","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/OfficeApplet.pid","MD5":"49975BF27C8F0458B7BEC6BFB50FA7F2","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"512D35125F63CB4EB6D6CB0379EB7657499A978BB5FDEC8280814AF96A993A75680EC69CD0EC191A12B0190ACEF1F44FF554B8B2624ABB57E5F4EC05143D742313DDFD3E88CA099483D963DFF22106638823E2923D3355F915DA431166FCA936494F4899F3975DC47B2157FD2D5266A271187662CBFEE51542E1C7F1CD538C5F8693B673B457F67B852BD0C87C520C2C5EFA5E116EFE1C14701F9745530F2AEC668AD9BAD1EA67268A7FC3F92052DE6968E3375D6A1C4719C2E6259CDF12408A8F4E600514D8F488AD2FD95B535AAF5C292214228CE658929B6EDFE5C785E1B58524A3E29F9007FAA56826B901288434EA2DFAD44BC8B0F66A851D25F96EC27F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office内嵌网页小程序","PID":"EF720B55-787B-4CBC-AD0A-AE219CFD52C9","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Plugin/OfficeApplet_Update.pid","MD5":"BEFB8152B81E29D62357446082CE0719","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9CF1B68288960F469EEDB170F566CBE5CFC7200EE35D3AE8867B2D5D90BDC621C7D65EA4BC4BF4EEDD85748685829D9156EAE3FE0ECCF7F90B61625FF5A4B94C5D57FE2A725AD35328DB2BE60CC5E0CE14F5B29F42B6BC77BF8A1BDA157511617EAB1864B2C029F1BA141A6D72BFACAE627DEF4EE7ECF569ED2B93770CDFAC9F7345A4C845A1A9E94269A691B444A59BE4C76AFD3766A130ACB97A92012DB3A61CC438F79672547232296D5BD0378486FFB7456281635A76734EAAF102DDC5DB901D55430E5AECF8F91ADC8CECA62926E2885BDDCADA74F2B786E5CE2915324504BCFD00F3B65F0BFFEDC28B8FAFB7882F189A3C247E571BD47BC46DF4577957"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office内嵌网页小程序","PID":"EF720B55-787B-4CBC-AD0A-AE219CFD52C9","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/OfficeApplet_Update.pid","MD5":"EA0F952C639F31ADE161089E969E49CF","Version":"2.1.2.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0DA8DBA5CF94322791976B92B1099C0B9FF50AE8B028BD4755804B73B5086F50E065D1EB5DC55396EFD4479CB34AFC1277E21A1ACFA84E98FBC41501CB1D1B2FC8EDBD489E18A954D133B99230C4CF6BE5104E4147968F5D8E083DD9498A1A5117AA5B37DA8D05A6D1A95B1EAB25BA0C5B9A2DC3F6ABE8BE9CD367EB5085757C430B7ABDA6C0D53361B7640165FF7D4D2476FBCBA98DD10867D4C18C1C888C68EA5912E0E468BE370A8FE98037AAD50F4C7F9A5DA665A4571C6185206C4E13D7B55269C85150F57D582772ABE42E747736E8DFE48AB029BC03398DB6CA097FC72FAFC8F3C7545ADEB07056AC30774EC144729C286AA377767D8858BD8F0B7296"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -132,8 +132,8 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 4、微软Office内嵌网页小程序转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 请求退出小程序
-{"req":"Office_Exit","rid":1,"para":{}}
 
+{"req":"Office_Exit","rid":1,"para":{}}
 请求关闭文档
 {"req":"Office_Close","rid":2,"para":{}}
 
