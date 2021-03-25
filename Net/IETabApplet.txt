@@ -20,7 +20,7 @@ Open为需要用IE内核打开的Url实际地址或本地网页地址；
 
 举例：
 自动识别当前浏览器启动：
-{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Flag":1,"Title":"IE Tab","Version":"0","X64":"0","Open":"http://xiuxiu.web.meitu.com/main.html"}}
+{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Flag":0,"Title":"IE Tab","Version":"0","X64":"0","Open":"http://xiuxiu.web.meitu.com/main.html"}}
 
 浏览器当前页面启动演示
 http://zorrosoft.com/IENewTab.html

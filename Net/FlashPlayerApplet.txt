@@ -47,10 +47,10 @@ Open：为需要播放的多媒体路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_FlashApplet","rid":1,"para":{"Type":"0","Title":"Flash Applet","Flag":1,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url":"http://zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
+{"req":"Wrl_FlashApplet","rid":1,"para":{"Type":"0","Title":"Flash Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url":"http://zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_FlashApplet","rid":3,"para":{"Type":"0","Title":"Flash Applet","Flag":9,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url":"http://zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
+{"req":"Wrl_FlashApplet","rid":3,"para":{"Type":"0","Title":"Flash Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url":"http://zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/flashframe.html

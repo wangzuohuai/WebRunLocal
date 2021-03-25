@@ -48,10 +48,10 @@ Url：加载小程序所在的网页实际地址
 
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_TXWebApplet","rid":1,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":3,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
+{"req":"Wrl_TXWebApplet","rid":1,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":2,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_TXWebApplet","rid":2,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":11,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
+{"req":"Wrl_TXWebApplet","rid":2,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":10,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/txframe.html
