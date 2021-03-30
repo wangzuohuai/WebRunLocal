@@ -48,10 +48,10 @@ Url：加载小程序所在的网页实际地址
 
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_TXWebApplet","rid":1,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":3,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
+{"req":"Wrl_TXWebApplet","rid":1,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":2,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_TXWebApplet","rid":2,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":11,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
+{"req":"Wrl_TXWebApplet","rid":2,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":10,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/txframe.html
@@ -59,10 +59,10 @@ http://zorrosoft.com/txframe.html
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"5620219A-E6A5-4C31-AABD-A90C9A57D5E0","port":955}}
+B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"TXWebApplet","port":955}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"data":{"SID":"123","PID":"5620219A-E6A5-4C31-AABD-A90C9A57D5E0","Port":955}}
+C、{"event":"Wrl_AppletOK","aid":3,"data":{"SID":"123","PID":"TXWebApplet","Port":955}}
 
 2)、请求控制腾讯软件内嵌网页版：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -108,20 +108,20 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装腾讯软件内嵌网页版
 请在输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"5620219A-E6A5-4C31-AABD-A90C9A57D5E0","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet.pid","MD5":"8E65E48EDCD4A0DDFEBCBFC08D279F74","Version":"2.1.2.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"05D470D41A050042F3AE259174EC1971535E75B88BF6E89412735D02C033A3F7293DB75FD422BCB54652498036C11192F35C62F3C78CA371F4B0247B04D9ADFEA456393F9465C76272581F7580035A5CE7C3260FBD5F8D5DD1BB4F03CC26FFD50E2AAC9D63948D4625BC285E243CCAF7E05EA6BBCAD7E5C05ADCD55E14A84148B3DFBE8C6A78FF2DF705A78FB4693A7048F9369EB67559868164CF461AD490DCD08CDF56156C927A2B1928C09BAD8E68CEC80125509C5620435234810B9B206A57F5C3BF68B68DDE611414FBAD95D555AFD07A2C5BA5733B2780B34D1AED1BED510981BEE35845BA21C5BED8E5DA46DE5C1DD7A9B385CF2ED2C0799F7456188A"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet.pid","MD5":"40452385A1A992B68ECB4C987C0A2E5B","Version":"2.1.3.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6D1C3650DD81CD237634DBECA0D02838418AD810B0B6E70D99450FE3DFE9E6DAEE2EF30BDE648DCFF7FBF155D130ADC2637CF99C527DDF6C828A29EF91743F48A8B9BB28E9455478A5192C6FC7FF2856A615034A83A9E8A1ECB0327B4F3081F43A7A7005C6E32AEF5F09EE4553CC82CB79972E2F1F6826BB0429DB9491B5892A29822FDF24C2FCC141B9C6437EAC06CA72BDA10AE2990FE50DBE1DD640634FD3FC00B0255E308C4AA683FCB6360259A1CD269C00265D7D2D85841B1D25B863F12F053FDE1AAAAB1D69B96561549FC674C6D99C93DEE0CBFD60D93B093A3F3195ACA9C1B181F3E1A1760A56DB572E7F77111C047883A3BA9BE7BFD2112A0C07D9"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级腾讯软件内嵌网页版：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"5620219A-E6A5-4C31-AABD-A90C9A57D5E0","Date":"2021-03-15","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet_Update.pid","MD5":"4ADFB70557850C8C7A34B3B1FFF1713E","Version":"2.1.2.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0C9169EF2F1A6333DD875DAA675169E3BA6FEF2DD861FEEEC2F2E307306320BC5DC3C5EEEC83E9F9A0BCE77FCFECF8E1EE0228F1A39018B5CF8A12F35D5E057112E05C070B7E5AAB98DD7D99746C4BCD69A4F6754953BB1AD690065A44A20C5125E31378A44FE45418011297AB646608B9837E06A70F1F7598C97171A6679710998EE401CA6FB1FC63643985502D3BBEEFDB2C41CA93EEECE38DA266524547BE3805AC54D33C1ADEC820F34D397437C72BF1B57C0A24C75B27EB3548131A427E452C170F697307C539D91EA65585215EEFD8B8825A92ABB311941D93F6CE8F3C4844F57C1A2DCD3822568CAC78A5D7BC974C5EF71A154993F151C94071C5ADD1"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet_Update.pid","MD5":"577129948380E2226CF1DC7DBDF3497F","Version":"2.1.3.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"935EE3B11DBAF617E605A826B7881E9CF01D570217B8A5B8EBB915DB222113B8CEF355F47F188846C4F96820EA2A013F9C7D0F30389A46858B806B4999915AF86833C49F619FBE01DBA7950AEEA29B97C61DE5740C11EB69D20DB0E7A28664DC143FF2C53BCB166FAC6734B4244D8EA4842EF7F2F83EE5788DC1F2681A304F5B31A1E19EEA842ED431E1EA579D807DE70B1878E108B3B9476EF01C037761073EDA15C956D61476FF46257C529DF77429D7A2355A1A72D258CEF5EE2A01186E09899EBFD8FBF9D80289D69D248BD84DE57AE0DA675A0F6FCD3C634F4407E9BF96E09B14800EFE24D491356309E793F4FF32D98969CF9F90D93DB9D3D100A2FF6E"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 3)、请求卸载腾讯软件内嵌网页版：
 
-{"req":"Plugin_Remove","rid":3,"para":{"PID":"5620219A-E6A5-4C31-AABD-A90C9A57D5E0","Type":8}}
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"TXWebApplet","Type":8}}
 
 4、腾讯软件内嵌网页版转调用接口，先根据Wrl_TXWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 

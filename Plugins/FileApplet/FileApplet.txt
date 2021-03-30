@@ -1,24 +1,24 @@
-文件操作浏览器小程序，基于跨浏览器的小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)开发，提供本地文件HTTP协议的上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+文件操作浏览器小程序，基于跨浏览器的小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)网络版开发，提供本地文件HTTP协议上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
-3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、请求安装文件操作小程序：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-03-15","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet.pid","MD5":"209F52880CAB73A4DD311E564ACEC8CB","Version":"2.1.2.1","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"3890022782028FAFE2D84840C433F663AB02B827CA642A856DD8EAE48688601F78D883A4AF690C7B2D48B4E2A5D05217D02E66779A01019D4A31B09142278698D510C40A91F8003B94C2043A6A52E39399382A6A1F63C9DE3A4D7A96AD65CFC60FAC48717C1BE297CD3403E6B2A8DD051A528796E4C856C985A0ED71848E280F1735464D42CCCB374554408B6897B063558EEE1217814A5CA453C1C34E5AF77D74F545BD1FF45A5DA4A2F0AF98B23588C0F57D5321A8F5AF8BCBB58D24262B6D76FE0E2816BA6B8E127A7F5F54D63E526C3018A2686A7BD176616CA29AFFA36C617A4916117D89C5BEAE5160A3415D4D15624D70EAECEBAF173625AA74F08FCC"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-03-27","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"1C03FC92A8BEEBCAC9FA4135F5CC8616","Version":"2.1.3.1","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"33F4C7BC8E9984BC673B40F4F7CBAF333D73A8ED3015EB17C3C1540FF4E9262612412DB1476E9307C3B92EE021CB62FDA4022721154AB93B57D05EFA8A60181B136DBB84724C2A220AAEC8488DEB195EFB31AA6E7A01DD621CB5B12F24D1059ADA057D77B456CE6BF891E6DA8C52E3C0BB92DA6D1BD451B1F1EEC4B9BC02E4E13F084A5FFDEB73FEA7DBF511DADEC4A9FC70288FF8B3656DAA5749B341A67633AF592D11B2997A321E3C05C6E2992A6B630800B1F93887EF5ACD054C3DC8173BAB39BE8CC743B49555717C7B9962074314F8BB72E6992882E4832E2C62A5ECF845149B51D961859110DA80177FDDB8C0CBEBD267F7A96787C795426F6FDBB9D5"}}
 
 3、请求更新文件操作小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-03-15","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet_Update.pid","MD5":"154E710B80F5D42038E66D158BDF2A5F","Version":"2.1.2.1","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"5ADE8F2DC3FED587155F0FB13D9141BB347D86FEEE6AD9F7C7A8877A8EBFA2C86AFFAA59854DCF39DA25209681A5CAC3A0D6A26504144AE3CE206E440D9375A5594C9AD7A7EB288BA43F3DE2B5B1041989D856719ABF1704A075815F4DFEABEE58DAE29525C6CAEF870C20566D5E5884476C8D47524D5DCBCB57960B105FC86A8A3ECB73CD4AF7A2DA286B1AEA5B2C2A33BC327FD821C0F675BB81A8CD58F41D186732B3CA3DF108F2598DBF3260030B37D564FB9A5650A2E1D9B455531C36BC82FF4039C9BC6BA070491498CA2C0CBCA1024363BDBC0A5952C8AFD0E02F37E231654224B0A55E29B8B92A370364FD9EB159239853564C435770EBCC1340CA8C"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-03-27","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"317CC6BF755C12B26166A5430AC0F2D5","Version":"2.1.3.1","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"71A6FB5B46337E4AC5C2646B9007CC8DE96A56E14EE8DF5D5469E54758B7879F119DC7EFF96A6A3D75304789638434F68F62B3959EC33CEFDB8F99BE73E6D84D5FFC78C237CDBE72670997C80DD51388B9FA0495E230A8D4C526BBFBFAD19A5E0996E7F7441498685EC5C003E59E1573A022639B3CAC3DECA3E1B08CDB99152AF83D46235AD2A5F1B5F2EF91000E85893915B1F5B232EB76AC7387F1D422AB9233914CAB31A851DA63DA12B4BA5AD0266D772E229D755699F884ED99B6A6E0094BA1BADA10D5386248957FF0BBF0DADE3DB8D75F2BC1EFE918534B3C1FC0D65B5181874A38845F5DC534AC38A4AF1E8F5B6C68ABC48B977AB8459913FE444E7A"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 4、连接请求文件操作小程序服务：
 1)、图像文件处理及本地文件操作服务
 说明：以下功能请通过Web Socket连接后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-打开测试网页，输入地址：ws://localhost?sid=667&pid=D325C871-AB46-479B-B20E-1D861D26CA89&flag=1 点击连接；
+打开测试网页，输入地址：ws://localhost:83?sid=667&pid=D325C871-AB46-479B-B20E-1D861D26CA89&flag=1 点击连接；
 
 支持的协议功能如下：
 A、批量旋转图像文件
@@ -68,14 +68,12 @@ Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
 无属性Attr、大小Size和文件修改时间Write的是目录，否则是文件
 
 2)、文件HTTP上传与下载服务
-打开测试网页，输入地址：ws://localhost?sid=678&pid=762C3400-B3E5-4F00-8AA7-18E00F13E414&flag=1 点击连接；
+打开测试网页，输入地址：ws://localhost:83?sid=678&pid=762C3400-B3E5-4F00-8AA7-18E00F13E414&flag=1 点击连接；
 支持的协议功能如下：
 
 A、下载文件
-Url、File传入前需进行UrlEncode编码，分别为文件下载地址和本地保存路径
-下载权限参数Cookie和Auth，服务器要求的，MD5和Size分别为下载文件MD5哈希值及大小，可没有
-批量下载指定URL及文件名File等参数的文件,ID是前端指定的唯一ID，返回添加成功数量，重复的不计算
-{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","Items":[{"ID":"","Url":"","File":"","MD5":"","Size":300}]}} 
+Url、File传入前需进行UrlEncode编码
+{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","Items":[{"ID":"","Url":"","File":"","MD5":"","Size":300}]}} 批量下载指定URL及文件名File等参数的文件,ID是前端指定的唯一ID，返回添加成功数量，重复的不计算，增加下载权限参数Cookie及Auth
 
 B、上传文件
 Url、Items子项目传入前需进行UrlEncode编码，Url为上传URL地址，ID为上传序号
@@ -96,6 +94,7 @@ D、删除数据记录
 
 /// 上传或下载全部结束通知
 {"event":"File_OK","data":{"Type":1"}} 通知上传或下载结束，Type 1代表下载全部完成 2代码上传全部完成
+
 
 5、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
