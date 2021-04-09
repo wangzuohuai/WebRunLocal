@@ -1,0 +1,5 @@
+1、打开测试网页：http://zorrosoft.com/vlcdbplayer.html 点击WS连接
+2、成功后编辑发送按钮上方的JSON，修改Open参数为直接的RTSP流地址后发送，即可启动第一个VLC播放小程序，支持多路播放；
+3、复制以下内容 
+{"req":"Wrl_VLCWebPlayer","rid":6,"para":{"Type":"0","Title":"VLC Web Player","Flag":2,"IframeX":10,"IframeY":30,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/vlcdbPlayer.html","ShowType":3,"Open":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream"}}
+到发送上方的编辑框中，再次修改Open参数中的RTSP流地址发送，即可启动第二个VLC播放小程序，切记请求中的rid参数，必须和第一个启动中的rid不一样，否则导致异常。

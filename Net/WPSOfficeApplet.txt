@@ -45,7 +45,7 @@ BarW和BarH分别是网页右侧和底部预留区域
 OType 11启动WPS 文字处理;OType 12启动WPS 表格;OType 13启动WPS 演示
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
-注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
+注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动WPS文字处理
 {"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"11","Open":"D:/Zorro/test.doc"}}

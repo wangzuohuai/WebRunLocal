@@ -45,7 +45,7 @@ BarW和BarH分别是网页右侧和底部预留区域
 App：0启动AutoCAD实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1启动DWG TrueView在线查看和转换 2启动Design Review在线审阅
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
-注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
+注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动AutoCAD程序在线编辑dwg、dxf等文档
 {"req":"Wrl_ACADApplet","rid":5,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/acadframe.html","App":"0","Open":"D:/Zorro/test.dwg"}}
