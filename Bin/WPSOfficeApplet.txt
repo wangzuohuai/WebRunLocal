@@ -1,4 +1,4 @@
-﻿金山WPS内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用金山WPS的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿金山WPS内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用金山WPS的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -6,7 +6,7 @@
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
 
 2、金山WPS内嵌网页小程序控制相关接口：
-说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:80?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://zorrosoft.com/wordfull.html  HTTPS网页在线测试：https://zorrosoft.com/officeframe.html
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
@@ -35,7 +35,7 @@ B、网页中嵌入元素
 
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动微软Office内嵌网页小程序实现网页中局部加载doc/xls/ppt等文档显示：
+1)、请求启动金山WPS内嵌网页小程序实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
@@ -106,22 +106,22 @@ File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
 
-8)、请求缩放IE控件内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装金山WPS内嵌网页小程序
-请在输入框中，输入如下请求，然后点击发送，完成安装：
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet.pid","MD5":"47BFE2C7746D03ADA8D9EE10073E246A","Version":"2.1.3.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"47D0F3AC5B90EEFCED99E54077846548D7A6C4A00636ADE38863AEC2CE5860E3DB9953B3C82F4BBBBB968597B8353F59C5B53DF7C107FE456E428ED4BD50C244E2C065A7465FAB74F9BE64ACC5AA4F8956781BC6805DE176871E61123A1C068D6236435C836719F7D4A4D395FE7A5632DED523F35FDB9066B080E1228AEA8676C5B340C6388E51188301D5FDFADD5A5B73966A8F27AFB0BEADED116B3C5EAF4313C7B1ED9B854874151DFC0A109F4F611491AB1E3D39BB07931AD5886B978FBF4D429E994A44967C232FE03484687E1C5FDF173DAC374B90D55FA3BCA3F76F93AA3DD9153B302FED48E5A29BADC0C5CC1100EB02D7B7A46A32AA155A9CB724C2"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet.pid","MD5":"8129E6868D0A1BD96C0545C0B408C0D8","Version":"1.3.3.2","Size":786432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B0589DCBF39F5D04310D89489E2ADA2D73D4DA4A8FCCD0D62BA5A0DB641A4C9C449031DAAA93E3A8C45EBCBCE95E9CB8AB65885DC7DC595A11D3248EBD049AD8158A913215E9ACC52EA35E030171B8C0B9E884446355B72CD87FAA7008A03BDEBFD679208EA9A22C756C5343239457F48F49DA0913EC8445DCDD63DDB7346E2FB0624028F9E3C696BF4417A09BB7C0FB492FD8D08EEA36B52198C0912F42762AE72BA61E3B8140C2B26F6F42A737F6FC11A9BE7250A9DFC20B063821D953FB81F6E24F17B83003B240EBAA401910244692A0EBB14DF99CC220EBDCAD139631D436F4883E37BDDCB3BE3993811BF53487595BADB0AA41A38597D77EBCBFD89926"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet_Update.pid","MD5":"39BAA600F6CD439ECDCE92A9E18845A9","Version":"2.1.3.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1F0365015D1D6C7B967736C2D52CD1473CB893AC7EBC4CB68680006C8F2D293A5A3AB67DFE94665BF66595B0111338BC5B11410D2D2B0FB65B2C3DD9B5F3D7CD7F6971D2C517ED1E0B1D20ADA457877065D50FB1B40FF81967324ED05D4904D0EF65493B4B01FCC38C92F6A46F3D4D9F7F82CCAE88A9DFD06CB5B3112617D327A3C1E02FF18898E02CE6142AC0E0644CD192D94A10CC7077F2E6E0B66CBA23320E058F61273DDBADEB314E9DD577240D8AE836F5DB109FD752D92AFE269C7807CAC3975FF28AB5A32EEE3FBAE5F31C35CD3924EA44549F0DEF9B52279997EA2D8E187A7FEFF1CE68D841A6FB306A99C9B67783F02AB6000306F64126C0C3FBC0"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet_Update.pid","MD5":"098BB6BFBCEB81773B9836ECF0CC663B","Version":"1.3.3.2","Size":786432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"43CEAC9FAD8AB3B00849294BA3D0164CF5617C7DEB3941EB2BF0C24C6AF58FE06E63B1209588F9BC4B5443F46009DAB74A3260BEE1BB9CC6ABAE4DB2D3D91795E0F7A88BB2784C592974DC6060E16140F808E857C115996821D1D340AF1EB1FDBDA90854676B5624DDC1957207183C83E51EB9EFE74E1C7E682ED61EC9354BE7343FD5A8AFFB44ADE13792D682C2193941A3DC0D0010FEF6A0E635E56E1236F4D25B7E2DA1717C3E334A714553410A1A06759FC32FC70B0BAD04379AAD46E99006D2E12B78CC1526574A1D25C666EFB444D4DD88E979DA117B74D1B50BEDAC4E4B19C00F56449F7D76BE87873DD1132135D23E1330F7F1FDEB07CBCFAF1E9EBB"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -130,24 +130,101 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"WpsApplet","Type":8}}
 
 4、金山WPS内嵌网页小程序转调用WPS软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+
 A、常用功能请求：
-
-请求退出小程序
+1）请求退出小程序，适用于Word、Excel、PPT软件
 {"req":"Office_Exit","rid":1,"para":{}}
-请求关闭文档
-{"req":"Office_Close","rid":2,"para":{}}
+无返回，如有前端到此小程序的端口连接，会自动中断
 
-请求打开文档
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件
+{"req":"Office_Close","rid":2,"para":{"Save":"0"}}
+返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+Ret为调用VBA接口对应函数返回值，0代表正常
+
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
+返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
-请求转换当前文档为pdf格式
-{"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
+4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会弹出保存对话框
+{"req":"Office_Save","rid":4,"para":{}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
-/// 请求转换为PDF格式
-{"req":"Office_SaveAs","rid":4,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
+
+6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
+{"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
+
+7）请求在当前光标位置插入图片 ImgFile为图片路径，有中文或特殊字符等需要UrlEncode编码，适用于Word软件
+Link为1则只是链接到文件 Save保存到文档
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
+返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
+
+8）请求在当前光标位置批量插入文字，适用于Word软件
+{"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
+分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
+返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
+
+9）请求在当前光标位置执行退格操作Backspace，适用于Word软件
+{"req":"Office_Backspace","rid":9,"para":{}}
+返回：{"ret":0,"rid":9,"data":{"Ret":"0"}}
+
+10）请求批量打印，适用于Word、Excel软件
+Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
+{"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
+返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
+
+11）请求移动光标位置，适用于Word软件
+Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7是屏幕区) Count为移动数量
+{"req":"Office_MoveLine","rid":11,"para":{"Up":"0","Unit":"5","Count":"6"}}
+返回：{"ret":0,"rid":11,"data":{"Ret":"0"}}
+
+12）请求获取当前用户名，适用于Word、Excel软件
+{"req":"Office_GetUserName","rid":12,"para":{}}
+返回：{"ret":0,"rid":12,"data":{"Ret":"0","UserName":"test"}}
+
+13）请求设置当前用户名，适用于Word、Excel软件
+{"req":"Office_PutUserName","rid":13,"para":{"Name":"test"}}
+返回：{"ret":0,"rid":13,"data":{"Ret":"0"}}
+
+14）请求获取当前是否修订模式，适用于Word软件
+{"req":"Office_GetTrackRevisions","rid":14,"para":{}}
+返回：{"ret":0,"rid":14,"data":{"Ret":"0","TrackRevisions":"0"}}
+
+15）请求设置当前是否修订模式，适用于Word软件
+{"req":"Office_PutTrackRevisions","rid":15,"para":{"TrackRevisions":"1"}}
+返回：{"ret":0,"rid":15,"data":{"Ret":"0"}}
+
+16）请求修订模式后续操作，适用于Word软件
+Type为操作类型，0默认代表切换修改模式，1代表接受所有修订 2代表拒绝所有修订
+{"req":"Office_TrackRevisions","rid":16,"para":{"Type":"1"}}
+返回：{"ret":0,"rid":16,"data":{"Ret":"0"}}
+
+17）请求在当前位置添加批注，适用于Word软件
+Text为添加批注的文字描述
+{"req":"Office_InsertComment","rid":17,"para":{"Text":"批注内容"}}
+返回：{"ret":0,"rid":17,"data":{"Ret":"0"}}
 
 5、事件通知：
-A、
+A、以下为Word程序通知
+1) Office_DocClosed 文档关闭通知
+{"event":"Office_DocClosed","data":{"Name":""}} Name被关闭文档名称
+
+2) Office_DocChange 文档变化通知
+{"event":"Office_DocChange","data":{}}
+
+3) Office_DocNew 新文档通知
+{"event":"Office_DocNew","data":{}}
+
+4) Office_DocOpen 文档打开通知
+{"event":"Office_DocOpen","data":{}}
+
+5) Office_Quit 小程序退出通知
+{"event":"Office_Quit","data":{}}
 
 B、PluginOK支持的事件通知：
 

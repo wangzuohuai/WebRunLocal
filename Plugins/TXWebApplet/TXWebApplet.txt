@@ -1,4 +1,4 @@
-﻿腾讯软件内嵌网页版：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，可实现将腾讯微信、企业微信、腾讯会议、QQ等客户端软件内嵌到网页中运行。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿腾讯软件内嵌网页版：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，可实现将腾讯微信、企业微信、腾讯会议、QQ等客户端软件内嵌到网页中运行。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -7,7 +7,7 @@
 
 2、腾讯软件内嵌网页版控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://zorrosoft.com/txfull.html  HTTPS网页在线测试：https://zorrosoft.com/txframe.html
+HTTP网页在线测试：http://local.zorrosoft.com/txfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/txframe.html
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记程序的显示位置和大小
 .TXWebApplet {
@@ -44,17 +44,17 @@ BarW和BarH分别是网页右侧和底部预留区域
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 App 指定加载软件，0微信桌面版 1企业微信桌面版 2腾讯会议桌面版
 Url：加载小程序所在的网页实际地址
-注意：Url如果有特殊字符或中文等，需要用URL编码处理后传递
+注意：Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_TXWebApplet","rid":1,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":2,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
+{"req":"Wrl_TXWebApplet","rid":1,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":2,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/TXApplet.html"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_TXWebApplet","rid":2,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":10,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/TXApplet.html"}}
+{"req":"Wrl_TXWebApplet","rid":2,"para":{"Type":"0","Title":"Tencent Web Applet","Flag":10,"App":"0"","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/TXApplet.html"}}
 
 当前页指定位置自动适配网页加载测试
-http://zorrosoft.com/txframe.html
+http://local.zorrosoft.com/txframe.html
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
@@ -100,22 +100,22 @@ File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
 
-8)、请求缩放IE控件内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装腾讯软件内嵌网页版
-请在输入框中，输入如下请求，然后点击发送，完成安装：
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet.pid","MD5":"40452385A1A992B68ECB4C987C0A2E5B","Version":"2.1.3.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6D1C3650DD81CD237634DBECA0D02838418AD810B0B6E70D99450FE3DFE9E6DAEE2EF30BDE648DCFF7FBF155D130ADC2637CF99C527DDF6C828A29EF91743F48A8B9BB28E9455478A5192C6FC7FF2856A615034A83A9E8A1ECB0327B4F3081F43A7A7005C6E32AEF5F09EE4553CC82CB79972E2F1F6826BB0429DB9491B5892A29822FDF24C2FCC141B9C6437EAC06CA72BDA10AE2990FE50DBE1DD640634FD3FC00B0255E308C4AA683FCB6360259A1CD269C00265D7D2D85841B1D25B863F12F053FDE1AAAAB1D69B96561549FC674C6D99C93DEE0CBFD60D93B093A3F3195ACA9C1B181F3E1A1760A56DB572E7F77111C047883A3BA9BE7BFD2112A0C07D9"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet.pid","MD5":"1251069772CCD57DD3D3A258E49BEAF7","Version":"2.1.3.2","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"37BE9A4E8AFAD964C98A4EAB7856F47271AC34E000C4128E8F1B0E454A4E5221CEF384CDE9180DBB3FF37265EEA68111AD6E15A0381F41A615BA714A9317A31F2EF4A5A8D6B2980F0FE2BBFC0966F3465CDD9C7B624A21F49A7CC1EC13296D4BA67A4FE79B2C5DD71D16434D3CE9155AB1BB7F4ED77B4D7E178F07F98FB56B0501A720845CD98C39528A4695348D2F5B94E0D3C2EA47761CD695873343012EEF80384A672ACCC1C29E198371A42E8AD9BC6C560C74793E63FF43CF3ACDB68865F420C561174384F6B3A68CBEDAC0831942DD9504B856B616E52C8F47DDD9A4ADEEC2AE7BC89C0A32BD6C0DE2256116BB4E67EACCD4F296CBF0FA3C1B7E042D0B"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级腾讯软件内嵌网页版：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet_Update.pid","MD5":"577129948380E2226CF1DC7DBDF3497F","Version":"2.1.3.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"935EE3B11DBAF617E605A826B7881E9CF01D570217B8A5B8EBB915DB222113B8CEF355F47F188846C4F96820EA2A013F9C7D0F30389A46858B806B4999915AF86833C49F619FBE01DBA7950AEEA29B97C61DE5740C11EB69D20DB0E7A28664DC143FF2C53BCB166FAC6734B4244D8EA4842EF7F2F83EE5788DC1F2681A304F5B31A1E19EEA842ED431E1EA579D807DE70B1878E108B3B9476EF01C037761073EDA15C956D61476FF46257C529DF77429D7A2355A1A72D258CEF5EE2A01186E09899EBFD8FBF9D80289D69D248BD84DE57AE0DA675A0F6FCD3C634F4407E9BF96E09B14800EFE24D491356309E793F4FF32D98969CF9F90D93DB9D3D100A2FF6E"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet_Update.pid","MD5":"791C5044D642D1D72728DF2E44C6B6C4","Version":"2.1.3.2","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5ADC13AA9AFA6AE88D9D38717180BCB3C854E935C44D81333D0929B0FD2FCB8E79CCC69B80C63628FBD96BE5FF32C10984390CCAF0793B9951962E34C90F392DC0875144F8579751EC5A5F910B9D7F9CB990E9F692F61AF25F27045A25FFC17D30DDF794992B3C5A625B18B97DD6C35318A35A3724BCA86A3114487A74A12E5650EDAA57C80A7E6DFB63FB26B00AEB6888E46A31AF8F85524B3FADF512B5F845EA3C4B6090335E70DCA93C8273B90A9C93A7CCDA7C98A01D9A6F11CDEC3C9061699A860AA7E88665C976320E9C45082E93D322E9DF43E91BBE96184CFD2DAEAB63B5483063FEDBEED1DA8413E56F2F8B5B3EF5174ED40AD9BD0A6D5F90D3DAC6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

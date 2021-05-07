@@ -1,4 +1,4 @@
-﻿Autodesk内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )开发，底层调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件实现可程序化驱动的dwg等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿Autodesk内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件实现可程序化驱动的dwg等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -6,7 +6,7 @@
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
 
 2、Autodesk内嵌网页小程序控制相关接口：
-说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:80?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://zorrosoft.com/acadfull.html  HTTPS网页在线测试：https://zorrosoft.com/acadframe.html
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
@@ -106,22 +106,22 @@ File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
 
-8)、请求缩放IE控件内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装Autodesk内嵌网页小程序
-请在输入框中，输入如下请求，然后点击发送，完成安装：
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet.pid","MD5":"3A770DC57730216289722D8241CA3C96","Version":"2.1.3.1","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"31AA84AC8F09649EF3E484E8E48497CA0C418E16807DB57A12EAA43D37AB6C7168C91F9A5C24CEE1E727CD511333A3E51A7697F456A406934F29B9A3EC121DEA21B8EE61F3C98C8AA9343BAE34DCE13E4426CF5B774D73154BCE109A25C84BCB24A277722DEFC4C32ECE652116C77EC3FF67ECFCFB7B4D381144DD15B2E4024D95F2FB027138C0742730D5FB326AC0975AECF3E3536A3B9FF115B0520A62456445ED55D9986995B67563912FBDF1D8444DE711EF8E42FF4B26DBFEB53B60C896475F3D08EE9C7292F61B0E867E8B1A431A829C098F719DA41F28082934AA991A6F11101002DC0087781D9C23FBB13F77156A14AA1CF1E06BCAD3D8D64BD33747"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet.pid","MD5":"4773D63E747A467D19697E5E7094D5BC","Version":"1.3.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6D37D3F048C2BDCFE96A07512D745780394639D5CB615B37626882B4E456024E4EA4A48596FD9D9DADD9CB4C7BAA8281DC6C992DC614B44C080697B2E497C7BAA73F2C3B0D86292C544FADAE3AE7E600F6EA450F3F300C95AC41DC8D199F9B0A2E04CF913D8CFE896EEB351E4EDFE01AD28D6D2C1D9B336D458F7E6993868FAB01FB6291695780FEE822621D96414F1C65CFAA7D1E9ED91F327341B754466FD89A2E24644CE574BE0A1A39ECF5F3C9970B0D4C08B6DAF97FE782E0469B4696AF2D1F29BD010D972146FC6FBF598B423A121EC2F3090E8BC75F5AD392A5E842F9E5B0AE6EAF0AA95661C2AC92FBA7627CA5731E339740281443817EA5A61DF0B2"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级Autodesk内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet_Update.pid","MD5":"1A0BF408CCC18A78A2483B13E47FEA6D","Version":"2.1.3.1","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"C19A813EE9C820F6544B79CA0E720DD8BC813CE711B99ED2E6077D864390FB0030EF591993F16F15DF666A0482EB993CABA28BAE189B1E1478E8D06A0E52116211D00655504A6F491458ACF5FFDCC5B42C85FFA7351463584FBD730F96E3BC8AA9493248357B091A7BB2E3964C9A90FB5C301E9978BC3725EF0D182882BFF32E92DA372C58A7911F754A67344465B28A3FEC9DF28EBF8EA8CA50AE2EB7FBA4FED2994F4F94B1E37029C21B33756091254DCFDE8D4E656825524893ECDC57D97AC3D6EC533BD83457BA07B709B3FA23C997F58AA021B6E50CC43DA6A80BABFCC569129C04654B6276E7C19986DB22E80D1B39DA6894A9DF21A7E9E7F6AAA4FF23"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet_Update.pid","MD5":"616E7F7399E9ED720522E970981A0554","Version":"1.3.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7CE0282577C90A178D46B9663F3B83D1F68FC72F9A9A3AEBDDA0421E1BD0A02F08117B456B43E7F6EBBECEE73D4F7B7352E57114E67B9F72C2243CC6596D035FA5D1E32A40DAD1F397FB0C3CAC2FF17F6BC0AA9529AC5084DC0930074C8B21BC62F1FC169F9FA48DD4F0F04E0F4352C4986F5A23DD6AE0727BF2E7E97427172EEFCBA416AE1884E79F5F4BC61B7A58B89B8605CC151A5E548369AB8E657B6FDB81147D635187405E54AA5C6B18D75165BD53FC41800B8EE00DAD15A8A068F52FAE22E5612722C0D21C96C65F2F19A1FAB59BC63ED18D293F07D1D53386FAF720A0C5BF39B38F79202A93BE642239AE7F9996BFAB9CADA8B18C3A2B8793271ABE"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

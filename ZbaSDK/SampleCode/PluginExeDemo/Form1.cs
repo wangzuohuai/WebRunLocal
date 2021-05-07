@@ -9,8 +9,8 @@ using System.IO;
 using System.Windows.Forms;
 
 /// 添加核心组件引用
-using WrlEngine;
-using WrlBase;
+using ZbaEngine;
+using ZbaBase;
 
 namespace PluginExeDemo
 {

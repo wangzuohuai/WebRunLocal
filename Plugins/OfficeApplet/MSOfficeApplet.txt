@@ -1,4 +1,4 @@
-﻿微软Office内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿微软Office内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -6,8 +6,8 @@
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、微软Office内嵌网页小程序控制相关接口：
-说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://zorrosoft.com/wordfull.html  HTTPS网页在线测试：https://zorrosoft.com/officeframe.html
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://local.zorrosoft.com/wordfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/officeframe.html
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
 .OfficeApplet {
@@ -45,22 +45,22 @@ BarW和BarH分别是网页右侧和底部预留区域
 OType 1启动微软Word;OType 2启动微软Excel;OType 3启动微软PPT
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
-注意：Open和Url如果有特殊字符或中文等，需要用URL编码处理后传递
+注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动微软Word程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动微软Excel程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"2","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"2","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动微软PPT程序
-{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"3","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"3","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
 
 当前页指定位置自动适配网页加载测试
-http://zorrosoft.com/officeframe.html
+http://local.zorrosoft.com/officeframe.html
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
@@ -106,22 +106,22 @@ File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
 
-8)、请求缩放IE控件内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装微软Office内嵌网页小程序
-请在输入框中，输入如下请求，然后点击发送，完成安装：
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑小程序","PID":"MSOfficeApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"D6748F2B79AE2131F86FA2D5C956D865","Version":"2.1.3.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A117CE98035ED7420C7AACF50B32E292D96C030D462F4EFD607F047F20DA0CA5609113566C234D77CEB5424ADB072E035409D26E7DF7E4241F09B7E0EBAA4B6B772864EBB4922A911DDA715CEE550DB26CA0F886D0283BAD5E8166931CA7D892A965953F6FFE9E0E0C7A50397E0BA504FDD72D56EB2366819ABDF79054DF8211D7B1CA115CA96B001BEEF20ABFF100D87647EC42A2253611AD43536FF3393699867886A713E93FF342A13152D6EC9769139ED915BD3E3CA43B9C801D6BC5414DFAE1F362DA5BAA48C6F23C3809136DAE3CF8CD7C4C2DA013666259E1F79A2BF48FE74CC1B63CBE80D5A713A47F61B0E7A729DBB3E3BA4EF3033628F5FC928E1D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑小程序","PID":"MSOfficeApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"5F5F2B18B4DD1380DB32B3EC288D50B0","Version":"2.1.3.2","Size":786432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2F21986688EA9EA2228E593FF6B3E95F21331D7632EEC65753569654616695AEDD48135963E08F5C6F527F1237EFF8428D73572CB9C29FC1A24F40157DBC237B70EE7E3DBF07771FCA28EF48EBE3E5A8ACF8D2A7DEDBE1FA50C2996ACA06039911B50BD99144E8070D846ECFBB905BC11F6AA54E8B0AF305B4EDA8667A255116C44FC0980B8832F6840F67D7F8588AE92F97A839B05996DA39ECC06E1B7BD081A78F972CBB93C5D69B2195229FC83BE3AAAB41CB7C333773521E027C0A1CCAF83BC98E77C83B74D9501804E1765C1E7A89CC43B0FB443216A9DF1BA42FE20303AA165CE9515956EC1F5829BAEA917B24B572249711D9F32773DEFA551E2F0EC7"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑小程序","PID":"MSOfficeApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"58603A04407BD4347AE90A5ABA9748DE","Version":"2.1.3.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AAA68F2FB46F40B060F62123467EEE9C72D41040A55C5DD5D16C89A288B36A993A0FE0D014A33985EFAE8C9DD0AFD36D5964E4FBF8EECB3AD79283F90323D57EE49A99D2B658A268287D0ABD80AA52F9A5F0646219F29990EA76928FF2E9F5DC290906FE9FA5E069A15B34B37A47195C298C0312972B1E1A30014C6804C7D1E3E8E4ACDBA0637EC2CEA145A23657B54063A4DF49BED099F018C9F481EBF14B82ECF77B628DAB8788C47BAFEB4DAB37177670319DD19E308D7454EB6C631869E70E1672D2EF1BC82396B08468EF55E464DD55271F0AE62FF1F76552FB0658279F0E61EBB4A0FEA575A3E24A40029EDE419365435D5C514EE11A3CF175FE3A7C2F"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑小程序","PID":"MSOfficeApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"089BEEF5FE0D2EB9A685F7764CA020C6","Version":"2.1.3.2","Size":786432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4D440DE86CD345ECB866C5C01A7A5D72BD1F530E2F6DA3B9236FF13F0B73150FAA4962958E4884C7677461CC6E4FFD8DF26AD5DDD9C4CF8C8773CF8EFEF3CA88FD8893CC30A07E00A9263A102F22616A38C487BEEBB4F1C18B69D818261369DCD9537697A1F1D025BE70E30F8EE13ED11865A1977F26ACF4FDBB81A6D2968ECE9EDB9C7FD691C3F3C2FB4E7F2CD58D7BFA3337FB24F78478E712F707CFB725773A86E49E9BD777C0C18AE23F38A6B3D65E8AE45D55B876F09D6B84B3883DE6793B43376D12A715D21A94CF402D8F28CFCC297AB69E04D556EA11C47AAD22380DA9382E151E22FB032865F52C3F5D55075DBA99D09A2C9E4FA0131A1BC2895418"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -131,20 +131,100 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 
 4、微软Office内嵌网页小程序转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
-请求退出小程序
 
+1）请求退出小程序，适用于Word、Excel、PPT软件
 {"req":"Office_Exit","rid":1,"para":{}}
-请求关闭文档
-{"req":"Office_Close","rid":2,"para":{}}
+无返回，如有前端到此小程序的端口连接，会自动中断
 
-请求打开文档
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件
+{"req":"Office_Close","rid":2,"para":{"Save":"0"}}
+返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+Ret为调用VBA接口对应函数返回值，0代表正常
+
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
+返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
-/// 请求转换为PDF格式
-{"req":"Office_SaveAs","rid":4,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会弹出保存对话框
+{"req":"Office_Save","rid":4,"para":{}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
+
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
+
+6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
+{"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
+
+7）请求在当前光标位置插入图片 ImgFile为图片路径，有中文或特殊字符等需要UrlEncode编码，适用于Word软件
+Link为1则只是链接到文件 Save保存到文档
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
+返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
+
+8）请求在当前光标位置批量插入文字，适用于Word软件
+{"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
+分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
+返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
+
+9）请求在当前光标位置执行退格操作Backspace，适用于Word软件
+{"req":"Office_Backspace","rid":9,"para":{}}
+返回：{"ret":0,"rid":9,"data":{"Ret":"0"}}
+
+10）请求批量打印，适用于Word、Excel软件
+Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
+{"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
+返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
+
+11）请求移动光标位置，适用于Word软件
+Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7是屏幕区) Count为移动数量
+{"req":"Office_MoveLine","rid":11,"para":{"Up":"0","Unit":"5","Count":"6"}}
+返回：{"ret":0,"rid":11,"data":{"Ret":"0"}}
+
+12）请求获取当前用户名，适用于Word、Excel软件
+{"req":"Office_GetUserName","rid":12,"para":{}}
+返回：{"ret":0,"rid":12,"data":{"Ret":"0","UserName":"test"}}
+
+13）请求设置当前用户名，适用于Word、Excel软件
+{"req":"Office_PutUserName","rid":13,"para":{"Name":"test"}}
+返回：{"ret":0,"rid":13,"data":{"Ret":"0"}}
+
+14）请求获取当前是否修订模式，适用于Word软件
+{"req":"Office_GetTrackRevisions","rid":14,"para":{}}
+返回：{"ret":0,"rid":14,"data":{"Ret":"0","TrackRevisions":"0"}}
+
+15）请求设置当前是否修订模式，适用于Word软件
+{"req":"Office_PutTrackRevisions","rid":15,"para":{"TrackRevisions":"1"}}
+返回：{"ret":0,"rid":15,"data":{"Ret":"0"}}
+
+16）请求修订模式后续操作，适用于Word软件
+Type为操作类型，0默认代表切换修改模式，1代表接受所有修订 2代表拒绝所有修订
+{"req":"Office_TrackRevisions","rid":16,"para":{"Type":"1"}}
+返回：{"ret":0,"rid":16,"data":{"Ret":"0"}}
+
+17）请求在当前位置添加批注，适用于Word软件
+Text为添加批注的文字描述
+{"req":"Office_InsertComment","rid":17,"para":{"Text":"批注内容"}}
+返回：{"ret":0,"rid":17,"data":{"Ret":"0"}}
 
 5、事件通知：
-A、
+A、以下为Word程序通知
+1) Office_DocClosed 文档关闭通知
+{"event":"Office_DocClosed","data":{"Name":""}} Name被关闭文档名称
+
+2) Office_DocChange 文档变化通知
+{"event":"Office_DocChange","data":{}}
+
+3) Office_DocNew 新文档通知
+{"event":"Office_DocNew","data":{}}
+
+4) Office_DocOpen 文档打开通知
+{"event":"Office_DocOpen","data":{}}
+
+5) Office_Quit 小程序退出通知
+{"event":"Office_Quit","data":{}}
 
 B、PluginOK支持的事件通知：
 

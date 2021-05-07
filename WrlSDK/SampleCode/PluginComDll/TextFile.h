@@ -27,11 +27,7 @@ class ATL_NO_VTABLE CTextFile :
 #else
 	public IDispatchImpl<ITextFile, &IID_ITextFile, &LIBID_PluginComExeLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
 #endif
-#ifdef WRL_VRSION_STANDALONE
 	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_WrlBase, /* wMajor = */ 1>
-#else
-	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_ZbaBase, /* wMajor = */ 1>
-#endif
 {
 protected:
 
