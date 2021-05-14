@@ -1,4 +1,4 @@
-﻿点聚AIP电子签章内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用北京点聚信息技术有限公司的ActiveX控件(3.1版)HWPostil.ocx(此控件版权归北京点聚信息技术有限公司所有)实现。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿点聚AIP电子签章内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用北京点聚信息技术有限公司的ActiveX控件(3.1版)HWPostil.ocx(此控件版权归北京点聚信息技术有限公司所有)实现。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；

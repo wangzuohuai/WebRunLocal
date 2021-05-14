@@ -1,4 +1,4 @@
-﻿Autodesk内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件实现可程序化驱动的dwg等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿Autodesk内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件实现可程序化驱动的dwg等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；

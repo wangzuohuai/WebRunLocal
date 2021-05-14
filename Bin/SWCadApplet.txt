@@ -1,23 +1,23 @@
-﻿Autodesk内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件实现可程序化驱动的dwg等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿Solidworks内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )单机高级版开发，底层调用达索公司的Solidworks软件VBA接口及eDrawings的OCX控件实现可程序化驱动的xt、step、sldprt等三维工程图在线查看、编辑等，可将Solidworks eDrawings软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
-3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
 
-2、Autodesk内嵌网页小程序控制相关接口：
-说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://local.zorrosoft.com/acadfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/acadframe.html
+2、Solidworks内嵌网页小程序控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:80?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://zorrosoft.com/SWCadfull.html  HTTPS网页在线测试：https://zorrosoft.com/SWCadframe.html
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
-.ACADApplet {
+.SWCadApplet {
             margin: 20px 0 0 20px;
             width: 480px;
             height: 320px;
             border: 1px solid blue;
         }
 或者
-.ACADApplet {
+.SWCadApplet {
             width: 480px;
             height: 320px;
             top: 20px;
@@ -29,60 +29,57 @@ A、标记小程序的显示位置和大小
 
 B、网页中嵌入元素
 支持IFrame的：
-<iframe name="ACADApplet" id="ACADApplet" src="AcadApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no></iframe>
+<iframe name="SWCadApplet" id="SWCadApplet" src="SWCadApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no></iframe>
 或者直接用
-<div id="ACADApplet" class="ACADApplet"</div>
+<div id="SWCadApplet" class="SWCadApplet"</div>
 
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动Autodesk内嵌网页小程序实现网页中局部加载dwg/dxf等文档进行操作：
+1)、请求启动Solidworks内嵌网页小程序实现网页中局部加载dwg/dxf等文档进行操作：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-App：0启动AutoCAD实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1启动DWG TrueView在线查看和转换 2启动Design Review在线审阅
+App：0是启动Solidwork实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1是eDrawings控件查看
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
-自动识别当前浏览器并启动AutoCAD程序在线编辑dwg、dxf等文档
-{"req":"Wrl_ACADApplet","rid":5,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/acadframe.html","App":"0","Open":"D:/Zorro/test.dwg"}}
+自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档
+{"req":"Wrl_SWCadApplet","rid":5,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
 
-自动识别当前浏览器并启动DWG TrueView程序在线查看或转换dwg文档
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/acadframe.html","App":"1","Open":"D:/Zorro/test.dwg"}}
-
-自动识别当前浏览器并启动Design Review程序在线审阅dwg、dxf文档
-{"req":"Wrl_ACADApplet","rid":7,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/acadframe.html","App":"2","Open":"D:/Zorro/test.dwg"}}
+自动识别当前浏览器并启动eDrawings程序在线查看xt、step三维工程图文档
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"1","Open":"D:/Zorro/Test.sldprt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_ACADApplet","rid":8,"para":{"Type":"0","Title":"Autodesk Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com/acadfull.html","App":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/SWCadfull.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
 
 当前页指定位置自动适配网页加载测试
-http://local.zorrosoft.com/acadframe.html
+http://zorrosoft.com/SWCadframe.html
 
 启动后会前后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"ACadApplet","port":990}}
+B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"SWCadApplet","port":1010}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"data":{"SID":"123","PID":"ACadApplet","Port":990}}
+C、{"event":"Wrl_AppletOK","aid":3,"data":{"SID":"123","PID":"SWCadApplet","Port":1010}}
 
-2)、请求控制Autodesk内嵌网页小程序：
+2)、请求控制Solidworks内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动Autodesk内嵌网页小程序：
+3)、请求滚动Solidworks内嵌网页小程序：
 当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变Autodesk内嵌网页小程序显示位置或大小：
+4)、请求改变Solidworks内嵌网页小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -111,44 +108,44 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装Autodesk内嵌网页小程序
+1)、请求安装Solidworks内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"E4D87E9A6772884F8CC300CC0B60644E","Version":"2.1.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"28E6DBBAE7B36391CCBFB20E1E368D91FFF2DBA9A77DB22F444227622B6E36D8EE955B48FD46BA1C03EA38F55EC0763D7DAE2342E934F1F8A4FE84085B86F3099BD2681D50E83ABE9032351C36AC6043E5B323AE50854C41148DB3DB4A8B4694CF71859E71EB0855973179F0226418EB3F3321AC5F09EAC42FB20E8D25C25C0C8DE2B3595D6F3AE127EEE8BBC39B82FFAFE70459C8B9EC765EC11E3C3443497CF5BC8C6393E7F3F0C3DA18B794D4C11740DB9AFC785F5322A9188EDED4BEF0F90078FC4221ADFB3F7FD9087C576E01B6003749DADA2746D31744EBEDEB4BB3336DC5A094BAC4EA48287CFA1F5B4FC11C57112ABBDDA2301BE7909213DC844E4C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Solidworks内嵌网页小程序","PID":"SWCadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Solidworks内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/SWCadApplet.pid","MD5":"E4956417D02410F77EBB8C5271D35F22","Version":"1.3.3.2","Size":2031616,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1D1FFF795E33927E208F27587DF0A9B0C544DC7CEC8090056A80F5B53DA0F5FFB0A554A28127F08FDCC08930A5604578BD196186156AF198AD84097310C1A9399BC23BB058BAC5987A59B538E82EFEEC5528847A2083D95C1319439D86C1494A24D1FE588EAA85B6BC6E29806443A465A32EF9CB9BF677EDE0F9A7745D02283B8FB1D98784C06A8B6A2F32D37ECA39BCDABA3393A7B0979BD9D184BEC9635BEC01038E9ABEEC6F536254F3075B12934CACA25E99CB56507F49FDB9F39546F2860363A48D9F86F2F6CD06636191FC444C701DC49BBB07CEB9E2FF20D077BE762F7FCA9D434D4164EDC1803F826D2DF297F8F889C2C513EAB3FFC3B1B7D47B848F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级Autodesk内嵌网页小程序：
+2)、请求升级Solidworks内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"75B516A8F98CB40BA91192E99493065E","Version":"2.1.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7A363555744849C2FEA74FDACE81BD72DA0B93BEE81A6BB4109B1147D2300A1C2C78BDDE78E74C07D1CE8B86AFC1D816AC33CEA188FFAF86971011DD3093F4344E5C13B9D99476DA56879C6C9897214A4154FB7BE821B07C77F6F5C88D80FFBDE27211F71226713A4AE36876740E539B9ED2A78B8D9687D144A965A5089314AEF48E4D35B1F1EE1CFB463DF8C71D89008D70CB79AEDF60F2026102F2FD65B7262AAEF734CDF116FF058A219DCE87461A3C381964BD1247CC805B427542BBC7AF97FE21BA9C8EE5414894CB55D57A2F641A8648D636A1F7F164A4B34D87AA0FDF360D133B9066A3B8E5A0C5F0AF46051A42E267CF73E8CE988A12DDD74351DA35"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Solidworks内嵌网页小程序","PID":"SWCadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Solidworks内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/SWCadApplet_Update.pid","MD5":"01AF02B608A88DFC72FED80DEC3C4EDE","Version":"1.3.3.2","Size":2031616,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8C30FC350CD0FFB3036031A3629889B128DFE562389A5881AA838D4C86E080D3A16328AC180060864F15DF9175835D4AEC289F52252C7318E7A0010A3548123A597A766857EA53C17F86E805710C01546C34E5F4D52986921506DFED89756FE4FB3DF44E5FFC374AFD61E3202714B3DDAC00C31E8D988DCE525CED632456B078421EE5F5C0C6A42FFE8460E7529B9CE6A812C3FE424641F97FE24CF4D51693B1BB4A53F5AB390F3E59F1FE0A79128F08C711624D657E368734AB463936673111C81B93957453B660E5ECE2A2755A2C2D833EAD58DBDF46597ADAD1921C8A2260A33969370287ED949F8EB7FBD51152652CF972D5027D7A1D82208BBC9F733E9E"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载Autodesk内嵌网页小程序：
+3)、请求卸载Solidworks内嵌网页小程序：
 
-{"req":"Plugin_Remove","rid":3,"para":{"PID":"ACadApplet","Type":8}}
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"SWCadApplet","Type":8}}
 
-4、Autodesk内嵌网页小程序转调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件接口，先根据Wrl_ACADApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、Solidworks内嵌网页小程序转调用软件VBA接口及eDrawings的OCX控件接口，先根据Wrl_SWCadApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
 1)、请求退出小程序
-{"req":"ACAD_Exit","rid":1,"para":{}}
+{"req":"SWCAD_Exit","rid":1,"para":{}}
 返回: {"ret":0,"rid":1",data":{"Ret":"0"}} Ret为0代表成功
 
 2)、请求关闭当前打开的文档
-{"req":"ACAD_Close","rid":2,"para":{}}
+{"req":"SWCAD_Close","rid":2,"para":{}}
 返回: {"ret":0,"rid":2,"data":{"Ret":"0"}} Ret为0代表成功
 
 3)、请求打开文档
 Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码 Read为1代表只读打开
-{"req":"ACAD_Open","rid":3,"para":{"Open":"D:/Zorro/test.dwg","PW":"","Read":0}}
+{"req":"SWCAD_Open","rid":3,"para":{"Open":"D:/Zorro/Test.sldprt","PW":"","Read":0}}
 返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
 
 4)、打开文档转换到PDF
 SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如已打开可不设置
 DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先编码
-{"req":"ACAD_ConvertTo","rid":4,"para":{"SrcFile":"D:/Zorro/test1.dwg","DestFile":"D:/Zorro/test1.pdf","PW":""}}
+{"req":"SWCAD_ConvertTo","rid":4,"para":{"SrcFile":"D:/Zorro/Test.sldprt","DestFile":"D:/Zorro/test2.pdf","PW":""}}
 返回: {"ret":0,"rid":4,"data":{"Ret":"0"}} Ret为0代表成功
 
 5、事件通知：
@@ -157,7 +154,7 @@ A、
 B、PluginOK支持的事件通知：
 
 1) 小程序是否响应了热键全屏
-{"event":"ACAD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+{"event":"SWCAD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 
 2) Wrl_AppletExit 小程序退出通知
 {"event":"Wrl_AppletExit","data":{"ID":1}}

@@ -1,4 +1,4 @@
-﻿VLC多媒体播放网页小程序(支持多路)：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://codechina.csdn.net/zorrosoft/pluginok )网络高级版开发，底层调用VLC的ActiveX控件axvlc.dll(需安装VLC media player或搭配绿色版VLC播放程序)可实现在网页中内嵌播放多路RTSP的实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿VLC多媒体播放网页小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://codechina.csdn.net/zorrosoft/pluginok )网络高级版开发，底层调用VLC的ActiveX控件axvlc.dll(需安装VLC media player或搭配绿色版VLC播放程序)可实现在网页中内嵌播放多路RTSP的实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -114,13 +114,13 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装VLC多媒体播放网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"3439A8E60758533A171ACF3F0610B345","Version":"2.1.3.2","Size":786432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0930154F60890EA5211448436B7AA8B32E2A91C79D90585C70FC5B48E781D9C33F687C921686674559F7E6DDD79D39FF1451A857E58267D945454C4488027CD9CA9718CC4A8AD8C39C78502BB03DCFD3D4BD639FD8AA780A42149291F39D2906B9366B9BC77B8F6DCD245907A3657948E784B71A3A40C3DFFD3E364108D33091FF9828944A5F4FF7E7051479D27735FBB612250483664121BBB7770E4AD73ABB967122F3E6DC92BFFFDF4CC3811FF007ED35B32811E4B9364EB8D306C52A7EF7C20851B6785A2013C50E81E4DE1586E58ADF70066A707F87D6AD4915074146D6036B3D8AD55647B00979A221A9ACBD9A4620A1816E46D0C4C2EFD7626E2BC1DC"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-05-15","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"BD89EFAF4B0650F26A0B689872A9CF1B","Version":"2.1.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9FEDC5E0911095C52384D687B4FCDAC489783E8E546364EC2A8F4C4CFD343528250DAAFC824FE770403015170400FC66A9C311DF072C216B49CB92160B254B2E1B925C28957CD6766CC59D58FADE23B5C2B20A38604E110F3F9CDBBD65CF637C2EDD3B4607948F18FD0BCB9D70446CC697F3F583F629C41579341247130B8F1813CDA9F45DB8DA9A2EC2A6C12ADC51866DD1873F31862D07D79F814DD5FC950C4A45B5A62FF7955D47220ED4C571D350BD771BE7C4715351E5B568ACC75391D02EE951FC3935CDD6F2AF952196333440CC382D58079118DA62F27A2820930587F1EA64A777AEEB8342641426AC615A9FC5749A1D937944121FCB39F85212CC65"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC多媒体播放网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"107E3A401B4FE14B81AEFA3F6596FCB4","Version":"2.1.3.2","Size":786432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"83C43B0DCB954E8FA3F6E0F6B3FC06DAA0D163C0D6DF009E864E357864A125205816132015DC2D64BF6AC1237DD6514B8458AF1D9F2C7CEF8680B5A5BFAB7607911D7CB51A1F12B88500A2F780F732EF334700202F18006B084172F0CDB4319F5760E80DA15376324136FF827C0D53BCD594EABC2148E68DDF90DFC8C1DE487DDA0B95FC994235F5D044D9D181B96C0A219BD17D974EA74642EBF8FD169A8C0AA8D43D34CFAAA1A41981829740D1E1B0E9F98A4F6916E351AA4878BB9AE45A63B1118B45C165C4159FEA676440D78BEA276E6BEADA9EB7CF717C0BF096C5F9045B519888CB52EEB3331CA71231FB202D96AF54D0C3E9131F5497F14959AB6CFD"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-05-15","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"08F695D6CD2BA3923B26C7A43834B988","Version":"2.1.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0E7854DFC33B4AB512DB6E48CB1DA371C21840C94738A06B46B84BD2F09D6B6DD53394E889ED2217359C8050ACC04E8C26FF7175E0E26CC38180550D5FFE876F2BBC96A8CC7D115D44F918FF022E5AB94C161DC4625A2E84607000BA8B25C1D54B4AF12E3CD9D5D5ABE61553FBE7F60C8B9A9FC612DD8469CAD33B867EEB98CC61A34042765BE442053887A1835522784546195CD782CFDD2641D24EEE6BCD018AA84547A5BBC450506D0F9D892DFFB061FF09E0EE68CC4F0FF26BBDA389A865DEE62F6E740ACA66995848BD25C7B31154F43187E88FAA7047800996FE93221F033D34743E61D56C8186D7566D7D81E4B95A87926D422855C61816653B1F5030"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -305,7 +305,7 @@ ShowType指定分屏数量，如果不变就不设置
 Play重新指定播放内容
 请求范例1：{"req":"VLC_ChangePlay","rid":79,"para":{"ShowType":2}}
 请求范例2：{"req":"VLC_ChangePlay","rid":79,"para":{"Play":[{"ID":1,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet1","Option":":rtsp-tcp"},{"ID":2,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Name":"BrowserApplet2","Option":":file-caching=300"}]}}
-请求范例3：{"req":"VLC_ChangePlay","rid":79,"para":{"ShowType":3,"Play":[{"ID":1,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet1","Option":":network-caching=300"},{"ID":2,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Name":"BrowserApplet2","Option":":file-caching=400"},{"ID":3,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet3","Option":":rtsp-tcp"}]}}
+请求范例3：{"req":"VLC_ChangePlay","rid":79,"para":{"ShowType":3,"Play":[{"ID":1,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet1","Option":":rtsp-tcp :network-caching=300"},{"ID":2,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Name":"BrowserApplet2","Option":":file-caching=400"},{"ID":3,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet3","Option":":rtsp-tcp"}]}}
 分别返回：{"ret":0,"rid":80,"data":{"Ret":0,"Play":[]}}
 
 40) 设置当前焦点播放窗口

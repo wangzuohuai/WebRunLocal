@@ -1,4 +1,4 @@
-﻿点聚AIP电子签章网页内嵌小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件网络版( https://github.com/wangzuohuai/WebRunLocal )网络版开发，底层调用北京点聚信息技术有限公司的ActiveX控件(3.1版)HWPostil.ocx(此控件版权归北京点聚信息技术有限公司所有)实现。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿点聚AIP电子签章网页内嵌小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用北京点聚信息技术有限公司的ActiveX控件(3.1版)HWPostil.ocx(此控件版权归北京点聚信息技术有限公司所有)实现。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -6,8 +6,8 @@
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、AIP电子签章网页内嵌小程序控制相关接口：
-说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost?sid=12345&flag=1)后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP在线测试网页：http://local.zorrosoft.com       HTTPS在线测试网页：https://local.zorrosoft.com
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+HTTP在线测试网页：http://local.zorrosoft.com/aipframe.html       HTTPS在线测试网页：https://local.zorrosoft.com/aipframe.html 
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
 .AIPSignApplet {
@@ -47,10 +47,10 @@ Open：为需要签章的文件路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_AppletStart","rid":8,"para":{"Type":"0","Title":"AIPSign Applet","NodeName":"AIPSignApplet","PID":"AIPSignApplet","Flag":2,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/AIPApplet.html","Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+{"req":"Wrl_AppletStart","rid":8,"para":{"Type":"0","Title":"AIPSign Applet","NodeName":"AIPSignApplet","PID":"AIPSignApplet","Flag":2,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://local.zorrosoft.com//aipframe.html ","Open":"http://local.zorrosoft.com/Files/PluginOK.pdf"}}
 
 指定页面内加载后适配网页切换显示：
-http://zorrosoft.com/aipframe.html
+http://local.zorrosoft.com/aipframe.html
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
@@ -97,21 +97,21 @@ File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
 
-8)、请求缩放IE控件内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装AIP电子签章网页内嵌小程序
-请在输入框中，输入如下请求，然后点击发送，完成安装：
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"AIP电子签章内嵌网页小程序","PID":"AIPSignApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/AIPSignApplet.pid","MD5":"20931E2C78F849AE7E7F64B59147BDCC","Version":"2.1.3.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6F328D3785BAB9FCFBD159496A4BAEE89FD15111B93B52FAC2DD76CBD2260F10292EFB27083012CA6DD3972930C97D19A7D023F4B8B11EFD3761CC902E0B61471DE1A46FC91DE7F2CB653159B045ABE6DCBB947838A78AC4D7848EA34C9B7EDDA35569BFAA61D12998719DF4E4CC08234926FC6C719968159FC5FD08FB2FA00A9C3D7BC5E8A92A6B7D80B35F906270D0FABBBEE4855D0CCD8DED8A82A7C8F83D3019B937865203E97F91B630D958393ADC698B6C426401AEF1DD8EA3F4C64ED437310B14D663A4FAE23B2342B359242B5CC60C10C3CE71697637CD3AC25B933ED5B104E79A918CE642EDB90080BF9D7BF69A714A92C6FD5A89CA9B4C27F47333"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"AIP电子签章内嵌网页小程序","PID":"AIPSignApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/AIPSignApplet.pid","MD5":"C0412AD0C5C6A8CF45E127A0A1D3FD0E","Version":"2.1.3.2","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"20F9FE2A4519B4E1CDA63DE66C032FCEB6B4B932102C5E3FB6498E3D20C88389338FF271EFF9E4B3B6EB7FF098DE8F2A767C5EE09AAFC946A1684AE080B3B208E66851339A413FCF5A5AF6660F6D032543BABDA3A7E0BF8B25710BF31514741018DC0AB593F6356DD0E455DF450B7C61374D6ECDEC0B6187CB815B750DF3B9F49E317A58641139B54201D28D74659DFDD02CAC5CECB1BF182308A11A3BE0950F7120A3205DB09A3BF51E261BAFAA940B9B391AA935C112AEECE3EC995B300383DD11054C6E35E9A0808E60EA19B62D484056A1BB4CB1CACF3DF69E90779A09252FB08886C017F3583E330C019140E77B92F4D7C8D1ACAF934E29C43640A7DFFD"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级点聚AIP电子签章网页内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"AIP电子签章内嵌网页小程序","PID":"AIPSignApplet","Date":"2021-03-27","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/AIPSignApplet_Update.pid","MD5":"519116F1E510D6687A66311DFBCAF3F7","Version":"2.1.3.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"06D9B35BB3D3F7BEFC8806C9E24A0F736E41F6CD22E7448396DCE4AC41485837FC5DA1CD25D6E94D3BDFB19CC7B2E8008CDC09DE1BF76386A52E2E6434CBBAAD9128A56766B9ED02A796C2025369DF8B639A882984B3A2C77763C88A46994ED1EE98AC9530F2C10FEAC491667628C735421C7C9F0861FB529654FF5ABE8DC70C6C394D4E64366633DB31293D5B290491AC1E2EA28E71C4A681E96A0DCDBE03CCC7EF4EAA0A2227C4E87A53EB06893295DDD34FDBA896891F0EC92476054B5F5E05432A70262A3D868A8807CA6452BB25C24CD6A8DAB69B7E343BD97A6AA2412DCB9ADFB9E40D7A046FE3FA95F465FC1585E3B0BB636503A8632DA48BB76A93DF"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"AIP电子签章内嵌网页小程序","PID":"AIPSignApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的AIP电子签章内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/AIPSignApplet_Update.pid","MD5":"435AD751384B8CD7A0B2C6BFA5259D52","Version":"2.1.3.2","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8CBBF80824FF661F1ACF0401A0FDAEADCC3CACC0D3EB747ABE0C4A1DF871F20C0A10170EE98182ACA60AB1DA3F86EAD5F863D1CFD9FAE40FE6C4F2788988FD0FCEEEFD94CB26183687B2B3A61C04CDD5485C77FC8D0C09DCC7BFDDE93AAF7D226B93021C49CC8A4C0F196AF13A586D6940804C20FD926483DE1E57899A24A23AFC446BD5ED933574E1514260FAD7FF71D4B99DEB6F2F7A466EB646CF7D5FE6A24114F25FD025FFB9F414076E6100FBB1AC0986A3BC7FD5B077E4F4883BBC34967018CD6DB7D6E84A94445F11DC595EE8081EEF2E0066B71A3908F9D711CA32E36142375DA43743BD457B5135127AD495437CA11BE1A141E5AC1B4853B3FD6D1C"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
