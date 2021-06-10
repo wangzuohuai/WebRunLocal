@@ -38,9 +38,9 @@ B、网页中嵌入元素
 1)、请求启动IE控件内嵌网页小程序实现网页中局部加载IE内核网页显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示  64根据标题避免重复加载相同的小程序
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
-BarW和BarH分别是网页右侧和底部预留区域
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 X64：是否启动64位版
@@ -50,10 +50,10 @@ Open：为需要用IE内核打开的Url地址或本地网页地址
 
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":2,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
+{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":2,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":10,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
+{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":10,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/ieframe.html
@@ -64,7 +64,7 @@ A、{"ret":0,"rid":1,"data":{"ID":3}}
 B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","port":985}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Port":985}}
+C、{"event":"Wrl_AppletOK","aid":3,"rid":1,"data":{"SID":"123","PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Port":985}}
 
 2)、请求控制IE控件内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -122,7 +122,7 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 3)、请求卸载IE控件内嵌网页小程序：
-
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"18BDC030-AF37-50E1-B0AE-E5EF336BE282","Type":8}}
 
 4、IE控件内嵌网页小程序转调用ActiveX接口，先根据Wrl_IEApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：

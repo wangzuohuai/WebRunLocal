@@ -11,7 +11,7 @@ HTTP网页在线测试：http://zorrosoft.com/ienewtab.html  HTTPS网页在线�
 
 1)、请求启动IE标签页小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
-Flag掩码标记：1指定标签页加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框  64根据标题避免重复加载相同的小程序
+Flag掩码标记：1指定标签页加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框
 Title：标签页页时为创建的网页标题
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
 X64：是否启动64位版
@@ -32,7 +32,7 @@ A、{"ret":0,"rid":1,"data":{"ID":1}}
 B、{"event":"Wrl_Listen","aid":1,"data":{"SID":"123","PID":"IENewTab","port":980}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新打开一个网页。
 返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl命令。
-C、{"event":"Wrl_AppletOK","aid":1,"data":{"SID":"123","PID":"IENewTab","Port":980}}
+C、{"event":"Wrl_AppletOK","aid":1,"rid":6,"data":{"SID":"123","PID":"IENewTab","Port":980}}
 
 2)、请求控制IE标签页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -54,7 +54,7 @@ ID为Wrl_IETab启动小程序时返回的ID值，Code代表控制类型掩码：
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 3)、请求卸载IE标签页小程序：
-
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"IENewTab","Type":8}}
 
 4、IE标签页小程序转调用ActiveX接口，先根据Wrl_IETab请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
