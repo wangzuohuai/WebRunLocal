@@ -90,9 +90,19 @@ function getrandom(nums)
 			if(bRunInCurrentPage)
 			{
 				if(AddEvent)
-					document.addEventListener('visibilitychange',PageVisibilityState,false);
-				else
-					document.removeEventListener('visibilitychange',PageVisibilityState,false);
+                {
+                    if(document.addEventListener)
+					    document.addEventListener('visibilitychange',PageVisibilityState,false);
+                    else
+					    document.attachEvent('onvisibilitychange',PageVisibilityState,false);
+				}
+                else
+                {
+                    if(document.removeEventListener)
+					    document.removeEventListener('visibilitychange',PageVisibilityState,false);
+                    else
+					    document.detachEvent('onvisibilitychange',PageVisibilityState,false);
+                }
 			}
 		}
 		
@@ -268,6 +278,10 @@ function getrandom(nums)
 				|| jsondata.req == "Wrl_OfficeApplet"
 				|| jsondata.req == "Wrl_ACADApplet"
 				|| jsondata.req == "Wrl_TXWebApplet"
+				|| jsondata.req == "Wrl_PCLWebPlayer"
+				|| jsondata.req == "Wrl_IEPage"
+				|| jsondata.req == "Wrl_FlashWebPlayer"
+				|| jsondata.req == "Wrl_SWCadApplet"
 				|| jsondata.req == "Wrl_AppletStart")
 			{
 				nRequstAppletID = jsondata.rid;

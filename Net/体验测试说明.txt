@@ -1,6 +1,6 @@
 1、本程序包为成都佐罗软件有限公司PluginOK中间件网络高级版终端电脑需要安装的软件，需要和成都佐罗软件有限公司签订试用协议后开通试用权限。程序包解压到某个磁盘目录后请执行InstallWrl.bat完成安装，如您只需要体验标准版和中间件本身功能，请参考文档TestWrl.txt文件进行，如需基于标准版进行开发自己的小程序，请从这里下载开发包：http://local.zorrosoft.com/Files/ZbaSDK.zip 解压后有相关开发文档和范例功能，如还有问题请加微信(ZorroSoft)沟通。
 
-2、安装后请打开测试网页 http://local.zorrosoft.com/，然后点击连接，成功后在发送按钮上方的输入框中输入 {"req":"Wrl_Version","rid":1,"para":{"Mac" : 0,"More" : 0,"Config" : 0,"Router" : 0}} 后点击发送，会返回一个JSON数据包，其中有本机唯一电脑标识UniID，请用此ID联系微信客服(ZorroSoft)开通试用体验权限。如果点击连接提示错误，请找到程序安装目录下的data子目录，在日志文件ZbaService.txt中查看实际的WS侦听IP和端口是多少，然后对应修改到测试网页再进行连接，网络版默认端口为83，请在测试网页WS连接地址中设置。
+2、安装后请打开测试网页 http://local.zorrosoft.com/，然后点击连接，成功后在发送按钮上方的输入框中输入 {"req":"Wrl_Version","rid":1,"para":{"Mac" : 0,"More" : 1,"Config" : 0,"Router" : 0}} 后点击发送，会返回一个JSON数据包，其中有本机唯一电脑标识UniID，请用此ID联系微信客服(ZorroSoft)开通试用体验权限。如果点击连接提示错误，请找到程序安装目录下的data子目录，在日志文件ZbaService.txt中查看实际的WS侦听IP和端口是多少，然后对应修改到测试网页再进行连接，网络版默认端口为83，请在测试网页WS连接地址中设置。
 
 3、联系到客服确认开通权限后，再打开程序目录下的各种小程序接口说明，VlcWebPlayer.txt和VlcPlayerApplet.txt都是VLC多媒体播放网页小程序，IEApplet.txt为IE控件小程序，MSOfficeApplet.txt为微软Office在线编辑查看小程序，WPSOfficeApplet.txt为金山WPS在线编辑查看小程序，FlashPlayerApplet.txt为Adobe的Flash网页播放小程序，FileApplet.txt为文件操作小程序，AIPSignApplet.txt为点聚印章网页小程序，AutodeskApplet.txt为Autodesk公司dwg等工程图在线编辑查看小程序，SWCadApplet为达索公司Solidworks软件三维工程图在线编辑查看小程序，PclWebPlayer.txt为点云数据在网页中实时渲染显示小程序，TXWebApplet.txt为腾讯桌面微信客户端内嵌网页运行小程序，IETabApplet.txt为IE标签页小程序(和浏览器IETAB扩展程序功能接近)，SApiApplet.txt为微软语音引擎小程序，SerialPortApplet.txt为串口操作小程序，请按这些文档进行体验和开发集成。
 

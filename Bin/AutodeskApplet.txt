@@ -48,16 +48,16 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动AutoCAD程序在线编辑dwg、dxf等文档
-{"req":"Wrl_ACADApplet","rid":5,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadframe.html","App":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":5,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadframe.html","App":"1","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动DWG TrueView程序在线查看或转换dwg文档
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadframe.html","App":"1","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadframe.html","App":"2","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动Design Review程序在线审阅dwg、dxf文档
-{"req":"Wrl_ACADApplet","rid":7,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadframe.html","App":"2","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":7,"para":{"Type":"0","Title":"Autodesk Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadframe.html","App":"3","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_ACADApplet","rid":8,"para":{"Type":"0","Title":"Autodesk Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadfull.html","App":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":8,"para":{"Type":"0","Title":"Autodesk Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/acadfull.html","App":"2","Open":"D:/Zorro/test.dwg"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/acadframe.html
@@ -114,14 +114,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装Autodesk内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet.pid","MD5":"4773D63E747A467D19697E5E7094D5BC","Version":"1.3.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6D37D3F048C2BDCFE96A07512D745780394639D5CB615B37626882B4E456024E4EA4A48596FD9D9DADD9CB4C7BAA8281DC6C992DC614B44C080697B2E497C7BAA73F2C3B0D86292C544FADAE3AE7E600F6EA450F3F300C95AC41DC8D199F9B0A2E04CF913D8CFE896EEB351E4EDFE01AD28D6D2C1D9B336D458F7E6993868FAB01FB6291695780FEE822621D96414F1C65CFAA7D1E9ED91F327341B754466FD89A2E24644CE574BE0A1A39ECF5F3C9970B0D4C08B6DAF97FE782E0469B4696AF2D1F29BD010D972146FC6FBF598B423A121EC2F3090E8BC75F5AD392A5E842F9E5B0AE6EAF0AA95661C2AC92FBA7627CA5731E339740281443817EA5A61DF0B2"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-07-13","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet.pid","MD5":"414200A45C77933B4BC416F8F1C086D4","Version":"1.3.5.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3069E5374FB7ABAE89E2D3D9B760E143EC5B9A5024F4E8298E91AB85D62D37E0D6BED7B223AF00257A25FCEE7E6C927CB568FE7FB8378073D8CF3A7423C989B79014D416C79A3D3933BCCCAA9BDF988AB291F570FD0999051C45A0910A236282923F3BC9B25B991B08808CEDA6370F7664082DF8653AF2F7D1C62C4DE8E7307EE6F2061E211B00E4F7CF3C2C02F8C3D4F6CE21EFB07A982A14CD86E99625B99BC1521B871BFD236D2EF14EFE8CACAEFA560B5684F3075B6FF5E63344F69FC1298386C6D4732F718C6153A2D284C6BE84AAE793CBA783FE3D841F8C958F4FAE4D040A47FCAE52F2DD3F54A36732C2705FF86A68704AFB4D3E51FA8296055D21B8"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级Autodesk内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-05-06","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet_Update.pid","MD5":"616E7F7399E9ED720522E970981A0554","Version":"1.3.3.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7CE0282577C90A178D46B9663F3B83D1F68FC72F9A9A3AEBDDA0421E1BD0A02F08117B456B43E7F6EBBECEE73D4F7B7352E57114E67B9F72C2243CC6596D035FA5D1E32A40DAD1F397FB0C3CAC2FF17F6BC0AA9529AC5084DC0930074C8B21BC62F1FC169F9FA48DD4F0F04E0F4352C4986F5A23DD6AE0727BF2E7E97427172EEFCBA416AE1884E79F5F4BC61B7A58B89B8605CC151A5E548369AB8E657B6FDB81147D635187405E54AA5C6B18D75165BD53FC41800B8EE00DAD15A8A068F52FAE22E5612722C0D21C96C65F2F19A1FAB59BC63ED18D293F07D1D53386FAF720A0C5BF39B38F79202A93BE642239AE7F9996BFAB9CADA8B18C3A2B8793271ABE"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"2021-07-13","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Plugin/ACadApplet_Update.pid","MD5":"2A40EC097A72C35AEA74CEA46E4CB1D5","Version":"1.3.5.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6081391A99CEEBAF4A2D85688021DFFA139E1FABECF7A3EC252D0DE998FA7F4369F7EE6F9A71AE39FF4A280A65A5C154763DDA20C663CD0BE2E9E74D0B358C4DF80B9BBE6AA63622A0AEB701AD44353F40F820FE18DABD45185ED13A36682F19F54E51C1AC68933347FD234D468F1A4302460C1570497BEB621B93FB076CDE9E9CA0EF236EA85048AD3B2797FAF65AACD986DF42347423C41500567EBF78612DF99C31E8CCA692A96F68A470CF66BBB9E321E87D021BCF1C092B2D5E3B56F719E5A17A59D9DA8A90E9066D88F95284AAE392D02BB344BBFE62D98AC0F7658FE6811752BAC76AE45C173255767969FFA958F2DB510D4E678F324CE64DF57B4EE0"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -133,8 +133,9 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 A、常用功能请求：
 
 1)、请求退出小程序
+正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
 {"req":"ACAD_Exit","rid":1,"para":{}}
-返回: {"ret":0,"rid":1",data":{"Ret":"0"}} Ret为0代表成功
+无返回
 
 2)、请求关闭当前打开的文档
 {"req":"ACAD_Close","rid":2,"para":{}}

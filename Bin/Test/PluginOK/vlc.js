@@ -87,12 +87,21 @@ function getrandom(nums)
 
 		WrlVisibilityListener = function (AddEvent)
 		{
-			if(AddEvent)
-				document.addEventListener('visibilitychange',PageVisibilityState,false);
-			else
-				document.removeEventListener('visibilitychange',PageVisibilityState,false);
-		}
-		
+                if(AddEvent)
+                {
+                    if(document.addEventListener)
+					    document.addEventListener('visibilitychange',PageVisibilityState,false);
+                    else
+					    document.attachEvent('onvisibilitychange',PageVisibilityState,false);
+				}
+                else
+                {
+                    if(document.removeEventListener)
+					    document.removeEventListener('visibilitychange',PageVisibilityState,false);
+                    else
+					    document.detachEvent('onvisibilitychange',PageVisibilityState,false);
+                }
+        }		
 		WrlScrollListener = function (AddEvent)
 		{
 			if(!isFirefox())
