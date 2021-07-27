@@ -42,22 +42,23 @@ Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加�
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-OType 11启动WPS 文字处理;OType 12启动WPS 表格;OType 13启动WPS 演示;
+OType：11是启动金山文字 为12启动金山表格 为13启动金山演示
+Version：1是完整加载，0是OLE方式加载
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动WPS文字处理
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"11","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"11","Version":"0","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动WPS表格处理
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"12","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"12","Version":"0","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动WPS演示处理
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"13","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"13","Version":"0","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"11","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"11","Version":"1","Open":"D:/Zorro/test.doc"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/officeframe.html
@@ -114,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装金山WPS内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-07-13","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet.pid","MD5":"FE5C96E2E203924D1055728F06532D75","Version":"1.3.5.1","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A60A68BAB1F05049375710265FC4C4C519BFCF643059AB29667CDCB6E8B60079CA86EF4176F543FA38D0D196D0AA11103481802AF0F6CA4A2CB6510C57866851FB15E41BE3EA665746C06B7FA0DCDD7D2707EDCEBAD2FA655B80A35725E92680F7DC59E59CCA50DB966BA7F2C7A3A29113DF7AAF50C86D06DE7554AC3B84078AEB01DBB29AFEF26D5124252DA9577B03548F3CADA98C95F9DD066E5562E0B5630A21604DD010CFF11A0F075A4BDF915988E79B3FE4AED2F103F0445A607FE24FD388DE7CD2C095C6F98AADE52B09E0E3819037F5698E9067A70FC40983469FDF532F87AFAB80CAA476C49DC55C5A78FF662DF9A2AF4FAD036A28A849B552F0D1"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-07-27","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet.pid","MD5":"65CCA8FFD2FF6870170ACFE9567B243F","Version":"1.3.5.2","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"36CF81C9DD75F7548D4144A4218F40E2F8F85F72E14844814D14C3207A395E70BB32A42CF6D54E78DAF85FF1AA524745AFD9CCEFF44A7949C3B2E373396B3F78788DDC55F6B498130059F63AF82A3BC6D677D11992F5E1C171ECA897F15544EF1D0AECCA8E0A6875BAE3A7968AFD4F196D2492AFCF416C4909A39E2D8D9924FA6590BF6AF62C15D1EA1F2EA2983C6AA0419F42BB52FE66C07E10B0A81E8C291072E84EFF40612F5D686918BC1C12D64C1620B768CF8FA591F49603E6222892312241049287DF91388F28EE57E775E46F80C050FDB755BF820946B1492D72B1E65FD75B7F7339515C2E57CDDA1D8C5E0ACB96383D8617A4A01F8D95577E7F32CB"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-07-13","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet_Update.pid","MD5":"ABDA0A84F470D7270576A393E15BCB27","Version":"1.3.5.1","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9BBAB60C2B8246FCF11BEBA43830C9862C97A3DCFCD83D3AB62C92A9938A31BC5F95245ACCF5F240E0DFF7FDC6E6F6FEEB445F9B1DFAC58C8F9565E7F2037707F19FA77C5808C426A17A8B72EC68988C77A6970796C4A6334432787BA8646C23EB4AFDDD5A5252B11FDBD657709D78CCA34492D8218C302266048C09198CB705C807076A75F77C0FC2BD8A5AACF3A7B24FE950C0ED0477228D12774F5168CF01FF59AF830F3C9225A55560746BFB3C1E2F7914F6C916EDE494AC57DB21FECF950A6735D9DF126CF765D0B36069C2968EFDE2E372208E1B08BF1E385C10C514BE02AB5E03A514C1D4263F3FE056134609B3CE8DBED9B2D20F8E6EC75B3104200F"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-07-27","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WpsApplet_Update.pid","MD5":"383222B661E7D17B6CA2D21B5CA34132","Version":"1.3.5.2","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A3C20E13A5A2FDBEBFBDB7199E1D020C855B1163053F2B0CDA9B8F1785FAAC40D02A0FBD6BCEA259635D0080ACC224BB0BA9B5D94307F8216B12A53C5A8C67EEA65F6689B1BBB8C6123615942FAE6575B08F5DDC3E175FD542AD22EE0FDDB1A833BBE799FA3B413BB0E0EA68323E61653780FB07C61886A7B73B8AECA5428B036CB9B6C9A58683B9EF9FE7C8BC1A338718F618E8804D9038DEC6048F793AA1DC94C4C509558E2B5008253BBEB46D86C76AF2B349D2EF0366A54E7D6768A445BAFBF0405384A1725ACBA2C88B4B81A871C7B0BFA50990B8282CD021ED4DE7CF20D1D26A548B75357C79888A4552996B87D554AABF136E6661C1469AA524A38A48"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

@@ -42,22 +42,23 @@ Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加�
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-OType 1启动微软Word;OType 2启动微软Excel;OType 3启动微软PPT;
+OType：1是启动微软Word 为2启动微软Excel 为3启动微软PPT
+Version：1是完整加载，0是OLE方式加载
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动微软Word程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"1","Version":"0","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动微软Excel程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"2","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"2","Version":"0","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动微软PPT程序
-{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"3","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"3","Version":"0","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/OfficeApplet2.html","OType":"1","Version":"1","Open":"D:/Zorro/test.doc"}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/officeframe.html
@@ -114,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装微软Office内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-07-13","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Plugin/MSOfficeApplet.pid","MD5":"CD7DF5E3231BBE17C53B488405445983","Version":"1.3.5.1","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"C64DD9A524711CE2FBF22549B6BAF6D9D29A21306FAAD3C1D9743C092BC4D413505690B2AD3EB52EA1014F2617A5B426804A0246366DC03CAF11FA910CD05F17369FC42F0831CFDAE075F10E7D01C4E47E0E52EE641422D32EAC0DD042C202C0B0076F13AB072E0AB403B3D15C165DE6AD1291E4CDE37A2B575F3CE4FCAF8DE8F258A66645592930DB478653BDE0919CC8940E86A15404C31B996755030C2B7DC01EEFDCF5D773BF8AB846127D48548931C7CC464CDE3DFAA57607E9547BBDD0B3B3FD4E09FB2A689F2D71EABD0D3C8000C2ACA7D0BA4B165187B5714647A038DF00C59C6A31D3B47F92A6789559CB070F63CAFD862F493314B94C99B804911C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-07-27","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Plugin/MSOfficeApplet.pid","MD5":"2F7457B75F15243464BB8E46EAE077E9","Version":"1.3.5.2","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1DA2ECFC3C38928AF8CF3E8AC80DEADFBBA6E85C963ADF1DF481364F3922EBF66D7B75529D159CE9A08C88AD1731F342517ED19AB13CEAAADE881D96ECF14B88215B37DE94C70E23DED4F38CB936B8DCD0C6FDC091B6797897BAFF2769CBA871C9246B0F2B9C1E0F00A511D90F48E5090436753A3A4A977237C65B1B684DF871E0C054DB4F111C187816A5BB209C683226392AAA09687724C850A21AD3A568B17FD401293672FAA8F8149E36EE8DA2713211C84F3BBF9EE94B281611F4B8C1C01CBCD89BB229E7A11C9B94D8D18BCB4F963AAA45A7109A39F0520917CBFD096FCFA8D4B355479C2B0BA76643C3DDFB71F2F8972F61CA9A433B56E45FA7679D82"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-07-13","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Plugin/MSOfficeApplet_Update.pid","MD5":"0B4429B1A027E76AB261A812DC13256F","Version":"1.3.5.1","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3C6E35F3548F0BE85022E14D835EC9A8E2A81C7756879AFB1D8E69A0B712E60513A83CF2258F0270EBEC821574EAAF99E18444EC46E2442E71BF24CBE1BA530ECF65757AFC344AF640CF6CFB19D01A54B48C0F1956E55742B8803B58F7C9EF1459E03C8888938913A2BDD1DEE67A6F152217A3A2360685435FC8B7AAE8E07AF3B39DDCC9125B9F1074BB6B760469469B155A3C3D1166E217DEA21A10B8F77895E6D3B3CF9324A0E9E64C5155CCA9899D7EDE555CC2ECEC3E24873E777BE0DE862EB22B38F9CD944E56287B13899685951DB2D474FE3DA0C87DC8698005FD289FD99236438134ECE2CAD4BDFDBEFEA902915BCDFACDA08E17CF4BB244089A4399"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-07-27","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Plugin/MSOfficeApplet_Update.pid","MD5":"76F93BD4C2ACBBB9E6CA04689EE7A12D","Version":"1.3.5.2","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8862546C7C6F798C91DE2BF4604B14998D308C62B36FE313ABCBFD34157E7711D364C88495DFB93758DCE2C21C96B4FE12B6F328AC907EA8A882AA5EAB69435E5A620BF096709655F8882F3E07AE27E5BCFBB5FE1615D33D7EAC716DAFFE230E9B715CB90E7CF6C2274E62F215C8A284CC0C2111D0CD4753BDE08116497B6F2E46B60ACF355D48F60FFA6545894E9321A82A5FF278BAF069896B0989692FBF7B9B0AF88A769014F1F342A5A50E9EC1F4BAA479511982DC0285ECF0C58A6ADC8CCC2AA468E6999D64CB5AACA95865C8507BDD58FA0209DF78FB358F1C2A172387C8343D3F5B23FD58B4934F977CC56DBB281D1B926A606CC40BE1A00275BEEEE2"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
