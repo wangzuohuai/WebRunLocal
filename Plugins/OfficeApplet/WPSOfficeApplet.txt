@@ -115,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装金山WPS内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-08-02","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"B00892B48DE07EBD1F8811FACF314AE5","Version":"2.1.5.2","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"62226F1985E8D3693252CAF3BE836EBB3D5062C61E3CF95AE624EDE70233E1EDF02732E8766738BC0CA3C2A2A011178CAEFC087ACE9AF1E33514D5C81C822F6C63462482B226BD29D0F5E3036C234CDA1C71AFE695E3AAE44608ED096DA962919BBC8903CF083FEFBE1C6FD7E8B9E083A16C85579EB05FEAC8704DDAF43942F4066F44386F1233835E022D5D558B3E036C70FAA7F76F878D926F7F63D5C4CDA102BB5F63C9830EB5E6C3B959FD5E19B88157BD29DC10D4C7E6B6E995E3E30F0713854E3BC31E2F2D2C6CEA0596BD45636CFF85DB5371DB91888CCCFBBE90311D43939E0F61ABD5312059EA9312D8BF390262E847C80C283B6F510C43CA4CF42D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-08-17","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"FFFC612D02DE18E852B74FCB43209321","Version":"2.1.5.3","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"43ABE744BDEB4BA283C58B39317A5F5C95157D21CC6EC137CCC70FAC4B2DEF6A4C715BD390FF1F270EF1E053DA47C58E0560FFBE1FB3303905EA18C57F1E2B3CFE6F55B2170E8A58D9362EA57D3D1180251F7C1A93A2A9861A9CCD4E39CA93893CDAFC8FC3672ACCB611428A1ED1244E423CB61031C37734FB71715E6F1480B18B4F7DEE5E6B700885AD126B41ECFF4AE22421895D30ED992F572B6DC48D008770CBD41B5440247DAC31BE0687A46A829B25C54C31DEFFC0E025E5B99325005173F5015453DF811852658E36EAAA0780391F0B49723066EB4934D90454BCD8BD74434A95A24DED35563A299C263EF3623A6BCC7185886E4C3AD8E6825705492B"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-08-02","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"1546C593122E72CFCBC37DC22E0AEBCF","Version":"2.1.5.2","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"75DEF03524E2B66B2E34EF011708548EEB09F6651E9C3117FF3582A6D8150A381D61403A53EE2C5FD3BFBB639F4071BC7011A662C5180D643EB5CD59F33AFC3B1B2852EC7E74E495EF6727EAEB2E07D3D866C04515912A60F93D8258FA128A69E9D95FF92BFF3A10988439574BC0659140C0D19EBDF3A92BFA1CB0257867693FD4AA616695F9FDE61C5821686A15833D3E60992F9AC1C4A919F9979A4E0827EEA12908BE5BC3A399667DCFA2CB7547AF31F5477413F680947CDE099125D7C2515BA16BC2E572F097076E88511906BA4B3EF2003D6C78BD3C21F5A3E93B3B2AD0EBDB914DAC8F602C6739F15B42CCA7B8282EED1A31B84EC55A97E874D8E21894"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-08-17","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"9CABB03687382298BCBF55288092D49B","Version":"2.1.5.3","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1096DD0285860EFE1C51A328893DA895EF38F33AE0D9DB55B10FA48D40D3655EF3CB558AAE1ADC901BED023519847E5090071FBDEFE2CAD4782F7A030A0F0E870CA967F0BABD1ED9CDD96A045AA37D2AE8503389864A9FFC69B0E015F7BABAF1F5C67D335182DCE614C4FDAB82874CA888BA314617F3496EC632DB815E31AEB73C4465997F4421B1623C95942E2269D3856F962AD4D83321B43F8F3FE860ED781B835FE23D26D110FE163D729640751A443566425EA6EDE270D8788ECF920797B8354755373BBF08070C068D4ED200F1E3163988812CE836318BFF94A7CC698B19DB2B7D05FB9413A346A42BA0470CF172CDBD797D6984672FD90EEE45144D45"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -133,69 +133,79 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 4、金山WPS内嵌网页小程序转调用WPS软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 
 A、常用功能请求：
-1）请求退出小程序，适用于Word、Excel、PPT软件，退出前建议先调用Office_Close关闭文档
+1）请求退出小程序，适用于WPS文字、WPS表格、WPS演示软件，退出前建议先调用Office_Close关闭文档
 正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
-2）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会弹出保存对话框
+2）请求保存，适用于WPS文字、WPS表格、WPS演示软件，如是新建文档，会弹出保存对话框
 {"req":"Office_Save","rid":4,"para":{}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
-3）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+3）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
-4）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
+4）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
-5）请求在当前光标位置插入图片 ImgFile为图片路径，有中文或特殊字符等需要UrlEncode编码，适用于Word软件
-Link为1则只是链接到文件 Save保存到文档
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
+{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
+
+6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
+{"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
+
+7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
+Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
+或
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
-6）请求在当前光标位置批量插入文字，适用于Word软件
+8）请求在当前光标位置批量插入文字，适用于WPS文字软件
 {"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
 
-7）请求在当前光标位置执行退格操作Backspace，适用于Word软件
+9）请求在当前光标位置执行退格操作Backspace，适用于WPS文字软件
 {"req":"Office_Backspace","rid":9,"para":{}}
 返回：{"ret":0,"rid":9,"data":{"Ret":"0"}}
 
-8）请求批量打印，适用于Word、Excel软件
+10）请求批量打印，适用于WPS文字、WPS表格、WPS演示软件
 Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
 {"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
 返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
 
-9）请求移动光标位置，适用于Word软件
+11）请求移动光标位置，适用于WPS文字软件
 Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7是屏幕区) Count为移动数量
 {"req":"Office_MoveLine","rid":11,"para":{"Up":"0","Unit":"5","Count":"6"}}
 返回：{"ret":0,"rid":11,"data":{"Ret":"0"}}
 
-10）请求获取当前用户名，适用于Word、Excel软件
+12）请求获取当前用户名，适用于WPS文字、WPS表格软件
 {"req":"Office_GetUserName","rid":12,"para":{}}
 返回：{"ret":0,"rid":12,"data":{"Ret":"0","UserName":"test"}}
 
-11）请求设置当前用户名，适用于Word、Excel软件
+13）请求设置当前用户名，适用于WPS文字、WPS表格软件
 {"req":"Office_PutUserName","rid":13,"para":{"Name":"test"}}
 返回：{"ret":0,"rid":13,"data":{"Ret":"0"}}
 
-12）请求获取当前是否修订模式，适用于Word软件
+14）请求获取当前是否修订模式，适用于WPS文字软件
 {"req":"Office_GetTrackRevisions","rid":14,"para":{}}
 返回：{"ret":0,"rid":14,"data":{"Ret":"0","TrackRevisions":"0"}}
 
-13）请求设置当前是否修订模式，适用于Word软件
+15）请求设置当前是否修订模式，适用于WPS文字软件
 {"req":"Office_PutTrackRevisions","rid":15,"para":{"TrackRevisions":"1"}}
 返回：{"ret":0,"rid":15,"data":{"Ret":"0"}}
 
-14）请求修订模式后续操作，适用于Word软件
+16）请求修订模式后续操作，适用于WPS文字软件
 Type为操作类型，0默认代表切换修改模式，1代表接受所有修订 2代表拒绝所有修订
 {"req":"Office_TrackRevisions","rid":16,"para":{"Type":"1"}}
 返回：{"ret":0,"rid":16,"data":{"Ret":"0"}}
 
-15）请求在当前位置添加批注，适用于Word软件
+17）请求在当前位置添加批注，适用于WPS文字软件
 Text为添加批注的文字描述
 {"req":"Office_InsertComment","rid":17,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":17,"data":{"Ret":"0"}}
@@ -206,7 +216,7 @@ A、以下为Word程序通知
 B、PluginOK支持的事件通知：
 
 1) 小程序是否响应了热键全屏
-以下分别为Word字处理、Excel表格、Powerpoint演示程序的全屏事件通知
+以下分别为WPS文字、WPS表格、WPS演示程序的全屏事件通知
 {"event":"WORD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 {"event":"EXCEL_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 {"event":"PPT_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
