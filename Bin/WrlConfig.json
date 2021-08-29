@@ -10,8 +10,10 @@
   "Monitor": 60,
   "Delay": 1,
   "Mac": 1,
+  "Adjust": 0,
   "Language": "CHS",
   "NoService": 0,
+  "NeedAdmin": 0,
   "HttpServer":0,
   "UDisk": 0
 }

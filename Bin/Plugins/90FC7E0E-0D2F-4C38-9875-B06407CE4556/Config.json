@@ -1,8 +1,0 @@
-{
-  "FirstInstall":"VLCIns.exe",
-  "COM": "axvlc.dll",
-  "Caching":300,
-  "RTSPTCP":0,
-  "ToolBar":1,
-  "PORT": 930
-}
