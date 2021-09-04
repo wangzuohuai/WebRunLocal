@@ -96,7 +96,7 @@
   <ItemGroup>
     <COMReference Include="ZbaBase">
       <Guid>{633D01A0-8A82-40CB-9CE6-8BA26B9C778C}</Guid>
-      <VersionMajor>1</VersionMajor>
+      <VersionMajor>2</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
@@ -105,7 +105,7 @@
     </COMReference>
     <COMReference Include="ZbaEngine">
       <Guid>{B5380DD6-64E5-462A-AB4E-2C3DFCCD2168}</Guid>
-      <VersionMajor>1</VersionMajor>
+      <VersionMajor>2</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>

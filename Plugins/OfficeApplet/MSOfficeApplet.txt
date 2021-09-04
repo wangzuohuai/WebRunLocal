@@ -115,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装微软Office内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-08-25","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"D84DFF0955D4C3FB7180E11768AC6228","Version":"2.2.1.1","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"740B5684F364063998466C79AB953912C2A2D3988B9C04B9D49F3D0DD8B0AFA43A2C577E1852E90138324C3CB07A8C8A9C3B61F5885043B280ACE60E5002C2BF7319638B6E044BBA8FEC9F6E2BB783D42D6717F05B29CB54116A8E15ABEE2D076342E98CCA511469691CB94715378C7AB7C5B8D28172108A5699BC0A3A5950C42F316C7F71ACA9EB4130206538A41745F97B9DFE6B244C3BC5096266C3092E283EBF529614B8F234924CCDCF78AB4F6C01A344F7B4B1BD5EC4ACFE6C9C5FE18F9E0B18546A67348FEC7096423D23CB46D40EACF66D2AD584D011C8987A6701DD7D38BB16A07FE06E2E1179C4DA139DCC5B1941FD1163B323ACDF5A1F87FEDE38"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-09-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"3FF22DE770C4DEF599C433715BC5B648","Version":"2.2.1.2","Size":3997696,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"36D35918FCBBE26C8607598767C7259B4A0D251CBA1EBCDE46AF7D5605B7245EBB86D413CED4CCA92EBFC80913619E83011ED3071D8ED90C7040998947CD6A89236EFCDA1A705777F8EA0628B90CCD680DF478A5CD031A6E29E7340A1603AB7D15813FCE64C8048E34267A6BC23C676B1CCEA9BA4C7EBA6DB9D175073BDBFE9CC813C87ADAC4E14691653C67D973688D8444869C117F14FB977C0F2577DBC899B0BDFBDC2A4284E52215B5A465F06E72F809D804DA07D6D79591CF9AA07130D1ED5A7CCB1ED0954E9241DB36FD4FC024A2270BF0636344119CE0C410270106C9EDA89C512E99D850180989C10BBB070E14B02E2492FD482D4A0635C6E7E16CE8"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-08-25","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"8D11704427FED6BA5D2224C622641E2F","Version":"2.2.1.1","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9F29A754763C09886CA8C101FE31354AFEFC20F8CD01D01F927D10028D8A44D580661C621C8FEE133C7CE5898F30B393BB6FE71AFD597C4275AC3E955EBA1E06613D0516DF191703BF90CB1ECEBF54E1828253838FB22EDC131E29D5608DD5E3061DB5A39F5968226AD19B6DD0B5AA8E656E3D1EC43A33C3D56E7582989C8058D91983A8B969A13FA4D7B652DD7FD41795BC36BDCDA34EB86C578FC98A25E6A70FEDFDA672F205F514D2CF6EB8167CC79C5CE4B50D935B11FFA1D7EED2050FBAE1D2CD6E724D4BE888F7C5114F3BB58E76C8B1D1F4191FA1CB8DB95FA49FC68E0047D5795776C4A1911B0042112768BD6924F6F5DA2314BAD599E0B9ABAB4D3F"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-09-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"8F9DF2174C7000A4E69EAA86EAACE523","Version":"2.2.1.2","Size":3997696,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"35BA2030E344EBC62132558C776C1C26401B3DBC6635CBBE35E08EFC55B9508114A8A9C1B6C5597B20CF42069875283A9E070042047E21C611F35348707CBF79D1791B51999228433A5D2411E25CCA2E4256D0E0CC416E90DEEA8B96A8330F8B8718B3DCE9CFBC52E0431B2D3EC2D8E35A1902C067CA5D121D07647B046911F63892BBF795299797137D197C82FA0B8A1AE96A26489210E38B993729D71A1516D824D1EE8E96C1733414CC840DD9F7535EFB7D8800BB4B433F7D0B5BCA438A4F6312DE46FE6FF0A8BC50D057218E6BBE32AE58BDD3BFD6B9E877517CD9763650498A503821828E142D90D9A09B16B978F19F4D35F62D4143EF9F59BB51934593"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -132,7 +132,7 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 
 4、微软Office内嵌网页小程序转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
-1）请求退出小程序，适用于Word、Excel、PPT软件
+1）请求退出小程序，适用于Word、Excel、PPT软件，退出前建议先调用Office_Close关闭文档
 正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
@@ -210,34 +210,59 @@ Type为操作类型，0默认代表切换修改模式，1代表接受所有修�
 {"req":"Office_TrackRevisions","rid":16,"para":{"Type":"1"}}
 返回：{"ret":0,"rid":16,"data":{"Ret":"0"}}
 
-17）请求在当前位置添加批注，适用于Word软件
-Text为添加批注的文字描述
-{"req":"Office_InsertComment","rid":17,"para":{"Text":"批注内容"}}
-返回：{"ret":0,"rid":17,"data":{"Ret":"0"}}
+17）请求获取是否显示修订信息，适用于Word软件
+{"req":"Office_GetShowRevisions","rid":17,"para":{}}
+返回：{"ret":0,"rid":17,"data":{"Ret":"0","ShowRevisions":"0"}}
 
-18）请求获取当前文档书签数量，适用于Word软件
-{"req":"Office_MarkCount","rid":18,"para":{}}
+18）请求设置是否显示修订信息，适用于Word软件
+{"req":"Office_PutShowRevisions","rid":18,"para":{"ShowRevisions":"1"}}
 返回：{"ret":0,"rid":18,"data":{"Ret":"0"}}
 
-19）请求判断当前书签是否存在，适用于Word软件
-Name为书签名称
-{"req":"Office_MarkIsExist","rid":19,"para":{"Name":"Caption"}}
+19）请求在当前位置添加批注，适用于Word软件
+Text为添加批注的文字描述
+{"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档所有书签，适用于Word软件
-{"req":"Office_AllMark","rid":20,"para":{}}
-返回：{"ret":0,"rid":20,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
+20）请求获取当前文档书签数量，适用于Word软件
+{"req":"Office_MarkCount","rid":20,"para":{}}
+返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求指定序号的书签名称或指定名称的文字内容，适用于Word软件
-Index为书签序号 Name为书签名称
-{"req":"Office_GetMarkInfo","rid":21,"para":{"Index":"1"}}
-{"req":"Office_GetMarkInfo","rid":21,"para":{"Name":"Caption"}}
+21）请求判断当前书签是否存在，适用于Word软件
+Name为书签名称
+{"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求指定序号的书签名称，适用于Word软件
+22）请求获取当前文档所有书签，适用于Word软件
+{"req":"Office_AllMark","rid":22,"para":{}}
+返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
+
+23）请求指定序号的书签名称或指定名称的文字内容，适用于Word软件
+Index为书签序号 Name为书签名称
+{"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1"}}
+{"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
+返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
+
+24）请求指定序号的书签名称，适用于Word软件
 Index为书签序号
-{"req":"Office_PutMarkText","rid":22,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
-返回：{"ret":0,"rid":22,"data":{"Ret":"0"}}
+{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
+返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
+
+25）光标跳转到指定名称的书签，适用于Word软件
+Name为书签名称 NoSelect为1代表去掉书签选中状态
+{"req":"Office_GotoMark","rid":25,"para":{"Name":"Caption","NoSelect":1}}
+返回：{"ret":0,"rid":25,"data":{"Ret":"0"}}
+
+26）获取修订数量，适用于Word软件
+{"req":"Office_GetRevisionsCount","rid":26,"para":{}}
+返回：{"ret":0,"rid":26,"data":{"Ret":"0","Count":0}}
+
+27）获取文档是否修改了需要保存，适用于Word软件
+{"req":"Office_IsSaved","rid":27,"para":{}}
+返回：{"ret":0,"rid":27,"data":{"Ret":"0","Saved":0}}
+
+28）设置文档是否需要保存标记，适用于Word软件
+{"req":"Office_PutSaved","rid":28,"para":{"Saved":"1"}}
+返回：{"ret":0,"rid":28,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为Word程序通知

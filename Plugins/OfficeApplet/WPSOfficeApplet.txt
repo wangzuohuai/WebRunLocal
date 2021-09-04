@@ -115,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装金山WPS内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-08-25","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"923589C05F8376EEE8DE5566F4759204","Version":"2.2.1.1","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"50880B86937D4806D9648A34C24B4A3B414EACAD4007F099E1D9FFA43D55351C53F587BC482971ACE173D425C2441FE9514EE1E6911D52EBDF1555703B5E09EE13DD1FBFC41D18E82A493B09C41262B5AA272610379A86038618C5A4D332A417C4A94435B4456B4BE39C8D3691888E0205BD2F8A60B7C1382555A0C3FCD2D948B40DEDB035F97E764DB6DCDB35EC6BC4880FB8EE2F4ADF5B3C16EE0E1820C4FA2E6558AC9A11FC0B793388C4C8AAED21B764C9B8780BEA1BC3A4F931859ECAC0CC48B5719FD2737F0B953D32267F7B9027FC176A4C63CD1A95E45CFD7F459F9B39AAA152F52D45AACE854D9887C3BF0E5EDA97EA251FC5161B708335E669BB75"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-09-05","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"2C26197A40C2513021F77961C0E0D65C","Version":"2.2.1.2","Size":3997696,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7AF2DB41F9C4237EC0ACF1B2C6C07524B5837B2EB52B66FAEF62832FBC66673751A850CFC745D7B2863387666575D20FAA2C66ACDE207599DEA77A57E94E8F64EE52749F6ECA284E2CECEF8BCF64E07B6CFA1838B61ED56A073D6CC4D42A5BE7015B69C13739CB29BC39BBD7AB94837D10867DC8C54D822E2E2013F2A852BB4826166F61730643BB60BAA7CD5CE46CA0453F9E43D69E72A989403EECC96A9399611A39E62BFA683C5E5D4335D32A51C49C8A82C3E19799F4F2341748727BC574AA587A3F2E3D1BD6B0578967E29E384A155E5065C2082E284CC6E8FC072824AD7CDDDA9807E085907933A882C9E0485331877B3609BA748C0E052A3695D1FB37"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-08-25","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"5625AA0A03CF99360A58329DCE325CAB","Version":"2.2.1.1","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1808F37ADDC749DBCE33B4BF464B81262781B82447CA0099BD0AFB7920FA5A571228EB796715F9A91DD5EAD7FDB1FAF473EEEC06F8241EFB1F87BCEA753AA0F1B57389EFBEAFE0E198146C52832C950D1C66A99A11CA094BB9D00A56802FA4839990EBE13A4CB6D5E614B80CF645C72A2E3D5861AB02587DABF2A49435FD5CEAADAA11353984667C619CB16E1983F19092F9555FBCC3C4061A52FD4418C2219C683755481D2DF1C112A0827411EF1ACB084DE2FB7F1BC4FE5D751B475B038354E95FEE42CF0365A5466DFCB4DD7A33B0EB485B95EBE841123A5E73CA67BB86DE77B99909613053917B89AC20AF641887CD78CE19EDE81F74CD99A2836C65B792"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-09-05","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"C9E678462A250EAAD8D417641CDBA5DD","Version":"2.2.1.2","Size":3997696,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B804A50BCB7337FA3F4ECCC9937CC98B5D0B870FF810E5F55DABC41E57DA6C1CC23C24AE4B2CDAE23AE572808345223DD56E078E00FDDD4716EE14B855B398C94FF7BAE4506E6E174DCA0F2DDF30B0352B63030F79881568FCE737195CDA8CA50D712D4F78EEC3DDFCCB28B0345287116087E3D8AB9FF89D226B2F8A56B462BCE53C62306E0F8DB1C390EB9F57227C7D7CA94BBC1A7D725C30EB70725978052EA15FBAE4A208A60B57E25E5A3D8021835D6E1D03E61F8940A11F5C2B272C31F22C373B1351C8ACDD21132C0943A7EA9F68973A128A42610EB593E60E59B69FEA4B6A0CFAF3CC834224E72C31D201DC7250314434DAA653CD64A1894BC1DF78B9"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -138,13 +138,13 @@ A、常用功能请求：
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
-2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件，完整嵌入方式支持
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于WPS文字、WPS表格、WPS演示软件，完整嵌入方式支持
 {"req":"Office_Close","rid":2,"para":{"Save":"0"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
 Ret为调用VBA接口对应函数返回值，0代表正常
 
-3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件，完整嵌入方式支持
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件，完整嵌入方式支持
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 打开本地文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
@@ -152,15 +152,15 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
-4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会弹出保存对话框
+4）请求保存，适用于WPS文字、WPS表格、WPS演示软件，如是新建文档，会弹出保存对话框
 {"req":"Office_Save","rid":4,"para":{}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
-5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
-6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
+6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
@@ -211,37 +211,62 @@ Type为操作类型，0默认代表切换修改模式，1代表接受所有修�
 {"req":"Office_TrackRevisions","rid":16,"para":{"Type":"1"}}
 返回：{"ret":0,"rid":16,"data":{"Ret":"0"}}
 
-17）请求在当前位置添加批注，适用于WPS文字软件
-Text为添加批注的文字描述
-{"req":"Office_InsertComment","rid":17,"para":{"Text":"批注内容"}}
-返回：{"ret":0,"rid":17,"data":{"Ret":"0"}}
+17）请求获取是否显示修订信息，适用于WPS文字软件
+{"req":"Office_GetShowRevisions","rid":17,"para":{}}
+返回：{"ret":0,"rid":17,"data":{"Ret":"0","ShowRevisions":"0"}}
 
-18）请求获取当前文档书签数量，适用于Word软件
-{"req":"Office_MarkCount","rid":18,"para":{}}
+18）请求设置是否显示修订信息，适用于WPS文字软件
+{"req":"Office_PutShowRevisions","rid":18,"para":{"ShowRevisions":"1"}}
 返回：{"ret":0,"rid":18,"data":{"Ret":"0"}}
 
-19）请求判断当前书签是否存在，适用于Word软件
-Name为书签名称
-{"req":"Office_MarkIsExist","rid":19,"para":{"Name":"Caption"}}
+19）请求在当前位置添加批注，适用于WPS文字软件
+Text为添加批注的文字描述
+{"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档所有书签，适用于Word软件
-{"req":"Office_AllMark","rid":20,"para":{}}
-返回：{"ret":0,"rid":20,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
+20）请求获取当前文档书签数量，适用于WPS文字软件
+{"req":"Office_MarkCount","rid":20,"para":{}}
+返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求指定序号的书签名称或指定名称的文字内容，适用于Word软件
-Index为书签序号 Name为书签名称
-{"req":"Office_GetMarkInfo","rid":21,"para":{"Index":"1"}}
-{"req":"Office_GetMarkInfo","rid":21,"para":{"Name":"Caption"}}
+21）请求判断当前书签是否存在，适用于WPS文字软件
+Name为书签名称
+{"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求指定序号的书签名称，适用于Word软件
+22）请求获取当前文档所有书签，适用于WPS文字软件
+{"req":"Office_AllMark","rid":22,"para":{}}
+返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
+
+23）请求指定序号的书签名称或指定名称的文字内容，适用于WPS文字软件
+Index为书签序号 Name为书签名称
+{"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1"}}
+{"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
+返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
+
+24）请求指定序号的书签名称，适用于WPS文字软件
 Index为书签序号
-{"req":"Office_PutMarkText","rid":22,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
-返回：{"ret":0,"rid":22,"data":{"Ret":"0"}}
+{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
+返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
+
+25）光标跳转到指定名称的书签，适用于Word软件
+Name为书签名称 NoSelect为1代表去掉书签选中状态
+{"req":"Office_GotoMark","rid":25,"para":{"Name":"Caption","NoSelect":1}}
+返回：{"ret":0,"rid":25,"data":{"Ret":"0"}}
+
+26）获取修订数量，适用于WPS文字软件
+{"req":"Office_GetRevisionsCount","rid":26,"para":{}}
+返回：{"ret":0,"rid":26,"data":{"Ret":"0","Count":0}}
+
+27）获取文档是否修改了需要保存，适用于Word软件
+{"req":"Office_IsSaved","rid":27,"para":{}}
+返回：{"ret":0,"rid":27,"data":{"Ret":"0","Saved":0}}
+
+28）设置文档是否需要保存标记，适用于Word软件
+{"req":"Office_PutSaved","rid":28,"para":{"Saved":"1"}}
+返回：{"ret":0,"rid":28,"data":{"Ret":"0"}}
 
 5、事件通知：
-A、以下为Word程序通知
+A、以下为WPS文字程序通知
 
 B、PluginOK支持的事件通知：
 

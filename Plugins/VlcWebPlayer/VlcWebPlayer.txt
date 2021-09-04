@@ -1,4 +1,5 @@
-﻿VLC多媒体播放网页小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://codechina.csdn.net/zorrosoft/pluginok )网络高级版开发，底层调用VLC的ActiveX控件axvlc.dll(需安装VLC media player或搭配绿色版VLC播放程序)可实现在网页中内嵌播放多路RTSP的实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿VLC多媒体播放网页小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://codechina.csdn.net/zorrosoft/pluginok )网络高级版开发，底层调用VLC的ActiveX控件axvlc.dll(需安装VLC media player或搭配绿色版VLC播放程序)可实现在网页中内嵌播放多路RTSP的实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Oprea 36、QQ等浏览器，也兼容运行于这些浏览器的最新版本。本小程序具有如下优点：
+1、全市场可实现较低延迟(300毫秒)的独家播放方案，主流版本的浏览器都支持；2、支持多路同时播放、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放技术采用VLC的开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放小程序额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放；6、移动端可直接采用VLC的APP来使用。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -7,7 +8,7 @@
 
 2、VLC多媒体播放网页小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://local.zorrosoft.com/vlcwebfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/vlcwebPlayer.html
+HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS网页在线局部加载测试：https://zorrosoft.com/vlcframe.html
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
 .VLCWebPlayer {
@@ -114,13 +115,13 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装VLC多媒体播放网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-08-28","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"B910D662FD847C358D58FCE0370B7102","Version":"2.2.1.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3BA9A27A097AF4551911F633995F34B4DFA77D413D1A85353CAB9ACC57D433138F358E2617A68F8598847503DB5AD662E90218D6A78E0A54B6414ADA651373E3AA42B7659E4BD265655BE02257E44A49AC0D572173409D802BFB6FDD0DC8F5946DBD2857136B64601F3957764240BD0219947EFFC5E3C29E08AD1125506ABA4B7EBA33993AB1C28488F1434A3B0457CB4799B88754B9178F2A5F7962DB0BEA6F4C4AE4DA076D348A87F581955964D049DAF4E6EEDABFD4AEC92D12E0D156BCC69987F77C0CB15FE4E99AB54FA481BC23F62D11B9CA52C5FE571CB0F6B6F0635DE06808E85416A0BE33D540344EDEC8B536CFFEC834409D02688954E0E70F958E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-09-05","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"FA95FB75EBBBA8D52CF83AE05BEA2F73","Version":"2.2.1.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A46A108A1D964854A9644E3A9ADFCFCFEE9B2CFFF3D3D71B2C31AECDD4A779522DFC313B9CFBA2BBE3579F616E50052E72458D66F9B6AD3FD7A4DDC8745577BA347320162418F294805BC3D5CDE7D106561A2521C0535D26D7A67451E1373386B7135443BDBF396C216407D660DB1C88E732D19082C3D5099F9D69868AC50C4A495D96D7C75D4A5C0A589189500E55578184171DC8E616DB93070AB5A921F41476F9B9333EE7A8074FF41D17F20D0CBE498117E42F01908D57412C37DA6EBA2443002A514229C4BE8DF5844A015B72C569828B1E9CFFDE26FD46AE46C6F5436812F49A43B11B5EB543A9BA37FD6707C14C359A9444172FCE2AA0AF81FE180FEB"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC多媒体播放网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-08-28","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"0A1362D6759B49E039D70B1D518B6B26","Version":"2.2.1.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2D758FFE1CF1F49BC5916A41CE90AB25B546E8946D3C4598FDC04A3281C9D85AA4E4E8D276D1793427EE9B58064B2474271470BC8D64A529EC5173BF632A75AB6DE09BCFC80FCA476A9F51894CA13927B1AE6E5DEA0FB21547EA5C6BFFA8F3BA74FB35F969282200199D16824F9050DB375FB78884C0DB9E21F28DCE49CF41232923F456F98661C80EAE1D0E909396CBCED3BC3877B9E011EE1F32B53E9CC3220A08FC5AECE3BF711CB71980D43C46DC4B3E9217D0E38C5AF1741D95C30CBA8405E0A6D8E00FB4FE093CBEC31E7B4F1F7E9836567E55A93EC167E5CAA369D226D0E26E62BE959FF95A51EC18F9FF077E2B7D87505A706AFE884C832D0BD117C8"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-09-05","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"142CF194A61E6DD1AA7594A08E51B857","Version":"2.2.1.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6BE01964C304A3BB855D00DA4A61E33D0146915E29EF8265617EEF12DB0AAA2D8B92FDE22573F42732E7F90DFC31B198CA46C401D288D11CFFC73810D8E183D1AEF20CC0AD64AD8AB1FEADA807C628E343F1290931A3118A303C53467DA12C4D999F43A90A58A285E2B8013FFD7F3E31BCEE8F05FF4FA87B2CCD08AE774BECDE267361E1E21BBCD9F3791EC737D9EA0553151A50A1388E3A89C8B0975999B60357D0DBD7F76C1A9BFFE0C7A1359D8F89B9494F9F659FA3D244BD1B0C807B259D154EE505A7A7BF49A090118805B14451AC5ADBCE22A0ECB7EBE4EF947B01B99F20D81084253819C31FAB8541515510625367BC660C9F5C9CC39E0913124C25AA"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -269,17 +270,18 @@ TrackID指定时获取描述信息
 分别返回：{"ret":0,"rid":71,"ID":1,"data":{"Ret":0,"FullScreent":0,"Width":0,"Height":0,"SubTitle":0,"Track":0,"TrackCount":0,"TeleText":0,"Scale":100,"AspectRatio":"","Crop":"","Desc":""}} 和 {"ret":0,"rid":71,"ID":2,"data":{"Ret":0,"Width":0,"Height":0,"SubTitle":0,"Track":0,"TrackCount":0,"TeleText":0,"Scale":100,"AspectRatio":"","Crop":""}}
 
 32) 设置指定ID窗口视频信息，举例：
-需要的才设置
-请求：{"req":"VLC_VideoPut","rid":72,"para":[{"ID":1,"FullScreen":1,"Scale":100,"AspectRatio":0,"SubTitle":0,"TeleText":0,"Track":0},{"ID":2,"FullScreen":0}]}
+需要的才设置 FullScreen设置是否全屏显示，Scale比例 AspectRatio宽高尺寸 SubTitle子标题
+请求：{"req":"VLC_VideoPut","rid":72,"para":[{"ID":1,"FullScreen":1,"Scale":100,"AspectRatio":"","SubTitle":0,"TeleText":0,"Track":0},{"ID":2,"FullScreen":0}]}
 分别返回：{"ret":0,"rid":72,"data":{"Ret":0}} 和 {"ret":0,"rid":72,"ID":2,"data":{"Ret":0}}
+设置充满指定窗口大小显示：{"req":"VLC_VideoPut","rid":72,"para":[{"ID":1,"Scale":0,"AspectRatio":"480:320"}]}
 
 33) 切换指定ID窗口视频全屏，举例：
 请求：{"req":"VLC_VideoToggleFullscreen","rid":73,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":73,"data":{"Ret":0}} 和 {"ret":0,"rid":73,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":73,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":73,"ID":2,"data":{"Ret":0}}
 
 34) 切换指定ID窗口视频图文，举例：
 请求：{"req":"VLC_VideoToggleTeletext","rid":74,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":74,"data":{"Ret":0}} 和 {"ret":0,"rid":74,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":74,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":74,"ID":2,"data":{"Ret":0}}
 
 35) 取指定ID窗口字幕信息，举例：
 Text指定时获取文字信息 Position指定时获取位置信息
@@ -289,16 +291,16 @@ Text指定时获取文字信息 Position指定时获取位置信息
 36) 设置指定ID窗口字幕信息，举例：
 需要的才设置
 请求：{"req":"VLC_MarqueePut","rid":76,"para":[{"ID":1,"Text":"Hello","Position":"","Color":0,"Opacity":0,"Refresh":0,"Size":0,"X":0,"Y":0},{"ID":2,"Opacity":50}]}
-分别返回：{"ret":0,"rid":76,"data":{"Ret":0}} 和 {"ret":0,"rid":76,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":76,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":76,"ID":2,"data":{"Ret":0}}
 
 37) 控制指定ID窗口字幕，举例：
 请求：{"req":"VLC_MarqueeControl","rid":77,"para":[{"ID":1,"Enable":1},{"ID":2,"Enable":0}]}
-分别返回：{"ret":0,"rid":77,"data":{"Ret":0}} 和 {"ret":0,"rid":77,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":77,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":77,"ID":2,"data":{"Ret":0}}
 
 38) 指定ID窗口帧速控制工具，举例：
 Mode为空时禁用
 请求：{"req":"VLC_DeinterlaceControl","rid":78,"para":[{"ID":1,"Mode":"my_mode"},{"ID":2,"Mode":""}]}
-分别返回：{"ret":0,"rid":78,"data":{"Ret":0}} 和 {"ret":0,"rid":78,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":78,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":78,"ID":2,"data":{"Ret":0}}
 
 39) 动态改变分屏数量或播放内容
 ShowType指定分屏数量，如果不变就不设置
@@ -334,9 +336,17 @@ PathType 指定截图图片保存路径类型，0默认中间件临时目录，1
 {"req":"VLC_GetRtspTcp","rid":84,"para":{}}
 返回：{"ret":0,"rid":84,"data":{"Tcp":1}}
 
-45) 请求退出当前连接的小程序
+45) 设置播放内容是否充满窗口
+{"req":"VLC_PutFillWnd","rid":85,"para":[{"ID":1,"FillWnd":1},{"ID":2,"FillWnd":0}]}
+分别返回：{"ret":0,"rid":85,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":85,"ID":2,"data":{"Ret":0}}
+
+46) 获取播放内容是否充满窗口
+{"req":"VLC_GetFillWnd","rid":47,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":85,"ID":1,"data":{"Ret":0,"FillWnd":1}} 和 {"ret":0,"rid":85,"ID":2,"data":{"Ret":0,"FillWnd":0}}
+
+47) 请求退出当前连接的小程序
 正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
-{"req":"VLC_Exit","rid":85,"para":{}}
+{"req":"VLC_Exit","rid":87,"para":{}}
 无返回
 
 5、VLC多媒体播放网页小程序接收的通知：
