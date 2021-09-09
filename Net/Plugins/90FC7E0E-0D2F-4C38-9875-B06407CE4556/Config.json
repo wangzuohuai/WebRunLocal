@@ -1,8 +1,8 @@
 {
   "COM": "axvlc.dll",
-  "Caching":300,
-  "RTSPTCP":0,
+  "Caching":500,
+  "RTSPTCP":1,
   "ToolBar":1,
-  "FillWnd":0,
+  "FillWnd":1,
   "PORT": 930
 }
