@@ -4,5 +4,6 @@
   "RTSPTCP":1,
   "ToolBar":1,
   "FillWnd":1,
+  "BlockFlag":9,
   "PORT": 930
 }
