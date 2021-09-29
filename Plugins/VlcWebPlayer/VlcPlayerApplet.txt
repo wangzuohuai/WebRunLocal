@@ -115,13 +115,13 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装VLC多媒体播放网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2021-09-09","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"39C15DA5CDF0E98F1B12E232011E866C","Version":"2.2.1.3","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6E4DB5DD8E6DEE236B76B36D97900B6A31CC4A8808514235DD31923F0D9F97B8EED2336CCF401A2AB3108E9F480C670DA95E12138BE859D9D3093E282F2C5D3983B3A5FF1C796BE807F2388DA5658214C27BA2914785836EA2D4CFEFB43780CF8950762E5DFE0769CBDB94FF3883293AF8C27B87AA7A960C7D6A7C65B8F4FFAFE19EA8F3FA125BA115B9D10CE689744FE7D61F6848A74718BCF036D1962F370112AB3B8B1504BD6B4FA4F23A2E0271CB591384452383DB02AF38B89A19168DB71C560F08A5F041D6C4AC14BCD51C2AAD8EFFB55317FA59B01687C153348B40E379E76314A26E5AE603C9B7424E01C1B0D280B28A18E204D43848D72D8A260B30"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2021-09-30","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"D7A0B69A59C0F1C7557E96FD579884C4","Version":"2.2.2.1","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"520ADF951A53BDBE1044851DD2CEE9CD0508C8AABB2889574DF167347A7DED4E05AA0C325FB8CB649554BD66473D254F17CA19E528AC7403BBF5C1B45D48004FEC404EB3E428EEB8FCDD640CBAB61CF2B94F3E293FED11F76C0FD733E0828E07466C4592CB9B2FFA4780C3E18F5F4F8AA18861EADD37B3D2E536B1F458DB91C44586263352274FE5598B7CC62ACB391F1D140D9B681F401CB608117193C9095FF91A7724DC365CC0C823D294D3CA218118E7FD8080D7CB13B64C3677A0186575DD05FA3A4B8F2118CD13550E21B02AD9BD572FE488BDEFE514B70666C1CC31F01C0DEF2354263F4D0FD6AC59422D5540EDD72D97AF0505B5DB1A8742173C8FC0"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC多媒体播放网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2021-09-09","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"292E305E1A4DF9147C981F891D2BF1CA","Version":"2.2.1.3","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"47F77F567A6E260C41414BFB825D2FE871582C7A247F3ECBB04A4272171DDE102724245C23BE370BA617E99A0835BD21D4F8000A8A396CFC988AF51140489AD20D0BFF7AF08D37AA0E35D7F369E2E065D8A12E4E519F9BAA24BFC2DB1EF4B76D6F5DC5ACD92A83C5EEEBC155683E3BD17E32D77024DC2F720B2D1BF0A1271BC2C44E890D9BF9F052F89025559A71989DE0CAA9E130E975BFDD8F5C8B0FA5DD58AA6227D837C8DEB58FF6D26891BEE0974FB313238872D10BD7101E3E01C7F1917874C1B8DC89994E63C0C1DA481A6BCE21C6DA10C3C0B4CBFFF60463793F264DE09C8DB9034A0058620C0B7C215559B293766AE338A0E0940C8A5B116A8845CE"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2021-09-30","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"E59A6EE95E2FC452D4ECEF58711B725F","Version":"2.2.2.1","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"03C6A45C48A9B0FD47126B3BF1DE74B94A81B9BAAA5E644B1173045D0861DE6EEFAC8723F2387629FFF99A4F074EDC9271341D97A41635A5866B5278AC290A0FF5E3810CF576DD4E52E28F5636A6D0F80890995694B876B157EF66EFFE2B9C624823B15D09C9E45B2F49A3508B92831A9C9F985C0542F6AA2701BA318F6232EFD6029A32AA3953BDFB4AF526817950B66BED74D9974878FB7D7BB42448EEB10FC2CC92C7DA0C5DFA605CDE6C5DBB4B9979732211B9A66152D42F0DDA98C02CF296D3BDE0A85767E65669BA588E34342977BAC3981BE6D63C5EB98D6DDBC27186261DE30CF275A5BB6F5701A1B0BFBDA7979ECAB306F44F0C3EE324659834CD97"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -200,12 +200,14 @@ Ret为调用ActiveX对应函数返回值，0代表正常
 请求：{"req":"VLC_PutToolbar","rid":56,"para":[{"ID":1,"Toolbar":0},{"ID":2,"Toolbar":0}]}
 分别返回：{"ret":0,"rid":56,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":56,"ID":2,"data":{"Ret":0}}
 
-17) 取指定ID窗口FullScreenEnabled(全屏启用)，举例：
-请求：{"req":"VLC_GetFullScreenEnabled","rid":57,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":57,"ID":1,"data":{"Ret":0,"FullScreenEnabled":0}} 和 {"ret":0,"rid":57,"ID":2,"data":{"Ret":0,"FullScreenEnabled":0}}
+17) 取指定ID窗口推送信息屏蔽掩码，举例：
+请求：{"req":"VLC_GetBlockFlag","rid":57,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":57,"ID":1,"data":{"Ret":0,"BlockFlag":0}} 和 {"ret":0,"rid":57,"ID":2,"data":{"Ret":0,"BlockFlag":0}}
 
-18) 设置指定ID窗口FullScreenEnabled(全屏启用)，举例：
-请求：{"req":"VLC_PutFullScreenEnabled","rid":58,"para":[{"ID":1,"FullScreenEnabled":0},{"ID":2,"FullScreenEnabled":0}]}
+18) 设置指定ID窗口推送信息屏蔽掩码，举例：
+由于以下几种信息通知比较多，所以增加阻止通知设置，比如阻止鼠标移动和位置通知，就设置9
+1阻止鼠标移动通知 2阻止时间变化通知 4阻止缓存通知 8阻止位置通知
+请求：{"req":"VLC_PutBlockFlag","rid":58,"para":[{"ID":1,"BlockFlag":0},{"ID":2,"BlockFlag":0}]}
 分别返回：{"ret":0,"rid":58,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":58,"ID":2,"data":{"Ret":0}}
 
 19) 取指定ID窗口版本信息，举例：
@@ -289,8 +291,14 @@ Text指定时获取文字信息 Position指定时获取位置信息
 分别返回：{"ret":0,"rid":75,"ID":1,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":"","Text":"","Position":""}} 和 {"ret":0,"rid":75,"ID":2,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":""}}
 
 36) 设置指定ID窗口字幕信息，举例：
-需要的才设置
-请求：{"req":"VLC_MarqueePut","rid":76,"para":[{"ID":1,"Text":"Hello","Position":"","Color":0,"Opacity":0,"Refresh":0,"Size":0,"X":0,"Y":0},{"ID":2,"Opacity":50}]}
+指定的参数，需要的才设置
+Text 文字内容
+Opacity 透明度 0-256 0完全透明 256完全不透明
+Position 位置样式 X 和 Y分别指定文字开始坐标
+Timeout 超时
+Color 颜色
+Size 字体大小
+请求：{"req":"VLC_MarqueePut","rid":76,"para":[{"ID":1,"Text":"Hello","Position":"TOP","Timeout":0,"Color":16777215,"Opacity":128,"Refresh":1,"Size":50,"X":50,"Y":50},{"ID":2,"Opacity":256}]}
 分别返回：{"ret":0,"rid":76,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":76,"ID":2,"data":{"Ret":0}}
 
 37) 控制指定ID窗口字幕，举例：
@@ -341,95 +349,140 @@ PathType 指定截图图片保存路径类型，0默认中间件临时目录，1
 分别返回：{"ret":0,"rid":85,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":85,"ID":2,"data":{"Ret":0}}
 
 46) 获取播放内容是否充满窗口
-{"req":"VLC_GetFillWnd","rid":47,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":85,"ID":1,"data":{"Ret":0,"FillWnd":1}} 和 {"ret":0,"rid":85,"ID":2,"data":{"Ret":0,"FillWnd":0}}
+{"req":"VLC_GetFillWnd","rid":86,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":86,"ID":1,"data":{"Ret":0,"FillWnd":1}} 和 {"ret":0,"rid":86,"ID":2,"data":{"Ret":0,"FillWnd":0}}
 
-47) 请求退出当前连接的小程序
+47) 获取水印显示信息
+{"req":"VLC_GetShowLogo","rid":87,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":87,"ID":1,"data":{"Ret":0,"File":"","Position":"","Delay":0,"Repeat":0,"Opacity":0,"X":0,"Y":0,"Enable":0}} 和 {"ret":0,"rid":87,"ID":2,"data":{"Ret":0}}
+
+48) 设置水印显示
+ID为窗口序号
+File 水印文件路径，如有特殊符号请先进行UrlEncode，为空默认用小程序目录的Logo.png
+Position 显示位置 center left right top等，默认undefined未定义，显示位置有坐标X和Y控制
+Delay 水印间隔图像时间为毫秒 0 - 60000 默认1000
+Repeat 循环 水印动画的循环数量 -1继续(默认) 0关闭
+Opacity 透明度 (数值介于 0(完全透明) 与 255(完全不透明，默认)
+X 水印X坐标
+Y 水印Y坐标
+{"req":"VLC_PutLogoShow","rid":88,"para":[{"ID":1,"File":"VLC.png" ,"Delay":20,"Repeat":-1,"Opacity":128,"X":100,"Y":100},{"ID":2,"Position":" center ","Delay":100,"Repeat":-1,"Opacity":256,"X":200,"Y":0}]}
+分别返回：{"ret":0,"rid":88,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":88,"ID":2,"data":{"Ret":0,"Enable":0}}
+
+49) 水印显示控制
+ID为窗口序号 Flag为1代表启用，0代表禁用
+{"req":"VLC_LogoControl","rid":89,"para":[{"ID":1,"Flag":1},{"ID":2,"Flag":0}]}
+分别返回：{"ret":0,"rid":89,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":89,"ID":2,"data":{"Ret":0,"Enable":0}}
+
+50) 对指定RTSP流录像到文件
+Url为RTSP流地址，File为录像目标文件不指定时自动生成 Second为录制限时时间(秒)，0代表由前端指定停止
+{"req":"VLC_RecordFile","rid":90,"para":{"Url":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","File":"D:/Zorro/test.mp4","Second":30}}
+返回：{"ret":0,"rid":90,"data":{"Ret":0,"PID":1}}
+
+51) 停止录像
+传入指定录像时返回的PID
+{"req":"VLC_StopRecord","rid":91,"para":{"PID":1}}
+File为录像文件路径，Size为录像文件大小
+返回：{"ret":0,"rid":91,"data":{"Ret":0,"File":"D:/Zorro/test.mp4","Size":321}}
+
+52) 请求退出当前连接的小程序
 正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
-{"req":"VLC_Exit","rid":87,"para":{}}
+{"req":"VLC_Exit","rid":92,"para":{}}
 无返回
 
 5、VLC多媒体播放网页小程序接收的通知：
 这些通知必须使用Web Socket连接到此小程序实际侦听的端口才能接收到。
 A、ActiveX事件：
-
-1) Idle state
+文档参考：https://wiki.videolan.org/Documentation:WebPlugin
+1) vlc is in idle state doing nothing but waiting for a command to be issued 播放器空闲中
 {"event":"VLC_MediaPlayerNothingSpeciale","ID":1,"data":{}} 
 
-2) Opening media
+2) vlc is opening an media resource locator (MRL) 正在打开播放源
 {"event":"VLC_MediaPlayerOpening","ID":1,"data":{}} 
 
-3) Buffering media
+3) vlc is buffering 播放器正在缓存数据 通过VLC_PutBlockFlag设置掩码2可阻止通知，默认不阻止
 {"event":"VLC_MediaPlayerBuffering","ID":1,"data":{"cache":0}} 
 
-4) Media is playing
+4) vlc is playing a media 正在播放中
 {"event":"VLC_MediaPlayerPlaying","ID":1,"data":{}} 
 
-5) Media is paused
+5)  vlc is in paused state 播放暂停状态
 {"event":"VLC_MediaPlayerPaused","ID":1,"data":{}} 
 
-6) Forward playback
+6) vlc is fastforwarding 快进播放
 {"event":"VLC_MediaPlayerForward","ID":1,"data":{}} 
 
-7) Backward playback
+7) vlc is going backwards 后退播放
 {"event":"VLC_MediaPlayerBackward","ID":1,"data":{}} 
 
-8) An error has been encountered
+8) vlc has encountered an error and is unable to continue 出现错误不能继续，前端需捕获处理如执行重新播放等
 {"event":"VLC_MediaPlayerEncounteredError","ID":1,"data":{}} 
 
-9) End of playback reached
+9) vlc has reached the end of current playlist 播放到尾部(如设置了循环播放，会自动从头开始播)
 {"event":"VLC_MediaPlayerEndReached","ID":1,"data":{}} 
 
-10) Playback stopped
+10) time has changed 时间改变 通过VLC_PutBlockFlag设置掩码2可阻止通知，默认不阻止，可通过持续监听此通知判断播放是否正常状态
+{"event":"VLC_MediaPlayerTimeChanged","ID":1,"data":{"time":0}} 
+
+11) media position has changed 位置改变 通过VLC_PutBlockFlag设置掩码8可阻止通知，默认阻止
+{"event":"VLC_MediaPlayerPositionChanged","ID":1,"data":{"position":0}} 
+
+12) Play stopped 播放停止
 {"event":"VLC_MediaPlayerStopped","ID":1,"data":{}} 
 
-11) Playback stop async done
+13) Play stop async done 异步播放停止
 {"event":"VLC_MediaPlayerStopAsyncDone","ID":1,"data":{}} 
 
-12) Seek changed
+14) media seekable flag has changed (true means media is seekable, false means it is not)
 {"event":"VLC_MediaPlayerSeekableChanged","ID":1,"data":{"seekable":0}} 
 
-13) Pause setting changed
+15) media pausable flag has changed (true means media is pauseable, false means it is not)
 {"event":"VLC_MediaPlayerPausableChanged","ID":1,"data":{"pausable":0}} 
 
-14) Media changed
+16) media has changed 播放源改变
 {"event":"VLC_MediaPlayerMediaChanged","ID":1,"data":{}} 
 
-15) Title changed
-{"event":"VLC_MediaPlayerTitleChanged","ID":1,"data":{"title":0}} 
-
-16) Length changed
-{"event":"VLC_MediaPlayerLengthChanged","ID":1,"data":{"length":0}} 
-
-17) Chapter changed
+17) chapter has changed (DVD/Blu-ray) 章节已更改（DVD/蓝光）
 {"event":"VLC_MediaPlayerChapterChanged","ID":1,"data":{"chapter":0}} 
 
-18) Number of vout changed
+18) the number of video output has changed 视频输出数量发生变化
 {"event":"VLC_MediaPlayerVout","ID":1,"data":{"count":0}} 
 
-19) Audio muted
+19) audio volume was muted 静音
 {"event":"VLC_MediaPlayerMuted","ID":1,"data":{}} 
 
-20) Audio unmuted
+20) audio volume was unmuted 取消静音
 {"event":"VLC_MediaPlayerUnmuted","ID":1,"data":{}} 
 
-21) Audio volume changed
+21) audio volume has changed 音量改变
 {"event":"VLC_MediaPlayerAudioVolume","ID":1,"data":{"volume":0}} 
 
-22) Selected 选中分屏窗口序号通知
-{"event":"VLC_Selected","ID":1,"data":{}} 
-
-23) ToggleFullScreen 选中的分屏窗口切换全屏通知
-{"event":"VLC_ToggleFullScreen","ID":1,"data":{}} 
-
-23) KeyDown
+22) KeyDown 按键按下
 {"event":"VLC_KeyDown","ID":1,"data":{"KeyCode":0,"Shift":0}} 
 
-24) KeyPress
+23) KeyPress 按键码
 {"event":"VLC_KeyPress","ID":1,"data":{"KeyCode":0}} 
 
-25) KeyUp
+24) KeyUp 按键弹起
 {"event":"VLC_KeyUp","ID":1,"data":{"KeyCode":0,"Shift":0}} 
+
+25) MouseMove 鼠标移动通知 通过VLC_PutBlockFlag设置掩码1可阻止通知，默认阻止
+{"event":"VLC_MouseMove","ID":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+
+26) MouseDown 鼠标按下
+{"event":"VLC_MouseDown","ID":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+
+27) MouseUp 鼠标弹起
+{"event":"VLC_MouseUp","ID":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+
+/// 以下几个非空间事件通知
+27) Selected 选中分屏窗口序号通知
+{"event":"VLC_Selected","ID":1,"data":{}} 
+
+28) ToggleFullScreen 分屏窗口切换全屏通知
+{"event":"VLC_ToggleFullScreen","ID":1,"data":{}} 
+
+29) 录像结束通知(限时录制时发出)
+{"event":"VLC_StopRecord","PID":1,"data":{"Ret":0,"File":"D:/Zorro/test.mp4","Size":321}} 
 
 B、PluginOK支持的事件通知：
 

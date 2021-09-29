@@ -49,7 +49,7 @@ Chrome浏览器新窗口打开http://www.zorrosoft.com Flag为1新窗口打开，否则是新标签打
 指定本地文件全路径，使用本地电脑默认关联的程序打开，路径用反斜杠或双斜杠。如是中文等路径，需要先进行UrlEncode编码。
 为安全起见，这些扩展名文件不支持：*.exe *.msi *.js *.jar *.inf *.com *.bat *.vbs *.py，如实在需要支持这些文件的启动，请购买单独发现的文件操作小程序授权，具体请联系客服。
 举例：
-{"req":"Wrl_OpenFile","rid":9,"para":{"File" : "D:/Zorro/Ver/TestWrl.txt"}}
+{"req":"Wrl_OpenFile","rid":9,"para":{"File" : "F:/Zorro/Ver/TestWrl.txt"}}
 说明：连接主服务后可执行；
 
 4)、单选(多选)磁盘文件/设置文件保存位置：
@@ -63,9 +63,9 @@ BtnText 按钮文字 设置文件保存位置时无效
 Path 初始化显示路径，默认为 当前用户文档目录
 举例：
 选择文件
-{"req":"Wrl_SelectFile","rid":10,"para":{"Type" : 0,"Single" : 1,"Title" : "单选文件","BtnText" : "确定(&O)","Ext" : "所有文件(*.*)\r*.*","Path" : "E:/WRL/"}}
+{"req":"Wrl_SelectFile","rid":10,"para":{"Type" : 0,"Single" : 1,"Title" : "单选文件","BtnText" : "确定(&O)","Ext" : "所有文件(*.*)\r*.*","Path" : "D:/Zorro/"}}
 设置文件保存位置
-{"req":"Wrl_SelectFile","rid":11,"para":{"Type" : 1,"Title" : "请选择文件保存位置","Ext" : "文本文件(*.txt)\r*.txt","Path" : "E:/WRL/","Name" : "测试"}}
+{"req":"Wrl_SelectFile","rid":11,"para":{"Type" : 1,"Title" : "请选择文件保存位置","Ext" : "文本文件(*.txt)\r*.txt","Path" : "D:/Zorro/","Name" : "测试"}}
 说明：连接主服务后可执行，由于此请求有对话框阻塞行为，执行后的结果通过事件推送方式返回，定义如下：
 {"event":"Wrl_SelectFile","rid":12,"data":[{"File":"E:/WRL/测试.txt"}]}
 取消时推送：{"event":"Wrl_SelectFile","rid":12,"err":"被取消"}
@@ -83,7 +83,7 @@ BtnText 按钮文字 设置文件保存位置时无效
 6)、请求获取指定文件大小、版本、文件属性、MD5、创建时间、修改时间等信息：
 指定本地文件全路径，路径用反斜杠或双斜杠，如果是图片文件，还会返回高度和宽度信息。
 举例：
-{"req":"Wrl_GetFileInfo","rid":14,"para":{"File" : "D:/Zorro/WebRunLocal/Bin/Test/css/top.png"}}
+{"req":"Wrl_GetFileInfo","rid":14,"para":{"File" : "D:/Zorro/test.png"}}
 说明：连接主服务后可执行；
 
 7)、请求重新注册中间件或小程序：
@@ -111,12 +111,12 @@ Type为浏览器类型 PID为当前进程ID Ver为版本
 说明：连接主服务后可执行，可获取当前已安装所有小程序信息，Detail为1时返回小程序程序全路径；
 
 11)、判断某个小程序是否已存在
-举例：{"req":"Plugin_Exist","rid":19,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D"}}
+举例：{"req":"Plugin_Exist","rid":19,"para":{"PID" : "A22E18F1-95F8-4FDB-99D2-188E5FB12B23"}}
 说明：连接主服务后可执行，PID为小程序唯一标识；
 
 12)、请求重新加载指定小程序
 使用场景：不用重启服务即可扫描新增小程序使用；或小程序调试时，程序及配置更新需要重新加载时
-举例：{"req":"Plugin_Refresh","rid":20,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D"}}
+举例：{"req":"Plugin_Refresh","rid":20,"para":{"PID" : "A22E18F1-95F8-4FDB-99D2-188E5FB12B23"}}
 说明：连接主服务后可执行，PID为小程序唯一标识；
 
 13)、前端请求配置参数
@@ -179,7 +179,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 
 4、PluginOK(牛插)中间件升级请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2021-09-09","Desc":"1、登录到桌面时去掉管理员提示，大幅改善用户体验和系统安全性能；2、运行数据统一保存到中间件Data子目录；3、内嵌小程序支持扩展屏兼容运行；4、微软Office及金山WPS网页在线编辑小程序支持打开服务器端文档、支持套红...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"8C89FAE19B03D9E27E95BBA461B253BB","Version":"2.2.1.3","Size":11862016,"HideIns":0,"Cookie":"","Auth":"","TK":"B81C92E490A997FC1CD2F8D9D85F0BE113A3A56F9A82BA38A837905178D92C8ED27B2031CDC382BA8C09BF6EA74E43FF24479FFCB1E8C690552C63FC416015CCD550F17A04A8A8D6081A79E89E0CF03A3192B309A046802C97F5013D8666AC14B61C35B57F38DE023D95222A4D488A80915ACE4DC85882FDA5024D5A051497C5AB460C938D82D8F97646BE04FEE633E99AE4D6528F7557A68954B3881C361E2883894314976615876C2B48EF56890926EAE7CEF6B56304DE77AE3C215BBFB50A8371CB4ED92BAC53B1D113BD9FDCFC53ABB638E115C5DE03992827C0F3FA67F7207869CE0DA106E84D0BC97DC4F809A9BE813625A4434F9144934EBB79B0D9DB"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2021-09-30","Desc":"1、改进中间件数据存储和访问机制，优化内嵌小程序的启动速度；2、调整小程序运行日志输出位置，与中间件保持一致；3、支持通过配置文件过滤浏览器认为不安全的WS侦听端口；4、VLC网页播放小程序支持增加字幕、水印和录像功能，解决动态设置播放源或分屏可能异常问题；5、VLC网页播放小程序增加长度和时间通知事件，改为双击切换全屏","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"32804353225CEBD676889F89A91CD0B2","Version":"2.2.2.1","Size":11239424,"HideIns":0,"Cookie":"","Auth":"","TK":"39C44ECB923A33EF34CC7CE5180B5BDDE8C489EFB9CAE9B86E1C6BB9813006F8EC87226E0E4F993B38BD32556162B8DC3A7DE80A86F8216F616BF78368A726CF6723D10DC557007CF9AC834228D896EB90758BC7DE9D31F7EF02B6E7636BE25C526C60D5D301E74D05CB88306B85D5957769965451AF8D6DF4C300CC9641835B474E2B02EF74A439D5796142BE424CDD5CEF6C19B48E9A272222C7FCABD42A2534E43C23816CD497594FE18B14AD09464115B07B68AAB56D502605805CBF59348C67FF01D60507D6592F6491DF10B1622A95DE9580867C6FB0E57AEFDEA5D4CD824569B736426084C60C95F5180E282CA824873E62C7C7747EF0C981C66FEF2C"}}
 
 5、请求启动弹窗小程序(C++语言)服务，下面以IE控件(ActiveX)演示调用流程及范例：
 1)、打开测试网页，输入连接地址：
