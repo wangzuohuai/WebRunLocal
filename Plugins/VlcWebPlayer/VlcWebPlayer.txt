@@ -115,13 +115,13 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装VLC多媒体播放网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-09-30","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"57F73DB65DCDEB7A9CC08D49114BDD19","Version":"2.2.2.1","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"668CC462E287CD4129AED129D88C724DD9FE2C7C8F9488C288C9406B0B26A56BA90186D48E59191D3621726B4F5516F2B12CC39E0EB88205DCCD090358BBD67495FADB24B3DC7CC9BA4DE11EE97A542597EE1D36B7C2A56EE68BB4AB383FC70AFF66321ABE153317EF87472F62553091186497FCC1E9592BD78FBCDCC68D3DE81EB303E3574E96AB02A75535F2B90EBEAF7CD9DF099ACCF21D716EE3E8A3912794F824F2B198FB005DD98BAD72D589DAFC213672A4BA86C44870AD583CAF767F16D3B7B6721C58156F1B3AD747DF95F1B80A607797FB1942B412B2CCF516C4A1E6FF096C3B30A5D72604FB0ED035F82D2D3745AC8C91C598EB6491B7AE5B61AC"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-10-01","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"E9A58301FDB7EF033C0FF58F522A245C","Version":"2.2.2.1","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"318CDD43CEBFD5403CFE7DDA87E01C24321744ACF0685DFCBE3B46827DCD7D801B9100D24577692815AB52A935163410BADB0C26E85FED8D15CE73C55A270CB77FE7BFC0243392828F19CEF75BF2123CBC633F67BB2EFE9BFFCF6F7BAD0B242557616DF4C7909462DCB76FA1DB0F08D7C1AE953B41EF1933755B044AFBDE269D9FB56CFE0E2ABB2837C034DB422BCD6176CCD07C3E5C2DD66AE775A3207628B51EEF2B0933D7E4A923E29355130681995DB5E2F2DB2E8D29DEA12AF6920EE29C66719C541F3374522C8AFBDE9A0A370B6D3C180994F1E5A07790A2D41FE8265DD6C79DB2F74F0463D3354E980B8AB58737D3367EE36BBD563E9C8DACDD526C7F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC多媒体播放网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-09-30","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"724707FA5568E6BB4E7AA805D4CAB876","Version":"2.2.2.1","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5551B9D0E01791BE710C5528E469B92C32EB269F0DC80888261F976C355D768144204F92ED1868012697111DD09B9B43D9000BB34C1EA808D14E340D11119E1AB4089BF7F6FD62A792A65FA5C7E60297449E6B8203A62D91632C3766B45D90FC9F87E56CD3D06107EC0D485B29947A780FD72C23A4B4AB37D0BD1C8CBEF963FA8BD1C6E8A683394872E75A42C91A11A1B0B6D69E517277A54964EA8258673B06BD37666099A429C1CBA6D9453D91B4DAB5A35659E36BA2C79F3CE0FED4EB58CC10C142F6D4AE4A7ADFF25BA895AEF37BEE2EB9B45673B09BDC1AEB067363F6CE180316E580DDBA927C904B1D67B4DC68A20E8441419887FD7BECE968489132D2"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-10-01","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"011E4A6CE520D464C97CF00C345A6803","Version":"2.2.2.1","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2EFCB00B9D6DC8272832D6C26811629D58A417FDCA216EEBF8DD0DC54D5A87BFBA4EAACA4D6E27425777345AAD90BCABF5759796BD953742E933B11C18F0DC3F9AD598C9A328D496C9AC65D3CCCD217C19D040365DE0CEA4BCD11CE3837C6A12E7D76E4AFE2F5381F515619BF27CD65E5583918C42A5ED6E23352D19B84307BCA9B926F6585B4D80DADB52CEED3F73A517B8B58A7DF0DEA60380DC2602E2638BFE674431EF064AC00C8BD7068016471C1AFB2293E74A9CAFF83457BB9A32C8F9C43A7285297D2759CF024EC64785CFE7E4C1325619E795C7E5B25F750C34FDCFDB172603964CB52B74610314D679BB5E7CFD3BB2CD5A94811A12D79B710266D7"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -384,9 +384,35 @@ Url为RTSP流地址，File为录像目标文件不指定时自动生成 Second�
 File为录像文件路径，Size为录像文件大小
 返回：{"ret":0,"rid":91,"data":{"Ret":0,"File":"D:/Zorro/test.mp4","Size":321}}
 
-52) 请求退出当前连接的小程序
+52) 获取输入源信息
+Title为1支持获取标题更多信息，标题中支持获取指定Track的描述
+Chapter为1支持获取章节更多信息 章节中可指定TitleID获取TrackCount，再指定ChapterID获得章节描述
+{"req":"VLC_GetInputInfo","rid":92,"para":[{"ID":1,"Title":1},{"ID":2,"Chapter":1}]}
+分别返回：{"ret":0,"rid":92,"ID":1,"data":{"Ret":0,"InputInfo":{"Status":3,"HasVout":1,"Len":0.0,"Pos":0.0,"Time":9667.0,"Rate":1.0,"Fps":25.000,"Title":{"Count":0,"Track":0,"Desc":""},"Chapter":{}}}}
+和 {"ret":0,"rid":92,"ID":2,"data":{"Ret":0,"InputInfo":{"Status":3,"HasVout":1,"Len":117078.0,"Pos":0.075,"Time":8854.0,"Rate":1.0,"Fps":9.982,"Title":{},"Chapter":{"Count":0,"Track":0,"TrackCount":0,"Desc":""}}}}
+返回值字段含义：
+HasVout：当显示视频时返回1
+State：作为枚举给出的输入链的当前状态 0闲 1打开 2缓冲 3播放 4暂停 5停止 6已结束 7错误
+Rate：输入速度为float（1.0为正常速度，0.5为半速，2.0为两倍快）
+Len：输入文件的长度，以毫秒为单位 返回0的“活”流或剪辑，其长度不能由VLC确定
+Fps：以秒为单位返回的帧数
+Pos：在多媒体流项目中归一化的位置，以[0.0 - 1.0]
+Time：以毫秒为单位给出的绝对位置，此属性可用于通过流来查找
+
+53) 设置输入源信息
+Pos是位置 Time是时间 Rate是速度 TitleTrack标题轨
+{"req":"VLC_PutInputInfo","rid":93,"para":[{"ID":1,"Pos":0.075,"Time":9667.0,"Rate":1,"TitleTrack":0},{"ID":2,"Rate":1}]}
+分别返回：{"ret":0,"rid":93,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":93,"ID":2,"data":{"Ret":0}}
+
+54) 操作章节信息
+Track 章节跟踪。该属性将整数作为输入值[0-0.65535]
+Opt是操作类型，1是前进 2是后退
+{"req":"VLC_PutChapterInfo","rid":94,"para":[{"ID":1,"Track":0},{"ID":2,"Opt":1}]}
+分别返回：{"ret":0,"rid":94,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":94,"ID":2,"data":{"Ret":0}}
+
+55) 请求退出当前连接的小程序
 正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
-{"req":"VLC_Exit","rid":92,"para":{}}
+{"req":"VLC_Exit","rid":95,"para":{}}
 无返回
 
 5、VLC多媒体播放网页小程序接收的通知：
