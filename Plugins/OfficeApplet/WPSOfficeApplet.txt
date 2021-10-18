@@ -1,6 +1,6 @@
-﻿金山WPS内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿金山WPS内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS(要求企业或企业增强版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
-1、PluginOK(牛插)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
@@ -8,6 +8,8 @@
 2、金山WPS内嵌网页小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
 HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS在线测试网页：https://local.zorrosoft.com/officeframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
 A、标记小程序的显示位置和大小
 .OfficeApplet {
@@ -66,10 +68,10 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"WpsApplet","port":910}}
+B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"WpsApplet","port":950}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如打开一个文档。
 返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","Port":910}}
+C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","Port":950}}
 
 2)、请求控制金山WPS内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -115,14 +117,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装金山WPS内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-09-30","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"83D9ACB3770876B48A9738036E5BF5A4","Version":"2.2.2.1","Size":3997696,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0A532D01DF427819A3C6088A404EC0B14D08FF935E2649C72DE26844D62080F8550CF96B7DCEC313E985A08B93653AC20204CDD88022CF5B7F8E3971558C3C287462C4C833766162A6BAAC32795D489B78828A576BC57D7762773A65322EDB6242F55206358C1FD63AE91B2B79B1907B3528C64B66EF157F409AAB3D94CC5B10934A40220DCB30D78E796120DE481892E21DCFFCEE32266076C5A0C42BED74963896868DEE88968463DDB7972B6548147FDBBB46ADA00D41DD8BBEC8E9A9E27D2E996CE4AE68641DB7E4389860A67B7BB8ABBBAAF939B6EA2D91411B5848DBA6D73458A91F149ACF806D8231B050E250642281488667A5411EE8001AAC001936"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-10-18","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"1D3E9B1859B0418830CDA384477542E3","Version":"2.2.3.1","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"951598AFA3B7A8575757381AA881A5AA8BEB103C93461AD254CE95EF3A6D19E5049CFE22F1019F8F45E0F1841908BE92F30DDD116E6ED5471222DC3521B4A7651BBBDA89EA6B60CFF0F7DF7997DA0C5411A79A9C0224E9D795FCE6EB73D358E1F4E51A84160BDD4B146BE10104AE3254E98F4FFF951782DF14461BE704029DD566FA7A3381A4C8A49D65FB24FFC2452C65586D028EF5D50B4E9C72650351552BB498668ABA573A143A5DAEC02745AA5DFF7B483DD7AB614134D15F534AC8680390027D01103D7B480713CB0415FDE2497F4D740546D4D78BE831942CD9C9D60F85562C1E3FBFE2C92DC0B582467CAD726483CFC2FE661C6C002B9D28673D838E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-09-30","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"72A2760944E9E770437E969D77286614","Version":"2.2.2.1","Size":3997696,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8A311C1045D1DBC9E290DA108D7139571F388539634D38B1894F7399021988BE0C2B1A1526480A23CB3675ED6A3119F1B244969AFAE77CA666703592D7322584382EC50F7D4BE8E0A915473FB67808DD1E0B03034BFA35AAC45C622EA261EBF711C6563AFE55D98F290ED6E704D0D8074C3B5E3A9D7F8136A088A2EC571B0AC833EC0881DE3B473187EFEF52FEAC2D0493508C08E4A17BA19B4AD16BDA4731601E4D8A4C874B86C04AE48BEE152B8A4EDD70CEC67FB91602A98F6A41673937100A4C7B4BCC53610BFF104F6DB26382EAC7789BBAB1D802010B64AC042BF454EE1B5245A2F082F648B7747E0D1B3754D565B5DBF669D1245325E3328FF926347F"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-10-18","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"45B289481F525CCB1EDAA92AF204494D","Version":"2.2.3.1","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"621BF82680EDFA5142586EAAC04F67933530AF62F5FA4901F72E7A52C6B4DCDA128643A2A39E5AE8D1C1D370371DCFAFD176868441F9C34E5BE31BCF68C1B26E5AAE5C780B24D2A147044A8B8F6CD96D8D66CCE36FEB70981CA05057E70860A2D3572F97A7B0FA4209DEF9BBA70F4E85EFC8C8C71A531AC9791F018060B58045CE7856B0293B774860BEDDB46989F464DDAB28C0CB05A5620534D5F4F6CAA1EB7B9F13581670059A1CEB4EBC941F46451ADA227BB6A309963E4D31E1BB5998843155EA5D1164CF70C6442EE577276DA4E8FDE2F455D3E1F821CC842A4CDFCA2F5DF97D9CD538BB46FA7183A5C7D6F9840D792AFB894A7EF04D579AA1490F849A"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -134,7 +136,7 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 
 A、常用功能请求：
 1）请求退出小程序，适用于WPS文字、WPS表格、WPS演示软件，退出前建议先调用Office_Close关闭文档
-正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
+未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
@@ -157,7 +159,10 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
+WPS文字支持导出为OFD文件(个人版不支持)
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
+或
+{"req":"Office_SaveAs","rid":5,"para":{"Format":25,"NewFile":"D:/Zorro/test.ofd"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
@@ -281,5 +286,5 @@ B、PluginOK支持的事件通知：
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.doc”及“PluginOK中间件安全解决方案”。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案”。
 如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

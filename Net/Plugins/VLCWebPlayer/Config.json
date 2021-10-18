@@ -3,7 +3,8 @@
   "Caching":300,
   "RTSPTCP":0,
   "ToolBar":0,
-  "FillWnd":0,
-  "BlockFlag":9,
+  "FillWnd":1,
+  "BlockFlag":15,
+  "BackColor":"#000000",
   "PORT": 930
 }

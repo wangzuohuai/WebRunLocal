@@ -1,13 +1,13 @@
-﻿微软Office内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office(要求非个人、学生或家庭版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿永中内嵌网页Office小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用永中Office(要求专业版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将永中文字、永中表格、永中简报软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、微软Office内嵌网页小程序控制相关接口：
+2、永中内嵌网页Office小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://local.zorrosoft.com/wordfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/officeframe.html
+HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS在线测试网页：https://local.zorrosoft.com/officeframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
@@ -37,30 +37,30 @@ B、网页中嵌入元素
 
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动微软Office内嵌网页小程序实现网页中局部加载doc/xls/ppt等文档显示：
+1)、请求启动永中内嵌网页Office小程序实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-OType：1是启动微软Word 为2启动微软Excel 为3启动微软PPT
+OType：21是启动永中文字 为22启动永中表格 为23启动永中简报
 Version：1是完整加载，0是OLE方式加载
 Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
-自动识别当前浏览器并启动微软Word程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
+自动识别当前浏览器并启动永中文字处理
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"21","Open":"D:/Zorro/test.doc"}}
 
-自动识别当前浏览器并启动微软Excel程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"2","Open":"D:/Zorro/test.xls"}}
+自动识别当前浏览器并启动永中表格处理
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"22","Open":"D:/Zorro/test.xls"}}
 
-自动识别当前浏览器并启动微软PPT程序
-{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"3","Open":"D:/Zorro/test.ppt"}}
+自动识别当前浏览器并启动永中简报处理
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"23","Open":"D:/Zorro/test.ppt"}}
 
-自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"1","Open":"D:/Zorro/test.doc"}}
+自动识别当前浏览器指定位置自动适配网页大小启动永中文字：
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"21","Open":"D:/Zorro/test.doc"}}
 
 打开远程文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
@@ -68,24 +68,24 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"MSOfficeApplet","port":950}}
+B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"YZOfficeApplet","port":950}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如打开一个文档。
-代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","Port":950}}
+返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"YZOfficeApplet","Port":950}}
 
-2)、请求控制微软Office内嵌网页小程序：
+2)、请求控制永中内嵌网页Office小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动微软Office内嵌网页小程序：
-当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+3)、请求滚动永中内嵌网页Office小程序：
+当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变微软Office内嵌网页小程序显示位置或大小：
+4)、请求改变永中内嵌网页Office小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -114,38 +114,39 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装微软Office内嵌网页小程序
+1)、请求安装永中内嵌网页Office小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-10-18","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"01DCB68843C178AC891F9E387477F53D","Version":"2.2.3.1","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"48C79F39C056C29F8648ABEAA6C00EE615BF57423672428EE0EB0CE25CCB5424EF4C698A63762792A183AE931545ABE5E7948A1668DF82B8D0328DBCBA31AAA9811EFFA7FAC4A68254077C5935E66B1B054A2A6DD5CE20ED8F965794BA7A536E1D57178CE9587A12C6B354324ECD17BC1ACCE4CFA31B1E89091472A2426A1A51F0994D38F5A6C31592D552EC454C7844AD0D108CE055249B3033F4E609E2C1A0D9E18EEA2C562A3AFC81904358BBE2CBE54C7A408E8110016AEF0E3F46201E638523635BBADEC63D93B25FDD65199DD1108DF78E745A204EE28A54FFF23340DF0AFA8897611E9038E4C6750B500B23C8B544F1E211E1A6A91E9D34F9FDDBF327"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-10-18","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"AC37C0939C15C44D5DD005DD5F2E1290","Version":"2.2.3.1","Size":3932160,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"36FE241F5B5918430C2A6EA47FEFBFB549548BCCE0327D0C52F8AEE58F06E214714B8419BB9114CD53BF3600D80BC66E5BCAD10AAFA693AABF92B3C86642A041AB5612A25B2763A83C8238CE04087029F5D49BB015C2C6F658472D17EF8F1E3B8859956A6128FD64529EE8A9F3614B99A4656CF7F65954DD7CB84D410564EB8E8FF17B7ABD9D0E67D28E0D6BFFEA074F48280F0793699B87798805F031CC957B17BB94A9F834B4D814A13B47B9EC6D7E349C2EC51213EF0B1CAABB2047BF3140E9F7E9B352BA18D2D7EB7996DAB79B5B8116C2DC9EB35DE53FF63B4D621E39AA3C01554A39AADF992F37137C209299228B5B0B71D43359C1BAD338572237C40D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级微软Office内嵌网页小程序：
+2)、请求升级永中内嵌网页Office小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-10-18","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"5B8D4DB7FC9D0593E6DEBB842C0302F9","Version":"2.2.3.1","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"940D93F164286D90FBC37FDB211398FF153A0719E3857D5E42DA968793F758F9532FC5B0B1F4B42A44A0D334A6B12D2661251356485D91475FD427D457B3619E05EDFA584114C2863968DEEA376D9FC9FB4B51E5CD24EFF2FC1339895A2060D5469D66664D2DEF545D5BDA6C33D1533B72796A1E793FD26E3D9A8B94C12FB83F888370934D3D264D2787FF650BD693BD413576969963F639AA6637FE498C648805F87560D33FE44BD9B4DC9D90BA059F0A1BC6587D6E29F91A9CA64B915143EDC95BF2D9DD3033A326E963A9FBF5A1DF323235798CFF17A34E52393AD5CB03EBC8768CCB9E1DFD9361D1B2DF06172BF82044F594024E9D81F49868D95B0E09B8"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-10-18","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"AB0E6749326657F3465361F9FABABA06","Version":"2.2.3.1","Size":3932160,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B876506D64ADFE67536E4D7B00D8B4BE44805EA7A43BD3CF69AB3B56FA2E0D7FE65DB8081FF7B58086355189C93F0846E5181BC88CF7A75267054238F8139D3813F3BB2578F3C1662B89B1D97BFAA1DF6E623A66FD4C7E4F65FEADCB2B545A31AB99864FFFD49EA4E2E41828AAF54897830BA6AB374F6134608B21908A7DCDC56021338EDEB291F643C534233B3A8BDA4503EB65782107D56531A3D040612C1EE0E08C031C4BDF88FE5FCF6B87C622E96EE12241A0CCB12C5AB1D4EEE7F7FFAA8298AAAA2A24FDD2D6A72B304AE58D863370234762A4CA821614B2A40C8BA47F0DE80A34C7790C71915A6452C6A9E9E0F5A8328B0100C4A7014E1FA0CC30F129"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载微软Office内嵌网页小程序：
+3)、请求卸载永中内嵌网页Office小程序：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
-{"req":"Plugin_Remove","rid":3,"para":{"PID":"MSOfficeApplet","Type":8}}
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"YZOfficeApplet","Type":8}}
 
-4、微软Office内嵌网页小程序转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、永中内嵌网页Office小程序转调用永中Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+
 A、常用功能请求：
-1）请求退出小程序，适用于Word、Excel、PPT软件，退出前建议先调用Office_Close关闭文档
+1）请求退出小程序，适用于永中文字、永中表格、永中简报软件，退出前建议先调用Office_Close关闭文档
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
-2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件，完整嵌入方式支持
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于永中文字、永中表格、永中简报软件，完整嵌入方式支持
 {"req":"Office_Close","rid":2,"para":{"Save":"0"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
 Ret为调用VBA接口对应函数返回值，0代表正常
 
-3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件，完整嵌入方式支持
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件，完整嵌入方式支持
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 打开本地文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
@@ -153,98 +154,98 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
-4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会弹出保存对话框
+4）请求保存，适用于永中文字、永中表格、永中简报软件，如是新建文档，会弹出保存对话框
 {"req":"Office_Save","rid":4,"para":{}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
-5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
-6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
+6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格软件
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
-7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
-8）请求在当前光标位置批量插入文字，适用于Word软件
+8）请求在当前光标位置批量插入文字，适用于永中文字软件
 {"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
 
-9）请求在当前光标位置执行退格操作Backspace，适用于Word软件
+9）请求在当前光标位置执行退格操作Backspace，适用于永中文字软件
 {"req":"Office_Backspace","rid":9,"para":{}}
 返回：{"ret":0,"rid":9,"data":{"Ret":"0"}}
 
-10）请求批量打印，适用于Word、Excel、PPT软件
+10）请求批量打印，适用于永中文字、永中表格、永中简报软件
 Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
 {"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
 返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
 
-11）请求移动光标位置，适用于Word软件
+11）请求移动光标位置，适用于永中文字软件
 Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7是屏幕区) Count为移动数量
 {"req":"Office_MoveLine","rid":11,"para":{"Up":"0","Unit":"5","Count":"6"}}
 返回：{"ret":0,"rid":11,"data":{"Ret":"0"}}
 
-12）请求获取当前用户名，适用于Word、Excel软件
+12）请求获取当前用户名，适用于永中文字、永中表格软件
 {"req":"Office_GetUserName","rid":12,"para":{}}
 返回：{"ret":0,"rid":12,"data":{"Ret":"0","UserName":"test"}}
 
-13）请求设置当前用户名，适用于Word、Excel软件
+13）请求设置当前用户名，适用于永中文字、永中表格软件
 {"req":"Office_PutUserName","rid":13,"para":{"Name":"test"}}
 返回：{"ret":0,"rid":13,"data":{"Ret":"0"}}
 
-14）请求获取当前是否修订模式，适用于Word软件
+14）请求获取当前是否修订模式，适用于永中文字软件
 {"req":"Office_GetTrackRevisions","rid":14,"para":{}}
 返回：{"ret":0,"rid":14,"data":{"Ret":"0","TrackRevisions":"0"}}
 
-15）请求设置当前是否修订模式，适用于Word软件
+15）请求设置当前是否修订模式，适用于永中文字软件
 {"req":"Office_PutTrackRevisions","rid":15,"para":{"TrackRevisions":"1"}}
 返回：{"ret":0,"rid":15,"data":{"Ret":"0"}}
 
-16）请求修订模式后续操作，适用于Word软件
+16）请求修订模式后续操作，适用于永中文字软件
 Type为操作类型，0默认代表切换修改模式，1代表接受所有修订 2代表拒绝所有修订
 {"req":"Office_TrackRevisions","rid":16,"para":{"Type":"1"}}
 返回：{"ret":0,"rid":16,"data":{"Ret":"0"}}
 
-17）请求获取是否显示修订信息，适用于Word软件
+17）请求获取是否显示修订信息，适用于永中文字软件
 {"req":"Office_GetShowRevisions","rid":17,"para":{}}
 返回：{"ret":0,"rid":17,"data":{"Ret":"0","ShowRevisions":"0"}}
 
-18）请求设置是否显示修订信息，适用于Word软件
+18）请求设置是否显示修订信息，适用于永中文字软件
 {"req":"Office_PutShowRevisions","rid":18,"para":{"ShowRevisions":"1"}}
 返回：{"ret":0,"rid":18,"data":{"Ret":"0"}}
 
-19）请求在当前位置添加批注，适用于Word软件
+19）请求在当前位置添加批注，适用于永中文字软件
 Text为添加批注的文字描述
 {"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档书签数量，适用于Word软件
+20）请求获取当前文档书签数量，适用于永中文字软件
 {"req":"Office_MarkCount","rid":20,"para":{}}
 返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求判断当前书签是否存在，适用于Word软件
+21）请求判断当前书签是否存在，适用于永中文字软件
 Name为书签名称
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求获取当前文档所有书签，适用于Word软件
+22）请求获取当前文档所有书签，适用于永中文字软件
 {"req":"Office_AllMark","rid":22,"para":{}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
-23）请求指定序号的书签名称或指定名称的文字内容，适用于Word软件
+23）请求指定序号的书签名称或指定名称的文字内容，适用于永中文字软件
 Index为书签序号 Name为书签名称
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1"}}
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
-24）请求指定序号的书签名称，适用于Word软件
+24）请求指定序号的书签名称，适用于永中文字软件
 Index为书签序号
 {"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
@@ -254,7 +255,7 @@ Name为书签名称 NoSelect为1代表去掉书签选中状态
 {"req":"Office_GotoMark","rid":25,"para":{"Name":"Caption","NoSelect":1}}
 返回：{"ret":0,"rid":25,"data":{"Ret":"0"}}
 
-26）获取修订数量，适用于Word软件
+26）获取修订数量，适用于永中文字软件
 {"req":"Office_GetRevisionsCount","rid":26,"para":{}}
 返回：{"ret":0,"rid":26,"data":{"Ret":"0","Count":0}}
 
@@ -267,12 +268,12 @@ Name为书签名称 NoSelect为1代表去掉书签选中状态
 返回：{"ret":0,"rid":28,"data":{"Ret":"0"}}
 
 5、事件通知：
-A、以下为Word程序通知
+A、以下为永中文字程序通知
 
 B、PluginOK支持的事件通知：
 
 1) 小程序是否响应了热键全屏
-以下分别为Word字处理、Excel表格、Powerpoint演示程序的全屏事件通知
+以下分别为永中文字、永中表格、永中简报程序的全屏事件通知
 {"event":"WORD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 {"event":"EXCEL_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 {"event":"PPT_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
