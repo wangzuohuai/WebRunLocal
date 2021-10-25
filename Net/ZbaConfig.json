@@ -13,7 +13,7 @@
   "Adjust": 0,
   "Language": "CHS",
   "NoService": 0,
-  "NeedAdmin": 0,
+  "KillWait": 15,
   "HttpServer":0,
   "UDisk": 0,
   "ServerPort": 888,

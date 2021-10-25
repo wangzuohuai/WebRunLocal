@@ -6,6 +6,6 @@
   "FillWnd":0,
   "BlockFlag":15,
   "BackColor":"#000000",
-  "StartText":{"Text":"准备播放中，请等待","Color":"#00FF7F","Opacity":255},
+  "Status":{"Text":"准备播放中，请等待","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
   "PORT": 930
 }
