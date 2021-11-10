@@ -73,6 +73,13 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"MSOfficeApplet","po
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","Port":950}}
 
+关于OType参数，如果不确定是调用启动微软Office小程序、还是金山WPS小程序或永中Office小程序，请先调用指令
+{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
+{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Flag":1}}
+Flag掩码的含义：包含1代表安装了微软Office 32位软件，包含2(总值是3)代表安装了微软Office 32位软件
+包含4代表安装了金山WPS 32位软件，目前没有64位的版本
+包含16代表安装了永中Office 32位软件，目前没有64位的版本
+
 2)、请求控制微软Office内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
@@ -117,14 +124,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装微软Office内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-11-03","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"45E96A51CF3684D290C033670EA7B202","Version":"2.2.3.3","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"38B5F40E76FE27E4C3EB60B2D5B9FEE72FFF3416FC553848EA0EFEAD79F43FFBB70FB98718AFA3548BB2F99CEEBC8BB2E881106CD33B0D8CC8456481BC7D2443282668864CF9915EF564F360229704CCD8663BA11AE90A142E3B91D72333B64CB2CE7C261855876E2D625C683A47F1D4E2108ED24507EF7315011B11DC6BF6C3C27D8BD9744AD081AAA213ACE5FBFB105B005FCCB851875C4C7736C4F41147082A062DA53D1117ABBB833B439A5A8E5A2BB7723A20C63CE4E9BF1C83AA769B82A2605B496E80CA815C139F93B4F656AD0C6F4A4336D8EC911A933BEF3D8CA26910033D6C814E0D1F7DCADF64D170812AD23F4F2E9BDB953AC1F45348F8A63DD2"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-11-10","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"4805022C008CBED169C5756EE4EC90BC","Version":"2.2.3.5","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B7ED7EF2DEFC0F6AC27A3FC4C9105917646F6209303D57A059A894EBD6C2279C9E416A62F1A7E605097B4BABD4AD30FE1D896D519E6A7C01E77F1755A60588E9ECCBD740E4B8E1E91BDF9E17D954394515CC75B364CB41472C523A6C4FD48375ED0499583E327E456AEE3C03FA6B6743973CC6EBCA4FA844DEB8BF80A6BA6BF96B24B9D6E2FD923A808A458D09F17AAB202BC63BBB8414AC4433B3D912A6198AE79671AD43280DB53728F6473F43255D300E8E06ED7D107680E81EEA242B2CD0C9FA49B3EE94C5712EC3E57276E9068545C4CE507BD3B4A2B505F98E1A58F42F5E897B3FBA2A93C07096A5B7FC090EA54B6B3C4A59959612DE52F1029FE411E4"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-11-03","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"A04F1F15D25BC977DD17D685001D5655","Version":"2.2.3.3","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4EAF172F020230C0B9B8428B9B48EE53E8CA25D3913E55DF80D78718C3B4016CA8A2E5C2FF9542811AFAF25B5561BEE1C62BE36B54EE4D291A40372A143D6B4AC73AF2B32148DEC63678A87CC85E1E36C82E713F0FE6476AD9CE5BA3827CB32C07CD8EF6D98CAB64B4865584746083514BED58D81E6B387A5AEA306431047BE18ECA3774B5D0542FA0870EDDD0E33700F633DF6B538CE374402FC1C6B7634955B88F20F0584150BC4D611D33723253196FA1F824EEBA44F995F7E89A3210052BB703D326C5E04E64E9A0CD577E5A5525066575FFB0C5F75B2CBDC95948EF629F0881ED6119065D54E8F63E932A55BA529EC66EC9A8CCCA838B9A5484C62ED792"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-11-10","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"5DC3C73DD7C2E0C63BA4556F0186584B","Version":"2.2.3.5","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5E24686883625A77CEF2C3C445ED7FCA61FB90782C7CA2DE25213398BD96CE453D5CB781E645BEF542F08BCA83F7FDDD651D7BCF90AC4E0F722CB776BF21A72C0EAC7CE7A0D4033B5A737F644492A6547259D4435706B1695E1A3E8FC8F0A35405D9435D8409E15A26DD12BCC48A2C21B11F0D3F4F4C7437169FD6653033922F0B8A002E959C20B4F713E4CD5894763CB784CFC2DAB828CB42000FD6DE31A5E84D72EDADAD3EA050C46523EC28E690B41D82DB19545AA8C78C379BF342D6B4B778F311CA73D57BE80112E1AEB7F8ED8BFBA6C64A978E83BECD36C43758423A849F302ECC5B2EFE75356B89F240119C54EE0B8B62CB1D1BE0AFDDDE291D1C47C6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -134,18 +141,18 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 
 4、微软Office内嵌网页小程序转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
-1）请求退出小程序，适用于Word、Excel、PPT软件，退出前建议先调用Office_Close关闭文档
+1）请求退出小程序，适用于Word、Excel、PPT软件
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
-2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件，完整嵌入方式支持
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件，完整嵌入方式支持，OLE嵌入直接关闭小程序
 {"req":"Office_Close","rid":2,"para":{"Save":"0"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
 Ret为调用VBA接口对应函数返回值，0代表正常
 
-3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件，完整嵌入方式支持
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 打开本地文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}

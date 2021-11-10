@@ -73,6 +73,13 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"YZOfficeApplet","po
 返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"YZOfficeApplet","Port":950}}
 
+关于OType参数，如果不确定是调用启动微软Office小程序、还是金山WPS小程序或永中Office小程序，请先调用指令
+{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
+{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Flag":1}}
+Flag掩码的含义：包含1代表安装了微软Office 32位软件，包含2(总值是3)代表安装了微软Office 32位软件
+包含4代表安装了金山WPS 32位软件，目前没有64位的版本
+包含16代表安装了永中Office 32位软件，目前没有64位的版本
+
 2)、请求控制永中内嵌网页Office小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
@@ -117,14 +124,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装永中内嵌网页Office小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-11-03","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"696A041CAE0004201148089E953CC939","Version":"2.2.3.3","Size":3932160,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6C62A4663D276A857A6BA4C7147187E2877C3E32120668DB0ACC41BDC5B4D48C8DB95E2FC26DBE9F68080E1E44169B22D9EE622EF38BC80AEE68E656CBA5B21602B9482C1D2668FA7D1D0A7EF60C098E8631C3760A95DC4D73AEBF9A9B659E16B0D3BDA9AF37A32845F9620A904CCCE1D78DCC3C3F7BCEF4939EF2A015C89B0F67C42506F95AFC9C7D4A8A8926502D3E56AE17D411813E5078A0D3328D9180FE9EA8D49978BE77757B5768678613F5B6F3863606436B8EE00593BB2F46F52B968C45C88A0F263DB15CBA58E06FC53654100C7B51C4E77EE60EBE0E0C1043A6E67EB71D7CF5FED23FE1C24C73B78A47115B8D0E1B06A61FBFEB0A2FBE6D3B5A46"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-11-10","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"B6451E34BFF75C0091EF4E4325C5B721","Version":"2.2.3.5","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3D146DB1E46458AD72753E8A9EC08415F6056F42850531DAB669BF01D58FA8B0CFB7AB057B36F9A0372301D2382E8C4740C2C3E363403763EEB8F129C5F49DAD962E85CF0106EBC9F62BB9E2A85681606103A4E390A68823F57DC52950877686A8417CBF8F5E94634826445AD6144ABD9FBFECA25C5A865BB02C8C253DFAEBE58BD4D79FEC462C087FF22026F17E9610DA7DF93419A2A72AB43CF8B77EB166EDD844AFD9CF5A7C67484FAA0DB07B3DD6F95091EC25DAEB8CBC73E3740DDA1FD4E0B8570A5C10561967A955F6E0AB26DA293500BDA4980F5BF79AFD287978934BBC4D61E841B231235E18413BF503630CEC1A6DDC440A7A32BCF8035B6F7E8E66"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中内嵌网页Office小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-11-03","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"91162E5CE502EAD79A6C8696E32BABCE","Version":"2.2.3.3","Size":3932160,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"982F46AFA9EC7710C56F11AFB7ECF561231C06F16B7CBBEAA0CCD45F9AC19433AABE16DE695894DF77AB937FE2F3B8FB12F5CBEC548C21747439020CD17F6AEA366268DD71035B106AE1E78B65A18B0488F689E09067AB08B94BFCF305CCEF21B9B27231C92AD7A641A27793D34F57F7E74E7546AAC0A5A08605C630DD350A9F7D30395D64B049B6618C2696DA19505523066B2915B87556023B24F070CA38D89E363F6E57F29EF9980A0BD08DF259AC3DBC1CBBBFC66F56966DB532E21513E63016DE3BB6ED2667C42249DA7342A650EB329EFBF5167B0163A2DF5CFD57DD3B23930AD4B3BD6B3A1478C3D1BD167824F3C6EF558FFFCF75D3F60DF61FBCC076"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-11-10","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"B4BFB2AFBC193146224A31016D7FC285","Version":"2.2.3.5","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0837D16C258053AD37858334C3135662D758DC77C494F2A7E29A32FCD74F66F969A86942BE2A3108EFF5F2D3CB1DE5EEC6FD602CDF42F9D540ACA20B185AEE360E12213AF3024AE37872529205ED86527D72B8E23D5CB1F15A76589DABBBEEEDC0EE5208B9F27696B7C755350FE2E25E790103F995CA79690B14799C1260E23DAFE750C801A30064B232D54AB47E72D96B835E542681DD6088A9E6DEBE980AE3111F74704E03643C29A2B46BC477E0581EEC366C879B60EFFAD72BCB21239C46461C053B940EF9BCC10788D80807F7996B65A73095B55092779F12907484EBC8504AD3BA6BC43F120C8AB3838795FA591565503B1F968654F04E9C51CF252720"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -135,18 +142,18 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 4、永中内嵌网页Office小程序转调用永中Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 
 A、常用功能请求：
-1）请求退出小程序，适用于永中文字、永中表格、永中简报软件，退出前建议先调用Office_Close关闭文档
+1）请求退出小程序，适用于永中文字、永中表格、永中简报软件
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
-2）请求关闭文档 Save为0代表如有修改不提示保存，适用于永中文字、永中表格、永中简报软件，完整嵌入方式支持
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于永中文字、永中表格、永中简报软件，完整嵌入方式支持，OLE嵌入直接关闭小程序
 {"req":"Office_Close","rid":2,"para":{"Save":"0"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
 Ret为调用VBA接口对应函数返回值，0代表正常
 
-3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件，完整嵌入方式支持
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 打开本地文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}

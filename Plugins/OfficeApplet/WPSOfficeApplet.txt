@@ -73,6 +73,13 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"WpsApplet","port":9
 返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","Port":950}}
 
+关于OType参数，如果不确定是调用启动微软Office小程序、还是金山WPS小程序或永中Office小程序，请先调用指令
+{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
+{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Flag":1}}
+Flag掩码的含义：包含1代表安装了微软Office 32位软件，包含2(总值是3)代表安装了微软Office 32位软件
+包含4代表安装了金山WPS 32位软件，目前没有64位的版本
+包含16代表安装了永中Office 32位软件，目前没有64位的版本
+
 2)、请求控制金山WPS内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
@@ -117,14 +124,14 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 1)、请求安装金山WPS内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-11-03","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"EE225BC34D42C946130F3AEE4E930295","Version":"2.2.3.3","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"791814E5C7B661627B35898E362AC135F26548AFF98A444558CC7B6A76D794CC235B0992460BD042D07ABDC25D43F6574C6B4D3AA41B7D30BBF62796EA342D2110586DA39B6AF3361272D732C1DACE807389F1A267F5E03212FC7F1D5FC5A51D3122BF6653249D7308F3F0DCE3B794AE0B200AF6BE6222646FF9BB5FDF236C5A269884FE661E1BAAB15BA2BA6696B644A86DE21BAC609CF79F877B74B52EA1748FC03F61499BD3945019D47CFE26D15DBCD16238A60911D74EA6F236990CD50235F462C24CB4E236F184C30F6C40F42741756718C608494CA6A0D8393246474ABDFC20F74926787503F486FB5B20B183B53B68A81D5AF7C9DFB4DA2DEAFB7025"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-11-10","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"18CC0883F0BB412EC64C663CDE99DD21","Version":"2.2.3.5","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A6CA3E4049D3ADC4A3373FA412967A352E19156DF421D8A74D2D7577F0185FAE77E9E2FCE5C4755CF2E94CBB34AB501247AC0B1F32527CFE5195EB3996BB3242B9894495320DAE5BAE6393D6F8B7389001DAAF42FDA4AD07DA1968FDD1172E03A77FD6DDD84C17C155A8EEAAE6C010E167134D08B30A5698EF151691E71050A054A6B5D8C90852849971115957F1B819F3BF7E5C5383EAC115739342BB33E7A69331A037B3953CA60CF8D551AD8F8A29818F1B43837BF1683C8B52C52B5B09891C2DEF3B1CF81806A926579F0F901A854CB7020358DB08088F66D4A250E57B110EC74ABC65B00C8DBBEBD3BDC4319C46DD2AC236D0B0B95DB1FF0CC8A14751F9"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-11-03","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"508E3BDAE10A091AC86D114634B95518","Version":"2.2.3.3","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"06BC35BAA4BB1743EB2DAFD44E3679D30BB2ABF0BDFA26E40DBF48D45153C2C41657F9CC92342FA930D3AAC0BB8867E1D7537B2F5255EC27C3A3557339C6D03A95860115D060078E00DE90FD8D0E06A2B353AAE6828479144088491663FD6ED0B0D2D3DD3D4A198D058ECAFD7628A3095315AC72F4FE430C51DCC9462751EF4FADC329D25562D0555A6C47DC43779098F10CC079724C79123158652DBD40B0D1CCBF019385861FA18355170928E908E15634BCF5EBF8687E8C44BBA9BF963B24F6C7D48926DB21DB3B88E5BC3F5E6FCFFF822A9F6DF1E8677E32901DE7D577D2B732D0B3B608CF72F8D0D3D09A6FC2B056015024F22A2AC5FA1E9929CE3C0950"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑小程序","PID":"WpsApplet","Date":"2021-11-10","Desc":"跨浏览器的金山WPS内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"BD4A23F29469B4301472D06529E232E0","Version":"2.2.3.5","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"835C7790D40FA798D68DBC63710F20CF37782871E44B3166D63BA0B977CFC037BC7366EB768E9BAFED08762D3DA3AD68A8ADC545ABC7EF7B0EA87238B40BD92A9BE9E41FF5061FFD02154B409D72430BA4A84744DB1ADE0208893066F7E4A13E3B85303974FAB28572470FDDB0B09A67629430C31EA6A2623ABF26E04503E9A35E45C35A9BBFBBB968BD9AE69EA6D00D081DD75C6E77B6186ED6B83CF97DB3931F521EC92B12D88E2A0D5FDC4CE6FF9A9D2218EAB27A97A288B918AC76521871E289A9ADFC192FCDF8A1365528FE7997C647FDFCB059814E470C81B3246F94556E693F27B24AF079FC28A4569377ADCB54BCBE5A12E31B11D34684E7493EA17E"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -135,18 +142,18 @@ ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
 4、金山WPS内嵌网页小程序转调用WPS软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 
 A、常用功能请求：
-1）请求退出小程序，适用于WPS文字、WPS表格、WPS演示软件，退出前建议先调用Office_Close关闭文档
+1）请求退出小程序，适用于WPS文字、WPS表格、WPS演示软件
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
 {"req":"Office_Exit","rid":1,"para":{}}
 无返回
 
-2）请求关闭文档 Save为0代表如有修改不提示保存，适用于WPS文字、WPS表格、WPS演示软件，完整嵌入方式支持
+2）请求关闭文档 Save为0代表如有修改不提示保存，适用于WPS文字、WPS表格、WPS演示软件，完整嵌入方式支持，OLE嵌入直接关闭小程序
 {"req":"Office_Close","rid":2,"para":{"Save":"0"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
 Ret为调用VBA接口对应函数返回值，0代表正常
 
-3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件，完整嵌入方式支持
+3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 打开本地文档
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
