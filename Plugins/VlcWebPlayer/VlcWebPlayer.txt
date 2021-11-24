@@ -7,7 +7,7 @@
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
 
 2、VLC多媒体播放网页小程序控制相关接口：
-说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS网页在线局部加载测试：https://zorrosoft.com/vlcframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
@@ -114,20 +114,20 @@ Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
 
 8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
-ID为启动小程序时返回JSON中的ID值，Scall为缩放百分比
+ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
 1)、请求安装VLC多媒体播放网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-11-10","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"FE653ED4499A716D79B4E4598FA2FAED","Version":"2.2.3.5","Size":884736,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"05A0FF6BC5727B75C9CBE62B7228B606FC889008078BA832C97D22DF5AAB2D641EAF49D3FE7AC6231EA682E18E6484FF1A9F346ADE67DEDC5DFF70FF40992BACC40ED5677CED89E5AC61F900CC65E9603C074D1DBDB26A4C76067E7862CF2F8D662C62855451C81A4FE7405DEEEF2E42E76E6063435D27540B1BE94BC7617DA9B537A8D924D473C0DF195D3F9E60581BF861A552419F5BA8447E31400EA69C108F250701FFC48CB0A758D81F4A74D68C6C39B9E54D55B7E0400DF79946848D59639AD0BAD5BCF18B2D15A8EFFACB359292BBE75B34D74F37D9CF9D1EE0EED9CA1D5AC279878068A359984FCEF2DD2D87BA8E29700DB99C84AF42E732A398B410"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-11-25","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"FABAD5D9771F81D8AC463E18F3BBA228","Version":"2.2.3.6","Size":884736,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AC6457FF3C154C0558D50E39A8EF5B18DA01B9161C19BEE4A940022095BE465E8E37927CA0B67A48118C3880732D2FD638361FD5054EA2136A8E95978E355AA74681D929302BF3CC0BD07C4907502130D0BCBD8D8418B1AB62955C19F3FD6AF25A81B9A851DBEA05D6B7B25B907386A5E12B3EFDDA897F52FF45F93D8365E20241CE09F99387D1476B6F4AC6064016D680DDD0E5C7F0D2EA16B1DD29A032310126558F7B6B95A276DCE20ABBF5206F4CBDCEFA53837D8DD63D4E7FF34C6EA434DF18EF94A15D5A6C5FBD38832FD762541958F42D488AB44306D8E87ADA0692FFC243D6AAAE89A6BFE6F26AFE55F0681D81A520C48B593FD9847254A591EFEA0C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC多媒体播放网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-11-10","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"D80D127D8057A50A69BDE6B1708D8637","Version":"2.2.3.5","Size":884736,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"248B1F7563AE49D70BE48AF9479819C4B25EF8CDF4D4FD86A60480904FF3EC2A0B8571ECB46EEEF89471AD2DF1BAF9A9065E93B26FF2A391142512760F90EC23C1DC052FCD9871CFBFAF6E42B27781CD8E3EB0E6EF456452339561676AD94BF2740A86B9F5384FC89F21B76795441DFD47A4C3CD48D67FD9047466E465F806536678AEA10F2316C673F129A6A97B4E9F33ABD89D671BBBB01CC23DC8EC993EBAED12E21EBD764952547550910625EEFAD85896F758F4CB4DF86CABEC5E4701B7CA3AD6A5469DD91EB3C151E2E1F0BC852D541AFD2D556CC1E800884F558C6CCBBC07A4B552AE555E656B568B010269F6704D2E7F7CE476FAD54751426E1A475D"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2021-11-25","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"70FF74012DA8DD2D2302108092B55434","Version":"2.2.3.6","Size":884736,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"58B7756188C1F55DCD530980B39CBBE17A419E08F650A9446D5E4B0310E1EE65B2A5B20880653524572282642E18ADBD67F94C65C49B954DC931D356D6C68E8F5189EE603C5D26F9EF907808C2DA9F65DEDAD5FA800D87CFB7F832962BBC98DDA5B96596C8E4BFCAB11381192D4C9F6564D61576C2A7BC2AB42AB336A2C293E9DD863A5FFB80F85959DA7460C41490F5DB7E49050ABE11F756F96E81A91C73617FDC6A68763AE909AF75D2576E2949FAA57C88E9FD5BDC7F1CD8ACCACF2D1C0CAD91F6E60C54F8B0380CE1FB84E279B75039F00B4D29319D918B7DC1AF38471C2AC5CBD87EA569795E348AC982E6492F0C570F626DA5619109DB4CA22423DA15"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -299,7 +299,7 @@ Text指定时获取文字信息 Position指定时获取位置信息
 分别返回：{"ret":0,"rid":75,"ID":1,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":"","Text":"","Position":""}} 和 {"ret":0,"rid":75,"ID":2,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":""}}
 
 36) 设置指定ID窗口字幕信息，举例：
-指定的参数，需要的才设置
+指定的参数，需要的才设置，必须视频开始播放才能设置
 Text 文字内容
 Opacity 透明度 0-256 0完全透明 256完全不透明
 Position 位置样式 X 和 Y分别指定文字开始坐标
@@ -337,12 +337,13 @@ ID是当前播放窗口序号，ID是从1开始，需要确保不越界
 ID为当前播放焦点窗口
 
 42) 指定ID窗口截图
-Type 指定图像类型，默认4(PNG) 可指定1(BMP)、3(JPG)
+Type 指定图像类型，默认4(PNG) 可指定1(BMP，不支持BASE64编码内容)、3(JPG)
+Base64指定为1时代表返回BASE64编码的图像内容
 Count截取图数量，默认截取一张，Delay指定延迟毫秒数开始，Interval多张时间隔毫秒数
-PathType 指定截图图片保存路径类型，0默认中间件临时目录，1操作系统桌面 2当前登录用户我的图片目录
+PathType 指定截图图片保存路径类型，0默认临时目录，1操作系统桌面 2当前登录用户我的图片目录 3中间件数据目录
 多窗口播放情况下，只能指定某个窗口截图，不能同时指定多个窗口
-请求：{"req":"VLC_VideoSnapshot","rid":82,"para":[{"ID":1,"Type":4,"Count":3,"Delay":1000,"Interval":200}]}
-分别返回：{"ret":0,"rid":82,"data":{"Ret":0,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}} 和 {"ret":0,"rid":80,"ID":2,"data":{"Ret":0,,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}}
+请求：{"req":"VLC_VideoSnapshot","rid":82,"para":[{"ID":1,"Type":4,"Count":3,"Base64":1,"Delay":1000,"Interval":200}]}
+分别返回：{"ret":0,"rid":82,"data":{"Ret":0,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}} 和 {"ret":0,"rid":82,"ID":2,"data":{"Ret":0,,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}}
 
 43) 设置RTSP流网络方式，HTTP还是TCP
 {"req":"VLC_SetRtspTcp","rid":83,"para":{"Tcp":1}}
@@ -439,7 +440,7 @@ A、ActiveX事件：
 3) vlc is buffering 播放器正在缓存数据 通过VLC_PutBlockFlag设置掩码2可阻止通知，默认不阻止
 {"event":"VLC_MediaPlayerBuffering","ID":1,"data":{"cache":0}} 
 
-4) vlc is playing a media 正在播放中
+4) vlc is playing a media 正在播放中，第一次WS连接过来会收到此通知，也可以通过调用VLC_GetPlay获得IsPlay是否播放状态
 {"event":"VLC_MediaPlayerPlaying","ID":1,"data":{}} 
 
 5)  vlc is in paused state 播放暂停状态
@@ -531,5 +532,5 @@ B、PluginOK支持的事件通知：
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.doc”及“PluginOK中间件安全解决方案”。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
 如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

@@ -87,7 +87,7 @@ BtnText 按钮文字 设置文件保存位置时无效
 说明：连接主服务后可执行；
 
 7)、请求重新注册中间件或小程序：
-如指定PID代表重新注册指定的小程序，否则执行重新执行中间件安装批处理(连接会断开)，可能因为一些工具或手工误删除了注册表等，用于修复本中间件使用配置。如用于重新配置中间件正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
+如指定PID代表重新注册指定的小程序，否则执行重新执行中间件安装批处理(连接会断开)，可能因为一些工具或手工误删除了注册表等，用于修复本中间件使用配置。如用于重新配置中间件正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
 注册小程序，举例：
 {"req":"Wrl_RegCom","rid":15,"para":{"PID" : "A22E18F1-95F8-4FDB-99D2-188E5FB12B23"}}
 指定一些参数重新注册中间件，相当于重新安装中间件
@@ -152,7 +152,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 {"req":"Plugin_Update","rid":1,"para":{"Name":"弹窗小程序范例(C#语言)","PID":"PluginExeDemo","Date":"2021-10-18","Desc":"弹窗小程序范例(C#语言)-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Plugin/PluginExeDemo_Update.pid","MD5":"0605AD8606C707D2F8C563C4C2559799","Version":"1.5.3.1","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"02BDA29E79F851E75F691B2693645FDAB5BEAC2CED42814B45DBFDC83D1B23A1BDD4D8939BF9ECF461A8FED4AC811C196657469FFEE1FFFD5590B55E06225C8EF48CF6E79B83FC785ED0A5DF847A745643107A8D90E1708C6C11E80FE6A4D2571560EC4B1262A629403856EF87B44EC65CF124A77C97E2B36C697ACA5F5E8109E9A3A2528929FE9A4A0D444AA96136BFD761FB300A9EF26B75388BA25F88166E56FF0665D99F63BD4CDEBD4043AEF9B3F217BF7B2DC7C539F5D348BE2B41F907AF29B19DBFDEBCEDC64C808DF7DD4AD2DB1AE2708EC7AC9C87AFE043357A3FB1386BC30518CF4796FD04FA74D36EEED0C04A5F227061AD889DC3EDDB14F1AEA4"}}
 
 17)、卸载小程序：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
 举例：
 {"req":"Plugin_Remove","rid":50,"para":{"PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Type":2}}
 {"req":"Plugin_Remove","rid":51,"para":{"PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Type":2}}
@@ -160,7 +160,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 {"req":"Plugin_Remove","rid":53,"para":{"PID":"D10495F4-DF0F-44FA-8647-91275347214A","Type":1}}
 
 18)、前端请求卸载中间件：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序WrlPackage.exe的中间件维护生成带TK的请求。
 举例：
 {"req":"Wrl_Remove","rid":22,"para":{}}
 说明：连接主服务后可执行；
@@ -168,7 +168,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 4、PluginOK(牛插)中间件升级：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK升级包","Date":"2021-11-10","Desc":"1、启动高级版内嵌小程序不需要Url参数和对应网页了，优化启动性能；2、完善VLC网页播放小程序和Office小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"9D28170460CDF2247CA6736E76B7FC9C","Version":"1.5.3.5","Size":11304960,"HideIns":0,"Cookie":"","Auth":"","TK":"84E37F2EB240AE5BA4B13EAA8A9F589439089453F1532D3C4DAF5934606EC776ABD267C8DF738DC0D99AEB16662CDF7C0E02F81DE851FE9B51A0E116FE19F75E905A52AC88FB36641ACFD80E023F02D51642BA76E692E695559D7F86C71436AF64DEDD70369E0CD156F5DE0B40D82C9074DED7E1DDB9B468E8D0E2EEE65736165CA37F26D3241D0ECA8E3060E8637A4D7A330595319061F590AABB795A03DB93A1FCEED3C22BE80C2918962CA863DEE85A6138FF1788F90A6E66A9D5534BB4FEE0724A119644ED3239C09B574621744E10BB96841A420E2A710333DC89D3EFCE4CF2AAB827887ED7B58253D840B843088C652AA39166E551E2CD4837534957ED"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件升级包","Date":"2021-11-25","Desc":"1、发布海康原生SDK的网页播放小程序，才有私有协议播放可大幅度改善网络延迟性能问题；2、改进Wrl_AppletScale接口实现，不传比例参数Scale时为获取当前小程序使用的缩放比例；3、改进Wrl_OfficeInfo接口，支持获取运行路径、版本号、是否64位等更多信息；4、VLC网页播放小程序增加2分屏上下排列样式，改进切换播放过程中的显示效果，抓图增加输出BASE64编码内容","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"F0A4A5A849E915CF5F1282C090E8A405","Version":"1.5.3.6","Size":11272192,"HideIns":0,"Cookie":"","Auth":"","TK":"C0AE7FBFCA65EAB5C9DFBAE620E1B4F4BB7A593D8A5EC54732E8E6AF2B142946F1BA2931A5713A4938E516491F9A588924224B7CA4DF297B5D055670499621F75B5A09EC40A112A2947EF3B6C25940BDB1FB77F6183A25C0554AE9E41FBE2D4029DA0E9C79994D1AA009058E3E8C157B830767E1FAFDAF2A1D7674189293124276D776ACE1080EF10CBB00E5CD5284D88EBFB9EE98E3C830CEFF11D8AE129D71FBDFE3108AA1861A91B472E23342A6E3D464BD1258AFA9F14A8EBCC9FB3CDF35F6DC58F4178BDC258929C31629EAE46289108678407A129434E8E54FDC2B56B6B154E11BC3B108EBC7142E2F8DC4C2FE5E7815DF05CCF543F7B6DFA0FE035AE4"}}
 
 2)、升级中间件授权请求：
 单机版中间件的授权文件，可以放到此协议中进行升级，也可以单独请求升级，如下指令：

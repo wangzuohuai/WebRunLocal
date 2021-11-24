@@ -87,7 +87,7 @@ BtnText 按钮文字 设置文件保存位置时无效
 说明：连接主服务后可执行；
 
 7)、请求重新注册中间件或小程序：
-如指定PID代表重新注册指定的小程序，否则执行重新执行中间件安装批处理(连接会断开)，可能因为一些工具或手工误删除了注册表等，用于修复本中间件使用配置。如用于重新配置中间件正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+如指定PID代表重新注册指定的小程序，否则执行重新执行中间件安装批处理(连接会断开)，可能因为一些工具或手工误删除了注册表等，用于修复本中间件使用配置。如用于重新配置中间件正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 注册小程序，举例：
 {"req":"Wrl_RegCom","rid":15,"para":{"PID" : "A22E18F1-95F8-4FDB-99D2-188E5FB12B23"}}
 指定一些参数重新注册中间件，相当于重新安装中间件
@@ -152,7 +152,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 {"req":"Plugin_Update","rid":1,"para":{"Name":"弹窗小程序范例(C#语言)","PID":"PluginExeDemo","Date":"2021-10-18","Desc":"弹窗小程序范例(C#语言)-演示脚本请求打开指定网站","DownAddr":"http://local.zorrosoft.com/Files/Net/PluginExeDemo_Update.pid","MD5":"272EECA5C0BB15108E37C0CDB2A8F445","Version":"2.2.3.1","Size":622592,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"5E45615EA57FF01FAB35C142F9847CDB4C9A9CD90EC1175F991034E17959D086F71B590176AD6C1C4C3115582383F88EF662BC2638AD3B39735145A7C3518F0B988D2FEA39C4A65D281B33DE898E1FB151B70F3FF3066F105B9A4FF8FA3A05E0806D7817AD07C3DDCA83F538CD9EDEC597BFAA1E6132C430BB015758A7550CFD11FEB023197DB35090D9D3E9BCCA836A3AA5221A8F93F3499DEAA6F2B6CAB0D8E2B974F91FB6AC5A4D906444939864596DB187F0B02AE3C5C62ACFD87FA7CD89DF01095E4E1C85F7EDFDBDAB1DA1450B9EDED8B020AC1454990D28F8A3D26D1E92632AAA2102D352F0D4D192DCC29DDFDB6B14FF6C21A9DD3B4F32797545969B"}}
 
 17)、卸载小程序：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 举例：
 {"req":"Plugin_Remove","rid":50,"para":{"PID":"99225C6D-B7A3-441c-AEFB-3EE23ACA2209","Type":2}}
 {"req":"Plugin_Remove","rid":51,"para":{"PID":"F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Type":2}}
@@ -160,13 +160,13 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 {"req":"Plugin_Remove","rid":53,"para":{"PID":"D10495F4-DF0F-44FA-8647-91275347214A","Type":1}}
 
 18)、前端请求卸载中间件：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 举例：
 {"req":"Wrl_Remove","rid":22,"para":{}}
 说明：连接主服务后可执行；
 
 19)、移除本机中间件授权并卸载程序：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 举例：
 {"req":"Wrl_RemoveAuth","rid":23,"para":{}}
 说明：连接主服务后可执行；
@@ -179,7 +179,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 
 4、PluginOK(牛插)中间件升级请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2021-11-10","Desc":"1、启动高级版内嵌小程序不需要Url参数和对应网页了，优化启动性能；2、完善VLC网页播放小程序和Office小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"F76D7FDAE3B63F8C5EEAC546F6CB4120","Version":"2.2.3.5","Size":11239424,"HideIns":0,"Cookie":"","Auth":"","TK":"425151CDBE954B5FD3CB881B3A641BA4A86266847957861C396FA324CB607C9BB7758D65123C11F9F3FF71A632DCD481D26E327D0FB4E037167E0F0AFBC6822D74A2CEEB9A91003F4E31C1AC85148D0BDC1E738CD65719CF54EE3BBF7A21903E1908053FFDEF8CC4F72D2773FCE285D44184ADBFC63D94670A323951F437FACF1AB68E9FE6209D22458BF4A268107ED14A861B798D0DFD5E78B0446CA9146F774783D4A99E5896C73C0BE1A3906DA8DBFAD42ED5362C310CF4894F85705E263F722987AFD6D615F24754B4227CA341B3BC44B632B607FE9ABD49A10277BC6F744C67620EF798C672891253F9F76A53709891BFB43E151A47449E6DC8E68566E8"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet升级包","Date":"2021-11-25","Desc":"1、发布海康原生SDK的网页播放小程序，才有私有协议播放可大幅度改善网络延迟性能问题；2、网络版后台管理程序增加客户端版本号信息输出和查询显示功能，改善有效授权统计准确性；3、改进Wrl_AppletScale接口实现，不传比例参数Scale时为获取当前小程序使用的缩放比例；4、改进Wrl_OfficeInfo接口，支持获取运行路径、版本号、是否64位等更多信息；5、VLC网页播放小程序增加2分屏上下排列样式，改进切换播放过程中的显示效果，抓图增加输出BASE64编码内容","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"8FFA80E54F10F7A08BA12B676C31EF0F","Version":"2.2.3.6","Size":11239424,"HideIns":0,"Cookie":"","Auth":"","TK":"78F47BA934B4FFB6E9D6DC364A6909A5956194D9E39B52AE25091EE539E323C179531F8841E6D97D271374D2E4FAC7035C01B60C43D3F39510FC30F21AE5386CA7BEFD9401A436A64FBAA872A999FF3727BA61B4E5E76124B59717635EE816561882829A259A2A37FB0248DA4DD0C43A28AF71461A783A5B3116F5499A1D52F1E9E716EC8C8E081E43C12AE682A809B2B12E9DD771AFA20A78F7E644963FF08A275037BA64E96F612B5369F2F5AC3E46D47CCAF833C00131B633DF193C51DE0D493C3F345C05E86C154A2EE5085F5028209194A8318B7E95D352AE08FB06B7E9DA10FC90EFFAD7AE58FCA4CF68B631F685C190FCF2637EC053C4DDBA68C4FDA6"}}
 
 5、请求启动弹窗小程序(C++语言)服务，下面以IE控件(ActiveX)演示调用流程及范例：
 1)、打开测试网页，输入连接地址：
