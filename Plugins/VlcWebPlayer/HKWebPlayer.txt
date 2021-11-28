@@ -1,12 +1,25 @@
-﻿海康网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用海康威视的原生SDK播放库实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿海康网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用。
 
 本小程序具有如下优点：
-1)、全市场可实现较低延迟(200毫秒左右)的独家播放方案，主流版本的浏览器都支持；
-2)、支持多路同时播放、支持抓图、录屏、高清视频或大屏播放性能好；
-3)、底层播放技术采用海康原生SDK播放库(版权贵原厂家，最终用户需获得原厂使用授权)，支持海康私有协议及RTSP流播放、云台控制、语音对讲等，支持H.264和H.265；
+1)、全市场可实现较低延迟(200毫秒左右)的独创播放方案，主流版本的浏览器都支持；
+2)、支持多路同时实时播放、回放、支持抓图、录屏、高清视频或大屏播放性能好；
+3)、底层播放技术采用海康设备网络SDK(版权归原厂家，最终用户需获得原厂使用授权)，支持海康私有协议及RTSP流播放、云台控制、语音对讲等，支持H.264和H.265；
 4)、播放小程序额外付费后可获得源代码进行定制开发；
 5)、支持海康的摄像头和硬盘录像机等各系列的设备；
 6)、支持本地MP4等视频文件循环播放。
+
+适用于但不仅限于以下海康产品型号：
+DVR：DS-9100、DS-8100、DS-8000-S、DS-8800、DS-7800、DS-7300、DS-7200、DS-7100、DS-7000 等系
+列，包括-ST、-SH、-SE、-SN、-RT、-RH、-XT 等。
+NVR：DS-96000N-I24/I16、DS-96000N-F24/F16(/H)(/I)、DS-96000N-H24/H16(/H)(/I)、DS-9600N-I8/H8/F8/ST/XT、
+DS-8600N-I8/H8/F8/E8/ST/XT、DS-7800N-E1/SN/SNH、DS-7600N-ST/E2/E1、DS-7700N-ST/E4、DS-9500N-ST、
+DS-9500N-S、DS-9600N-SH、DS-7600N-S、DS-9664N-RX 等。
+XVR：DS-9000HQH-SH、DS-8100HQH(/HGH)-SH、DS-8000HQH-SH、DS-7300HQH(/HGH)-SH、
+DS-7200HQH(/HGH)-SH、DS-8800HQH(/HGH)(/HUH)-SH(/Fx)、DS-7900HQH(/HGH)(/HUH)-SH(/Fx)、
+DS-7800HQH(/HGH)(/HUH)-SH(/Ex/Fx)、DS-7100HGH-E1(/F1)等。
+HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
+
+文件播放支持私有、PS、TS、3GP、AVI等封装的录像文件格式，支持的视频编码格式包括私有H.264编码、标准H.264、mpeg2、mpeg4、mjpeg、H.265、SVAC、Smart264、Smart265等，音频格式包括G.711、G.722、G.726、MPEG、AAC、PCM等。
 
 1、牛插(PluginOK)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -122,13 +135,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-11-25","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"1E2BD8E53434BBE6D1C3E6CCB47951C1","Version":"2.2.3.6","Size":1114112,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5B33768516CBFDD67B33740AB7F0021562E6F79507F880DB8D554A178E72A08D43CF61A5D20CAD3CF3A07C650361E41F5B3D697EA45C3DF220A26C54B834468E0A7BC8A4F60F55683B78B24E06C297C2C5F0F38B3970794018C7C71C8FC6884B00706437317DBAB99C385560F9C91E3B1318DC1C4E95CAC81A701918C33A2A29C70A70FEAE816BB589E822867E7DDF546AB659CE30220B6D84C84F2DEBF824B0F7D7C310AF57BE08E919CF3CAAD1EB062045D230DEA6B18AE2D90CDACA16E8DCEA503E3A5A5E428D0FD80E7F93C21635A57FB50981A1A4F3397B3077044D46CEFD19244AFF3C82CD50CC982A25D9FB1E5D957E20499FAD5A00486BD4D40C31FB"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-11-28","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"A5562CB2825F84567E9D470BF2B51D62","Version":"2.2.3.6","Size":1114112,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"32B17E77B72B3024D99EAA2F8526F51778D73A30477FAEFDD6E456C445A66C0DBBAD2822C9F752D0F5E947AFE4CA5FB7248F6021B9EEC23D69D077F6949A481397ABE7D8C84E81491239EA9468B0D9D1CEDF80959292690B32DB8FBC35029517059573277B03428BCB6BE795C46646B3A98E4BDDDB1379E12ED2A3598EC876715641CB46ED9679D119B27DEB53E6FB6ABB06CC3498B3BD729376FFBA00B364EEB628F688A93E96F2379BD058F32B0AE9FE024B42F494EF3F87C42E29BEF6B28B5428C9E53B4EFB8E2CD235987B46406DF125EB522C70B9855DAA1596BC831C027EC43AA95E23CBDB9C204C301DDE1FACB3C0BBAE8DFE4F9241F58477AFBC3C85"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-11-25","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"B6A2BC0D2B346C403F6346404C314D01","Version":"2.2.3.6","Size":1114112,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8D191343EF522DB5B1220E5D9B54727538E9530B0DA99515117E8D0C456A19BA3B6670858E0BC6115F18E9F61F4488BD85BB896683A4247BE576A459EDE5B059C353F8381872DCACD405BCA8ECA34C8E76B7B857EAA3DBE426BB7E531AE007BA5787990468E6BC1B2CCC1473B4329315679CF4A10C1327EF79B61E00EFDF9CF97B2BE33B4C7CA0E3BD68F858FDDC5944D033A5CA49D41A3D6B7918C2203470B05A1071ED28C1E1714D38DCA9D39C9B6342D7F070E6CDA4B57C326387B42B4AA19566A4335ABDAC928FEBEA13E44AFD4CA2AF9A50A69293D22B35955321135F732AE28B692C0EF1E33685C816EAE91112CC97D5B6A874B6ABACF8FE894505C3FB"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-11-28","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"2F9D13EB84FF92D1C8D7142A79928968","Version":"2.2.3.6","Size":1114112,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"77CCDF0282126BEBE4EE5E51D4F88E53AF54676E511DD863FF685C1F2B13E7A696EB6306294D2915A2D7EF8170640591EA602C4D8ECBE729FDDB030F801D1BAB5B027B3320DF297A0616FCF896ACCFFEDEFF8DDD087E1ED417580E32F8F4C1A5A684ADC99DB42F8A82B5CC192E30EF63F29CED4CE73F2456D230000683922BD34A92F53AC699D2C27D79402B614D577742BCC5698449EE37A3DF224A5ED7B83D9225B5AB788DE4DF94A174A021B4C398AB03F2741FF9503F517004493B26954E6E41FC18DE03AA194877B4811035EF8C72A7CE8BEAD6C98B2E70C8B753F6D0110067C31D1D0288F074A07FEE433EA321DAA1704BEC9562D691F519634C750B6C"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -256,7 +269,7 @@ Type类型 默认1加速播放可多次调用 2降速播放可多次调用 3倒�
 PlayID为当前播放ID
 
 28) 指定ID窗口播放控制，需要先调用播放
-Type为控制类型，默认1暂停播放 2恢复继续播放 3停止播放
+Type为控制类型，默认3暂停播放 2停止播放 4恢复播放
 请求：{"req":"Player_Control","rid":68,"para":[{"ID":1,"Type":1},{"ID":2,"Type":2},{"ID":3,"Type":3}]}
 分别返回：{"ret":0,"rid":68,"ID":1,"data":{"Ret":0}} {"ret":0,"rid":68,"ID":2,"data":{"Ret":0}} 和 {"ret":0,"rid":68,"ID":3,"data":{"Ret":0}}
 
@@ -420,6 +433,28 @@ ID是当前播放窗口序号，ID是从1开始，需要确保不越界
 返回：{"ret":0,"rid":87,"ID":2,"data":{"Ret":1}}
 ID为当前播放焦点窗口
 
+48) 指定ID窗口回放指定文件，必须向登录
+Uri为服务器上的文件名称 Reverse为1代表倒放
+{"req":"Player_PlayBackByName","rid":88,"para":[{"ID":1,"Reverse":0,"Uri":"test.mp4"},{"ID":2,"Reverse":1,"Uri":"hello.mp4"}]}
+返回：{"ret":0,"rid":88,"ID":1,"data":{"Ret":0,"PlayID":1}} 和 {"ret":0,"rid":88,"ID":2,"data":{"Ret":0,"PlayID":2}}
+PlayID为当前播放ID
+
+49) 指定ID窗口回放指定文件，必须向登录
+Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始 Reverse为1代表倒放
+{"req":"Player_PlayBackByTime","rid":88,"para":[{"ID":1,"Channel":0,"Begin":1601917153,"End":1601917753,"Reverse":0},{"ID":2,"Channel":1,"Begin":1601917153,"End":1601917653,"Reverse":1}]}
+返回：{"ret":0,"rid":49,"ID":1,"data":{"Ret":0,"PlayID":1}} 和 {"ret":0,"rid":49,"ID":2,"data":{"Ret":0,"PlayID":2}}
+PlayID为当前播放ID
+
+50) 指定ID窗口回放控制 必须先调用了回放Player_PlayBackByName或Player_PlayBackByTime接口
+Type控制类型：1开始播放 2停止播放 3暂停播放 4恢复播放（在暂停后调用将恢复暂停前的速度播放） 5快放 6慢放 7正常速度播放
+8单帧放（恢复正常回放使用NET_DVR_PLAYNORMAL命令） 9打开声音 10关闭声音 11调节音量，取值范围[0,0xffff]
+12改变文件回放的进度 13获取文件回放的进度 14获取当前已经播放的时间(按文件回放的时候有效) 15获取当前已经播放的帧数(按文件回放的时候有效)
+16获取当前播放文件总的帧数(按文件回放的时候有效) 17获取当前播放文件总的时间(按文件回放的时候有效) 20丢B帧
+Val控制值，11调节音量 12改变回放进度等需要设置
+{"req":"Player_PlayBackControl","rid":90,"para":[{"ID":1,"Type":12,"Val":1},{"ID":2,"Type":12}]}
+返回：{"ret":0,"rid":90,"ID":1,"data":{"Ret":0,"Val":1}}  和 {"ret":0,"rid":90,"ID":2,"data":{"Ret":0,"Val":2}}
+Val为获取值，Code为13 14 15 16 17等时有效
+
 5、海康网页播放小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 
@@ -443,6 +478,9 @@ ID 为窗口序号 PID为录像ID Size录像文件大小 File录像实际全路�
 6) 异常通知
 Type 0x8001语音对讲异常 0x8003网络预览异常 0x8005预览时重新连接 0x8010回放异常 0x8015预览时重连成功
 {"event":"Player_Exception","ID":1,"data":{"Type":1}} 
+
+7) 海康SDK错误通知 SDK支持库还未安装
+{"event":"Player_SDKErr","ID":1,"data":{}} 
 
 B、PluginOK支持的事件通知：
 

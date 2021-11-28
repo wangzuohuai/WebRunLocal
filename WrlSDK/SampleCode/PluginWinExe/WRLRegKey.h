@@ -36,12 +36,16 @@
 #define PRODUCT_COMMAN_SMALLVERNAME	L"SmallVer"
 /// 定义产品在注册表中的编译版本
 #define PRODUCT_COMMAN_BUILDVERNAME	L"BuildVer"
+/// 定义使用的语言
+#define PRODUCT_COMMAN_LANGUAGE		L"Language"
+/// 定义产品在注册表中的安装语言
+#define PRODUCT_COMMAN_INSLANG		L"InsLang"
 
 class CWrlRegKey : public CRegKey
 {
 public:
-	CWrlRegKey(const ATL::CString& strMainRegPath = COMPANY_REGPATH,\
-		const ATL::CString& strChildName = PRODUCT_REGNODENAME, \
+	CWrlRegKey(const CString& strMainRegPath = COMPANY_REGPATH,\
+		const CString& strChildName = PRODUCT_REGNODENAME, \
 		HKEY hKey = HKEY_CURRENT_USER,REGSAM samDesired = KEY_ALL_ACCESS);
 
 	virtual ~CWrlRegKey(void)
@@ -54,19 +58,19 @@ public:
 		return m_bOpenFlag;
 	}
 
-	BOOL NewRegPath(const ATL::CString& strMainRegPath = COMPANY_REGPATH,\
-		const ATL::CString& strChildName = PRODUCT_REGNODENAME,\
+	BOOL NewRegPath(const CString& strMainRegPath = COMPANY_REGPATH,\
+		const CString& strChildName = PRODUCT_REGNODENAME,\
 		HKEY hKey = HKEY_CURRENT_USER,REGSAM samDesired = KEY_ALL_ACCESS);
 
-	BOOL GetRegStringVal(const ATL::CString& strKeyName,ATL::CString& strKeyValue);
+	BOOL GetRegStringVal(const CString& strKeyName,CString& strKeyValue);
 
-	BOOL SetRegStringVal(const ATL::CString& strKeyName,const ATL::CString& strKeyValue);
+	BOOL SetRegStringVal(const CString& strKeyName,const CString& strKeyValue);
 
-	BOOL GetRegDwordVal(const ATL::CString& strKeyName,DWORD& dwKeyValue);
+	BOOL GetRegDwordVal(const CString& strKeyName,DWORD& dwKeyValue);
 
-	BOOL SetRegDwordVal(const ATL::CString& strKeyName,DWORD dwKeyValue);
+	BOOL SetRegDwordVal(const CString& strKeyName,DWORD dwKeyValue);
 
-	BOOL DelKeyName(const ATL::CString& strKeyName);
+	BOOL DelKeyName(const CString& strKeyName);
 
 	DWORD GetLastErr()
 	{
