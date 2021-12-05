@@ -7,61 +7,61 @@
 
 2、请求安装文件操作小程序，在测试页面上输入 ws://localhost:83?sid=123&flag=1 先连接上中间件服务，然后输入以下内容点击发送：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-11-03","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"8DB1327D2A9BAC9551F8AB5DB62F55BD","Version":"2.2.3.3","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"2686615BF365662A344CB4C9AE8E52EAB65BBB94767F2EF7CBD5DAE48117E0DE3D203D4DE101F9FDFC0DE9B5C0CB1B932D57107023E8E7BB145BE17EBD8F5DABC866BA0B1141F751886EBFDE2F3A4C6BE3A43B8C284AA4A983580BD78BD143CFCB7EECA80A4053651701307B5EDF8D710F9C09C513C2342699AB49D6D3710BAEB0D0DA7532FE8BB50D7A25FCB7B7A4CE2C32BB73865953DC7E095FE9777B942579EE2F7DAA2233375CE4CA1AB888B137E179E9202B8116FD993EC79406D76721FD543CEE9CE5F809DB246FEF04F5613AA48921803D98511D93553E5B82DC43825DB5BFBCD3F3A6931B1DC5D4DD610C80A0D802889B220E784AEB8864921F0987"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-12-05","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"87C2228AB9538409117B7B546D0362B7","Version":"2.2.3.7","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"9A51FC4C963713A6ED232F91FEF568E2058833B2915492ADE13D74EAD8A23C59ABC6191C9A1AC3DA8D98A104C5DE458D9EDECF6FF1A69E178494396C6D19C0D21AF6DB19289A4D8BE2FE29EBE4AEDB6201F0020809E76DE9C32CAC9CF58183A6BD8F3727AAD7ECA748DFD6CDBB06BB988F0C5632D2A69420A34412907E77BE75F35273C8C0565DB6F928BDD31FF7386382380DF2317760424D0676C4DACF57CD702EE3A17C266DD93F57BA609A31B971845DDD84602D238010E474E2556A9F53BBDEB5884843FF5CAD6B26828CA113BC0C765E27129464E466918EF820CAF0A2315933CD57AF0FACADEF9B127AACBED2BE43597108BC4E0BCE2317415D2B920F"}}
 
 3、请求更新文件操作小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-11-03","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"D28D669B638D7885631AAF752C0D4AA3","Version":"2.2.3.3","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"9AD5CC7F194AA57F3B577BC164193208BAEC0FEAAAA6EF50A533A9138A6C0F548FDC3442D930E40EDE19DFF529E37FD8E137DCB1C31CFB03DF9823BA38EFD4486CDC8DFD0303ABF6366B80FB572CCDE0E5B70EA54FFEB4EBD9C1819468E64F0702079606F5CEF6D9A11C773941FE14AF51A55AE011B21900E628BF15245417F2B5A50B52D11025499AC46957D848EE64908D8C29EBCD5E7D66B1317C01F78A9D0A0F2E2780FBE38B9AB2F98B329AE585EB7C7820E743B96572101C46E231D984E8C896120C92C4B00502DDE5721278237C10308B0666FE063B13F24509C756285720520C718188953991098A7344A2FBF6D582BA5AB3586AABE431E8BB2E295B"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2021-12-05","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"E3A85BFE67DAF5B45C9AED3043C749C9","Version":"2.2.3.7","Size":491520,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"0EDA43D0FA625D5B8993955CA3BB8F1B8C668C26E483BB4E13FBE5558A3631505D7E4862E53D5E5E6BA6C8E727C6ADF3D22C73DE28E736AEC69A51527E0E394F8D89183873607ED1C493E3271E8575DA4A32632D7DD8E946E0908B6CAC5D762D2CD16FEB42F9DD5E3847DDCE32987F102EDECB07FAFCD00615DA1042C4E9AB0D74E4A9BF712432B611E7277237678FD13960EEE6C0D1C1FFB7B373CA61F95DBB4D6292EBA5B21430E352E98849A8370328E525EE873300E28B92B8AA335263D0DFE184BB816C0843A231882FF2D3378B769BDC1937EABC3E7187D822ED68C93BAA159A921485AE1C4F794412B5E563C47A6524152566CA71CB9439CB3E5253DB"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
 4、连接请求文件操作小程序服务：
 1)、图像文件处理及本地文件操作服务
-说明：以下功能请通过Web Socket连接后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.doc”)，请在连接地址中指定端口号进行连接。
+说明：以下功能请通过Web Socket连接后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 打开测试网页，输入地址：ws://localhost:83?sid=667&pid=D325C871-AB46-479B-B20E-1D861D26CA89&flag=1 点击连接；
 
 支持的协议功能如下：
 A、批量旋转图像文件
-SrcFile、DestFile传入前需进行UrlEncode编码
+SrcFile、DestFile传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_RotateImg","rid":1,"para":{"Angle":90,"Items":[{"ID":"11","SrcFile":"C:/Users/trade/Pictures/test/test.png","DestFile":"C:/Users/trade/Pictures/test/testnew.png"}]}} 
 旋转指定文件SrcFile指定角度Angle，DestFile为指定时代表生成新图像文件，不指定时直接覆盖到原图
 返回内容 {"ret":0,"rid":1,"data":{"Ret":[{"ID":"","Ret":1},{"ID":"","Ret":1}]}} Ret代表是否成功
 
 B、请求指定图像文件的BASE64编码数据
-File传入前需进行UrlEncode编码
+File传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_GetImg","rid":2,"para":{"File":"C:/test.jpg","Original":1,"Thumb":{"Width":200,"Height":300,"File":"C:/Newtest.jpg"}}}  
 指定Original为1时代表同时取原图，有Thumb节点时取指定大小的缩略图，Thumb节点中指定File文件名代表保存到本地，不指定时取原图数据 {"ret":0,"rid":2,"data":{"Thumb":"","Original":"","ThumbFile":"","Ret":1}}
 
 C、关联打开指定文件或指定执行程序打开
-File传入前需进行UrlEncode编码
+File传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_Open","rid":3,"para":{"File":"D:/Zorro/WRL/Data/WrlService.txt"}}  File为本地路径
 指定执行程序打开指定文件
 {"req":"File_Open","rid":4,"para":{"File":"C:/Windows/System32/notepad.exe D:/Zorro/WRL/Data/WrlService.txt"}}
 
 D、删除本地文件
-Items子项目传入前需进行UrlEncode编码
+Items子项目传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_Delete","rid":5,"para":{"Day":7,"Items":["c:/Newtest.jpg","c:/test.jpg"]}} 删除Items指定的本地文件，可支持多个
 
 E、创建指定目录
-Dir传入前需进行UrlEncode编码
+Dir传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_CreateDir","rid":6,"para":{"Dir":"D:/Zorro/WRL/Data/Temp"}}  Dir为本地路径
 返回如下信息：
 {"ret":0,"rid":6,"data":{"Ret":"1","ErrCode":0}}
 
 F、删除指定目录及子目录所有文件
-Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
+Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_DelDir","rid":7,"para":{"Dir":"D:/Zorro/WRL/Data/Temp"}}  Dir为本地路径
 返回如下信息：
 {"ret":0,"rid":7,"data":{"Ret":"1"}}
 
 G、取指定文件属性
-Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
+Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_Info","rid":8,"para":{"File":"C:/Users/trade/Pictures/test/test.png"}}  File为本地路径
 返回如下类似信息：
 {"ret":0,"rid":8,"data":{"Ret":"1","Size":92095,"MD5":"B28B987EC70E1E7853F89A52CEDE68F0","Attribute":32,"CreateTime":"2020-10-07 13:07:20","LastWriteTime":"2020-07-14 10:09:43","Ver":"","CorpName":"","Desc":"","Width":1280,"Height":720}}
 
 H、取指定目录下文件和目录列表
-Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
+Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_List","rid":8,"para":{"Dir":"D:/Zorro/WRL","Find":"*.*"}}  Dir为本地路径
 返回如下类似信息：
 {"ret":0,"rid":8,"data":[{"Name":"WrlSetup.exe","Size":157184,"Attr":2080,"Write":"2020-10-07 15:00:15"},{"Name":"X64"}]}
@@ -72,13 +72,13 @@ Dir传入前需进行UrlEncode编码，不能删除磁盘根目录及系统及程序目录等文件
 支持的协议功能如下：
 
 A、下载文件
-Url、File传入前需进行UrlEncode编码
+Url、File传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","Items":[{"ID":"","Url":"","File":"","MD5":"","Size":300}]}} 批量下载指定URL及文件名File等参数的文件,ID是前端指定的唯一ID，返回添加成功数量，重复的不计算，增加下载权限参数Cookie及Auth
 
 B、上传文件
 Url、Items子项目传入前需进行UrlEncode编码，Url为上传URL地址，ID为上传序号
 Para为POST数据包中需要传递的参数param，默认上传文件名为upfile，否则通过NodeName设置自己的文件参数名称
-批量上传到指定URL的本地文件，返回添加成功数量，重复的不计算
+批量上传到指定URL的本地文件，返回添加成功数量，重复的不计算 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"File_Upload","rid":2,"para":{"ID":"","Url":"","Cookie":"","Auth":"","Para":"","Items":["c:/Newtest.jpg","c:/test.jpg"]}} 
 
 C、停止上传/下载 一般用于页面退出
@@ -98,5 +98,5 @@ D、删除数据记录
 
 5、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.doc”及“PluginOK中间件安全解决方案”。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
 如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

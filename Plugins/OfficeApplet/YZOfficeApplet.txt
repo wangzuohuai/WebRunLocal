@@ -47,7 +47,7 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 OType：21是启动永中文字 为22启动永中表格 为23启动永中简报
 Version：1是完整加载，0是OLE方式加载
 Url：加载小程序所在的网页实际地址
-Open：为需要打开的文档路径，磁盘目录斜杠用/
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动永中文字处理
@@ -125,14 +125,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装永中内嵌网页Office小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-11-25","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"EA7C0C59870863BA2FBAAB394A5FC84B","Version":"2.2.3.6","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A145847332165630FBC7F8365505072806BE317A5CC34FA8D6C8A8CA22A20D619A39F4E1FF630A4B708CC1837D2B53D2AC59D62CC087858E4E2C90E5185FCD5F53D7268455988F9D702122EE64668CEB8447EB5CFDCD2CEA27C029B4352BB3423B29F4A4AC8940A777B5BDED1BADD5A15EBB27E77BCF724DBC71DD930092AB4515AED97B227F111B97FA40D2B74C313A98CCE67A0A8ACC379A1E165E592FDE89743C94A334939CEC124A09946FE9DC59955623BB4B4C7F522D6F788AFCA363CD4BA4A291D5B9EF74DA981DBD596C0C0B1684E823756CCF109406B4FD4D97B49C39FE80277521BBD9178B60AF23B5BF277F5090B097A4ACB01477426AAB029776"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-12-05","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"BBF80B0D555B6CE9CFB9CAC009A0EBF6","Version":"2.2.3.7","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3345C083F998836264559702BA12C0695499CEE3FDF20981E9F5EF00890BF035DEAC2C62985E38EA46DBA25698A5184D329FEC282B8607E0F43B69EF16A9BF501B8340B417E52966C6FED70BAAA15F93ECFF664517E414CAD3C74B7E46D31606A00E7A15B46AB61720962330803EE34D360086F07EAC7DEA6DBC72D571CC2AE92B340C123EE1A5163B20E40AFECCBB5E3DEA73730D59C4361D0027D0C3B63724C0DF5C1CF6B1FE8BB25CCC1643CE0F01B1BA5B96483D8C7CE71B3447CE101CA6C93CF3333EC2BECAE9A66D9916D45F7CFA5721C105B4610C9758A0C49EB4BC33ECA8F71976A1B6F2258FFE992837403E4E3FC458AAC9B2E0ECF3E5C17B639142"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中内嵌网页Office小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-11-25","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"B920729FCFBC0F51BD8A026FE2DB4304","Version":"2.2.3.6","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"75D63077CCC05964041323A0C913B5C9CD31925EC4AEC71A4677683C82A7C14DA442D2B06D075ED8479E36570437258A3E8FACC096FEEEB1597853726D2FEEB7CF50D2E5C52611CF81DB4D1AA566229A27806CD91B75227FF15BC1C4D23E7926909B393FECE5BDC6A42E898605A2EF01621C653FD1AA3ACD29BB39956D9A299DFF386E7F9858DB7CC5E6B8386785991D4717F39A676EFB8406996CBBC9CF381F7FA7F98B56FEAA4EB1F5668F8C274BCC9ED5CCE718E0722DCF0086C599B3D0ED77E3280304E522F1BE04EF5AE0135802EFA2196C0CFB8535D4BD9517C71E135018167503799DD481865D2E9D5CAA8F204C1AD30C491AF0772E5F393BEAEBF9AC"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-12-05","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"ED8C95100A25292C9D5A63BE2884603C","Version":"2.2.3.7","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"35A621DC79FD56B8233F7BA536A115BA78854E1D827514F48539D62077334A029EA5246254ECF7B41ED51877722DB7D027CDE2B2BDDD82925BE35EC43F469B499BD5ACE9B5B5DCAA3439676BF0049AEBB79123AC846CD903BBA46BD251748D7A57EEF29AA1DCC60382E0766C5024432857A014FAAF0346985A2BE18DF70773BF710C7FF1761EE2347E70DB5DD48CB86DE229710029BCB09239D76B1A958DDADE5CBCA74C3924028CBDE11D90AAF14C162930FB33707D6CD606B50A1350502FAC8210EA4D2D4FED42BAC0C7161FAD133C2A4C6BE0D90478420A036F29007057DC0BA3527EA4F4D8E7CFE75AA64142ACB62FC48BA98F1006AFD73985F5DBCA7D1A"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -156,7 +156,7 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 
 3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
-打开本地文档
+打开本地文档 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
 打开远程文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
@@ -167,15 +167,18 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
+支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格软件
+支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
-Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
+Link为1则只是链接到文件(网络路径不支持1) 
+ImgFileSave保存到文档 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
@@ -192,6 +195,7 @@ Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
 
 10）请求批量打印，适用于永中文字、永中表格、永中简报软件
 Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
+OutFile支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
 返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
 
@@ -276,7 +280,7 @@ Name为书签名称 NoSelect为1代表去掉书签选中状态
 返回：{"ret":0,"rid":28,"data":{"Ret":"0"}}
 
 29）请求合并文档到指定书签内容，适用于永中文字软件
-File为被合并文档全路径
+File为被合并文档全路径 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
 Marks指定需要替换的书签名称数组
 默认在File文档中找对应书签名称的内容来替换，如没有对应书签直接插入整个文件
 {"req":"Office_MarkMerge","rid":29,"para":{"File":"D:/Zorro/TestMark.docx","Marks":["Letter","Title"]}}

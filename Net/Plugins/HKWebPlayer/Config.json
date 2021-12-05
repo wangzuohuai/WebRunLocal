@@ -1,6 +1,6 @@
 {
   "COM": "HKVideoCom.dll,X64/HKVideoCom.dll",
-  "Caching":1,
+  "Caching":3,
   "Link":1,
   "Stream":1,
   "AutoLoop":1,

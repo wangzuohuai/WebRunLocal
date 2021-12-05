@@ -47,7 +47,7 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 OType：1是启动微软Word 为2启动微软Excel 为3启动微软PPT
 Version：1是完整加载，0是OLE方式加载
 Url：加载小程序所在的网页实际地址
-Open：为需要打开的文档路径，磁盘目录斜杠用/
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，默认使用中间件程序Data子目录作为根目录使用
 注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动微软Word程序
@@ -125,14 +125,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装微软Office内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-11-25","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"E0F7F684071B0B5D34DE660705B9E2C4","Version":"2.2.3.6","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"601C6B86952A93CDF9B27F5205FF3215CA607A429BC70345D2084702E36EA05BFAB61C5A29F8BB13B6A5829FA108607BF6F67CB258F94E1421FE18E63E70326A28F62728D4E33A8C0E672051B0EFE42461D2D8FDAFAD63D9DBFC7ACF3477E1AAD5AB1716F4F01DD7A650DBE01E93C2CCFAB7FE6DF3B12037866497FA59EBE9DFF103D3F5A2435F7E85E02EC976C1163F7BAB72979E8BC4C7A9E2B8D53C8B899C5E6968857AAF51326D11304BC19F8CB90EF08206BCC3B52CA55072B9D8024BFA6A06358C28228F375836DCDBF3C6B5E2AB7738861E8A23D7162942A7CD314F3A280E29A5C8B1481F137D9C3CFBB48A9AFD5AF4494B8C021E8E7DA4CA1A249C52"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-12-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"E23A6C2FD0046F908078111536101494","Version":"2.2.3.7","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0C08EA5A0BF78EBBC38F56BAAD66B2615EF6F9BBB0B75368EAA91A257A0080114D4A546BD0B2CCB6486C6E2B13820008D457FC8190EEDC994FE278F664C27202E5FCF1470E18CEC53C91957A46132B2FADF4D857DE2E80FFFCDE88323238D2EB4D17BDC45DD612D3D126BF549FF6AA062D912A60CAAC4B3F7A7EC5A465EB6C9058B3D60CBE9F6DF2C8B29AC98F005F00EBFCDB1A6130851EC5B07C059411D4EC9F7746D88FC258BFD1A63055F0178681B7551F0C4E12E9D79B32EDD995E40A7E51BDE69E349390916F116076B3532215095B860CB7BBB2163B551ABCCF081C0F1C20DBC1315B83F4B71C0E1397D5ACD920688ED49274B346C4546FAB7FE183AC"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-11-25","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"CF3D6ABF4C36612DECC06E4F26D8422A","Version":"2.2.3.6","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0B470871D4DB1713A984D37672B8028B9510AA3E511AD42A5ED36678DFC1859148EC67048A06F990F1E9A33542590DA2A533E0E8ABC19CD24C9BDEA97928A16F399D03042D966851528CB493DB4D44D87192462B38F8439F06865FBA62B1A911B70E79C994C646887B2D98E2CEDF28E29C627EF635EE2517C8A1B8D31C0019186094A38AE030627F2781369BD74456106C4533BE95FC8F2A60952D628F08E29B0F0292CE0665D3E7D75EB2C1BA0B9C8B6959B9CD620B5208F83CE7244CA79AA9B2A41084D8E6542E565F7B46F1ED4CB4E842B3454EB5D96167388E3B6696F98C1FD262E786714EA7634390CBBE173A839DBF2247CCA76FB35B40F33284DEB9B5"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2021-12-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"5C24F6EBA79D870E31855E4CC53574D9","Version":"2.2.3.7","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8887933AE5D95A988A3D13F50E6C35FC5AA7562EC13050FB3E41E1899FE9F7209F69DC25521E49DD32D216B90B646FE368D6181414227334C5D5636F8D57E0969536DFE08024F90E0BFAFCA05C18E7E054E2B68449BB7CFDFC930A33D89AF6723E39312AF419BCA8257E5A53674522456B92E2C2EDBCEF94C5AD3E61716983751CB311172D958360DEF08FAB3F74FB9A572C0D1FE3B231BE195ABF518A7225D34D3B4931FF729B6C6E75BBF76C89B1A31875FD2D99084A5529E559412A737648E10A6D64316EF5C5E5F7D7E1A9BF3D96EAE76B7C50EA5AD39A69AEFFC3938EEF846DD559677A9D3CD27BB42DDBC57C18661D0ABF55E8882CF226D6B3F79F232D"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -155,7 +155,7 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 
 3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
-打开本地文档
+打开本地文档 如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
 打开远程文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
@@ -166,15 +166,18 @@ Ret为调用VBA接口对应函数返回值，0代表正常
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
+NewFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
+NewFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
+ ImgFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
@@ -191,6 +194,7 @@ Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
 
 10）请求批量打印，适用于Word、Excel、PPT软件
 Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
+OutFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
 返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
 
@@ -275,7 +279,7 @@ Name为书签名称 NoSelect为1代表去掉书签选中状态
 返回：{"ret":0,"rid":28,"data":{"Ret":"0"}}
 
 29）请求合并文档到指定书签内容，适用于Word软件
-File为被合并文档全路径
+File为被合并文档全路径 如非全路径，默认使用中间件程序Data子目录作为根目录使用
 Marks指定需要替换的书签名称数组
 默认在File文档中找对应书签名称的内容来替换，如没有对应书签直接插入整个文件
 {"req":"Office_MarkMerge","rid":29,"para":{"File":"D:/Zorro/TestMark.docx","Marks":["Letter","Title"]}}

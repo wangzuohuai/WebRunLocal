@@ -5,6 +5,8 @@
   "ToolBar":0,
   "FillWnd":1,
   "BlockFlag":15,
+  "ErrTryCount":3,
+  "ErrTrySecond":6,
   "BackColor":"#000000",
   "PORT": 930
 }
