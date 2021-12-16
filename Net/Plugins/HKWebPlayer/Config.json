@@ -1,10 +1,12 @@
 {
-  "COM": "HKVideoCom.dll,X64/HKVideoCom.dll",
+  "COM": "axvlc.dll,HKVideoCom.dll,X64/HKVideoCom.dll",
   "Caching":3,
   "Link":1,
   "Stream":1,
   "AutoLoop":1,
   "TalkVolume":80,
+  "BlockFlag":7,
+  "PercentTime":300,
   "Server":8000,
   "BackColor":"#000000",
   "Status":{"Text":"准备播放中，请等待","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
