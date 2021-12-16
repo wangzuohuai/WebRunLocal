@@ -69,9 +69,9 @@ Url：加载小程序所在的网页实际地址，在网页中指定小程序�
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-WebConfig：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
-Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在WebConfig中指定
-注意：Open、Url、WebConfig中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
+Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定
+注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
 自动识别当前浏览器指定位置和大小启动：
 {"req":"Wrl_HKWebPlayer","rid":2,"para":{"Type":"0","Title":"HK Web Player","Flag":2,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/HKFrame.html","ShowType":1,"Open":""rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream"}}
@@ -80,7 +80,7 @@ Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件
 {"req":"Wrl_HKWebPlayer","rid":3,"para":{"Type":"0","Title":"HK Web Player","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/HKFrame.html","ShowType":1,"Open":""rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream"}}
 
 自动识别当前浏览器指定位置和大小启动(不需要Url参数)：
-{"req":"Wrl_HKWebPlayer","rid":4,"para":{"Type":"0","Title":"HK Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","WebConfig":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":"Link=1"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":"Link=0"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":"Caching=1"}]}}
+{"req":"Wrl_HKWebPlayer","rid":4,"para":{"Type":"0","Title":"HK Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":"Link=1"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":"Link=0"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":"Caching=1"}]}}
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
@@ -135,13 +135,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-12-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"93575BF9B2CE903D0059C064B6905EA6","Version":"2.2.3.7","Size":1146880,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4B48F49F7201D44B8AB05CE1D7875AC28E25ED8B44EB6E86E8E279FCCE9AF5C3F5E7422FDDDE9D4656EF7719B3D3B31E06A7BFA2854047DB615268B6F263C5F83CCACBA0B2A219FA39CC943C8635152C2562C2FA2DC501F1569DB3ADEB653F3E88F0291AAC7E2942EB659AB277EF58281568B7743099946FCF6C641F8FDF3DF3DE7C169BA13AE12674C71408D7617157B073002B95791329AF6C5F9A3FEEAF47FB8202EF6E1BCFC58191479E8A2E772762FB65E45FD02A74CB1BA1FC4A1CF9254E8F73FFAF4FC1FA827BBE325D0371CC6B87D54EF35D36B714931C159FA244AA01FE3DF1F9F888AE2DE31BB20BA548ADFE31CB46DD0EADE73D69B646F58E4C24"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"F4208D06A4E1C1A11B5804590A181CFB","Version":"2.2.3.8","Size":1179648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0F10059E39DA61FB02958B99CC5BAD198A00C8721440403209EBF74C829BB985B054FFC017ACCB68E6EEF5705088E64BCAC6E1037093B4DDAF9B9395CD231739B170DA6436A7038E85263DDE11605340B621664DDF20DFC5F52B481B50DD13A0BB9C7BB702819E23B1B1124ECEB4D882A2C571A1C0AB720F28662D57FFC0C9BC75438D5800F69B9B94E41F270C8EBC79EF2EC38B123C805F21F2EE2D98467679DF5C5D993EB7CD5DA6EA043596D2D3AAD9A5259E78C3B97823E678C0543DD4D45A3AE751610D75C663AF0DFEF6289EAFFDF09EBF17714357009AEF77CD94BA0760AF2BF30F6A086A745986D2F027EC63830D2C246935B1294BDCD5470175C7BB"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-12-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"C9C139E09F210BAAD5C174DF1DA6BE9A","Version":"2.2.3.7","Size":1146880,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6EACE01924B2166100F2F9DDCC170861835AB0B127E119B33E379465DF670FEA5D943ECFEBAC87EBBB7CB8F650C472ACE6BC88D92E289469A8AA289936712B1360BB1CE5552495385140699CA0927D9244432D06FCAD57607175AA2FC98DC28610BF16B31EB9062BC165247D11EDBDADE77565290F83AE1F59A2A5E4CB556E8FB419EA43172EE3D3340A3405A576DF91FA2746B17CD929150C2AEC08E05E38CFDBE3FD36A2CEEABEAFB96CABB4859B0081B61F84EE209B71649F80C950B557700AC6F0D4A309406FB0C6C084CA0BE22632CE0C87F62D8FB5B92C8F02D18CAF587490ACB0A895376961CB7A30083C3D1587FDD8ACF4F4D7D6F665CD9EF834CF09"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"2E81ABC802830C7EAA3A9701A046F71E","Version":"2.2.3.8","Size":1179648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"ADF4C59F089EF8C013548D8019FF98CA96E6134F57A50F865C4EC530BBF6A4DBFFB9B2B4FF1DEEA09CBE16D61625C5A2453A35371799B42A1CA6CAE8A32FA5DB3768216E729998A3F95CE9A374F05968F4C2A1E98D8F9A287985490F45A265656125B41392A604472CEF4F4A4059097E861BB21B900E31D864BABDA8E0F26E687A604BF274D99E1A4D0945C6AD9D58B8227D002DFA7DB073EF2BF3F0692E498752F9FC28F5AD7C602238943362AB388EB91208E065AE7C0C17D80B49587581128F2BFC0EECA1CBA5534AA539ED0F4A554EE464F847A8983F61EF8951B40FB6D427BED66FBEA73A31509B658AA7FC63F9902F6053EA724474E5727DE14C6BA57E"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -270,7 +270,7 @@ PlayID为当前播放ID
 
 28) 指定ID窗口播放控制，需要先调用播放
 Type为控制类型，默认3暂停播放 2停止播放 4恢复播放
-请求：{"req":"Player_Control","rid":68,"para":[{"ID":1,"Type":1},{"ID":2,"Type":2},{"ID":3,"Type":3}]}
+请求：{"req":"Player_Control","rid":68,"para":[{"ID":1,"Type":4},{"ID":2,"Type":2},{"ID":3,"Type":3}]}
 分别返回：{"ret":0,"rid":68,"ID":1,"data":{"Ret":0}} {"ret":0,"rid":68,"ID":2,"data":{"Ret":0}} 和 {"ret":0,"rid":68,"ID":3,"data":{"Ret":0}}
 
 29) 指定ID窗口设置声音共享模式，需要先调用播放
@@ -399,10 +399,12 @@ LocalFile和DeviceFile分别为本地和设备对讲内容保存文件路径
 
 42) 指定ID窗口截图
 Type 指定图像类型，可指定1(BMP，不支持BASE64编码内容)、默认3(JPG)、4(PNG) 
-Base64指定为1时代表返回BASE64编码的图像内容
-Count截取图数量，默认截取一张，Delay指定延迟毫秒数开始，Interval多张时间隔毫秒数
+Base64指定为1时代表直接返回BASE64编码的图像内容
+AutoDel设置1 Base64为1时生效，自动删临时生成的图片文件，不删除设置0
+Count截取图数量，默认截一张，Delay指定延迟毫秒数开始，Interval多张时间隔毫秒数
 PathType 指定截图图片保存路径类型，0默认临时目录，1操作系统桌面 2当前登录用户我的图片目录 3中间件数据目录
-请求：{"req":"Player_SnapshotImg","rid":82,"para":[{"ID":1,"Type":3,"Count":3,"Base64":1,"Delay":1000,"Interval":200}]}
+Quality 截取质量 0代表原图，VLC的取值0-5，海康的取值0-2，数值越大，质量越低
+请求：{"req":"Player_SnapshotImg","rid":82,"para":[{"ID":1,"Type":3,"PathType":3,"Quality":0,"Count":3,"Base64":1,"AutoDel":1,"Delay":1000,"Interval":200}]}
 分别返回：{"ret":0,"rid":82,"data":{"Ret":0,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}} 和 {"ret":0,"rid":82,"ID":2,"data":{"Ret":0,,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}}
 
 43) 指定ID窗口录像到文件
@@ -455,6 +457,10 @@ Val控制值，11调节音量 12改变回放进度等需要设置
 返回：{"ret":0,"rid":90,"ID":1,"data":{"Ret":0,"Val":1}}  和 {"ret":0,"rid":90,"ID":2,"data":{"Ret":0,"Val":2}}
 Val为获取值，Code为13 14 15 16 17等时有效
 
+51) 指定ID分屏窗口全屏，一次请求只能指定一个分屏窗口全屏
+请求：{"req":"Player_Fullscreen","rid":91,"para":[{"ID":1}]}
+分别返回：{"ret":0,"rid":91,"ID":1,"data":{"Ret":0}}
+
 5、海康网页播放小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 
@@ -481,6 +487,26 @@ Type 0x8001语音对讲异常 0x8003网络预览异常 0x8005预览时重新连�
 
 7) 海康SDK错误通知 SDK支持库还未安装
 {"event":"Player_SDKErr","ID":1,"data":{}} 
+
+8) VLC播放事件通知
+Type事件类型 Val事件相关的值
+Type包含的值含义如下
+258(libvlc_MediaPlayerOpening)		播放内容打开中...
+259(libvlc_MediaPlayerBuffering)		缓冲数据中... Val中包含缓冲数据的长度
+260(libvlc_MediaPlayerPlaying)		开始播放
+261(libvlc_MediaPlayerPaused)		播放暂停
+262(libvlc_MediaPlayerStopped)		播放停止
+263(libvlc_MediaPlayerForward)		播放前进
+264(libvlc_MediaPlayerBackward)		播放后退
+265(libvlc_MediaPlayerEndReached)		播放结束
+266(libvlc_MediaPlayerEncounteredError) 	播放遇到错误
+267(libvlc_MediaPlayerTimeChanged)  		播放时间变化 Val对应最新的时间
+268(libvlc_MediaPlayerPositionChanged) 	播放位置变化 Val对应最新的位置，这个用来做播放进度展示，*100就是百分比
+273(libvlc_MediaPlayerLengthChanged) 		播放长度变化 Val对应最新的长度
+281(libvlc_MediaPlayerMuted)		播放静音
+282(libvlc_MediaPlayerUnmuted)		播放取消静音
+283(libvlc_MediaPlayerAudioVolume)  		播放音量通知 Val对应最新的音量
+{"event":"Player_VlcEvent","ID":1,"data":{"Type":1,"Val":0}} 
 
 B、PluginOK支持的事件通知：
 
