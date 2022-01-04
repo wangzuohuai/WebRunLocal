@@ -1,13 +1,16 @@
 {
-  "COM": "axvlc.dll",
+  "COM": "axvlc.dll,VlcOcx.dll,X64/VlcOcx.dll",
   "Caching":200,
-  "RTSPTCP":0,
-  "ToolBar":0,
+  "RTSPTCP":1,
+  "ToolBar":1,
   "FillWnd":1,
   "BlockFlag":7,
   "PercentTime":300,
+  "ToolBar":1,
+  "Mute":0,
   "ErrTryCount":3,
   "ErrTrySecond":6,
   "BackColor":"#000000",
+  "Status":{"Text":"准备播放中，请等待","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
   "PORT": 930
 }

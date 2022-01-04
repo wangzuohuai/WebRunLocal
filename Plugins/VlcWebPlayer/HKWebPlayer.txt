@@ -1,7 +1,7 @@
-﻿海康网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用。
+﻿海康网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3版。
 
 本小程序具有如下优点：
-1)、全市场可实现较低延迟(200毫秒左右)的独创播放方案，主流版本的浏览器都支持；
+1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
 2)、支持多路同时实时播放、回放、支持抓图、录屏、高清视频或大屏播放性能好；
 3)、底层播放技术采用海康设备网络SDK(版权归原厂家，最终用户需获得原厂使用授权)，支持海康私有协议及RTSP流播放、云台控制、语音对讲等，支持H.264和H.265；
 4)、播放小程序额外付费后可获得源代码进行定制开发；
@@ -135,13 +135,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-12-18","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"391CB4EE115566235B443982D3530750","Version":"2.2.3.8","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"57ADC623B6FD3C1F88E424111FEB034029874ED54F08858C70B8865B9E08B1F38C17C5479503B5F9D068CBDE6CA4C3F4391C6990D4E1004F47149C8D3FB66AF3C7C0089D5C9A1C43F6D1B232ABA4CD73A0742564A392EC3CC0FCD3E5197C3862D8C608EAE852DCFF8B4A7F3448F3344F6E69A4635D2E1FDB2DECAEF760353E3B76FD4FB6D4BF5BA56989E3DB1C61641C0FDC05B0ABBBE7110132A77C4B0AF8F3724B1CAA996AE2AE11596947775DF3566EB91C203BF33B7B9CF21ADD5D81F3F8976212D10F7626EF849B2FB7DA1A54472484DE5D79B384BA2564439FAE4F6D7841F4A0DF9084B56BD27369A3304D71B1EE12FEB6BAA503D9C308198B77C2D2CA"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"76905BB8243A0DA1892BBEA759146200","Version":"2.2.3.9","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"86CA00AA6B3F77F07B1104A722B13166402EE2C381A372FFF9F32D93DCFAF7779C070758ECFB28A79434EE860FAEB36E60A790E534B8EE13702B647FAAC487B38106233CE371B9EBBABF9D70A480CF92EC090DEE72164AB2BA91A45E0E6E76175DEFE42D15B4C8025D7900F203714ED22AB681BDA361BFF02B1038534D8BDAB43ABC2C4B8C2982068F6A559C68ECEFF83CB8B81C47BCD913D32BFAF12480CE56A9EEA8AA9975247D7FD30247F1BBA8799E7775FBFE780A8A6B67AB570920E36F8AE80BA4C1A3FB977ED79D8803211C767127E433F1A94186C23AD0EAEE0E22404C9F0545B86FEAC14152445D43D0B1E5BE30446210802771C10DC3EB86C38C45"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2021-12-18","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"2E0EAEB765974DF904590DCE4A40827A","Version":"2.2.3.8","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"18FF6014A3C450E074809D074FAEA72F82845D38D755D521AF8BB0A32313A6187A6C2EC9AE2387743B4E68D3271D1793262933D5AC20FC66D0D6BA8ABBCB62145EAEE5B4B7DAED30EF708E6E5A440DD1B4251A3737FB710F45C2243B49E0EFB9099D7D1A345697D991BED0B35704404D3446D3A6BB28D83F58BC436D0F5E7E5448AFBD96A767311D84FF7EEBB727864174AB195F1F0EA322CBC683ABA35C7FAED08EDF62B742D909B02A1571A9642E37B881C32B9DF8A38BBB72EAB1E6BDC62103E101F9E1A27AE4DFE4F1C38A8ED952FD812B4DB2FDEBFCF9AE940991CF3936A49A3FE68498216A70AACC5F453990294CF8AEBA02559ABE67E6AFAB67E7D017"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"A5455CDF4FF3BF7D65DCCFF62817EFB7","Version":"2.2.3.9","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0C989381A84AA04F7CDCF894016BB13F5B7F232B6716455D2DF876EFCE512125823FAAD59B65AA157E4EE45854A48FC63BBB709E149FDD2C287A3AB615D106AF939ADB98326E334D5EE3BB4296421531D725F565554F5700BD83ED6D0FF435CFA7F9B8740B3081298C45AFC66AD0BF5111AB5E89644326451D840D7671EE248A5DDADB48D82167695D5CA4943D0BFD4098C5809175099C6DE10178BF60CE2E481C4A3119CA781136CC779485CECD808493A902100B22DB6A9D9696F708BD9263CBE350E0531A098DE3350106FA4A9F870C10D27FA24F37267DB446392801DDE213F49A6126D90F4F73C16E3EFAC7CFC4C87DD08F6F8DDC0A57FFD7BEFBD8237B"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -243,7 +243,7 @@ LoginID为登录标识，登录结果事件中携带
 请求：{"req":"Player_PutPlayPercent","rid":62,"para":[{"ID":1,"Percent":12},{"ID":2,"Percent":0}]}
 分别返回：{"ret":0,"rid":62,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":62,"ID":2,"data":{"Ret":0}}
 
-23) 指定ID窗口文件播放控制，仅对本地MP4等文件打开播放后有效
+23) 指定ID窗口文件播放控制，MP4本地文件和海康回放流打开播放后有效
 Type类型 默认1加速播放可多次调用 2降速播放可多次调用 3倒播
 请求：{"req":"Player_FileControl","rid":63,"para":[{"ID":2,"Type":1}]}
 分别返回：{"ret":0,"rid":63,"ID":1,"data":{"Ret":0}}
@@ -464,6 +464,68 @@ Val为获取值，Code为13 14 15 16 17等时有效
 请求：{"req":"Player_Fullscreen","rid":91,"para":[{"ID":1}]}
 分别返回：{"ret":0,"rid":91,"ID":1,"data":{"Ret":0}}
 
+52) 取指定ID窗口VLC播放速度
+请求：{"req":"Player_GetPlayRate","rid":92,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":92,"ID":1,"data":{"Ret":0,"Rate":1.0}} 和 {"ret":0,"rid":92,"ID":2,"data":{"Ret":0,"Rate":2.0}}
+
+53) 设置指定ID窗口VLC播放速度
+请求：{"req":"Player_PutPlayRate","rid":93,"para":[{"ID":1,"Rate":1},{"ID":2,"Rate":2}]}
+分别返回：{"ret":0,"rid":93,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":93,"ID":2,"data":{"Ret":0}}
+
+54) VLC设置指定ID窗口字幕信息，举例：
+指定的参数，需要的才设置，必须视频开始播放才能设置
+Text 文字内容
+Opacity 透明度 0-256 0完全透明 256完全不透明
+Position 显示位置有center left right top bottom top-left top-right bottom-left bottom-right 不指定时由X和Y坐标决定
+X 和 Y分别指定文字开始坐标
+Timeout 超时
+Color 颜色 可用长整型(COLORREF)，也可以用#000000这样的颜色值
+Size 字体大小
+请求：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":128,"Refresh":1,"Size":50,"X":50,"Y":50},{"ID":2,"Opacity":256}]}
+分别返回：{"ret":0,"rid":94,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":94,"ID":2,"data":{"Ret":0}}
+
+55) VLC取指定ID窗口字幕信息，举例：
+Text指定时获取文字信息 Position指定时获取位置信息
+请求：{"req":"Player_MarqueeGet","rid":95,"para":[{"ID":1,"Text":1,"Position":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":95,"ID":1,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":"","Text":"","Position":""}} 和 {"ret":0,"rid":95,"ID":2,"data":{"Ret":0,"Color":0,"Opacity":0,"Refresh":0,"Size":0,"Timeout":0,"X":0,"Y":""}}
+
+56) VLC控制指定ID窗口字幕，举例：
+请求：{"req":"Player_MarqueeControl","rid":96,"para":[{"ID":1,"Enable":1},{"ID":2,"Enable":0}]}
+分别返回：{"ret":0,"rid":96,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":96,"ID":2,"data":{"Ret":0}}
+
+57) VLC设置水印显示
+ID为窗口序号
+File 水印文件路径，如有特殊符号请先进行UrlEncode，为空默认用小程序目录的Logo.png
+Position 显示位置有center left right top bottom top-left top-right bottom-left bottom-right，默认undefined未定义，显示位置有坐标X和Y控制
+Delay 水印间隔图像时间为毫秒 0 - 60000 默认1000
+Repeat 循环 水印动画的循环数量 -1继续(默认) 0关闭
+Opacity 透明度 (数值介于 0(完全透明) 与 255(完全不透明，默认)
+X 水印X坐标
+Y 水印Y坐标
+{"req":"Player_PutLogoShow","rid":97,"para":[{"ID":1,"File":"VLC.png" ,"Delay":20,"Repeat":-1,"Opacity":128,"X":100,"Y":100},{"ID":2,"Position":" center ","Delay":100,"Repeat":-1,"Opacity":256,"X":200,"Y":0}]}
+分别返回：{"ret":0,"rid":97,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":97,"ID":2,"data":{"Ret":0,"Enable":0}}
+
+58) 获取水印显示信息
+{"req":"Player_GetShowLogo","rid":98,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":98,"ID":1,"data":{"Ret":0,"File":"","Position":"","Delay":0,"Repeat":0,"Opacity":0,"X":0,"Y":0,"Enable":0}} 和 {"ret":0,"rid":98,"ID":2,"data":{"Ret":0}}
+
+59) VLC水印显示控制
+ID为窗口序号 Flag为1代表启用，0代表禁用
+{"req":"Player_LogoControl","rid":99,"para":[{"ID":1,"Flag":1},{"ID":2,"Flag":0}]}
+分别返回：{"ret":0,"rid":99,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":99,"ID":2,"data":{"Ret":0,"Enable":0}}
+
+60) 取指定ID窗口是否显示工具栏
+请求：{"req":"Player_GetToolbar","rid":100,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":100,"ID":1,"data":{"Ret":0,"Toolbar":1}} 和 {"ret":0,"rid":100,"ID":2,"data":{"Ret":0,"Toolbar":0}}
+
+61) 设置指定ID窗口是否显示工具栏
+请求：{"req":"Player_PutToolbar","rid":101,"para":[{"ID":1,"Toolbar":1},{"ID":2,"Toolbar":0}]}
+分别返回：{"ret":0,"rid":101,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":101,"ID":2,"data":{"Ret":0}}
+
+62) 取指定ID窗口是否静音
+请求：{"req":"Player_GetSoundStatus","rid":102,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":102,"ID":1,"data":{"Ret":0,"Mute":1}} 和 {"ret":0,"rid":102,"ID":2,"data":{"Ret":0,"Mute":0}}
+
 5、海康网页播放小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 
@@ -481,35 +543,34 @@ ID 为窗口序号 PID为录像ID Size录像文件大小 File录像实际全路�
 4) 登录状态通知，播放MP4等本地文件无效
 {"event":"Player_LoginStatus","ID":1,"data":{"LID":1,"Status":0,"Desc":"登录失败"}} 
 
-5) 播放状态通知
-{"event":"Player_PlayStatus","ID":1,"data":{"PID":1,"Status":10,"Desc":"播放结束"}} 
-
-6) 异常通知
+5) 异常通知
 Type 0x8001语音对讲异常 0x8003网络预览异常 0x8005预览时重新连接 0x8010回放异常 0x8015预览时重连成功
 {"event":"Player_Exception","ID":1,"data":{"Type":1}} 
 
-7) 海康SDK错误通知 SDK支持库还未安装
+6) 海康SDK错误通知 SDK支持库还未安装
 {"event":"Player_SDKErr","ID":1,"data":{}} 
 
-8) VLC播放事件通知
+7) 播放事件通知
 Type事件类型 Val事件相关的值
 Type包含的值含义如下
-258(libvlc_MediaPlayerOpening)		播放内容打开中...
+258(libvlc_MediaPlayerOpening)			播放内容打开中...
 259(libvlc_MediaPlayerBuffering)		缓冲数据中... Val中包含缓冲数据的长度
-260(libvlc_MediaPlayerPlaying)		开始播放
-261(libvlc_MediaPlayerPaused)		播放暂停
-262(libvlc_MediaPlayerStopped)		播放停止
-263(libvlc_MediaPlayerForward)		播放前进
-264(libvlc_MediaPlayerBackward)		播放后退
+260(libvlc_MediaPlayerPlaying)			开始播放
+261(libvlc_MediaPlayerPaused)			播放暂停
+262(libvlc_MediaPlayerStopped)			播放停止
+263(libvlc_MediaPlayerForward)			播放前进
+264(libvlc_MediaPlayerBackward)			播放后退
 265(libvlc_MediaPlayerEndReached)		播放结束
-266(libvlc_MediaPlayerEncounteredError) 	播放遇到错误
-267(libvlc_MediaPlayerTimeChanged)  		播放时间变化 Val对应最新的时间
+266(libvlc_MediaPlayerEncounteredError) 播放遇到错误
+267(libvlc_MediaPlayerTimeChanged)  	播放时间变化 Val对应最新的时间
 268(libvlc_MediaPlayerPositionChanged) 	播放位置变化 Val对应最新的位置，这个用来做播放进度展示，*100就是百分比
-273(libvlc_MediaPlayerLengthChanged) 		播放长度变化 Val对应最新的长度
-281(libvlc_MediaPlayerMuted)		播放静音
-282(libvlc_MediaPlayerUnmuted)		播放取消静音
-283(libvlc_MediaPlayerAudioVolume)  		播放音量通知 Val对应最新的音量
+273(libvlc_MediaPlayerLengthChanged) 	播放长度变化 Val对应最新的长度
+283(libvlc_MediaPlayerAudioVolume)  	播放音量通知 Val对应最新的音量
+
 {"event":"Player_VlcEvent","ID":1,"data":{"Type":1,"Val":0}} 
+
+8) 是否静音通知 Mute为1是静音 0非静音 Volume音量0-100
+{"event":"Player_SoundStatus","ID":1,"data":{"Mute":1,"Volume":80}} 
 
 B、PluginOK支持的事件通知：
 

@@ -1,9 +1,10 @@
 {
-  "COM": "axvlc.dll",
+  "COM": "axvlc.dll,VlcOcx.dll,X64/VlcOcx.dll",
   "Caching":200,
   "RTSPTCP":1,
   "ToolBar":1,
   "FillWnd":0,
+  "Mute":0,
   "BlockFlag":7,
   "PercentTime":300,
   "ErrTryCount":3,
