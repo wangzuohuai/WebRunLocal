@@ -68,7 +68,7 @@ ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+小程序实际显示首先会基于Web或Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
@@ -76,11 +76,11 @@ Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件
 自动识别当前浏览器指定位置和大小启动：
 {"req":"Wrl_HKWebPlayer","rid":2,"para":{"Type":"0","Title":"HK Web Player","Flag":2,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/HKFrame.html","ShowType":1,"Open":""rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream"}}
 
-自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_HKWebPlayer","rid":3,"para":{"Type":"0","Title":"HK Web Player","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/HKFrame.html","ShowType":1,"Open":""rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream"}}
-
 自动识别当前浏览器指定位置和大小启动(不需要Url参数)：
 {"req":"Wrl_HKWebPlayer","rid":4,"para":{"Type":"0","Title":"HK Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":"Link=1"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":"Link=0"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":"Caching=1"}]}}
+
+自动识别当前浏览器充满网页区显示(不需要Url参数)：
+{"req":"Wrl_HKWebPlayer","rid":3,"para":{"Type":"0","Title":"HK Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/HKFrame.html","ShowType":1,"Open":""rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream"}}
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
@@ -135,13 +135,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"76905BB8243A0DA1892BBEA759146200","Version":"2.2.3.9","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"86CA00AA6B3F77F07B1104A722B13166402EE2C381A372FFF9F32D93DCFAF7779C070758ECFB28A79434EE860FAEB36E60A790E534B8EE13702B647FAAC487B38106233CE371B9EBBABF9D70A480CF92EC090DEE72164AB2BA91A45E0E6E76175DEFE42D15B4C8025D7900F203714ED22AB681BDA361BFF02B1038534D8BDAB43ABC2C4B8C2982068F6A559C68ECEFF83CB8B81C47BCD913D32BFAF12480CE56A9EEA8AA9975247D7FD30247F1BBA8799E7775FBFE780A8A6B67AB570920E36F8AE80BA4C1A3FB977ED79D8803211C767127E433F1A94186C23AD0EAEE0E22404C9F0545B86FEAC14152445D43D0B1E5BE30446210802771C10DC3EB86C38C45"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"A14236CA45A3F162A7EE3B9ADB0E82B1","Version":"2.2.3.10","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"29053FE20991821AF1ADA9DCB53506EBC9DB0725225696B081559DA75E8509D9A869DC9E706B25E14BA2C5E8386E6857E7E1404315410F8652A0B780F85924A938CD7113AB298FE5CBB2BC751D2C6C526ADC5365F7AFAAE7BCA38C07B9FFE8567E71F8686596CA2797F7A21E67E1B546F33C3BD9AF24B06A6AC1442DC08E5627735A9E4325492BFC7C90CBA9726FB87D2A88A0D6A0B092351104B1395D816B372A5C5CFB895B0EA316716919FDB194E61B27B08701048DA59FAFA9ACC0D18B5E840292CEA9676F1A2BBD842AAEBA4242F5C88AF6B41DB5ADF03A889CC38627307A1A4F15158AEA6FCC17D6FA98C74B94F5FE0AF8832FECB753CDBB0AF5729EC4"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"A5455CDF4FF3BF7D65DCCFF62817EFB7","Version":"2.2.3.9","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0C989381A84AA04F7CDCF894016BB13F5B7F232B6716455D2DF876EFCE512125823FAAD59B65AA157E4EE45854A48FC63BBB709E149FDD2C287A3AB615D106AF939ADB98326E334D5EE3BB4296421531D725F565554F5700BD83ED6D0FF435CFA7F9B8740B3081298C45AFC66AD0BF5111AB5E89644326451D840D7671EE248A5DDADB48D82167695D5CA4943D0BFD4098C5809175099C6DE10178BF60CE2E481C4A3119CA781136CC779485CECD808493A902100B22DB6A9D9696F708BD9263CBE350E0531A098DE3350106FA4A9F870C10D27FA24F37267DB446392801DDE213F49A6126D90F4F73C16E3EFAC7CFC4C87DD08F6F8DDC0A57FFD7BEFBD8237B"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"7A05341649483881F8287341CE693DB4","Version":"2.2.3.10","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3E37FA17F2CF04F73DE5AB504FCB42AD83BE0F5E67ED96739A6357B5720C556BF50D1851D595B0D1FE0B75BAEC0A2BF5AC8D226C1BE211B535F701895172331CDDE295227CCF8E4092CC35F83A7F16B10D77C4EA269ED6FE28DE1F5A4682C471E107BD949978C2A78E7D68033E68F23727C2A887772D4E57A234D31FD733E4BF44A13F58034B9C8A9E21E2A815ECFDE4BBB3530C60EF0493FE9D02E75F339BF3C4DB3F090CB04A9C672F0842AAE86ED16F4A3210C0437133D205D21873309E90644235D4DC8A26518B8E2024C7B64D71CC9DBD137E2FCBBBDE3F4AB4D619517D30BD886ED999C6B37703536F3246BA19B4A67DD47675F8665741DB8B28ADDFB9"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -525,6 +525,16 @@ ID为窗口序号 Flag为1代表启用，0代表禁用
 62) 取指定ID窗口是否静音
 请求：{"req":"Player_GetSoundStatus","rid":102,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":102,"ID":1,"data":{"Ret":0,"Mute":1}} 和 {"ret":0,"rid":102,"ID":2,"data":{"Ret":0,"Mute":0}}
+
+63) 取指定ID窗口推送信息屏蔽掩码，举例：
+请求：{"req":"Player_GetBlockFlag","rid":103,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":103,"ID":1,"data":{"Ret":0,"BlockFlag":0}} 和 {"ret":0,"rid":103,"ID":2,"data":{"Ret":0,"BlockFlag":0}}
+
+64) 设置指定ID窗口推送信息屏蔽掩码，举例：
+由于以下几种信息通知比较多，所以增加阻止通知设置，比如阻止鼠标移动和进度通知，就设置9
+1阻止鼠标移动通知 2阻止时间变化通知 4阻止缓存通知 8阻止进度百分比通知
+请求：{"req":"Player_PutBlockFlag","rid":104,"para":[{"ID":1,"BlockFlag":0},{"ID":2,"BlockFlag":0}]}
+分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
 
 5、海康网页播放小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。

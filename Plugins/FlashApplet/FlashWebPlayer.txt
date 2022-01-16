@@ -43,16 +43,17 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Url：加载小程序所在的网页实际地址
+Web：可自定义的JSON配置 Flag包含64时可替换Url参数使用
 Open：为需要播放的多媒体路径，磁盘目录斜杠用/
-注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_FlashApplet","rid":1,"para":{"Type":"0","Title":"Flash Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
+{"req":"Wrl_FlashApplet","rid":1,"para":{"Type":"0","Title":"Flash Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Open":"http://zorrosoft.com/Files/test.swf"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_FlashApplet","rid":3,"para":{"Type":"0","Title":"Flash Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url":"http://local.zorrosoft.com/FlashApplet.html","Open":"http://zorrosoft.com/Files/test.swf"}}
+{"req":"Wrl_FlashApplet","rid":3,"para":{"Type":"0","Title":"Flash Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Open":"http://zorrosoft.com/Files/test.swf"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/flashframe.html
@@ -110,13 +111,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装Flash Player内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"FlashWebPlayer","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashPlayerApplet.pid","MD5":"B1380CFF3F21C16217676C77FDD95AF6","Version":"2.2.3.8","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"20319E0960871657D6954FCB2A659869EF60AD0E67E8E83E50901E79B0425F4C259FE29C807623B6ACEB2006A319D12FCFED0D07E3764102885D83316575D5B99971B54AD0500F15BAC3BB38F6E60EB7FC16363DA29702D3C1925812D17265BD8C037AD093CC19FA88FE010EEB1B07EAAE6D71AB94ED25DC367F631732543790C2153ABBBC0E2D89856380D896BB8CA6A771D7A6B46FE32DD42AB02D2B84FDC2830E69279DAA7AE28223D6CB0FB38E3F7C9E22E106C85E303AF6EEAFB76F7893D59996FF421CB62A592DF9DBB4594AB80EEF7ECD7D00196F7AC22C3361F6022BBFE87E11765EA20F8103AD14A452DC22F415A88B19814A704639013AE67CD7D8"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"FlashWebPlayer","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashPlayerApplet.pid","MD5":"A5D7D3759D03CE665436AF37C967FF46","Version":"2.2.3.10","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"963FAE1AA406D32B8CC2901E20FE4239EE8B8BD8D9BCF7641BCA12F385FCCE7A45F2901B08F27D93E02A6FE803BDFBB58E7D7D5ED5A1F3D5DC7491E24CAF8DDB3AD3AFD496A496FE36B7C80D729DC61D0DE3704927755AE0EA1DDFF0B835FC2A5B80E1D6A3E08BB8353CD799030B5991E85E4A0D493B1A3F9BA021D1CB82C284A4CF99E505D1AF1BB7B516B7813575DA8293312C7E3C218C444A4352A347088EA5A15DA4B903CEEA0D7FE1A20CBB701E394338372AC996660591BF54C4B74031D4B3E06DF6C24C764DFF712A1FDEA2131569D5690F71F17C6384128714B18F0BBF973BEF261965B3466DE50BACB423458F4386443DF51A2CFFAC9015F3855C76"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级Flash Player内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"FlashWebPlayer","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashPlayerApplet_Update.pid","MD5":"88046A2ECF0F876A59DA3E124EC71AAE","Version":"2.2.3.8","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"948FB6FAC0D9BE69918A531B6371FB783AA1C1D518C903E932D41E538BD40622BA62397CD83AAF613C6162285977B48E8D35DCA00C4933910D546905F32518D3C7684975F32EFC2990AC1B513D86476DB1507BC1E9C7BE69374DF46F630B5C98B614E06DAFBA3838B60DB67ADF4937389A2AA07A0BB96954888F3F09DCC2A551C05BB7902DDADB97354143B7204E203E1D9B53B81D66F5754C03485C7D9F4CA091F4DA84118CE1776330B527C8391E8026ABFA9300B23C9AB4B80099FEA4096A84C3B8ACAF2538068A54BA6304CEB25C56911FD4430EA52361DDF62B1BC9D4EDA3F2868FAA7DF5E885BB2AFB2AEF1F7A78DE9D2E9B70C627228B8B1EB9C38094"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash Player内嵌网页小程序","PID":"FlashWebPlayer","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashPlayerApplet_Update.pid","MD5":"FF8A6A39DBADF7D578FE658892406FCA","Version":"2.2.3.10","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3FD7680B69A3DF5B660E88EEB94FD1CF26B5133CC295C6A846D233B590E9DD62512B2D822F06B5AFBC62CB31312B52B12A26CA79BF1E33CE587E3D210FDEF3E360D2439F1DCD67AC892E049CA26D7909DE5E6FAF4384470E90E4DF21D268DFF1AE74372AA681D606C34CFBD31F26182292AD65A7D4D60CCD0D853AA0D717CFDB9C9DD64457F923C8FB5FCFE4A662EB41B784DBCC50E68E876E6DD9C25E2D21EFEF3A6344AD891592799C5C307834ABDB05566AA1B75EE9CA710D0324466937380A20DDF9024FDDF40184E8280F84E85ABACF0C7295A3A7FC11922AA89220321B452E937BC66B54666CEFEB4FBAD28EA5D1C686D828F9A9F0E32E9DD5C89E3169"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

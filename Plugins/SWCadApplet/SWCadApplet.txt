@@ -41,13 +41,14 @@ B、网页中嵌入元素
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
+Url：加载小程序所在的网页实际地址
+Web：可自定义的JSON配置 Flag包含64时可替换Url参数使用
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 App：0是启动Solidwork实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1是eDrawings控件查看
-Url：加载小程序所在的网页实际地址
 Open：为需要打开的文档路径，磁盘目录斜杠用/
-注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档
 {"req":"Wrl_SWCadApplet","rid":5,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
@@ -55,8 +56,11 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 自动识别当前浏览器并启动eDrawings程序在线查看xt、step三维工程图文档
 {"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"1","Open":"D:/Zorro/Test.sldprt"}}
 
-自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadfull.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
+自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档(推荐方式启动)
+{"req":"Wrl_SWCadApplet","rid":5,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
+
+自动识别当前浏览器指定位置自动适配网页大小启动(推荐方式启动)：
+{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/SWCadframe.html
@@ -113,14 +117,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装Solidworks内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Solidworks内嵌网页小程序","PID":"SWCadApplet","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的Solidworks内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"15186FB8398FB6782946C44FB50F6420","Version":"2.2.3.8","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"19FA0570F5A730CD6D370A86641FE0759A5C370DF4F0EE9314D7320BBB430138E9176C8C6F95E53565B907F364B56E55371D45978CA1359362939088BBD90E69915823A0D05A4F709E0346E78B4447F280E4BBF5496FA45D8F3F976DF91386A4E4F6BD3D7A1DD87A116E20AB72F1C3717D3275E1A42E82655B2693E979F12F53BFE8AC2295292B97478FC561579CE9D8728B8A80F7B892BA034E3B452184E39A52E6983A4D0D96BBA090A4E89E8D832FD11E6B93FED522677694DD17E82E32D49E0672E95B0E58F32460F6E94D6176D0E607369FE153E89211609C5D79590B8FEACE510E4EA39484B7CCBE758A9EB1E7E254282030E6638F612935BFF16E3092"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Solidworks内嵌网页小程序","PID":"SWCadApplet","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的Solidworks内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"2C2E74D2FB33AFFF4450DD95AC5B3533","Version":"2.2.3.10","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6B1E66FE42E14C5E8B90578F069D1F1A1D64964D213CE577924335F92D754CA8B13DE48CB95A6E771B097E5B10D69768693E8730751C99F67A1F2BA8E51AB9A7BCC0DFD33EED23451084B99A529A7253CD2D67EC964A247F31F38E0E109C33B275D5E375738F339D87FF1E308F52EFD4A841877F8D114C10373F44970010DFB7DB77C25C07A9F2E59303626816679EDA97138BD9E2773CB7635D127E43D88BB83B01064CCF0243F4ACD3C92E7A8C2025DF96F33F8DB3C9E777587304B5FB1B6075F71E4A164A8CF7CC4819FC3A308118AADA772F7ED6B8652D26D687DA2E72A90DAFA273007DF3A7AE9CA569F88D0FA53DDB63892B39021D55EEBA302D6D0C94"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级Solidworks内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Solidworks内嵌网页小程序","PID":"SWCadApplet","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的Solidworks内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"9F5982ABB2FD84D7597AFD7E8A822925","Version":"2.2.3.8","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"40E15CA5D7CD2007C1ACCB2F7EDE6705B5EE5203E8ADC7775F03944233B887642D4D3B70AE945CF65191D1F6107DB00F8D866F94DFCD8C0668531F64793104E55A5BCE004ADE1DECA147C1E7A54EE92F7308C78361C9F81D622A2416F7FC85203AAB8C1F736E653859818E477EAADD9B85635A66CC6D4A617185F5875ED6AF611461F40327CC89C313B5BA24EE9B27A1A930908DFD22E90B97A0005A992DC3E183B328D2B94EBD9630347ECB6C69DB0B5EEE87664F495C2B916128E349B7BEDC54AA4B7551DD81A46381E8171F7DEC583E6740F510C1709387DC29D7216A477EE571CDD098FE72FD5D05EF1E71AE2E0B47092E00F1338F6C554CF6DE5CBE787A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Solidworks内嵌网页小程序","PID":"SWCadApplet","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的Solidworks内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"C000E76C2217FC99BC283859FFD6D00B","Version":"2.2.3.10","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8ADCF63631D9EA10461CE3A6F8E7EBEC772F4D4A5609ED41F42D6442966AF35852B5CFE6472C652EA18EDA4E49C35F0E22E5287E942D5D1A7B34DA5690D58DEF03CBA3744922F74B659D96BF5EB6BB029D025D6FE689505670E59938349D909E98FF3F7D25A8952C9CF2D4B4A5F66D7D805ECA4BF5CC65F829DE490B0618E730E510DDF024FE3A7C3996785F2CBD313EB03C41595C8DFD5D0FF6A2583B013F02BBD13A16970BD2FEC3E841601985FA3BBC2A6E2C7576911212D1B45E33E44AB21199F040AA0815A67CA0511E4AE036F7CE27182735AF9444CB38A2C27AE9333BEEDA86AD134755E436C7A3B5BF0B6C3124875237B3F51738F791A12346709B9F"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

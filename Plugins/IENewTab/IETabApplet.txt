@@ -16,17 +16,17 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Flag掩码标记：1指定标签页加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框
 Title：标签页页时为创建的网页标题
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
-X64：是否启动64位版
+Option：1指定启动64位版
 Open为需要用IE内核打开的Url实际地址或本地网页地址；
-WebConfig：网页配置，实现Chrome等浏览器的网页和IE内核的网页共享Cookies以自动登录
-注意：Open、Url和WebConfig如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+Web：网页配置，实现Chrome等浏览器的网页和IE内核的网页共享Cookies以自动登录
+注意：Open、Web如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 
 举例：
 自动识别当前浏览器启动：
-{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Flag":0,"Title":"IE Tab","Version":"0","X64":"0","Open":"http://xiuxiu.web.meitu.com/main.html"}}
+{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Flag":0,"Title":"IE Tab","Version":"0","Option":"0","Open":"http://xiuxiu.web.meitu.com/main.html"}}
 
 自动识别当前浏览器启动(指定共享Cookie)：
-{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Flag":0,"Title":"IE Tab","Version":"0","X64":"0","Open":"http://xiuxiu.web.meitu.com/main.html","WebConfig":"UID=zorro;Cur=2"}}
+{"req":"Wrl_IETab","rid":6,"para":{"Type":"0","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"Title":"IE Tab","Version":"0","Option":"0","Open":"http://xiuxiu.web.meitu.com/main.html","Web":"UID=zorro;Cur=2"}}
 
 浏览器当前页面启动演示
 http://local.zorrosoft.com/IENewTab.html
@@ -48,13 +48,13 @@ ID为Wrl_IETab启动小程序时返回的ID值，Code代表控制类型掩码：
 1)、请求安装IE标签页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE标签页小程序","PID":"IENewTab","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab.pid","MD5":"2C4F1AAB24D71DF4CFD887457EBC62A5","Version":"2.2.3.8","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"608F1BBE30D06302054C3C60AC03F1E8B88E0EC141E80B294B24B568C9530C4CB50DF901800B198A6C0A9E6776C82CD559A73C796ADD4D3D5120DE5B4E23EFB51ACAE78950283C055CC538DCD88CF8577A1544FE57974B21EE03728839456174D7594873180C98F7E035081AA7B156F8F5F7C110D1252B3FA53644AB97AFD7298C091E63BC518EFB5ED33F52D9FB2475B1B1DD77103ABE039F010457AB19DD684DCD740D0E2F23CC877E2DBE9E115132C256840D7E10CC9AE8DB2299184CBFF5744BC69B17FB52B975C6437098B22DB0D77145F26EF532F06FB1D9A80DEABF736001124534CF0F207A406E6E99B6E573CEED5E0C136CB16717ECB15C044C3C2F"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE标签页小程序","PID":"IENewTab","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab.pid","MD5":"FA4C13D71FBF6B46952D44483572F813","Version":"2.2.3.10","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0F91294716F1E1FA6B52E38D6CD8CBC2D3BA79F9A7AFF81B143BB1CA40181B26134A7D715DB0F72F90F3A7368B6F3898DDB0D41496F765BDAE05EBE727861F5EC0611750AF11CE6F9ABBA7CA97DCB23C818871DAA3E45B47B63C00FCC10B0866DC3F92A265F2A781A29F1A2D164A84CD482A3FE0C0C6CD5F2300DC148D2C7241CE1D12CBA47E7BAA08BFA1E2C851076CF121D9432242037D17C98086A386D6FFD24B8B088AA080074A39595B9A68B35275A4D4DB40F10DAE3431FF2FC1FD29BD8A727C4E65340185FBA63DF72284F2C355EA0D7291FEE8D7919FDE68ADB60D994839E218D3FE133CBEA011A4999B0ADD36C8616C0F19A678FBE4FF5CB53E9986"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级IE标签页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE标签页小程序","PID":"IENewTab","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab_Update.pid","MD5":"F30B0C0515BBDD1D049530AD7662AB67","Version":"2.2.3.8","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"BA63B5336B34F34F101F99C647A87D3A0C8FC7813FC236797D3C00D2891B3AFC9484043029947ADAD2D2DE785C69B950FAEABF3EBF220D6B71ADC05FC75858A7C1F329128D2F2C4DECA30C58E92A6D7109E2388EBF7EB05E0E9271A7297BE8B94EF0C186D571D2EB5A97C1EFCCF67B02905841818ADB0CCE7512F90B2D89E320187927D601B0CA8412440F35B365376EF74EB3F071652DC50D59997CF6A02E4C3C144F532C1F2DA456C02DC7F9DD64869183BD6DA2D4371A2DF7813520D8503C5C7152B8795CD8A2EB07BB7AB2C1BDB0AE651004C75211AF396654F730B1C7221F04C762724CC477C238F302B3829818BCD4EF0615490068BFBA9240F0454E85"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE标签页小程序","PID":"IENewTab","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的IE标签页内嵌小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IENewTab_Update.pid","MD5":"CE3FB645F074837CD88A3C66DFE90256","Version":"2.2.3.10","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"04834EA030364F69445E7C9258E81BB14A3B705BFFE6BF2408EAB5B8003887100D69DFC4752896D665B6AFAE22CD89F909017EC49D98E4F3D93EE71DF9308B1B5BA2F73727AA2427FBDCA55DD1BBE13951D1100C355086C06A382C312A27A4FA80CEADC1728583777B9B03572A5CB5B008632A9F953C4755F2B27E0C69661948287C219090FC421006D4A5768B84288DC1FF13FC3F4A787B64427A71516794BE7A1A1E7DC77E7411E7F3F52DB586695BEA8F1A39C529469F15D74783ABFED798B91CEB187EE54597504D83B7F922E8F3FBD2BA7DC5AEFE503326C477B4CEBD15A00B35E138266BC65BA5FB8E94B51CD0C5646D121F6D96E0FE7A2729E87C7D1A"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

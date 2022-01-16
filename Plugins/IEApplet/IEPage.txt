@@ -42,24 +42,23 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
-X64：是否启动64位版
+Option：1指定启动64位版
 Url：加载小程序所在的网页实际地址
 Open：为需要用IE内核打开的Url地址或本地网页地址
-WebConfig：网页配置，实现Chrome等浏览器的网页和IE内核的网页共享Cookies以自动登录，指定时无需Url,另外设置小程序的显示位置和大小
+Web：网页配置，实现Chrome等浏览器的网页和IE内核的网页共享Cookies以自动登录，指定时无需Url,另外设置小程序的显示位置和大小
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于网页Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-注意：Open、Url和WebConfig如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
-
+小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+注意：Open和Web如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":2,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
+{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":2,"Version":"0","Option":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
 
 自动识别当前浏览器指定位置和大小启动(指定共享Cookie，不需要Url)：
-{"req":"Wrl_IEApplet","rid":1,"para":{"Type":"0","Title":"IE Applet","Flag":66,"Version":"0","X64":"0","Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","WebConfig":"UID=zorro;Cur=2"}}
+{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"Version":"0","Option":"0","Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","Web":"UID=zorro;Cur=2"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":10,"Version":"0","X64":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
+{"req":"Wrl_IEApplet","rid":3,"para":{"Type":"0","Title":"IE Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"Version":"0","Option":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","Web":"UID=zorro;Cur=2"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/ieframe.html
@@ -116,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装IE控件小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage.pid","MD5":"C8D8D32514A61145A927A103F9010878","Version":"2.2.3.8","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A9E997B4B88F096E1D10B6F36E53C09019DBB17BBCC0AE3B5C80DDD6A386615EE608D0DEF27E492DA519A467ACCC18412475D42F4842B203E701A1669331F6676DF82FD061F084752888CBA2134E0C3370968B7133DE7D55A50B7C7E640908A3AA873A33A98F2F3C6B6213811D0BCE28148810394790BDD9B9444D09EF56B95355B94DB614B2BF0807E5341C9F5890A6F3D94B187BC5E0EE51620DEB821EDEFC24E4EFBDF067D04315B8E1503E17FD5E6ED702F901B60B4D175D92AC954127B9E841C2775122055303D147A527E913DFA9EBBBDF2B1FBDE35F82E858308F1E1C5179A3A6B1F4F9B7902DBAF94568D2D87C05642F8C8C1269778F60DAC24CD82C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage.pid","MD5":"F7542A4FC57B86F00E597EDB538987DD","Version":"2.2.3.10","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"82EDAF4F7E9571F775F25D01ABC4FF55DF18333DD4712F923BDF2194FA57CBB260A2B771A0E77503EC96430144BF4F6EE625EFA1A0C8FEEE4EB819185A4850F0414CE849500DC724F0FABE7B3F8367A5B8272A569194E6CB26BE60CF686F88B60E73135F64F7FA2DD0A5E1F2ED1BDC0C4AB0E6DB0B1276C1DC06C1A437AB40C2A028C3020AD12AC260DCC0A9E489D99199D49B601438461F241E4BA414C492698C2B58751F0B45FC6064CEB83D45E31258D5F73FEA434C95D6FE958D5F9FCE54EAA15B89DFE5F76CC96BF5BE20A727B320C9991D4CD2144EC581BC02B3AF377D83D3F82999DC8B74DB87293599423163587C80347A7D48876B729AC06EBF74D5"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级IE内核内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2021-12-15","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage_Update.pid","MD5":"7F94B4A58B297E153E77C6B644B62634","Version":"2.2.3.8","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2194DDC4596B6CE9889C48B8DCB91243AA8BBBB66123C292E97929E74F270CC58412500B0927FEEBFC527DB9DFBFA3DB2BEDEF171C2697CF42E0B888889D5FF215CCD82A6E38DFB0B4B8C1DD818C7FE923F2FA1148B9325360774E3934777E45D5C980DB0349189820EA2D5C6EB77C15D460E022FFDC8E27C338DA4AB877B1E22EABFE034593094E221227C0EF0450022FA3359745B8666A690744A0D44BB552DD49436CFA17186D33FB2FDD76CA587FE03EAFF02B17D595FD0217F659902A25CDD9E60B273AEB324821D0DED1CB3C0B302106F7658542239016BAF882DE08AF9352E288F2DE3AA789F8BB888A04C4B389C67447F11F3A149B96744248D9BE75"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的IE控件内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage_Update.pid","MD5":"961224264CB205E8B82A8D79CE729DCC","Version":"2.2.3.10","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"59D62D231178940F590BBA5CD5B8725D68FF7689F652CC2EF380EE3FBF5C8F5CE22560A4D197CD43F7AEEADC86A6E74031AC8BFB931909C1D225331F5C8AE7448B38671C2338875A4F331B7FEC3D36A00EECB3F4A5FD2CC1AFF0E2608722089654D85A4AF311B0A838FE2136B73206F9FE24BC2A69C20C83ED7E68063F68572693341DF7C36633C4134D0D9C003614D15E5B553FBD1518FCB22C30B7C19F419293BD8F8B56018B3151D65A99079E6B390E6D07E6F713E650D5A2CC467E3BCE715C945BC2CF0AEBE6DB037669EF62DF97EA5E8745E11397B9C957AB64AE7DEC37C63E5F5381F484AC22753E8B6DD626C2FF67645BE8DCE898D5B55D236A460DDC"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

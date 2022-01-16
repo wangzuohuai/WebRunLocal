@@ -41,26 +41,28 @@ B、网页中嵌入元素
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web中参数Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 PW代表打开文档需要的密码
+Url：加载小程序所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-OType：21是启动永中文字 为22启动永中表格 为23启动永中简报
-Version：1是完整加载，0是OLE方式加载
-Url：加载小程序所在的网页实际地址
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
-注意：Open和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+小程序实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：21是启动永中文字 为22启动永中表格 为23启动永中简报
+Version：0 OLE方式加载 1完整加载
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
+注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
-自动识别当前浏览器并启动永中文字处理
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"21","Open":"D:/Zorro/test.doc"}}
+自动识别当前浏览器并启动永中文字程序
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"PW":""},"Option":"21","Open":"D:/Zorro/test.doc"}}
 
-自动识别当前浏览器并启动永中表格处理
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"22","Open":"D:/Zorro/test.xls"}}
+自动识别当前浏览器并启动永中表格程序
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"PW":""},"Option":"22","Open":"D:/Zorro/test.xls"}}
 
-自动识别当前浏览器并启动永中简报处理
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"23","Open":"D:/Zorro/test.ppt"}}
+自动识别当前浏览器并启动永中简报程序
+{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"PW":""},"Option":"23","Open":"D:/Zorro/test.ppt"}}
 
-自动识别当前浏览器指定位置自动适配网页大小启动永中文字：
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":8,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/OfficeApplet2.html","OType":"21","Open":"D:/Zorro/test.doc"}}
+自动识别当前浏览器指定位置自动适配网页大小启动：
+{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"PW":""},"Option":"21","Open":"D:/Zorro/test.doc"}}
 
 打开远程文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
@@ -125,14 +127,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装永中内嵌网页Office小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-12-15","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"54910288CEDBBB059E09FD5A52087A0E","Version":"2.2.3.8","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1EB2E3B30E18ACA5192A8E7B88A31AF0F2CEAC49099397012C18D8834D17C734EA1888A33804DBC7CA44F4B354CF44A58F148BB0808FD0E867CD5E8D44874E84468AD5B899C77F5EA7C9B5866FCFFF25937A35166B22E7949728354BA6E8C1CE80493F8FC9867F64F8A85814FFB8ABDD88AD5D4F879CC60F56EBC13ACAAE9480BD70BFD3268E2924B8FF94294280B0F6A75CAAB4C89D683105889E415AEEB30555EF4FFD1E423A6BBCEED695A65529465B94E5B7AD420AADA64475156EA543A570F03E5B1136D5F0CC37C2C1B0C6F9051E0B21EA8A606A444F84B790B0FE0DDB98A9D40FB584D325B7984C91E6C31DFED6883500369DAE21C6205967D0C91D9E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2022-01-17","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"CB4D0EA7C0E87FA578E79542E10D445D","Version":"2.2.3.10","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AD3A801ABD85D7F0BB6460D9C484F77DDCB955461F88A94E6A9C2DF15D4B317C638FE907BFBD816BFD81BA4319F85AE1DACFA30DCEE6692E38E1179632EED92C3182E3A451611A6F16224475A5BC5315EB5A11483608357BA440758498BED653092ED64ABDA38C1A800E283772384FDA9DAA2E70BF3FF8E6904A5715B2CDB310D48EE3422FA8D79DB71F9BA176A20876E6C2E1BF5FCC321934CD657621F5444FD70BD5778BB60387F33261429D8E9418235590C32BE9E46625EB504D747FCD28EEF025D9C5C699C59F0C3787DE367FE9FEF9028010ABD91B2148DB27A7143A56360C2DAFD40BD01B04DDD2200CCD283985B9AFB13CE07962ECC0D90B686634D6"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中内嵌网页Office小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2021-12-15","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"5764CE303B1B6B98A478C975F0E36B79","Version":"2.2.3.8","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8E39BA1EED3EB4CE70EBAB223CDACAE81368F1980BBCB4C2FEDB58E2C2CC994051101BE831A38C0914ACFBBDF191A84F508334712F9D21A7D950D3971D6C52814AE0EBBA70DF1B4E9BE30AD3EE06B77CA331278431E2C4F5FFE411A7A2FFFA366CAB0C3EFCB32E0242C2EE0F821582B6AA76CADCF6745DB344671E312BBFFA8E41863FECB682D8CBA27369F068E8EAF4F218168FBEF159042BBAF8F52CFDDC5217578BEB5B00D42809CBAFCE95DE0E524851AE56C1B2AEC1E69AAA2DE399B1A84D316257FE3A27156AAEBF60D70B3EB2BE99D229884A4DDBA64083C0B17CA684ADF61C0896462FD5E16131C5276C7F655611F652F8B4FC36BBFE76B5964BC582"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2022-01-17","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"A18DB14C4971CDF911B473499CFB9552","Version":"2.2.3.10","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"605129E1DD6CF548C46450B03CC07439037CB2ECA835CF07EB32D0557115EA2141A9FF764C7F458D4591F0E5B665AAA5FB3F629D3D1FBBC2F2FD069B7CD579B2E474AA55EDEACB48CED5DD54555E262A6A61D3252E0C74DD78E6819AC4FF1C816E2FE2EDC04798452194F1D466A7ADF01A3D3616B02514C497F72DD6EA10367710384F32A5B007D72392DFABF7E4D9D8066D2EA5145894B739CF7DCF3A8A0D826741E3CC9A6CD33B4C729634CB65978D858BE8254897599E775191DC53DB29674291B619597D4937B0EAF687795E9151F7FBF02A5C47566F9121305F357DB2372C59CE411349280C29BB16DF500355B519D5FF95B415459B25EE96A9AA5E48AE"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
