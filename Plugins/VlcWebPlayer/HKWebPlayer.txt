@@ -135,13 +135,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"A14236CA45A3F162A7EE3B9ADB0E82B1","Version":"2.2.3.10","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"29053FE20991821AF1ADA9DCB53506EBC9DB0725225696B081559DA75E8509D9A869DC9E706B25E14BA2C5E8386E6857E7E1404315410F8652A0B780F85924A938CD7113AB298FE5CBB2BC751D2C6C526ADC5365F7AFAAE7BCA38C07B9FFE8567E71F8686596CA2797F7A21E67E1B546F33C3BD9AF24B06A6AC1442DC08E5627735A9E4325492BFC7C90CBA9726FB87D2A88A0D6A0B092351104B1395D816B372A5C5CFB895B0EA316716919FDB194E61B27B08701048DA59FAFA9ACC0D18B5E840292CEA9676F1A2BBD842AAEBA4242F5C88AF6B41DB5ADF03A889CC38627307A1A4F15158AEA6FCC17D6FA98C74B94F5FE0AF8832FECB753CDBB0AF5729EC4"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-02-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"3DB4ECE4E724F6E7A9E2D295C82C0274","Version":"2.2.5.1","Size":1245184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0B6B6715765331968585B1E74A705D7D0C09EC47257C0D45DE5DE7645E81F8747CBEEAFDDD36B6EDD9BCCE007B2A98F6E9FB5BF4342D6F2DBE97B255E8D5CD2CD5DDA7976A148A5C584608C5B3E1114E85ED9AEE4AF541FDD062256687E98934D5EB88085A6C1C0DC1BD0592F114EE8497F272DB0E062955E915BE2C2BC51754B356245A7CEBCE948BDD17690E41F4471677EF68C3C77DEBBD0D2497CCC68CFD6FF4B67FA0C5D97C6D3725C85C6F4339F7DEF6F9CF16E0DB94F04BECB7ACE9DD90DCFF00B3D84EE0E326DEEAC1728B25945E3840A197E1CF7179DB029F1211B67C556930B99714DF82F19ABCF55F88FAE7DC23C5528F3E5AF7BBAAF35875432F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"7A05341649483881F8287341CE693DB4","Version":"2.2.3.10","Size":1212416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3E37FA17F2CF04F73DE5AB504FCB42AD83BE0F5E67ED96739A6357B5720C556BF50D1851D595B0D1FE0B75BAEC0A2BF5AC8D226C1BE211B535F701895172331CDDE295227CCF8E4092CC35F83A7F16B10D77C4EA269ED6FE28DE1F5A4682C471E107BD949978C2A78E7D68033E68F23727C2A887772D4E57A234D31FD733E4BF44A13F58034B9C8A9E21E2A815ECFDE4BBB3530C60EF0493FE9D02E75F339BF3C4DB3F090CB04A9C672F0842AAE86ED16F4A3210C0437133D205D21873309E90644235D4DC8A26518B8E2024C7B64D71CC9DBD137E2FCBBBDE3F4AB4D619517D30BD886ED999C6B37703536F3246BA19B4A67DD47675F8665741DB8B28ADDFB9"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-02-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"62F0E0CB216446190BA245AEE2DA0746","Version":"2.2.5.1","Size":1245184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1E48ED346BC055A6EE83695E909977844461F3B5571285495E9EA3D8253A5EFC727A2CE13E83FF6ECDDF47B03328B16C1639D8DA54238ED0BE4164C6C0F912B1A48417DC28ECE9DACAEEA29D13313302D04427755ABABFDD4E4F8264AEFFE127991850B0812A7AF2C7280C17104B7AFCDE184C53E6FFA4C236DBE3A7094B824C64C18CA0969B2371B5232DEA9B046BBD9F4E4C6249D69CCF3BE666AA1803D5D4B8AE42C2BA8C2F15492CE6E68ED25A670ADC30E015B5F490116395BAD921A6A16164CCF6DA9221441632EED81168561BDE003DA5CFD009B2D54563559C4685A2353DE7013D89684C29B115B55D1636083833EDBEA75A028DFAA067D2069028FB"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -526,15 +526,51 @@ ID为窗口序号 Flag为1代表启用，0代表禁用
 请求：{"req":"Player_GetSoundStatus","rid":102,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":102,"ID":1,"data":{"Ret":0,"Mute":1}} 和 {"ret":0,"rid":102,"ID":2,"data":{"Ret":0,"Mute":0}}
 
-63) 取指定ID窗口推送信息屏蔽掩码，举例：
-请求：{"req":"Player_GetBlockFlag","rid":103,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":103,"ID":1,"data":{"Ret":0,"BlockFlag":0}} 和 {"ret":0,"rid":103,"ID":2,"data":{"Ret":0,"BlockFlag":0}}
+63) 设置指定ID窗口是否静音
+请求：{"req":"Player_PutSoundStatus","rid":103,"para":[{"ID":1,"Mute":1},{"ID":2,"Mute":0}]}
+分别返回：{"ret":0,"rid":103,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":103,"ID":2,"data":{"Ret":0}}
 
-64) 设置指定ID窗口推送信息屏蔽掩码，举例：
+64) 取指定ID窗口声音通道，VLC播放引擎有效
+请求：{"req":"Player_GetAudioChannel","rid":104,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0,"Channel":1}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0,"Channel":2}}
+
+65) 设置指定ID窗口声音通道，VLC播放引擎有效
+声道定义：
+libvlc_AudioChannel_Error   = -1,
+libvlc_AudioChannel_Stereo  =  1,
+libvlc_AudioChannel_RStereo =  2,
+libvlc_AudioChannel_Left    =  3,
+libvlc_AudioChannel_Right   =  4,
+libvlc_AudioChannel_Dolbys  =  5
+请求：{"req":"Player_PutAudioChannel","rid":105,"para":[{"ID":1,"Channel":1},{"ID":2,"Channel":2}]}
+分别返回：{"ret":0,"rid":105,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":105,"ID":2,"data":{"Ret":0}}
+
+66) 取指定ID窗口音轨数量，VLC播放引擎有效，举例：
+请求：{"req":"Player_GetAudioTrackCount","rid":106,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":106,"ID":1,"data":{"Ret":0,"Count":0}} 和 {"ret":0,"rid":106,"ID":2,"data":{"Ret":0,"Count":0}}
+
+67) 取指定ID窗口音轨，VLC播放引擎有效
+请求：{"req":"Player_GetAudioTrack","rid":107,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":107,"ID":1,"data":{"Ret":0,"Track":1}} 和 {"ret":0,"rid":107,"ID":2,"data":{"Ret":0,"Track":1}}
+
+68) 设置指定ID窗口音轨，VLC播放引擎有效
+请求：{"req":"Player_PutAudioTrack","rid":108,"para":[{"ID":1,"Track":1},{"ID":2,"Track":1}]}
+分别返回：{"ret":0,"rid":108,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":108,"ID":2,"data":{"Ret":0}}
+
+69) 取指定ID窗口推送信息屏蔽掩码，举例：
+请求：{"req":"Player_GetBlockFlag","rid":109,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":109,"ID":1,"data":{"Ret":0,"BlockFlag":0}} 和 {"ret":0,"rid":109,"ID":2,"data":{"Ret":0,"BlockFlag":0}}
+
+70) 设置指定ID窗口推送信息屏蔽掩码，举例：
 由于以下几种信息通知比较多，所以增加阻止通知设置，比如阻止鼠标移动和进度通知，就设置9
 1阻止鼠标移动通知 2阻止时间变化通知 4阻止缓存通知 8阻止进度百分比通知
-请求：{"req":"Player_PutBlockFlag","rid":104,"para":[{"ID":1,"BlockFlag":0},{"ID":2,"BlockFlag":0}]}
-分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
+请求：{"req":"Player_PutBlockFlag","rid":110,"para":[{"ID":1,"BlockFlag":0},{"ID":2,"BlockFlag":0}]}
+分别返回：{"ret":0,"rid":110,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":110,"ID":2,"data":{"Ret":0}}
+
+71) 取本机显卡信息，举例：
+请求：{"req":"Player_GetVideoCard","rid":111,"para":{}}
+返回：{"ret":0,"rid":111,"data":[{"HAL":1,"DID":8081,"Desc":"NVIDIA GeForce GTX 1650","VID":"4318","Revision":"161"},{"HAL":0,"DID":16027,"Desc":"Intel(R) UHD Graphics 630","VID":"32902","Revision":"0"}]}
+返回中HAL为1的代表支持硬件抽象层的独立显卡
 
 5、海康网页播放小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。

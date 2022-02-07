@@ -132,14 +132,14 @@ function getrandom(nums)
 				nScrollLeft = Math.round(window.pageXOffset);
 			else
 			{
-				//获取页面的scrollTop,scrollLeft(兼容写法)
-				nScrollLeft = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
+				//scrollLeft(兼容写法)
+				nScrollLeft = Math.round(document.documentElement.scrollLeft || document.body.scrollLeft);
 			}
 			if(window.pageYOffset != undefined)
 				nScrollTop = Math.round(window.pageYOffset);
 			else
 			{
-				//获取页面的scrollTop,scrollLeft(兼容写法)
+				//获取页面的scrollTop(兼容写法)
 				nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
 			}
 			nOffsetX = nScrollLeftOld - nScrollLeft;

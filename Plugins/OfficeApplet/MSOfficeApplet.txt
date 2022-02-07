@@ -42,18 +42,18 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
-Web中参数Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 16支持上传下载菜单 PW代表打开文档需要的密码
+Web中参数Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 16支持上传下载菜单 User代表用户名 PW代表打开文档需要的密码 DataPath代表文档查找和保存默认路径
 Url：加载小程序所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：1是启动微软Word 为2启动微软Excel 为3启动微软PPT
 Version：0 OLE方式加载 1完整加载
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动微软Word程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"PW":""},"Option":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动微软Excel程序
 {"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"PW":""},"Option":"2","Open":"D:/Zorro/test.xls"}}
@@ -62,7 +62,7 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径�
 {"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"PW":""},"Option":"3","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"PW":""},"Option":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
 打开远程文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
@@ -127,14 +127,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装微软Office内嵌小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"1E0A6E289543C5EF394E4467E2BABEF0","Version":"2.2.3.10","Size":4259840,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B763D8B7F6363663DE37F066DD09CBA803D0D012DF2DF6DBB1C17D52D348628CE1CDFF7FC046ADB4C7865AA7A7EA10ED1D740D9E5141FCE43DD89F8D4E5DD16CB3500B2D9688F7B9BF002F37A5D02EE62192D2F24930E8D010241E482E15DC77450639A8850AFACF09EDD0C6684A1EC1675ED4793F11759D10941CFA53691F1F72A37EB8E92F15575D505B6AF79B25D401680F16962F83ABAE00FD50AC69F04292164EC675B5463C75C79145D75C41CFD9115CA127C71815FD729839ECDFB96121CB50E5DEF2DD714843081292B55B0BCEB523A0D7272D57A78C10C9ED1B8E824281C0035D36570A455AFCAACE4476E527B381BD2477F73A1F2BC2F15BFD9F13"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2022-02-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"D5E73262FA431E83F9392EDB8B9D260D","Version":"2.2.5.1","Size":4259840,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3ECC4E106F3647973BC2E53AD63B0D4262EF550804DBF5E4CBD1DA7C0E304025FCDBCBFB672935C5ED1770E22CA9519F3E2D802E5B9587B5B2CEB9A8EDBC47622A8D78544FF128008770E86F73619C100E31ACA60B031D48972140AC8D290779D80F7DAFB5AD474AD6A250D6251F67C84FC154C486E3FA7EA372A310BCF401B76D8E40F9DEC9F23CD06809AC71A64CF63B3982E6BA7351461C1517B7C281DFD491113F6B51BE947B712FF9B85EEDCE009F5713FD805AE9EA02C688C988B5496E0E956FB6C92D0B5AA07F42528AEBBAFB2F0C2C11933D248FA4A4DF126A7897E34E9B1160F91BF00DC10C1A554908B32C02F0C0A3E2ACD5277FD5433BFAE84243"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2022-01-17","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"2D18E28ADFE2A32CE775B70D13C6603A","Version":"2.2.3.10","Size":4259840,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5B6F14D6B4862EB43A0069F58CF7E50DCB84A4DF8E6E0D437C3228EED5DA24AE8311E30D0F25AF4028185D92FE40721FC3DEDC69D4F91334BE1C3F70F3110E137DD05E2BD84252BBB0610EE1475AA100FD18EF760E22D18B1AA1A00CC3EFEDE010B6C286691FE71E2327447293897391E941315FE5C32C30EA8E69F88734CB390ACB84D9B9BF5E1837899F8BC8EE5E5A2EF2CF4089774E035DD27BA2F5D23A3B225A0D56DF0422F96F12A5AA82CD4684D56B05D420B2C9B410073FF8A5929CD3CE8876364B7E03B2D5D6D298154858626881C41995C04BBB426311AAC4D35DCEB1C2D7FFF57F50AA11B8BB1B80089CC6F709604007A56A26D6E823399640AB65"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office在线编辑查看小程序","PID":"MSOfficeApplet","Date":"2022-02-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"DDCDF716CC1FF27CD570B4BF919FE0AC","Version":"2.2.5.1","Size":4259840,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"34DE242E9222927BD91D1E5DD62F884AEC84B2F4D6DF9B7FFCF13BFF10BCB93E414075AA931714F99F7484F29676683CC441EE2FA0C2AF3D15C00784D043E5F62DB7406DE39BE5684372EA6B31C90B5D47AC5B1A51F98BEF15249DC1109E74A51888824E7C1E34CAF333DF611A353E419454E99509CAF4DB0C1E0EC6FDE3CDC2B5FE3AE245D9DCC20321684FFD77535E0FDEA4BF9C29E5E2934A0911219471E0096FD71CFAD19E0509F1D99F68E0C4DE3D1C8E988262222A65E914A4015201697C43FA0DAFE84A5320C77BFFE593132397A4037D90337AD0B2242583011D6FEF8B8B236025E041B82598149AEF1FC5E2962CB234292DE09AECF591CA094BD80B"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -144,42 +144,40 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 
 4、微软Office内嵌小程序转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
-1）请求退出小程序，适用于Word、Excel、PPT软件
-未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
-{"req":"Office_Exit","rid":1,"para":{}}
-无返回
 
-2）请求关闭文档 Save为0代表如有修改不提示保存，适用于Word、Excel、PPT软件，完整嵌入方式支持，OLE嵌入直接关闭小程序
-{"req":"Office_Close","rid":2,"para":{"Save":"0"}}
+1）获取文档是否修改了需要保存，适用于Word软件
+{"req":"Office_IsSaved","rid":1,"para":{}}
+返回：{"ret":0,"rid":1,"data":{"Ret":"0","Saved":0}}
+
+2）设置文档是否需要保存标记，适用于Word软件
+{"req":"Office_PutSaved","rid":2,"para":{"Saved":"1"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
-ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
-Ret为调用VBA接口对应函数返回值，0代表正常
 
 3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
-打开本地文档 如非全路径，默认使用中间件程序Data子目录作为根目录使用
+Open打开文档(不指定时新建文档) 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
 打开远程文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
-4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会弹出保存对话框
+4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会创建一个临时文件名保存
 {"req":"Office_Save","rid":4,"para":{}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
-NewFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
+NewFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
-NewFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
+NewFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
- ImgFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
+ ImgFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
@@ -196,7 +194,7 @@ Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
 
 10）请求批量打印，适用于Word、Excel、PPT软件
 Copies为打印份数，默认打印所有页面，打印到文件时，需要指定OutFile，有中文或特殊字符等需要UrlEncode编码
-OutFile如非全路径，默认使用中间件程序Data子目录作为根目录使用
+OutFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_PrintOut","rid":10,"para":{"Copies":"1","OutFile":"D:/Zorro/testprint.pdf"}}
 返回：{"ret":0,"rid":10,"data":{"Ret":"0"}}
 
@@ -207,10 +205,10 @@ Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7�
 
 12）请求获取当前用户名，适用于Word、Excel软件
 {"req":"Office_GetUserName","rid":12,"para":{}}
-返回：{"ret":0,"rid":12,"data":{"Ret":"0","UserName":"test"}}
+返回：{"ret":0,"rid":12,"data":{"Ret":"0","User":"test"}}
 
 13）请求设置当前用户名，适用于Word、Excel软件
-{"req":"Office_PutUserName","rid":13,"para":{"Name":"test"}}
+{"req":"Office_PutUserName","rid":13,"para":{"User":"test"}}
 返回：{"ret":0,"rid":13,"data":{"Ret":"0"}}
 
 14）请求获取当前是否修订模式，适用于Word软件
@@ -272,20 +270,27 @@ Name为书签名称 NoSelect为1代表去掉书签选中状态
 {"req":"Office_GetRevisionsCount","rid":26,"para":{}}
 返回：{"ret":0,"rid":26,"data":{"Ret":"0","Count":0}}
 
-27）获取文档是否修改了需要保存，适用于Word软件
-{"req":"Office_IsSaved","rid":27,"para":{}}
-返回：{"ret":0,"rid":27,"data":{"Ret":"0","Saved":0}}
+27）创建指定目录，适用于Word、Excel、PPT软件
+Dir为子目录名称，可为全路径，需要确保有创建子目录权限，非全路径时，为启动指定数据文件路径DataPath的子目录，没指定DataPath时为中间件data的子目录
+{"req":"Office_CreateDir","rid":27,"para":{"Dir":"/doc"}}
+返回：{"ret":0,"rid":27,"data":{"Ret":"0"}}
 
-28）设置文档是否需要保存标记，适用于Word软件
-{"req":"Office_PutSaved","rid":28,"para":{"Saved":"1"}}
-返回：{"ret":0,"rid":28,"data":{"Ret":"0"}}
+28）查找文档中图片并返回BASE64编码数据，适用于Word、Excel、PPT软件
+Index为图片序号 从1开始编号，先查Shapes再查InlineShapes
+{"req":"Office_GetImage","rid":28,"para":{"Index":1}}
+返回：{"ret":0,"rid":28,"data":{"Ret":"0","Code":""}} Code为返回的编码数据
 
 29）请求合并文档到指定书签内容，适用于Word软件
-File为被合并文档全路径 如非全路径，默认使用中间件程序Data子目录作为根目录使用
+File为被合并文档全路径 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 Marks指定需要替换的书签名称数组
 默认在File文档中找对应书签名称的内容来替换，如没有对应书签直接插入整个文件
 {"req":"Office_MarkMerge","rid":29,"para":{"File":"D:/Zorro/TestMark.docx","Marks":["Letter","Title"]}}
 返回：{"ret":0,"rid":29,"data":{"Ret":"0"}}
+
+30）请求合并指定文档到当前文档新的一页，适用于Word软件
+Files为被合并文档数组 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+{"req":"Office_FileMerge","rid":30,"para":{"Files":["D:/Zorro/TestMark.docx","D:/Zorro/Test.docx"]}}
+返回：{"ret":0,"rid":30,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为Word程序通知
