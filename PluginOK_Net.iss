@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "PluginOK中间件网络版"
-#define MyAppVersion "2.2.5.1"
+#define MyAppVersion "2.2.5.2"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "ZbaSetup.exe"

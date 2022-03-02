@@ -6,6 +6,7 @@
   "AutoLoop":1,
   "ToolBar":1,
   "Mute":0,
+  "FrameRate":0.1,
   "BlockFlag":7,
   "PercentTime":300,
   "TalkVolume":80,

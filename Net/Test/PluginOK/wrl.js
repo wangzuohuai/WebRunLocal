@@ -3,7 +3,7 @@
 	if(document.location.href.toLowerCase().indexOf("https") == -1)
 		return 'ws://127.0.0.1:83?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 	else
-		return 'wss://wrl.zorrosoft.com:443?sid=' + getrandom(5).toLocaleString() + '&flag=1';
+		return 'wss://wrl.zorrosoft.com:453?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 }
 
 // 判断是否IE浏览器，用于区别使用Web Socket连接组件
@@ -58,7 +58,7 @@ function getrandom(nums)
 {
     $(function ()
 	{
-        //////////////////////	目前脚本只支持一个网页内启动一个小程序实例	/////////////////////////
+        //////////////////////	目前脚本只支持一个网页内启动单个小程序	/////////////////////////
         var $win = $('body');
 		var PluginOKSocket;					// WebSocket主连接对象
 		var appletsocket;					// WebSocket连接小程序对象
@@ -132,24 +132,22 @@ function getrandom(nums)
 		{
 			if(!nAppletRunID || !bRunInCurrentPage)
 				return;
-				if(!nAppletRunID || !bRunInCurrentPage)
-				return;
 			var nOffsetX = 0,nScrollLeft = 0;
 			var nOffsetY = 0,nScrollTop = 0;
 			if(window.pageXOffset != undefined)
 				nScrollLeft = Math.round(window.pageXOffset);
 			else
 			{
-				//获取页面的scrollLeft(兼容写法)
-				nScrollLeft = Math.round(document.documentElement.scrollLeft || document.body.scrollLeft);
+				//获取页面的scrollTop,scrollLeft(兼容写法)
+				nScrollLeft = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
 			}
 			if(window.pageYOffset != undefined)
 				nScrollTop = Math.round(window.pageYOffset);
 			else
 			{
-				//获取页面的scrollTop(兼容写法)
+				//获取页面的scrollTop,scrollLeft(兼容写法)
 				nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
-			}
+			}	
 			nOffsetX = nScrollLeftOld - nScrollLeft;
 			nOffsetY = nScrollTopOld - nScrollTop;		
 			nScrollLeftOld = nScrollLeft;
