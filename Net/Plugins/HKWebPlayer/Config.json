@@ -6,12 +6,12 @@
   "AutoLoop":1,
   "ToolBar":1,
   "Mute":0,
-  "FrameRate":0.1,
+  "FrameRate":1,
   "BlockFlag":7,
   "PercentTime":300,
   "TalkVolume":80,
   "Server":8000,
   "BackColor":"#000000",
-  "Status":{"Text":"准备播放中，请等待","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
+  "Status":{"Text":"准备播放中，请等待","Err":"播放时出现错误","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
   "PORT": 920
 }

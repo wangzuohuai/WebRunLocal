@@ -1,4 +1,4 @@
-文件操作浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)单机标准版开发，提供本地文件HTTP协议的上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+文件操作浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)单机标准版开发，提供本地文件HTTP协议的上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；

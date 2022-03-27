@@ -1,4 +1,4 @@
-串口通信浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)单机标准版开发，底层实现调用微软串口通讯控件MSComm32.ocx，最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。通过此小程序，可以在浏览器中通过JS非常方便的操作COMM串口打印机、GSM 猫、手机、扫描枪、屏显、钱箱等设备。小程序中涉及到的属性等含义，请直接参考 微软串口通讯控件MSComm32.ocx中的定义，也可以参考这里：https://blog.csdn.net/shenziheng1/article/details/52884444
+串口通信浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)单机标准版开发，底层实现调用微软串口通讯控件MSComm32.ocx，最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。通过此小程序，可以在浏览器中通过JS非常方便的操作COMM串口打印机、GSM 猫、手机、扫描枪、屏显、钱箱等设备。小程序中涉及到的属性等含义，请直接参考 微软串口通讯控件MSComm32.ocx中的定义，也可以参考这里：https://blog.csdn.net/shenziheng1/article/details/52884444
 
 以下是体验小程序步骤：
 1、PluginOK(牛插)中间件的安装：
