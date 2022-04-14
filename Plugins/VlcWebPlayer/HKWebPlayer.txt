@@ -31,9 +31,9 @@ HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
 HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网页在线测试：https://local.zorrosoft.com/HKFrame.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
-前端集成可参考以上测试网页进行需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-播放窗口选中状态时单击即可全屏显示，全屏显示状态通过ESC或Windows按键取消，全屏切换会发送JSON包的VLC_FullScreen通知。
+前端集成可参考以上测试网页进行需要嵌入用到的JS脚本，脚本程序是完全开源的。
+播放窗口选中状态时双击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的Player_FullScreen通知。
 
 1)、请求启动海康网页播放小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
@@ -121,13 +121,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-03-27","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"CE03BA72F79AFF48B8BD7BF6C0AD381F","Version":"2.2.5.3","Size":1245184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6A18E969D608FC85F6F878A53C5442F0BA73833CA105B6B4237EA9B5D80B7A5CFCC4BFA33D885EFA58008C0E83B40AA81BB4B7CC9C7B1E1EF14DAD538A2D0A152C2B8B726DB7960DE84539490E13BB44CF448CAA5A5DEC3068CC46F9E014D1501F59C5027D22485D200F2A13E29F3AD1892072B4F6845C7740361ED257C20293BDD926031C6D034ADDAE4E6019C4B0DDD04B41DA93FE6174100400D31C2FD99BA1389E2A255F3A3F9267FB9E3D0AB30612EFF74091781E728ADFDAC5318CF4EF5E4EDD0AE39FA3A20473024E38A2826D64A08504B9C63461069BC4D262A3D4CB7A13E4B77E2072549D8FCEEBFAA6D6C761EFF836EE83ED6A9FBF2910F3EAF42B"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-04-13","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"A8D177D61229AF3D2B98B638170A1CBD","Version":"2.2.5.5","Size":1277952,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"54258120E8DCF1922268CA432952F2E25D907D7360918006F9DA06C18854720E8DD625E96E293AAB2BE5D05D39353C222E8917AE7798E6590B4F27C4E29751A8B748C95F4369F220C4A66B35B2623CB05DEB249811BE9A2B01DA04014C8102BD202C15BD6FEE70E769F7F665E5A09A38A03E101E8AB48C92460BA01B7E4D12F76630E5A1474B9FC43A056FC8D6AA13105F7A571E2EE97B2049161AAEE21DB90618B9AE8C41C610F1162EDE7ABF5344A786EBCA18C6C6E8E0ECFB7B12A1A65C013570BB24AAF7599611A7B0A23EBBCC63008BB2DE8A8D420E06927705D486A1279C673C1168EE4D3C8ED7EC8961898DC2891BB0135A089E7650EE68421D472E1C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-03-27","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"57A1788DFFE9F14FB5CA29D0FF7FDA39","Version":"2.2.5.3","Size":1245184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"50B1A8A4599A74FE79A529128E679405339FD8AD96C4B29A2177B6F950754A165FA3C273534ED86AED0EB21F564FF1C01FEEB1F1B6FC6DD82A6884A9CD39774776E881F48DA7350B4B90704D66906A68AF9C05049491F03E47A69E9AE495391ABB6B0590DE320346715E7FD9C61F03657F71ACF9AB2994701856341744FCCB6E8C1F09D559A9E80A3418C83FF788544DE80FA28E0FDBF47B09D03DD4A650C777DD8DAC8651DFC4AA0595FEA24E79E0140A2E610E6905D6BC37358BB9E5AC722F3F6B1E2C4D903F25B3D67EBB1F9F0AA557A81519098115E9CC8308FFBA99DF06D5BF4427D8A8DB16C93528FA13FC8CDAF3838143198FF3CFD40565C7C0A22B11"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-04-13","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"CE81431FDC882C98A4ABF9A7FD310F9F","Version":"2.2.5.5","Size":1277952,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"100E8CB8E5BBE577835BD0493864EABC7440ACABD32E5405D319C2B2F2C011C5A4CCFBB33CF930FA660F43DDBE5E6647D2FEDC46055591737A9D505581D25179AC43618C147E5CDB94DC9FAAFDF796B9BE2CAF68E70ED75C725709E193B44BF9091CEB2DA00A24CA92DAD26D1FA6657B7E0FAB9E7E6F210A56428D7F1A7755F92E545B0881560549A9CB63ADE05EE8CD40EB9DA28651BD2B223D1EBA106AAF035436554A9D9FC95824FCBD5707E02DA0FCF7F4A7AABDB2ADD3C1CB7DDAE1391C35BD080B627615B6703C283E3BDB57BAFDDE13194B11F7EBED513216BF0DFA26AD51707A4A0ECF2137A06276047760557768B9ED0985D4D00144C96D1FDE8D81"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -242,10 +242,12 @@ Type类型 默认1加速播放可多次调用 2降速播放可多次调用 3倒�
 请求：{"req":"Player_GetCurChannel","rid":65,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":65,"ID":1,"data":{"Ret":0,"CurChannel":2}} 和 {"ret":0,"rid":65,"ID":2,"data":{"Ret":0,"CurChannel":1}}
 
-26) 取指定ID窗口相关状态，本地MP4等文件播放登录状态无效，只有播放状态
+26) 取指定ID窗口相关状态，本地MP4文件及VLC引擎播放登录状态无效，只有播放状态
 请求：{"req":"Player_GetStatus","rid":66,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":66,"ID":1,"data":{"Ret":0,"LoginStatus":2,"PlayStatus":1,"SupportTalk":1}} 和 {"ret":0,"rid":66,"ID":2,"data":{"Ret":0,"PlayStatus":1}}
-可以返回是否支持对讲标识SupportTalk
+返回LoginStatus为海康私有协议登录状态
+返回PlayStatus为当前播放状态，播放状态定义参考libvlc_state_t
+返回是否支持对讲标识SupportTalk 海康私有协议播放有效
 
 27) 指定ID窗口播放指定通道、本地文件或RTSP流地址，0私有协议播放需要先登录
 指定Channel时为指定通道播放，指定Uri时，要么是本地路径文件，要么是服务器的RTSP流地址(包含回放地址) Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
@@ -257,7 +259,8 @@ PlayID为当前播放ID
 28) 指定ID窗口播放控制，需要先调用播放
 Type为控制类型，默认3暂停播放 2停止播放 4恢复播放
 请求：{"req":"Player_Control","rid":68,"para":[{"ID":1,"Type":4},{"ID":2,"Type":2},{"ID":3,"Type":3}]}
-分别返回：{"ret":0,"rid":68,"ID":1,"data":{"Ret":0}} {"ret":0,"rid":68,"ID":2,"data":{"Ret":0}} 和 {"ret":0,"rid":68,"ID":3,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":68,"ID":1,"data":{"Ret":0,"Status":3}} {"ret":0,"rid":68,"ID":2,"data":{"Ret":0,"Status":5}} 和 {"ret":0,"rid":68,"ID":3,"data":{"Ret":0,"Status":4}}
+其中Status为当前播放状态 播放状态定义参考libvlc_state_t
 
 29) 指定ID窗口设置声音共享模式，需要先调用播放
 AudioMode 1为独占 单路音频模式；2－共享声卡，多路音频模式 

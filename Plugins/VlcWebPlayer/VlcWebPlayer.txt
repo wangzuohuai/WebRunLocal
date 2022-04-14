@@ -13,37 +13,9 @@
 HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS网页在线局部加载测试：https://zorrosoft.com/vlcframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
-前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
-A、标记小程序的显示位置和大小
-.VLCWebPlayer {
-            margin: 20px 0 0 20px;
-            width: 480px;
-            height: 320px;
-            border: 1px solid blue;
-        }
-或者
-.VLCWebPlayer{
-            width: 480px;
-            height: 320px;
-            top: 20px;
-            left: 20px;
-            border: 1px solid blue;
-        }
-如果在网页Header区没有标记小程序初始显示位置和大小，请在启动小程序的JSON参数里，添加以下参数：
-"Left":20,"Top":20,"Width":480,"Height":320
 
-B、网页中嵌入元素
-支持IFrame的：
-<iframe name="VLCWebPlayer" id="VLCWebPlayer" src="VLCWebPlayer3.html" frameborder="0" align="left" width="550" height="540" scrolling="no>
-    	<param ID="2" Play="http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4" />
-    	<param ID="3" Play="rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream" Caching="500" />
-    </iframe>
-或者直接用
-<div id="VLCWebPlayer" class="VLCWebPlayer"</div>
-
-另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
-
-播放窗口选中状态时单击即可全屏显示，全屏显示状态通过ESC按键取消，全屏切换会发送JSON包的VLC_FullScreen通知。
+前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，另外脚本程序是完全开源的。
+播放窗口选中状态时单击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的VLC_FullScreen通知。
 
 1)、请求启动VLC网页播放小程序：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
@@ -120,13 +92,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-03-27","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"C3FA4635369A78213997CCD38DE07D5F","Version":"2.2.5.3","Size":1933312,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9F1731519BB972D73983194A349A8F641622C456BDE27359862EA5D1D201C7D60A1F0653AF98070C2346598658E3FCDC1ED546EED7F72CEA9828C2C8EBF9E42CB45D5990AF7942F239BCCA7B85D57B3FCD8680F2A8B9DB7501ABD7BB135E70722DB196DD98737AAAC4E8481D588E4B0662681F8FA282AF3A90161FC2CE15A8710053924A704EA311CA7C2AD369B8F8467659036BEC3D5F3589174F6B190F7EC37D1AAE85732BBF841901D80527FA40A77A5D175DAB1F0F49F308927779DD678098B9DB615F4574F66AFC355094844F64D336B8D9F08FB47D9505400B447685C3E799B3A74879364DBAE34041C63ECC38D522ED5A114E5FA20A2540E9FBA7200D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-04-13","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"05EA007B8F7E822C02CAF99680E688A0","Version":"2.2.5.5","Size":1933312,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3F8DED9E724D43FC33CED51AFA7F9DF175D410EE982D734A0AA2F3DB7EE49FD70C38DB3BFE0E5E64D2166E032B802D1DC66803D596A3373A86310590A76E349CA05DB7D2AD5F63FB439B6F078B4C46B8933BD3C817C14C48F4D4C25656A629B942814E0A3C1AA18A9DFECE418A5EC03FEE60CA88045691EC66F9FAD6ABE601C4C675008E81F5CDBB4A56FB907C9512DFBFF85B7F7A2A457A9BE479B1F66C8BAF3E5D363F54C6721766D4CB12BEEE553059CD0309B3B6B12176816183FD48ECCCB38A565CDEA6A7703E66B646005D2AFE3A5FCB887E240F478867BF6A3B56F9DD1F8EA684162772D767C0BBD94A666B40B2AB5A47EEE04B6AF70DE69F9347FF8D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-03-27","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"9FD89C865AE9B3C8F96651AF99F639F1","Version":"2.2.5.3","Size":1933312,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"81B8D87716EBE457EDAA4DF6171A64B4466268C15E6AF35B0E1F06D80D529BFD148C029AD267F3108EFB760CCA80B9697743DDE585EE5256042C2187E6C001E82DE9C2CC92950510F2AB50BAC95576977390C8469EC48356BD42246418A653291EC7A76653CB190D6743C1E6AE26C114A8D994ED899E83A335A5FDD8E20AE68E91612936B4663FF4647CA36D0501F0FF8941672BF56008835F2AB8D092A6B1C5981B5B59DD5BCBB783FFD5C2BDF205BF3721E89B4C2E6887A24958A00DF160E826B479DB3337ED9DE7A715214D156AC9AC75A5AC28165F8B0F23EAFD84C37E3646C4B7353DA8C37D44E9EDDF6A6BF859884DF4170E6DDA73D78F00587C96A442"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-04-13","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"1D40AD20043D4996BB4CC14CC3FA30D3","Version":"2.2.5.5","Size":1933312,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9C47F6E22A232B38121C05F10E60CBBFED86ACFFCA31F8C3596792EB7A7C7C4137CC1EF343CF85C7B3A19E1E1C8A739F1CF8F2CBBB53DFB294C90E4E3E574613D729F960E34BDC897349140FFEFE8F6E80BA89724B3B3AAA48D2A5545483EA3CF9EF471D5762E4E7301E3A275CBE4387A351B7E75E729B2D79DBC70012E28F4EE8EC4F0042C4F25AC2C710F503C86EAC3F79D0768A0D1842CE59699779612A13C287E01FF399798CFC318567A12C88E477D24889805E33E3ADB8471B40B3AFB7568DA705B136CD2E2208334B9A03AC74297E8D8BC5C375D48F93ACC704448306714A54559936BF3D5032CC9210246B2947ED2D21377F1DDE3486293DD3D864AA"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -253,7 +225,8 @@ ItemId是序号，可缺省
 26) 控制指定ID窗口播放器，举例：
 Type可以是这些值：Pause,Play,Stop,StopAsync,Next,Prev,Clear,TogglePause
 请求：{"req":"VLC_Control","rid":66,"para":[{"ID":1,"Type":"Pause"},{"ID":2,"Type":"Play"}]}
-分别返回：{"ret":0,"rid":66,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":66,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":66,"ID":1,"data":{"Ret":0,"Status":4}} 和 {"ret":0,"rid":66,"ID":2,"data":{"Ret":0,"Status":3}}
+返回的Status代表播放状态，定义参考libvlc_state_t
 
 27) 指定ID窗口移除多媒体内容，举例：
 ItemId是当前已存在的序号
