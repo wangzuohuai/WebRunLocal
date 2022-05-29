@@ -1,4 +1,4 @@
-﻿VLC网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://codechina.csdn.net/zorrosoft/pluginok )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3版。
+﻿VLC网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://codechina.csdn.net/zorrosoft/pluginok )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3版。
 
 本小程序具有如下优点：
 1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放小程序额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
@@ -22,6 +22,7 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Url：加载小程序所在的网页实际地址
+Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
 ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
@@ -31,10 +32,10 @@ Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_VLCWebPlayer","rid":4,"para":{"Type":"0","Title":"VLC Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
+{"req":"Wrl_VLCWebPlayer","rid":4,"para":{"Type":"0","Title":"VLC Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
 
 自动识别当前浏览器启动(充满网页区)：
-{"req":"Wrl_VLCWebPlayer","rid":4,"para":{"Type":"0","Title":"VLC Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
+{"req":"Wrl_VLCWebPlayer","rid":4,"para":{"Type":"0","Title":"VLC Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":4,"Open":"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/VLCWebPlayer.html
@@ -92,13 +93,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-04-13","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"05EA007B8F7E822C02CAF99680E688A0","Version":"2.2.5.5","Size":1933312,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3F8DED9E724D43FC33CED51AFA7F9DF175D410EE982D734A0AA2F3DB7EE49FD70C38DB3BFE0E5E64D2166E032B802D1DC66803D596A3373A86310590A76E349CA05DB7D2AD5F63FB439B6F078B4C46B8933BD3C817C14C48F4D4C25656A629B942814E0A3C1AA18A9DFECE418A5EC03FEE60CA88045691EC66F9FAD6ABE601C4C675008E81F5CDBB4A56FB907C9512DFBFF85B7F7A2A457A9BE479B1F66C8BAF3E5D363F54C6721766D4CB12BEEE553059CD0309B3B6B12176816183FD48ECCCB38A565CDEA6A7703E66B646005D2AFE3A5FCB887E240F478867BF6A3B56F9DD1F8EA684162772D767C0BBD94A666B40B2AB5A47EEE04B6AF70DE69F9347FF8D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-05-30","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"8E6256C432A8D07F24DFA22CC2A3FEE1","Version":"2.2.6.2","Size":2424832,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"95A56DC74CF20A29A5A0E6F971523C9C2B52C6A6EAC48BB45AB8A933EEBF976B8E4D69112191F5ECB3D31AA3E9E5D912900A7FB1A5BCD7AB0EBB059FCD8A56E9C8C4E785DDCE169651B23785973677CD6486039673314648F3DAC806696C7EC3BCAD7F7EEA6FBF95586B0EDF5C7AE313F26225887388E70BE942F4C888E9114F01B40C781AD9D3238F673449E7006D97B1E5AB58DAE94550E6D9CAB937D364C03F696BB68F5D59B7858B511AC6246F80F85AAD88D0F64617035D89299019C697A9C2B07DB368A7A8D1CC4DEE096A23DB552443B258BE784C9F30F6FE84674C434C3F578E4BA58CE27666A1247114BC356CBD14A49BE9A1847936B4FDE409F278"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-04-13","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"1D40AD20043D4996BB4CC14CC3FA30D3","Version":"2.2.5.5","Size":1933312,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9C47F6E22A232B38121C05F10E60CBBFED86ACFFCA31F8C3596792EB7A7C7C4137CC1EF343CF85C7B3A19E1E1C8A739F1CF8F2CBBB53DFB294C90E4E3E574613D729F960E34BDC897349140FFEFE8F6E80BA89724B3B3AAA48D2A5545483EA3CF9EF471D5762E4E7301E3A275CBE4387A351B7E75E729B2D79DBC70012E28F4EE8EC4F0042C4F25AC2C710F503C86EAC3F79D0768A0D1842CE59699779612A13C287E01FF399798CFC318567A12C88E477D24889805E33E3ADB8471B40B3AFB7568DA705B136CD2E2208334B9A03AC74297E8D8BC5C375D48F93ACC704448306714A54559936BF3D5032CC9210246B2947ED2D21377F1DDE3486293DD3D864AA"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC内嵌网页多媒体播放小程序","PID":"VLCWebPlayer","Date":"2022-05-30","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"B48A5C755EE5B7D8E3727D2F05747C98","Version":"2.2.6.2","Size":2424832,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AC6D30616E81438F583BEA1F51865AFF4AFCB7E900F49813EAED017CBEFB0274E9E9A161630B36A2D624531F967F79014F13E194D6B00FB891C30CBED0C68D0D1FB602200C47555529F87BEB9A847853864DD2B65BF3801B73E8B8F49AD236EE988ABC8817E93655D6B5872257EC79525E707D44C2BE8BCE6632E605BFB683D2B56E8F13D8B58015132ADF88AEE27EF4F233EC739CD0E68AB8126AD9C07D218DFD649EE16183D49AD6BE9BC9FFF171BCD593DBB25D1CCFEAA0D0BC0E3EC8184D380184CA1EF270F52689B6DA9EE73E30DE2650F8AFC6DB77335EF3DAF28E0671FAEDDE72B5042BB6660AA35518C6D3F27D2C9D42147AB31A1CCBE8F6232722CD"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -234,7 +235,7 @@ ItemId是当前已存在的序号
 分别返回：{"ret":0,"rid":67,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":67,"ID":2,"data":{"Ret":0}}
 
 28) 指定ID窗口解析选项，举例：
-请求：{"req":"VLC_Parse","rid":68,"para":[{"ID":1,"Option":"","Timeout":0},{"ID":2,,"Option":"","Timeout":0}]}
+请求：{"req":"VLC_Parse","rid":68,"para":[{"ID":1,"Option":"","Timeout":0},{"ID":2,"Option":"","Timeout":0}]}
 分别返回：{"ret":0,"rid":68,"ID":1,"data":{"Ret":0,"Status":0}} 和 {"ret":0,"rid":68,"ID":2,"data":{"Ret":0,"Status":0}}
 
 29) 取指定ID窗口SubTitle信息，举例：
@@ -292,8 +293,8 @@ Mode为空时禁用，取值有blend bob discard linear mean x yadif yadif2x pho
 分别返回：{"ret":0,"rid":78,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":78,"ID":2,"data":{"Ret":0}}
 
 39) 动态改变分屏数量或播放内容
-ShowType指定分屏数量，如果不变就不设置
-Play重新指定播放内容：Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
+ShowType 指定分屏数量，如果不变就不设置
+Play 重新指定播放内容：Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 请求范例1：{"req":"VLC_ChangePlay","rid":79,"para":{"ShowType":2}}
 请求范例2：{"req":"VLC_ChangePlay","rid":79,"para":{"Play":[{"ID":1,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet1","Option":":rtsp-tcp"},{"ID":2,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Name":"BrowserApplet2","Option":":file-caching=300"}]}}
 请求范例3：{"req":"VLC_ChangePlay","rid":79,"para":{"ShowType":3,"Play":[{"ID":1,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet1","Option":":rtsp-tcp :network-caching=300"},{"ID":2,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Name":"BrowserApplet2","Option":":file-caching=400"},{"ID":3,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet3","Option":":rtsp-tcp"}]}}
@@ -361,8 +362,11 @@ ID为窗口序号 Flag为1代表启用，0代表禁用
 分别返回：{"ret":0,"rid":89,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":89,"ID":2,"data":{"Ret":0,"Enable":0}}
 
 50) 对指定RTSP流录像到文件
-Url为RTSP流地址，不指定时取当前焦点窗口流的
+ID为分屏窗口，此分屏窗口必须有可播放的视频
+Url为RTSP流地址，不指定ID和Url时取当前焦点窗口流的
 File为录像目标文件不指定时自动生成 Second为录制限时时间(秒)，0代表由前端指定停止
+{"req":"VLC_RecordFile","rid":90,"para":{"ID":1,"File":"D:/Zorro/test.mp4","Second":30}}
+或
 {"req":"VLC_RecordFile","rid":90,"para":{"Url":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","File":"D:/Zorro/test.mp4","Second":30}}
 返回：{"ret":0,"rid":90,"data":{"Ret":0,"PID":1}}
 
@@ -421,13 +425,22 @@ Count 为帧数量，不指定时默认为1 不支持实时流，支持文件和
 {"req":"VLC_NextFrame","rid":98,"para":[{"ID":1,"Count":10},{"ID":2,"Count":10}]}
 分别返回：{"ret":0,"rid":98,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":98,"ID":2,"data":{"Ret":0}}
 
-60) 设置指定ID窗口下方文字信息，定制功能，举例：
+59) 取小程序Config.json中的配置内容，举例：
+请求：{"req":"VLC_GetConfig","rid":99,"para":{}}
+返回：{"ret":0,"rid":99,"data":{"COM": "axvlc.dll","Caching":300,"RTSPTCP":1,"ToolBar":1,"FillWnd":1,"AutoLoop":1,"SelfGPU":1,"Mute":0,"BlockFlag":7,"PercentTime":300,"ErrTryCount":3,"ErrTrySecond":6,"BackColor":"#000000","PORT": 930}}
+
+60) 设置小程序Config.json中的配置内容，举例：
+请求：{"req":"VLC_SetConfig","rid":100,"para":{"COM": "axvlc.dll","Caching":300,"RTSPTCP":1,"ToolBar":1,"FillWnd":1,"AutoLoop":1,"SelfGPU":1,"Mute":0,"BlockFlag":7,"PercentTime":300,"ErrTryCount":3,"ErrTrySecond":6,"BackColor":"#000000","PORT": 930}}
+返回：{"ret":0,"rid":100,"data":{"Ret":0}}
+此设置仅对本次播放实例有效，不会实际保存到文件中
+
+70) 设置指定ID窗口下方文字信息，定制功能，举例：
 指定的参数，需要的才设置
 Text 文字内容，必须参数
 Color 颜色 可用长整型(COLORREF)，也可以用#000000这样的颜色值，默认白色
 Size 字体大小，默认18
-请求：{"req":"VLC_CustomText","rid":80,"para":[{"ID":1,"Text":"Hello1","Color":"16777215","Size":50},{"ID":2,"Text":"Hello2"},{"ID":3,"Text":"Hello3"},{"ID":4,"Text":"Hello4"}]}
-分别返回：{"ret":0,"rid":80,"data":{"Ret":0}}
+请求：{"req":"VLC_CustomText","rid":110,"para":[{"ID":1,"Text":"Hello1","Color":"16777215","Size":50},{"ID":2,"Text":"Hello2"},{"ID":3,"Text":"Hello3"},{"ID":4,"Text":"Hello4"}]}
+分别返回：{"ret":0,"rid":110,"data":{"Ret":0}}
 
 5、VLC网页播放小程序接收的通知：
 这些通知必须使用Web Socket连接到此小程序实际侦听的端口才能接收到。
@@ -439,11 +452,12 @@ A、ActiveX事件：
 2) vlc is opening an media resource locator (MRL) 正在打开播放源
 {"event":"VLC_MediaPlayerOpening","ID":1,"data":{}} 
 
-3) vlc is buffering 播放器正在缓存数据 通过VLC_PutBlockFlag设置掩码2可阻止通知，默认不阻止
+3) vlc is buffering 播放器正在缓存数据 通过VLC_PutBlockFlag设置掩码4可阻止通知，默认不阻止
 {"event":"VLC_MediaPlayerBuffering","ID":1,"data":{"cache":0}} 
 
 4) vlc is playing a media 正在播放中，第一次WS连接过来会收到此通知，也可以通过调用VLC_GetPlay获得IsPlay是否播放状态
-{"event":"VLC_MediaPlayerPlaying","ID":1,"data":{}} 
+{"event":"VLC_MediaPlayerPlaying","ID":1,"data":{"W":1530,"H":1078}} 
+W和H分别为视频的高度和宽度
 
 5)  vlc is in paused state 播放暂停状态
 {"event":"VLC_MediaPlayerPaused","ID":1,"data":{}} 
