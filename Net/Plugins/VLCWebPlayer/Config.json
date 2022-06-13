@@ -1,6 +1,6 @@
 {
   "COM": "axvlc.dll,VlcOcx.dll,X64/VlcOcx.dll,VideoProxyPlayer.exe,X64/VideoProxyPlayer.exe",
-  "Caching":300,
+  "Caching":500,
   "RTSPTCP":1,
   "ToolBar":1,
   "FillWnd":1,

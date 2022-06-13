@@ -1,6 +1,6 @@
 {
   "COM": "axvlc.dll,HKVideoCom.dll,X64/HKVideoCom.dll,VideoProxyPlayer.exe,X64/VideoProxyPlayer.exe",
-  "Caching":3,
+  "Caching":5,
   "Link":1,
   "Stream":1,
   "AutoLoop":1,
