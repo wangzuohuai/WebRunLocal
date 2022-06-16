@@ -1,5 +1,5 @@
 # WebRunLocal
-      PluginOK中间件，原名WebRunLocal(本网通)，是一个实现浏览器与桌面程序之间可双向调用的低成本、强兼容、高性能、安全可控、轻量级、易集成、可扩展、跨浏览器的原生小程序系统。通过此中间件可实现在网页中无障碍操作终端电脑连接的各种硬件设备、调用操作系统API及本地DLL功能，可彻底解决ActiveX控件及桌面自动化程序(如微软Office、金山WPS、永中Office、AutoCAD、Solidworks等)在Chrome、Edge、Firefox、IE、Opera、Electron、Vivaldi、Brave、360、QQ等浏览器中的嵌入使用问题，是开发丰富型、高性能、高安全及实时通信互联网应用的首选，是浏览器进行功能扩展的秘密武器，也是采用了微软Silverlight和Adobe Flex等RIA技术的ERP、CRM等系统兼容Chrome等最新版浏览器的最佳产品，还是FireBreath的优选替代方案。PluginOK中间件提供的前端集成接口语言无关，网页中只需使用简单的JS脚本即可完成与B/S系统的对接，让浏览器成为各种信息化系统集成的最佳容器，彻底解决B/S系统的各种痛点和难点，让桌面程序迁移到浏览器中运行从此再无障碍。
+PluginOK中间件，原名WebRunLocal(本网通)，是一个实现浏览器与桌面程序之间可双向调用的低成本、强兼容、高性能、安全可控、轻量级、易集成、可扩展、跨浏览器的原生小程序系统。通过此中间件可实现在网页中无障碍操作终端电脑连接的各种硬件设备、调用操作系统API及本地DLL功能，可彻底解决ActiveX控件及桌面自动化程序(如微软Office、金山WPS、永中Office、AutoCAD、Solidworks等)在Chrome、Edge、Firefox、IE、Opera、Electron、Vivaldi、Brave、360、QQ等浏览器中的嵌入使用问题，是开发丰富型、高性能、高安全及实时通信互联网应用的首选，是浏览器进行功能扩展的秘密武器，也是采用了微软Silverlight和Adobe Flex等RIA技术的ERP、CRM等系统兼容Chrome等最新版浏览器的最佳产品，还是FireBreath的优选替代方案。PluginOK中间件提供的前端集成接口语言无关，网页中只需使用简单的JS脚本即可完成与B/S系统的对接，让浏览器成为各种信息化系统集成的最佳容器，彻底解决B/S系统的各种痛点和难点，让桌面程序迁移到浏览器中运行从此再无障碍。
 
 PluginOK(牛插)中间件及相关小程序由成都佐罗软件有限公司研发并销售，咨询热线电话：18081958957、4006831589，公司网站：http://www.zorrosoft.com 商务邮箱：wzh@zorrosoft.com 微信在线沟通：ZorroSoft 咨询报价请优先通过微信或邮箱进行，谢谢！
 
