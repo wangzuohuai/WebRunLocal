@@ -1,4 +1,6 @@
 {
   "COM": "MSOfficePlugin.dll,X64/MSOfficePlugin.dll",
-  "PORT": 950
+  "PORT": 950,
+  "AutoSave" : 1,
+  "FullPath" : 1
 }

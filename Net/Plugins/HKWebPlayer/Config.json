@@ -1,10 +1,11 @@
 {
-  "COM": "axvlc.dll,HKVideoCom.dll,X64/HKVideoCom.dll,VideoProxyPlayer.exe,X64/VideoProxyPlayer.exe",
+  "COM": "vlc/axvlc.dll,HKVideoCom.dll,X64/HKVideoCom.dll,VideoProxyPlayer.exe,X64/VideoProxyPlayer.exe",
   "Caching":5,
   "Link":1,
   "Stream":1,
   "AutoLoop":1,
   "ToolBar":1,
+  "FillWnd":1,
   "Mute":0,
   "SelfGPU":1,
   "FrameRate":1,
@@ -13,6 +14,7 @@
   "TalkVolume":80,
   "AudioOffset":10000,
   "Server":8000,
+  "SplitColor":"#FFFFFF",
   "BackColor":"#000000",
   "Status":{"Text":"准备播放中，请等待","Err":"播放时出现错误","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
   "PORT": 920

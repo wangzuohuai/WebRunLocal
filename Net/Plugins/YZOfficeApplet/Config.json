@@ -1,3 +1,5 @@
 {
-  "PORT": 950
+  "PORT": 950,
+  "AutoSave" : 1,
+  "FullPath" : 1
 }
