@@ -1,14 +1,14 @@
-﻿VLC网页播放小程序(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3版，XP以上系统建议使用3.0.17.3版本。
+﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3版，XP以上系统建议使用3.0.17.3版本。
 
-本小程序具有如下优点：
-1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放小程序额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
+本程序具有如下优点：
+1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放器额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、VLC网页播放小程序控制相关接口：
+2、VLC网页播放器控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS网页在线局部加载测试：https://zorrosoft.com/vlcframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
@@ -17,7 +17,7 @@ HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，另外脚本程序是完全开源的。
 播放窗口选中状态时单击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的VLC_FullScreen通知。
 
-1)、请求启动VLC网页播放小程序：
+1)、请求启动VLC网页播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
@@ -54,19 +54,19 @@ C、{"event":"Wrl_AppletOK","aid":2,"rid":4,"data":{"SID":"123","PID":"90FC7E0E-
 {"ret":0,"rid":1,"req":"Wrl_PlayerInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"3.0.17.4","Path":"C:/Program Files/VideoLAN/VLC/vlc.exe"}]}}
 Type 1 代表VLC X64 代表是否为64位版本 Ver 代表文件版本信息 Path 安装路径
 
-2)、请求控制VLC网页播放小程序：
+2)、请求控制VLC网页播放器：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为Wrl_VLCApplet启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,设置4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动VLC网页播放小程序：
+3)、请求滚动VLC网页播放器：
 当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变VLC网页播放小程序显示位置或大小：
+4)、请求改变VLC网页播放器显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为Wrl_VLCApplet启动小程序时返回的ID值，Width和Height分别为新的宽度和高度
 X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
@@ -96,24 +96,24 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装VLC网页播放小程序
+1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2022-07-13","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"44B8214D327E925F0034CA8DD1D39B55","Version":"2.2.7.1","Size":3276800,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"01E8ADA90E1362C0C20CE2B8FDD79B0A08A97EA84BA272D5643D94CB1E51646AC42F2D131139D7C6EA6F8BBD1C14563C4C0587BC82A02BE5D071CF2D93FEDF9B0212381C226D968E43B97234F4FE5F993D8991D47F9BE04C6ADB6F06B1735DFA34F094555BCCE3F7B99444C3C0AD6BB0B827F60B207D1B49D8BEC4B099CB14C763291529C657FD5961862BAA6114AC073D527D8AAA7A1BEB74784B7B3F2654A82F172C295B4C5E23A9C5EB38ABC0DF8FFBF3420D65E58C02C6C235F8303CE8C3655CF939BEE23C422FF879DF200862C17ED4A7CD9C09F744E2EC6B9FF6EEBFB5D3AC6E731E9A5AFCE47F489B8E2BF5D58A898E3682333566C50D51F46D6FE937"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2022-07-31","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"07431FE8D6DC635EACB546A37981EA0F","Version":"2.2.7.2","Size":3276800,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"715683B15EE9D7CB4F2011B513A2FD0ADA7886A7F94CF270EA5606CA473A9530089EFD249D0E4150ED8B875DF44B8B77726FCE206C877393343094B4F77E015C6C0CCC1E15CDA1F8A5958394844D8410F536D2CB767F82BB3D8735F7ED0454AE625516F4E85CAC92963781BFA3FA1EBCF0D9E95EC43B28AA124C9FB673A762273A603E2A2941D9750A4A8614C3690DA5D215B34ED24312A600F9114AD7A3D29D3E14987DEB4C1FA006373AB5D1A75EE03D505827A58EB9F8B3D848B2FE8DC3717AAD2EB3F15E14CFF54C655375669C2D4601950B75C720E1E1E87C8E1B7B78833DE889FBD7AC16777D4F69F91A691FF1526BA3259F9D3154D21AFC1AC274758A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
-2)、请求升级VLC网页播放小程序：
+2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2022-07-13","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"AD9E4F4F82229AC7DFC86AE9FE776EF3","Version":"2.2.7.1","Size":3276800,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"90C82E1EA8C3A53CDE64512F8F38D89F87F60697089D697044839040DF69D160E2C3128BF4C3CA3BA2446D4DB5E1C3D5EC359192725CA78EFB738524FE202DC53DF10F7B55FDECF1B32D43B9C5395AC6F9CF4825CC9F29D9AFD773AA1FAFC248351C70623C8380B8CDE9FD75C2C8F0C7DF50173A9E24B6FCEFB276DD76B9FD28E15EF32BB561CE8376DDFA6C4D790BBB0291897BA48145D36E2FC8E2ECD53DEA0572C1AEB5ED5B5FA3E9D0A0240B7CBBA959421B7D875F43AC01799A4039868138C2054ABFE2D498512988ABA7E8D2E2CC008294D020D017F73F1DA077B2D160A13D4C6DC60E83FA92D6898A2AF75506933A633A47B40179BBF75A3727D38195"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC多媒体播放网页小程序","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2022-07-31","Desc":"PluginOK之上跨浏览器的VLC多媒体播放内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"661D3B03C98761C2A1656DDECBEFAEA1","Version":"2.2.7.2","Size":3276800,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"98590865341EAB25ACE6B888EF89F591C6858C4C5CCBE814AA740C2A601B9D4BA7DF1670D15C024C5FCE72B5674EDB5F65E3A5CEE98FAC698F08CACCEDBBD7432C29E2AE5C0AB0D4B58EEBBF2687272F276094B77C29E0CE93D95170B26AE1C5CD5FFAD1292E5B30E1385FC1B970C1CC5C4A26E857522586BDFE76ECB1A2A1855CB2901E7BF02EF3BAE76BB56BF4BC8726346706B8FB28C98BC9848EC4782816788EE43DBFAD5783BD736120F97176299BFE1BCC928B87C456EBE84F1C4674C8CE75EE260A322D385F72EBAD792D167AC7BAC0C3A38E73DA1E2568DC20F1C286980CAE3482B765B5FC18361BB4BE76AE5D61D41C37085FE2791E8D050E6608B8"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载VLC网页播放小程序：
+3)、请求卸载VLC网页播放器：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Type":8}}
 
-4、VLC网页播放小程序转调用ActiveX接口(接口说明：https://wiki.videolan.org/Documentation:WebPlugin )，先根据Wrl_VLCApplet请求启动后返回的端口号，针对此端口新建一个WebSocket连接后可执行如下指令：
+4、VLC网页播放器转调用ActiveX接口(接口说明：https://wiki.videolan.org/Documentation:WebPlugin )，先根据Wrl_VLCApplet请求启动后返回的端口号，针对此端口新建一个WebSocket连接后可执行如下指令：
 
 A、ActiveX接口功能请求：
 支持创建多个ActiveX控件窗口同时播放多路实时视频，所以请求参数里需要指定窗口序号ID，从1开始，序号原则是从左向右开始编号，然后从上到下开始顺序编号，如遇右侧多层排列窗口时，直到右侧窗口序号排序完成
@@ -300,7 +300,7 @@ Mode为空时禁用，取值有blend bob discard linear mean x yadif yadif2x pho
 
 39) 动态改变分屏数量或播放内容
 ShowType 指定分屏数量，如果不变就不设置
-ForceDestroy 默认1，指定0时切换播放不销毁原有控件
+ForceDestroy VLC4.0且独立进程播放时默认1，其它时候默认0，指定0时切换播放不销毁原有控件
 Play 重新指定播放内容：Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 请求范例1：{"req":"VLC_ChangePlay","rid":79,"para":{"ShowType":2}}
 请求范例2：{"req":"VLC_ChangePlay","rid":79,"para":{"Play":[{"ID":1,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Name":"BrowserApplet1","Option":":rtsp-tcp"},{"ID":2,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Name":"BrowserApplet2","Option":":file-caching=300"}]}}
@@ -449,7 +449,7 @@ Size 字体大小，默认18
 请求：{"req":"VLC_CustomText","rid":110,"para":[{"ID":1,"Text":"Hello1","Color":"16777215","Size":50},{"ID":2,"Text":"Hello2"},{"ID":3,"Text":"Hello3"},{"ID":4,"Text":"Hello4"}]}
 分别返回：{"ret":0,"rid":110,"data":{"Ret":0}}
 
-5、VLC网页播放小程序接收的通知：
+5、VLC网页播放器接收的通知：
 这些通知必须使用Web Socket连接到此小程序实际侦听的端口才能接收到。
 A、ActiveX事件：
 文档参考：https://wiki.videolan.org/Documentation:WebPlugin

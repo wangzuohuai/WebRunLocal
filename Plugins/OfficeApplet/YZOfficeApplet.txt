@@ -1,4 +1,4 @@
-﻿永中内嵌网页Office小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用永中Office(要求专业版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将永中文字、永中表格、永中简报软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿永中Office内嵌网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用永中Office(要求专业版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将永中文字、永中表格、永中简报软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 支持永中Office2019及以上的企业版，建议使用最新版，不支持个人版。
 
 1、PluginOK中间件的安装：
@@ -6,48 +6,23 @@
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、永中内嵌网页Office小程序控制相关接口：
+2、永中Office内嵌网页组件控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS在线测试网页：https://local.zorrosoft.com/officeframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
-前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
-A、标记小程序的显示位置和大小
-.OfficeApplet {
-            margin: 20px 0 0 20px;
-            width: 480px;
-            height: 320px;
-            border: 1px solid blue;
-        }
-或者
-.OfficeApplet {
-            width: 480px;
-            height: 320px;
-            top: 20px;
-            left: 20px;
-            border: 1px solid blue;
-        }
-如果在网页Header区没有标记小程序初始显示位置和大小，请在启动小程序的JSON参数里，添加以下参数：
-"Left":20,"Top":20,"Width":480,"Height":320
+前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-B、网页中嵌入元素
-支持IFrame的：
-<iframe name="OfficeApplet" id="OfficeApplet" src="OfficeApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no">
-或者直接用
-<div id="OfficeApplet" class="OfficeApplet"</div>
-
-另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
-
-1)、请求启动永中内嵌网页Office小程序实现网页中局部加载doc/xls/ppt等文档显示：
+1)、请求启动永中Office内嵌网页组件实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 User代表用户名 PW代表打开文档需要的密码 DataPath代表文档查找和保存默认路径
-Url：加载小程序所在的网页实际地址
+Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：21是启动永中文字 为22启动永中表格 为23启动永中简报
 Version：0 OLE方式加载 1完整加载
 Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
@@ -70,13 +45,13 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径�
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":3}}
-代表小程序WS侦听服务就绪
+代表网页组件WS侦听服务就绪
 B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"YZOfficeApplet","port":950}}
-返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如打开一个文档。
-返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+返回的侦听端口，可再建立一个Web Socket连接后，调用网页组件中的相关功能，比如打开一个文档。
+返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"YZOfficeApplet","Port":950}}
 
-关于OType参数，如果不确定是调用启动微软Office小程序、还是金山WPS小程序或永中Office小程序，请先调用指令
+关于Option参数，如果不确定是调用启动微软Office内嵌网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
 {"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
 {"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"}]}}
 Type 1 代表微软Office，11代表金山WPS，21代表永中Office
@@ -84,66 +59,66 @@ X64 代表是否为64位版本
 Cur 代表是否当前有效
 Ver 代表文件版本信息
 
-2)、请求控制永中内嵌网页Office小程序：
-当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
-ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+2)、请求控制永中Office内嵌网页组件：
+当前端不再需要网页组件时可指定关闭，或者显示/隐藏及全屏显示等
+ID为启动网页组件时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动永中内嵌网页Office小程序：
-当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
-ID为启动小程序时返回JSON中的ID值
+3)、请求滚动永中Office内嵌网页组件：
+当前端截取到网页滚动时，需要调用此接口实现网页组件和网页的滚动联动
+ID为启动网页组件时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变永中内嵌网页Office小程序显示位置或大小：
-当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
-ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+4)、请求改变永中Office内嵌网页组件显示位置或大小：
+当前端网页显示区域缩放时，可动态修改网页组件的显示位置或大小
+ID为启动网页组件时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
-或同时设置小程序显示起始坐标
+或同时设置网页组件显示起始坐标
 {"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
 
 5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
-当小程序显示区域超过当前网页时，需去除滚动条的显示影响
-ID为启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+当网页组件显示区域超过当前网页时，需去除滚动条的显示影响
+ID为启动网页组件时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
 Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
 ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
-6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
-ID为Wrl_OfficeApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+6)、请求对网页组件窗口做Alpha透明处理，便于前端临时显示覆盖到网页组件窗口的菜单等：
+ID为Wrl_OfficeApplet启动网页组件时返回的ID值，Alpha为透明度百分比，1-100
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
-7)、请求对小程序窗口内容进行截图：
-ID为启动小程序时返回JSON中的ID值，
+7)、请求对网页组件窗口内容进行截图：
+ID为启动网页组件时返回JSON中的ID值，
 File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
 
-8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
-ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+8)、请求缩放内嵌网页网页组件，用于浏览器网页按比例缩放，一般不需要处理：
+ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当前网页组件所用的缩放百分比，一般和系统缩放比例一致
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
-3、小程序安装、升级、卸载
-1)、请求安装永中内嵌网页Office小程序
+3、网页组件安装、升级、卸载
+1)、请求安装永中Office内嵌网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2022-05-23","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"408BFD97C3C02B764CC1B4F75FC0C68F","Version":"2.2.6.1","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"39E1ACC080394CD4A72CC7B086DC2B5EF1BCB8F814609B82CB27D11875E630670F96493E69DCB19FDB4E058086046225B8335D5CD21024711C38B018A37C0BB5E23AB0A6244594A3206DB4BC12EF2D84314443F2C01735B9C698302AEDDEC8D0D763071B144E68595EB69478B6BFCD699B65421A8A6AF6918500FFCF9396FCA626BBFA97B3A120FFE28B836171B5519CCADC24E3DBFC72D7486FE72B7FF907B51B4B645FEBBC63ECFFB7D531552BA15784FBAD622514E2980C9D89E5CD507EA081074852894F06C9AA341308C10F1D8BE454FA21E0D2D07575810C19417980E726EF6F9C1FF5C75439AC940BC8563CA68BF6E32F12EB75135410134B6422661C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-07-31","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"74D5FDE908EBA4BBBB31E22979137221","Version":"2.2.7.2","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7700243EB23503CDA85904CFB8D504547EFDADEB85D2E29D8886258493F9A2D568B18023BC96E682D4D5B9F427ECC397ABBDDA620BF0ED9F3F3B3DAB0AB5FA6B77EBD0F9508A10D121802B3300E9029FC7C410CF251B5E0E25A19DCD132EB48785525EEE90E3FDBBD80F04EA885953781488E74F1ABA776DF206F92B960E334DB9F8D90C1D8D5987BA801174289206457AA56F172586BE929473A4B527A7A66D543EB72BF269FA12BC45331152A3AC76EA6B8B42B6C2BBB01089813F9C2875EF7967337E42018C67E0B14E8D07A9254E62573E48347902E24F673F610EE48F864662B9168FB523C944AC167A774BC1DFD170A8304F49745ECC60C04EE60921D7"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
-在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
+在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级永中内嵌网页Office小程序：
+2)、请求升级永中Office内嵌网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑小程序","PID":"YZOfficeApplet","Date":"2022-05-23","Desc":"跨浏览器的永中Office内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"EFEC4D73D4FB319652BFA3632D079A4F","Version":"2.2.6.1","Size":3899392,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"52EF00DF6F849F5A6A84462047F1F6F54B732D1006E6FA21E826F2D4E5037AF81468C361500A327BD06E190931AF80C3F37F9406D31D4F7E3CA39FDBC5613D011630D95A725DC0AFBE326CF270E6FC29E5F780F93DF7F839E3E9C8C9BF0AE7BD8248CB0BD76DF5CE5222422E78037DF26B4D89F4C15C80F2842B4B36984CD6BD38B1A8EAF9D450472BC271743F0DADAF16631D2D3836635BE8556E55FD44265B4F49E9ED68A61978A0A04C005822824D848491AF078C7A0BB966C04255C6CFF1976E89800A4358D1009B84E8E991020797710BCDF28E7E6ECCBE2196EFBFBD3449B743D5CC0DFEC1E098D9C1222543379CC15C712C63F7ECB435AEE4695AF33D"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-07-31","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"54381CA4985CFE2DB42E79E619D35870","Version":"2.2.7.2","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2FA21EFAFE31D8B3837D71D74FC91EB289B0CAC3EB7FB03E82F3FD0F56736593D1B41A8BDA916781456C1B8B56034C43168B69EF4AE98AEFA121F7D606B33157024406CD538445617A79049545EEE523A38EB1FBFB5F0C0B713295EB7A22AEE018FCB594EC2F3534A57F8979A4F999DA9C34EF2EFD839D6D329DD95B4CE929BE8AC6A6031E5E0E35762C835CF4F23220A6D7A2F1838C8BCB088455FB054E88EC236923DEC6DFDAB790223D0ABE0AC541AA3942090609A259284C816A695FCB6C164AD34D9F943AA2FB2884D7C3973705865E3A1A35F3F150D8F7E8A104A81E64F2CC87CDF167CF08BC73D295E0CBC4787CD2A1D1A9F692BAA951B18B4F080134"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载永中内嵌网页Office小程序：
-正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+3)、请求卸载永中Office内嵌网页组件：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"YZOfficeApplet","Type":8}}
 
-4、永中内嵌网页Office小程序转调用永中Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、永中Office内嵌网页组件转调用永中Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 
 A、常用功能请求：
 
@@ -293,21 +268,26 @@ Marks指定需要替换的书签名称数组
 Files为被合并文档数组 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_FileMerge","rid":30,"para":{"Files":["D:/Zorro/TestMark.docx","D:/Zorro/Test.docx"]}}
 
+31）盖章，适用于Word软件
+Type 签章类型
+{"req":"Office_SealInsert","rid":31,"para":{"Type":0}}
+返回：{"ret":0,"rid":31,"data":{"Ret":"0"}}
+
 5、事件通知：
 A、以下为永中文字程序通知
 
 B、PluginOK支持的事件通知：
 
-1) 小程序是否响应了热键全屏
+1) 网页组件是否响应了热键全屏
 以下分别为永中文字、永中表格、永中简报程序的全屏事件通知
 {"event":"WORD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 {"event":"EXCEL_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 {"event":"PPT_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 
-2) Wrl_AppletExit 小程序退出通知
+2) Wrl_AppletExit 网页组件退出通知
 {"event":"Wrl_AppletExit","data":{"ID":1}}
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“中间件开发者手册.pdf”及“中间件安全解决方案.pdf”。
 如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938
