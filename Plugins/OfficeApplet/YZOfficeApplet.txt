@@ -18,27 +18,32 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
-Web中参数Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 User代表用户名 PW代表打开文档需要的密码 DataPath代表文档查找和保存默认路径
+Web中参数说明：
+	Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 16支持上传下载菜单 
+	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	User代表用户名 
+	PW代表打开文档需要的密码 
+	DataPath代表文档查找和保存默认路径
 Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：21是启动永中文字 为22启动永中表格 为23启动永中简报
-Version：0 OLE方式加载 1完整加载
+Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作
 Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动永中文字程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"21","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"21","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动永中表格程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"PW":""},"Option":"22","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"22","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动永中简报程序
-{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"PW":""},"Option":"23","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"23","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"21","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"21","Open":"D:/Zorro/test.doc"}}
 
 打开远程文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
@@ -67,7 +72,7 @@ ID为启动网页组件时返回JSON中的ID值，Code代表控制类型掩码�
 3)、请求滚动永中Office内嵌网页组件：
 当前端截取到网页滚动时，需要调用此接口实现网页组件和网页的滚动联动
 ID为启动网页组件时返回JSON中的ID值
-Code为滚动方向1是水平直，2是垂直，3是同时
+Code为滚动方向1是水平，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
@@ -103,14 +108,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office内嵌网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-07-31","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"74D5FDE908EBA4BBBB31E22979137221","Version":"2.2.7.2","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7700243EB23503CDA85904CFB8D504547EFDADEB85D2E29D8886258493F9A2D568B18023BC96E682D4D5B9F427ECC397ABBDDA620BF0ED9F3F3B3DAB0AB5FA6B77EBD0F9508A10D121802B3300E9029FC7C410CF251B5E0E25A19DCD132EB48785525EEE90E3FDBBD80F04EA885953781488E74F1ABA776DF206F92B960E334DB9F8D90C1D8D5987BA801174289206457AA56F172586BE929473A4B527A7A66D543EB72BF269FA12BC45331152A3AC76EA6B8B42B6C2BBB01089813F9C2875EF7967337E42018C67E0B14E8D07A9254E62573E48347902E24F673F610EE48F864662B9168FB523C944AC167A774BC1DFD170A8304F49745ECC60C04EE60921D7"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-08-17","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"3FDAC6A51855DFAC3F51689AD454F850","Version":"2.2.7.5","Size":4325376,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0707648FD8A17CC296C35ED185DAA38553FF9CE0A919FABBD34825B8542C6ADB2925A662AB70229C97D0ABED14D21248AF8F09DF71DD39750EF40A67D3DEDA22E2E7BB6E1791381DB23A9D33A4666D573132D7B0CE80CA5A8C710790B1AB59A11221B0B98580109D1DAF507AB94C02DAD4F3A8DEA7A92E4183EC860943BC14ACAC2A1B908CBF345C782DBF97E0264F95DB1009E92558817659F8955E5426E702EE912507488C98738CD93C6160A98E6A3D994016A8F64B3D7E470DE8A5384CDD48277F13E02555C5656382380EB6E08C0371736D5E89A47985FC86CDD20566EFAE9524855F7A4B6641E255C39A1B7FD53CAF8C1474D6D76AE3476545AB70D0F8"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office内嵌网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-07-31","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"54381CA4985CFE2DB42E79E619D35870","Version":"2.2.7.2","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2FA21EFAFE31D8B3837D71D74FC91EB289B0CAC3EB7FB03E82F3FD0F56736593D1B41A8BDA916781456C1B8B56034C43168B69EF4AE98AEFA121F7D606B33157024406CD538445617A79049545EEE523A38EB1FBFB5F0C0B713295EB7A22AEE018FCB594EC2F3534A57F8979A4F999DA9C34EF2EFD839D6D329DD95B4CE929BE8AC6A6031E5E0E35762C835CF4F23220A6D7A2F1838C8BCB088455FB054E88EC236923DEC6DFDAB790223D0ABE0AC541AA3942090609A259284C816A695FCB6C164AD34D9F943AA2FB2884D7C3973705865E3A1A35F3F150D8F7E8A104A81E64F2CC87CDF167CF08BC73D295E0CBC4787CD2A1D1A9F692BAA951B18B4F080134"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-08-17","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"0CB7A818C7A96FEC9A85D69D44B4B01F","Version":"2.2.7.5","Size":4325376,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"64234ABBE30A379F43EF776997FA76D5C93FA43BB16BB278CEAB19179E1949DFFD75C622ED42D68EA4572A95FC3691B57042BBD7FEC0B82B64CB9F698578AC17C48897FFCD4632737D8AFF9F0AD1D24DB81C330F471740A55B084B81EB8DE565CC68ACFE74D059F0E3986996880E15322E7AA4D4BC73FD45A35DEC7A72836B12B83E3F646E13DDB38F33D1C186E9C930B643EFA2B5C4FD1FC07E001C6E8F878895BCCC7F4BBF765CF7BC38D30D4561EFD216B95FB2BDBC87B193FD2875945FF2086467C15A155B5ADAE280CDEDE3A02D7EBD7C13177F7CBE02B4D52CE0CB6E8A2C872E018CC2213581E7DEF52875726D1AA77B7352625EDF3AD30B2A1C3C2F3B"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -268,10 +273,24 @@ Marks指定需要替换的书签名称数组
 Files为被合并文档数组 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_FileMerge","rid":30,"para":{"Files":["D:/Zorro/TestMark.docx","D:/Zorro/Test.docx"]}}
 
-31）盖章，适用于Word软件
-Type 签章类型
-{"req":"Office_SealInsert","rid":31,"para":{"Type":0}}
+31）切换全屏编辑状态，适用于永中文字、永中表格、永中简报软件
+{"req":"Office_SwitchFullScreen","rid":31,"para":{}}
 返回：{"ret":0,"rid":31,"data":{"Ret":"0"}}
+
+32）以修订标记方式显示文档差别，适用于永中文字软件 启动时必须指定Version为1，非OLE嵌入方式支持
+Name需要对比的文档，必须指定
+Target为目标类型，可选 0是选中的 1是当前的 2是新文档 默认2
+使用前提是已经打开当前文档，并和Name指定的文档进行对比
+{"req":"Office_ShowDifferent","rid":32,"para":{"Name":"D:/Zorro/Test7.doc","Target":"2"}}
+返回：{"ret":0,"rid":32,"data":{"Ret":"0"}}
+
+33）指定一个新文档和当前打开文档做对比，适用于永中文字软件 启动时必须指定Version为1，非OLE嵌入方式支持
+使用前提是已经打开当前文档，并和Name指定的文档进行对比
+Name需要对比的文档，必须指定
+Target为目标类型，可选 0在原文档 1在原文档 2是修订文档 默认2是新文档
+Out保存对比结果文档
+{"req":"Office_DocCompare","rid":33,"para":{"Name":"D:/Zorro/Test7.doc","Target":"2","Out":"D:/Zorro/Result.doc"}}
+返回：{"ret":0,"rid":33,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为永中文字程序通知

@@ -10,6 +10,7 @@
   "SelfGPU":1,
   "FrameRate":1,
   "BlockFlag":7,
+  "ChangeStop":0,
   "ErrTryCount":3,
   "ErrTrySecond":6,
   "PercentTime":300,

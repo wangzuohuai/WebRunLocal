@@ -1,8 +1,8 @@
 ; 脚本由 Inno Setup 脚本向导 生成！
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
-#define MyAppName "RTSP网页播放小程序"
-#define MyAppVersion "2.2.7.2"
+#define MyAppName "RTSP网页播放器"
+#define MyAppVersion "2.2.7.5"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "ZbaSetup.exe"
