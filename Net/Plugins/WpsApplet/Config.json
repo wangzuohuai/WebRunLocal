@@ -1,7 +1,8 @@
 {
   "COM": "WpsOfficePlugin.dll,X64/WpsOfficePlugin.dll",
   "PORT": 950,
-  "AutoSave" : 1,
+  "AutoSave" : 0,
   "SaveClosed" : 0,
+  "CloseExist" : 1,
   "FullPath" : 1
 }
