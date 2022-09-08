@@ -109,14 +109,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS内嵌网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS在线编辑网页组件","PID":"WpsApplet","Date":"2022-08-29","Desc":"跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"8A20CD4AE4BCFE4EB32C1B45A4DF480E","Version":"2.2.7.6","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6E2FFD652123793B075D6D4E8FD995742B35B909AA8F7D0868091DFB64087F3CDE92402980A089C86DE3CBC63DF74F0BB484C8846BCC87770507503BC38C97B41462DEA1996B0ECB8670DF71B0E3B645BB625F81FB554D481D3EF7B78DCF775EE01E314E107CE1F2C99E8945F452C15AB50BF0FE1D9337BA546A7E9F85324E0767F9162545C56E9299F078D1E59EE988B63AFF08FE391BDEA5CA58BF2AD602954B48B6600710C7C0085F131CA17709903592597C0C0267F4C526577C1A5F5B0D52A410B5944156F6D194C5C97AD4413AB35ECD7B5D4F2876D04ECF6FC937AF7380AC46F1F2AEA8619583CFAD72C18E17B06A7CDD49768598C27D0E435424365D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi金山WPS网页组件","PID":"WpsApplet","Date":"2022-09-08","Desc":"跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"222514BFF81D00F0F28AD1F30D219D8D","Version":"2.2.7.7","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"398BE27AB4AF81694DB15C09BE2E6238C63E2E34D03AF2701BC1271D994472EF5E42F702720047AB6B0C62BEE5EB12FF6FA6ADCB2302056854580FB308100C9F8A300E68C19551D7C356825A617D244024A6FFAAB0D2CF80B85E4A645F8B4BC9B45B4920FBECF029611921CC99361EC3060557DA456450F37DFB25BF52415CDA8B3A103000877CE69F40B115E7B1FA218491C67CBB3228E7A7021454981AB09C467CE8052190B3108A097ECA14A1F1B65AADE79EE20875DA7043198EF14B74BC9D8A0FA408197D28611EFB1FA0F40875B44C73F95366158079F581DA811AD1F31ECC8F2BC4377C2DC9434853E41B24D2526E444A5D3C9B3FC1CD1749801A549B"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS内嵌网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS在线编辑网页组件","PID":"WpsApplet","Date":"2022-08-29","Desc":"跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"965A87321F4E64622EE2E3351A4AA3AB","Version":"2.2.7.6","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"468BE3A28E78F3F35629AA29004F371FE13E3FD83BF187B4686EEA7C80A4D429950652136C498F790B4FA4A65A9436EEE7007B8F22E5108185C9A6D068613CA5ED329AA96AF922C8792E2DD77BD06B2BC8F01A9BD71BD7D5968997892FC3717DDE38CE354DF6E94D405444E1C0709D359413C78DE9C9D7CAFC72E3813E980622D1B46C9CF668D338FA80A71BB423F9EDBCF8BD6840864434FAA6ADE4DA788AC556EF7C94A5CC4FF4B5148DBDE8ECDC8ACEDCD71AB0C55400E8B1C50094829ABF01E25BA015341DF5565667E750341ECB5853085F9D5AA4809CB172EF089CF52D8BC92B7E8AA1F7CF1A37903DD66562812A0F6AC030C38E50C1BC74C88C491746"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi金山WPS网页组件","PID":"WpsApplet","Date":"2022-09-08","Desc":"跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"160FE7BE78A02585625C840DC61AA339","Version":"2.2.7.7","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B1AD42ED9C1B2FAC94CA93D0D3301A9A5C8FAC72F69ACE83AFAC720E38756DED7100F9443B6E64B76FAA5B51ABAE9122AF3762C67AC34B686669054ED7786F463107DB462203A4BF62A56E2303BAE0D2AE62AA4301409DC4468AA71818AAD0461AD2769ECF6A13762CE51A367E91AE977C4BEDF4DBF7BC4E96850B122C77A50FA522BD19D59421231D9B86D4C16AB031AEA648FC42A636EE52DBD227A090FF3240E8449560EB2BB2699B6667752D2BF62CC594EF051AF16A70529F9CCC37C79F0D6602EB9391268D39FB35CD49563EBC811CF03F34A147DD60CE35EA8213852D8FBB801373D93C473ED0D237E437A7630A87E33A65F66C027B3184FCFCAAD6E1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -145,18 +145,23 @@ Open打开文档(不指定时新建文档) 支持相对路径，如非全路径�
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
 4）请求保存，适用于WPS文字、WPS表格、WPS演示软件，如是新建文档，会创建一个临时文件名保存
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Save","rid":4,"para":{}}
+{"req":"Office_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
 WPS文字支持导出为OFD文件(个人版不支持) NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc"}}
 {"req":"Office_SaveAs","rid":5,"para":{"Format":25,"NewFile":"D:/Zorro/test.ofd"}}
+{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
 NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
@@ -258,10 +263,11 @@ Dir为子目录名称，可为全路径，需要确保有创建子目录权限�
 {"req":"Office_CreateDir","rid":27,"para":{"Dir":"/doc"}}
 返回：{"ret":0,"rid":27,"data":{"Ret":"0"}}
 
-28）查找文档中图片并返回BASE64编码数据，适用于WPS文字、WPS表格、WPS演示软件
+28）查找文档中图片并返回BASE64编码数据，适用于WPS文字软件
 Index为图片序号 从1开始编号，先查Shapes再查InlineShapes
+File为本地文件保存路径，可用相对路径，如指定此参数，代表直接把此图片保存到本地，Code返回本地文件全路径
 {"req":"Office_GetImage","rid":28,"para":{"Index":1}}
-返回：{"ret":0,"rid":28,"data":{"Ret":"0","Code":""}} Code为返回的编码数据
+返回：{"ret":0,"rid":28,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
 
 29）请求合并文档到指定书签内容，适用于WPS文字软件
 File为被合并文档全路径 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
@@ -301,11 +307,25 @@ Out保存对比结果文档
 
 35）网络文件操作，适用于WPS文字、WPS表格、WPS演示软件
 Type 1上传文件 0下载文件
+Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
 Url 上传或下载的地址，需要做UrlEncode编码
-{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
-{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
+Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
+{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
+{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+36）指定页码转换到图片,默认返回Base64编码数据，适用于WPS文字
+Index为页码序号 从1开始编号，传0代表获取当前页
+File为本地文件保存路径，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
+{"req":"Office_ConvertImage","rid":36,"para":{"Index":1}}
+返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
+
+37）获取当前打开文档及其它信息，适用于WPS文字、WPS表格、WPS演示软件
+File:本地文档路径 User:当前编辑用户名 Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
+{"req":"Office_GetCurOpen","rid":37,"para":{}}
+返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","Edit":0,"Option":0,"Hide":0}}
 
 5、事件通知：
 A、以下为WPS文字程序通知

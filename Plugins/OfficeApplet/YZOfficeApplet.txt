@@ -108,14 +108,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office内嵌网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-08-29","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"64A09630FFA3691A6AD8D131399980C4","Version":"2.2.7.6","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B3299A7E4A784E7E4B816446363352EFBDFE3D65AA0AE1F1835B0F958AAFF69946CDAB61BF6382CE5DA92D4C3F658276ECDB010FC784C43C8D65646C567987870ED752D560B13F95CE797D533C5533283AB10E593A054A7F50ECF4D3D5ED5596DBA6C37897313E72AC583AB11B5E244E3A5C9A54EB0DEFC8CB37E549E2395D2773FE91A7C528FC8D4AB29AAA81368E1262B63309434B2D8AE15BDBC20FC2BB12C7DEEC97BE140016E8C6A6853BFA4F0135CECBE72DEA1195B8781BACE516354AE8C21596D8B904E90727C5D7A3315319436B2A270A7EDEFF0879F445133071C68628130FCABD697E3DBEE1761F8548C016F767B80ABA9838A04EEAB4166ADEF1"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi永中Office网页组件","PID":"YZOfficeApplet","Date":"2022-09-08","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"C82A3E57F5FCBD0FD1156AB36D6BC0EB","Version":"2.2.7.7","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B3BA0C857C3BA2316839097D28341420CBEC0BEDC8D6A2F56E955D309C435B8C9CA85C547E414E370F1DE3557FDE4B2D6259F5410D1E0B92954E67DAB4B6F672CD859E96EE6BA863A2F8B311467C5C9CFB06539EC87ACD773181562CF8C9C6DD3068E6591AD2A8411B5F2635FA60C81383A4AEF088607AACECAD5F00FDB9C4FD7E831E9472CAD561B74030DB94478C61B5FB662B6A8ED7594FBF66756A436B8D6B3A336B850F12C3C3447CB0F4579D6B97511386D33F542BB11614D68DDFAA686601BF6AABB6F3FED83DDA093BA809FC062620EB06CF01261CBA990980F58BE1B76869136531B7EDADF63261C853EEF86A8F86CA7327315760F719CC2B8DD4C9"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office内嵌网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office在线编辑网页组件","PID":"YZOfficeApplet","Date":"2022-08-29","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档。","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"990CB0EBDD0D275D85822AFEC7B36891","Version":"2.2.7.6","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"522AC88C60C41B18AA7A9C041A36D41FBC4DB08F6A66F773636E9CBF20FB8D2AF2586611888F0823BCA1BC084851E3F0098649442D493AEEE79738DCB1FA2C0E4A551B9B4CB7A76CFBA99852AB44AF6952C033536E4791DA15FCF02D246ACC635CB85479DF8185A9872526DE9E9B48537275A606CAD7320D38B7A555088F1ED85B4AA4E1EE853E0E35BCE8321CAA173A6242FAB978B0883F60E92983B577E95282ACBCFD203CF222D6F530E0CE72072912A724EA4C930369153EE9CEAB5A0DBC27644DB38347147B46E6E065E72043AA2D9D1861E63B49389999FEE786088F53BD964079E605460B51E7AA076B1F71459F60E2561B7AE44B717EEE1A3CECB61E"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi永中Office网页组件","PID":"YZOfficeApplet","Date":"2022-09-08","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"56CB5964AED66F9ED08F6CCB041CE7A9","Version":"2.2.7.7","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2015595D991D054C004018E9A100EA398DE70290728B8B675A253E280CC0258C0B27E06CE39CDFDA764BAA084A48F9959D51BBFDEB99573FC6B3152EA6C9B009D722490F4082B00052085410B2415E282DAED27AE51AC9EA3873F8FD14BF579F2970808CA2638B174F96116C187C6148078D66BDFF25AFE6DE00AF1B75EA944C715799F410A4AD9DCB6FAF2603C5CB7FFA285510AEB45B6F89673208AA73AEA89CD46CDE5C2889793A6F730C171A040DFDA962346A4418128076000939E8E8204F1A80062B39211D62F35CDDAE8270BD97D57712A2ED3B84DC4CC5BF847BFEA4D25AFF8186B02C99049909743231E6118049CA822FE27A742052F57D8913B10A"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -144,18 +144,23 @@ Open打开文档(不指定时新建文档) 支持相对路径，如非全路径�
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
 4）请求保存，适用于永中文字、永中表格、永中简报软件，如是新建文档，会创建一个临时文件名保存
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Save","rid":4,"para":{}}
+{"req":"Office_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc"}}
 {"req":"Office_SaveAs","rid":5,"para":{"Format":17,"NewFile":"D:/Zorro/test.pdf"}}
+{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
@@ -259,10 +264,11 @@ Dir为子目录名称，可为全路径，需要确保有创建子目录权限�
 {"req":"Office_CreateDir","rid":27,"para":{"Dir":"/doc"}}
 返回：{"ret":0,"rid":27,"data":{"Ret":"0"}}
 
-28）查找文档中图片并返回BASE64编码数据，适用于永中文字、永中表格、永中简报软件
+28）查找文档中图片并返回BASE64编码数据，适用于永中文字软件
 Index为图片序号 从1开始编号，先查Shapes再查InlineShapes
+File为本地文件保存路径，可用相对路径，如指定此参数，代表直接把此图片保存到本地，Code返回本地文件全路径
 {"req":"Office_GetImage","rid":28,"para":{"Index":1}}
-返回：{"ret":0,"rid":28,"data":{"Ret":"0","Code":""}} Code为返回的编码数据
+返回：{"ret":0,"rid":28,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
 
 29）请求合并文档到指定书签内容，适用于永中文字软件
 File为被合并文档全路径 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
@@ -300,11 +306,25 @@ Out保存对比结果文档
 
 35）网络文件操作，适用于永中文字、永中表格、永中简报软件
 Type 1上传文件 0下载文件
+Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
 Url 上传或下载的地址，需要做UrlEncode编码
-{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
-{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
+Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
+{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
+{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+36）指定页码转换到图片,默认返回Base64编码数据，适用于永中文字软件
+Index为页码序号 从1开始编号，传0代表获取当前页
+File为本地文件保存路径，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
+{"req":"Office_ConvertImage","rid":36,"para":{"Index":1}}
+返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
+
+37）获取当前打开文档及其它信息，适用于永中文字、永中表格、永中简报软件
+File:本地文档路径 User:当前编辑用户名 Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
+{"req":"Office_GetCurOpen","rid":37,"para":{}}
+返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","Edit":0,"Option":0,"Hide":0}}
 
 5、事件通知：
 A、以下为永中文字程序通知

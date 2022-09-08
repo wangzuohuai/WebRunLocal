@@ -4,5 +4,6 @@
   "AutoSave" : 0,
   "SaveClosed" : 0,
   "CloseExist" : 1,
+  "EmbedWindow" : 1,
   "FullPath" : 1
 }
