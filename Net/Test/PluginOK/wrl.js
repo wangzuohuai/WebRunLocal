@@ -58,7 +58,7 @@ function getrandom(nums)
 {
     $(function ()
 	{
-        //////////////////////	目前脚本只支持一个网页内启动单个小程序	/////////////////////////
+        //////////////////////	目前脚本只支持一个网页内启动一个小程序实例	/////////////////////////
         var $win = $('body');
 		var PluginOKSocket;					// WebSocket主连接对象
 		var appletsocket;					// WebSocket连接小程序对象
@@ -132,22 +132,24 @@ function getrandom(nums)
 		{
 			if(!nAppletRunID || !bRunInCurrentPage)
 				return;
+				if(!nAppletRunID || !bRunInCurrentPage)
+				return;
 			var nOffsetX = 0,nScrollLeft = 0;
 			var nOffsetY = 0,nScrollTop = 0;
 			if(window.pageXOffset != undefined)
 				nScrollLeft = Math.round(window.pageXOffset);
 			else
 			{
-				//获取页面的scrollTop,scrollLeft(兼容写法)
-				nScrollLeft = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
+				//获取页面的scrollLeft(兼容写法)
+				nScrollLeft = Math.round(document.documentElement.scrollLeft || document.body.scrollLeft);
 			}
 			if(window.pageYOffset != undefined)
 				nScrollTop = Math.round(window.pageYOffset);
 			else
 			{
-				//获取页面的scrollTop,scrollLeft(兼容写法)
+				//获取页面的scrollTop(兼容写法)
 				nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop);
-			}	
+			}
 			nOffsetX = nScrollLeftOld - nScrollLeft;
 			nOffsetY = nScrollTopOld - nScrollTop;		
 			nScrollLeftOld = nScrollLeft;
@@ -275,8 +277,7 @@ function getrandom(nums)
 				|| jsondata.req == "Wrl_VLCApplet"
 				|| jsondata.req == "Wrl_VLCWebPlayer"
 				|| jsondata.req == "Wrl_HKWebPlayer"
-				|| jsondata.req == "Wrl_DHCWebPlayer"
-				|| jsondata.req == "Wrl_HWCWebPlayer"
+				|| jsondata.req == "Wrl_VideoWebPlayer"
 				|| jsondata.req == "Wrl_FlashApplet"
 				|| jsondata.req == "Wrl_OfficeApplet"
 				|| jsondata.req == "Wrl_ACADApplet"

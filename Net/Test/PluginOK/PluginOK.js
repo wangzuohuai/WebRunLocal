@@ -1,7 +1,7 @@
 ﻿function GetDefaultConn()
 {
 	if(document.location.href.toLowerCase().indexOf("https") == -1)
-		return 'ws://127.0.0.1:83?sid=' + getrandom(5).toLocaleString() + '&flag=1';
+		return 'ws://127.0.0.1:80?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 	else
 		return 'wss://wrl.zorrosoft.com:443?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 }
@@ -270,8 +270,7 @@ function getrandom(nums)
 				|| jsondata.req == "Wrl_VLCApplet"
 				|| jsondata.req == "Wrl_VLCWebPlayer"
 				|| jsondata.req == "Wrl_HKWebPlayer"
-				|| jsondata.req == "Wrl_DHCWebPlayer"
-				|| jsondata.req == "Wrl_HWCWebPlayer"
+				|| jsondata.req == "Wrl_VideoWebPlayer"
 				|| jsondata.req == "Wrl_FlashApplet"
 				|| jsondata.req == "Wrl_OfficeApplet"
 				|| jsondata.req == "Wrl_ACADApplet"
