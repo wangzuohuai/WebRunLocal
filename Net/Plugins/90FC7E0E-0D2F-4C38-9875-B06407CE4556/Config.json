@@ -7,7 +7,7 @@
   "AutoLoop":1,
   "SelfGPU":1,
   "Mute":0,
-  "ChangeStop":0,
+  "ChangeStop":2,
   "BlockFlag":7,
   "PercentTime":300,
   "ErrTryCount":3,

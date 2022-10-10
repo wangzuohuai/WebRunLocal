@@ -19,9 +19,9 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 16支持上传下载菜单 
+	Edit代表编辑权限 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注
 	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
-	User代表用户名 
+	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 
 	DataPath代表文档查找和保存默认路径
 Url：加载网页组件所在的网页实际地址
@@ -108,14 +108,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office在线编辑网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-09-19","Desc":"跨浏览器的微软Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"392BB96C74B691F6E9C4ED08AA43127B","Version":"2.2.7.8","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"901A643B3AE108DCA9A4D8BC5AF8350DB18F7DB661DCEC4A721BF70F20C4200FC84471A4304A96BD4730B334C1B45840ADCA293EBFD3FC9ABA307E1E7ADC70F140F49A7CAAAFCA2E52BE407CD3F07623BC15EC3C553A6FEE85B54D2DCA9CD6DFDDFCCE91E7693C3DDA8470C8A0DA73A67E6DF66A3E11C517EA10B0BDFBFEB7D269D092AEB7FE46657F65946C974F2E3AA080C35F209522357BB0DF17C111E9B62EEC39D4EB8BE09A5C6AB2F7C3D348EFA2A839FEB47594C3FF1E01B3CEE46C70DA6A668D14ADEF0318D041AE78D1913724A2BCCD17FBC3A773305B2C96B7583285D3AFCEDA79CFE808CC53113AEA205A99D4C64C29AD29C443CFC6AF075815F3"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-10-08","Desc":"跨浏览器的微软Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"C4BF71DE0581F92AB002973F66D0CF2C","Version":"2.2.7.9","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1CA7EDB751D0C2B8694033224CD5B455ABDEA415D0E0C7B04D373639C31948027707AD3DB81DD6B5AAE167FDF4B2999DF27C45E26ABC2DE5F2AB3CB76C63F834FCFECC2CA802EBF3C33C2CE219F2F0C1E82B710D8ECC9925CB853ECE64E7436F5F16A412EB855EE278BB880782AF0F9051F6C9C991BCF525853CE7328ADA674DA172CE92ED9EDBD6886262E4378696B7D6154315967A014B9C1D9B481AA3164885E5B1531D1EADFBA3E6B1A84474AD01FC825E1FFB84D2CE9823A34DD7AC0EDAB44395EF576231358E36C7CF92B44861E3AFD81587B946CF618D6F3CBBC438CCA35793BD88D09758C3159E8F02F6A7772A3BD8C5D344F74EDF3A7B3E7523D5B7"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office在线编辑网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-09-19","Desc":"跨浏览器的微软Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"F5FE4FFEFD3B7126FC5F1CF46B12E6D4","Version":"2.2.7.8","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5621082FE0137C6CF73263DA6D7B4DDA7B738F158207378BB1962D2A646B776F591E671AFB82D31D311941EB0A14C18AF979154743D0F8648F75C0CB43026DB17ACFA5039D3806D3F9C41130E1348E642021B5AD9BA9C8220645FFB20E2579521D1AC9BEE386BBC2FAA5B212457011E7ACAF0624B228D5F807F0066D4438738AB312C0FFC4496CF9B2A0A542A110DF1E2878B70BC9E8059D6C978E10926E4E3AD10BFF1AAC056A50068F73995DC43DB1058D929B15A7B74C030F24C7123AB569447D0BCF1DC825A15B0662580443BB6BD2DE96711532D85C2C59EBEEE11245851FC9338A768E4D63A7DCB64A4D1F4FBE1AE8C94651328A686AABB869FC0552A9"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-10-08","Desc":"跨浏览器的微软Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"1FFF551F4DBBF86F40655BDFE8070FF6","Version":"2.2.7.9","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"66397AE95CFF8AC9552263DE32531B10B4E1269285F968B3EB3831213260E9AA78600CB01C165F4D5B2E668B2B05A8D1B567D27076E12BA691113E5AFA83D48DF70AA6B92BBA2F6E2B5C91056E46BAFEC121AFF1444F062706DFEA2F88006362A8E53120DD8B8E6146E7D7C2C679DD7B6E4EC4FB4B10116A5FE172AA33C034E24E70EE43C5C1D38966D9F01DF7294C38A197B203708C451BC659E8734AA5E94A04EFD5A1B362A132A422AD767B30EB814367F70DE6DC42A913F89474C18ECC84AB3C5FA13A95C3375B00B4E65C6C905A6F42FE4FB18D6C322F300C8DA06BCC52D127328D1D3ADEBF2403BBC55B47B487D62795D960DC1A6490F5F60CF7A65C0E"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -126,18 +126,19 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 4、微软Office在线编辑网页组件转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
-1）获取文档是否修改了需要保存，适用于Word软件
+1）获取文档是否修改了需要保存，适用于Word、Excel、PPT软件
 {"req":"Office_IsSaved","rid":1,"para":{}}
 返回：{"ret":0,"rid":1,"data":{"Ret":"0","Saved":0}}
 
-2）设置文档是否需要保存标记，适用于Word软件
+2）设置文档是否需要保存标记，适用于Word、Excel、PPT软件
 {"req":"Office_PutSaved","rid":2,"para":{"Saved":"1"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 
 3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 Open打开文档(不指定时新建文档) 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-{"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
+User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
+{"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
 打开远程文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
@@ -173,7 +174,12 @@ Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
 
 8）请求在当前光标位置批量插入文字，适用于Word软件
 Paragraph代表换行数量
-{"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
+FontSize字体大小
+FontName字体名称
+Color字体颜色
+Alignment是对其方式 0左对齐 1居中 2右对齐
+Bold粗体大小
+{"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Alignment":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
 
@@ -205,6 +211,7 @@ Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7�
 返回：{"ret":0,"rid":14,"data":{"Ret":"0","TrackRevisions":"0"}}
 
 15）请求设置当前是否修订模式，适用于Word软件
+TrackRevisions 1启用修订模式 2强制修订模式
 {"req":"Office_PutTrackRevisions","rid":15,"para":{"TrackRevisions":"1"}}
 返回：{"ret":0,"rid":15,"data":{"Ret":"0"}}
 
@@ -245,8 +252,8 @@ Index为书签序号 Name为书签名称
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
-24）请求指定序号的书签名称，适用于Word软件
-Index为书签序号
+24）请求替换指定书签名称的内容，适用于Word软件
+Name为书签名称，Text书签内容
 {"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
@@ -315,7 +322,7 @@ Type为1时，可增加参数Para，对应POST数据包中需要传递的参数p
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
 {"req":"Office_NetFile","rid":35,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
 {"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
 
 36）指定页码转换到图片,默认返回Base64编码数据，适用于Word软件
 Index为页码序号 从1开始编号，传0代表获取当前页
@@ -324,9 +331,18 @@ File为本地文件保存路径，可用相对路径，如指定此参数，代�
 返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
 
 37）获取当前打开文档及其它信息，适用于Word、Excel、PPT软件
-File:本地文档路径 User:当前编辑用户名 Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
+File:本地文档路径 User:当前编辑用户名 
+ProtType ProtStatus分别为当前文档保护类型和状态
+Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
 {"req":"Office_GetCurOpen","rid":37,"para":{}}
-返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","Edit":0,"Option":0,"Hide":0}}
+返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","ProtType":0,"ProtStatus":0,"Edit":0,"Option":0,"Hide":0}}
+
+38）设置或取消文档保护，已经处于保护状态时再次调用取消保护，反之亦然，适用于Word软件
+Type保护类型 0只读 1只能修订 2只能批注 3填写窗体
+PW为密码，如有特殊字符，需要先做UrlEncode编码
+{"req":"Office_Protect","rid":38,"para":{"Type":0,"PW":""}}
+返回：{"ret":0,"rid":38,"data":{"Ret":"0","Status":0}}
+Status返回文档保护状态，1是已保护
 
 5、事件通知：
 A、以下为Word程序通知
@@ -341,6 +357,18 @@ B、PluginOK支持的事件通知：
 
 2) Wrl_AppletExit 网页组件退出通知
 {"event":"Wrl_AppletExit","data":{"ID":1}}
+
+3) 文档加载完成通知
+{"event":"WORD_LoadOK","data":{"File":""}}
+{"event":"EXCEL_LoadOK","data":{"File":""}}
+{"event":"PPT_LoadOK","data":{"File":""}}
+
+4) 文档保存通知
+Type 0保存 1另存 
+Flag 成功成功 大于0保存失败 -1 退出时有修改没保存
+{"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
+{"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
+{"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。

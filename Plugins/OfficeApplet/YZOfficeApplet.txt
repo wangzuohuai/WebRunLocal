@@ -19,9 +19,9 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读打开 2跟踪修改记录 4禁止另存 8禁止打印 16支持上传下载菜单 
+	Edit代表编辑权限 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注
 	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
-	User代表用户名 
+	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 
 	DataPath代表文档查找和保存默认路径
 Url：加载网页组件所在的网页实际地址
@@ -108,14 +108,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office内嵌网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi永中Office网页组件","PID":"YZOfficeApplet","Date":"2022-09-19","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"070CCAF705E6F33FC7560C3B8B5390C9","Version":"2.2.7.8","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AF0B9F4AAC0BC97CF4A7FE98A5C0D96402395A1726E0080428E1A50E20DCFCC5069EDECD201B2D147F2A1D2912088BF96DA1413BA1F93D2C2BF5179C1A592DD7F5A12C0D0D3907D46D916023CDBE5C33732614472A70023B0C5C9D945C960B6EA42278FE5D7D0CDE2FCDF4D0666C2E93A3FE33E17277A2A2D858A30C1B32F2B4E66742E2F95D5DF022E9476273EABBDA09891EF591547C78D7088EC784C6C25E7874910BD2417C2D5BE0F6FC76346D493E8FB4A4BDC4C1248C4FD8ADA2E6696F3774A1057414125FCA722F8579C220F53221C8DB5F7D6EF6221717AB01C8C706D821FD47F5EC7F16075F9D9F5CD39EE954361CFEF647CFEA8388CB350C1E4CA4"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi永中Office网页组件","PID":"YZOfficeApplet","Date":"2022-10-08","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"8F44F4DBE62820FCD65D42A1EB9F420F","Version":"2.2.7.9","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5A9FBCA6694D664751BF87CBDE7384EBF355D32E121278582094F0B399463F9C67CF97FEAD7F4751B1EA883478CA2629D3E3AAFE364DCE2CE257DAA8F6640599CAE40A7E64E72D3263B4BC35A7A0A9F8C1C5D82FB8A6B364E6820C4AE46002A42F918D3C3979E9117E1CF9EF840D584B7C91962A7A20387E4B30ACB866664AE996C3CA1F2EB1A99573BED5EAACE284DB9A8B9E3EEF63195F423505D8C5BB65D56CBC6D153FE13A7A425EE8B2A00BB46957FDDE9CD772695EE61C820F6126E856F8760725FAF0AE7549C0A366F2ABB463AEEBD8EDA2288DB6F46F0E4DD64B8F8D40E9655619381E39F2D78146CEF0A58744D9FD253E15D1374965EF9B0D71C46E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office内嵌网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi永中Office网页组件","PID":"YZOfficeApplet","Date":"2022-09-19","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"64C989CFFFCDF60B641CCFBAA36E7D2B","Version":"2.2.7.8","Size":4030464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5482EC742BE12C4387B0EA8269FB41B6601D3BBE3385A541F19047C90CA9601FA85ED9217CBD9AC14E88FADEB45783B47D3A415AE0477AB9A9C11CE621EDD619030F61E6B68B771BFC3C24AD3CCC8174A62124886A4EEC95EB71B9E148FD10B64255690EAED56871FECE146BF24DC7779024F26A7002A3FFE9DE1338C71CAE3906548AD4343D970D19D988647BC90E003941E308FB094D245E916B5E4F8427B9122A3B7C1E20B9F617593DE422EAEA94DA77276DE3338AB2472E81D253D5B2808AD2C46BA0E33994BFDA0905BCEBC58AFDEAAE3D49573DF888B99DBBFA990457E01FBBCDF6CC4CF0858899E5820D9327BF5C2AE8BE5E35D0D761DFC44BDFAFF4"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi永中Office网页组件","PID":"YZOfficeApplet","Date":"2022-10-08","Desc":"跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"89A056A6D3B885EF562F8998BD61EBCB","Version":"2.2.7.9","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A75999EADFC6BA7C839FABE7C66101F4482BB2CDB9F027692E0B4F88F0719852AD5978D208179DE8C90D9B03159BF5FD1C8680152DDC0C97E1A99EFAEA59E588B8B2541CE1EEDB2EF7E9CDCB5197EEA01FF802E524803C0902332B44D9117A688DA4AC658F605B101EE170AD017D1836F5F79B92855D6A25933EEB8071681EBA6A21BAF388A79D98C5D94F20786306491BE06A84DB1402E67EED1AA4FDEF4F2D5B051BC5DF9E879E08383AA04B1EA5E76A4633D9240249C37DAE5C8304EF1CFF13DC4BC400D30BCD7C4E873A16FE75DB2E0694F0A014D13BBAEE732C1927AE5A8332909FF6C4E7BFC017D2B2C11889412C0F38537EE87C3B6DBD72C0C2FF8303"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -127,18 +127,19 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 
 A、常用功能请求：
 
-1）获取文档是否修改了需要保存，适用于永中文字
+1）获取文档是否修改了需要保存，适用于永中文字、永中表格、永中简报软件
 {"req":"Office_IsSaved","rid":1,"para":{}}
 返回：{"ret":0,"rid":1,"data":{"Ret":"0","Saved":0}}
 
-2）设置文档是否需要保存标记，适用于永中文字
+2）设置文档是否需要保存标记，适用于永中文字、永中表格、永中简报软件
 {"req":"Office_PutSaved","rid":2,"para":{"Saved":"1"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 
 3）请求打开文档 Open为打开文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 Open打开文档(不指定时新建文档) 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-{"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc"}}
+User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
+{"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
 打开远程文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
@@ -173,7 +174,12 @@ ImgFileSave保存到文档 支持相对路径，如非全路径，除非启动�
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
 8）请求在当前光标位置批量插入文字，适用于永中文字软件
-{"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
+FontSize字体大小
+FontName字体名称
+Color字体颜色
+Alignment是对其方式 0左对齐 1居中 2右对齐
+Bold粗体大小
+{"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Alignment":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
 
@@ -205,6 +211,7 @@ Up为向上，默认向下，Up为1向上，Unit移动单位(5是文字行数,7�
 返回：{"ret":0,"rid":14,"data":{"Ret":"0","TrackRevisions":"0"}}
 
 15）请求设置当前是否修订模式，适用于永中文字软件
+TrackRevisions 1启用修订模式 2强制修订模式
 {"req":"Office_PutTrackRevisions","rid":15,"para":{"TrackRevisions":"1"}}
 返回：{"ret":0,"rid":15,"data":{"Ret":"0"}}
 
@@ -245,12 +252,12 @@ Index为书签序号 Name为书签名称
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
-24）请求指定序号的书签名称，适用于永中文字软件
-Index为书签序号
+24）请求替换指定书签名称的内容，适用于永中文字软件
+Name为书签名称，Text书签内容
 {"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
-25）光标跳转到指定名称的书签，适用于Word软件
+25）光标跳转到指定名称的书签，适用于永中文字软件
 Name为书签名称 NoSelect为1代表去掉书签选中状态
 {"req":"Office_GotoMark","rid":25,"para":{"Name":"Caption","NoSelect":1}}
 返回：{"ret":0,"rid":25,"data":{"Ret":"0"}}
@@ -313,7 +320,7 @@ Type为1时，可增加参数Para，对应POST数据包中需要传递的参数p
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
 {"req":"Office_NetFile","rid":35,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
 {"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
 
 36）指定页码转换到图片,默认返回Base64编码数据，适用于永中文字软件
 Index为页码序号 从1开始编号，传0代表获取当前页
@@ -322,9 +329,18 @@ File为本地文件保存路径，可用相对路径，如指定此参数，代�
 返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
 
 37）获取当前打开文档及其它信息，适用于永中文字、永中表格、永中简报软件
-File:本地文档路径 User:当前编辑用户名 Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
+File:本地文档路径 User:当前编辑用户名 
+ProtType ProtStatus分别为当前文档保护类型和状态
+Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
 {"req":"Office_GetCurOpen","rid":37,"para":{}}
-返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","Edit":0,"Option":0,"Hide":0}}
+返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","ProtType":0,"ProtStatus":0,"Edit":0,"Option":0,"Hide":0}}
+
+38）设置或取消文档保护，已经处于保护状态时再次调用取消保护，反之亦然，适用于永中文字软件
+Type保护类型 0只读 1只能修订 2只能批注 3填写窗体
+PW为密码，如有特殊字符，需要先做UrlEncode编码
+{"req":"Office_Protect","rid":38,"para":{"Type":0,"PW":""}}
+返回：{"ret":0,"rid":38,"data":{"Ret":"0","Status":0}}
+Status返回文档保护状态，1是已保护
 
 5、事件通知：
 A、以下为永中文字程序通知
@@ -339,6 +355,18 @@ B、PluginOK支持的事件通知：
 
 2) Wrl_AppletExit 网页组件退出通知
 {"event":"Wrl_AppletExit","data":{"ID":1}}
+
+3) 文档加载完成通知
+{"event":"WORD_LoadOK","data":{"File":""}}
+{"event":"EXCEL_LoadOK","data":{"File":""}}
+{"event":"PPT_LoadOK","data":{"File":""}}
+
+4) 文档保存通知
+Type 0保存 1另存 
+Flag 成功成功 大于0保存失败 -1 退出时有修改没保存
+{"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
+{"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
+{"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
