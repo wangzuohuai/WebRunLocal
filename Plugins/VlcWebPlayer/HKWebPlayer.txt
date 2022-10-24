@@ -1,4 +1,4 @@
-﻿多引擎网页视频播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.17.3版本。
+﻿海康视频网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.17.3版本。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
@@ -26,7 +26,7 @@ HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、多引擎网页视频播放器控制相关接口：
+2、海康视频网页播放器控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网页在线测试：https://local.zorrosoft.com/HKFrame.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
@@ -35,7 +35,7 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 前端集成可参考以上测试网页进行需要嵌入用到的JS脚本，脚本程序是完全开源的。
 播放窗口选中状态时双击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的Player_FullScreen通知。
 
-1)、请求启动多引擎网页视频播放器：
+1)、请求启动海康视频网页播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
@@ -81,19 +81,19 @@ C、{"event":"Wrl_AppletOK","aid":2,"rid":1,"data":{"SID":"123","PID":"HKWebPlay
 {"ret":0,"rid":1,"req":"Wrl_PlayerInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"3.0.17.4","Path":"C:/Program Files/VideoLAN/VLC/vlc.exe"}]}}
 Type 1 代表VLC X64 代表是否为64位版本 Ver 代表文件版本信息 Path 安装路径
 
-2)、请求控制多引擎网页视频播放器：
+2)、请求控制海康视频网页播放器：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,设置4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动网页中多引擎网页视频播放器：
+3)、请求滚动网页中海康视频网页播放器：
 当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变网页中多引擎网页视频播放器显示位置或大小：
+4)、请求改变网页中海康视频网页播放器显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为Wrl_HKWebPlayer启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度
 X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
@@ -123,24 +123,24 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装多引擎网页视频播放器
+1)、请求安装海康视频网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-10-08","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"5FBCA9EFAB13704BA87673EDD56A7CF4","Version":"2.2.7.9","Size":4358144,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9C77A770F4F8E078120DD092CB9684E032082EC0294ADE4D586C11BDFFACE18C47C789F9C59EDA0494F747A976960A1F070542A8CDC804E4FBEC1A95A25652E1B1FE5E9E8694F0DB7078996E74A64B523768EC281B6793188C29140C593BE01998FD387BC39EFA2F19F0B7F82183C88FA699D6C8FFC9360A46CC7808654A425C65B8CDE6169DA76EF66CDEECD27828AAAF81FE728587D6C84FF36779E1379E6421AFF9BF3C099CF5C8089149A70728BB61A44A94DBD6EBA088E8D7425050B3D478D4989ABD9506941C02F7094B7A75A28A3EEE6D1928B3A90D0C8158E00A7B2FB4DFB0C4964FA3FAD31F695185573A3C3DA791FDC21A2E716C975BE693BB6AFB"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"91BA57C79CDF3DE53070BE058F51CFBB","Version":"2.2.8.1","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6A09A99D8356D266759EF52728D5794C451AA7710EBA15A10DF7037DBB91CF2DB3A0CB91A8BFACB290E9DA6F384CA3EAF180D921031CF9E3343591BD7EC9E7F7951C7390E96792D104F39A2E8D8A00EBCB1B996DE1F84A8B14508924E6A4374FF72200434853FDC634F6080AED8ED63092804A723A8BB2668658F63A55750D7E1BC2AD8D966D029F81F3AB7956507940FDCEF702B523550F8D9B1DC5F428CC075009DDB9E83FAD3E8A12FD09CA6C65B8C751136F50AB795AF7464D3264DDA085AE9A6F33C45B438E759CF10B5A21A97DA50246700F5604F0979A5A2B942ED899BAECCD045D06726A872511C9E4D487F10E3657991360E3800675F441C82A67D0"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
-2)、请求升级多引擎网页视频播放器：
+2)、请求升级海康视频网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放小程序","PID":"HKWebPlayer","Date":"2022-10-08","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"FC52BB27760307565BC8A8E60DC0C44A","Version":"2.2.7.9","Size":4358144,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"582FD6D8B2D7DB9F5612EE7ABD6CF8E295A5BAA3E7F64050986BA943DEFE6C9E1C90C5D2944D0D5591FF344CFA2B74F7051DD28F0E8FBAC3C47B6488DB50B9178E8A3ECD39F5C52047BA1457F282CAE1AC2C66F8267C97BDACA82D9832DCC4B73F114942EF58B5C5438205462BE22DFC5790EC6416FF399C1FB0A6CA09EC459443C500D7F8D316F96FC4AE86B2B329853B9957EFE2D37FA1CCD60700C351B26040D0C4F0DC05D170EC3AF2E44B50DD834B84BDAD19CB3C00C82DA1E32894EA4FD3E5D75370F3BAEF2D5A5CB1694B165E768A42BE1CDD80C47D98B247EC616DB25B09F4F2F57EF4B7233316ECF333B8D628EE2F549B83369E5D2451BC36CC5CF6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"4D8AE8D822410CF7C9106525F8325C9F","Version":"2.2.8.1","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"87CE7866790C5D7777FA7DE9F9CE98E78DDCB5EFB86C80FBF62246F020668F7D6CF0EDFB0798DCFBFD855CFF97275A3979136D1CCB8E1406CB3FB321C765330CF565B66860C943158E63BD3C54D4905B7340B01BB8C173655C48D53DF60C07CCAC3172FE854762C9AB0A008E56C3AFD3ECD312C41BEE5D7A3F5F20BFB9C60894F1987960FF5D11E0851D5B8D2A0D2E71CD414A7CE1900D9B151BA3D552840758FC4ACB68B243BBE47CB0DD4794A41A723AE7D69ED51756DC0C014345878CFEC1D1898111EC8C5AAEEAA970299E4AB69ECDAC62CC75C5A87B9D04AC9EBAF5BE5DBEDF381DD1DD4C654AF51B6FBFE92765D20903C32A69F9A912386C298BC508A7"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载多引擎网页视频播放器：
+3)、请求卸载海康视频网页播放器：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"HKWebPlayer","Type":8}}
 
-4、多引擎网页视频播放器转调用海康原生SDK封装的ActiveX控件HKVideoCom的接口，先根据Wrl_HKWebPlayer请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、海康视频网页播放器转调用海康原生SDK封装的ActiveX控件HKVideoCom的接口，先根据Wrl_HKWebPlayer请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 1) 取指定ID播放窗口属性AutoLoop(自动循环播放)值，仅对MP4等文件播放有效
 请求：{"req":"Player_GetAutoLoop","rid":41,"para":[{"ID":1},{"ID":2}]}
@@ -444,8 +444,8 @@ PlayID为当前播放ID
 
 49) 指定ID窗口回放指定文件，必须先登录 海康私有协议播放有效
 Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始 Reverse为1代表倒放
-{"req":"Player_PlayBackByTime","rid":88,"para":[{"ID":1,"Channel":33,"Begin":1665100800,"End":1665187200,"Reverse":0},{"ID":2,"Channel":34,"Begin":1665100800,"End":1665187200,"Reverse":1}]}
-返回：{"ret":0,"rid":49,"ID":1,"data":{"Ret":0,"PlayID":1}} 和 {"ret":0,"rid":49,"ID":2,"data":{"Ret":0,"PlayID":2}}
+{"req":"Player_PlayBackByTime","rid":89,"para":[{"ID":1,"Channel":33,"Begin":1665100800,"End":1665187200,"Reverse":0},{"ID":2,"Channel":34,"Begin":1665100800,"End":1665187200,"Reverse":1}]}
+返回：{"ret":0,"rid":89,"ID":1,"data":{"Ret":0,"PlayID":1}} 和 {"ret":0,"rid":89,"ID":2,"data":{"Ret":0,"PlayID":2}}
 PlayID为当前播放ID
 
 50) 指定ID窗口回放控制 海康私有协议播放有效 必须先调用了回放Player_PlayBackByName或Player_PlayBackByTime接口
@@ -589,9 +589,30 @@ Local 上传文件本地路径或下载文件保存路径，如果不指定默�
 Url 上传地址，需要做UrlEncode编码
 可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 {"req":"Player_NetFile","rid":114,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
+返回：{"ret":0,"rid":114,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
 
-5、多引擎网页视频播放器接收的通知：
+75) 指定ID窗口检索录像文件，必须先登录 海康私有协议播放有效
+Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始
+ StreamType 流类型 0-同一个时间段只返回一种录像，优先级顺序为：主码流、子码流、三码流，1-子码流，2-三码流，3-主码流，254-双码流搜索(优先返回主码流录像，没有主码流录像时返回子码流录像)
+ FileType 文件类型
+{"req":"Player_SearchFile","rid":115,"para":[{"ID":1,"Channel":33,"Begin":1665100800,"End":1665187200,"StreamType":0},{"ID":2,"Channel":34,"Begin":1665100800,"End":1665187200,"StreamType":1}]}
+返回：{"ret":0,"rid":115,"ID":1,"data":{"Ret":0,"SID":1}} 和 {"ret":0,"rid":115,"ID":2,"data":{"Ret":0,"SID":2}}
+SID为当前搜索序号，最终搜索结果通过事件返回，事件包中包含SID参数
+
+76) 指定ID窗口根据名称下载录像文件，必须先登录 海康私有协议播放有效
+Uri为服务器上的文件名称 ch0001代表第一个通道 ch0002代表第二个通道 以此类推
+File为录像目标文件不指定时自动生成 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
+{"req":"Player_DownVideoByName","rid":116,"para":[{"ID":1,"Uri":"ch0001_00000000129000000","File":"D:/Zorro/ch0001_00000000129000000.mp4"},{"ID":2,"Uri":"ch0002_00000000138000000","File":"D:/Zorro/ch0002_00000000138000000.mp4"}]}
+返回：{"ret":0,"rid":116,"ID":1,"data":{"Ret":0,"DID":1}} 和 {"ret":0,"rid":116,"ID":2,"data":{"Ret":0,"DID":2}}
+DID为下载序号，下载进度通知中包含此参数
+
+77) 指定ID窗口根据时间下载录像文件，必须先登录 海康私有协议播放有效
+Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始
+{"req":"Player_DownVideoByTime","rid":117,"para":[{"ID":1,"Channel":33,"Begin":1665102256,"End":1665104363,"File":"D:/Zorro/ch0001_00000000095000000.mp4"},{"ID":2,"Channel":34,"Begin":1665104363,"End":1665108028,"File":"D:/Zorro/ch0001_00000000097000000.mp4"}]}
+返回：{"ret":0,"rid":117,"ID":1,"data":{"Ret":0,"DID":1}} 和 {"ret":0,"rid":117,"ID":2,"data":{"Ret":0,"DID":2}}
+DID为下载序号，下载进度通知中包含此参数
+
+5、海康视频网页播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 
 A、小程序：
@@ -646,6 +667,15 @@ Type包含的值含义如下
 
 11) 音柱通知 Left左声道声音大小 Right右声道声音大小
 {"event":"Player_AudioWave","ID":1,"aid":1,"data":{"Left":30,"Right":20}} 
+
+12) 海康私有协议搜索硬盘录像机上的录像结果通知
+{"event":"Player_SearchResult","ID":1,"aid":1,"data":{"SID":1,"Info":[{"Name":"ch0001_00000000094000100","Size":1053565500,"FType":0,"SType":0,"Locked":0,"STime":1665100588,"ETime":1665102259},{"Name":"ch0001_00000000095000000","Size":1065176994,"FType":0,"SType":0,"Locked":0,"STime":1665102256,"ETime":1665104363},{"Name":"ch0001_00000000097000000","Size":1065309215,"FType":0,"SType":0,"Locked":0,"STime":1665104363,"ETime":1665108028}]}}
+FType 文件类型 SType流类型 Locked是否锁定
+STime流开始时间 ETime流结束时间
+
+13) 海康私有协议下载硬盘录像机上的录像进度通知
+{"event":"Player_DownPos","ID":1,"aid":2,"data":{"DID":1,"Pos":100}}
+Pos为100时下载结束
 
 B、PluginOK支持的事件通知：
 

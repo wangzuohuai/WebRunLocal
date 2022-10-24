@@ -1,11 +1,11 @@
-﻿腾讯软件内嵌网页版：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，可实现将腾讯微信、企业微信、腾讯会议、QQ等客户端软件内嵌到网页中运行。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿微信桌面内嵌网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，可实现将腾讯微信、企业微信、腾讯会议、QQ等客户端软件内嵌到网页中运行。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、腾讯软件内嵌网页版控制相关接口：
+2、微信桌面内嵌网页小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://local.zorrosoft.com/txfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/txframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
@@ -37,7 +37,7 @@ B、网页中嵌入元素
 
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动腾讯软件内嵌网页版实现网页中局部加载显示：
+1)、请求启动微信桌面内嵌网页小程序实现网页中局部加载显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
@@ -67,19 +67,19 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"TXWebApplet","port"
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":1,"data":{"SID":"123","PID":"TXWebApplet","Port":955}}
 
-2)、请求控制腾讯软件内嵌网页版：
+2)、请求控制微信桌面内嵌网页小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动腾讯软件内嵌网页版：
+3)、请求滚动微信桌面内嵌网页小程序：
 当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变腾讯软件内嵌网页版显示位置或大小：
+4)、请求改变微信桌面内嵌网页小程序显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -108,25 +108,25 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装腾讯软件内嵌网页版
+1)、请求安装微信桌面内嵌网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2022-09-08","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet.pid","MD5":"2A737C1083CC68D22CE3B97FAE07B0E6","Version":"2.2.7.7","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"29758FE4BDBAF41FC9942448CF44B25246DB38B99A80BEA659CE3D51B666EBF4A340933D75525585C4E8F9AC76126836F1F2E2DFD31649A94020E24B705817D4E9AC623D14E84492ADDEF768DE0B714F6B7DEAD161D362C81695835EE69BC0CD5668F327FDA78DE489554FD113F237A76D12D2EEEDF7E3BF58498CE598825DB1C39661259822F413A88F65D9D76F8B32D40ED1F27ABA916303F8AEB761D29903992E037FA5B474B1B94F361DF6501EB15C01788DF590CD3E70EC10BD50E0369D10677CA5DE1F8A14A3D3C21133C5B13199D467B603D1DBD93ED501BBACF9FA5E5FD1F7295DB7F7118C3BCFFF8D370816961242963A9CF7A72898E3F5495DA478"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微信桌面内嵌网页小程序","PID":"TXWebApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet.pid","MD5":"02FFA71EC3F785A808E66DA64A833CB3","Version":"2.2.8.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B95D5472BFD5CCC6E7B3E6557D08E2CF46BBB06BCD9AA6183D648EAC53ADD20665ECCAD75158FE9AE3AE58A26717801573616B2CDEBB2B1DF6708A0D5A4AAA58B7A2786DE9E6D6D6F7C4B129BCB407AF155013C6CF9A5B06631D5977F6477818593172BF2477D10F267DFF47E7185CD8DE80271895E6E06846CF186036950C0BED19982D55F7755353F8B214F2A6B53A72CF01827D8469884352F96243EB7617668E274A1016729FDD869943A0994AA78264304B4B0D1E462A29C64A18EBD9E435CE66F15233D23A6029BB60C8989B06F32BBF32FB8125ADDA7CDD72A626390C075D4DAB220CE884D1238AC82D7E1AF1CA102CA4D52BEE40003EFA02764081AA"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级腾讯软件内嵌网页版：
+2)、请求升级微信桌面内嵌网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"腾讯软件内嵌网页版","PID":"TXWebApplet","Date":"2022-09-08","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet_Update.pid","MD5":"7AA44C4C65994DA442F08B917047A351","Version":"2.2.7.7","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"50A62BC41DAE6570E5AA613833671E82FB3BC24C8323525B0F966EFADC100CBE260E23BB442729C3877D12485313485C38C9CF38828A080DCEF8030CE4A7BCB05B9A013DFE735D9DE2D8FA0237958E4626FE685E867984E55EDD5DACA54D3DB2C5B9B977D55D4BD041843851B7A71E65036460748E9A9017F4C844E7010632BCB19AD43CCDD190FAB0CAB51F3BEF1519B039F6CC2E7D97398F58BA7F13270BE7BB43ED0806AE06147169FE006BBC513E9490F351DAE4CEC1074293BA49EF91995FC5D76A357DA26A0E70B595D25FAFB82F2D57CA8D7DFE80099E9D12302B0D79380EBA050852020F93D54C9CD64454F9E8CCFC97C6F1F93FCB324DF36C978830"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微信桌面内嵌网页小程序","PID":"TXWebApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的腾讯微信、企业微信、腾讯会议等桌面软件内嵌网页版，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等浏览器网页中直接内嵌使用，和B/S信息化系统融为一体使用","DownAddr":"http://local.zorrosoft.com/Files/Net/TXWebApplet_Update.pid","MD5":"827F1D4F20A6EF0867196703529657FC","Version":"2.2.8.1","Size":491520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7C15985EDFAE664F1B38FFFB6D83021626700AA9C3D058552516659FAB4FB66829359C9078DD1200DB3D17BBAFB2EA6BA71E7DEF8FD0905A34A3CC4DBBF16F571C9F6ED7DC1C2E8AD1C6B228048D6931CA54D4B8130A9F471F5EEBBC53BD655F3F005621BB2915E2CFF5335C168A895433D009661120944B3260F2766B467B2861E8660E2AABE44CE6FFE11746B55E35AB0CB52B320FDBAF5ABFB87707CCFD25A49A9750AFFCCF0CE44F3CC0547E67D2804EF4A0D5264E71A123B562E0D362A288DF33D7F5F444C94213B1EA6A88E5406AF74FD02BFEB31836921C46CEF72B3A16005BE90430FC0971A3F2445756154CFFA0902CDCE023C326F72FED49F67F99"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载腾讯软件内嵌网页版：
+3)、请求卸载微信桌面内嵌网页小程序：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"TXWebApplet","Type":8}}
 
-4、腾讯软件内嵌网页版转调用接口，先根据Wrl_TXWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、微信桌面内嵌网页小程序转调用接口，先根据Wrl_TXWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 
 1) 请求退出小程序
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可

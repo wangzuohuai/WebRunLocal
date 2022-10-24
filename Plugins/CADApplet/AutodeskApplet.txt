@@ -1,4 +1,4 @@
-﻿ACAD内嵌网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk公司的AutoCAD软件VBA及DWG TrueView或Design Review的OCX控件接口实现的dwg、dxf等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review等软件窗口内嵌到网页指定区域运行并调用内部实现的各种接口功能。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿ACAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk公司的AutoCAD软件VBA及DWG TrueView或Design Review的OCX控件接口实现的dwg、dxf等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review等软件窗口内嵌到网页指定区域运行并调用内部实现的各种接口功能。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 支持Autodesk公司AutoCAD 2007及以上版本的桌面安装版、建议使用官方发布的AutoCAD 2013及以上版本的激活版,AutoCAD商标及相关软件版权归Autodesk所有。
 
 1、PluginOK(牛插)中间件的安装：
@@ -6,7 +6,7 @@
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、ACAD内嵌网页组件控制相关接口：
+2、ACAD网页组件控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://local.zorrosoft.com/acadfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/acadframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
@@ -14,7 +14,7 @@ HTTP网页在线测试：http://local.zorrosoft.com/acadfull.html  HTTPS网页�
 
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是开源的。
 
-1)、请求启动ACAD内嵌网页组件实现网页中局部加载dwg/dxf等文档进行操作：
+1)、请求启动ACAD网页组件实现网页中局部加载dwg/dxf等文档进行操作：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
@@ -55,19 +55,19 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"ACadApplet","port":
 代表网页组件创建成功，返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"ACadApplet","Port":997}}
 
-2)、请求控制ACAD内嵌网页组件：
+2)、请求控制ACAD网页组件：
 当前端不再需要网页组件时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动网页组件时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动ACAD内嵌网页组件：
+3)、请求滚动ACAD网页组件：
 当前端截取到网页滚动通知时，需要调用此接口实现网页组件和网页的滚动联动
 ID为启动网页组件时返回JSON中的ID值
 Code为滚动方向1是水平直，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变ACAD内嵌网页组件显示位置或大小：
+4)、请求改变ACAD网页组件显示位置或大小：
 当前端网页显示区域缩放时，可动态修改网页组件的显示位置或大小
 ID为启动网页组件时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -91,30 +91,30 @@ File为指定截图文件保存路径或扩展名
 Base64指定为1时代表返回BASE64编码的图像内容
 {"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
 
-8)、请求缩放ACAD内嵌网页组件，用于浏览器网页按比例缩放，一般不需要处理：
+8)、请求缩放ACAD网页组件，用于浏览器网页按比例缩放，一般不需要处理：
 eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当前网页组件所用的缩放百分比，一般和系统缩放比例一致
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、网页组件安装、升级、卸载
-1)、请求安装ACAD内嵌网页组件
+1)、请求安装ACAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"1899-12-30","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"CE5E9D67B52834C3D0D91940D382B5CA","Version":"2.2.7.9","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"923FFBBD3E97968CEBCE9EE2261DCABC7D4B7AA73987F3EE0138640F7EDAFA29D30204F7D3801222A0C8A9A64B4D56F497518C2AF5DBDA54003FFC7844E5A3A81B2D1B04DC824231CD3016EBB2F0E37DF15EF2E31C82E219F74C23D043D52622CE201B930821E52A4B0DB48F62F95B7F3DAECE985A4B13745EEB4BA97C9022566E0542C43CE471EDB6871943A4702D276C5DC850515C57ACF89A9D7C32D46903D53D014466072A2E91731891120A788CE6ABF37D8C3CFD0ED3576D122370171F9C138DC948799947300AEE3FD3F0D2E756B970974BDE0D54B3DE9489F0145A430028A4C8ECE1ABF297F56D2ABC4C14CCA601163568F70F82591E74FA027D161A"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"58BE254BF8869F38527A40F481AA2352","Version":"2.2.8.1","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"93A2C0E85919858A30ACE283550BE4FC79057EF2B91F19EA850E6F8807579A36920D16000F7D584C7EBAB769832C19EDFEC8E45DD7136D613992A5F4A6F4552503BC5460101CC3B96233F2D90FE3388B1EA31BF034D37ADCCB874132D8BB1249CAC2C8BBD95E8D1754228B6901047E0CB71183C33BC3EA95A2DDF61EC10B3EC8F5D3E5B23E9A182397033502010B243CB1A82A42C8CA0EE6530AA7B36D80F20F4E63334EFFE45AB0659E363212096CF68A6DE6C87C85CE64EE5D86D11C8BC272382AB379DDEAC320D2491FBBEEDEF4A8E55AEE9B78ED5A0943967B7339B5C96E2346B3794599098BE03D92D6C4894C70E5E277E786586D40DB481D99C219BC9A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级ACAD内嵌网页组件：
+2)、请求升级ACAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Autodesk内嵌网页小程序","PID":"ACadApplet","Date":"1899-12-30","Desc":"PluginOK之上跨浏览器的Autodesk内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"755B2F87215E4672C29C1FC3C39C2014","Version":"2.2.7.9","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"103D4D36E4CA19F84BE62072ADB000EA5694E61A35C919D75ADFB5D901B5CAE6AB4143B412CF861D6F95960488657E8DF2C2597CC0E34F850CAA969BDB79725702819C731B4D072BAFB06063A3F446A7155501F81E49594F7DD6E1C957D817EB2FCB6ECE191DC8FE3591AACA1180AF195EE9C0A7C50E291690D96B90640397D5343F26B716B7EA6C8BFC8ABD19B8E7F816A2098E1D945C8E8E50AD68F8F8FCBFCD9EF02F852CD0E654AE6B33A6DE29B8A432872B94F832BDEABA9A1C61EEA1342AC79AFDED731A99DF6BB7ADDFF6D0A6D69E26B1DAEF4673E80ABD22979AA341AF385B73FF30A81ACAD2B2A8903C1955512EFBF8CB441F1A5A35FC5C10126519"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"96BBA084AA010319EEED82B768D46B84","Version":"2.2.8.1","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"32BAA615CA9052E9F81D57D287953270398839CFC4D7F1054133465E610C38F251AC451CE2D55E13B05510EA7982628BEC32841A19994B8E47D6803EB912BB6FF56C90F7E374E255BE065FA14B2E24B1AE6157B651D2207BCD22039D3CE72A3B455F6427D1AE7AF1584531C6617602E399C1C93F69153CB8C0C1E70BE5A8A1353581C9C11465CA52A5CE517DFD88536F6A2A3C65B1772FC8B5E1EFCCCE2280EADEC813E2DE2092AC80770F678C6D65E07B25EA71245B34F4BA6065B6FE200B9D268F92F528721C9CF4DB7943323A857DB4FD615058ED0A39BD0372C1D38763F3232383D1C4BDB49A0601E83F3EE63F34A299C01EF1E3B4063B53B1A09EDF40AC"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载ACAD内嵌网页组件：
+3)、请求卸载ACAD网页组件：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"ACadApplet","Type":8}}
 
-4、ACAD内嵌网页组件转调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件接口，先根据Wrl_ACADApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、ACAD网页组件转调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件接口，先根据Wrl_ACADApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
 1)、请求获取当前打开文档信息
@@ -134,9 +134,9 @@ Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
 
 4）请求保存，如是新建文档，会创建一个临时文件名保存，适用于autocad软件
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
-{"req":"Office_Save","rid":4,"para":{}}
-{"req":"Office_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+如果指定了CAD_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+{"req":"CAD_Save","rid":4,"para":{}}
+{"req":"CAD_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于autocad软件

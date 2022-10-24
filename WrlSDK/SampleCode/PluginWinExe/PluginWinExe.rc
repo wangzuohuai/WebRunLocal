@@ -13,11 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文(简体，中国) resources
+// 英语 resources
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
-LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
-#pragma code_page(936)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+#pragma code_page(1252)
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -33,26 +33,26 @@ IDR_MAINFRAME           ICON                    "res\\PluginWinExe.ico"
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG 0, 0, 187, 102
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUTBOX DIALOGEX 0, 0, 187, 102
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,130,81,50,14
-    CTEXT           "PluginWinExe Application v1.0\n\n(c) Copyright 2018",IDC_STATIC,25,57,78,32
-    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,18,20
+    CTEXT           "PluginWinExe Application v1.0\n\n(c) Copyright 2021",IDC_STATIC,25,57,78,32
+    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,20,20
     GROUPBOX        "",IDC_STATIC,7,7,115,88
 END
 
 IDD_MAINDLG DIALOGEX 0, 0, 400, 362
 STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
-CAPTION "弹窗小程序演示(C++)"
+CAPTION "Pop-up applet demo(C++)"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     EDITTEXT        IDC_EDIT_CONTENT,17,279,171,52,ES_MULTILINE | ES_AUTOVSCROLL
-    DEFPUSHBUTTON   "发送",IDOK,55,335,50,16
+    DEFPUSHBUTTON   "Send",IDOK,55,335,50,16
     EDITTEXT        IDC_EDIT_LOG,200,279,180,53,ES_MULTILINE | ES_AUTOVSCROLL
-    PUSHBUTTON      "退出",IDCANCEL,113,335,50,16
+    PUSHBUTTON      "Exit",IDCANCEL,113,335,50,16
 END
 
 
@@ -89,8 +89,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1.5.3.1
- PRODUCTVERSION 1.5.3.1
+ FILEVERSION 1,5,8,1
+ PRODUCTVERSION 1,5,8
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -105,13 +105,11 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "弹窗小程序演示(C++)"
-            VALUE "FileVersion", "1.5.3.1"
+            VALUE "FileDescription", "Pop-up applet demo(C++)"
+            VALUE "FileVersion", "1,5,8,1"
             VALUE "InternalName", "PluginWinExe"
-            VALUE "LegalCopyright", "Copyright(C) 2013-? ZorroSoft. All Rights Reserved."
             VALUE "OriginalFilename", "PluginWinExe.exe"
-            VALUE "ProductName", "PluginOK"
-            VALUE "ProductVersion", "1.5.3.1"
+            VALUE "ProductVersion", "1,5,8"
         END
     END
     BLOCK "VarFileInfo"
@@ -209,7 +207,7 @@ BEGIN
     ATL_IDS_MRU_FILE        "Open this document"
 END
 
-#endif    // 中文(简体，中国) resources
+#endif    // 英语 resources
 /////////////////////////////////////////////////////////////////////////////
 
 

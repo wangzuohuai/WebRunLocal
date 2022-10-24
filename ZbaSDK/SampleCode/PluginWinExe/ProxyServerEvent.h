@@ -2,6 +2,60 @@
 #include <map>
 #include "BaseFuncLib.h"
 
+///通知小程序关闭
+#ifndef WM_APPLET_CLOSE
+#define WM_APPLET_CLOSE			WM_USER + 3000
+#endif
+/// 通知小程序初始化完成
+#ifndef WM_APPLET_INITOK
+#define WM_APPLET_INITOK		WM_USER + 3001
+#endif
+/// 通知小程序重绘
+#ifndef WM_APPLET_REDRAW
+#define WM_APPLET_REDRAW		WM_USER + 3002
+#endif
+/// 通知小程序显示还是隐藏
+#ifndef WM_APPLET_SHOW
+#define WM_APPLET_SHOW			WM_USER + 3003
+#endif
+/// 通知小程序状态(比如播放暂停，如果在播放时)
+#ifndef WM_APPLET_STATUS
+#define WM_APPLET_STATUS		WM_USER + 3004
+#endif
+/// 全屏状态通知
+#ifndef WM_APPLET_FULLSCREEN
+#define WM_APPLET_FULLSCREEN	WM_USER + 3005
+#endif
+/// 通知点击
+#ifndef WM_APPLET_CLICKDOWN
+#define WM_APPLET_CLICKDOWN		WM_USER + 3006
+#endif
+/// 通知移动
+#ifndef WM_APPLET_MOVEWND
+#define WM_APPLET_MOVEWND		WM_USER + 3007
+#endif
+/// 通知设置焦点
+#ifndef WM_APPLET_SETAPPLETFOCUS
+#define WM_APPLET_SETAPPLETFOCUS WM_USER + 3013
+#endif
+
+#ifndef WM_APPLET_SAVEFILE
+#define WM_APPLET_SAVEFILE		WM_USER + 3050
+#endif
+#ifndef WM_APPLET_CLOSEDOC
+#define WM_APPLET_CLOSEDOC		WM_USER + 3051
+#endif
+#ifndef WM_APPLET_DOCNEWOROPEN
+#define WM_APPLET_DOCNEWOROPEN	WM_USER + 3052
+#endif
+
+#ifndef WM_APP_INITOPEN
+#define WM_APP_INITOPEN		WM_USER + 500
+#endif
+#ifndef WM_APP_OTHERPID
+#define WM_APP_OTHERPID		WM_USER + 501
+#endif
+
 #define WM_PROXYSEREREVENT_NEWCONNECT	WM_USER + 2000
 #define WM_PROXYSEREREVENT_RECMESSAGE	WM_USER + 2001
 #define WM_PROXYSEREREVENT_RECTEXT		WM_USER + 2002

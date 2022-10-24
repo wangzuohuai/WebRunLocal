@@ -11,6 +11,7 @@ using System.Windows.Forms;
 /// 添加核心组件引用
 using ZbaEngine;
 using ZbaBase;
+using ZbaApplet;
 
 namespace PluginExeDemo
 {
@@ -69,10 +70,9 @@ namespace PluginExeDemo
                 return;
             WebSocketEvent.SetForm(this);
             ushort nPort = ushort.Parse(m_Para["PORT"]);
-            /// 开始WebSocket侦听服务，返回实际侦听端口
             ushort nListenPort = WebSocketServer.Listen(nPort, m_Para["SID"], m_Para["AI"]);
 
-            /// 建立事件通知
+                /// 建立事件通知
             WebSocketServer.NewConnEvent += WebSocketEvent.NewConnEvent;
             WebSocketServer.RecMsgEvent += WebSocketEvent.RecMsgEvent;
             WebSocketServer.RecTextEvent += WebSocketEvent.RecTextEvent;
@@ -86,14 +86,13 @@ namespace PluginExeDemo
             WebSocketServer.RecMsgEvent -= WebSocketEvent.RecMsgEvent;
             WebSocketServer.RecTextEvent -= WebSocketEvent.RecTextEvent;
             WebSocketServer.ConnCloseEvent -= WebSocketEvent.ConnCloseEvent;
+            
             /// 释放对象
             if (null != WebSocketServer)
             {
                 WebSocketServer.Close();
                 WebSocketServer = null;
             }
-
-            WebSocketServer = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -101,7 +100,7 @@ namespace PluginExeDemo
             string strLastSID = WebSocketEvent.GetLastSID();
             if (null == strLastSID || 0 == strLastSID.Length)
             {
-                MessageBox.Show("还未有来自网页的连接！");
+                MessageBox.Show("There is no connection from the web yet!");
                 return;
             }
             Send(strLastSID,this.textBox1.Text);
@@ -151,7 +150,7 @@ namespace PluginExeDemo
             public void NewConnEvent(string bstrSID)
             {
                 m_strLastSID = bstrSID;
-                m_Form.textBox2.AppendText("收到新连接：");
+                m_Form.textBox2.AppendText("New connection received:");
                 m_Form.textBox2.AppendText(bstrSID);
                 m_Form.textBox2.AppendText("\r\n");
             }
@@ -165,11 +164,11 @@ namespace PluginExeDemo
             /// <param name="bstrContent"></param>
             public void RecMsgEvent(string bstrSID, uint nReqID, string bstrPushName, string bstrMsg)
             {
-                 m_Form.textBox2.AppendText("收到新数据包，请求序号：");
+                m_Form.textBox2.AppendText("A new packet is received, requesting the serial number:");
                 m_Form.textBox2.AppendText(nReqID.ToString());
-                m_Form.textBox2.AppendText("协议名：");
+                m_Form.textBox2.AppendText("agreement:");
                 m_Form.textBox2.AppendText(bstrPushName);
-                m_Form.textBox2.AppendText("内容：");
+                m_Form.textBox2.AppendText("content:");
                 m_Form.textBox2.AppendText(bstrMsg);
                 m_Form.textBox2.AppendText("\r\n");
 
@@ -184,7 +183,7 @@ namespace PluginExeDemo
                     return;
                 }
                 /// 回传给网页内容
-                 m_Form.Send(bstrSID,"收到请求" + bstrPushName);
+                m_Form.Send(bstrSID, "A request was received:" + bstrPushName);
            }
 
             /// <summary>
@@ -194,11 +193,11 @@ namespace PluginExeDemo
             /// <param name="bstrText"></param>
             public void RecTextEvent(string bstrSID, string bstrText)
             {
-                m_Form.textBox2.AppendText("收到文本内容：");
+                m_Form.textBox2.AppendText("The text content is received:");
                 m_Form.textBox2.AppendText(bstrText);
                 m_Form.textBox2.AppendText("\r\n");
                 /// 回传给网页内容
-                m_Form.Send(bstrSID,"收到文本内容" + bstrText);
+                m_Form.Send(bstrSID, "The text content is received:" + bstrText);
             }
 
             /// <summary>
@@ -209,7 +208,7 @@ namespace PluginExeDemo
             /// <param name="nLen"></param>
             public void RecByteEvent(string bstrSID, Object Content, uint nLen)
             {
-                m_Form.textBox2.AppendText("收到二进制流：");
+                m_Form.textBox2.AppendText("Receive binary stream:");
                 m_Form.textBox2.AppendText(Content.ToString());
                 m_Form.textBox2.AppendText("\r\n");
             }
@@ -217,10 +216,8 @@ namespace PluginExeDemo
             /// <summary>
             /// 通知HTTP同步请求处理
             /// </summary>
-            /// <param name="bstrSID"></param>
-            /// <param name="bstrProtocol"></param>
-            /// <param name="bstrUrl"></param>
-            /// <param name="bstrPara"></param>
+            /// <param name="strUrl"></param>
+            /// <param name="strPara"></param>
             /// <param name="pVal"></param>
             public void HttpReqEvent(string bstrSID, string bstrProtocol, string bstrUrl, string bstrPara, out string pVal)
             {
@@ -235,7 +232,7 @@ namespace PluginExeDemo
             /// <param name="nPort"></param>
             public void HttpPortEvent(ushort nPort)
             {
-                m_Form.textBox2.AppendText("HTTP侦听端口：");
+                m_Form.textBox2.AppendText("HTTP listening port:");
                 m_Form.textBox2.AppendText(nPort.ToString());
                 m_Form.textBox2.AppendText("\r\n");
             }
@@ -243,12 +240,12 @@ namespace PluginExeDemo
             /// <summary>
             /// WS连接请求中出现错误
             /// </summary>
-            /// <param name="bstrSID"></param>
-            /// <param name="nReqID"></param>
-            /// <param name="bstrErrInfo"></param>
+            /// <param name="strUrl"></param>
+            /// <param name="strPara"></param>
+            /// <param name="pVal"></param>
             public void RecErrEvent(string bstrSID, uint nReqID, string bstrErrInfo)
             {
-                m_Form.textBox2.AppendText("连接出现错误：");
+                m_Form.textBox2.AppendText("There was an error connecting:");
                 m_Form.textBox2.AppendText(bstrErrInfo);
                 m_Form.textBox2.AppendText("\r\n");
             }
@@ -257,10 +254,9 @@ namespace PluginExeDemo
             /// 通知关闭连接
             /// </summary>
             /// <param name="bstrSID"></param>
-            /// <param name="bstrReason"></param>
             public void ConnCloseEvent(string bstrSID, string bstrReason)
             {
-                m_Form.textBox2.AppendText("关闭连接：");
+                m_Form.textBox2.AppendText("Close the connection:");
                 m_Form.textBox2.AppendText(bstrReason);
                 m_Form.textBox2.AppendText("\r\n");
             }

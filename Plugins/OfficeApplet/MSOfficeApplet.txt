@@ -1,25 +1,25 @@
-﻿微软Office在线编辑网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
-支持微软Office 2007及以上版本的桌面安装版、建议使用官方发布的Office 2013及以上专业版或专业增强版，如使用家庭、个人或教育等版本，可能需要自行安装VBA支持。
+﻿微软Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+支持微软Office 2003及以上版本的桌面安装版、建议使用官方发布的Office 2013及以上专业版或专业增强版，如使用家庭、个人或教育等版本，可能需要自行安装VBA支持。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、微软Office在线编辑网页组件控制相关接口：
+2、微软Office网页组件控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://local.zorrosoft.com/wordfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/officeframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动微软Office在线编辑网页组件实现网页中局部加载doc/xls/ppt等文档显示：
+1)、请求启动微软Office网页组件实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注
+	Edit代表编辑权限 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注 128预览模式
 	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 
@@ -56,7 +56,7 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"MSOfficeApplet","po
 代表网页组件创建成功，返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","Port":950}}
 
-关于Option参数，如果不确定是调用启动微软Office在线编辑网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
+关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
 {"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
 {"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"}]}}
 Type 1 代表微软Office，11代表金山WPS，21代表永中Office
@@ -64,19 +64,19 @@ X64 代表是否为64位版本
 Cur 代表是否当前有效
 Ver 代表文件版本信息
 
-2)、请求控制微软Office在线编辑网页组件：
+2)、请求控制微软Office网页组件：
 当前端不再需要网页组件时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动网页组件时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动微软Office在线编辑网页组件：
+3)、请求滚动微软Office网页组件：
 当前端截取到网页滚动通知时，需要调用此接口实现网页组件和网页的滚动联动
 ID为启动网页组件时返回JSON中的ID值
 Code为滚动方向1是水平，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变微软Office在线编辑网页组件显示位置或大小：
+4)、请求改变微软Office网页组件显示位置或大小：
 当前端网页显示区域缩放时，可动态修改网页组件的显示位置或大小
 ID为启动网页组件时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -105,25 +105,25 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、网页组件安装、升级、卸载
-1)、请求安装微软Office在线编辑网页组件
+1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-10-08","Desc":"跨浏览器的微软Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"C4BF71DE0581F92AB002973F66D0CF2C","Version":"2.2.7.9","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1CA7EDB751D0C2B8694033224CD5B455ABDEA415D0E0C7B04D373639C31948027707AD3DB81DD6B5AAE167FDF4B2999DF27C45E26ABC2DE5F2AB3CB76C63F834FCFECC2CA802EBF3C33C2CE219F2F0C1E82B710D8ECC9925CB853ECE64E7436F5F16A412EB855EE278BB880782AF0F9051F6C9C991BCF525853CE7328ADA674DA172CE92ED9EDBD6886262E4378696B7D6154315967A014B9C1D9B481AA3164885E5B1531D1EADFBA3E6B1A84474AD01FC825E1FFB84D2CE9823A34DD7AC0EDAB44395EF576231358E36C7CF92B44861E3AFD81587B946CF618D6F3CBBC438CCA35793BD88D09758C3159E8F02F6A7772A3BD8C5D344F74EDF3A7B3E7523D5B7"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"793C1B94159F263B423C5288B343FB34","Version":"2.2.8.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4AF4CF4C54310CBA98E23DEB656F77B90BB782FFF6FFBF90180474458BD0775FCA9D7FC077138BF691A1146F4FA48B62BDCFBA06A5CEF5F5A040C42641D496E360DA7EF9841D035F4E0B8EF2D06CDE4D6B53240F50AF9414F3476F306E1E0209306ACFDC27211E252E4734E2C1C28EE0DFD89C18DCF4F14C9D9DE90A0200C9AB0A017D35CBFDE60C9EB22D0A89122F993DF51FC0757A21AB7F4A75CCF06693AF742CD8F79C32ECED2BD782A08643596598F13BF70E381FD5F9156AF29E0E522E340BBE3AECB0F04616274F0265337C18449DD698DE7B41F4CA2BA5DA4ED47312BCFAACB529886646BC305E551C55CAA20A7F7CA26415158616F4460F7650CAA4"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级微软Office在线编辑网页组件：
+2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-10-08","Desc":"跨浏览器的微软Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"1FFF551F4DBBF86F40655BDFE8070FF6","Version":"2.2.7.9","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"66397AE95CFF8AC9552263DE32531B10B4E1269285F968B3EB3831213260E9AA78600CB01C165F4D5B2E668B2B05A8D1B567D27076E12BA691113E5AFA83D48DF70AA6B92BBA2F6E2B5C91056E46BAFEC121AFF1444F062706DFEA2F88006362A8E53120DD8B8E6146E7D7C2C679DD7B6E4EC4FB4B10116A5FE172AA33C034E24E70EE43C5C1D38966D9F01DF7294C38A197B203708C451BC659E8734AA5E94A04EFD5A1B362A132A422AD767B30EB814367F70DE6DC42A913F89474C18ECC84AB3C5FA13A95C3375B00B4E65C6C905A6F42FE4FB18D6C322F300C8DA06BCC52D127328D1D3ADEBF2403BBC55B47B487D62795D960DC1A6490F5F60CF7A65C0E"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"C310C15D4E0FCF24FDC472B0059291BB","Version":"2.2.8.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"653309B90D45BC3CF19ACEA3B2D85EE4A0C8D523EA497F7D741CC785624DAE603E5E6DCAB2C19130064D72679FF249E84187FE0D13225878B7BEA4C82499A265790848C3ED39B2199AC8098ACDD8205CE6174F863EE518C0BBF231B4D29D93CF01F5A652482E5D26805FAF8BE41658A948DDB42B4C17A9283C9E875F55D6FC019F95818488B28A08052A0482D73A70C99CA4C48CDDF93E10EB9924C20C2F81AA7358EA1991E5D0990215FE385804EF155325C0382F0CB3467978AB97D0AF683DE98E2E5350F7C61AF4DDAAAB1F2F363F47970243C9398B74B6B5081132ACB9918C4B91100339242AF15A8B9F9FC58254D61EB44F48F728DFB5268A895FD7AAC0"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载微软Office在线编辑网页组件：
+3)、请求卸载微软Office网页组件：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"MSOfficeApplet","Type":8}}
 
-4、微软Office在线编辑网页组件转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、微软Office网页组件转调用Office软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
 1）获取文档是否修改了需要保存，适用于Word、Excel、PPT软件

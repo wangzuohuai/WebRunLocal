@@ -35,15 +35,15 @@ namespace PluginNetDll
         {
             m_WebSocketConnect = piDispatch as IWebSocketConnect;
             if (null != m_WebSocketConnect)
-                WriteLog("PluginNetDll", "成功获得WS接口");
+                WriteLog("PluginNetDll", "The WS interface was successfully obtained");
             else
-                 WriteLog("PluginNetDll", "获取WS接口失败");
+                WriteLog("PluginNetDll", "Failed to get the WS interface");
         }
 
         void IWrlConn.Unload(EWrlCloseConnType eCloseConnType, string bstrReason)
         {
             m_WebSocketConnect = null;
-            WriteLog("PluginNetDll", "请求卸小程序");
+            WriteLog("PluginNetDll", "Request a release of the applet");
         }
 
         string IWrlConn.HttpRequst(string bstrUrl, string bstrPara)
@@ -57,7 +57,7 @@ namespace PluginNetDll
         void IWrlConn.RecByte(ref byte pContent, uint nLen)
         {
             /// 收到二进制数据流，特殊用途
-            WriteLog("PluginNetDll", "我不是机器人！");
+            WriteLog("PluginNetDll", "A binary data stream is received");
         }
         /// <summary>
         /// 重点处理此函数
@@ -75,11 +75,11 @@ namespace PluginNetDll
             string strReturn = "";
             if(bstrPushName == "Demo_Return")
             {
-                strReturn = "收到请求 ";
+                strReturn = "Requested:";
                 strReturn += bstrPushName;
-                strReturn += " 内容：";
+                strReturn += " content:";
                 strReturn += bstrContent;
-                strReturn += " 序号：";
+                strReturn += " number:";
                 strReturn += nReqID.ToString();
             }
             else if(bstrPushName == "Demo_WriteFile")
@@ -94,10 +94,10 @@ namespace PluginNetDll
                 swFile.WriteLine(strContent);
                 swFile.Close();
                 swFile.Dispose();
-                strReturn = strAppPath + "\\" + strName + " 文件中写入内容";
+                strReturn = strAppPath + "\\" + strName + ",The contents of the file are written";
             }
             else
-                strReturn = "收到未知请求:" + bstrPushName;
+                strReturn = "Receive an unknown request:" + bstrPushName;
 
             /// 给前端回复请求
             m_WebSocketConnect.AsynSendText(strReturn);
@@ -106,7 +106,7 @@ namespace PluginNetDll
         void IWrlConn.RecText(string bstrContent)
         {
             /// 收到文本请求，一般都是JSON包
-            m_WebSocketConnect.AsynSendText("你确定没发错？");
+            m_WebSocketConnect.AsynSendText("Are you sure you didn't make a mistake?");
         }
 
         /// <summary>

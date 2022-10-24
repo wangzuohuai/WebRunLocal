@@ -1,4 +1,4 @@
-﻿金山WPS内嵌网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS(要求企业或专业增强版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。
+﻿金山WPS网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS(要求企业或专业增强版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。
 最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 金山WPS支持2016及以上的企业版、建议使用支持OFD导出的2019企业版(https://ep.wps.cn/download 选择Windows版下载)，如使用个人版及企业版需安装VBA支持，并且只支持在非管理员权限启动浏览器的时运行。
 
@@ -7,20 +7,20 @@
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、金山WPS内嵌网页组件控制相关接口：
+2、金山WPS网页组件控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS在线测试网页：https://local.zorrosoft.com/officeframe.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动金山WPS内嵌网页组件实现网页中局部加载doc/xls/ppt等文档显示：
+1)、请求启动金山WPS网页组件实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注
+	Edit代表编辑权限 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注 128预览模式
 	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 
@@ -57,7 +57,7 @@ B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"WpsApplet","port":9
 返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","Port":950}}
 
-关于Option参数，如果不确定是调用启动微软Office内嵌网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
+关于Option参数，如果不确定是调用启动微软Office内嵌网页组件、还是金山WPS网页组件或永中办公内嵌网页组件，请先调用指令
 {"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
 {"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"}]}}
 Type 1 代表微软Office，11代表金山WPS，21代表永中Office
@@ -65,19 +65,19 @@ X64 代表是否为64位版本
 Cur 代表是否当前有效
 Ver 代表文件版本信息
 
-2)、请求控制金山WPS内嵌网页组件：
+2)、请求控制金山WPS网页组件：
 当前端不再需要网页组件时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动网页组件时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动金山WPS内嵌网页组件：
+3)、请求滚动金山WPS网页组件：
 当前端截取到网页滚动时，需要调用此接口实现网页组件和网页滚动的联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变金山WPS内嵌网页组件显示位置或大小：
+4)、请求改变金山WPS网页组件显示位置或大小：
 当前端网页显示区域缩放时，可动态修改网页组件的显示位置或大小
 ID为启动网页组件时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
 {"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
@@ -106,25 +106,25 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、网页组件安装、升级、卸载
-1)、请求安装金山WPS内嵌网页组件
+1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PageHi金山WPS网页组件","PID":"WpsApplet","Date":"2022-10-08","Desc":"跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"D07A4D30D58FEE012BA8EE6A1EFBD4FB","Version":"2.2.7.9","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"30E5A55FD2AE72677470D0DDDBC1C49943E0421B81F26366FFEB5B7B07610087F0A82C8122C300B8AA58099913EB1DEC75DB741571A2A1C3EF11A17EE90CDA6EF7D88D3AA6F06091B42004239D7BC9F46689C1AA93B597BFCDE9899C164D277178F6E8CCB20425DA3F3804F1967199327C7B3D7E15D2F27C067A20E79BA8C01B43DABA6EF2003803946A326E10BBE72D9F8ECA367C5F3C7F2F83DAED077FCDE649D436A261241D846E063925EFC5487B7D79A635CDCD1F59D34CEF48DCA0DE5501FBAAF4BE046829F2A5740E3D57ECB91EF3EBB3C0CF21E5359917BBBEBF04216207AFC102BA0D9F29A5EEDCEC7AB2DBF15BD5407590B7C3B9491DC30D8B5653"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的金山WPS网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"E2EA630A9450A08ADC9C8E6FC78A0339","Version":"2.2.8.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"14D75D5611F3FA2EBC846F4529DD4E09C1CC4EE118F1F52B2946B866DA3B685EDB7780A1419F6398E5AAE4F4C9DF536EE9B41355410D9B5A31DBCA05D1D8AAB68EFD6F32BF3160B1369F0100BEA79DC64D0F5FB495152CC8F901767363134A238FFFA4EFDFC301F58A59858702EA60DC87ED182C51F2A3B10C0440D8A4AAC957E8266C1D3706FE9DB302BB4D7A7A8F54ED063FF4944324BB13BE38532D73E75CF2A4B361E5B1D6D838AC5093D38FEF67BEEAF76A86638829808FD23000585CFB9E40677C312DE7BD39D557F04FAC9A7D1BF36763D30D77581F33895EA65527C4621A647398E0576F444B7C615208158D189CB24BFD4003F19C0563E174CDF12A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
-2)、请求升级金山WPS内嵌网页组件：
+2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PageHi金山WPS网页组件","PID":"WpsApplet","Date":"2022-10-08","Desc":"跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"C72736DDB3D179F69ABFF10AF62A0EA8","Version":"2.2.7.9","Size":4390912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"629155108D68A90AD83853EBB1C1B82D9BD0FF205DE4BD00B7B21B9AEA4C4DC03756689A256EB012FDC6476E4D113199C8FC3C231ED51E793FD671D409B98B522C459DE96FFC11B57709F99307B0A6CC54AB2D05036047083A79B653C5B51FC206BC7774E85011EAB580751D3DF65ACFF302D5F818FC2F9E4A323331AEC3A777558112727775F33AAA9DB18A77610E64472D1E9CA3D61A2F9427E336B4F81BE4D78D5FD99C862E7E744EA078B01D77187B2A5A0AABEEF28C8A836FB521F996F2D312B3131710743D7C7CB56337ECF0322FDE9003989FBF805953613B7E6BBA8F30807783980065042346C2BD348E520F30ECDCFBF62D07B3E147C87D7CE26A96"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2022-10-23","Desc":"PluginOK之上跨浏览器的金山WPS网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"2FA1B1BD64D50B24172468099E2F467B","Version":"2.2.8.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"69228CE1A787706A294B52A9D333AC92E86C995D6AE5889E94C61413902C0F98EF47950A2BD5F4CC0BFFE704374B21FC0DAC80649D264F56A1C83C29F19257B379C7597CCD8AFA127C543C764E435F89AA8B061EA9C57F5144906F6CAC36B587831C54AF951A7FC767B23582C03D9CAF765811079745FA97E62ED295C79C3E6AC031D7173F66AF4EB8A899FA1A7F868B2DD4E0CC9BCA9982DFCB8F7377E8A6B47DEE6940E71935CE051EF7CCC4757B27130D41D4AA7161F4317202D81D250B8FDA52796756320224A2BD80419B254A4C2409A8D5E869D972CCBBFF0A8CDE74C3A9677D17CF87817D2FCE2ED87BDF3B9D35768A88C2346D9FEB905E343F700D3C"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载金山WPS内嵌网页组件：
+3)、请求卸载金山WPS网页组件：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"WpsApplet","Type":8}}
 
-4、金山WPS内嵌网页组件转调用WPS软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、金山WPS网页组件转调用WPS软件的VBA接口，先根据Wrl_OfficeApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 
 A、常用功能请求：
 
