@@ -51,7 +51,7 @@ Open：为需要播放的多媒体路径，磁盘目录斜杠用/
 {"req":"Wrl_PCLWebPlayer","rid":1,"para":{"Type":"0","Title":"PCL Web Player","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Open":"D:/Zorro/map.pcd"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_PCLWebPlayer","rid":3,"para":{"Type":"0","Title":"PCL Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Open":"D:/Zorro/map.pcd"}}
+{"req":"Wrl_PCLWebPlayer","rid":1,"para":{"Type":"0","Title":"PCL Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Open":"D:/Zorro/map.pcd"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/pclframe.html
@@ -59,10 +59,10 @@ http://local.zorrosoft.com/pclframe.html
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"PclWebPlayer","port":900}}
+B、{"event":"Wrl_Listen","aid":2,"rid":1,"data":{"SID":"123","PID":"PclWebPlayer","port":900}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新渲染一个点云数据。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":2,"rid":1"data":{"SID":"123","PID":"PclWebPlayer","Port":900}}
+C、{"event":"Wrl_AppletOK","aid":2,"rid":1,"data":{"SID":"123","PID":"PclWebPlayer","Port":900}}
 
 2)、请求控制PCL网页渲染小程序：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -109,13 +109,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装PCL网页渲染小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PCL网页渲染小程序","PID":"PclWebPlayer","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的点云库网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌点云库窗口渲染点云数据","DownAddr":"http://local.zorrosoft.com/Files/Net/PclWebPlayer.pid","MD5":"84175D5D38F75EC84429746E4CA23066","Version":"2.2.8.2","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B20BD86795AF05F92118BBE6FF3A359593DA879D646732DF9CC76C9FDF223D82F5A739F27C1C03520D7BFA7D555F800C68916842A1F4E81F9C2412D1157AC067B670A8964DA7B6F453183DBB9C747A5093E9C828CA09FD2499ED6404BD71B4EDE176A4D2092E3283FEBF99A984DFE5A6DADD88BACFA51B6A3FA8C8F56CC94E203F7073F237EBACDD8AEBCBFC28F9F7B7C4E44C7676BF7DEF57E7B0D86D803FF8596395D959AE25EEE7D94CB0B49566DB45D81F2530ED31FAE3D65D8442FFF59EE3B02C97A11204A9D838E52A3A23FEFF0F59246F7AE5DC679E95983FE2BE9865D63CD420696020FF507CBD6F4715E55A2B8097D38B6EB2A51FD57ACE158532F8"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PCL网页渲染小程序","PID":"PclWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的点云库网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌点云库窗口渲染点云数据","DownAddr":"http://local.zorrosoft.com/Files/Net/PclWebPlayer.pid","MD5":"BF96B3E9D6A998601662B32E59BA0A7A","Version":"2.2.8.5","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"777B63CC8CE603636E1006CCB2F150B344CC41BCF7153E11906FA3531EC0BB1B03FDDE7E2EFE7EEDBB57A0FCFE73D46AA97DE6C5CD889E1B3DA7256218D7A541FBC023E821D535F3B4B7B85B8A7C98892522528F9D5B6CD4B495AD2EE3E6E2DF2B27C8644E627BBC2B7908A8A2FF2717E18ADCB08FFC69E5B0E783A85CF730AED41C7A7B3F2823D0A88C6CE24B15A1521B0D13B9CF8AF74C7C9AA75DEC4F138566210C37474D9F77D086D9E2A55603B46F597E5C03655015E7B3EECC17B226A31F87EB442878678E10B2DCB8B3DFF81936BF95275698DFF58B1C99F552134F7EE07515BD75A896BCF3AB8A5B99352E129BE03E82832A7348C9A3E964B9FDF0B6"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级PCL网页渲染小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PCL网页渲染小程序","PID":"PclWebPlayer","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的点云库网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌点云库窗口渲染点云数据","DownAddr":"http://local.zorrosoft.com/Files/Net/PclWebPlayer_Update.pid","MD5":"1EC76C81EA8CDDDC47F4DC501B6F3739","Version":"2.2.8.2","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3B8B8DE7DC85FFFA7B905D908C34D569A4A67DF0D7C714DBE7ED1D4F4DCE1BF918D3D4052BD49CCEF89E9B1378EBCB0BC34ABD244533586ECB01C46FE982BF74AC8F9A842B8F53CF431FBAAEC041C2FBA7C8E91FA7A1484E9E64DF3C34AA19A5066FA2759C5A4309C5B02EE984DD54968E9F24025E6DD7028D2EDAE72082AC0159CF4446F2700D77C8BFA4A19D56A216AAD1DFA48836EDA20BEDBC5E61AFE08BF54CC0179F2EF83B560BD9C952900912656D7CB4C94DF6BE525382F3EC3802C368AC1CE015513AD83AB27350264C50A68448679F5A70471A0FBDAD81EAE4CE223939DD8243D329098C12E0605E425CA4AC9779B7EF3ECF8B90FD78A3BE7A56FE"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PCL网页渲染小程序","PID":"PclWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的点云库网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌点云库窗口渲染点云数据","DownAddr":"http://local.zorrosoft.com/Files/Net/PclWebPlayer_Update.pid","MD5":"516AF1A83C44F13F56293F569DD5D805","Version":"2.2.8.5","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B4D11D39658A5909AB2D422815F6E3C87C8582052E3542522E259507AEE40014B15FCE54B442808B8DFAAADC30041CCF60525C7B45CEA94C5E9BE453E1121947EB20D2A456B67061235A304A4A005CD85D1BF2BDFFFCB3FF65B8449968742D88AF7E9BA444E2B4B05C1A42D1DEA81BF0692412687AE1075188B7F5250ACC77ABFEF64EDBFE8F20722B487691A8DDE2F7ADEB317A9CD3EEE8F6A63A12EBA19B619C99C76560F49CCEC4C530A56CF169ADF63D42CE4028A847CF50F2AEF783B3243CF4FFD3AF1A55043916EB352C64938ECA9EC90EDB81469E76D28C3BA87EFBB4159704699A59ED131EA1E94896C03BBC6434E8EE9E000595FF6CA0FE1A66803F"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

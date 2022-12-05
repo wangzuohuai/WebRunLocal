@@ -33,27 +33,27 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动AutoCAD程序在线编辑dwg、dxf等文档
-{"req":"Wrl_ACADApplet","rid":5,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动DWG TrueView程序在线查看或转换dwg文档
 {"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动Design Review程序在线审阅dwg、dxf文档(推荐方式启动)
-{"req":"Wrl_ACADApplet","rid":7,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"2","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"2","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
-{"req":"Wrl_ACADApplet","rid":8,"para":{"Type":"0","Title":"Autodesk Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/acadframe.html
 
 启动后会前后收到三个JSON数据包
-A、{"ret":0,"rid":1,"data":{"ID":3}}
+A、{"ret":0,"rid":6,"data":{"ID":3}}
 代表网页组件WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"ACadApplet","port":997}}
+B、{"event":"Wrl_Listen","aid":3,"rid":6,"data":{"SID":"123","PID":"ACadApplet","port":997}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用网页组件中的相关功能，比如放大缩小图纸。
 代表网页组件创建成功，返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"ACadApplet","Port":997}}
+C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"ACadApplet","Port":997}}
 
 2)、请求控制ACAD网页组件：
 当前端不再需要网页组件时可指定关闭，或者显示/隐藏及全屏显示等
@@ -99,14 +99,14 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 1)、请求安装ACAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"1FD469F6B56C79DAFD6DCE7CE4534D48","Version":"2.2.8.2","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2C5B1190880FB5A08E5B17A55A933A54FB8D34D84C996AA08463B18F9D70025A688854C9DF6B15CED9D6C3CAD91541F75CE21761BD845179C456715ACB53D830CCA82AC28757C7FBB840A6408D836E084AFAC2FCE65FA4796DD904070F18C2F1D598C8F0B6C837A1D48B9A81190A957CB1DF61F6FA230087D1EEACA3E5CC49B1C00CB9B29FABDEF93DB3512BFE7D197FFF3C58E673909DBC18117FBDBF18748994F14991EC4F583963057991A3E9E58DFCED111B66D2E81BCFE61E3AE54E2CA68BD48317557124A0965DDD4E58C8C0F8FF4D06324EDE9F250D76D75B4699D29D7E01EABAC4C01DC12B1CBC4C0D6695F74FBB048A63581147A17664E01B134B15"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"B5B597C7A3AEF0528500BC77A5E02715","Version":"2.2.8.5","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B3116CF3F7022E49D0DFEBB0F723A15A9BFDC3C54B63D9507F396E88F9D40DF82E68CBA5D73D8E48345B135C173E190AE87C4D44226DFE02D7FEDBEC25CD4FCEDB6ED4BB119594F898AE4E9B238B98F3CF7CD5DEAE86B86B9BD980AF8C3693EA3AA0536FE7F7BE65984002ABCB759AEE0C0E9E1B4A8AC0482F42F86A5E2D5EBA6C222CD84B4467EFB2E8D64F8F9B10CECF4C374CA61DF39956070CC417884A25399D723930992DA28151A301B192CA374F443FE964FDE34FFCF999626ABAE5705D140EAE3243ED4038D81441EF953C7CE630E327107643926DF95E39F538F1494143062C700C018BC12F3C78EDD990786B2AAACE12622661A54E08AC53DB241C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级ACAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"39E36D5A2ED251CC067C6A49B776EA95","Version":"2.2.8.2","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"74B315CECD57C8EC5D8264724FFA731B85AA162F54B779E58FA8819136BA53FD846733FBF32EEC8C98AFFE9B76036B51E22F1481BFEBF141FDEB7D3B12D985A960AD7C910305D5E07CF56FA2B3A48BDF2A5D5FC37B469F4729B8D30BAEF73B922B15906C76970895E3083695A36AD0B1A9049990D20C23106FAE0A37BFB7C1F65FFE06361389350C1FC2EE3BB4CC30ACEB5CB47B0E15A1CE13BFEC1B92E70AC8808C7E69A77BF267EA67C31F07C2DC65C53CD15FCA97A335723A605BAAB2643B2D347B15DAFD3DDDCDA97F6E83F9E39A0D5A9549DDC9C92C539D83E8BEA1E0ED6472346E5127AD4770A8AD068D0D639C247CA26EC40A052ABC8C346E6D655C5B"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"B41FB89F153470D66642869DCCF57F51","Version":"2.2.8.5","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4277217B0D09A3BF829AFBBAFE31B1FFC8481689EA1DD93F3DFD1D8263AC2AFD87A277DA3688BCC00961D885883D5C4D57D2BC3CEB1E1B1EFA7E3F008376949E65FF76DAC332F7A2AF75D414F7711AE370C5F755A1FB67D802808523AF9E05D4AFFA97FD527F9024FA6D81EC8DCA4E1889F00421C316D69203006174B69F8AA690D224E225D994DA3B8F01E18CAFCE4E3B6606F4F95A53B574B82D74DDFAB47C579CF5FFE65531684FDBC6231B1C67743E5E31325F9EE35042CA520FE88D03CA452448198F0A9176CF55972C6ACC6578E0B3C0D86737E184382A0C57AE265C7FD0234F859C0AC56B7F591CA5F7A9870E8F4013CB396B63D6E680C16646D134B3"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

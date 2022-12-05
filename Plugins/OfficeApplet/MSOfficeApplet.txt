@@ -37,21 +37,21 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径�
 {"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动微软Excel程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"2","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"2","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动微软PPT程序
-{"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"3","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"3","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":8,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
 打开远程文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
 
 启动后会先后收到三个JSON数据包
-A、{"ret":0,"rid":1,"data":{"ID":3}}
+A、{"ret":0,"rid":5,"data":{"ID":3}}
 代表网页组件WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"MSOfficeApplet","port":950}}
+B、{"event":"Wrl_Listen","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","port":950}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用网页组件中的相关功能，比如打开一个文档。
 代表网页组件创建成功，返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","Port":950}}
@@ -108,14 +108,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"C7A9CD4735525AFEA480A5DAC1F3422E","Version":"2.2.8.2","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5319AEF5E016CCDB178EDE4FB3DE9074DF49ED3A2C78DA493A2F96730035DB3726CC69095B8B0C2F7D23D7CE71E63FBFA33FDED4CB6B1CCC755146A123041E8665F460DC01F6F67B871E0401BD67548DE14DC0CFB785EC99307A82EE30AD7F5C38137CF2CBC01BD29EDC4F36207FC65532E4AA8A96101597811DD457A45D5327E58C55C8085AA8A02B9915A17E3740A18DFDDC92D3478F49C28DF369F296BEB9AD8E665D1B4CD38A6CDFC343F3AF5CBB38FA77A1DAE144EE62981C4E2A698A94D2D4AAC3125DBD868CFB232BC990617A347B394268EEC97F401942E49C34F3177093DF9879D3A2C453C98118C473C2D07E2783984590509106A2D5B9F304CA2E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"6511BC95E3C75A5E01CF5CAD77684642","Version":"2.2.8.5","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"27243B673ADD20BD5288415AB47EFDE492308664F30DE15A9B0DFE6E69BE25684EC469E8F0F6C8CA030961D380FA74B9D5049C98C4675B4326DCC6E85ABE11E4E4B0DEF71F8201F221EB54D46460863F804484928F79611F07EAE151D8371B15C771840308019B6A8DB6A52D7558A04A4AB5D72F0E5E94E0E687C385C03F2842AB1F6DAA7BE7D448A2CF6412EE9832CB4840ECFF980BB3670DC7EA73EAB593044C35EBDFCF52CE4407EEE0AA8C048F111F700C9C0AB203C1CB2C467DCB4761FC99F6C02A6634FE744EE4A1831146AB7CAD55BFFB8A06309A6EA3F4F11F712C31AC601BE1E67AC8C0099D12DDBC59FFFBE7ACF0E0A270553FCD881C587B58E078"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"903BB8810219B8090DCB1787C9544C08","Version":"2.2.8.2","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"724317B972B34A00A558A30CA953CD764351D0236108E406827436134ACE608CD3E49F568964D0EC506BFC63239901900864B6CB76519DD3F4C016EB2D368EA362EBF08B61C13E74153A737EC87F6DE6C1146979D7CB0928C3FB094F7157130F2FC758E39FC5B1A17D9BE6E315F24C0F8F032D351CE40CE4D799EE11DFAFA78BC5D5AF79E7BAABD2D0CBF0F3D99146360044271E7380B0E932A85DA0287F629A9AE13710E26E0DD1310FA28A580DEB39FA799941A8E674D55E359DBBDE2B154D2C3E406683262CBEAA42D86872A5CB5DAF4EDBD8D623B60FBFC6702E414D2AD6F0719C896517BBB17AA4AC45A058506544FDD9EDAFCB17C584AEF548EEFDE03A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"B83B51019A37E30FDC58C51D3D51E7B2","Version":"2.2.8.5","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7939A2A03E7D21ACD3FF32212A1905CC5E5015F6C724208847ECD5D8D7B27C5A2C04188608438020233A3C5F1E1A03CAC552B8B460E8C9B94A947ACDBBAECCF8A5DAF9761C49E99E5DD53A44A801140B781CE8829468A42E5E632257BC8CBC0AE82AD9FB487425FCC7E6578EF35215235FA6C07B2AFE937DDC2114F18EFD5CADDFB71FB5CF5B776113B5CBF4CF24E6F7C2ED592C4DA2BB499B24E53D1C22DA20D254DF47F36B5492D07484509BF7D6CD46E2B9F9B3F6CA1EAFBE219579E00B28A1E042FAA8C1130C82A54031843027696E44AE97C71BB24E1B8B9E76040A2D1081E80D754B2112A03BA71761C388B676482511F6C02E7D6462A98B919066B913"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -343,6 +343,12 @@ PW为密码，如有特殊字符，需要先做UrlEncode编码
 {"req":"Office_Protect","rid":38,"para":{"Type":0,"PW":""}}
 返回：{"ret":0,"rid":38,"data":{"Ret":"0","Status":0}}
 Status返回文档保护状态，1是已保护
+
+39）插入表格，适用于Word软件
+RowNum行数 ColumnNum列数
+{"req":"Office_InsertTable","rid":39,"para":{"RowNum":2,"ColumnNum":5}}
+返回：{"ret":0,"rid":39,"data":{"Ret":"0"}}
+Ret 返回0代表成功
 
 5、事件通知：
 A、以下为Word程序通知

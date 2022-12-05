@@ -32,21 +32,21 @@ Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_VLCWebPlayer","rid":4,"para":{"Type":"0","Title":"VLC Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
+{"req":"Wrl_VLCWebPlayer","rid":5,"para":{"Type":"0","Title":"VLC Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":4,"Open":"https://vjs.zencdn.net/v/oceans.mp4","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
 
 自动识别当前浏览器启动(充满网页区)：
-{"req":"Wrl_VLCWebPlayer","rid":4,"para":{"Type":"0","Title":"VLC Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":4,"Open":"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
+{"req":"Wrl_VLCWebPlayer","rid":5,"para":{"Type":"0","Title":"VLC Web Player","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":4,"Open":"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8","Web":[{"ID":2,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Option":":network-caching=200"}]}}
 
 当前页指定位置自动适配网页加载测试
 http://zorrosoft.com/VLCWebPlayer.html
 
 启动后会前后收到三个JSON数据包
-A、{"ret":0,"rid":1,"data":{"ID":2}}
+A、{"ret":0,"rid":5,"data":{"ID":2}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"VLCWebPlayer","port":935}}
+B、{"event":"Wrl_Listen","aid":2,"rid":5,"data":{"SID":"123","PID":"VLCWebPlayer","port":935}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如重新指定播放一个视频。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":2,"rid":4,"data":{"SID":"123","PID":"VLCWebPlayer","Port":935}}
+C、{"event":"Wrl_AppletOK","aid":2,"rid":5,"data":{"SID":"123","PID":"VLCWebPlayer","Port":935}}
 
 由于依赖VLC桌面程序，所以可以提前调用以下接口获得VLC等播放器的安装情况，如未安装，可先提示下载安装
 {"req":"Wrl_PlayerInfo","rid":1,"para":{}} 
@@ -99,13 +99,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"60BB986803CC94B1FEFE2285BD851574","Version":"2.2.8.2","Size":3276800,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"378F48279F0850B5623F485A6059C36D1686FC903847A7C0FEC848B2FA1C9C1BAAA5F43D099B19B8D493D5CDEDB18AB0E80E5C46E84A0F727C43878431BA586A02CD920AF23CBF6CA56BE19D6CD9FAC78232D916C9BE2282EF0021EB4B84065CBE7433956B700B6C11F33834CCCFA0E3103A22E49553286D1D59C992548F01C71C89649E7B38F0142E6E7C8FA141ECAB6615A57B52256611CD32E41007BC8207B68C85A08A91B5E62481F8091A8C1020F9EC7D5A95AA297AF43DD424E6B92887F5ACF084548DB3D517CDC030A64DB82B741EE15AD1480FFDD0BEB05B3F54540797839536504BF9140B38316E05F420D32DA3331B9F9A8686A949DE4C133D6459"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"83DCA0028586DFEFAEB216415B4A1E1E","Version":"2.2.8.5","Size":5701632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"318F4BECBE24DD6C59B8CFAAD892AE15BFF6BA16F8BF8929F9A7E01B8D8ED976E9B11ABD2FCEBD677D531848CB1D8764AB41EEE354430B82881EE09E1A5A7127548B60996E217A4C1FC90B05DAD784704B11A9F0D8D87DDA46CE835FE06B33CD8A879CB484DBA1A620F6E5DE817563DF5D1BBD15DE7A164FF99B79665E17E69B1DFB2338DAD06F59B7DE0F2887814C38148A70F552C4F04DD44F911E57D1FBB1E539A5F8CFD56F1552E6FEFFDF03D8217F4F34CFD0D7DD849B3B651692D22C4A00E250040730CFBCF2D37A7450325C088BF78B7388377A299FFD4082AA73ADA1A5A627FA0C6C457F1C3C1D6E9280C76F09C22CCB2B4027625F032CDA337BF542"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"5C39132F59AD721A0D1E184D315F90E1","Version":"2.2.8.2","Size":3276800,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2E3BD2D29A622B5CEDD5E6C097C96FDC05AB48CC51A1C669EAD909D0C3AB4B85F15266323C815BC99DB8F79FB6FFEE13DA7E6E7C8D915149C7813011B132F16C4063386B722390EFAFD4518BFDF64F0F8D27A6F7577C8AFCF8687048936091F01DF552B9CF8DD0FCCD7430D6350FE23BA9DEA4AF52FFF434458FD7511D2E01672C0E06F4CDF53E330F9C56C3DDB6E91ADCBC3363346F2FA395059F8B8B01BA2C29D525CBFD45A30C51F3E33A2E41E994A91AD28C9F54C826420746C04D9398459AF08D9C4840C8F1ED07D6742B8A4D0A1CC01E1D2D9B8E93F2F03AD80AAC16CD00678CA798ECBCB5E3C951E14880602671A3F9BBDC9C15479BF0492B2509982E"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"52CC04A3DB54880BBC673757D921060F","Version":"2.2.8.5","Size":5701632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"40A67ADCD09DD163986A100F901E94B55F47EE8A67BBA285CE172782423981EFE0DA34F870EE1430FEDB232E8DEE77BD01CEBE0A2348E3EB4BD94DC7B5E1AEA3CAFB48AC2E023ABE97EFE7C9FD48F270E9D3FCC7307F9FA8A1C69EEDABF04FACB02704615F6B7B4977148EF05ACA6F86F7B9FA9CEEB37552B45F7AB7DE2986AE3A135FEBC4860A5C670DCDF22D83900F1B0EE58205E256BE63B797B086F9A4104E8B7D36577F00C3C23F380BDB3643C05D4424C8656B25D9DE10DEEDA6A40B7CE6E36BC7732CD9EA5F8579CC405673DAA1C553A7A333942C7456FB6BCC48458EFC3BA306B9263FBC5D963A707907A954EF1FDFEAA2D60C7DF9A1D90A8694ACCB"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -463,104 +463,104 @@ A、ActiveX事件：
 文档参考：https://wiki.videolan.org/Documentation:WebPlugin
 1) vlc is in idle state doing nothing but waiting for a command to be issued 播放器空闲中
 ID是分屏序号 aid是播放实例ID 下同
-{"event":"VLC_MediaPlayerNothingSpeciale","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerNothingSpeciale","ID":1,"rid":1,"data":{}} 
 
 2) vlc is opening an media resource locator (MRL) 正在打开播放源
 {"event":"VLC_MediaPlayerOpening","ID":1,"data":{}} 
 
 3) vlc is buffering 播放器正在缓存数据 通过VLC_PutBlockFlag设置掩码4可阻止通知，默认不阻止
-{"event":"VLC_MediaPlayerBuffering","ID":1,"aid":1,"data":{"cache":0}} 
+{"event":"VLC_MediaPlayerBuffering","ID":1,"rid":1,"data":{"cache":0}} 
 
 4) vlc is playing a media 正在播放中，第一次WS连接过来会收到此通知，也可以通过调用VLC_GetPlay获得IsPlay是否播放状态
-{"event":"VLC_MediaPlayerPlaying","ID":1,"aid":1,"data":{"W":1530,"H":1078}} 
+{"event":"VLC_MediaPlayerPlaying","ID":1,"rid":1,"data":{"W":1530,"H":1078}} 
 W和H分别为视频的高度和宽度
 
 5)  vlc is in paused state 播放暂停状态
-{"event":"VLC_MediaPlayerPaused","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerPaused","ID":1,"rid":1,"data":{}} 
 
 6) vlc is fastforwarding 快进播放
-{"event":"VLC_MediaPlayerForward","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerForward","ID":1,"rid":1,"data":{}} 
 
 7) vlc is going backwards 后退播放
-{"event":"VLC_MediaPlayerBackward","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerBackward","ID":1,"rid":1,"data":{}} 
 
 8) vlc has encountered an error and is unable to continue 出现错误不能继续，前端需捕获处理如执行重新播放等
-{"event":"VLC_MediaPlayerEncounteredError","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerEncounteredError","ID":1,"rid":1,"data":{}} 
 
 9) time has changed 时间改变 通过VLC_PutBlockFlag设置掩码2可阻止通知，默认不阻止，可通过持续监听此通知判断播放是否正常状态
-{"event":"VLC_MediaPlayerTimeChanged","ID":1,"aid":1,"data":{"time":0}} 
+{"event":"VLC_MediaPlayerTimeChanged","ID":1,"rid":1,"data":{"time":0}} 
 
 10) media position has changed 位置改变 通过VLC_PutBlockFlag设置掩码8可阻止通知，默认不阻止
 同时返回总长度和当前播放时间
-{"event":"VLC_MediaPlayerPositionChanged","ID":1,"aid":1,"data":{"position":0,"length":0,"time":0}} 
+{"event":"VLC_MediaPlayerPositionChanged","ID":1,"rid":1,"data":{"position":0,"length":0,"time":0}} 
 
 11) Play stopped 播放停止
-{"event":"VLC_MediaPlayerStopped","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerStopped","ID":1,"rid":1,"data":{}} 
 
 12) Play stop async done 异步停止播放完成
-{"event":"VLC_MediaPlayerStopAsyncDone","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerStopAsyncDone","ID":1,"rid":1,"data":{}} 
 
 13) media seekable flag has changed (true means media is seekable, false means it is not)
-{"event":"VLC_MediaPlayerSeekableChanged","ID":1,"aid":1,"data":{"seekable":0}} 
+{"event":"VLC_MediaPlayerSeekableChanged","ID":1,"rid":1,"data":{"seekable":0}} 
 
 14) media pausable flag has changed (true means media is pauseable, false means it is not)
-{"event":"VLC_MediaPlayerPausableChanged","ID":1,"aid":1,"data":{"pausable":0}} 
+{"event":"VLC_MediaPlayerPausableChanged","ID":1,"rid":1,"data":{"pausable":0}} 
 
 15) media has changed 播放源改变
-{"event":"VLC_MediaPlayerMediaChanged","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerMediaChanged","ID":1,"rid":1,"data":{}} 
 
 16) chapter has changed (DVD/Blu-ray) 章节已更改（DVD/蓝光）
-{"event":"VLC_MediaPlayerChapterChanged","ID":1,"aid":1,"data":{"chapter":0}} 
+{"event":"VLC_MediaPlayerChapterChanged","ID":1,"rid":1,"data":{"chapter":0}} 
 
 17) the number of video output has changed 视频输出数量发生变化
-{"event":"VLC_MediaPlayerVout","ID":1,"aid":1,"data":{"count":0}} 
+{"event":"VLC_MediaPlayerVout","ID":1,"rid":1,"data":{"count":0}} 
 
 18) audio volume was muted 静音
-{"event":"VLC_MediaPlayerMuted","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerMuted","ID":1,"rid":1,"data":{}} 
 
 19) audio volume was unmuted 取消静音
-{"event":"VLC_MediaPlayerUnmuted","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_MediaPlayerUnmuted","ID":1,"rid":1,"data":{}} 
 
 20) audio volume has changed 音量改变
-{"event":"VLC_MediaPlayerAudioVolume","ID":1,"aid":1,"data":{"volume":0}}
+{"event":"VLC_MediaPlayerAudioVolume","ID":1,"rid":1,"data":{"volume":0}}
 
 21) KeyDown 按键按下
-{"event":"VLC_KeyDown","ID":1,"aid":1,"data":{"KeyCode":0,"Shift":0}} 
+{"event":"VLC_KeyDown","ID":1,"rid":1,"data":{"KeyCode":0,"Shift":0}} 
 
 22) KeyPress 按键码
-{"event":"VLC_KeyPress","ID":1,"aid":1,"data":{"KeyCode":0}} 
+{"event":"VLC_KeyPress","ID":1,"rid":1,"data":{"KeyCode":0}} 
 
 23) KeyUp 按键弹起
-{"event":"VLC_KeyUp","ID":1,"aid":1,"data":{"KeyCode":0,"Shift":0}} 
+{"event":"VLC_KeyUp","ID":1,"rid":1,"data":{"KeyCode":0,"Shift":0}} 
 
 24) MouseMove 鼠标移动通知 通过VLC_PutBlockFlag设置掩码1可阻止通知，默认阻止
-{"event":"VLC_MouseMove","ID":1,"aid":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+{"event":"VLC_MouseMove","ID":1,"rid":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
 
 25) MouseDown 鼠标按下
-{"event":"VLC_MouseDown","ID":1,"aid":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+{"event":"VLC_MouseDown","ID":1,"rid":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
 
 26) MouseUp 鼠标弹起
-{"event":"VLC_MouseUp","ID":1,"aid":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
+{"event":"VLC_MouseUp","ID":1,"rid":1,"data":{"Button":0,"Shift":0,"X":0,"Y":0}} 
 
 /// 以下几个非ActiveX控件事件通知
 27) Selected 选中分屏窗口序号通知
-{"event":"VLC_Selected","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_Selected","ID":1,"rid":1,"data":{}} 
 
 28) ToggleFullScreen 某个分屏窗口切换全屏通知
-{"event":"VLC_ToggleFullScreen","ID":1,"aid":1,"data":{}} 
+{"event":"VLC_ToggleFullScreen","ID":1,"rid":1,"data":{}} 
 
 29) 录像结束通知(限时录制时发出)
-{"event":"VLC_StopRecord","PID":1,"aid":1,"data":{"Ret":0,"File":"D:/Zorro/test.mp4","Size":321}} 
+{"event":"VLC_StopRecord","PID":1,"rid":1,"data":{"Ret":0,"File":"D:/Zorro/test.mp4","Size":321}} 
 PID是开始录像时返回的ID
 
 30) 定制图标被点击
 CID 标识窗口序号
-{"event":"VLC_CustomClicked","CID":1,"aid":1,"data":{}} 
+{"event":"VLC_CustomClicked","CID":1,"rid":1,"data":{}} 
 
 B、PluginOK支持的事件通知：
 
 1) VLC_FullScreen 播放小程序是否响应了热键全屏
-{"event":"VLC_FullScreen","aid":1,"data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+{"event":"VLC_FullScreen","rid":1,"data":{"FullScreen":0}} FullScreen为当前是否全屏标记
 
 2) Wrl_AppletExit 小程序退出通知
 {"event":"Wrl_AppletExit","data":{"ID":1}} ID小程序实例ID

@@ -51,13 +51,13 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档
-{"req":"Wrl_SWCadApplet","rid":5,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
+{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
 
 自动识别当前浏览器并启动eDrawings程序在线查看xt、step三维工程图文档
-{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"1","Open":"D:/Zorro/Test.sldprt"}}
+{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"1","Open":"D:/Zorro/Test.sldprt"}}
 
 自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档(推荐方式启动)
-{"req":"Wrl_SWCadApplet","rid":5,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
+{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动(推荐方式启动)：
 {"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
@@ -66,12 +66,12 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 http://local.zorrosoft.com/SWCadframe.html
 
 启动后会前后收到三个JSON数据包
-A、{"ret":0,"rid":1,"data":{"ID":3}}
+A、{"ret":0,"rid":8,"data":{"ID":7}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":3,"data":{"SID":"123","PID":"SWCadApplet","port":1010}}
+B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"SWCadApplet","port":1010}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"SWCadApplet","Port":1010}}
+C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"SWCadApplet","Port":1010}}
 
 2)、请求控制SWCAD网页组件：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -117,14 +117,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装SWCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"6A76829A0CAAED1FC571AD9BA63DB3DC","Version":"2.2.8.2","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9E2737D60F75B5ABA4550D7DE716E801FDFC52679CE774A933EB361817D272089102DD1D0AA4235BD730202C7510A26CC68626881E4BFA564BBA335F944F008718874F28DB5FA3B6EA77E586CA15798294CB34E2B7FF4B6400AD2B9A36C1C51794D14DDD81A0F83680770D3D885C235C6B3AEE118D4129DCA1FC703FA65E25B260CE30750A4051E509F017CE293EDFFAACA28EC6C83D7EB090C06254B3F7438BDAD833AF5A51ACC0CE8538746A400E87F2D15F31F2B340D9BE55F0C250F2EA50586FB78CE1C766745FD33846004D5F7C658AE2571CCA4F621222A3D35534E7356DDC6AD0ED37E19EDF83DEBE42E13A27DD52848CB467BA17A5DC42EC6590BF6A"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"5491659BD8120DBD2A43DE57DC6F72CB","Version":"2.2.8.5","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0DEB06F27C814D927049EDC39AEEC80B2AA96EB719A9BC7A46BD3832FFFE3B4EEFA85B304067C2B54F7FCB080E4D9E434EB08AA52075A2C564AC86D8D869208265220BEEA8EE8F8348D9319848CE0B882845DC9E00254404189895CE8A56782FA527F3057BC3CC1B03C5F760FF0A5C154FCE589EEDDD4244D276456ED3E71D96810C6370C6AB61BD3599C33516B438062AF492240D5D851E8048C9ED5C394B3E9FF75BF2AC637E9F0DA607D3D071E9D4A46145E8AE147FF8F129AE63784E3CFD295CD9C016CAC0B37F282CD3692283927AB59029922DDA2460F4466818700600B770416166699F4AEA37815C875849F77891FE5B55A29D72E4B2B8D65674201B"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级SWCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"C08066C322F0B6B326B3D723EBC72D8F","Version":"2.2.8.2","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"34DEBBDE0059E0793D65BF13D0446BC96E00E7A0A32FC964AF9A16A247BBB1E36389295579D061CB6DA244BB135B5F81712F923EB494854438EA6D9CAB910360B66F21F1D5FEBB9FAF8B32981438A766D8B8C1E59B342523283CE63A5589835AB51A912362B736E05022EA08C954F85527709D4531A02DFFF4A48A1A9D2996F25024061517887049BA6A9B1660555BE0AA5CEC2DC052307D9DBF81F9A5DD1F62C78598556723E5F764BF5E57284D686C867CD98D4A68991ED1C0035E5753C1DB071E789E0E7A706298349BEE5F7F3B9001057283DF13C8BA010452A193243C733D585C773936052BEDC2F8BE22B1F5EB6F62B41608685F32FC4E2C4AD05539D2"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"D1C202AB2CC595BE77F4F573AAD41365","Version":"2.2.8.5","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"47250FFF9A584A8B7DFE28068E7BE91BF418E47285DCDD050C21D65A88019AA41170C8B2827A633F3CB573C9CF74AE082AF2F935A5E94C8EFB5FAB77FFC082A4B0E24D9DAA7DD96DDCB8E40BA99395601236B5C8A6118E0205A3575B693E12D29226A8E11071A904930E60FAF273816ACE5143982461C4CB9460B44780BE0463C7902C5640EF389189ED9F2EA3C3AC940A1AA6E1B11317A4CF5F7A43DC00A34C27518CEE68EDC8A180103786C6167CFBCB66E43FA78DC23233ABD3AC0DDFDEFD11A055A6E1742AD2B7A4B425B6A39FC04B5C0BD203D5410D73414680A4B48018F47A6D160E9242639CB0652C0B85A82F8EB796A22D682F982EED034A41B567E6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

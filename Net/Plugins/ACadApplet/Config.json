@@ -2,5 +2,6 @@
   "PORT": 997,
   "AutoSave" : 1,
   "CloseExist" : 0,
+  "EmbedWindow" : 0,
   "FullPath" : 1
 }

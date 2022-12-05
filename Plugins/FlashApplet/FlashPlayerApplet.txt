@@ -25,10 +25,10 @@ Open：为需要播放的多媒体路径，磁盘目录斜杠用/
 注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_AppletStart","rid":8,"para":{"Type":"0","Title":"Flash播放小程序","NodeName":"FlashApplet","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"0","Web":[],"Open":"http://zorrosoft.com/Files/test.swf"}}
+{"req":"Wrl_AppletStart","rid":1,"para":{"Type":"0","Title":"Flash播放小程序","NodeName":"FlashApplet","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"0","Web":[],"Open":"http://zorrosoft.com/Files/test.swf"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_AppletStart","rid":99,"para":{"Type":"0","Title":"Flash网页","NodeName":"FlashApplet","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Version":"0","Zoom":100,"ScrollTop":0,"Web":[],"Open":"http://zorrosoft.com/Files/test.swf"}}
+{"req":"Wrl_AppletStart","rid":1,"para":{"Type":"0","Title":"Flash网页","NodeName":"FlashApplet","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Version":"0","Zoom":100,"ScrollTop":0,"Web":[],"Open":"http://zorrosoft.com/Files/test.swf"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/flashframe.html
@@ -36,7 +36,7 @@ http://local.zorrosoft.com/flashframe.html
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":1,"data":{"ID":2}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","port":996}}
+B、{"event":"Wrl_Listen","aid":2,"rid":1,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","port":996}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Flash。
 代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":2,"rid":1,"data":{"SID":"123","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Port":996}}
@@ -86,13 +86,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装Flash网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash网页播放器","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashWebPlayer.pid","MD5":"D0A2E3FD306D3D59F89B0A51DAA68F71","Version":"2.2.8.2","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"937970FE3DEC589DD5F3768BC7473CC6AD6F0F5FC20D127A6BEDBB5FFADDF504AF30784D0F1E81B2488BCD6F2EDF08319D5343947BA789DB028F3C8CEA62963F4C9D8B0265B48A3E9EC9BDEE519BBB202DDDCB8233364E22A54AAE093352E98082BB3F8398985E4CF0B08D5041F6C0ACDEB10D979E7AF21010647D1718DB00CBE13C3BB2C75D73D2240D03E7AFAA8540E39EDFD125066BA96655F7B52B1B724F24AF1D91051E5E97D26AACE00E484B4143BA2869C93F45C3D7FEF32A3B1EC722E9306270A5E3A6D7B1EAD4528CB2A04377E6DDAA92188125EEB7D6845C9634D59DA58FD2526E017BFBE7D877F19675B654610F251374FBD56900C62D3DBA1618"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Flash网页播放器","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashWebPlayer.pid","MD5":"B9C26B094DE1666162D63DC5503D3346","Version":"2.2.8.5","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"69E76E10496E292B7ADB02285EA2EAA85A8940EA312469E1F79B6B3BDB07D868D332184D6D4999072FDAB92711F45ECD6844939F92F0897067BC0447926C46DFF1C4BE5A03C799922C5FFD4D802E7AD4747E915A174D19EC475A572864623AFD938CBC573470482E69195A68BD0C194CDBCCF55C6E4470F7B96D368154DC4185A3F9A885DF6D2D0B8DC12A8C355314C3C275A97E3ADDF1E9979B8A697BF58BF978B103FADDDC3A4909915E11E1B3B1207FDD490681083A6FCC14BBC6CFEE848E8A5C0B4C1619A499E4F863C5E109F33CE9317A12B0122C0C8A17F96EB28DF92EE97D7F3CFEB3B598BC46718E5AF9ABFB422B6BD7D9DBE0BC4BC1DC5398A61608"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级Flash网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash网页播放器","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2022-11-07","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashWebPlayer_Update.pid","MD5":"A8F5FFF36D2062FA8B7F24A7D6CBBA62","Version":"2.2.8.2","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"086E41BCB532B548771F57CA83EB1E57F51727FAE18DA4FDAEB2FAF339C205F50D554AE61900F48ABCD54CED88B2484097745340646AD9752860D61CE65105766561D8D6D945199DF10AE133ECFBF069A7D80435F5978130B45619EFAE9F8EF890A5B7508F8EBC8F13A76C846FD80F2F8C415921809B2104B86702762A1062591474FA632576D6DB82F07E0EFA2153FDFE2917090982C05B546DD256BC0B3F96409750DCB9AF393C9FBAA56C5F6672B0600251A51CABCBCD9E9EAA9B4FC53AE4CF1722D42833E806920EABC2D68043001E6D2BF9D9BCCFF8E0062E0BC0FD7329FD22C3EBC00E44C30F46D82576D14F9C6DF4BB607689D346C4E2CFA4725C1044"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Flash网页播放器","PID":"E7C7BDA6-C828-46F1-A7BA-B4C572A01100","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的Flash Player网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/FlashWebPlayer_Update.pid","MD5":"2049EB72BF06AB853C8709E9D244882A","Version":"2.2.8.5","Size":688128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0737707833D64FAD033A1DEDDB9DBBA7E5F3B6A1F4CC696A84272D40255C2C53BFA774818829B9695CB982D4B63BD03F7B7E97DB3035F7C46711C70B3809651CF04A97082DE548EF9E82DACA4CA28D5551B6085948E66036F38B1063F433C982C924891EBB2B5233C66339BC3F84BD40AF16BC81BDCA9D5177C312EEE3E04AAA55638DFF2FF7BB8CD6C8AFDE50C771951949B0C1B20FDE1B164392B4172C7D8BD5F18887B992F2FEBE6B73C8393C9922DAEA5E83D0F0AB9E136B4D1FDEC645243D9B4337046105BFC907DA3A959CF508B1E7D245130E6E637D029C857E659D1E97EE2E663F5A36EAE4DBB266D9AB1C8103F079927C26656A0D2DE65F738817F2"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
