@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康视频网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"8C35E18E8C9471786C460160B8DCB637","Version":"2.2.8.5","Size":4456448,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3BBBF07AF3489644D0F44469762D2081698D1B3DEDDE994F598A653F3DD0903C80B909D36FD56CD458A1C3FDB7920B759058733C3CBAC9F221F83037440DB4A61100DD96220EF7F9E55F3245A344839FBF0C54EBA782F1E3643360E61416FEF38D70B03E65F50AF8ED62F2BCEAB7A8F84CCF957F06F5F9508F3FDBFA5B2D1E2E1762CAF8C032F4B99AC406ECCB46A6005C7AA7B6649B15B0E6482DEC370D28C176C145AEBAAD4817A2FE04F601747E71A22F7B4F4051506A4D400C816382C13179787A67CB61130889269E2960E2DA1FD0F531D994E7F7622F62EC38A48B62A3396961999CDD82EF7ADB6B304EFAEEB5BFE1C6D6FE783657C8F5D6683DC638FB"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"8DAD16CE880531002E331DD6F12D9A16","Version":"2.2.8.6","Size":4751360,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3C34D72A83B22EA93B2A7F836DA597317DDE8B57E507F10E7EBBF50D84E8628DD81FBCDD2772E42AC1F90A9689F47F07020C4E97BFDFDCF2EC5632E5DFFFE7D21A100DDFB85F04A5C243CC60EABB5E825A0F801D4A88676C6E2C9251089F0D4AD977F99A34CA22A23949CF6A61515E00E36760DB213B793544BB60541529B5AF0C50A61DDD095007E08CAFB45524C75CED784B7227FBB23E6C9AAEA6E65F2A4E88DC495A20E51122C8285A1A86B929E9881C9CE3DB3108CF6861FC507D8AA36038B81C5C398BC600A70DF752A44E5B28773D86992F33E6B0E2CEFCAADF8DCD674100CA5C52EE4C7BA42F3D610BFCBD07D2507B38153A6353FCE35AD7A2365525"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康视频网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"3EE06428105D233AB8A1E05F4DB4EDC3","Version":"2.2.8.5","Size":4456448,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1BB3176775849ABA75219E39D95B6D1FE160721E8183EC8F5A2B38B2781B01CBDC0B72754A7B2B0750E4CF0BEB25DFD55DD50628A74D6C65FDC94EFD4F2CC5B133BF90B311B86CF1012758B3230CD436C3C89E4204F8077AE76729689A7082D15A400FE87F6206351A824B0078CED09DBDDA54647E0A380B740C9985FE8D651CC0E66F304BE744EC035DE0F9A1085312EDEB9C1DC988D97C9658BA00B178B91F3E65F56F3DB9694C9EB99B80D2F4F1764FA919BCE54C5AF48272596EF5CBCEC78410F5BE564A54382665DF4C0A327A3A447F821D4A73A3E43059CD3DF8FE124559B8FB0A8C6FCD16535523F817826810E5B81E8D8560E5A895DA95AB7FAE1F9C"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"8338F2E807E2A244D4E7EF253A2A00EE","Version":"2.2.8.6","Size":4751360,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6DFD726B24DBBC09C67F364CA996AC6FAB0C8F74212C2BD61B540D6C78EC89176AB04920110905C7FBC583202698D32FE26B504C36158998FBE0DB071CAC828BDC8D2367914B02ACEBAF04E4A9232129D20F758759DE3224B4DFF11E495D540D409404A887DBB383BC290F9C0DF9EB6011B1CA0E7BF48467C71561C30E4C20BC4A8A2452153579DCFCB0F70C4FAF752203211AF678DF623526E487441FB477340D57EC6AEF49C1E53909B1BDBC34AD34CB2AC143FEAA0F7EC457B3D85BC4B97B4B61AACC641BAF5153D2B076CE1D8057AA3B4DA734BDE96E1F55BC50B3A644328E8C3F658E68115FD98EBBE76A1D9454F79735B30EC5CA62B30D046C86D6B3EA"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -472,16 +472,18 @@ Val为获取值，Code为13 14 15 16 17等时有效
 请求：{"req":"Player_PutPlayRate","rid":93,"para":[{"ID":1,"Rate":1},{"ID":2,"Rate":2}]}
 分别返回：{"ret":0,"rid":93,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":93,"ID":2,"data":{"Ret":0}}
 
-54) 设置指定ID窗口字幕信息，VLC播放引擎有效，举例：
+54) 设置指定ID窗口字幕信息，VLC播放引擎及FFPlayer有效，举例：
 指定的参数，需要的才设置，必须视频开始播放才能设置
 Text 文字内容
 Opacity 透明度 0-256 0完全透明 256完全不透明
-Position 显示位置有center left right top bottom top-left top-right bottom-left bottom-right 不指定时由X和Y坐标决定
+Position(VLC播放可设置) 显示位置有center left right top bottom top-left top-right bottom-left bottom-right 不指定时由X和Y坐标决定
 X 和 Y分别指定文字开始坐标
-Timeout 超时
+W和H分别指定文字显示宽度和高度 FFPlayer需要设置
 Color 颜色 可用长整型(COLORREF)，也可以用#000000这样的颜色值
 Size 字体大小
-请求：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":128,"Refresh":1,"Size":50,"X":50,"Y":50},{"ID":2,"Opacity":256}]}
+Timeout 超时
+请求1(VLC)：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello1","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":128,"Refresh":1,"Size":50,"X":50,"Y":50},{"ID":2,"Text":"Hello2","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":255,"Refresh":1,"Size":50,"X":50,"Y":50}]}
+请求2(FFPlayer)：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello","Color":"16777215","Opacity":128,"Size":50,"X":50,"Y":50,"W":200,"H":50}]}
 分别返回：{"ret":0,"rid":94,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":94,"ID":2,"data":{"Ret":0}}
 
 55) 取指定ID窗口字幕信息，VLC播放引擎有效，举例：
@@ -574,8 +576,9 @@ libvlc_AudioChannel_Dolbys  =  5
 请求：{"req":"Player_MoveFrame","rid":111,"para":[{"ID":1,"FrameCount":-10},{"ID":2,"FrameCount":5}]}
 分别返回：{"ret":0,"rid":111,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":111,"ID":2,"data":{"Ret":0}}
 
-72) 请求显示下一帧 执行后播放暂停，效果类似在VLC桌面程序中按快捷键E的效果，VLC播放引擎有效
-FrameCount 为帧数量，不指定时默认为1 不支持回退操作，仅支持视频文件和回放流
+72) 请求显示下一帧(毫秒) 执行后播放暂停，效果类似在VLC桌面程序中按快捷键E的效果，VLC及FFPlayer播放引擎有效
+VLC播放引擎中FrameCount 为帧数量，不指定时默认为1 不支持回退操作，仅支持视频文件和回放流
+FFPlayer播放引擎中FrameCount 为毫秒值，负值代表回退，正值代表向前，仅支持视频文件和回放流
 {"req":"Player_NextFrame","rid":112,"para":[{"ID":1,"FrameCount":10},{"ID":2,"FrameCount":10}]}
 分别返回：{"ret":0,"rid":112,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":112,"ID":2,"data":{"Ret":0}}
 
@@ -611,6 +614,18 @@ Channel指定通道号 Begin和End为指定回放起始和结束时间，时间�
 {"req":"Player_DownVideoByTime","rid":117,"para":[{"ID":1,"Channel":33,"Begin":1665102256,"End":1665104363,"File":"D:/Zorro/ch0001_00000000095000000.mp4"},{"ID":2,"Channel":34,"Begin":1665104363,"End":1665108028,"File":"D:/Zorro/ch0001_00000000097000000.mp4"}]}
 返回：{"ret":0,"rid":117,"ID":1,"data":{"Ret":0,"DID":1}} 和 {"ret":0,"rid":117,"ID":2,"data":{"Ret":0,"DID":2}}
 DID为下载序号，下载进度通知中包含此参数
+
+78) 指定ID窗口旋转画面 FFPlayer播放有效
+Angle指定顺时针的旋转角度
+{"req":"Player_Rotation","rid":118,"para":[{"ID":1,"Angle":90},{"ID":2,"Angle":190}]}
+返回：{"ret":0,"rid":118,"ID":1,"data":{"Ret":0,"Angle":30}} 和 {"ret":0,"rid":118,"ID":2,"data":{"Ret":0,"Angle":60}}
+返回Angle为当前角度
+
+79) 指定ID窗口局部显示画面 FFPlayer播放有效
+X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度，高度和宽度都设置0代表取消局部显示
+{"req":"Player_LocalShow","rid":119,"para":[{"ID":1,"X":50,"Y":50,"W":200,"H":200},{"ID":2,"X":50,"Y":50,"W":300,"H":300}]}
+返回：{"ret":0,"rid":119,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":119,"ID":2,"data":{"Ret":0}}
+返回Angle为当前角度
 
 5、海康视频网页播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。

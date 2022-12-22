@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"7BEADD5E16728FBFA6E0731612823876","Version":"2.2.8.5","Size":4456448,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6887B45D60D369FC6730A0A3F49631234C9ADCCE84A8D0772D42190466496667D7C41D652223D5B44E533DE45B15CE8C25DB24E4680ECBA328108FE772FBA0836D43E2CF672DD955FB0AF7A94080523BC1B946CE7E8FA864D7329C0E9DCC0F7DE40A1F745E82E08502DC952E136D30541DF3529C1BAA22365B2AD44C9235EE57DC3C3E1D80FBE9593A8281E57FCF5229A8E82AD336396D9149E31A5D92F2096E262469989038FB95FD110FAFD0694CFD7F00A37B58A658B98065B33A47F959218BA0842955E23717F1E7909B86391E408DC3761FDE7E6E6ACAAA49C8F3D77493E25B491ADB4B157F65147E11C24FE87DB3729B67C02A7646247B3D2E0A1CDAFD"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"4463565E5922F885F48627E1F1B72234","Version":"2.2.8.6","Size":4718592,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"456794F7FFC1D9BCA98E6728DA1980C5F0CB5152D5AED4092960BFFB3FE3B1CECC9E840416ACF35A7613AC39CDC17CDEE5A0BFCA1F6F8181D31D0D58456BBCE3F79A96694B807D95FCE406D09897EDA23676A5CE4F77FD65BAA63A361A9220531B5E93A812876DB22346EDF037BA445E0FDE24793ACEC1549978B5B7EB314E2EC17CC697C1C40D1CEA35D186A7A48474C907E81FA66D3730FABA8CFCC431DB9410D977851EA1FA3F1FB95C3AB009384898C3E86EE9CEF0214287148985FC981332A43DA31FDC5B903A3358B16147C7D77F44C9D057FA2458616B0A44D45D29894CE94B6C4DB5013126703D6957BF687201EB3B6EBB5D87D84B3CE911ADC23B01"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2022-12-05","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"E98B3CDE0BD852BAD3A8BD614104F54D","Version":"2.2.8.5","Size":4456448,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"882E6A07957773A59914E4D11E889712056238BA58ADD5AD999E4C5AB742ECA1678DF5470F0F7ECDF3114B7704AB82447CBF0404326BACAEC495DB656707E346B6A55632B95ED019142B730DBC27295F594EFB13FB57519A48A11F1C8ED11FA34DAC03F4E0695A2CA4510E7AADB6706F8A6CF75DBBCE7A77EF2A59064868244F347FABA22CBAEDEA03A5A571A584AAC2806B42427ABEF6431A864C935B757E62CDFEE7E2DA1C02B6005A2C9FCAE845EC05027CF7315D4A2D9966726080E1F1FD6E9758882C9FA18941A4295667A5DE080DE838FF536BE8FD67B1665A7D193F451367C4B46745AE7CF1334BF87D5F22BB612F3311A4B769D61BB1601217680423"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"D13831614B5B4D59CCBF673138F61E48","Version":"2.2.8.6","Size":4718592,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"116DDBCCB2BAD5E1CD4C9E050DBF2EC67E87E0E307F6265370A43AE504AE5F56EE39764A2BFB4156C9B46BA5CF46141D1FC63CDB68CA1BF12FA171B699AC6235EF6CF57791FB6DF469503833ED4F6931B6AA5A04EEA0A5FBFBC47774E52CC092A135F8D11DD5E3F978072C26F0DED1AF2D2F289C5CF1870A9D8783A7365C56DE1B6CC25FE4937B700FA91D723F070B7E471805A8C34EFC122ECA1C4D67BC9A7484EF2FA47C3822D618383156CFC62E6A580352BA746CD0EA77492FC96CCDA27C832D64F95468FFBD587F05957965A099E5ABD063A5FC1FDCB295222166A1E0CDF2C0C579E8853B6A4DB6ECD835144C113038185112BE08782CBB6C27D263F2FF"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -472,16 +472,18 @@ Val为获取值，Code为13 14 15 16 17等时有效
 请求：{"req":"Player_PutPlayRate","rid":93,"para":[{"ID":1,"Rate":1},{"ID":2,"Rate":2}]}
 分别返回：{"ret":0,"rid":93,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":93,"ID":2,"data":{"Ret":0}}
 
-54) 设置指定ID窗口字幕信息，VLC播放引擎有效，举例：
+54) 设置指定ID窗口字幕信息，VLC播放引擎及FFPlayer有效，举例：
 指定的参数，需要的才设置，必须视频开始播放才能设置
 Text 文字内容
 Opacity 透明度 0-256 0完全透明 256完全不透明
-Position 显示位置有center left right top bottom top-left top-right bottom-left bottom-right 不指定时由X和Y坐标决定
+Position(VLC播放可设置) 显示位置有center left right top bottom top-left top-right bottom-left bottom-right 不指定时由X和Y坐标决定
 X 和 Y分别指定文字开始坐标
-Timeout 超时
+W和H分别指定文字显示宽度和高度 FFPlayer需要设置
 Color 颜色 可用长整型(COLORREF)，也可以用#000000这样的颜色值
 Size 字体大小
-请求：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":128,"Refresh":1,"Size":50,"X":50,"Y":50},{"ID":2,"Opacity":256}]}
+Timeout 超时
+请求1(VLC)：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello1","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":128,"Refresh":1,"Size":50,"X":50,"Y":50},{"ID":2,"Text":"Hello2","Position":"TOP","Timeout":0,"Color":"16777215","Opacity":255,"Refresh":1,"Size":50,"X":50,"Y":50}]}
+请求2(FFPlayer)：{"req":"Player_MarqueePut","rid":94,"para":[{"ID":1,"Text":"Hello","Color":"16777215","Opacity":128,"Size":50,"X":50,"Y":50,"W":200,"H":50}]}
 分别返回：{"ret":0,"rid":94,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":94,"ID":2,"data":{"Ret":0}}
 
 55) 取指定ID窗口字幕信息，VLC播放引擎有效，举例：
@@ -574,8 +576,9 @@ libvlc_AudioChannel_Dolbys  =  5
 请求：{"req":"Player_MoveFrame","rid":111,"para":[{"ID":1,"FrameCount":-10},{"ID":2,"FrameCount":5}]}
 分别返回：{"ret":0,"rid":111,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":111,"ID":2,"data":{"Ret":0}}
 
-72) 请求显示下一帧 执行后播放暂停，效果类似在VLC桌面程序中按快捷键E的效果，VLC播放引擎有效
-FrameCount 为帧数量，不指定时默认为1 不支持回退操作，仅支持视频文件和回放流
+72) 请求显示下一帧(毫秒) 执行后播放暂停，效果类似在VLC桌面程序中按快捷键E的效果，VLC及FFPlayer播放引擎有效
+VLC播放引擎中FrameCount 为帧数量，不指定时默认为1 不支持回退操作，仅支持视频文件和回放流
+FFPlayer播放引擎中FrameCount 为毫秒值，负值代表回退，正值代表向前，仅支持视频文件和回放流
 {"req":"Player_NextFrame","rid":112,"para":[{"ID":1,"FrameCount":10},{"ID":2,"FrameCount":10}]}
 分别返回：{"ret":0,"rid":112,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":112,"ID":2,"data":{"Ret":0}}
 
@@ -611,6 +614,18 @@ Channel指定通道号 Begin和End为指定回放起始和结束时间，时间�
 {"req":"Player_DownVideoByTime","rid":117,"para":[{"ID":1,"Channel":33,"Begin":1665102256,"End":1665104363,"File":"D:/Zorro/ch0001_00000000095000000.mp4"},{"ID":2,"Channel":34,"Begin":1665104363,"End":1665108028,"File":"D:/Zorro/ch0001_00000000097000000.mp4"}]}
 返回：{"ret":0,"rid":117,"ID":1,"data":{"Ret":0,"DID":1}} 和 {"ret":0,"rid":117,"ID":2,"data":{"Ret":0,"DID":2}}
 DID为下载序号，下载进度通知中包含此参数
+
+78) 指定ID窗口旋转画面 FFPlayer播放有效
+Angle指定顺时针的旋转角度
+{"req":"Player_Rotation","rid":118,"para":[{"ID":1,"Angle":90},{"ID":2,"Angle":190}]}
+返回：{"ret":0,"rid":118,"ID":1,"data":{"Ret":0,"Angle":30}} 和 {"ret":0,"rid":118,"ID":2,"data":{"Ret":0,"Angle":60}}
+返回Angle为当前角度
+
+79) 指定ID窗口局部显示画面 FFPlayer播放有效
+X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度，高度和宽度都设置0代表取消局部显示
+{"req":"Player_LocalShow","rid":119,"para":[{"ID":1,"X":50,"Y":50,"W":200,"H":200},{"ID":2,"X":50,"Y":50,"W":300,"H":300}]}
+返回：{"ret":0,"rid":119,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":119,"ID":2,"data":{"Ret":0}}
+返回Angle为当前角度
 
 5、RTSP网页多引擎播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
