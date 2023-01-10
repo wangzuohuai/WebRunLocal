@@ -19,8 +19,8 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注 128预览模式
-	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	Edit代表编辑权限(除只读1都支持外，其它只有WORD才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
+	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 
 	DataPath代表文档查找和保存默认路径
@@ -108,14 +108,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"96F1714399C1B45A0F03204E59FC9DC1","Version":"2.2.8.6","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"93DC7FC2128C21D3797467D7DD77FC75527B9CBD35E14534A0383FFCC81BECE7F867AE71BB9206F4A31E88C2995090BB20FCF79158B0A399B1735AC895BFB215691F88F091DF6C7D2F80FDE01E66195623808849C3A571180E707D2DEC8471D3AF0BC8C11B4400E6A182E6473F45586EDE899DDBB73AC03E092C49DD2153218F511AF7D458E1BED7C20CF36D971440E8F95316648FFDEE5DC08C6A8C0C725B9EE137F1845BC1E66D38C61C784283F6CFCCE66A57874BF2411E841858B58DDEA32766B3F3E4FFAF120F67550C21E6187EB079DD4E1D6783FEB341E5D9C92F42B8685709B63CDF0BE4E2792CC3B71CB558CE533F35B0A03681FDE0771C99C545C4"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"2947CCF86A16CAF80D069AFBF4A5B5CF","Version":"2.2.8.7","Size":4620288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1E9B8A8FB33CD03CFB143D52501DF766FAC600AD1C652CC14A18C3E511B83E06A130ABE2A0B23ED8A91E632290DF01CD5EB3DC62384FAE542FBC9A353C575ECA6CE37D9697DA4CAC754D304EF517A6D0ED8E044F4654BACB4201B0EA226EB979134DD522C95F3438B22F7982654616845F2CF15575B15C8A15EF0C3D23EDD66EACB15DF4D69E0EE7201CEEAB030511F32D3153B59EF202F41819ABD7653290F18EA45E78532B224499CC4AD809BE4056125BD1555AE75C0E6D0C5CA39C0DD41BFD31E05881BBE2B65FE2D2C184791362AEE8433A50D193DD146695618657E511D4331D65E2E8358C2529C8927D6252D116642D213ED4D40CEF9380949409C47E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"5CB7B4889DEC98A90EC59C4BA094456F","Version":"2.2.8.6","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"55FD1DC356DF6D310B142BB864D54649DD476CB022B8B4B9FA06B568C12B42A1C94E95A5071639CDAA2A6AE808AA8ECA8F59C4077A50F4604FAD64CD2C9FB6B9782D521098C297FE0E1F2EB6642435BF6AE0CBE4E1ECFA6B160DF1A430DDBDC5038DF5DF25383008B858B78A7C44FCE8D66336112C8A899F96E2935F7561E9B8D4A234996A0025833EDB3C9AE5E4BE6B2B61360C223DB174D26894C9282A325F25103280961A33584645468EFC8BF311E120FD7529137AD19B6C65297B6EA92B60AC80B8A406244EA912BF7D7981907342154ADEBC01447F5BF8A2847A6491BFFF82AFE1A43A392EC83D7563C7FAE3D1957FFC809653347604ED69A503719F3A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"959AEE2E72909D86E525352C9783E209","Version":"2.2.8.7","Size":4620288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B456856633B9A60FE4F8FD35C8CA39E2D38068D69C2C6DD807B4ED3A234C0610955117F28834C7497A4CC5C28B134EE504BB65F239AA1C3A3533CA7E301899FB3EEB78BFAE96C95C096371F657444AE23D78272F6B023A319F1C27E6DAD0CB3B64F68975DD44BCCF008688F3FDD5ED25BAAAE00028058DABEA855F20D21D672A6F9C682F93CC1AA7466F8E38434C2BD9D1403B7BD4B85FBA98AB9DA188B9EE1318856C720CEFC25C1EB9480AC3024D779ED0F1A01DDA9C8D644EA65B5A78B9CC3452420D3EE69A17196053E4CFD9BEAFC9B662B4888F7F5084A1D20080CE934221AA65A736C83E76FC382530FA88BAEE1CD8AB9ACC69CC06752195DB2102549C"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -348,6 +348,32 @@ Status返回文档保护状态，1是已保护
 RowNum行数 ColumnNum列数
 {"req":"Office_InsertTable","rid":39,"para":{"RowNum":2,"ColumnNum":5}}
 返回：{"ret":0,"rid":39,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+40）插入水印，适用于Word软件
+Type 水印类型 Type默认0系统文字水印 1自定义文字水印 2图片水印
+Content 类型为0时系统文字水印名称 类型为1时文字水印的内容 类型为2时图片文件路径或服务器水印图片下载地址 如有非英文、特殊字符或符号等，需要做UrlEncode编码
+插入“绝密 1”的系统文字水印
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":0,"Content":"%E6%9C%BA%E5%AF%86%201"}}
+插入“TestWaterMark”的自定义文字水印 TextEffect文字效果(参考MsoPresetTextEffect定义) FontSize字体大小默认1自动 
+FontBold是否粗体 FontItalic是否斜体 FontName字体名称(需先UrlEncode编码) FillColor填充颜色默认RGB(192, 192, 192) 透明度默认0.5 旋转角度旋转角度默认0
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":0,"Transparency":0.5,"Rotation":0}}
+插入服务器上的图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Width":15,"Height":18}}
+插入本地图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"C:/Users/administrator/Pictures/TestWaterMark.jpg","Width":15,"Height":18}}
+
+返回：{"ret":0,"rid":40,"data":{"Ret":"0"}}
+
+41）移除所有存在的水印，适用于Word软件
+{"req":"Office_DelWaterMark","rid":41,"para":{}}
+返回：{"ret":0,"rid":41,"data":{"Ret":"0"}}
+
+42）设置上传下载地址，PageHi中的上传下载功能需要，适用于Word、Excel、PPT软件
+PageHi中的上传下载功能需要在启动命令中Web节点的Edit掩码值加512打开
+Down文档下载地址 Upload文档服务器保存地址 
+{"req":"Office_PutNetUrl","rid":42,"para":{"Down":"http://local.zorrosoft.com/Files/template.doc","Upload":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":42,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
 5、事件通知：

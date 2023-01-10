@@ -1,6 +1,6 @@
 ﻿金山WPS网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS(要求企业或专业增强版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。
 最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
-金山WPS支持2016及以上的企业版、建议使用支持OFD格式导出的2019企业版(建议下载版本地址：https://ep.wps.cn/download 选择Windows版下载)，如使用个人版(建议下载版本地址：https://plus.wps.cn/download 选择Windows版下载)，个人版只支持在非管理员权限启动浏览器时使用。
+金山WPS支持2016及以上的企业版、建议使用支持OFD格式导出的2019企业版(建议下载版本地址：https://ep.wps.cn/download 选择PC版下载)，如使用个人版(建议下载版本地址：https://plus.wps.cn/download 选择PC版下载)，个人版只支持在非管理员权限启动浏览器时使用。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -20,8 +20,8 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16支持上传下载菜单 32只能修订 64只能批注 128预览模式
-	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	Edit代表编辑权限(除只读1都支持外，其它只有WPS文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
+	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 
 	DataPath代表文档查找和保存默认路径
@@ -109,14 +109,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"FE5F40276C54D2DDF83273EC495431BC","Version":"2.2.8.6","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"83F1D9C7A8D2B00F203EA9F75AF2EBCF0064BBB1721EF4D3CAD5CCBA6BDEF57185719803ED133785D2A5027CCB0CA9AE63782FC5027DFF1099BCAC7C96250A2707FC4B5B88A5BC192E89D21D1956794B1640003A1C86FBCA680144E5BD945F7A09308E7ACD82F14DA408BFF01E122DCE21297E2DDFD6D06E638AEB853E836738075EA91B75993CF51B2C71086D14DDEF56DA872FCE53126C5FC356CF68DA00D09D76A77539B4DE3C6CB215FA8E5FDE1070AEE5FCEAF8C7965816FFBEAF0FB994353D4D7503D74CE036ED2B839E7845D12FBE6FDBFFC11211DE763020CC22FFA8A52C491FBE7ACCB52401AD0213D2A22E9ACF357EAAA5788232154AA51928809E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"C7ACBC2C12D88FD0AB3378A8920BBA81","Version":"2.2.8.7","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"67E617A98550CF8B2ECF5DBD245547BCA54934C0391FAE7BA96B261D73F49DC1838D6B2D06CBD4D8A4D9056384DF746B5835A860EA529A026BADAFB9F0D0748238D2C67420166C19ACD589E7A0314F96E7F3BC26DFCB3114A5EDF0E957A88DFF356D5956E71629C10ABA457B1F1A8B4B8632198FC6FE4F754D46F470767B687ACD675CF6787E30E1E37576E3417C00F3EE304EE61290968C7F3BAC330051BDF353932FCBFBCCFF91A3916F68FDE91DBF4BF2063ED5BFFAD6D2FDCD650326006BD362A724DCB28513AD93AFEE3032573348F56E87476DBE1667E995299A76493F76636D260F89FA193985D5B068C3DC182AF35DF862B33C52357F3E5452C28AF1"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2022-12-22","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"747F166B3ECD807467D049FCDE097CAE","Version":"2.2.8.6","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2C033E3FED1F7630EB452B55944700FE9818E3DBFC3D1338C8B59339D43C8672ECD7DB26C8F5F12724D4BEBCFAA69324B51292335231B662CBE51B0AFEDB938DF00F7443399CBE7E0A87D1EDC8EE60C1DDB470386BA624A892B4F556E617FE0B849EF593C4EFE7DC91541C2B831D1B6459968EADAE57DF2860026344369437EE22D2DC715090336E8883CE6316A82E674ED1D322BEC4520D1B2CBCFE65D81FB05ADF63ADBAF139394C92E5D0DE4495BE77575DD7E3478DDA02E1B8D97A08092E7AA22AF853F1A657DA06FF2BD8F473EAA0A6E4EE880AD5FE3245861FB94BCD7CCEA4A15C6AF3E336F60BD37720F7E978A4BACC9A046630CC6B1F3EB5781321E5"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"9DA76ABF0DA632489D4FF04BCE8FE057","Version":"2.2.8.7","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6BBBB75468A8308716E36F51E13748ABB60E79E7299883EE6A2722399D1135903D66F8AE877DDC98D6D43C3572FAD5FE254C2F111CA0F41D64D935291F959E78C9560A094E7B5F9F2807E032DC48333E27D99FB206F4D76ED5553B5FBEBC7A5C477487EE45FDC47A3688B7CB455DD26DBF29C41C605FED0A03C468D204597099FF3B4E4E7E54A473FB3BCDE5FA793D969EF2D59AA4535B5255337EA689B536E3305E37D06A8CFCF2E5F04065975127D4C492CA9945012546AECDAF1666D20C25D2D95DCEB87297B2CE12F987A57A0D7965A69C6900DE2CED778DA010E4C1512348ACD03D40868EA9DD7F348ABBD115237B45B16E3785940EEA688B890371BFF2"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -345,10 +345,34 @@ PW为密码，如有特殊字符，需要先做UrlEncode编码
 返回：{"ret":0,"rid":38,"data":{"Ret":"0","Status":0}}
 Status返回文档保护状态，1是已保护
 
-39）插入表格，适用于Word软件
+39）插入表格，适用于WPS文字软件
 RowNum行数 ColumnNum列数
 {"req":"Office_InsertTable","rid":39,"para":{"RowNum":2,"ColumnNum":5}}
 返回：{"ret":0,"rid":39,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+40）插入水印，适用于WPS文字软件
+Type 水印类型 Type默认0系统文字水印 1自定义文字水印 2图片水印
+Content 类型为1时文字水印的内容 类型为2时图片文件路径或服务器水印图片下载地址 如有非英文、特殊字符或符号等，需要做UrlEncode编码
+插入“TestWaterMark”的自定义文字水印 TextEffect文字效果(参考MsoPresetTextEffect定义) FontSize字体大小默认36
+FontBold是否粗体 FontItalic是否斜体 FontName字体名称(需先UrlEncode编码) FillColor填充颜色默认RGB(192, 192, 192) 透明度默认0.5 旋转角度旋转角度默认0
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":0,"Transparency":0.5,"Rotation":0}}
+插入服务器上的图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Width":15,"Height":18}}
+插入本地图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"C:/Users/administrator/Pictures/TestWaterMark.jpg","Width":15,"Height":18}}
+
+返回：{"ret":0,"rid":40,"data":{"Ret":"0"}}
+
+41）移除所有存在的水印，适用于WPS文字软件
+{"req":"Office_DelWaterMark","rid":41,"para":{}}
+返回：{"ret":0,"rid":41,"data":{"Ret":"0"}}
+
+42）设置上传下载地址，PageHi中的上传下载功能需要，适用于WPS文字、WPS表格、WPS演示软件
+PageHi中的上传下载功能需要在启动命令中Web节点的Edit掩码值加512打开
+Down文档下载地址 Upload文档服务器保存地址 
+{"req":"Office_PutNetUrl","rid":42,"para":{"Down":"http://local.zorrosoft.com/Files/template.doc","Upload":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":42,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
 5、事件通知：
