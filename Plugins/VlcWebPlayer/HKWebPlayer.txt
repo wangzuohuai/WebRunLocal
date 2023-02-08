@@ -1,4 +1,4 @@
-﻿海康视频网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.17.3版本。
+﻿海康视频网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC及海康SDK等播放程序版权归相关公司所有。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康视频网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"053DAFA37C263EE02B1B81FB7C18930C","Version":"2.2.8.7","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"068F2E287859E43C6E9E4FE6E57845BAD646A39F7F818FF02A923FB95B1822ACE1B2D2309F4B6FC53C8A2E6197B17E660307C27A87A856E483BA4FFC372C0BB0CC35D45EB0ED66D59365015B4EBDC1348A0A6158BAAB8AA3464C69A8D832E1FC5E2F5DBF1816D05A28195F07DA08837D6F71AB6733E7D171FE516C11794786E7D461AB1FF3935A98798F8666BA59B22255259276CE18A6B5216B5437F2DC73979DED249D2F2A0FEFF767B68002D569780ACEAB8883BD74335F3B2F3B6E302344036BF908BEDE1F63EF68504C82AA03BBBDC081D5388D347356F197D1D86A0FF93C25AFAC9609BBADE0CC25CFFBF6DAFF4641F4EAA4214059106E91EC9D1604ED"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"B461EB0AD66348A090F41C656511DAC2","Version":"2.2.9.1","Size":5177344,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"106FD7B810C006854B30885CA0A14D30CF5929FC6A13AE24E1E7325E17AE8874E05BFE313E9C4BF26A1BEB8705B41FFCC2041CC58B31E02A35EA3DB58FBC502C5638C1DFB7D54796618986C48F25CB1CC6B0450BBA79442E52D664BC90928D12E6C90F9E5C9A3AE32C206A05705189B2DD4DE5D0E89E6ADFEA438C9BE45C4A816AD9DE79C9D4DD4A0574245CAB84B740A6A2258F6B6A777C6A3F2B879BE034BF66D2F2B7E39BC97D93C2AD9067638108F4B49AB6FF038723C9A7C3CDF61E1C940ABBD080CC2D16AC21BA32CA7D6C9ED04185096946426DB825A04F78B05B9C88DBD5D8EF8AC593F71143EF542D977C66B6CB43E1579E15A97F2D36ABC4C1ACE2"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康视频网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"AB3F43D8E14F4726CD639883EA820386","Version":"2.2.8.7","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"688E7BAC1D97D9FBAAE67E34965FFF37C746B18F8E8790145DA0150BB174457FC77D429500F597892B7135685B510618581AB832DA60785578286A526780A5E1EA10071E1779313F0B399CF69507FB3B68D1F20B47715B1AA8A10FEA62772E3CBD8E8ACE029016C19F0916FEDF834E93E17F7CA4FFC941D09B3339FE6E08175FE8E4471B0016941AC3651EAB10D272F372F0C2D7712F184C7B2B161BB4BD9576CC5B42B9136EB67A46F79E231A602FB3E33AE837B0A99913E5B7A90AA1AE314E7DB2CD494A2349DA5DEED7D396C8F3C69F1F986FD2E3068627136D79A9778A0B0F0804F1FFDE85F65F3BEBE5D57CA03AD980A11FF30EE906574BDEFC178CD3CA"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"EC52607FDDE5629FCADCB6D110289793","Version":"2.2.9.1","Size":5177344,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A207857066274E39060C76809B5EB82CC010D285A432E041DA9F58685A641EF731CE96687C1BD73EE3D6CB49469E63EAA69193DC0D76DD3AEE44975F921964AF3D7C939D74025945C57D894F0C5A60041580DD622BB43C6844FB82A3E7AE9A16B8B95077DD3470845C5E5DB2A6DD6929FF7AFBE1C301ECE7B1C92C31C95B036882E5C4D3D90193733E3593AC2FDFAA0E7AA877C9FA8980B90DCD8CFAD1E8EB4B934C96682F210C5745CA61EDD9CBF5DEF39F67DD1D8AE4E6B6B506B224E8BF0640A2DBC0C05CF7E38572C8005FFD68D32B9D24AB8C41A53D39F937D98BE3C82D69D7C7ABE3B56C55D3518C280FEA17773CEC790A063A28B425738EA17E121230"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -626,6 +626,26 @@ X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度
 {"req":"Player_LocalShow","rid":119,"para":[{"ID":1,"X":50,"Y":50,"W":200,"H":200},{"ID":2,"X":50,"Y":50,"W":300,"H":300}]}
 返回：{"ret":0,"rid":119,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":119,"ID":2,"data":{"Ret":0}}
 返回Angle为当前角度
+
+80) 指定ID窗口叠加网页中的渲染内容
+Alpha 透明度(0-255) 默认77
+Color 透明颜色，默认白色RGB(255,255,255)
+{"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Alpha":77,"Url":"http://www.baidu.com"},{"ID":2,"Color":0,"Url":"http://zorrosoft.com"}]}
+返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
+
+81) 指定ID窗口叠加网页注入脚本运行
+Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取消叠加
+Init 初始化
+{"req":"Player_FloatWebInjectScript","rid":121,"para":[{"ID":1,"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"},{"ID":2,"Init":0,"Url":"if%20(window.parent%20!%3D%3D%20window.top)%7B%0A%09delete%20window.open%3B%0A%7D"}]}
+返回：{"ret":0,"rid":121,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":121,"ID":2,"data":{"Ret":0}}
+
+14) 叠加网页导航结果通知
+{"event":"Player_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
+
+15) 叠加网页注入脚本结果通知
+{"event":"Player_WebScriptResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
 
 5、海康视频网页播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。

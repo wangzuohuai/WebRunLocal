@@ -1,4 +1,4 @@
-﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.17.3版本。
+﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC及海康SDK等播放程序版权归相关公司所。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"ACEB3B70AA9C183DA2685F3BEE562B1B","Version":"2.2.8.7","Size":5242880,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"51DD4B95837BA41C35E71D17DE486CE159A035A4D3612E58C11B4D7FB2EFE42E42120D1EB1C1CBEE4CE48248B796412E728CCC529D95E4D1B0729353DEE1CCAB7F501A11BBCF832B1D1E091BF0E11411028011EA6239E01BE8F112CBB2DD8B6FC057D570B1D846A33E504B362D99DB84F74E45923ACC2BAF7E31BF955D21784418FE1D2B37B44EE68AFF312C76F1DD33B2A94C99601B57516F4DFEB451607FF32D628F20EC58543D78CCD4EBB81CE865F80200F530E421EBE35EA53962623D884CE27931324A6C9E73AC717CB59C0E98811B79D6CFBE284F868E5A4742E20D5E0FF3725E5773BE4178A58F99E62CDE4318F722F14BF3095C717382133DEA6AB6"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"2FD6A2468B95013288FB5E88444EAB81","Version":"2.2.9.1","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"14E999D5B4C6B74F9D843C1D4B764EBE738020F3568A594F7C623B154F9B9335D1CCDCBBF56F748AA22910CBC6812CBB81AC4EB7A617CCAA669733F158E9830D32588E88116DE2FF5645FD324A57122E2CFA4D80075A627B465659C7DEBFE62B6A259BAB79C200ADCE153D5ABB11190FAE0E8BA0DFA6F9D5C8DCF64F84B72339F29F59B544280A680F02E3D31D58F32153B008FAD1CDF3FFCDADB434EE346180CB20118A1668B8DFE607B1DAC4F70E85212ABB8D6BF2DA3487F01D8CABAE453D4512B583EA4DE4277C7AA04E7DBEE0AB0C3068D6F56A89B41B85FC68903BCCB3F387819B2086DA09ED823294F973846E1210B948D21032170F6DE7118476C825"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"EEBABE31A6E19B13A61865D4F30F834D","Version":"2.2.8.7","Size":5242880,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"11E58225B921F617AE11064C549E6415E29E500C9A309A471CED381FDB341E3E3C247573CF577D42869E78ABB0C078A076F020213E05863EDDBD7EB51F8A3AE0B077B3983AD72DCA68AD762C3A72DD6C47BF7A12C1C5876E7CA9EBF1AC8F77ABD4191027851E9AC36B5DA4FF03FA4AEC1AEE614D95AD203A25E988E0CB17F565A4EE8105E88AF30F59DCD81CB40EEE98BB42DB3F7B8C373FA0ADC396D28F7EC233D7BCC0380079D4C1FC8A7D6805988AD6572DA2BB96AA3C9870EC3DD44A68007105F3379649B8BDEB2C18A476318541D4E1C84AF4A0CDB853DEF468FCE5F0C5DEA0CF15DA05C1F9B831CF75A064E0A8C9CF4020EECFB57A10C562A8987DE544"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"ABD5299F661C21EA1FBE75A7DC92C897","Version":"2.2.9.1","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A3488CAD7A9ED0AA63866CBF64BA75F312C34506F769EB0AE4018C4953FE6E660F44895FE844CE96E33878320F59140F7C6C14F5289127A64A2BB6F39BB05605A9CAED9E74BBFA5696204A27C1B112200562AF6E4527694ACFF5580CBE7B7C4C18F6AD5DC1381A2B8D76CC1DF5286446141580EC5BAEA1A7DACD23DDB9D3C08ACCC915221F341463521FA0D6011D5407AE4D070B46244195A9DE5FD518A455AAEA2507F449D575ACB165113BBC152B7D8C340A28F34317B7F92349B3767C47377D137CFA98EBF299DAF68B18ADD27AEC25DD0CCE734ACCA607A2D1A4C020F44D3AB2C1F77917D7813E0D7B35C8DD18CF2CC053D57714B2071060BF99F7C538C1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -627,6 +627,19 @@ X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度
 返回：{"ret":0,"rid":119,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":119,"ID":2,"data":{"Ret":0}}
 返回Angle为当前角度
 
+80) 指定ID窗口叠加网页中的渲染内容
+Url为网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认77
+Color 透明颜色，默认白色RGB(255,255,255)
+{"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Alpha":77,"Url":"http://www.baidu.com"},{"ID":2,"Color":0,"Url":"http://zorrosoft.com"}]}
+返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
+
+81) 指定ID窗口叠加网页注入脚本运行
+Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取消叠加
+Init 初始化
+{"req":"Player_FloatWebInjectScript","rid":121,"para":[{"ID":1,"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"},{"ID":2,"Init":0,"Url":"if%20(window.parent%20!%3D%3D%20window.top)%7B%0A%09delete%20window.open%3B%0A%7D"}]}
+返回：{"ret":0,"rid":121,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":121,"ID":2,"data":{"Ret":0}}
+
 5、RTSP网页多引擎播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 
@@ -691,6 +704,14 @@ STime流开始时间 ETime流结束时间
 13) 海康私有协议下载硬盘录像机上的录像进度通知
 {"event":"Player_DownPos","ID":1,"rid":2,"data":{"DID":1,"Pos":100}}
 Pos为100时下载结束
+
+14) 叠加网页导航结果通知
+{"event":"Player_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
+
+15) 叠加网页注入脚本结果通知
+{"event":"Player_WebScriptResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
 
 B、PluginOK支持的事件通知：
 
