@@ -14,6 +14,6 @@
   "ErrTrySecond":6,
   "SplitColor":"#FFFFFF",
   "BackColor":"#000000",
-  "Status":{"Text":"准备播放中，请等待","Err":"播放时出现错误","Color":"#00FF7F","Opacity":255,"Size":16,"Name":"宋体"},
+  "Status":{"Text":"准备播放中，请等待","Err":"播放时出现错误","Color":"#00FF7F","Opacity":255,"Size":16},
   "PORT": 930
 }

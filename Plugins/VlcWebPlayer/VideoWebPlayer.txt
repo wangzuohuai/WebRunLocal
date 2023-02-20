@@ -38,7 +38,7 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 1)、请求启动RTSP网页多引擎播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏
 Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
 ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等
@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"2FD6A2468B95013288FB5E88444EAB81","Version":"2.2.9.1","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"14E999D5B4C6B74F9D843C1D4B764EBE738020F3568A594F7C623B154F9B9335D1CCDCBBF56F748AA22910CBC6812CBB81AC4EB7A617CCAA669733F158E9830D32588E88116DE2FF5645FD324A57122E2CFA4D80075A627B465659C7DEBFE62B6A259BAB79C200ADCE153D5ABB11190FAE0E8BA0DFA6F9D5C8DCF64F84B72339F29F59B544280A680F02E3D31D58F32153B008FAD1CDF3FFCDADB434EE346180CB20118A1668B8DFE607B1DAC4F70E85212ABB8D6BF2DA3487F01D8CABAE453D4512B583EA4DE4277C7AA04E7DBEE0AB0C3068D6F56A89B41B85FC68903BCCB3F387819B2086DA09ED823294F973846E1210B948D21032170F6DE7118476C825"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"CCBAD671D14EABDDCD7CAA1E6B373DC7","Version":"2.2.9.2","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8152EE74A2AD1BAB42DBAEA7F445C4A8FAA697A96D4672495441E378E86F5EF0334CAAB0507A2215186BBD916390D1C1C9A85249DD4382827B5C6CD13B50E2908256BCA6B7E60B6A2E74DCD673796F124BC6F5F06B11A5E99BFC9FC711D8DCCEA156B55667F07238A9C98FF4225530D219DE200255C0C4A7CA95089A6F2DB82B406FE15D1354A5DE09E56323E4AA9E1F4EC4E17981BE6A15C61E352826A5E6DD8A0238DCB020CFC50BB8396E57CAD0027ADE4B1D40CC308A6EA829522B19D9FBE9FBC9FE941F292453843FBC0A93B454210BF8960AA37B49C858A9AB157CE9EBEC28CEA29581AA33DC124B51421FA88ACDB49C8156340D05909F8A299A31C069"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"ABD5299F661C21EA1FBE75A7DC92C897","Version":"2.2.9.1","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A3488CAD7A9ED0AA63866CBF64BA75F312C34506F769EB0AE4018C4953FE6E660F44895FE844CE96E33878320F59140F7C6C14F5289127A64A2BB6F39BB05605A9CAED9E74BBFA5696204A27C1B112200562AF6E4527694ACFF5580CBE7B7C4C18F6AD5DC1381A2B8D76CC1DF5286446141580EC5BAEA1A7DACD23DDB9D3C08ACCC915221F341463521FA0D6011D5407AE4D070B46244195A9DE5FD518A455AAEA2507F449D575ACB165113BBC152B7D8C340A28F34317B7F92349B3767C47377D137CFA98EBF299DAF68B18ADD27AEC25DD0CCE734ACCA607A2D1A4C020F44D3AB2C1F77917D7813E0D7B35C8DD18CF2CC053D57714B2071060BF99F7C538C1"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"C6AF63E946BA5827ACD1E76373CB3950","Version":"2.2.9.2","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A6A85F58B342FC7EDDA7761E87BF83EBB0793E7127426D3565AB37B01791A603170D5F321A6DA6D972023090127D0D03835CB6025B86D9A0C679B18EBFA8BA4857197445DED1CFC9EF11E0E420C427E7D13CDA2F3B6B49E86852468DC4DA99FA09F1AB5CBFC3E0C030111D2258B75C9A0127A90CF9CE6EA041A3EDD4B7E6B6ECE8D9D825F41248E84573B08D68E2F5C85A73A389796C440799046CD74F417AF1F2DB7434582347FEA648289639411FC77ADD50D4CCDD8A46CA728CFB3EE57F6ECB6FE890418413ACFF023516C1081FFDCFB95C76ADCCCCEE0A10F9E22F1FDAE74D825BA69E5DADCFE418036D8828DBDF3103E36A1671CF0B6F12B036AFB9C0DE"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -143,6 +143,7 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 4、RTSP网页多引擎播放器转调用海康原生SDK封装的ActiveX控件HKVideoCom的接口，先根据Wrl_VideoWebPlayer请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 1) 取指定ID播放窗口属性AutoLoop(自动循环播放)值，仅对MP4等文件播放有效
+其中窗口序号ID，从1开始，序号原则是从左向右开始编号，然后从上到下开始顺序编号，如遇右侧多层排列窗口时，直到右侧窗口序号排序完成
 请求：{"req":"Player_GetAutoLoop","rid":41,"para":[{"ID":1},{"ID":2}]}
 返回：{"ret":0,"rid":41,"ID":1,"data":{"Ret":0,"AutoLoop":0}} 和 {"ret":0,"rid":41,"ID":2,"data":{"Ret":0,"AutoLoop":0}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
@@ -627,11 +628,10 @@ X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度
 返回：{"ret":0,"rid":119,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":119,"ID":2,"data":{"Ret":0}}
 返回Angle为当前角度
 
-80) 指定ID窗口叠加网页中的渲染内容
-Url为网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
-Alpha 透明度(0-255) 默认77
-Color 透明颜色，默认白色RGB(255,255,255)
-{"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Alpha":77,"Url":"http://www.baidu.com"},{"ID":2,"Color":0,"Url":"http://zorrosoft.com"}]}
+80) 指定ID窗口叠加网页中的渲染内容，只支持Widows 8及以上版本操作系统，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明
+{"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun"},{"ID":2,"Alpha":70,"Url":"https://output.jsbin.com/dopavun"}]}
 返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
 
 81) 指定ID窗口叠加网页注入脚本运行

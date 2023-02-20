@@ -1,4 +1,4 @@
-﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3版，XP以上系统建议使用3.0.17.3版本。
+﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC播放程序版权归相关公司所有。
 
 本程序具有如下优点：
 1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放器额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
@@ -20,7 +20,7 @@ HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS
 1)、请求启动VLC网页播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏
 Url：加载小程序所在的网页实际地址
 Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
 ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
@@ -99,13 +99,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"EFD85AF5B6ED4DB5867ECC51DD0DE216","Version":"2.2.8.7","Size":6815744,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7ABF24852454980292DFBFB8CB2B0AFBCBA890FC86DA06245143BF80500D23D948462A1FCA83CFE364F54254CF9C4A43F2D8D74B05DEF1BADA7190EF3798DB2ACBB282F4034FB6426EEC0FF304F9DF59D3C01D9FBF53F94A96E5283FCC810CF59218EB95129D08140A10BA67E23C4E100E444066F4CAAA780880950D1F8DC2C0197A6BC26A8E85B216C355BEA5B46CC5ADE4B45081B440EC4EBAC57B322E73EB839498A2923F1717BF3A8D765BC2A62047BF9BF05124D1CAD883AAA7C9EB0FA8B4F068F470066ED4F7AAE7DCF8AE1BD9FC99202DFB447036989FF8624A0DC59A24DC67C4FBA5277401A9AC70E52391CA5D8D97F4A269C2BA610DA0F26BE18C24"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"4F49518BEBC868766153F058D24DCA80","Version":"2.2.9.2","Size":7274496,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4320DBC968A13CF8F0CBF3541A3BA0178EA3F93158A79119B339089A7E972F52CE981C2ABE88D3879F8F01E579E1994CE70522FCEBDC134832C16BA8B59172E9147FDEEB87770F94DEFE399DEEAA3BF8A6A5D736576DD439E29B68FB048783E82AE087F4DFE444DED48D1CF78CA6072B56E025BA72357EC12EBC05AAD0CC8D6C495428501AE033D30118FC81129276B7F7BA8CAB8CE8A172A8ABDB00DF2DCA013B18E28F63403D77D2177A6F7863DD95C83FCE4B6554DA9838CADF1A56746A379E9E01D2039B337D018486C3F9789E54076BBDF682A8DA90E0029B19F183366C7516CA79BEE590BC9DB94C219DFAAC2262F567597245FB7DB3F0B603C77AD51C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-01-09","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"B1B31E3D3266ACA4E7D4BC8D334441E6","Version":"2.2.8.7","Size":6815744,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7C67D163154ED9215666C0F109CD4C9A3ACC879E32A51AB0ECA44B6176349E501DACBFB7DEA87F6337ED5AC83593F637E0AD15417514C632387B41145707843A3F4611F8B3105E231BDA12E9D159E4D2793F15C87E32E8AE176A57579889707E1179AE57FF550DFDAE5D4CB26986744BD516C765226B44FC8E3E3FEEDD69A8DEBE09790630D7F12EF2B4E9BF2987CEBED77E158CE5B3458A52BEB73E67EDCE917A2DD8A978B840F258E4541DE5ED0B630C6942BBE2F3FE2694160F9FDB077D55A218D034253ED6D897E83480EB89C003F5BE0CDCFFB80A30B8688842464AF246F83BD1B6B9E7BC36CBE71834B3BABAEBBB11E539646377FABF20AD3C0DBCE178"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"A1B4F1A203E1C930D81C331E00492C1E","Version":"2.2.9.2","Size":7274496,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"261114D9EE086CF3E27B21D1D44546805CE0390C911B93295A153025B2D7B5B32CB9AC3C0F15500D9A837216131B566EFF91D86FF740BD2497842619F40F6D2D2A71B443A968C23C1E0E6691789CD16CE948B14D27352070CC7CB098DADFFD84475F3BCEBE2123001781115E648FBE94D99B7F20FF62C4123A83338FA1AF193FD4853BEC52563AEA137A7E695FFC714406108A67A91AE2B96CCB144114084FB1C889C8524E4BB2C84AB13D1D449B0A1275A1B83D364584EBFB2D9AE61CB63C6741E082EE1C4F536AD632A20204280E7F7BD76C9F9894DB0D7FF8FAD778A78346531D4E9EE3ED13671A3279FEFFD9A20B565F3AD36B27BB85292852EDE1465255"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -457,6 +457,18 @@ Size 字体大小，默认18
 请求：{"req":"VLC_CustomText","rid":110,"para":[{"ID":1,"Text":"Hello1","Color":"16777215","Size":50},{"ID":2,"Text":"Hello2"},{"ID":3,"Text":"Hello3"},{"ID":4,"Text":"Hello4"}]}
 分别返回：{"ret":0,"rid":110,"data":{"Ret":0}}
 
+71) 指定ID窗口叠加网页中的渲染内容，只支持Widows 8及以上版本操作系统，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明
+{"req":"VLC_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun"},{"ID":2,"Alpha":70,"Url":"https://output.jsbin.com/dopavun"}]}
+返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
+
+72) 指定ID窗口叠加网页注入脚本运行
+Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取消叠加
+Init 初始化
+{"req":"VLC_FloatWebInjectScript","rid":112,"para":[{"ID":1,"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"},{"ID":2,"Init":0,"Url":"if%20(window.parent%20!%3D%3D%20window.top)%7B%0A%09delete%20window.open%3B%0A%7D"}]}
+返回：{"ret":0,"rid":112,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":112,"ID":2,"data":{"Ret":0}}
+
 5、VLC网页播放器接收的通知：
 这些通知必须使用Web Socket连接到此小程序实际侦听的端口才能接收到。
 A、ActiveX事件：
@@ -556,6 +568,14 @@ PID是开始录像时返回的ID
 30) 定制图标被点击
 CID 标识窗口序号
 {"event":"VLC_CustomClicked","CID":1,"rid":1,"data":{}} 
+
+31) 叠加网页导航结果通知
+{"event":"VLC_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
+
+32) 叠加网页注入脚本结果通知
+{"event":"VLC_WebScriptResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
 
 B、PluginOK支持的事件通知：
 
