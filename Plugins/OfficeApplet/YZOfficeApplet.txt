@@ -19,7 +19,7 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1都支持外，其它只有永中文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
+	Edit代表编辑权限(除只读1都支持外，其它只有永中文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止保存和另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
 	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
@@ -30,7 +30,8 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：21是启动永中文字 为22启动永中表格 为23启动永中简报
 Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动永中文字程序
@@ -108,14 +109,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"17E0329E27B49BCA36FADF0992151036","Version":"2.2.9.2","Size":4128768,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4AC27A9F0F625B885CA1292FF0B6AFEC62BDF717E26FFC1E335F79B404FEE83F306DEE85D09A6F02245A37363CB55CE476F9C18E43FB8016D4B5C576F40300DE31B353D81DE33DC83D19E93BDF8D3F916039B93ED746D291995CC0420157DAB7485C96B33CC96E3B890EC9E1BE58196D86E5A1EC77E4AA00A5CBC0E4FFEFFC4F05734358D9F019C368167CAAC546DD089C56DF611F0C049EACA3E64711B0ABEEF1090CF2AFF003FD73F544ABB4D8A74489C3384D4A34481DF6EEA9868EDABECBABF0E8518C37172C0B178B6C35591E0E5C3CD088C2E0DC922431DFD8F78C74A1E9351DDC46634F3D7EE5C3DA9911C6BF5D96F85E9EF50AA07BFDE4DFC7368D60"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"8E0AB89ABA8FB5AD2B2B757B53A8C591","Version":"2.2.9.3","Size":4128768,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"68907D9AC7B139A6A18ED2DC5681E4205504223821042E7301E8A4B7FD4B99417B9E98EF8EFBC77AE1C552833A17088A51F02CC0D623EF6851007084BF64CE57C12AB2610808119BA0772B631141977DE2A8A93435C8CCD523CD47F093EC6F13B3065AD0F2828AE5A43A1E6D4DE88E258150EADD55F43DBED83DD2C432A3BFFDDD24CC08B597B7DCE7CE0B320EE7DA9188F1F6A7B002D47DDBABFACF0E895F9FD35F0A845D955A1B5B04E0266F030CCBEE783E0B6A2BF188AD81D614F494CC4F007178C96A71B68FA5A505DD9C8DE4F545A758E5A34CB990B540317EA260853985CFEA756F7240A0A293BF53427368873C4DD9BC209BB5C80EA0F4FA48D3BC61"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"84116BBF382FB32862DAF5D491E0A289","Version":"2.2.9.2","Size":4128768,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"32EC249D38767344FCD5883E88FEEF6D689BB9E5990823AA5AAF869860545260871F439A9DEE68C073C496C7947BDB95DE7DE5BB015A3F7010925CE44A148ED4A36FC6287BAAD0AED3199034626F235CFAA09A984531FB71A0AE7A025881D10C2892160DFDB46B79FE01B39D22C0212F155A21D0556F78CAA5CC0A3F923F449A0A74B7E7D150182AE79D7A056D56F2E323D0F624C39A9F7767E36E509809EAC46916901A958A88ACF3326AFA8303056460397884661472FCD8291441DC2E6764E9D25C4D3CFBC024C3D26EE3BA2BEAD75012EE22EC1B5DE172CD3597B07ED4CA163EFB51EC1B530ACF0F5A9E29E49852E7F038FCF9A885AC9F5F1BDB55369F6A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"19D128658648AEC57A4C4B7BF3E26CF9","Version":"2.2.9.3","Size":4128768,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3D375A5D8D54EC2E314CE9E4629CBF6D1441EEFF7EE2FB3CE6351EB898E4182CE3CAD7229B3833EDFDD216938E87273A623D22B2209F20B7E2FF17950C840857BC63738C1850B693A955E420796AD3D4CA9DB1BE81E0B1D0855DBE9C0817091A1E6AFD99388916D8C99E163E08A5FD29FCD336E3DB632C8DA3252EA070F76E728F79C6D574C3CB9EB016E3922777FB60304EA6159519B2ACB901EEBD3DB075FA9C10313AEA39D405EA493999E9C8F04D8F6888020216DC388079D76A3A41AB7639401B15405BD9129F0563A180B0FFE902FFD861D9A81625AC58924C442BFD7FD388E3BA500E623DBBBAAB472BF850C0924B92553832FCA30B9FD8728F17C246"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -380,13 +381,15 @@ B、PluginOK支持的事件通知：
 {"event":"Wrl_AppletExit","data":{"ID":1}}
 
 3) 文档加载完成通知
-{"event":"WORD_LoadOK","data":{"File":""}}
-{"event":"EXCEL_LoadOK","data":{"File":""}}
-{"event":"PPT_LoadOK","data":{"File":""}}
+File 本地打开文件路径
+Type 打开还是新建
+{"event":"WORD_LoadOK","data":{"File":"","Type":1}}
+{"event":"EXCEL_LoadOK","data":{"File":"","Type":1}}
+{"event":"PPT_LoadOK","data":{"File":"","Type":1}}
 
 4) 文档保存通知
 Type 0保存 1另存 
-Flag 成功成功 大于0保存失败 -1 退出时有修改没保存
+Flag 0或1成功 大于1保存失败 -1 退出时有修改没保存
 {"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}

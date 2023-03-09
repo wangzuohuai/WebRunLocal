@@ -1,6 +1,6 @@
 ﻿金山WPS网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS(要求企业或专业增强版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。
 最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
-金山WPS支持2016及以上的企业版、建议使用支持OFD格式导出的2019企业版(建议下载版本地址：https://ep.wps.cn/download 选择PC版下载)，如使用个人版(建议下载版本地址：https://plus.wps.cn/download 选择PC版下载)，个人版只支持在非管理员权限启动浏览器时使用。
+金山WPS支持2016及以上版本、建议使用支持OFD格式导出的2019企业版(下载网页：https://ep.wps.cn/download 选择PC版下载)，如使用免费版(建议使用专业版，网页地址：https://plus.wps.cn/download 选择PC版下载)，尽量避免使用个人版，因只支持在非管理员权限启动浏览器时使用，一些功能受限。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -20,7 +20,7 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1都支持外，其它只有WPS文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
+	Edit代表编辑权限(除只读1都支持外，其它只有WPS文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止保存和另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
 	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
@@ -31,7 +31,8 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 v实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：11是启动金山文字 为12启动金山表格 为13启动金山演示
 Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作(个人版不支持)
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动金山文字程序
@@ -109,14 +110,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"9F27392EC888E968F99F7CE28DCC20A9","Version":"2.2.9.2","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7B426000E166642906036400653F8398BD3080D730807A40662FF21656D865A78E24FD83726AA203157BD14A4291C28B8F27A0D2A523AF690C0C5E8BB9DA917A30E060DA1C8B0C0CAF04D900E43FA52428EF652328011095690236B548D694C842CCCA5E562B84BB4F66FF7A85250AFC4AE46DA1B29803BCE56ABB8CA73C66A58DE7DB6D72593B81478E7BFD8A427AC8122523103573969C53E019FEA4819C6DB4D17DAE6025123050AFD9D196CF66FD4F10B61CAE48D89AD06836ED8E82B20551C6A94D96366E4F162A46CA89842D8A64CC991641ADEA6F701803B9696026F7E6595D117996F17A028096B1996B450E08848CEDEE344D06751C00F1E293DD20"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"34F2205477DDCD36E7E7486C855DDC8A","Version":"2.2.9.3","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3341AB24B911709EDF4D4BAA39DF02510C1DBACBD918B2C674D65FCFA437B41949C675362BF2B1E060C0AABD19CA99F37D3BB4754C7D55A0876942ED5DC0314C1453BE6A8784908A95EF4A159F943088A7B6086022F1899655AC5BD2B4B14FA0779F397E21979954F28E1C62B4DEF3229408EAEF17DC6C2A6BB15CB3B8A19F01BE349BEC1F5CD3426B82BFE01829628490094D314F456BBD9257D80342372C1A6D9C21BC9DB7130EDFADEC972EDEFCAA64E97AD2CA6819C697E67BB08044830B62B5C43B010A44A37ED23131FB626AA0D540872E4C6DF7ADC0E010256F30EB76DF06FB7C2A42970CD89C5BAE8375FDD8584B5FAA43105928D3C95A1F605C775E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-02-20","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"4947389E7D8E5A3E2B81A99CE2BDF979","Version":"2.2.9.2","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"518D5AB3EE8D7EFBD19993FBE50A3DAA74D714F6341C99CC4BD155F35CD73A44D30FB2E0F6C71DCE45DEF869DFD0EC54AF155C7B889291A2D23670E7E145C77D7F1F111C931260446A2BF6B503EC219F646DCB9618B35F17B82E83FC687A62DF0BADCEF04456E272BD65FF472EDB24029A0F21B87F36C8A979FD005140BE177A9FB6AA45586F9612BA9A4AD1325B9366592DFD2436C90F8FF9FA54DD9C14AB215AA1444FF8678A574A50CE04E18012FD56CA83A09C401715BA12E71F9F4FAEECDAA092666273E6E7259C9F8780977D2238AA67141E5C5962568413E017D986FDB5A76553067F04895998F07D843186D5E73C28E5F4DDB1677AB88B47848585E4"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"1FD531503B8DEC603BAF755AEDB12FD3","Version":"2.2.9.3","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"08C8D59DB40F2B25594595AE1FA19779B0C3A4DCFADD0584FB14CA5443632C3C3E935C7ADF5C7F2B8863953A1859A9D8E6CF3608273C824D734B2EFDF608D9D4BB8508180E8A160A97D07806655E57BE457355EC9E31ECAD2B5808497263126B88B24881778F04ECAAF7F3764C452B01B7F8726074B3AFB07E2DBE817F581FEA7DE0987CF71F9174D9E59514A77C9ADF70A1B809E396B8E7D1A324CEDA6D7F744301ED8DB2567522923E6CA337B63AEA8CD0027BD76B0B25D87DFE2024893DD326DE7FA1355D1B43261E68B9EDD59E7D60E87998FEFEB9F9B7922892183736A27B0B27B6E1019E2753EC7621F897B08F03B2381C9207A30188BE06D2647C63E6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -390,13 +391,15 @@ B、PluginOK支持的事件通知：
 {"event":"Wrl_AppletExit","data":{"ID":1}}
 
 3) 文档加载完成通知
-{"event":"WORD_LoadOK","data":{"File":""}}
-{"event":"EXCEL_LoadOK","data":{"File":""}}
-{"event":"PPT_LoadOK","data":{"File":""}}
+File 本地打开文件路径
+Type 打开还是新建
+{"event":"WORD_LoadOK","data":{"File":"","Type":1}}
+{"event":"EXCEL_LoadOK","data":{"File":"","Type":1}}
+{"event":"PPT_LoadOK","data":{"File":"","Type":1}}
 
 4) 文档保存通知
 Type 0保存 1另存 
-Flag 成功成功 大于0保存失败 -1 退出时有修改没保存
+Flag 0或1成功 大于1保存失败 -1 退出时有修改没保存
 {"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}

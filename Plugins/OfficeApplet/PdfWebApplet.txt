@@ -1,0 +1,257 @@
+﻿PDF网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Adobe公司的ActiveX控件AcroPDF.dll实现文档阅读及编辑，需要安装Adobe Acrobat等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、牛插(PluginOK)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+
+2、PDF网页小程序控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://local.zorrosoft.com/pdffull.html       HTTPS网页在线测试：https://local.zorrosoft.com/pdfframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
+前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
+
+1)、请求启动PDF网页小程序：
+Type：为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词，用于识别指定的嵌入网页
+Flag：掩码标记 1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Url：加载小程序所在的网页实际地址，不建议使用
+Web：可自定义的JSON配置 Flag包含64时可替换Url参数使用
+Option：选项 0:Adobe单文档视图
+Version：版本1:PDF阅读 2:PDF编辑
+Open：为需要播放的多媒体路径，磁盘目录斜杠用/
+注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器指定位置和大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"1","Option":"0","Web":[],"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+
+自动识别当前浏览器自动适配网页大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Version":"1","Option":"0","Zoom":100,"ScrollTop":0,"Web":[],"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+
+当前页指定位置自动适配网页加载测试
+http://local.zorrosoft.com/pdfframe.html
+
+启动后会先后收到三个JSON数据包
+A、{"ret":0,"rid":2,"data":{"ID":2}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":2,"rid":2,"data":{"SID":"123","PID":"PdfWebApplet","port":970}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Flash。
+代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":2,"rid":2,"data":{"SID":"123","PID":"PdfWebApplet","Port":970}}
+
+2)、请求控制PDF网页小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动网页中PDF网页小程序：
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回JSON中的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变网页中PDF网页小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度
+X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或，同时修改小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装PDF网页小程序
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2023-03-06","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"B2BCED65ECCDDF00C20A4B222051CC76","Version":"2.2.9.3","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"494763180AC5257C53F02BC769E07A9DB95EFEA90D7724C0214732B9A8766F998D579A93BC88E490F30FB2EB99C4702444978719FAD6EF0C84455A6779F098F8F53E7763078ABC4FCA58DD8F54C1BECC80597F9695240D063027AFE6D218D1909455E292540E11345F7C120C17EF8DD33EAECEE0C321DECB77693081C01B153CD2291669FCB1E63E1308A77FF44BC056C83D53328D443592EC366B9E9121CE6FAD95869E4F87D1EBA4C1CE8111A2952E15C0437907A16DA52117D8A6216596B9DA5423AC87A266172DDACF262A68C85B0CB6B75DEBC1E85149238D84AA70744DF32F74857BDCF4112B7D3EDB30692F2236075DC5D76B0EADD2E6F273EEF102E9"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+
+2)、请求升级PDF网页小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2023-03-06","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"AEA119AB091FC1B2324D5C713581C49C","Version":"2.2.9.3","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7F8EE2488C34655B92A2D77EDEB1B761CE7AAEFAC7007BB5DB20DD8A7E2E346FEF0C366BEE13F11CFFCA19CC93098D3F5976215C6CC5B0A8867EA6E6A7DF261CAD9152A8C7B6AD01356DA400CE07BD763CA465565D7FE05C31653AFD0955B0885E5435E8619EB1048FD6575D0E922F8A44FB9ECBE3606FD5A4CD6293ADDAD75719109D525F52EA7CEC2EECA06F837906A2A19C3DE3C845AE21F677C8CD13A9ADCBBBF3B5AF551DB76C9A311D3CAE405B5941A8745CA38F53D9D2894744B14F4F5B97C665D5B5C534669D4BF103A1F018194DDC7CBD7F1A6FCEC33FBB3035BCDC8AA0EF6A445F6EDA9D7F815214170A5052510831DBF78D1CAAB5C7193853D251"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+3)、请求卸载PDF网页小程序：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"PdfWebApplet","Type":8}}
+
+4、PDF网页小程序转调用ActiveX接口，先根据Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+1) 指定PDF文件载入打开
+File 本地文件路径，\斜杠替换为反斜杠/，有特殊支付或中文等先做UrlEncode编码，
+请求：{"req":"PDF_LoadFile","rid":50,"para":{"File":"d:/Zorro/PluginOK.pdf"}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+
+2) 设置打开源 功能等同于PDF_LoadFile
+请求：{"req":"PDF_SetSrc","rid":51,"para":{"Src":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
+Ret为调用ActiveX对应函数返回值，0代表正常
+
+3) 获取打开源
+请求：{"req":"PDF_GetSrc","rid":52,"para":{}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0","Src":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+
+4) 获取版本信息
+请求：{"req":"PDF_GetVersion","rid":53,"para":{}}
+返回：{"ret":0,"rid":53,"data":{"Ret":"0","Version":""}}
+
+5) 设置是否显示工具条
+请求：{"req":"PDF_SetShowToolbar","rid":54,"para":{"Toolbar":1}}
+返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
+
+6) 获取是否显示工具条
+请求：{"req":"PDF_GetShowToolbar","rid":55,"para":{}}
+返回：{"ret":0,"rid":55,"data":{"Toolbar":1}}
+
+7) 设置是否显示滚动条
+请求：{"req":"PDF_SetShowScrollbar","rid":56,"para":{"Scrollbar":1}}
+返回：{"ret":0,"rid":56,"data":{"Ret":"0"}}
+
+8) 获取是否显示滚动条
+请求：{"req":"PDF_GetShowScrollbar","rid":57,"para":{}}
+返回：{"ret":0,"rid":57,"data":{"Scrollbar":1}}
+
+9) 设置缩放百分比
+Percent 百分比
+Left 横向滚动数量 可选 根据指定的数量水平和垂直滚动页面视图
+Top 纵向滚动数量 可选
+请求：{"req":"PDF_SetZoom","rid":58,"para":{"Percent":100,"Left":0,"Top":0}}
+返回：{"ret":0,"rid":58,"data":{"Ret":"0"}}
+
+10) 获取缩放百分比
+请求：{"req":"PDF_GetZoom","rid":59,"para":{}}
+返回：{"ret":0,"rid":59,"data":{"Percent":100}}
+
+11) 设置页面模式
+请求：{"req":"PDF_SetPageMode","rid":60,"para":{"PageMode":"None"}}
+请求：{"req":"PDF_SetPageMode","rid":60,"para":{"PageMode":"thumbs"}}
+请求：{"req":"PDF_SetPageMode","rid":60,"para":{"PageMode":"Bookmarks"}}
+返回：{"ret":0,"rid":60,"data":{"Ret":"0"}}
+
+12) 设置布局模式
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"SinglePage"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"onecolumn"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"twocolumnleft"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"twocolumnright"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"dontcare"}}
+返回：{"ret":0,"rid":61,"data":{"Ret":"0"}}
+
+13) 设置视图模式
+ViewMode 视图模式: "Fit": fits the entire page within the window both vertically and horizontally. "FitH": fits the entire width of the page within the window. "FitV": fits the entire height of the page within the window. "FitB": fits the bounding box within the window both vertically and horizontally. "FitBH": fits the entire width of the bounding box within the window. "FitBV": fits the entire height of the bounding box within the window
+Offset 可选参数 根据视图模式，页面要么滚动到右边，要么按偏移量指定的数量进行滚动
+请求：{"req":"PDF_SetViewMode","rid":62,"para":{"ViewMode":"Fit","Offset":0}}
+返回：{"ret":0,"rid":62,"data":{"Ret":"0"}}
+
+14) 设置视图区域
+Left Top分别为起始横坐标和纵坐标
+Width Height分别为宽度和高度
+请求：{"req":"PDF_SetViewRect","rid":63,"para":{"Left":0,"Top":0,"Width":300,"Height":300}}
+返回：{"ret":0,"rid":63,"data":{"Ret":"0"}}
+
+15) 将页面视图更改为指定字符串中的指定目标
+请求：{"req":"PDF_SetNamedDest","rid":64,"para":{"NamedDest":""}}
+返回：{"ret":0,"rid":64,"data":{"Ret":"0"}}
+
+16) 执行命令
+请求：{"req":"PDF_ExecCommand","rid":65,"para":{"Command":""}}
+返回：{"ret":0,"rid":65,"data":{"Ret":"0"}}
+
+17) 跳转到首页
+请求：{"req":"PDF_GotoFirstPage","rid":66,"para":{}}
+返回：{"ret":0,"rid":66,"data":{"Ret":"0"}}
+
+18) 跳转到末页
+请求：{"req":"PDF_GotoLastPage","rid":67,"para":{}}
+返回：{"ret":0,"rid":67,"data":{"Ret":"0"}}
+
+19) 跳转到下一页
+请求：{"req":"PDF_GotoNextPage","rid":68,"para":{}}
+返回：{"ret":0,"rid":68,"data":{"Ret":"0"}}
+
+20) 跳转到上一页
+请求：{"req":"PDF_GotoPrePage","rid":69,"para":{}}
+返回：{"ret":0,"rid":69,"data":{"Ret":"0"}}
+
+21) 设置当前页
+请求：{"req":"PDF_SetCurPage","rid":70,"para":{"Page":1}}
+返回：{"ret":0,"rid":70,"data":{"Ret":"0"}}
+
+22) 如果下一个视图存在，则转到视图堆栈的下一个视图。下一个视图可能在另一个文档中
+请求：{"req":"PDF_GotoForwardStack","rid":71,"para":{}}
+返回：{"ret":0,"rid":71,"data":{"Ret":"0"}}
+
+23) 如果前面的视图存在，则转到视图堆栈上的先前视图。前面的视图可能在不同的文档中
+请求：{"req":"PDF_GotoBackwardStack","rid":72,"para":{}}
+返回：{"ret":0,"rid":73,"data":{"Ret":"0"}}
+
+24) 突出显示当前页面中指定的边界矩形中的文本选择
+a b c d 指定参数
+请求：{"req":"PDF_SetCurHighlight","rid":73,"para":{"a":0,"b":0,"c":100,"d":100}}
+返回：{"ret":0,"rid":73,"data":{"Ret":"0"}}
+
+25) 根据用户对话框中选择的选项打印文档。这些选项包括嵌入式打印(在给定页面上的一个边界矩形内打印)，以及对指定的打印机进行交互式打印。
+WithDialog 1弹出打印对话框 0不弹
+请求：{"req":"PDF_Print","rid":74,"para":{"WithDialog":0}}
+返回：{"ret":0,"rid":74,"data":{"Ret":"0"}}
+
+26) 在不显示用户对话框的情况下打印整个文档，如果需要，页面会缩小，以适应打印机中页面的可想象区域。使用默认的打印机、页面设置和作业设置。
+ShrinkToFit 可选参数 1自动适应缩放 0不自动适应
+请求：{"req":"PDF_PrintAll","rid":75,"para":{"ShrinkToFit":0}}
+返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
+
+27) 调用打印指定页 不显示用户对话框。使用默认的打印机、页面设置和作业设置
+From 1 起始页
+To 2 结束页
+ShrinkToFit 可选参数 1自动适应缩放 0不自动适应
+请求：{"req":"PDF_PrintPages","rid":75,"para":{"From":1,"To":2}}
+返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
+
+30) 请求退出小程序
+未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
+请求：{"req":"PDF_Exit","rid":60,"para":{}}
+无返回
+
+5、PDF网页小程序接收的通知：
+这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
+A、ActiveX事件：
+
+B、PluginOK支持的事件通知：
+
+1) PDF_FullScreen 小程序是否响应了热键全屏
+{"event":"PDF_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“PluginOK开发者手册.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938
