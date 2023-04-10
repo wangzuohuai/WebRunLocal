@@ -1,5 +1,5 @@
 ﻿微软Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
-支持微软Office 2003及以上版本的桌面安装版、建议使用官方发布的Office 2013及以上专业版或专业增强版，如使用家庭、个人或教育等版本，可能需要自行安装VBA支持。
+支持微软Office 2007及以上版本的桌面安装版、建议使用官方发布的Office 2013及以上专业版或专业增强版，如使用家庭、个人或教育等版本，可能需要自行安装VBA支持。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -19,18 +19,19 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1都支持外，其它只有WORD才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止保存和另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
-	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	Edit代表编辑权限(除只读1都支持外，其它只有WORD才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Hide代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath代表文档查找和保存默认路径
+	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
 Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：1是启动微软Word 为2启动微软Excel 为3启动微软PPT
-Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+Option：1是启动微软Word 为2启动微软Excel 为3启动微软PPT 5启动Adobe Acrobat的OCX控件打开pdf
+Version：0 OLE嵌入方式加载 1完整加载(支持文档对比操作) Option为5时Version自动默认为1
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -46,7 +47,7 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP�
 自动识别当前浏览器指定位置自动适配网页大小启动：
 {"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
-打开远程文档，可将Open参数改为类似如下地址
+打开服务器文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
 
 启动后会先后收到三个JSON数据包
@@ -58,9 +59,9 @@ B、{"event":"Wrl_Listen","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApp
 C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","Port":950}}
 
 关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
-{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
-{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"}]}}
-Type 1 代表微软Office，11代表金山WPS，21代表永中Office
+{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office及Adobe Acrobat安装的情况，返回值
+{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"},{"Type":5,"X64":0,"Cur":0,"Ver":"","Path":"C:/Program Files (x86)/Common Files/Adobe/Acrobat/ActiveX/AcroPDF.dll"}]}}
+Type 1 代表微软Office，11代表金山WPS，21代表永中Office 5代表Adobe Acrobat
 X64 代表是否为64位版本
 Cur 代表是否当前有效
 Ver 代表文件版本信息
@@ -109,14 +110,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"BEB0DDE407559D88299A598A2A6C3552","Version":"2.2.9.3","Size":4653056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"29F0963F5AF5B4986CC205662E2A9ED6FB3D38E4619CDDBD365B2A7766CACC5FE4236B54BD4A258499CBFDCCF564F05A25CCFAE2CCADF050FD7526D8D744456F92C3B8EEB4298FAD8F2538BBB2CCBEBCFF941120E2F34E4C6910A41CED102BD8E1F43CC77BD0BA6BFE17DA152797E84FA443937B64571F0EF1D0572EB128A8B9DAE49F3CA7EDB3D8DB6A194535237AEB01B4FD9765517A99843F5F563818C5869B33D24AC17C7DDF337EB054E4D211598B9764E566F731DDC8AC54A308DDF3F04B360FB99B636CF30651BB7E0ECA7538EB0BE9C572F7B1D9090AB6501781C7D3262A11558CE8978260A74A1E12BF57C8B08A2DD9576583584C3120A5E9FD717E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"B79D539E977978A2EADF8CBF8F8FFAA3","Version":"2.2.10.1","Size":4751360,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4CB2DA8422077C3A9B039BE8428981EDC7C80A640B5E427E06DA99E9B96CF140B245E7C048D377DC281EE687DDA46870A603EA6D5D739FA92CD2254EF1BDEB5A57EB5E50E0A903072944B6550F193B42E99FC259903BF4FADC7D78B45FCEA364A08059E7701C8355EB1D6A61CD2047A96F3FC6C0CE635A3EE6A0A5C4827D216F63B7CDE838E9FDB7EEE655B48D4B5FDF6C4D4E1DF926CCC2109CD64240A325DEA1C98FB8B9DEAB388654D40FF7111624748AA4AE01B7BBE619C8B3ECCB159D52F1FEB7A4124BF07EE8E341C1E8065ECA528D6FA2F5FAAA206DE4C4D76F49EAEEACD1AC127896E048C95CDB9498973C6D484300E8B51847B92A960C41B080F7BF"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"EF13A9E29E00E7A8FA99BC8C88820C6A","Version":"2.2.9.3","Size":4653056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"770A58E103542945D4D444712C81E25F39D164A32A3BFE4E0D0F564DA5DB1A137A8BFFADD89FCE02BF2FCF8322D03631AD5C28F276504F17A5D429065A395DAD19B2C724A0654D1728DFD1A6EB40B490717682D282700D3D4FD7EAFE0AC7238A75A0CF9356A74C7FA2D82ADF7ACC2B9CC115AF9A8365EFB675954F69DA2524FC7E4792299E1A342DDFBBB6FA526566D830DC5CDE5D72A3D3ECB4297ACBB6E5C86C2DBF43F35E319670E11F104F6DED854034E65A83E2048ADE2ACAD0EA0F18E2BE9979E1ED390E46EF39A55BD72562D16BF2D0BACBD097D23046ECBE3C98FD35D8D556490144CC552940402CBFE1CD45C6A244533EB75E2A0E5A6D953B161364"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"96F3499DDD05BD4F9DCD137EBFEBE7AB","Version":"2.2.10.1","Size":4751360,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6BE054A1E45276089A98E4BFF3351DD416E5F69C081AC0B0B9BB6D2B9F10DF4D5D290EDA01CCE041455952246F2AC66869900F7348373F2AB8AF30D6A3F1E07C81D70F718B9C90D9E3717DBB8C277049C5B321233C222CDF4CD06D0D0F5486F1AD33405AAE05B724200979BF3603E8493C5845DF6E2C929602D3D40462037398C38F8466D5C10133BE85F572BC04F5589EAB76B2EAE44B70125AAB7D3A4377BDF81646D72532E1B3A73DF7C0BD7DF1B40A2925D6A8989025AD153ED896E3D26470A72CBEDBC2F654E76905DEEA240296873157C293B1417909CEBF448289488E2083468DD0DD407BFA1B9DEB8AAB5144FD8A9E3E0F278D990E6BAEE9C8078003"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -140,7 +141,7 @@ A、常用功能请求：
 Open打开文档(不指定时新建文档) 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
-打开远程文档
+打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
@@ -358,7 +359,7 @@ Content 类型为0时系统文字水印名称 类型为1时文字水印的内容
 {"req":"Office_InsertWaterMark","rid":40,"para":{"Type":0,"Content":"%E6%9C%BA%E5%AF%86%201"}}
 插入“TestWaterMark”的自定义文字水印 TextEffect文字效果(参考MsoPresetTextEffect定义) FontSize字体大小默认1自动 
 FontBold是否粗体 FontItalic是否斜体 FontName字体名称(需先UrlEncode编码) FillColor填充颜色默认RGB(192, 192, 192) 透明度默认0.5 旋转角度旋转角度默认0
-{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":0,"Transparency":0.5,"Rotation":0}}
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":"#C0C0C0","Transparency":0.5,"Rotation":0}}
 插入服务器上的图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
 {"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Width":15,"Height":18}}
 插入本地图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
@@ -404,6 +405,24 @@ Flag 0或1成功 大于1保存失败 -1 退出时有修改没保存
 {"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}
+
+5) 文档打开失败通知
+File 本地打开文件路径
+Err 错误码
+{"event":"WORD_LoadError","data":{"File":"","Err":0}}
+{"event":"EXCEL_LoadError","data":{"File":"","Err":0}}
+{"event":"PPT_LoadError","data":{"File":"","Err":0}}
+
+6) 服务器文档下载进度通知
+Url 下载地址
+Percent 进度百分比
+{"event":"OFFICE_NetPercent","data":{"Url":"","Percent":0}}
+
+7) 服务器文档下载错误通知
+Url 下载地址
+Code 错误码
+Desc 错误描述
+{"event":"OFFICE_NetError","data":{"Url":"","Code":0,"Desc":""}}
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。

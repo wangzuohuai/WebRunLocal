@@ -20,18 +20,19 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1都支持外，其它只有WPS文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止保存和另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
-	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	Edit代表编辑权限(除只读1都支持外，其它只有WPS文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Hide代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath代表文档查找和保存默认路径
+	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
 Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 v实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：11是启动金山文字 为12启动金山表格 为13启动金山演示
-Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作(个人版不支持)
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+Option：11是启动金山文字 12是启动金山表格 13是启动金山演示 15是Adobe Acrobat的OCX控件打开pdf 16是启动WPS PDF程序打开pdf(不支持OLE嵌入)
+Version：0 OLE嵌入方式加载 1完整加载支持(支持文档对比) WPS个人版不支持文档对比及导出OFD文件等操作
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -47,7 +48,7 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP�
 自动识别当前浏览器指定位置自动适配网页大小启动：
 {"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"11","Open":"D:/Zorro/test.doc"}}
 
-打开远程文档，可将Open参数改为类似如下地址
+打开服务器文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
 
 启动后会先后收到三个JSON数据包
@@ -110,14 +111,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"34F2205477DDCD36E7E7486C855DDC8A","Version":"2.2.9.3","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3341AB24B911709EDF4D4BAA39DF02510C1DBACBD918B2C674D65FCFA437B41949C675362BF2B1E060C0AABD19CA99F37D3BB4754C7D55A0876942ED5DC0314C1453BE6A8784908A95EF4A159F943088A7B6086022F1899655AC5BD2B4B14FA0779F397E21979954F28E1C62B4DEF3229408EAEF17DC6C2A6BB15CB3B8A19F01BE349BEC1F5CD3426B82BFE01829628490094D314F456BBD9257D80342372C1A6D9C21BC9DB7130EDFADEC972EDEFCAA64E97AD2CA6819C697E67BB08044830B62B5C43B010A44A37ED23131FB626AA0D540872E4C6DF7ADC0E010256F30EB76DF06FB7C2A42970CD89C5BAE8375FDD8584B5FAA43105928D3C95A1F605C775E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"2D734EBB6B9CA960AB862FB223A722D4","Version":"2.2.10.1","Size":4751360,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"41ECFF1BD80E9AB44C40601447DB2AD3A6AE138882B319A8782007AAE368254420D8FFC4D60D12A151294E235C52BF20909E07E6B30EB8E30F02C55E89ECAB66CB031ADE5659C17659FF27EA62C6BEFDB61AE81428DE701F365C7933F4DBAD70E49D904D8272863E8113B518FE22DB5B761DE9E78DEAD58193D9AE62E257BB7822191C5236628A558B9705624FDD009CF6004E1B4F160959866976F51C8D37BD67351DE14DAD968C2F59F5E01D430F15830112B287D3BDF9F1719E991712CF8E74B2CDA5C7F152EC452ACBD6DA3007733E475D3DC07AF529921A12A1DC917809A70CCED87CF999807B3C7B9F1720846CD65E52758C4093AC47E70B32E795C969"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"1FD531503B8DEC603BAF755AEDB12FD3","Version":"2.2.9.3","Size":4587520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"08C8D59DB40F2B25594595AE1FA19779B0C3A4DCFADD0584FB14CA5443632C3C3E935C7ADF5C7F2B8863953A1859A9D8E6CF3608273C824D734B2EFDF608D9D4BB8508180E8A160A97D07806655E57BE457355EC9E31ECAD2B5808497263126B88B24881778F04ECAAF7F3764C452B01B7F8726074B3AFB07E2DBE817F581FEA7DE0987CF71F9174D9E59514A77C9ADF70A1B809E396B8E7D1A324CEDA6D7F744301ED8DB2567522923E6CA337B63AEA8CD0027BD76B0B25D87DFE2024893DD326DE7FA1355D1B43261E68B9EDD59E7D60E87998FEFEB9F9B7922892183736A27B0B27B6E1019E2753EC7621F897B08F03B2381C9207A30188BE06D2647C63E6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"EC7AAA1157C12C5A04589F152A845901","Version":"2.2.10.1","Size":4751360,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"06BA4E2C1320368F08F94949CE5BD6ECF45A44E2B815480F1D1132E3FFF811A828E5000895F6E2FDCDDECC8C69533501033DD6FEA2652980E8971E156ABF627D7B96D4CCC30952BB08E14523BAA4BB20DB1381DCC75687108ECF41E9EF2ACD99A974419A5FA29B9025D1AE41F9F2A97D3E0CB551E28A3E5F1D0C929241F544DFC87FBD214090C5CABFAE16D23926D2E50E72840178BC80CDF8A6A193C5CDAD304E8DA29FDECBF741FB40A7FB63875EC4245B86C4FC8E22EC5BF8CA7759EDC614C255485521AED7A44255A50692A297D5A74BAE10C175B9EB65E59CDFB2273049782A3544DE8EFCC896D0A9BF45BD62CCA7ED44FD9320EE386DF9D69DFCA6CDD3"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -142,7 +143,7 @@ A、常用功能请求：
 Open打开文档(不指定时新建文档) 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
-打开远程文档
+打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
@@ -357,7 +358,7 @@ Type 水印类型 Type默认0系统文字水印 1自定义文字水印 2图片�
 Content 类型为1时文字水印的内容 类型为2时图片文件路径或服务器水印图片下载地址 如有非英文、特殊字符或符号等，需要做UrlEncode编码
 插入“TestWaterMark”的自定义文字水印 TextEffect文字效果(参考MsoPresetTextEffect定义) FontSize字体大小默认36
 FontBold是否粗体 FontItalic是否斜体 FontName字体名称(需先UrlEncode编码) FillColor填充颜色默认RGB(192, 192, 192) 透明度默认0.5 旋转角度旋转角度默认0
-{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":0,"Transparency":0.5,"Rotation":0}}
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":"#C0C0C0","Transparency":0.5,"Rotation":0}}
 插入服务器上的图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
 {"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Width":15,"Height":18}}
 插入本地图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
@@ -403,6 +404,24 @@ Flag 0或1成功 大于1保存失败 -1 退出时有修改没保存
 {"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}
+
+5) 文档打开失败通知
+File 本地打开文件路径
+Err 错误码
+{"event":"WORD_LoadError","data":{"File":"","Err":0}}
+{"event":"EXCEL_LoadError","data":{"File":"","Err":0}}
+{"event":"PPT_LoadError","data":{"File":"","Err":0}}
+
+6) 服务器文档下载进度通知
+Url 下载地址
+Percent 进度百分比
+{"event":"OFFICE_NetPercent","data":{"Url":"","Percent":0}}
+
+7) 服务器文档下载错误通知
+Url 下载地址
+Code 错误码
+Desc 错误描述
+{"event":"OFFICE_NetError","data":{"Url":"","Code":0,"Desc":""}}
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。

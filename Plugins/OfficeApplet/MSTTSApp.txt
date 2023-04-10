@@ -1,0 +1,147 @@
+微软语音引擎小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)网络标准版开发，提供不限数量的文本朗读并可保存为语音文件等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK(牛插)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况；
+4)、此小程序不能运行在系统服务下，需要修改ZbaConfig.json里的NoService为1后安装，如已生成data目录下的此配置文件，需要同步修改。
+
+2、安装升级测试：
+1、安装MSTTSApp小程序
+请在测试网页输入框中，分别输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"MSTTSApp","PID":"MSTTSApp","Date":"2023-04-11","Desc":"MSTTS applet for PluginOK","DownAddr":"http://local.zorrosoft.com/Files/Net/MSTTSApp.pid","MD5":"178091F4037CEAA86AF273B77DCC0A05","Version":"2.2.10.1","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"6473C5D70B63182EA68C1EAD773B46ED61CE1B9800149D06B7E1933AC289F174AB9751577FE88283F17A93DAFB7C1791A95D45F6D08FBA5FB800976AB2C3089B02B6D9984F46C04A2E79FADE3371DA74F2B5B2D8C7AA34343583CE68B9108F9E0BDCCA41A4297CD6AC78631282D5C433CD2D94BA5D549F29E68BD7681B6282E88DF97EA0300DFC873AF167273EE80F85A6591D753076EEF3EB180AB5B80D92F7120B4FAF096EE915ECDDD6F012558AF652D8B6311B6934B8D0BBADE3F98EFBF53C6BDC96D192FDE36F9BB411046AACD30D1A06D5937BE50FC49237ECF78DC1A3C4A75E63C5FD5F877731A71AC559735B79D86A57536BD5FCEB602AF42E2315F0"}}
+
+3、范例小程序升级请求：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"MSTTSApp","PID":"MSTTSApp","Date":"2023-04-11","Desc":"MSTTS applet for PluginOK","DownAddr":"http://local.zorrosoft.com/Files/Net/MSTTSApp_Update.pid","MD5":"FE3958F372F50B21BF72A27E1BB7BFA2","Version":"2.2.10.1","Size":491520,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"761CFCF0B932ADBB780E0EEFC327A50A05BE27BF86DE8E2A3FFDAF8F422035B1390E9A8BBBA7971D9925C0DA0DF903792434E18B7A6256B2AC31DAC4801736CAE6487421C221CDDB55E9B5DAC0DA62E14792ED04E51D5246A3017BAA63592AEA6EAD93786D4B68D30BAA8D4031AFC28AEF9DD96CE15FA607AB0B79A6834B1A3B7E0027123ABEDD5B92E442421D1192EF046573880B12436B61AC6FC56E2116A9D1AD1AE3E5D95C23DD908EEBF4E7AB320D9A41FB30263AB07D395BBE4FE089188E4ED8C13B51D8548D3E013E7E8D3FE275FA51C75E56F7873B8D87183A7B395E618EEB3D44839908A55DFCA4903BBE2B2C3E32B1344257CCB06F46395287197C"}}
+
+4、卸载小程序：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+举例：
+{"req":"Plugin_Remove","rid":50,"para":{"PID":"MSTTSApp","Type":2}}
+
+5、前端请求卸载中间件：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+举例：
+{"req":"Wrl_Remove","rid":22,"para":{}}
+说明：连接主服务后可执行；
+
+6、PluginOK中间件升级：
+
+{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件网络版升级包","Date":"2023-04-11","Desc":" 1、改进中间件对高级版内嵌网页小程序全屏显示及恢复处理效果；2、改进中间件高级版内嵌网页小程序中再次嵌入其它EXE执行程序窗口运行效果；3、改进中间件网络版与授权服务器通信处理机制；4、中间件针对Office网页组件OLE嵌入提供代理进程支持，提升其运行性能及实现多文档操作；5、优化RTSP多引擎网页播放器对VLC4的兼容性...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"FBF726F5DBC868AA16F4401B9DA35802","Version":"2.2.10.1","Size":13238272,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"45E66BEB187A03E4390918CEC92E3D8A48FE04CE03B6942DA0EC0153B30E7430C211686E3F66D93DEADEBF41EC3A1433A72B7CB0D67315B58D9E36BB14A8E1067F5A34B3AD17664A2CDB98C147F8153885C3E329B3B2631990E97EC77E157C07EAADAA6DEBD127224331A82FA674C99113ACBBACC9ED3D124635528A5A718EF2B742912F44AE5DD1938D7556A74D03D52D98092BDC29E3CEA23CC12BFA9DCFC2CA1BEB5F107A64BBF84AE3D6B9BBFBDC9FC4453CEF157CA493618803BC6F6EAE0BC249AF3190F08E378DA77161B6A44EA87D97D59771BCA58190339DF19FBF9C1023CE0504B202C13648D7CB1D3D7D07319C32F2FB58BD7FB782477419E49E34"}}
+
+7、连接请求微软语音引擎小程序服务：
+说明：以下功能请通过Web Socket连接后可执行，如默认侦听端口不是80(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+
+HTTP网页在线测试：http://local.zorrosoft.com   HTTPS网页在线测试：https://local.zorrosoft.com
+打开测试网页，输入地址：ws://localhost:83?sid=112&pid=MSTTSApp&flag=1 点击连接；
+
+支持的协议功能如下：
+A、朗读指定文本
+Text为朗读内容，也可以是实际的WAV文件来播放 
+Type为朗读类型(1异步，0同步)，仅对朗读文字有效，播放WAV是同步方式
+指定OutFile参数时代表朗读文字时自动录音保存到wav文件中
+Text及OutFile需要先做UrlEncode编码
+{"req":"SAPI_Speak","rid":1,"para":{"Text":"hello!","Type":1,"OutFile":"D:/Zorro/test.wav"}}
+
+返回内容 {"ret":0,"rid":1,"data":{"Ret":0}} Ret代表是否成功
+
+B、暂停朗读
+{"req":"SAPI_Pause","rid":2,"para":{}}
+返回内容 {"ret":0,"rid":2,"data":{"Ret":0}} Ret代表是否成功
+
+C、恢复朗读
+{"req":"SAPI_Resume","rid":3,"para":{}}
+返回内容 {"ret":0,"rid":3,"data":{"Ret":0}} Ret代表是否成功
+
+D、停止朗读
+{"req":"SAPI_Stop","rid":4,"para":{}}
+返回内容 {"ret":0,"rid":4,"data":{"Ret":0}} Ret代表是否成功
+
+E、设置朗读音量 范围是 0 - 100 
+{"req":"SAPI_SetVolume","rid":5,"para":{"Volume":50}}
+返回内容 {"ret":0,"rid":5,"data":{"Ret":0}} Ret代表是否成功
+
+F、获取朗读音量
+{"req":"SAPI_GetVolume","rid":6,"para":{}}
+返回内容 {"ret":0,"rid":6,"data":{"Volume":50}
+
+G、设置朗读速率 范围是 -10 - 10
+{"req":"SAPI_SetRate","rid":7,"para":{"Rate":1}}
+返回内容 {"ret":0,"rid":7,"data":{"Ret":0}} Ret代表是否成功
+
+H、获取朗读速率
+{"req":"SAPI_GetRate","rid":8,"para":{}}
+返回内容 {"ret":0,"rid":8,"data":{"Rate":0}}
+
+I、获取当前语言引擎名称
+{"req":"SAPI_GetCurToken","rid":9,"para":{}}
+返回内容 {"ret":0,"rid":9,"data":{"TokenID":""}}
+
+J、获取所有可用语言引擎名称
+{"req":"SAPI_GetAllToken","rid":10,"para":{}}
+返回内容 {"ret":0,"rid":10,"data":["TTS_MS_EN-US_ZIRA_11.0","TTS_MS_ZH-CN_HUIHUI_11.0"]}
+
+K、设置当前语言引擎名称
+{"req":"SAPI_SetCurToken","rid":11,"para":{"Token":"TTS_MS_EN-US_ZIRA_11.0"}}
+返回内容 {"ret":0,"rid":7,"data":{"Ret":0}} Ret代表是否成功
+
+L、指定WAV文件，转换为文字，可能多段文字，事件方式返回
+{"req":"SAPI_GetWavText","rid":12,"para":{"File":"D:/Zorro/test.wav"}}
+
+事件返回，可能多个：{"ret":0,"rid":12,"para":{"Text":"你好"}}支持的协议功能如下：
+A、朗读指定文本
+Text为朗读内容，也可以是实际的WAV声音文件来播放 Type为朗读类型(1异步，0同步)，仅对朗读文字有效，播放WAV是同步方式，指定OutFile参数时代表朗读文字时自动录音保存到wav文件中
+{"req":"SAPI_Speak","rid":1,"para":{"Text":"你好","Type":1,"OutFile":"D:/Zorro/test.wav"}} 
+
+返回内容 {"ret":0,"rid":1,"data":{"Ret":0}} Ret代表是否成功
+
+B、暂停朗读
+{"req":"SAPI_Pause","rid":2,"para":{}} 
+返回内容 {"ret":0,"rid":2,"data":{"Ret":0}} Ret代表是否成功
+
+C、恢复朗读
+{"req":"SAPI_Resume","rid":3,"para":{}} 
+返回内容 {"ret":0,"rid":3,"data":{"Ret":0}} Ret代表是否成功
+
+D、停止朗读
+{"req":"SAPI_Stop","rid":4,"para":{}} 
+返回内容 {"ret":0,"rid":4,"data":{"Ret":0}} Ret代表是否成功
+
+E、设置朗读音量 范围是 0 - 100 
+{"req":"SAPI_SetVolume","rid":5,"para":{"Volume":50}} 
+返回内容 {"ret":0,"rid":5,"data":{"Ret":0}} Ret代表是否成功
+
+F、获取朗读音量
+{"req":"SAPI_GetVolume","rid":6,"para":{}} 
+返回内容 {"ret":0,"rid":6,"data":{"Volume":50}
+
+G、设置朗读速率 范围是 -10 - 10
+{"req":"SAPI_SetRate","rid":7,"para":{"Rate":1}} 
+返回内容 {"ret":0,"rid":7,"data":{"Ret":0}} Ret代表是否成功
+
+H、获取朗读速率
+{"req":"SAPI_GetRate","rid":8,"para":{}} 
+返回内容 {"ret":0,"rid":8,"data":{"Rate":0}}
+
+I、获取当前语言引擎名称
+{"req":"SAPI_GetCurToken","rid":9,"para":{}} 
+返回内容 {"ret":0,"rid":9,"data":{"TokenID":""}}
+
+J、获取所有可用语言引擎名称
+{"req":"SAPI_GetAllToken","rid":10,"para":{}} 
+返回内容 {"ret":0,"rid":10,"data":["TTS_MS_EN-US_ZIRA_11.0","TTS_MS_ZH-CN_HUIHUI_11.0"]} 
+
+K、设置当前语言引擎名称
+{"req":"SAPI_SetCurToken","rid":11,"para":{"Token":"TTS_MS_EN-US_ZIRA_11.0"}} 
+返回内容 {"ret":0,"rid":7,"data":{"Ret":0}} Ret代表是否成功
+
+L、指定WAV声音文件，识别为文字
+{"req":"SAPI_GetWavText","rid":12,"para":{"File":"D:/Zorro/test.wav"}} 
+事件返回，可能多个：{"ret":0,"rid":12,"para":{"Text":"你好"}} 
+
+8、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

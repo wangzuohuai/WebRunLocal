@@ -99,14 +99,14 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 1)、请求安装ACAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"B004D8CD4AA07CED5D7E789A6782A0EE","Version":"2.2.9.1","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1E463997108C0BE06464BEB5549BD340C26DFE2BAD1C2087B1D70D9340FF36DCA9A01193034854A07F147E713C89789A2440D70B664F2F3878AE84FCCA23C1D9DB80E6544D4530A6C7A084DE732F01349168197E88F764A243A3A181C775F8905CE15E3529C73FC8B01DF9B77ED0D95B7C853909D8406FD79884C6D7B58A3420026D997D852FCDCCBAB123467494D69715600EA0FF1C6BA03A86FAF11FAC94C6EB81D4B4D66149A88AD141E1CC0464F7B712D8A24E79AD04D24202DAB9517FF34337B4A3E3CE96FB98731582D2C53319FDE1E30B0B1C2CE8A8C35D14F38C6FBD6B44875F08809AE55F83378C344707763C996536F144C7C8C587CEB1B14EE263"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"A7868F953D5F5C9F5EEA19DA129FCF58","Version":"2.2.10.1","Size":3670016,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0D7C6AA93CDE72A535FC08AFC7A69F1822BBF5906899B3B1F29D70C317651BDB4C82BC521BE2869B812FA9AA54B039098C6CFB53A8BB908A03F08261322722DA4A50E9CDC1AD4C140B0DC04A0493C0FB2D883FC7EF4FF53496B9839A1A57F375CA7619EDB7101ED211FC61AF4EC7D7BD2E66741C19064395403AA9D5B70795434E3F3D1EE2DA0BD5C23025B3B59B3A8C3CD169C7F5A3AF8FB69BD72D80DDB4991A102F8BDD2A2A545CAC559D0175812F3523E5A7F9C3BB3243726E9958B787B5636D4A17199C4A73224E21D0B6184DDFEEE062C5D43E8746BCDDFC842873604C03320B0FE97FDA000C68636AE24B36A7CF7847122073A0D843BB933205FD2CAC"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级ACAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2023-02-08","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"F0AF346733E0FF09D0A147E5D8BD5417","Version":"2.2.9.1","Size":3473408,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9412CE73C2912B24A4FDD6BAF448E6AD8BA8933424B13AB5A8D26C8D5BABACCC1B56588664501A460F9FD7D41D763E1269A02C996BCA97F32385C216531061E5EEFF17E2DA83E6EBA2C8842C20337DBB31CB6F1E89D1976E8A48FFFE2A4069DEB9BAA85CE868A97C438FD31C5F69992AF82456E91E953DF63EAF536E06562D3E594517ABA5ADD92EF49AC8C96F84EE6F6FDF139FF82905093AC8A96DBE7E1C51E5FB77C8A073FE310F7990DC8E83B208D545DEFC9213AB40692759B0D501B2B14E282441689A06C854EAC7392DE82F47922EFC95AFAE31FBB888069EA7E59C65D0910A5E4C63A17C39AA948908384C5C48E4A21FF697E5F17609B4944DA0B70B"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"DCC50E9C771F4718F19B3EF52A75B906","Version":"2.2.10.1","Size":3670016,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1CF76E7984247BD404B8AEBCBA3E6D609911A11D3B50DF32D2E2B3D96940C08B3469879AC25E40B37255F40D5291ED1F76218B3BAB53AF7DCEC16943C9823D0A3C0CEF9DCE961C71C12EB391AA910A25CCD41508B044F915C68AD81D30B06711E258B04339F6F0127B75B4CAB4E725CF0E4D6BF29F958B6B226CBD0E2F2BE1224CBA23AC95854608F258311FE772D16BE2D8B3825540B1C6ECC84DF6BBCCF64BF102D7B14B10731AA72C81EF1E23F37BC0E838A2436C2CB36FBEACF2BB03EF98FCCADFCBB11E86F02D8C1F4D54C4BD5E3D678D0DAF4C057C0D9A67D720053C50343B47E9DD75A702863071AEBEA112C9A8F773FE35DC0F17D8BEC5578D6A7114"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -148,9 +148,11 @@ Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 {"req":"CAD_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/upload.dwg","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
-6)、打开文档转换到PDF，适用于autocad软件
-SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如已打开可不设置
+6)、打开文档转换到其它格式文档，适用于autocad软件
+SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如操作当前已打开文档，不用设置
 DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先编码
+当选中某些图形元素时，支持转换为bmp、jpg、png、wmf等文件
+支持转换到pdf、jpg、png、dwf等格式文件
 {"req":"CAD_ConvertTo","rid":6,"para":{"SrcFile":"D:/Zorro/test1.dwg","DestFile":"D:/Zorro/test1.pdf","PW":""}}
 返回: {"ret":0,"rid":6,"data":{"Ret":"0"}} Ret为0代表成功
 
@@ -173,6 +175,12 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.dwg","Url":"http://local.zorrosoft.com/Files/test.dwg"}}
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+10)、打印文档，适用于autocad软件
+SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如操作当前已打开文档，不用设置
+Count 打印份数，不设置默认1
+{"req":"CAD_Print","rid":10,"para":{"SrcFile":"D:/Zorro/test1.dwg","PW":"","Count":1}}
+返回: {"ret":0,"rid":10,"data":{"Ret":"0"}} Ret为0代表成功
 
 5、事件通知：
 A、

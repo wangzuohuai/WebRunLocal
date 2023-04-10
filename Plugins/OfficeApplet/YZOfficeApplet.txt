@@ -19,18 +19,19 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1都支持外，其它只有永中文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止保存和另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式
-	Hide代表隐藏的界面元素(目前只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	Edit代表编辑权限(除只读1都支持外，其它只有永中文字才支持，4和8只有在OLE嵌入方式下生效 其中2、16、32、64、128互斥) 1只读方式打开 2修订模式打开 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档)
+	Hide代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User代表编辑文档的用户名称 
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath代表文档查找和保存默认路径
+	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
 Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：21是启动永中文字 为22启动永中表格 为23启动永中简报
-Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+Option：21是启动永中文字 22是启动永中表格 23是启动永中简报  25是启动Adobe Acrobat的OCX控件打开pdf
+Version：0 OLE嵌入方式加载 1完整加载支持文档对比操作 Option为25时Version自动默认为1
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -46,7 +47,7 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持远程HTTP�
 自动识别当前浏览器指定位置自动适配网页大小启动：
 {"req":"Wrl_OfficeApplet","rid":7,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"21","Open":"D:/Zorro/test.doc"}}
 
-打开远程文档，可将Open参数改为类似如下地址
+打开服务器文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
 
 启动后会先后收到三个JSON数据包
@@ -109,14 +110,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"8E0AB89ABA8FB5AD2B2B757B53A8C591","Version":"2.2.9.3","Size":4128768,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"68907D9AC7B139A6A18ED2DC5681E4205504223821042E7301E8A4B7FD4B99417B9E98EF8EFBC77AE1C552833A17088A51F02CC0D623EF6851007084BF64CE57C12AB2610808119BA0772B631141977DE2A8A93435C8CCD523CD47F093EC6F13B3065AD0F2828AE5A43A1E6D4DE88E258150EADD55F43DBED83DD2C432A3BFFDDD24CC08B597B7DCE7CE0B320EE7DA9188F1F6A7B002D47DDBABFACF0E895F9FD35F0A845D955A1B5B04E0266F030CCBEE783E0B6A2BF188AD81D614F494CC4F007178C96A71B68FA5A505DD9C8DE4F545A758E5A34CB990B540317EA260853985CFEA756F7240A0A293BF53427368873C4DD9BC209BB5C80EA0F4FA48D3BC61"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"516E89ECB5A53BD87C90926D07E5C0C5","Version":"2.2.10.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"887CBF00C5693379708F26852BA7D342E6C0A85EA84ABBCCF0D04AB1716C1363DF9ADB758FF0275AB854109597EB1211F41EA9E8CAB9122936AFA6593C3CC00B0CE7B369319764175292DFDD37A7D13587D60BB397A80B6D4AA46872892C55D6D2376D55F22D2E2C42A4DCCC16F67FF56C7F78CAE20BDD1FD2AED9D3ADCF0FACC985FA69F1B2A1AD6DBF2A0A267084F5DC57F10B25FB710A1E3FB87D1BAB1A4B5F55EB2019DD80C3093D277CFF7261456105CEF284AC5A9A0C2BD789F673DC2DF9013188C730B376AB984D257E6997D09BA84F01439AB74E10D731A22122A5D2651B9649237963D63EE68EEE66BA6B6C33834410EAB8844F640825470C40515F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-03-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"19D128658648AEC57A4C4B7BF3E26CF9","Version":"2.2.9.3","Size":4128768,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3D375A5D8D54EC2E314CE9E4629CBF6D1441EEFF7EE2FB3CE6351EB898E4182CE3CAD7229B3833EDFDD216938E87273A623D22B2209F20B7E2FF17950C840857BC63738C1850B693A955E420796AD3D4CA9DB1BE81E0B1D0855DBE9C0817091A1E6AFD99388916D8C99E163E08A5FD29FCD336E3DB632C8DA3252EA070F76E728F79C6D574C3CB9EB016E3922777FB60304EA6159519B2ACB901EEBD3DB075FA9C10313AEA39D405EA493999E9C8F04D8F6888020216DC388079D76A3A41AB7639401B15405BD9129F0563A180B0FFE902FFD861D9A81625AC58924C442BFD7FD388E3BA500E623DBBBAAB472BF850C0924B92553832FCA30B9FD8728F17C246"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-04-11","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"2A9DBA0016BECBA6753C0A40978C1EA3","Version":"2.2.10.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"60B77B40ECB3D65BC4E1F8C7E0B40DFF1CCA4ABCB76DD019E4375CAC97C642BF36F8183FD33A59E1D7B533310E62481D2D68F998FAAE89BECD4D792DF901CAAB2ED28FD143D8223B878E86E8B40D2539B9648E40D90F038C8CB5B831652FA834A584F1AA757A194730DC359C82066AA9EDAC7ED59867BC32711F3DB1074AA027C89822544A2231815807FA86C30BA80218155F05B5489E0D7BB05F104DA384D79D5EC8933F3AEB25783991052E7C9ECC2A5BC6BB8D7CF5B342288ABEA47A0DDA03246EBE877D04BF86DFFE67F8196875F74ED3CA0826601722CA2B3274096F86ADF15CB86F03AE90F1BDA64B0A8585408A305098D5C2822BDC57320B9F7346D2"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -141,7 +142,7 @@ A、常用功能请求：
 Open打开文档(不指定时新建文档) 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
-打开远程文档
+打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
@@ -354,7 +355,7 @@ Type 水印类型 Type默认0系统文字水印 1自定义文字水印 2图片�
 Content 类型为1时文字水印的内容 类型为2时图片文件路径或服务器水印图片下载地址 如有非英文、特殊字符或符号等，需要做UrlEncode编码
 插入“TestWaterMark”的自定义文字水印 TextEffect文字效果(参考MsoPresetTextEffect定义) FontSize字体大小默认36
 FontBold是否粗体 FontItalic是否斜体 FontName字体名称(需先UrlEncode编码) FillColor填充颜色默认RGB(192, 192, 192) 透明度默认0.5 旋转角度旋转角度默认0
-{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":0,"Transparency":0.5,"Rotation":0}}
+{"req":"Office_InsertWaterMark","rid":40,"para":{"Type":1,"Content":"TestWaterMark","TextEffect":0,"FontSize":1,"FontBold":1,"FontItalic":1,"FontName":"%E7%AD%89%E7%BA%BF","FillColor":"#C0C0C0","Transparency":0.5,"Rotation":0}}
 插入服务器上的图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
 {"req":"Office_InsertWaterMark","rid":40,"para":{"Type":2,"Content":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Width":15,"Height":18}}
 插入本地图片水印 Width显示宽度(单位:厘米) Height显示高度(单位:厘米)
@@ -393,6 +394,24 @@ Flag 0或1成功 大于1保存失败 -1 退出时有修改没保存
 {"event":"WORD_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"EXCEL_Save","data":{"File":"","Type":0,"Flag":0}}
 {"event":"PPT_Save","data":{"File":"","Type":0,"Flag":0}}
+
+5) 文档打开失败通知
+File 本地打开文件路径
+Err 错误码
+{"event":"WORD_LoadError","data":{"File":"","Err":0}}
+{"event":"EXCEL_LoadError","data":{"File":"","Err":0}}
+{"event":"PPT_LoadError","data":{"File":"","Err":0}}
+
+6) 服务器文档下载进度通知
+Url 下载地址
+Percent 进度百分比
+{"event":"OFFICE_NetPercent","data":{"Url":"","Percent":0}}
+
+7) 服务器文档下载错误通知
+Url 下载地址
+Code 错误码
+Desc 错误描述
+{"event":"OFFICE_NetError","data":{"Url":"","Code":0,"Desc":""}}
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
