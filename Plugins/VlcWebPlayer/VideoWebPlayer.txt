@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-05-16","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"9B66533EEA0B2AB349D9DC7906112FE1","Version":"2.2.10.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"359B09F5DA2494492F65E8E592F835C08001A23DE4761AF9F2FFE999ECD82EFFFDB35F9B25EEC6406FD108C6D5187DA6C97013B47C0917550511A69C45C59067BBC52B1022ACDBB3EF59D556D6F9A653BE8BF5494D4B2F96B991009480DE1EA838A439CF4D3ED61C8CC0A6C0A335DC202475853DA2E980442D0E5A00CF6115C9CBC262C21139FCFDE3C36913311B1D773DDBE5576CF3D77FE9323C74C63C43CAB90DF877C5E19CF04D66BF8A3278794C26282D8F2DF75F4E8F9BFEFD9925AB62B1D6AAEF925CAA9CA873DE2E0F72A0EEA92DC83AEAEB6E3B472A97831BD94385524015766A024628E5EE0EE20CDF3386A1743CD5E2CBEA33BA33860027C28828"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-05-29","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"B5E163305F99FBB77F45A930606D2BFD","Version":"2.2.10.5","Size":5505024,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5FB4F3505E8EF272E68F81A29B965458ED28D26FBF14A6A3982782736B697C8213C0FE2003D11544EA973C195DF8BC2F8DF230AB87F86FDBDCDB9F4BD7A043862F1227D9E17F4AF8D77E5AA3D450FBF63F0210BD1369DC269E062E6FF572C17827E5C882CEEF72CFEA1693A6C073094EE6ECECE30FF66070B6AC891D67F7A1986D7B8256F389AE137064D459933F6E7219A864E970EA778086E9F4D05D201BD4118D0A8826083C0B47F4204F06936A70BCB5C87C906D412D5DFFC060A27DCD07197288A53355CC99F91380229377054BA163073BDB1CD0631F831CFBF54CCF3A7D81A5E0B29BBAD32C71729108A4E79DBE43BD0B70B4E74E652702CFA3A0DA41"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-05-16","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"66FBC884E7DF512B9AC2F37240F43F8E","Version":"2.2.10.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"044CDE1717C16AC18BFD45D77928EA09986C56BE496A2B2D8F6C1F99BD517FAFBE2F299512B077A8F90FD22CF7EB7B97B06E952730CFDFB04AAC66EF8D1A3744AE36D6DB6FF3905FA5A4BAE492855E761557B4B756950F16FBE00BAE42653D3B8C6405D515B0050BA5E88047A9EBB3FC125F344220C9D9D0295BB02CC366FC7B6691F8904DF15384E97BB32ED78EA79E054550DF0A9ABAC5A8D4492816B37847BFDF15407B82BCEBE0ACC47CD47EEF9841428F12D3C0B5E9249C2AD170DD35DBCA473FE2EF92BAED3EEAED2854D9DB10E25C9DC0A02490EC1DF250314696C94BA687D61CD3D17A05D658ADD0743D47A74172B6ADBC45FF29FFA951FC3CFFEC58"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-05-29","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"BAC65FBCA137A7B3E8192F1EB59759EF","Version":"2.2.10.5","Size":5505024,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0E59BCDB558F8ADF1565DDC5BE23D0598E5574833C34FC7F1755186C9A0D1C8BD92AF2759FCAF8EE726A4DA6493671275336DF90658CDC0B485DFADD2AD56DC0C3ED6C801464DF7108AAD569B3442D37289A0A1A3A42DB42DAB460C5189F9C87E4EC63E895A24CD2EF7ADFEACD56F9D2DAEC15828D5860D23885EE4AEB49F433E5DC8BB406266BE4C437C5078E105292FA4B62B0759F760A37678A86C72526925B7BB47A71D1FF0970BDEDFD0B39CD0DE5BBC2250D9DAD13576F39285827815AB715550E83F1A67E1C8AD26DB2EA9A311DCCA7F1CF30DFEFD45CC8F938DC8E15C229776F1854B8120A7333BDE9C5312CA94C65AD16B0E9AA40A79F6794877A52"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -642,6 +642,17 @@ Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取�
 Init 初始化
 {"req":"Player_FloatWebInjectScript","rid":121,"para":[{"ID":1,"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"},{"ID":2,"Init":0,"Url":"if%20(window.parent%20!%3D%3D%20window.top)%7B%0A%09delete%20window.open%3B%0A%7D"}]}
 返回：{"ret":0,"rid":121,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":121,"ID":2,"data":{"Ret":0}}
+
+82) 指定多个同类视频文件进行合并，合并结果通过事件通知返回
+Type 合并引擎 1:FFMpeg
+Src 需要合并的原视频路径数组 文件名及路径需要先做UrlEncode编码
+Out 合并生成目标 如设置了需要先做UrlEncode编码，没设置自动在默认路径生成一个mp4视频文件名
+举例：
+请求：{"req":"Player_MergeVideo","rid":122,"para":{"Type":1,"Src":["d:/Zorro/test5.mp4","d:/Zorro/test6.mp4"],"Out": "dest.mp4"}}
+返回：{"ret":0,"rid":122,"data":{"Ret":0}}
+事件通知合并结果 
+aid:对应Player_MergeVideo的请求rid Size:合并目标视频文件大小 PID:合并进程 File:合并最终形成的目标视频文件
+{"event":"Player_MergeOK","aid":122,"PID":0,"data":{"Ret":0,"File":"dest.mp4","Size":0}}
 
 5、RTSP网页多引擎播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。

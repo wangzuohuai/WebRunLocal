@@ -7,11 +7,11 @@
 
 2¡¢ÇëÇó°²×°ÎÄ¼ş²Ù×÷Ğ¡³ÌĞò£¬ÔÚ²âÊÔÒ³ÃæÉÏÊäÈë ws://localhost:83?sid=123&flag=1 ÏÈÁ¬½ÓÉÏÖĞ¼ä¼ş·şÎñ£¬È»ºóÊäÈëÒÔÏÂÄÚÈİµã»÷·¢ËÍ£º
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ÎÄ¼ş²Ù×÷Ğ¡³ÌĞò","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2023-04-23","Desc":"PluginOKÖĞ¼ä¼şÖ®ÉÏ¿çä¯ÀÀÆ÷µÄÎÄ¼ş²Ù×÷Ğ¡³ÌĞò£¬Ìá¹©ÎÄ¼şHTTPĞ­ÒéÉÏ´«ÓëÏÂÔØ¡¢±¾µØÍ¼ÏñÎÄ¼şËõ·ÅÓëĞı×ª¡¢±¾µØÎÄ¼ş·ÃÎÊ¡¢±¾µØ³ÌĞòÔËĞĞµÈ·şÎñ£¬¿ÉÔÚChrome¡¢Edge¡¢Firefox¡¢IE¡¢Opera¡¢360¡¢QQµÈµÄä¯ÀÀÆ÷×îĞÂ°æÖĞµ÷ÓÃ","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"334E97939D9B645F14C11A2F9E157AED","Version":"2.2.10.2","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"39A932B1071CFD8B520059767D94C19D40F686C283882FB3FBF16F70050FA1E0C4BE01DCA731DF32391E91BFA0A3C8315B65BDDFCF2FA1C7588A7485B547369E104B07BB8428AE789EA664895CBB31117F022A8CBE745D2D96FE6EBDFB7132A1B155DBBD4B9BE55D47AEC81DF3C5F052E314992AB62BD1BC5D57DE47E589BF70AE826FEF566746D73C39784593EE991A57551D32D0FC13BE0E7565733034ADE6C4F7015E33800B2A68E39A5CC5851ED91926B20DE5AB758AEE4BD5B22E9065612C3300F9D45B8390220CE59EE7796E4E6886B1D0DE896B47F71ADF451E7AF509F4F004A951E02173CC74D9766A301BD1483F0073B3F59DA460FAC9CDA26E5DC4"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ÎÄ¼ş²Ù×÷Ğ¡³ÌĞò","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2023-05-29","Desc":"PluginOKÖĞ¼ä¼şÖ®ÉÏ¿çä¯ÀÀÆ÷µÄÎÄ¼ş²Ù×÷Ğ¡³ÌĞò£¬Ìá¹©ÎÄ¼şHTTPĞ­ÒéÉÏ´«ÓëÏÂÔØ¡¢±¾µØÍ¼ÏñÎÄ¼şËõ·ÅÓëĞı×ª¡¢±¾µØÎÄ¼ş·ÃÎÊ¡¢±¾µØ³ÌĞòÔËĞĞµÈ·şÎñ£¬¿ÉÔÚChrome¡¢Edge¡¢Firefox¡¢IE¡¢Opera¡¢360¡¢QQµÈµÄä¯ÀÀÆ÷×îĞÂ°æÖĞµ÷ÓÃ","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"4B714306EA2DBBE23DA7B92C99C6E5E2","Version":"2.2.10.5","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"2A8400F28E7C502788AE2302F4E29061408B26993423355A28F25E0CBC3A7D55B7D64D3019E6471BD044044689FF9D9A7573B62E3003E6437F0F0EBBFABDD8F263D9996A9AC7E15D8562C05A237B51C675DF6FC9F796A31BF246C78091042DBCECC1F0C3E3438BECF54248412D2C6D6FC67E7AAB0D5D1C5BEBF1FD95C8C75BF949277A2612E84B93B81334BF911286D0F335E50552677749FF2E44C8F675E3FB0BAF6AC8752810188DC6C01D778FB474F34ACE17CA9EFEBCD2EB4847C42EC3D0FFF2850A4B835E6977B7916655B4AB6737536CB04B8197403A327B9EB3701C1495F13EB37D6BB2A5F11B3E6D64ED6AD8E60BC189E5DADBEACE7386DFE6A46BC4"}}
 
 3¡¢ÇëÇó¸üĞÂÎÄ¼ş²Ù×÷Ğ¡³ÌĞò£º
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ÎÄ¼ş²Ù×÷Ğ¡³ÌĞò","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2023-04-23","Desc":"PluginOKÖĞ¼ä¼şÖ®ÉÏ¿çä¯ÀÀÆ÷µÄÎÄ¼ş²Ù×÷Ğ¡³ÌĞò£¬Ìá¹©ÎÄ¼şHTTPĞ­ÒéÉÏ´«ÓëÏÂÔØ¡¢±¾µØÍ¼ÏñÎÄ¼şËõ·ÅÓëĞı×ª¡¢±¾µØÎÄ¼ş·ÃÎÊ¡¢±¾µØ³ÌĞòÔËĞĞµÈ·şÎñ£¬¿ÉÔÚChrome¡¢Edge¡¢Firefox¡¢IE¡¢Opera¡¢360¡¢QQµÈµÄä¯ÀÀÆ÷×îĞÂ°æÖĞµ÷ÓÃ","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"698ACA6C22B29359269BAB02BBE20C8A","Version":"2.2.10.2","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"60DA03924B41EB85497AB78E538C4A39AAB244936BD9B45791B61A4EAF20E912E4322D69355AFB327A519B94DCD1D9DB1E67BEC8117B3D18053C2619579E2159F1050F1DE43C9D2BA28CE50DC6DDD238DB1281DB43259B41074812F92D3146EF36B82E30ED54F070635C3DB673B0E4A09A7A03AB84D596054712291C75538E84F11E747810DF7CEC34F364E7E0D62DFF9EE830256D01DC30A72AF67E50D35E4F9F931E24021F6B39198AB88FBA22D38AEA7DD94360FE8C8D32778F987CABF321456A0C18EB4D6EBF90D1D8046C2E1210C64737972E040188A44F43D6AB8F11945AA267B278AC379BB3FD6937D5F012CF2943480252CAF78800A073766C9AEFF9"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ÎÄ¼ş²Ù×÷Ğ¡³ÌĞò","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2023-05-29","Desc":"PluginOKÖĞ¼ä¼şÖ®ÉÏ¿çä¯ÀÀÆ÷µÄÎÄ¼ş²Ù×÷Ğ¡³ÌĞò£¬Ìá¹©ÎÄ¼şHTTPĞ­ÒéÉÏ´«ÓëÏÂÔØ¡¢±¾µØÍ¼ÏñÎÄ¼şËõ·ÅÓëĞı×ª¡¢±¾µØÎÄ¼ş·ÃÎÊ¡¢±¾µØ³ÌĞòÔËĞĞµÈ·şÎñ£¬¿ÉÔÚChrome¡¢Edge¡¢Firefox¡¢IE¡¢Opera¡¢360¡¢QQµÈµÄä¯ÀÀÆ÷×îĞÂ°æÖĞµ÷ÓÃ","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"7611A58EEB36EB96C74420C2DD1491E8","Version":"2.2.10.5","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"80B9B3E535930B4028B81A366AEBB7F3A98D012501A7380E09A774092170B6A4DEB90F030B58B979C079A67060FE372EA97808A9EFB8E421088628EBAED4407B0D70BAEBE1A9EC3EDFBD0CE662BA1C3B346DF7A31395E0E90308174FD1B129A2A4EF0B621ADEB488F30607F629D7A26D1B21BD36D13264F938E22567F64F8D53EC80676072874A49E879F2258D9D61407D327B6F67E5589C5F71BD47F5D35CF445680FD593D88D0D5A3B124F3716A270EAFA9E9520940E71154CF6B3CC94D53BE5188584721B8015C06616BF07F3B1774BFF71F742648B07456D69399C1142203565E85A17B39EDBC0E0BAD987D6926AA5CC0B11FD580990EECE647AE596FDF1"}}
 
 ÒÔÉÏ°²×°ºÍÉı¼¶µÄJSONÇëÇó°ü£¬¿ÉÄÜÒò°æ±¾Éı¼¶µ¼ÖÂÄÚÈİ²»Í¬£¬ÈçÓö°²×°»òÉı¼¶Ê±±¨´í£¬ÇëÁªÏµ¿Í·ş»ñÈ¡×îĞÂµÄÇëÇó°ü¡£ 
 
@@ -67,7 +67,7 @@ Dir´«ÈëÇ°Ğè½øĞĞUrlEncode±àÂë£¬²»ÄÜÉ¾³ı´ÅÅÌ¸ùÄ¿Â¼¼°ÏµÍ³¼°³ÌĞòÄ¿Â¼µÈÎÄ¼ş Ö§³ÖÏà¶ÔÂ
 {"ret":0,"rid":8,"data":[{"Name":"WrlSetup.exe","Size":157184,"Attr":2080,"Write":"2020-10-07 15:00:15"},{"Name":"X64"}]}
 ÎŞÊôĞÔAttr¡¢´óĞ¡SizeºÍÎÄ¼şĞŞ¸ÄÊ±¼äWriteµÄÊÇÄ¿Â¼£¬·ñÔòÊÇÎÄ¼ş
 
-G¡¢¸´ÖÆÎÄ¼ş
+I¡¢¸´ÖÆÎÄ¼ş
 SrcĞèÒª¸´ÖÆµÄÔ´ÎÄ¼ş»òÄ¿Â¼£¬Dest¸´ÖÆÄ¿±êÎÄ¼şÂ·¾¶»òÄ¿Â¼ TypeÄ¿Â¼¸´ÖÆÊ±µÄÎÄ¼şÀàĞÍ£¬±ÈÈç*.doc
 ÎÄ¼ş¸´ÖÆÊ±SrcºÍDestÖ§³ÖÏà¶ÔÂ·¾¶£¬Èç·ÇÈ«Â·¾¶£¬Ä¬ÈÏÊ¹ÓÃÖĞ¼ä¼ş³ÌĞòData×ÓÄ¿Â¼×÷Îª¸ùÄ¿Â¼Ê¹ÓÃ
 SrcºÍDest´«ÈëÇ°ÈçÓĞÖĞÎÄµÈÌØÊâ×Ö·û£¬ĞèÏÈ½øĞĞUrlEncode±àÂë
@@ -77,6 +77,14 @@ SrcºÍDest´«ÈëÇ°ÈçÓĞÖĞÎÄµÈÌØÊâ×Ö·û£¬ĞèÏÈ½øĞĞUrlEncode±àÂë
 {"ret":0,"rid":9,"data":{"Ret":1}
 Ä¿Â¼¸´ÖÆ
 {"req":"File_Copy","rid":9,"para":{"Src":"D:/Zorro/Wrl/","Dest":"E:/Zorro/Wrl/","Type":"*.doc"}}
+
+J¡¢Ö´ĞĞCMDÃüÁî
+Flag ÇëÇó±ê¼ÇÑÚÂë 1ÒªÇó·Ç¹ÜÀíÔ±È¨ÏŞÔËĞĞ 2ÒªÇó·µ»Ø½á¹û
+Wait µ±FlagÒªÇó·µ»Ø½á¹ûÊ±£¬µÈ´ıºÁÃëÊı
+Para CMDÃüÁî²ÎÊı£¬ĞèÒªÏÈ×öUrlEncodeÔÙ´«
+{"req":"File_Cmd","rid":10,"para":{"Flag":0,"Wait":0,"Para":"net share D=D:%5C /grant:everyone,FULL"}}
+·µ»ØÈçÏÂÀàËÆĞÅÏ¢£º
+{"ret":0,"rid":10,"data":{"Ret":1}
 
 2)¡¢ÎÄ¼şHTTPÉÏ´«ÓëÏÂÔØ·şÎñ
 ´ò¿ª²âÊÔÍøÒ³£¬ÊäÈëµØÖ·£ºws://localhost:83?sid=678&pid=762C3400-B3E5-4F00-8AA7-18E00F13E414&flag=1 µã»÷Á¬½Ó£»

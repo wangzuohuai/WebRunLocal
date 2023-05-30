@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康视频网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-05-16","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"525101677051B6AE61B1E9B3C6AB2594","Version":"2.2.10.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"59EADDA5BA7B0A4E2227F0ED5024640C2FF0E00C05066C68A6926EC427D25862892FF59F4160CC1488066E1303FB608C633ACB43BB40FEC4EBA99317A1A04620FF5459B63B47061988A618410D1DDBD07026FEA44372B88901DEFAF828E839E96D721E782361844A8CBC0C6D49F00AD9F4D54A7E4C626845DF83559145A712C2241F57A36BFF8EF1CC298B14859D19F29D99AAF8231C163D885B39CFF8E62D12B8F4A73EB48120BEE1E2AD3EB7E41701C027AD91E6B2A78CEB9DD7B4010EEBAD25E64B0DAD7F9C17C86696A457842C4DC13606BFF6A8DEC20F6921AB46F8964E098783579232FCA7B2270C46D6EBA5D36531C141C44CCFC8302D3F20C0520A2D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-05-29","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"D4E8F411125CBBFC5652E12C486B7650","Version":"2.2.10.5","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AA08061556E123CA4AD532060AB281AA034FE03D54D8D008BD0838F190024993B62CC6A12456218E1EF4A794583861D84A0E3F739E81D97DC613F8D1142B6369A1B6EB213197D8B1658956E78285628EC45CAFE2F353DDCB7BCA3714B07C2F94E7E94FDD227FB2FBB0C7E03F8716116CA9CEDEE7D5250EA7418345BA21732C502CCE94D1475D183AABD8DE9AF2DC8BC8F8C42C48602AE40FB7BFC5D2C2D6273FD43912178F988DBCA4D1E5F7C3129E22EC3878E814930BA6AAEAB00C393C10618858817EDC53DFF7A2BB0B1101A88C039B79734F86A128FC3A31BE6DD0A1F3FDDDAB1D7D14ED39B111C01512115B51C28EA6B7C38C8AC3E3B1366397B78BFC31"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康视频网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-05-16","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"09B5ECA97BF75E8839DC9C0862AAA47F","Version":"2.2.10.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4AFA60F7133C538286ADD9E32205214A341B6D063819C2DE79974505DA5642DAEB3F463439CC8D6C914E52C9FFA220FA093FB675CFD3A97C75BBA8A001CD702EC87AACA52EE1D41B026DD0BF65E66E57BC735E5DE2D32AA8205991A774E0DFB871D549852ADA2ED57D5B1E42D41319C7ED0F8CEE40234EFD6C38ADD3ABCE23985AA309643F34245806C285B2F251359BB271E50B4A331A40B9480AB5D10AE9B0C65DF446B91F11E5234AF44320E015B0B7FCCD47740FD4F1396AD63A8A3BFD73FED7AD7066BAC15B49C4D2D2ECA078A03288A65727B370C72B7B7A4DBB307AC4425B7F0476389955504F69D1AE92441F5F78E0F11A82B6B7B38DEB1954AD4458"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-05-29","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"874E506F4B27A09209937151714DD432","Version":"2.2.10.5","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4F503B074D16B1020B1AE431B7A8BDBC990AEFE1D5F8F9F0D2E60B1957B1C59CEDA98770FF663EA84CF31FFF5C203A5DB046D23D4A2B9A8D2961F948397DDFA2EC7D7BBFBBECED020C73826F2049582E5356B5D8AA129BE32A887975B7F1F89F3F500D2A97EFE34BF9979C4DCBA71DFF47CBD71883E47E2A2A1CF539C44ADDFC5C5EE0F392DED7AB133E6B58F2623A953E944C0E45BC42F785CB998C6F119A4673FF7724791513CB523D904CF9B0DD207F0BDDD5BEA6EE164F198C256279F80912759221C181775F77C552C5C13FBB22955A1E8273F12780C2E48C879350A5CF2855ECBEE18DBB3A2576903DE864BDBC8D64CD42DF3B1E94560A82D3BAC60B77"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -642,6 +642,17 @@ Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取�
 Init 初始化
 {"req":"Player_FloatWebInjectScript","rid":121,"para":[{"ID":1,"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"},{"ID":2,"Init":0,"Url":"if%20(window.parent%20!%3D%3D%20window.top)%7B%0A%09delete%20window.open%3B%0A%7D"}]}
 返回：{"ret":0,"rid":121,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":121,"ID":2,"data":{"Ret":0}}
+
+82) 指定多个同类视频文件进行合并，合并结果通过事件通知返回
+Type 合并引擎 1:FFMpeg
+Src 需要合并的原视频路径数组 文件名及路径需要先做UrlEncode编码
+Out 合并生成目标 如设置了需要先做UrlEncode编码，没设置自动在默认路径生成一个mp4视频文件名
+举例：
+请求：{"req":"Player_MergeVideo","rid":122,"para":{"Type":1,"Src":["d:/Zorro/test5.mp4","d:/Zorro/test6.mp4"],"Out": "dest.mp4"}}
+返回：{"ret":0,"rid":122,"data":{"Ret":0}}
+事件通知合并结果 
+aid:对应Player_MergeVideo的请求rid Size:合并目标视频文件大小 PID:合并进程 File:合并最终形成的目标视频文件
+{"event":"Player_MergeOK","aid":122,"PID":0,"data":{"Ret":0,"File":"dest.mp4","Size":0}}
 
 14) 叠加网页导航结果通知
 {"event":"Player_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
