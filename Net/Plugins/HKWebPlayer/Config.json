@@ -13,6 +13,7 @@
   "ChangeStop":2,
   "ErrTryCount":3,
   "ErrTrySecond":6,
+  "DisableDBFull":0,
   "PercentTime":300,
   "TalkVolume":80,
   "AudioOffset":10000,

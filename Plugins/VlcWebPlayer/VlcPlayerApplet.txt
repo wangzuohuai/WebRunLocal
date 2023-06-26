@@ -99,13 +99,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-05-29","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"730B372E95D26CBEA0A84648DD4D8618","Version":"2.2.10.5","Size":7634944,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"87553F2193FAF182E82C250D69196139D8D91A8581D7F6755FA530602AFE5A3F8B26F2833476DF73A831FDD9C451C0DA36025E2299F13E995EABD6F2FB05C2CDEB6FB7A0F0C3E319F369089205AE6A5E9A9B342BACC28CFBE5BF11414E31594EA20F974802C10A43C85393255BAA6CB7A761D39EDABC0A9AB77EFFE89F6DF9F4811731510EA034ADE3E1CC333145285020637F9F32BF34E9C7F5A7330CFCC52EC716EA3C441835190277487876D96430ED1F2B1E435BCF6B4BA2A47DEC93A687ADA9AF8E66CEE6459556863C48447D00F39F1F944B909574F239F95D4617D1C6435A86AE6918096D2D117D45AFBDD3387C2F35599CF84B30A976CC399CD8DB9F"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"7327678886A6FF2541AB23AB247C8364","Version":"2.2.10.6","Size":7733248,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"90E194B979AA56FA85CBB83F44D74D40CEAFB0AF0BBBA1306FCF125042D9C4A0F214A8E9CB2F925FEB913932C83F66525B116BC9612D270691EEE804D0EED55CF51A22E035A765714A58BDAFEB885585BAFF33FC345E8F1D18B17C50EAF998B9658349896A49DF453515C48E1FB027C4B39C3F57A216E40BE8C0762931DBD2EDCE92AB5F68108B61FDA20A2694E264A9B075BA2848A91812835CD6094212DB28758EFAD78A2E80FE1B15B66096E5770EFAE82FAB1889E322D4F8EFBFBD6B0958B467C4013490F4F9E3C25283E9763717D8781FA123B068E96890138312D37D2605F82BD469D7DDC63158DF42E8D07092AE719D3017305BDC526D932CDA9512CF"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-05-29","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"CD3F5BC4CDA87430CF353C239B20B332","Version":"2.2.10.5","Size":7634944,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9376011D9B502BD27EF24BBAC18B0847D0D2506AF08F1E4DE6A37F3E3A8429CC8257D4223285708A9C0F5BA83C9DB5FE4D78FCE21339D497521DF082A5D86110C551A454090E7CED016F32CBE3A526495BAEC5A05D8FFA777E79CB4FB41AEB875040402E50FC8518A91F736122EDC18EC36DE2B3068767161BBBDEF5CB7768132EC9EDA56757AADD8758773F0A54B80EEB609703FE8AE2AC7094B6B5C58DB860AAE32A02725504D1BC4DFD52C95182DC1E9822B9A38CF807CE89E69FF494857AFFA9B9CBF104EEB94BC781071E829628A736F1FB36D2E501F597F212366D2FB535DB8F548DB23539203E17C6C6AA744E6358599F5F41B6975C106EB1496BE292"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"EA6AC2FFB9B05EC54AB1B03B3EF546CD","Version":"2.2.10.6","Size":7733248,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9D3256213CAC2759F2829F5FF56931A2AA84480A3757F0D5ABF69C58981BA9C84AE817B6E824119E0C7BFCCA8B188EC64ACC90094851B557D983F566C2797706337E7C7947D856AD0BD9CCFEAF516943A081848AE11BA90117B2EEDE83EEA293F9AD5509C05F18239637C935F4D03676A46A5B96AD33B85DED510BA68DFBCE5DC657C934E9A964A82AE72EF78CC518A9061FAC7B0F7B2BD7300967EC872C086402123281D19C5C3BB984D36A793885CEAADC567439C7DBB3DB0134EDDB8C5BFF4EBB680D5124219DECFC6AA3848CC115EC183CD4F0304EBB8247FB51B9A0D4CA1394C4FDF257799F5EF26EE85670A21A2CA001164C1CA0C2FA7029A673938C99"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -368,11 +368,14 @@ ID为窗口序号 Flag为1代表启用，0代表禁用
 {"req":"VLC_LogoControl","rid":89,"para":[{"ID":1,"Flag":1},{"ID":2,"Flag":0}]}
 分别返回：{"ret":0,"rid":89,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":89,"ID":2,"data":{"Ret":0,"Enable":0}}
 
-50) 对指定RTSP流录像到文件
+50) 对指定视频流录像到文件，不支持同时录制多个
+Type为录像方式 0:VLC 1:ffmpeg 指定1时在播放小程序子目录存放ffmpeg程序
 ID为分屏窗口，此分屏窗口必须有可播放的视频
 Url为RTSP流地址，不指定ID和Url时取当前焦点窗口流的
 File为录像目标文件不指定时自动生成 Second为录制限时时间(秒)，0代表由前端指定停止
-{"req":"VLC_RecordFile","rid":90,"para":{"ID":1,"File":"D:/Zorro/test.mp4","Second":30}}
+Para为录像参数 使用VLC时默认为vcodec=h264 使用ffmpeg时默认为-vcodec libx264
+指定Second时为录制指定秒数的录像，不指定时需要主动调用VLC_StopRecord结束录像
+{"req":"VLC_RecordFile","rid":90,"para":{"ID":1,"Type":0,"File":"D:/Zorro/test.mp4","Second":30}}
 或
 {"req":"VLC_RecordFile","rid":90,"para":{"Url":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream","File":"D:/Zorro/test.mp4","Second":30}}
 返回：{"ret":0,"rid":90,"data":{"Ret":0,"PID":1}}
@@ -421,7 +424,7 @@ Count 尝试次数，大于0有效 Second 尝试间隔秒数，最低1秒
 {"req":"VLC_PutErrTry","rid":96,"para":[{"ID":1,"Count":3,"Second":6},{"ID":2,"Count":5,"Second":15}]}
 分别返回：{"ret":0,"rid":96,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":96,"ID":2,"data":{"Ret":0}}
 
-57) 添加轮换播放内容
+57) 添加轮换播放内容，一般用于大屏巡检等
 比如现在4分屏播放，执行后1分屏播放添加的轮换内容，原来1、2、3分屏播放内容切换到2、3、4分屏窗口播放
 Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 请求：{"req":"VLC_AddOrderPlay","rid":97,"para":{"Uri":"rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/sub/av_stream","Name":"OrderPlay","Option":":rtsp-tcp"}}
@@ -461,6 +464,12 @@ Out 合并生成目标 如设置了需要先做UrlEncode编码，没设置自动
 事件通知合并结果 
 aid:对应VLC_MergeVideo的请求rid Size:合并目标视频文件大小 PID:合并进程 File:合并最终形成的目标视频文件
 {"event":"VLC_MergeOK","aid":102,"PID":0,"data":{"Ret":0,"File":"dest.mp4","Size":0}}
+
+63) 指定分屏添加轮播内容，一般用于大视频被切片时依次轮播
+比如1分屏正在播放Url地址内容(要求是文件或回放视频)，当播放结束时马上切换到轮播内容，切换时没有延迟
+Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
+请求：{"req":"VLC_AddPreparePlay","rid":103,"para":[{"ID":1,"Uri":"d:/zorro/play.mp4","Name":"PreparePlay","Option":":rtsp-tcp"}]}
+返回：{"ret":0,"rid":103,"data":{"Ret":0}}
 
 70) 设置指定ID窗口下方文字信息，定制功能，举例：
 指定的参数，需要的才设置
