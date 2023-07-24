@@ -16,7 +16,8 @@ HTTP网页在线测试：http://local.zorrosoft.com/wordfull.html  HTTPS网页�
 1)、请求启动微软Office网页组件实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
 	Edit代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
@@ -25,13 +26,12 @@ Web中参数说明：
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
-Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：1是启动微软Word 为2启动微软Excel 为3启动微软PPT 5启动Adobe Acrobat的OCX控件打开pdf
 Version：0:OLE嵌入方式加载 1:完整加载(支持文档对比操作) 2:OLE嵌入方式加载(与0差别在于WPS专业版及微软Office高版本提前启动Office进程以支持多文档及加快启动性能) Option为5时Version自动默认为1
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -110,14 +110,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"89CEA34F045A8F77E03B6FA0864BADB5","Version":"2.2.10.6","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"515DF63F1983EB5DCF99D35936D907E5F0F3BDD7B6F2FC9F6EC0E7C145699E60B17429AB3B1A2E30D439FE504F1344887AF1D87EAD4E0295080A4EB709469F9BC42EED06866C44FA6674F52B5761382E12E79375860DFB6ED97AB55ED5B306C2E80261FEFA9C8AC9F5A38D8F20CB60C69F43B704928A61265864F5FDE7438056FE04E3AF7FFC31937851E24421BBF16D3734293932A3713B42B66E44782043A1F808D89DC3504257F63D475109039758315FF20048A199691AD638D15B8B7FCF41830341779DFC1D92EB4B8B490815D8056EB9501D296FEF1396DB99F631F546F627D663585A4C689664CBE2D80A16D57A6FE875B36D77A7417299647525944C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"6BFB852DD8B157E295310A5C34F1DD82","Version":"2.2.10.8","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"44E3CAE7E08A7E3150728F1419631BDE83FD2C10DBC233D02CC9747EE2D451BFE5D4A2BFB12FA4797B1AA1B0ED8265DCE0CE1D9A30147990E4AEE836450483BB3E9ED783E89B1C222BE1C9A6C138E08E5127437142D4C0C4DA4DDB4F3A8CA07A06BE63966652C2686B8BE5A5EE33E48A110ACBC8AE0015F42B10D93EFC23485665F9DA2342EC7423537095375E9687C404648A247D699F7559314FCCBE57025E59E2DD055FD944B26FF74A0F196F5D9F38EEA5DDCC4381636E10C1A5CA224A563DBE7E242F734E773563414112AE9B9CFAA58E514C10ABE1155C0C745879E5FDD0556A705042BC06C43094F9F02327CE76465B8CCAFC10B9BCE48CB2C8E4DB79"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"DA1A05FADFDC7725BC0044C93F0040FE","Version":"2.2.10.6","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"84C0ABE2B8944C87D23A5D12742522955AEA6EEE0EBB96CF2C5E58D951397EB0A11AF5DAF5949DE3C3E15765DBA9ABFC4D7F63170D39D4DC07E2FF1152ADC5306F02596E64E49F53BE272FB1D1CE10F11D40BE942FA335748D60569DD0453AC34C48AD0A176F511FA92A6AE37F9C6F8200B4FC0AF05D49F3A8395EF95C5C3047B87CCB27994C5A42C818251BC0D9E271D3F81F7096C1D8AB1B1C95F8D30449EC9AAD258708F1278A1AD5A848336205ED0FF2D8403E005359C2727CEF4CE39C3CA6680C800FC190CB762F3A67946301A07538AA493A876AD7ED94268A4DF249671E2FEF5D1CC33B2125626C0681F03095192DC164F1BB3C18A29575B8396216E5"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"240368A7DF7E821D6A7E56C882A7A368","Version":"2.2.10.8","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5FF9491E2B576CFFD4579FAC72736526895E3D628E1FC2554FECF6D1538A0B76707A0BF95C4383166516F7FCCA888D196D29F2894718F178AEB642B61464070E870065C2A7202FBE4F3329FCEFA5D143ACD242B0FFB89110CE9FE65173993F6A923D44A0D57A15993D89EA20337BBC641254638BC43A331909DF13025D6DCB18F28A4D6AA6B844127EFB777AF8586742F804FA352FE4719A580AAD5AFBB209C562B9BCF744A426FCF60BEAAF15C35050CC8B15FE24B59627E14E400530250CC8682A0264B64D5B2D0964D3383B8FCF27A6EAC509F481FD8E2DF684E44D5B9A11DC72B1F26EC44F194632AEE54BAE28C644CDCEA31D8B0805B9029815752C5417"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -167,11 +167,13 @@ NewFile如非全路径，除非启动时指定了数据文件目录DataPath，�
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
-Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
- ImgFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
+Link为1则只是链接到文件(网络路径不支持1)
+Save是否插入后自动保存到文档
+ImgFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+Order设置图片和文字关系，5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
-{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
 8）请求在当前光标位置批量插入文字，适用于Word软件

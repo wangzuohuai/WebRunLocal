@@ -16,7 +16,8 @@ HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS�
 1)、请求启动永中Office网页组件实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
+Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
 	Edit代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
@@ -25,13 +26,12 @@ Web中参数说明：
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
-Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：21是启动永中文字 22是启动永中表格 23是启动永中简报  25是启动Adobe Acrobat的OCX控件打开pdf
 Version：0:OLE嵌入方式加载 1:完整加载(支持文档对比操作) 2:OLE嵌入方式加载(与0差别在于WPS专业版及微软Office高版本提前启动Office进程以支持多文档及加快启动性能) Option为5时Version自动默认为1
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -110,14 +110,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"B574712CCF0C12375A21954F2066668F","Version":"2.2.10.6","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8B092BC4E4DD76D9E11B087C8CF04A21A901B9E594D120AE367FAC16DB0CAE4FE54D3C0A42FFC042F98D7DD68F5D3CE5590D7346C028540DB9E7708AE02091BE03F80271D72E033F004D9FA7A38808BAD1DF5F2A9F7A2C38D2BD36B79C71B28E2545CF4913A6E58ECE72C1A392D7E5E67D5F3EB0791107A940FD5E94BA59A9B9595A55D70DCC4326BF9BDFCD768753D0E3E92B89890FA44D3C25923BDEDE19A54DF10BF3ADC3A3B1CCA0CD8BDC08EBDABFD35AB7F57E698BE08167E973241B31FF7BB14DF8D60300DDEBCC85067F8384E374D2B69894C2D3C4D57AAE97897F2E8C4069D109E4CC3A13556003801CD8FAB6EA75BC9863C8A5CEFA96305648AFA3"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"66EDEDCB7BEA02E0CABB3F6A100F6E0D","Version":"2.2.10.8","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"13C0455436B65BB9AB1BA602C8ED77150C7A2A240FED89294B50B0C9977D9BD01D1A6DFF050B9653A4559F563833D0834A465EE4BCE978EAB6D6D0687A8B246D23B96F879F3F73F839A18EC79A95ACDB3409139297247961FBDFDA70993AEAC0C916554D50FB30A5EFA1115B2CB96092EE19E2E61F78F5784AF413E72D21B636C6257C4B569FF81F795CA670D79285B16BE2BE4438AEB0B017E715DA5AAE3C12D2888DE03D99551D22FBF607F0156D4BE32795033720EB9E241631A4C17517244D678FB185E351D7144E4DE358F849A327C50722744D9BB3459AA8A10A59A5E7581997BB29C3D5EC81FF56F9FBC0A500879AA753E96E1A001D4A9A743CA88799"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"BA22CB726CB02D3B01D2E8DB81F958A9","Version":"2.2.10.6","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0B9DB618F7C3F14A02A0640F343C662B1CDF5AC3C256B7E0F89115D0D14CBCA24DDFE8D34303E6B21B83B17B2CAEF14015CA095BE5E83C9E0AB2A16024A1FABC5CADCD3AD4D421027336C6C3D138C5AEF78E052599195EA131A0535D6D794707CAFEAC9255826A98362EF588C0E1703AFD119D3915A8D6AC651FCC686113DDE7D54EE8E7CCDF47250747B82EE36FCF8E36CAD8A5B7D14020A3E7E1BB83864382CAA1C23DA399068BD427337C4C21D4F5CF10B7B4DB70A0CDE89F112A583E89953D7D1E800D9E3239FC0E356FE11061FCBCA3DCD4ED45401E4B57DE4587D06E3B829D05C4AF7FB3295E3173A4F5529757E84EE938DE5E3D9D2FF6B9F4903D2205"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"AC90C6D4C00AB8E1B556F847D3FD874A","Version":"2.2.10.8","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"842C86D0EDECFDB0D4102CA687ECFE92333E98C175ECE532ED4E8706AE24FB66809204E9100EDBCE6DB4C435E45D10ABFAAE63C34DD66CEF83D693F018BD2C13B781DEAB6FBEAD148BC9C1B8AA5C95D2B6A1A7C6FCA3AD9C9B24546569E60D5B19BCFFF168277C444DBF6600050B40941C19D60E065DBC994E35CECFB621D255667B50F030F8CC24E697ABE5EAFBA9F2B940EE4C440BF708CD24C97617A89969FB68AF54FD72C470D8912EB2364F0A22001E46EA9CAC99A84FA1F51DB481B3BFE4CC538830F97CA6C78A47395EAC935CB249F94EE7ACF0D72D5DD4A472DBAF8C5AD9F38386F990A5F09240150D1AC91D7D5DFA1D43597E31F2A2553FAFE51F03"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -169,10 +169,12 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 Link为1则只是链接到文件(网络路径不支持1) 
-ImgFileSave保存到文档 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
+ImgFile 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+Save是否插入后自动保存到文档
+Order设置图片和文字关系，5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
-{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
 8）请求在当前光标位置批量插入文字，适用于永中文字软件

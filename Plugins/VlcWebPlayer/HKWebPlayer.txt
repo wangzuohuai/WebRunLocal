@@ -38,10 +38,11 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 1)、请求启动海康视频网页播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
 ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
-Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Web或Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -57,7 +58,6 @@ Mute=1 指定是否静音播放 1是静音
 FrameCache=20 指定是否按帧播放 0否，大于0代表按帧播放时最大缓存帧数量 仅对PlayEngine=2有效
 AudioColumn=1 指定是否通知音柱信息 1推送  仅对PlayEngine=2有效
 ToolBar=1 指定是否显示播放工具栏 1是显示
-Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装海康视频网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"7CD7FD1ECC3203C436EEF2B8B979F988","Version":"2.2.10.6","Size":5537792,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AE463A76C1937F2505E4D131AB12595D10DA4434F6F4BDF93688F4192D51F603123F1978371F4DB6332670EFA6E227EE588BF590EE1E996D77A411B95A89400B27CB671B224DF32A9E52D9016D94ADBA1121930820A2B8674C741C67D2F7A2045CEFCAE28F9E039A5165996AA15BD3F39E824705159CF329A8D120AE7D7BF981AE04B49F3CB85E2DBDF8A2F54AB1DEEAC289162B6A0288D2F399C18FF9314D153EBFD6EBA7CF676C06241E88FB36405CC164106FB27E5AC94554B78594C7BC2CCB4F73270D5368866213CF2BCC59469F7555E98E60875C3D6F7A08C0782556124FEDEDE19CD5DD6A8A7C274297BFB9C497AC20936F249BCFE996BDCCF53C1178"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"6F340096A9F90D70FDD0A2D976236D99","Version":"2.2.10.8","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"23D1C1A69C6FD086548626A80232819D57C17FD7D762D8A4313FCD74186C1E10E8D8904B71C360BAA3EDDACA3F03A3DEF010B3E77031832AF7D82D996307757AF18A50B42AECC35505F29C022DBFCC2180C2D6D32D9D7FCB89C28F465562621371CD412F032301CE7E47B564DEBD74AFB990283B5A6CA4963F719B1B8FB9ECF06B03CF17A69C7D123D77B5F4C50B15065FF0A0D7F04AFD078514059952C6344D065301FEC228EE6BD72A981AF41FB232E03BF6804A18982A56A2705C8221EBD28464CB396AA339E1E1F9ABD49424656E21EFFB91FED0D5A76187C3D5541276E8F08BE3498F58AE05C4163591A1D2843230AEB46BEF221AC6099D591DA10BE986"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级海康视频网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"8FB7136DD0EC8F1AEBAF2BD91FB91ED8","Version":"2.2.10.6","Size":5537792,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"239158BF906D424B3235CEC22982DB1F7DAAF707E0F17376362843A36ADCF70D75C1CC7C3224AC29B2048E6E162AE2BD7630241AC7FE883A3B76EC015174CE6B2DFC093E1C3903D7B11561A98FF93792DF76E44F593C6F6F4AD2A7A514C530F6D03448E5F09F6C0185518A98782F420DBF1EDC3E645035E202CEDA38166F2E23C7950B06D77C2D87F0BAC81A38C82AADB60C02812A4DE6841297A5030BEC23721ED197BC57728B29BF1EEDDFF8F0CD3FB7C0DF7743DE1B7042C94AA69DE2AEC22D4341D03C1242EA38CBDD25F0C0B47B068F4E455A74F735EBF3B8B681280EC7BC2A5E0BE8197592EAD17913490804AB87FEB03F6E452C480AADB7C2B97F8E11"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"CE68266C4E6F125185A4466C17AB1765","Version":"2.2.10.8","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"707DA8A8891AADE655D2A19A7B40CE567A8B4882B3D8750B4025EB9DB8FBDE34836988E2DCDEDA23CCBAF9358ECB35D4200E5F3F8575AAFD2B84086DE421F5A6A55AD6680E9FCFD692D08F5C74588E347E93D582819BD7B2B332416AAA5F07EBE7B9607551C1881998CB277B9AAE3A3EF864F9DEA1E5EA1894B3C5BF9B85CF63B321A91456022685EB3805CD2B7C76AE22CC8BDF803B0687492FD24388CFFFDCCE4AE867B61D7F51D411C618062C3BEA83AAC0C982AB7FCC6AF95D431A9033B37C6A25E0B8AAA6C290D27228B696E06A41216FD3D0308A85E935AA26895BEB321736F06E76C9BBDB1048D9E328F778D817FC79375E9298E076AFF6CF41729BF3"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -638,8 +638,10 @@ X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度
 
 80) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
 Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
-Alpha 透明度(0-255) 默认255不透明，仅限于用在Windows 7系统
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
 {"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun"},{"ID":2,"Alpha":70,"Url":"https://output.jsbin.com/dopavun"}]}
+{"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}]}
 返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
 
 81) 指定ID窗口叠加网页注入脚本运行
@@ -664,6 +666,11 @@ aid:对应Player_MergeVideo的请求rid Size:合并目标视频文件大小 PID:
 Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 请求：{"req":"Player_AddPreparePlay","rid":123,"para":[{"ID":1,"Uri":"d:/zorro/play.mp4","Name":"PreparePlay","Option":"Link=1 PlayEngine=3"}]}
 返回：{"ret":0,"rid":123,"data":{"Ret":0}}
+
+84) 设置指定分屏窗口是否禁用双击全屏功能
+DisableDBFull 设置1时禁用，默认不禁用
+{"req":"Player_PutDisableDBFull","rid":104,"para":[{"ID":1,"DisableDBFull":1},{"ID":2,"DisableDBFull":0}]}
+分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
 
 14) 叠加网页导航结果通知
 {"event":"Player_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}

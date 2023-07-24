@@ -3,7 +3,7 @@
 	if(document.location.href.toLowerCase().indexOf("https") == -1)
 		return 'ws://127.0.0.1:83?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 	else
-		return 'wss://wrl.zorrosoft.com:443?sid=' + getrandom(5).toLocaleString() + '&flag=1';
+		return 'wss://wrl.zorrosoft.com:453?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 }
 
 // 判断是否IE浏览器，用于区别使用Web Socket连接组件
@@ -235,25 +235,28 @@ function getrandom(nums)
 			{
 				if(0 == jsondata.ret)
 				{
-					nAppletRunID = jsondata.data.ID;
+					if(jsondata.data.ID)
+						nAppletRunID = jsondata.data.ID;
 					$win.find('#btn_max').attr('disabled', false);
 					$win.find('#btn_fitpage').attr('disabled', false);					
 				}
 				else
 				{
 					if(undefined == jsondata.err)
+					{
+						if(bRunInCurrentPage && jsondata.aid == nAppletRunID && jsondata.event == 'Wrl_Listen')
+						{
+							// 小程序启动成功，发送页面滚动信息
+							SendScrollInfo();
+						}
 						showmessage(Data, 'receive');
+					}
 					else
 						showmessage('小程序请求错误：' + jsondata.err);
 				}
 			}
 			else
 			{
-				if(bRunInCurrentPage && jsondata.aid == nAppletRunID && jsondata.event == 'Wrl_Listen')
-				{
-					// 小程序启动成功，发送页面滚动信息
-					SendScrollInfo();
-				}
 				if(jsondata.req == 'Wrl_AppletScroll'
 					|| jsondata.req == 'Wrl_ScrollBar'
 					|| jsondata.req == 'Wrl_AppletResize')
@@ -275,8 +278,7 @@ function getrandom(nums)
 			if(jsondata.req == "Wrl_VLCApplet"
 				|| jsondata.req == "Wrl_VLCWebPlayer"
 				|| jsondata.req == "Wrl_HKWebPlayer"
-				|| jsondata.req == "Wrl_VideoWebPlayer"
-				|| jsondata.req == "Wrl_AppletStart")
+				|| jsondata.req == "Wrl_VideoWebPlayer")
 			{
 				nRequstAppletID = jsondata.rid;
 				if(1 == (1 & jsondata.para.Flag) || 16 == (16 & jsondata.para.Flag))

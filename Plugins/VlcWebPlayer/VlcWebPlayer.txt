@@ -20,14 +20,14 @@ HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS
 1)、请求启动VLC网页播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏
-Url：加载小程序所在的网页实际地址
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
 ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
@@ -99,13 +99,12 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"AE57E6E3E2DBB45C50AB52F3B6A3D628","Version":"2.2.10.6","Size":7667712,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3722D9BD0E4642CD90C0A7ABADAF9BF4FC63903304656B5FABB8212408B49D3DC1B0811DE26B50411EB35DEA5045970F6E13027F77D87EC3EF3096644112FCF8C474AD9856714580218D058F842882153C262083314C9A0711DE229DE73CA60B188350800B29A910C185FE5636663CAFD6C4375F0D1C2EA0E8FA45FDCF051B7D6B9C2BDFE3B6E033150EF0738DA9C5EE3098D32FE9A52FC5205D935717CD956BE7FF49605496DA9768B28C0D74844FEEF02359085A80D4105E811AA867FF40B520FA8634380320A18E590D4BE3ED232F967556D1B49AD2C0CC54855A350A4C70A025BF29143C6B5BDA97C98AD65CCC4B401DDAA252A9CD9569AB325957E80666"}}
-
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet.pid","MD5":"C90E2FC22093D934D021B92C786FBBA6","Version":"2.2.10.8","Size":8126464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0736661006CE1C5C40D9D687B503DB9A5112FE22D17105FD63A6C88D205377026624E9B5725F4B765F6D3FCAA0ED217B648CEEBEF1A27CBE182045D1AA487B42331E41B188DB008E8B1DC7E22FC16E81B37D85C8B4FF521CDA0280B4C9328DBCF1823E1BBB2ABD445F224D42ECB2B888031FFB00D222B0573421A82544A668C4B874D5CDF4BC0F5701670E652FE69F3953BCA3931430C4AD9A08A3C8B332A4DF4EDB4A40128E884E653074AAFEB708D1F97802659048C621680A4F7D0EB662227893E279F8D9B57848E5C707FBB633148699416DAE66CA9A1D41FAF13E5BA381C5E1FD7CE4E0AD377E284165D1717BD006180810B9AF900B0B91691DE73A85ED"}}
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"5C4485CF562F901AA3B95C2B58EBD1DF","Version":"2.2.10.6","Size":7667712,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0E58AC4E803B6D7229AD07576DAFCB78452D5CDC04722C87241FF38E456BEF5B67B9E67E655CA86C11DA531D0419F3916F2ADE2FE7B936EDAA8CFB90BC0F7F3F8FFD36AC4B5F07AFF18ACF7F68F69372CA8D8139193C41404F8B22C14A6F9858EC7DF2A2F48B0E6D7C2CF0FBEC2C0F977DC9D36CFD7CFB36DB4C577BAE0CF8E65D3145266C94159440B651E300200FFA755EB3C9D8E29C7306C8641DA799AD846EC67DB8E186DFD4767E34212002E35868DDA7CB72593807216238098BB476F7056DB19DA17FA22F667899A4A19A931956A537B8B7B83233B6FF4D789DDEB6D1BEF1950E896CF6B68B11FB823D8AD5B147CBC4C31F64E7D034B5B5A42D823CE9"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"VLCWebPlayer","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的VLC网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcPlayerApplet_Update.pid","MD5":"C6164874BBBAA26DB13F8B812F8029DE","Version":"2.2.10.8","Size":8126464,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"537CC5FF6013BF0F7FCBFD67404EB078F8478082FA78589DA81671316FFDD5952F8E730C191D86098F1305C8FE8D1F63C7C6C3703FD73971669D80130A0C0061F046F6FD8EFFC5B571A3EBDF64908968C585109857CEBB0AD575ED0BF842C2515235D4A34628DC448B1630DF1EF8BCE9A20C46D7B063B2BB8DFB8727ACECD901614DE02307C0C1B70784517D91B994D222F61E21BA6BC9B37D5DF98B8D6B8914F1B4EE01D478C579F967E5DE02D16D19AA5036A08565E9F5E871A310EC218318D9B32A6CFFA9FC10A47AF1BFA08ABA634B47BF14AF7D991F00F2D71D492B42C23EEA32C2ADCE155532C25A4D39B811085A05BBA92F70C3A11CA060F30EE343F6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -471,6 +470,16 @@ Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理�
 请求：{"req":"VLC_AddPreparePlay","rid":103,"para":[{"ID":1,"Uri":"d:/zorro/play.mp4","Name":"PreparePlay","Option":":rtsp-tcp"}]}
 返回：{"ret":0,"rid":103,"data":{"Ret":0}}
 
+64) 设置指定分屏窗口是否禁用双击全屏功能
+DisableDBFull 设置1时禁用，默认不禁用
+{"req":"VLC_PutDisableDBFull","rid":104,"para":[{"ID":1,"DisableDBFull":1},{"ID":2,"DisableDBFull":0}]}
+分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
+
+65) 设置指定分屏窗口是否启用播放列表
+EnablePlayList 设置1时启用，默认禁用
+{"req":"VLC_PutEnablePlayList","rid":105,"para":[{"ID":1,"PlayList":1},{"ID":2,"PlayList":0}]}
+分别返回：{"ret":0,"rid":105,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":105,"ID":2,"data":{"Ret":0}}
+
 70) 设置指定ID窗口下方文字信息，定制功能，举例：
 指定的参数，需要的才设置
 Text 文字内容，必须参数
@@ -481,8 +490,10 @@ Size 字体大小，默认18
 
 71) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
 Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
-Alpha 透明度(0-255) 默认255不透明，仅限于用在Windows 7系统
+Alpha 透明度(0-255) 默认255不透明，Windows 7系统及以下版本不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
 {"req":"VLC_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun"},{"ID":2,"Alpha":70,"Url":"https://output.jsbin.com/dopavun"}]}
+{"req":"VLC_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}]}
 返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
 
 72) 指定ID窗口叠加网页注入脚本运行

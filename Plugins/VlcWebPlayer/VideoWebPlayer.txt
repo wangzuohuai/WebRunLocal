@@ -38,10 +38,11 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 1)、请求启动RTSP网页多引擎播放器：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
 ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
-Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Web或Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -57,7 +58,6 @@ Mute=1 指定是否静音播放 1是静音
 FrameCache=20 指定是否按帧播放 0否，大于0代表按帧播放时最大缓存帧数量 仅对PlayEngine=2有效
 AudioColumn=1 指定是否通知音柱信息 1推送  仅对PlayEngine=2有效
 ToolBar=1 指定是否显示播放工具栏 1是显示
-Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
@@ -126,13 +126,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"A5CD658D75F6D1B12C5862A1355B2545","Version":"2.2.10.6","Size":5570560,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"328F797FB4C83D68E4250B0F0241D61FB2D497FAB790F164382F969645621A054F126D335431017EA707BAD30A75B9E8F0A7789A40E81D1B3BD69BE41AA6A081E22041ADFB0B28B69A798AB4FCBFDDFA7CABC98378B1CB8ED4776882415BF7F13FBB31CB4C186B63300A2DD308C19C02E60903CA19100C3BB84B35BDBEA678D76F8107D51415857DFE3A76823A351C793A86605150A861DAD20CB809D3B182430E22A0483FD608AC67BEA68B8CC76C12A5EDB40396D34975D5CF6FDE761D3CA36B29C6DB84C4C8A9BE2C1AA1DC32A973F45CDC3DA513E206755941147EADBDD5A4A97701D0F20AFA2D510DEBE282190BE35236F5ACE0A5FF31855AD00BBE303E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"6F23D60EB6AD4383B1350C5C5AD318CC","Version":"2.2.10.8","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"28D5D49B74FBE1B302060754454293968FDCCF4AC2F0267022A538E5A0F639BFE0A9F426805E4A4E61BB25420D6B0B615EC5393FFAB0286F2D54972010E4B0A5D91F65BC7277934035AA761BA756AD8F299BC94DAC1A7F058E93E30BCBFEFB807BC75743968A20D1C842D9ED585460A2E68F29CB9C4F83F161D0CACA36EA5057F2D89DE5919C41470D6D300866973A7C0FCFD3AEBA74BB10A62C3A4C6D38818A2C3242068282C9E5D7BB3F60968FDB232AD2E5DF90361D193EB2D5B1B8CAEA855ADCF8393D5A185DF2D8DB31F2695ECD5E5A4A931AADA035FE7CBCCF0DEDE930D39C27352FE5F8C65F1888F454E9EC73AA6DCD0FE75B714107A949A67F0F5D3A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"4CFB2332A2218ED38A7EDD75BA68F36A","Version":"2.2.10.6","Size":5570560,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"568E76611ABA0DF4CD44F3DF00D61976AE1ED1EA0FCF200C90CAF3F54AB28A432877A50A64BFC765C6DE2289AD8A4960EE72030D49B36D2010D76D52B156B29A4715F378701ED3FE806FE189F3F6E03FCA52DDFAC356FE844653662017B837BA57AD6267306C424208CD381E0CAB393E251F62B437C7CB06045A17899A185749AA3E95A966FCF17C671A609049FBD64871CD57E6E998BFF98131B8BEACD6F7AC7CECDA86DFBEACC4C631F6D8991862DD67A00CCC8939A91F7C0159A2759EDE50A16521782B6C7304FA6A7D58063AE173DF4E52128589301405FE757801BEFE88F64495C478489286FA1715C7C2EF42C7621ED0CC09CD78B07DDA8D3435BA7FB7"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"E853E9B0668CD0422DDE9D79CAF09456","Version":"2.2.10.8","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A38D583957A19F8243AE06ACF23B3E8CE2F76C351B5D0D1888F2F341DDBEF78422299EF94901009E9C21852A39AE16B86F4B60D5C0D21AF6D8FFAE6B97674F6983FD392D66FB35795F1A72A706341F60AE6695FF0008B7742C2BB76409159A1A77E236D09573CA4D759F21DEC439A227E6788ECEA12AA663BAD9F53CF974372348C19E75EA7DE9FF8B420BDD841A688D5C54FBCEF8C8C0720DD0EC873AC6B47805A0BFF97B56E3179B4BF3C5B63BB47D73C319D416701DF0EA5BF455DCF1A7FC176375BC8A174BFAB82D610A50001B3F1F5591DFC79A049157737906DA6CC282BDD2A60752DC007D666192F084D889796402817C30DBFDC85A8A2E4DC4601EAE"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -637,8 +637,10 @@ X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度
 
 80) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
 Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
-Alpha 透明度(0-255) 默认255不透明，仅限于用在Windows 7系统
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
 {"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun"},{"ID":2,"Alpha":70,"Url":"https://output.jsbin.com/dopavun"}]}
+{"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}]}
 返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}
 
 81) 指定ID窗口叠加网页注入脚本运行
@@ -663,6 +665,11 @@ aid:对应Player_MergeVideo的请求rid Size:合并目标视频文件大小 PID:
 Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 请求：{"req":"Player_AddPreparePlay","rid":123,"para":[{"ID":1,"Uri":"d:/zorro/play.mp4","Name":"PreparePlay","Option":"Link=1 PlayEngine=3"}]}
 返回：{"ret":0,"rid":123,"data":{"Ret":0}}
+
+84) 设置指定分屏窗口是否禁用双击全屏功能
+DisableDBFull 设置1时禁用，默认不禁用
+{"req":"Player_PutDisableDBFull","rid":104,"para":[{"ID":1,"DisableDBFull":1},{"ID":2,"DisableDBFull":0}]}
+分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
 
 5、RTSP网页多引擎播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。

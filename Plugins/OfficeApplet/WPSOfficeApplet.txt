@@ -17,7 +17,8 @@ HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS�
 1)、请求启动金山WPS网页组件实现网页中局部加载doc/xls/ppt等文档显示：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
+Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
 	Edit代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
@@ -26,13 +27,12 @@ Web中参数说明：
 	PW代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
-Url：加载网页组件所在的网页实际地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 v实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：11是启动金山文字 12是启动金山表格 13是启动金山演示 15是Adobe Acrobat的OCX控件打开pdf 16是启动WPS PDF程序打开pdf(不支持OLE嵌入)
 Version：0:OLE嵌入方式加载 1:完整加载(支持文档对比操作) 2:OLE嵌入方式加载(与0差别在于WPS专业版及微软Office高版本提前启动Office进程以支持多文档及加快启动性能) Option为5时Version自动默认为1 WPS非专业版不支持文档对比及导出OFD文件等操作
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径，下载地址中如果没有文件名，请在Content-Disposition中指定filename
+Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -111,14 +111,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"01E2F0A58A9337A6761B66CD93006E57","Version":"2.2.10.6","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3EC5A62F65EF1D53E4F7947C963F772EBA25C78806996385201E2EFB5BE2D19CA01C93527751545D27655C6A9E04BDDBE6AE9DFB7BD2405B36A2FC611D9A00F73B8E87C431F715EEE185CB95A0BAC23D34F7A352245EB5318A7452F0E2CAC669A5BE1EEAC3C803A21C2F79F3E2BC93D02A4ED076A84DED873444A3F7376798D2AEF4C0C7224398B926F7BE9CCAA4478696487FB6F73B58EFB124C7E173958FB8364B356CD47CE9105CC3D8D7C385438D74BBD393B9A95FAAA9FC9106A25DC095C80D993F24A0875B8D7A42C303CD70E2343E4C668BF13DD207069D4D60170ECB15D2510D8A31D95D5360D3BB5A412A6FAC5937B4C065A14C6E4A018ADCB8541A"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"AE783FBF82A03E379D4770FF0925133E","Version":"2.2.10.8","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"943782E501D02185EDF3C92304513C5679384B3151458BE25093DCEC8991295469465373FA2139AAAE015A89E4EBCFB9A516754865954C81FB03FE13261EC06A6FFF66ACE852BDCC9DC24532FEFF065D7B43CB036D9299045DA6E5FEDE3AB659B8A31F8B34140FC293F0FFD627E48B89781A3C475FB50025C8538E4BA112CD376D9ECA33804F2CDD27CF515F0D15711029DA86A15AA5B61DE4FA0DFAF4BF90BBCC22AACCD6A1B1EA22F7B894A7A0275DC266DF0C960F44FF95CDF87117C6DA6C8505E1AB92A0652D4A95CAF32A403EFD4301FE80C756F6B939D0587432B285291E63E9A8F1F9F6A676788140E2428D1EBD817E1A509B416D262B1B2472A9EF94"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"E0596EF076F4C9835D3C15722A823742","Version":"2.2.10.6","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6262E95A258FD6C5F3A4A1AB2A566AE0336E3FECED9808623ACB551B03BFE587ED4C7B1F45FA7EA49D1D6E3556614A396A54C4F9BE3DA3DB6E3244E6AA94FD7E263692CE821CAEFC56852A97EEC4863F5C64FF16B052DC4A34E8BE8E0644F0BD8C1B27A081FEE7D258222D822C69C79D21820126C294484CC64655B8568B3A39A8DD0D82E044CD1D74A236BE943FE1C72E832B6C9CB49224576166175A1E4B647853B5E285B3DEF7FAE0F38B0B918AF0436ECE95D9C24A5961EC8F3263E3ACCC692F8874ACB67F61F40F941167D5167D863941AC50253B035A700699590EB4BB62C9878B648734EA9593EB635A3E5E42BB9E486254848D0701E1585EBC2F8F56"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"658C2B352DECCBB8C311C0733763E652","Version":"2.2.10.8","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"30BDC7FF316FAB97A15F30FACFFDB6922E549E8F63763700ECF28C277C58FC815850F81CB9E78962EB0AEFDF44CCB04E8F56EC83E32C4F6652A4D7EDEF7B2664BBD73632522EB9D8EEED6BE6038DFD6B672FAB2D030E81C28989B73705939EBFBDB54178E3600FFCAB47C614BE40ADEC85EFB2429D6185DB802C18EBB929B614DF830D06F7FDE2AD4BC0756327A7B9EA49F76BE8D0D3456552278998359144020AD877F43571EC49C3D109BC1E6F69F8673333288B8709C0394D060326C723192E75EDABA753950A815CF13F46BB75BA5B26858FE68169B2427E0C726976734AA1E11D695A7AE06513B2B0E03D5DB9115822DD37ED121166D1D6DDD38C3F6988"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -170,9 +170,12 @@ NewFile支持相对路径，如非全路径，除非启动时指定了数据文�
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件  ImgFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 Link为1则只是链接到文件(网络路径不支持1) Save保存到文档
-{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1"}}
+ImgFile 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+Save是否插入后自动保存到文档
+Order设置图片和文字关系，5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
-{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1"}}
+{"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
 8）请求在当前光标位置批量插入文字，适用于WPS文字软件
