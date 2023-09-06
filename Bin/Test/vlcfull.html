@@ -3,13 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>VLC当前网页内嵌加载VLC小程序实时播放RTSP流</title>    
+    <title>当前页VLC网页播放器实时播放RTSP流</title>    
     <script type="text/javascript">
     </script>
 
     <link href="css/res.css" rel="stylesheet"/>
     <script src="PluginOK/base.js"></script> 
-    <script src="PluginOK/vlc.js"></script>
+    <script src="PluginOK/PluginOK.js"></script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onopen()"> 
     showmessage('连接成功');
@@ -79,7 +79,7 @@ sid=123&flag=1" />
             </div>
             <br />
             <div style="margin-bottom:20px;">
-                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_VLCApplet","rid":95,"para":{"Type":"0","Title":"VLC Web Player Full","Flag":8,"IframeX":0,"IframeY":0,"ScrollTop":0,"Version":"1","Zoom":100,"Url": "http://zorrosoft.com/vlcfull.html","ShowType":1,"Open":"rtsp://wzh:wzh123456@192.168.0.104:554/cam/realmonitor?channel=1&subtype=0"}}</textarea>
+                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_VLCApplet","rid":95,"para":{"Type":"0","Title":"VLC Web Player Full","Flag":8,"Left":20,"Top":20,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","Web": [],"ShowType":1,"Open":"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8"}}</textarea>
                 <button type="button" id="btn_send" class="btn btn-info btn-block">发送(Ctrl+Enter)</button>
             </div>
         </div>

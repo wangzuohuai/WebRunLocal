@@ -21,12 +21,13 @@ Url：加载网页组件所在的网页实际地址，在网页中指定小程�
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
-	Hide代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
-	User代表编辑文档的用户名称 
-	PW代表打开文档需要的密码 OLE嵌入方式下不支持
-	DataPath代表文档查找和保存默认路径
+	Edit 代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	User 代表编辑文档的用户名称 
+	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
+	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置的Cookie
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 v实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -59,10 +60,11 @@ B、{"event":"Wrl_Listen","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet",
 返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","Port":950}}
 
-关于Option参数，如果不确定是调用启动微软Office内嵌网页组件、还是金山WPS网页组件或永中办公内嵌网页组件，请先调用指令
-{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
-{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"}]}}
-Type 1 代表微软Office，11代表金山WPS，21代表永中Office
+关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
+X64为1时指定只获取当前有效的64位版，0时都获取
+{"req":"Wrl_OfficeInfo","rid":2,"para":{"X64":0}} 获得当前电脑Office及Adobe Acrobat安装的情况，返回值
+{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"},{"Type":5,"X64":0,"Cur":0,"Ver":"","Path":"C:/Program Files (x86)/Common Files/Adobe/Acrobat/ActiveX/AcroPDF.dll"}]}}
+Type 1 代表微软Office，11代表金山WPS，21代表永中Office 5代表Adobe Acrobat
 X64 代表是否为64位版本
 Cur 代表是否当前有效
 Ver 代表文件版本信息
@@ -111,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"AE783FBF82A03E379D4770FF0925133E","Version":"2.2.10.8","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"943782E501D02185EDF3C92304513C5679384B3151458BE25093DCEC8991295469465373FA2139AAAE015A89E4EBCFB9A516754865954C81FB03FE13261EC06A6FFF66ACE852BDCC9DC24532FEFF065D7B43CB036D9299045DA6E5FEDE3AB659B8A31F8B34140FC293F0FFD627E48B89781A3C475FB50025C8538E4BA112CD376D9ECA33804F2CDD27CF515F0D15711029DA86A15AA5B61DE4FA0DFAF4BF90BBCC22AACCD6A1B1EA22F7B894A7A0275DC266DF0C960F44FF95CDF87117C6DA6C8505E1AB92A0652D4A95CAF32A403EFD4301FE80C756F6B939D0587432B285291E63E9A8F1F9F6A676788140E2428D1EBD817E1A509B416D262B1B2472A9EF94"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"AE90D837997F0B479B403597CA1B0806","Version":"2.2.10.10","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"13B2CCC31FA675130BCF500324EBEFA6774B10F7F1920094F0E92E07E0E8CA5849F5D62E32342979244D0629A584E7B5C5FF0C6F089C27B50B057553D0ABA5294B8064746D3E7CC40BDC2EE94C1B677F13BAF2C748010214B8684C6A79E22BAF609CD665751ED09A7D3E232C22F10099418DE6BE344FB5C1185B2EF143E4196582FDCE72FD715433802512AAA638070C040B9748C3FD6D53EEB08888BBB3F189C9187024150C33511CC0B174D4810E2DE2E7D9F86285306FC543A7C689A6C673B658183881A4FD97FD05BFBF3AC523CE9F78F0F62AB329CB0BE3044216194F9904DF626A5173DAA96C98EEA26C703BAE9076A61AB933D539443187D5433B2F9E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"658C2B352DECCBB8C311C0733763E652","Version":"2.2.10.8","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"30BDC7FF316FAB97A15F30FACFFDB6922E549E8F63763700ECF28C277C58FC815850F81CB9E78962EB0AEFDF44CCB04E8F56EC83E32C4F6652A4D7EDEF7B2664BBD73632522EB9D8EEED6BE6038DFD6B672FAB2D030E81C28989B73705939EBFBDB54178E3600FFCAB47C614BE40ADEC85EFB2429D6185DB802C18EBB929B614DF830D06F7FDE2AD4BC0756327A7B9EA49F76BE8D0D3456552278998359144020AD877F43571EC49C3D109BC1E6F69F8673333288B8709C0394D060326C723192E75EDABA753950A815CF13F46BB75BA5B26858FE68169B2427E0C726976734AA1E11D695A7AE06513B2B0E03D5DB9115822DD37ED121166D1D6DDD38C3F6988"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"0CF0B7940115090AE1F0FC24959493F0","Version":"2.2.10.10","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"41CF957CE70E07BA913347D7F87580EEB6AF4996EE3D5E1C7E88190A6D95369DE1FBAD68561A639EFB2E0628ED09E13CD52EB5FFFEF64FAA07C59A818723DDD6448A1F10BBCEF99B0F7F07A97F69E281A1CC2ADFBC5C37A89329414BC148B79BA425C618DC4357AEA68AF8D7C94FE46107CB49A4A5AACB18BE726361931CB4531669B123A04DEFA41F6EFBA50E67F25E642BD57DCE1B09178D61CA6E9C87EA0919A6E98CC1EAE577AA9336D22CF9C2707D4EADF0A25F34DD359AF7FC58EC94610AA894CC0802BF92DFA28DB45825AD0DD7B8F453A500E3719CE0B235E0C542DA0A60382ABD2A7E875F8B2CAF6C784C08FA9AFA456880E1D90AF1C2A590FD2127"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -387,7 +389,7 @@ Show是否显示 0隐藏 1显示
 {"req":"Office_ShowMarkContent","rid":43,"para":{"Name":"Caption","Show":"0"}}
 返回：{"ret":0,"rid":43,"data":{"Ret":"0"}}
 
-44）请求查找替换指定文字内容，适用于Word软件
+44）请求查找替换指定文字内容，适用于WPS文字软件
 Find:被替换文字内容 Replace:替换文字内容 传入前都需要先做UrlEncode编码
 Case:是否区分大小写 默认0 1代表大小写敏感 对应于“查找和替换”对话框（“编辑”菜单）中的“区分大小写”复选框
 Forward: 默认1向前搜索 (向文档的末尾) 0先后搜索，向文档初始位置
@@ -398,6 +400,21 @@ Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域�
 	1:wdFindContinue(到达搜索区域的开始或者结尾时，继续执行查找操作) 0:wdFindStop(到达搜索范围的开始或者结尾时，停止执行查找操作，默认)
 {"req":"Office_Replace","rid":44,"para":{"Find":"test","Replace":"test content","Case":1,"WholeWord":1,"Wildcards":1}}
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
+
+45）插入书签，适用于WPS文字软件
+Name 书签名称，书签位置就是当前光标位置
+Content 插入书签内容
+Hidden 是否隐藏书签
+Sort 排序类型 0默认按名称 1按位置
+{"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Hidden":0,"Sort":0}}
+返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+46）请求删除指定书签，适用于WPS文字软件
+Name为书签名称
+DelContent 是否同时删除书签内容，默认0不删除
+{"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
+返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为WPS文字程序通知

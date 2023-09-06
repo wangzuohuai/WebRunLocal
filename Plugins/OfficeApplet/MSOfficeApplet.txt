@@ -20,12 +20,13 @@ Url：加载小程序所在的网页实际地址，在网页中指定小程序�
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
-	Hide代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
-	User代表编辑文档的用户名称 
-	PW代表打开文档需要的密码 OLE嵌入方式下不支持
-	DataPath代表文档查找和保存默认路径
+	Edit 代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	User 代表编辑文档的用户名称 
+	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
+	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置的Cookie
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -59,7 +60,8 @@ B、{"event":"Wrl_Listen","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApp
 C、{"event":"Wrl_AppletOK","aid":3,"rid":5,"data":{"SID":"123","PID":"MSOfficeApplet","Port":950}}
 
 关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
-{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office及Adobe Acrobat安装的情况，返回值
+X64为1时指定只获取当前有效的64位版，0时都获取
+{"req":"Wrl_OfficeInfo","rid":2,"para":{"X64":0}} 获得当前电脑Office及Adobe Acrobat安装的情况，返回值
 {"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"},{"Type":5,"X64":0,"Cur":0,"Ver":"","Path":"C:/Program Files (x86)/Common Files/Adobe/Acrobat/ActiveX/AcroPDF.dll"}]}}
 Type 1 代表微软Office，11代表金山WPS，21代表永中Office 5代表Adobe Acrobat
 X64 代表是否为64位版本
@@ -110,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"6BFB852DD8B157E295310A5C34F1DD82","Version":"2.2.10.8","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"44E3CAE7E08A7E3150728F1419631BDE83FD2C10DBC233D02CC9747EE2D451BFE5D4A2BFB12FA4797B1AA1B0ED8265DCE0CE1D9A30147990E4AEE836450483BB3E9ED783E89B1C222BE1C9A6C138E08E5127437142D4C0C4DA4DDB4F3A8CA07A06BE63966652C2686B8BE5A5EE33E48A110ACBC8AE0015F42B10D93EFC23485665F9DA2342EC7423537095375E9687C404648A247D699F7559314FCCBE57025E59E2DD055FD944B26FF74A0F196F5D9F38EEA5DDCC4381636E10C1A5CA224A563DBE7E242F734E773563414112AE9B9CFAA58E514C10ABE1155C0C745879E5FDD0556A705042BC06C43094F9F02327CE76465B8CCAFC10B9BCE48CB2C8E4DB79"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"D0DDABE16019D726F5498BE5617A74EA","Version":"2.2.10.10","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7B0C0E893B7DCF5C6FB0A3A601139F4C7ED67A3BE497A4AF42758256E45A66165F616BECAF3BE6E01619A33827AF8FBB4732D5AB102252C7E86CB0E36612826B24AAF497EDF3684BA3BF11B9BD5A807581E8E51ACCD9B8D1ED5CAFB67687EE97EE4BD3D3E7D39F9956D3A0E6AAFFCACF84BAFC4670243AA851738450D1466CCE3C9EB15BD5453AF7805272A5DEA7F60E9EFD1A0097970EF93E5DE0A0C980E76402549B2BC0806F8963C28BAFB424F4B078F6E5CFA5D738A4DA31481DC265D10F413F27532B2E1B3AF79B08E086AA9B163BB2CE28A4044199AA3AF091260F0B3F5678C5E6D8AE7E9C315600A5E0F573C30A3B91B41408317401C782DFEBE2B699"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"240368A7DF7E821D6A7E56C882A7A368","Version":"2.2.10.8","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5FF9491E2B576CFFD4579FAC72736526895E3D628E1FC2554FECF6D1538A0B76707A0BF95C4383166516F7FCCA888D196D29F2894718F178AEB642B61464070E870065C2A7202FBE4F3329FCEFA5D143ACD242B0FFB89110CE9FE65173993F6A923D44A0D57A15993D89EA20337BBC641254638BC43A331909DF13025D6DCB18F28A4D6AA6B844127EFB777AF8586742F804FA352FE4719A580AAD5AFBB209C562B9BCF744A426FCF60BEAAF15C35050CC8B15FE24B59627E14E400530250CC8682A0264B64D5B2D0964D3383B8FCF27A6EAC509F481FD8E2DF684E44D5B9A11DC72B1F26EC44F194632AEE54BAE28C644CDCEA31D8B0805B9029815752C5417"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"F688E908B31BFC1A2D3854F934C86E43","Version":"2.2.10.10","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4FBBE6EFECE1DEE8531B22B1E66FB506C12030E49F0791649CD45AC960798DE0DF7C64558D4BD3CD9FF97A889FB034AE0DB04073A5E454EA01E9AACDEC805359554F9E6010BF97AFB067D5E9C17578AE8F1C58D5D7816CA7336AA4EE774C434ABBBE9F0332FAB5677017686712ECCBC43B065DA6349229E215768E3BD4323273A02128235663E66276F3CB61D0CA7FA21B6243CC7BF505AEA5F3676E3D63B07B88F9A43968927A91DE8BF118B09B738F957D65B6E4B652BD1B6FB9BDB2D95E0BD38DF21D103246D87AF8E612C5D223294C2E41F908D3031C5647DCE1594F08455906B54A432F84682D250B53D9051D479C51FE6CEAD73A82C13DF9DBF82FA1C1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -398,6 +400,21 @@ Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域�
 	1:wdFindContinue(到达搜索区域的开始或者结尾时，继续执行查找操作) 0:wdFindStop(到达搜索范围的开始或者结尾时，停止执行查找操作，默认)
 {"req":"Office_Replace","rid":44,"para":{"Find":"test","Replace":"test content","Case":1,"WholeWord":1,"Wildcards":1}}
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
+
+45）插入书签，适用于Word软件
+Name 书签名称，书签位置就是当前光标位置
+Content 插入书签内容
+Hidden 是否隐藏书签
+Sort 排序类型 0默认按名称 1按位置
+{"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Hidden":0,"Sort":0}}
+返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+46）请求删除指定书签，适用于Word软件
+Name为书签名称
+DelContent 是否同时删除书签内容，默认0不删除
+{"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
+返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为Word程序通知

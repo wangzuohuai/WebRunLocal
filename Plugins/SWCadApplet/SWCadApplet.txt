@@ -37,30 +37,30 @@ B、网页中嵌入元素
 
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动SWCAD网页组件实现网页中局部加载dwg/dxf等文档进行操作：
+1)、请求启动SWCAD网页组件实现网页中局部加载xt、step等文档进行操作：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
-Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
-Url：加载小程序所在的网页实际地址
-Web：可自定义的JSON配置 Flag包含64时可替换Url参数使用
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	Edit代表编辑权限 1只读打开
+	DataPath代表文档查找和保存默认路径
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
-小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-App：0是启动Solidwork实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1是eDrawings控件查看
+网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：0是启动Solidworks实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1启动eDrawings在线查看
 Open：为需要打开的文档路径，磁盘目录斜杠用/
-注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档
-{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"0","Open":"D:/Zorro/Test.sldprt"}}
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.xt"}}
 
-自动识别当前浏览器并启动eDrawings程序在线查看xt、step三维工程图文档
-{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://zorrosoft.com/SWCadframe.html","App":"1","Open":"D:/Zorro/Test.sldprt"}}
+自动识别当前浏览器并启动eDrawings程序在线查看或转换xt、step文档
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.xt"}}
 
-自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档(推荐方式启动)
-{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
-
-自动识别当前浏览器指定位置自动适配网页大小启动(推荐方式启动)：
-{"req":"Wrl_SWCadApplet","rid":8,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"App":"0","Open":"D:/Zorro/Test.sldprt"}}
+自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.xt"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/SWCadframe.html
@@ -117,14 +117,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装SWCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"763FC3BB827364BCD0AEC01535B75179","Version":"2.2.10.6","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"39DA8D2D98A47642D13C5017E364FF38082D69A30BFB14BDFDB484C124BAC85EB1BB00E813D281254699CA047DE8A0C522A36C9C7188D0606524C67A4549A76D951078D5E9ED75B9FE1B648AE7EFC142603343AA839E0C2D393BA091A5B0368F42D1E6FBC7DD84860977AAFD1CC10F1CCB8BEE0C21ACC1EF48051AB394DDD70A3385ED5CA7F2A58857BBF9AA9B7F2D54E14881E70ED5C9525E7C8F4172E273F6B19C0A4128C91A79BC3FE62AC62AF4B09615BDCAFAE0E66CEDE76D5159089C5313425F1CE568008C6455996E5E3220403E646621F32F22EE96A60C0E32275725D0982EA86B1C2018D8EEE0C15EA458079B4768E35D805DDB3C2D00F3B4C52DA2"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"30EE634D3AD7A67D6A2D5D986E7B4690","Version":"2.2.10.10","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2DB2F5AB5909A3E662490E507C5223A245F4BB1D1BA82AF0682042E9D81CB17456684BD8BFBDEF8FDD8110546FC194CE2D9A56598E7129A2C1F22E9F3C861B58766F9E77BD5D5ECEC64FFA9E2068E77D6677359FE8CAAC4E5012D6604F9F33847DAAC025A73D8557FCA9E0D69E5C4B8A7894DB91617CFBBAEB7CAC4624BFFD5B2CFB467516ABC71AF7A81C2DC435B2709E26F5A132B095881A26E329DD6589CFF706612C0BB690A23D5B2C977FF32541129D0E4BF6806E28EFE986EE34B280F9D3085EC21C5641851773041499D691B5FCE88D8212D2989CAAE37E9F7A967EFAA197C17A2CAF7DD826C46C8194F7335032754CD63208567B7DDC346119677B5D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级SWCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2023-06-26","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"89850045A581F598C74184D2B9223259","Version":"2.2.10.6","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"53A2193119678AF1A3677685FA09E57BDA7B25371A062BF12A32699BA38D45101B229D397F4C0E43ACC9B584B44F6D3840A6CB1019F0B15115CB524EC6B4819E2A3840ADEE9FCCA10AC10E359A7ABA7790EC635085EEBD2B653DBECAA99564B2AA38DA993DB1677F6F1D3B4F4A2EEE36D41D6926C26C6B7B17A16EB3DFFB592CD83A19C2A7682C74019DEEF33D4EAB281931E60EF165C2C349EF10D340B90F823FA5A2666673446034C5E6DC3C0E79FDC9D9E5D214B43C422C96B0AD03E97625E9CFDEFEF71BD01E74156530F05493549C79337369D18A992621D03CF88D9DD21F95B944CD2BC5CBE9116BF03BA2BA86EB7E6A856A37A3105F6E716445774D26"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"557FEED9CED868B15D06CE271C62C3A2","Version":"2.2.10.10","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5335DBDE4E6C692D0362B484D1A122B96B885780C2B2672CB82ABE804FBE1BED6BC54FF17A6D11F241F2E34B20FBCCE10A8036BED0B07C2D82F4B4F7C5AF8F1EB633363F83BE2E3A8B0CF4D38992F75FEA07B827ACCF4F3046EEFA9CB2445AE6E8A6F03E1627C7FA42449AE8F88CBA75743C8054896B4F0BA1EBBC5D56B29F919438905750ACAF5A91C33D51F63826D90ACEA33526BB482CC12F38D463DC8890FA5BEA514EEEE951A680D3D8B22285F5B71CFB9CB0FB0DDDBFF65C4FDAD6D95056E49CA317FA1EC8422D5913406D36F30F316E79A73C932CD36892DBBA6C2BDE19592EFBA01B692EE0A47D4DFDFAD7C68BBA0C051A31D80376FC9F3AD2F41610"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -162,7 +162,7 @@ Local 上传文件本地路径或下载文件保存路径，如果不指定默�
 Url 上传或下载的地址，需要做UrlEncode编码
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
-{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.dwg","Url":"http://local.zorrosoft.com/Files/test.dwg"}}
+{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.sldprt","Url":"http://local.zorrosoft.com/Files/test.sldprt"}}
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
 

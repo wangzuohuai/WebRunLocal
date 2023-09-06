@@ -3,13 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>当前页内嵌海康SDK播放小程序</title>    
+    <title>当前页内嵌HK Web Player测试(PluginOK)</title>    
     <script type="text/javascript">
     </script>
 
     <link href="css/res.css" rel="stylesheet"/>
     <script src="PluginOK/base.js"></script> 
-    <script src="PluginOK/vlc.js"></script>
+    <script src="PluginOK/wrl.js"></script>
 
 <script language ="javascript" type ="text/javascript" for="WrlWS" event="onopen()"> 
     showmessage('连接成功');
@@ -56,7 +56,7 @@ border: 1px solid blue;
 <object ID="WrlWS" CLASSID="CLSID:21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A" width="0" height="0"></object>       
 <div class="container">
     <div class="page-header">
-        <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">海康SDK播放小程序在线体验</h2>
+        <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">海康SDK网页播放器在线体验</h2>
         <br />
         <br />
     </div>
@@ -74,7 +74,7 @@ sid=123&flag=1" />
             </div>
             <br />
             <div style="margin-bottom:20px;">
-                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_HKWebPlayer","rid":95,"para":{"Type":"0","Title":"HK Web Player","Flag":72,"IframeX":0,"IframeY":0,"Version":"0","Zoom":100,"ScrollTop":0,"ShowType":4,"Web":[{"ID":1,"Uri":"d:/zorro/1.mp4","Option":"PlayEngine=3 AutoLoop=1"},{"ID":2,"Uri":"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8","Option":"AutoLoop=1 PlayEngine=2"},{"ID":3,"Uri":"rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4","Option":"PlayEngine=2"},{"ID":4,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":"PlayEngine=3"}]}}</textarea>
+                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_HKWebPlayer","rid":95,"para":{"Type":"0","Title":"HK Web Player","Flag":72,"Left":0,"Top":0,"IframeX":0,"IframeY":0,"ScrollTop":0,"Version":"0","ShowType":4,"Web":[{"ID":1,"Uri":"d:/zorro/1.mp4","Option":"PlayEngine=3 AutoLoop=1"},{"ID":2,"Uri":"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8","Option":"AutoLoop=1 PlayEngine=2"},{"ID":3,"Uri":"rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4","Option":"PlayEngine=2"},{"ID":4,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":"PlayEngine=3"}]}}</textarea>
                 <button type="button" id="btn_send" class="btn btn-info btn-block">发送(Ctrl+Enter)</button>
             </div>
         </div>

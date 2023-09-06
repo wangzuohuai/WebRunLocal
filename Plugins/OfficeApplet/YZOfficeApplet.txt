@@ -20,12 +20,13 @@ Url：加载网页组件所在的网页实际地址，在网页中指定小程�
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
-	Hide代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
-	User代表编辑文档的用户名称 
-	PW代表打开文档需要的密码 OLE嵌入方式下不支持
-	DataPath代表文档查找和保存默认路径
+	Edit 代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
+	User 代表编辑文档的用户名称 
+	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
+	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置的Cookie
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -58,10 +59,11 @@ B、{"event":"Wrl_Listen","aid":4,"rid":7,"data":{"SID":"123","PID":"YZOfficeApp
 返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":4,"rid":7,"data":{"SID":"123","PID":"YZOfficeApplet","Port":950}}
 
-关于Option参数，如果不确定是调用启动微软Office内嵌网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
-{"req":"Wrl_OfficeInfo","rid":2,"para":{}} 获得当前电脑Office安装的情况，返回值
-{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"}]}}
-Type 1 代表微软Office，11代表金山WPS，21代表永中Office
+关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
+X64为1时指定只获取当前有效的64位版，0时都获取
+{"req":"Wrl_OfficeInfo","rid":2,"para":{"X64":0}} 获得当前电脑Office及Adobe Acrobat安装的情况，返回值
+{"ret":0,"rid":2,"req":"Wrl_OfficeInfo","data":{"Info":[{"Type":1,"X64":0,"Cur":0,"Ver":"15.0.5389.1000"},{"Type":11,"X64":0,"Cur":0,"Ver":"11.1.0.11045"},{"Type":21,"X64":0,"Cur":1,"Ver":"8.0.0.0"},{"Type":5,"X64":0,"Cur":0,"Ver":"","Path":"C:/Program Files (x86)/Common Files/Adobe/Acrobat/ActiveX/AcroPDF.dll"}]}}
+Type 1 代表微软Office，11代表金山WPS，21代表永中Office 5代表Adobe Acrobat
 X64 代表是否为64位版本
 Cur 代表是否当前有效
 Ver 代表文件版本信息
@@ -110,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"66EDEDCB7BEA02E0CABB3F6A100F6E0D","Version":"2.2.10.8","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"13C0455436B65BB9AB1BA602C8ED77150C7A2A240FED89294B50B0C9977D9BD01D1A6DFF050B9653A4559F563833D0834A465EE4BCE978EAB6D6D0687A8B246D23B96F879F3F73F839A18EC79A95ACDB3409139297247961FBDFDA70993AEAC0C916554D50FB30A5EFA1115B2CB96092EE19E2E61F78F5784AF413E72D21B636C6257C4B569FF81F795CA670D79285B16BE2BE4438AEB0B017E715DA5AAE3C12D2888DE03D99551D22FBF607F0156D4BE32795033720EB9E241631A4C17517244D678FB185E351D7144E4DE358F849A327C50722744D9BB3459AA8A10A59A5E7581997BB29C3D5EC81FF56F9FBC0A500879AA753E96E1A001D4A9A743CA88799"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"8D9739F16F7AC69DEDEB022DA93FF6AB","Version":"2.2.10.10","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2A6D7F8C596B71483D1111397517044E2233B21B2A76D365E3F403110EC60640F51A698D64B9965FB92DD803517297DE5F5B1DB7533BCE6FEA608875FFCBB37BE13CC4F9DB7CD3E47261A80EA403285C07506F589D09B95D9D59222250F20381CD6B9C6F38FD7D4F060DAB2DD7FFD0172453C2B303DE789FBF44BB49619D13450AD9F9C26A7733B09FC35F437361E204C3806369844AA4ED80A3FD73834B014D9FD4BED60AE5CCF61CB3F2EB2BE37F727556B0B7407569CAE06E3DB12FADFB2F774E2EBC290C39A12FAA51167D5B61C37A650886D5E7B20EC88EFCAB9830646F63A652D4BDBA4CCE8592063346D0DCF023233C432E32FAD09A4390B8F8656ED9"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-07-23","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"AC90C6D4C00AB8E1B556F847D3FD874A","Version":"2.2.10.8","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"842C86D0EDECFDB0D4102CA687ECFE92333E98C175ECE532ED4E8706AE24FB66809204E9100EDBCE6DB4C435E45D10ABFAAE63C34DD66CEF83D693F018BD2C13B781DEAB6FBEAD148BC9C1B8AA5C95D2B6A1A7C6FCA3AD9C9B24546569E60D5B19BCFFF168277C444DBF6600050B40941C19D60E065DBC994E35CECFB621D255667B50F030F8CC24E697ABE5EAFBA9F2B940EE4C440BF708CD24C97617A89969FB68AF54FD72C470D8912EB2364F0A22001E46EA9CAC99A84FA1F51DB481B3BFE4CC538830F97CA6C78A47395EAC935CB249F94EE7ACF0D72D5DD4A472DBAF8C5AD9F38386F990A5F09240150D1AC91D7D5DFA1D43597E31F2A2553FAFE51F03"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"38A7266AA30642FB18488E37A73C86C4","Version":"2.2.10.10","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"61786AFB86F01356AAF0C555B941057AE34933941475D1D2272EB982549BEE4479397601F8A8E641B915895186357EC3D49507B1B5CFACB3F505AA830D85F777E136332D8F2CB07BB85B57B862ECDC2D77212594B52D23C8C3B6D9118BD6EBDF055CE201290EFF5AACAFB487033189C7873587C3F3514A22C611F8DABA9000E3F1EAE6DCC1A1F0AEA686ACA815BF16DED788C624E11F84C290A7DADD8C2A677A1C47366344C68B35E3A4C62142D673D06C13855A4B52536E7A7CD075B376BE028C10E9A715251B134462D6D65404C46CED281E45B183C2E6F7520A6B2A2A219874E06CA916733829FD4B9F45C1E77AD1172818631B28414CCE73CD55D6B84CD3"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -376,7 +378,7 @@ Show是否显示 0隐藏 1显示
 {"req":"Office_ShowMarkContent","rid":43,"para":{"Name":"Caption","Show":"0"}}
 返回：{"ret":0,"rid":43,"data":{"Ret":"0"}}
 
-44）请求查找替换指定文字内容，适用于Word软件
+44）请求查找替换指定文字内容，适用于永中文字软件
 Find:被替换文字内容 Replace:替换文字内容 传入前都需要先做UrlEncode编码
 Case:是否区分大小写 默认0 1代表大小写敏感 对应于“查找和替换”对话框（“编辑”菜单）中的“区分大小写”复选框
 Forward: 默认1向前搜索 (向文档的末尾) 0先后搜索，向文档初始位置
@@ -387,6 +389,21 @@ Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域�
 	1:wdFindContinue(到达搜索区域的开始或者结尾时，继续执行查找操作) 0:wdFindStop(到达搜索范围的开始或者结尾时，停止执行查找操作，默认)
 {"req":"Office_Replace","rid":44,"para":{"Find":"test","Replace":"test content","Case":1,"WholeWord":1,"Wildcards":1}}
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
+
+45）插入书签，适用于永中文字软件
+Name 书签名称，书签位置就是当前光标位置
+Content 插入书签内容
+Hidden 是否隐藏书签
+Sort 排序类型 0默认按名称 1按位置
+{"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Hidden":0,"Sort":0}}
+返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+46）请求删除指定书签，适用于永中文字软件
+Name为书签名称
+DelContent 是否同时删除书签内容，默认0不删除
+{"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
+返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为永中文字程序通知
