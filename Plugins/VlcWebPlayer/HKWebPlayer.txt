@@ -1,14 +1,14 @@
-﻿海康视频网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康的设备网络SDK(https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10)和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC及海康SDK等播放程序版权归相关公司所有。
+﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC、海康及大华SDK等播放引擎版权归相关公司所。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
-2)、支持多路同时实时播放、回放、支持帧回退、支持下一帧、支持抓图、录屏、高清视频或大屏播放性能好；
-3)、底层播放技术采用海康设备网络SDK(版权归原厂家，最终用户需获得原厂使用授权)，支持海康私有协议及RTSP流播放、云台控制、语音对讲等，支持H.264和H.265；
+2)、支持多路同时实时播放、回放、支持按帧回退、支持下一帧、支持抓图、录屏、高清视频或大屏播放性能好；
+3)、底层播放技术采用海康及大华设备网络SDK(版权归原厂家)，支持海康及大华私有协议及RTSP流播放、云台控制、语音对讲等，支持H.264和H.265；
 4)、播放小程序额外付费后可获得源代码进行定制开发；
-5)、支持海康的摄像头和硬盘录像机等各系列的设备；
+5)、支持海康及大华的摄像头和海康硬盘录像机等各系列的设备；
 6)、支持本地MP4等视频文件和RTSP、RTMP、MMS等网络流播放。
 
-适用于但不仅限于以下海康产品型号：
+适用于海康威视DVR、NVR、DVS、网络摄像机、网络球机等设备，不仅限于以下海康产品型号：
 DVR：DS-9100、DS-8100、DS-8000-S、DS-8800、DS-7800、DS-7300、DS-7200、DS-7100、DS-7000 等系
 列，包括-ST、-SH、-SE、-SN、-RT、-RH、-XT 等。
 NVR：DS-96000N-I24/I16、DS-96000N-F24/F16(/H)(/I)、DS-96000N-H24/H16(/H)(/I)、DS-9600N-I8/H8/F8/ST/XT、
@@ -19,6 +19,8 @@ DS-7200HQH(/HGH)-SH、DS-8800HQH(/HGH)(/HUH)-SH(/Fx)、DS-7900HQH(/HGH)(/HUH)-SH
 DS-7800HQH(/HGH)(/HUH)-SH(/Ex/Fx)、DS-7100HGH-E1(/F1)等。
 HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
 
+适用于大华通用设备：IPC、球机、对讲等
+
 文件播放支持私有、PS、TS、3GP、AVI等封装的录像文件格式，支持的视频编码格式包括私有H.264编码、标准H.264、mpeg2、mpeg4、mjpeg、H.265、SVAC、Smart264、Smart265等，音频格式包括G.711、G.722、G.726、MPEG、AAC、PCM等。
 
 1、牛插(PluginOK)中间件的安装：
@@ -26,7 +28,7 @@ HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
-2、海康视频网页播放器控制相关接口：
+2、RTSP网页多引擎播放器控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
 HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网页在线测试：https://local.zorrosoft.com/HKFrame.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
@@ -35,22 +37,22 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 前端集成可参考以上测试网页进行需要嵌入用到的JS脚本，脚本程序是完全开源的。
 播放窗口选中状态时双击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的Player_FullScreen通知。
 
-1)、请求启动海康视频网页播放器：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+1)、请求启动RTSP网页多引擎播放器：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
 Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
-ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1-22 24 25等多达20种多窗口播放
+ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1到31的数值，多达31种分屏，注意此值不代表分屏个数
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Web或Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：播放参数，多个参数中间用空格区分
-PlayEngine=2 指定用LibVLC引擎播放，默认=0是采用海康SDK私有协议播放，=1是采用海康MP4本地文件播放引擎播放
+PlayEngine=2 指定用LibVLC引擎播放 默认0是采用海康SDK私有协议播放 1是采用海康MP4本地文件引擎播放 3是采用FFPlayer引擎播放 4是采用大华SDK私有协议播放
 AutoLoop=1 指定是否循环播放，1循环
-Caching=30 指定网络缓存时间30代表300毫秒
-Server=8000 指定海康SDK私有协议播放服务器端口，非8000时设置 仅对PlayEngine=0有效
+Caching=6 海康私有协议播放引擎比如设置6代表最大缓存6帧，其它播放引擎设置6代表600毫秒延迟
+Server 指定海康或大华SDK私有协议播放服务器地址、登录用户名、密码及端口信息
 Channel=1 私有协议播放时的通道ID，直接连摄像头播放时无需指定，默认通道序号是1 硬盘录像机可指定大于32的通道数值
 Stream=1 指定流类型 0是主码流，1是子码流 仅对PlayEngine=0有效
 Link=1 指定连接类型 0是TCP方式 1是UDP方式 PlayEngine=1时无效
@@ -62,18 +64,18 @@ Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_HKWebPlayer","rid":5,"para":{"Type":"0","Title":"HK Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":6,"Web":[{"ID":1,"Server":"wzh:test123456@192.168.1.12:8000","Option":"Channel=33 Caching=1 Stream=1 Link=1"},{"ID":2,"Server":"wzh:test123456@192.168.1.12:8000","Option":"Channel=34 Link=4 Stream=0"},{"ID":3,"Server":"admin:test123456@192.168.1.8:8000","Option":"Link=1 Stream=0"},{"ID":4,"Server":"wzh:test123456@192.168.1.8:8000","Option":"Link=0 Stream=1"},{"ID":5,"Uri":"d:/zorro/test.mp4","Option":"PlayEngine=1"},{"ID":6,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":"PlayEngine=2"}]}}
+{"req":"Wrl_HKWebPlayer","rid":5,"para":{"Type":"0","Title":"HK Web Player","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":6,"Web":[{"ID":1,"Server":"wzh:test123456@192.168.1.12:8000","Option":"Channel=33 Caching=1 Stream=1 Link=1"},{"ID":2,"Server":"wzh:test123456@192.168.1.2:37777","Option":"Channel=1 Link=1 Stream=0 PlayEngine=4"},{"ID":3,"Server":"admin:test123456@192.168.1.8:8000","Option":"Link=1 Stream=0"},{"ID":4,"Server":"wzh:test123456@192.168.1.8:8000","Option":"Link=0 Stream=1"},{"ID":5,"Uri":"d:/zorro/test.mp4","Option":"PlayEngine=1"},{"ID":6,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":"PlayEngine=2"}]}}
 
 自动识别当前浏览器充满网页区显示：
-{"req":"Wrl_HKWebPlayer","rid":5,"para":{"Type":"0","Title":"HK Web Player","Flag":72,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":6,"Web":[{"ID":1,"Server":"wzh:test123456@192.168.1.12:8000","Option":"Channel=33 Caching=1 Stream=1 Link=1"},{"ID":2,"Server":"wzh:test123456@192.168.1.12:8000","Option":"Channel=34 Link=4 Stream=0"},{"ID":3,"Server":"admin:test123456@192.168.1.8:8000","Option":"Link=1 Stream=0"},{"ID":4,"Server":"wzh:test123456@192.168.1.8:8000","Option":"Link=0 Stream=1"},{"ID":5,"Uri":"d:/zorro/test.mp4","Option":"PlayEngine=1"},{"ID":6,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":"PlayEngine=2"}]}}
+{"req":"Wrl_HKWebPlayer","rid":5,"para":{"Type":"0","Title":"HK Web Player","Flag":72,"Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Version":"0","ShowType":6,"Web":[{"ID":1,"Server":"wzh:test123456@192.168.1.12:8000","Option":"Channel=33 Caching=1 Stream=1 Link=1"},{"ID":2,"Server":"wzh:test123456@192.168.1.2:37777","Option":"Channel=1 Link=1 Stream=0 PlayEngine=4"},{"ID":3,"Server":"admin:test123456@192.168.1.8:8000","Option":"Link=1 Stream=0"},{"ID":4,"Server":"wzh:test123456@192.168.1.8:8000","Option":"Link=0 Stream=1"},{"ID":5,"Uri":"d:/zorro/test.mp4","Option":"PlayEngine=1"},{"ID":6,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":"PlayEngine=2"}]}}
 
 启动后会先后收到三个JSON数据包
 A、{"ret":0,"rid":5,"data":{"ID":2}}
 代表小程序WS侦听服务就绪
-B、{"event":"Wrl_Listen","aid":2,"rid":5,"data":{"SID":"123","PID":"HKWebPlayer","port":920}}
+B、{"event":"Wrl_Listen","rid":2,"rid":5,"data":{"SID":"123","PID":"HKWebPlayer","port":920}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Player。
-代表小程序创建成功，返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
-C、{"event":"Wrl_AppletOK","aid":2,"rid":5,"data":{"SID":"123","PID":"HKWebPlayer","Port":920}}
+代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","rid":2,"rid":5,"data":{"SID":"123","PID":"HKWebPlayer","Port":920}}
 
 由于依赖VLC桌面程序，所以可以提前调用以下接口获得VLC等播放器的安装情况，如未安装，可先提示下载安装
 {"req":"Wrl_PlayerInfo","rid":1,"para":{}} 
@@ -81,19 +83,19 @@ C、{"event":"Wrl_AppletOK","aid":2,"rid":5,"data":{"SID":"123","PID":"HKWebPlay
 {"ret":0,"rid":1,"req":"Wrl_PlayerInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"3.0.17.4","Path":"C:/Program Files/VideoLAN/VLC/vlc.exe"}]}}
 Type 1 代表VLC X64 代表是否为64位版本 Ver 代表文件版本信息 Path 安装路径
 
-2)、请求控制海康视频网页播放器：
+2)、请求控制RTSP网页多引擎播放器：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
 ID为启动小程序时返回的ID值，Code代表控制类型掩码：1正常关闭 128强制迅速关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,设置4和32隐藏后可通过8恢复显示
 {"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
 
-3)、请求滚动网页中海康视频网页播放器：
+3)、请求滚动网页中RTSP网页多引擎播放器：
 当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
 ID为启动小程序时返回JSON中的ID值
 Code为滚动方向1是水平，2是垂直，3是同时
 Left为横向滚动条位置，Top为纵向滚动条位置
 {"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
 
-4)、请求改变网页中海康视频网页播放器显示位置或大小：
+4)、请求改变网页中RTSP网页多引擎播放器显示位置或大小：
 当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
 ID为Wrl_HKWebPlayer启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度
 X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
@@ -123,24 +125,24 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 {"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
 
 3、小程序安装、升级、卸载
-1)、请求安装海康视频网页播放器
+1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"19FD05F9FDC75433DFB082ECF16EC650","Version":"2.2.10.10","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"59C64ECB7C2F01A8FD20BF4C8B8A96BEC7B3784E4BF134954D5864DFF1EFFF4707D86387C919FCB1EF58AC9C1C9BEA22AFA2898612C8C092B8F82BF7465AB39E7367B920B0B579CDE363404199B991E5084140F3C6993C65191A900F9247F038E27A49EE7A1ACFD5A4E658011C95AD8FAE5DAF9235A4B65E8CF71760F04388CB3BC45C0F00A704739424ED248D60046772D9B9766C886E9AD5BB1A6693C16956CF3321A3210DBF5810D0141B9B47F9AC160EB23A5C2069DDB62DFE89E16F6C01A0452477FC9DC162EA97D3944F68D3766CE535105E17C9BF30AD052A0E9EA2102F47B2F7906BEC0368EEBFD32E3E6B2F1B8CFF082CB51480F0A1F37EF1653A8E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-11-19","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"BDE14B22CEEE01FB8831BF1F45A2E30C","Version":"2.2.12.1","Size":6094848,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3D07F6A8A38879857BF27E0C6428E98F0FE8A3ECDF25978E8E09A7BEB72C84161F9ACFAFCFC5E264CAC95024954BA6E156C0615FE37C099CE111ECC753D477CB66E5BFBC5571340892A46A57C0ADC201C5D6973E9B80C8BF04E2C1E50C5D9A4E71D0EEA9AF5F00E867E4A834F650F1105F63712B4F302758F346D1AC710A1BA0B187174D10C60A7A8C504132CE7AD6B981FACF82556C1D7759571A7358C21AA7995091ED052D32E8FFED6B927699DBF60402307BB70B536D3F5E98EF9E05C9EC694AF164D315E659BF974904D8B5751E021AAF3EA6ABF15013708B9C9313C101F0BC1AB8CF188B618213B2864912C351F478C1C1E339D0CE3155B37FD87A6A4F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
-2)、请求升级海康视频网页播放器：
+2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"B0D783424F502F5C14A922AD5FEA1BE5","Version":"2.2.10.10","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7016771E7CE41BE3325A498911A67FD5912CFEDEF8FC8BDC07DFE24F76729EAD6FA58EF01D056C9950EB523A56EF305645100FE4258B1BE569B874DEDC714A3B10619D4B29F14E710BDADCFE3AAB07B78418835D975408E35C503FDAE7BE1111B9B5D5AA2991673BE63B9CC76BF6F4B0D543F630D70FDFF72D93E078F7D475EC4007BDDAA8BB20BC069ADD242600132A979FEFEA7ECF76A2AC0600C3E085668062A86B928A0F48C224AB4C19B2522E32CEDA7A030304591A77FD4D6EB6C155CABBBED6420A6C032052D28A45307F88CFD4947E39653FE21EBF4ACF2CC59E95A95B2A219C281C7392BAF190784DC6ECDD91D8E8CE834EABFD607B27BB0218A00C"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2023-11-19","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"75815A06F89A0EA54CEE3FE52885ED0C","Version":"2.2.12.1","Size":6094848,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"90E9767FA401EA2E9626CE179016DF720CEA9AA4AA373940E6F402345731D193609474C564F8774146ED243DF8836EDC2C0EE853064CFED21AE2D47D6F316572E1E52E8A562C3827185E052728F53DB9BF41A8E67BD00D92A60B6448152A0827F5EAED563AA202E7A6248E1506459CC12119322D83E5AAD0999DC3BCEA5094881A66F6E0B7CAC6733FCF403A8DD8FFA0F54E1EC8118848ABF133D83AC48B98C3A266528A38F7058B33A54A76F7B317BD492BF0B0F5A702F9015ED8D729866D76014BE1F7A14D4D255908968004209A84A0F090B99B643706CD4867EEDF815C59DA011E6C70492C1F032806FB8D513630CD641DEF6121CBEC383B8804D23A09A9"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
-3)、请求卸载海康视频网页播放器：
+3)、请求卸载RTSP网页多引擎播放器：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"HKWebPlayer","Type":8}}
 
-4、海康视频网页播放器转调用海康原生SDK封装的ActiveX控件HKVideoCom的接口，先根据Wrl_HKWebPlayer请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、RTSP网页多引擎播放器转调用多引擎原生播放SDK封装的ActiveX控件接口，先根据Wrl_HKWebPlayer请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 1) 取指定ID播放窗口属性AutoLoop(自动循环播放)值，仅对MP4等文件播放有效
 其中窗口序号ID，从1开始，序号原则是从左向右开始编号，然后从上到下开始顺序编号，如遇右侧多层排列窗口时，直到右侧窗口序号排序完成
@@ -154,20 +156,20 @@ AutoLoop为1代表循环播放，0不循环
 请求：{"req":"Player_PutAutoLoop","rid":42,"para":[{"ID":1,"AutoLoop":1},{"ID":2,"AutoLoop":0}]}
 分别返回：{"ret":0,"rid":42,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":42,"ID":2,"data":{"Ret":0}}
 
-3) 取海康SDK的信息，包含版本号、对接及超时配置等信息
+3) 取播放引擎SDK的信息，包含版本号、对接及超时配置等信息
 请求：{"req":"Player_GetSDKInfo","rid":43,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":43,"ID":1,"data":{"Ret":0,"Ver":"V6.1.6.45","Build":"20210302","GenCfg":{"SplitFile":0,"ResumeUpgrade":0,"ResumeTimeout":0},"OverTimeCfg":{"PreviewTime":5000,"VodTime":5000,"AlarmTime":5000,"ElseTime":5000},"TalkCfg":{"TalkMode":0}}}
 
-4) 取指定ID窗口当前播放引擎 0海康私有协议播放 1海康MP4本地文件播放 2开源VLC播放 使用哪个引擎由启动播放参数决定
+4) 取指定ID窗口当前播放引擎 0海康私有协议播放 1海康MP4本地文件播放 2开源LibVLC播放 3FFPlayer引擎播放 4大华SDK私有协议播放 使用哪个引擎由启动播放参数决定
 请求：{"req":"Player_PlayEngine","rid":44,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":44,"ID":1,"data":{"Ret":0,"Engine":0}} 和 {"ret":0,"rid":44,"ID":2,"data":{"Ret":0,"Engine":1}}
 
-5) 取指定ID窗口当前是否异步播放 海康私有协议播放有效
-请求：{"req":"Player_GetAsynPlay","rid":45,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":45,"ID":1,"data":{"Ret":0,"AsynPlay":1}} 和 {"ret":0,"rid":45,"ID":2,"data":{"Ret":0,"AsynPlay":0}}
+5) 取指定ID窗口音频输出类型 VLC播放有效
+请求：{"req":"Player_GetAudioOut","rid":45,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":45,"ID":1,"data":{"Ret":0,"AudioOut":"directsound"}} 和 {"ret":0,"rid":45,"ID":2,"data":{"Ret":0,"AudioOut":"any"}}
 
-6) 设置指定ID窗口是否异步播放，调用播放前设置 海康私有协议播放有效
-请求：{"req":"Player_PutAsynPlay","rid":46,"para":[{"ID":1,"AsynPlay":1},{"ID":2,"AsynPlay":0}]}
+6) 设置指定ID窗口音频输出类型，调用播放前设置 VLC播放有效
+请求：{"req":"Player_PutAudioOut","rid":46,"para":[{"ID":1,"AudioOut":"directsound"},{"ID":2,"AudioOut":"any"}]}
 分别返回：{"ret":0,"rid":46,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":46,"ID":2,"data":{"Ret":0}}
 
 7) 取指定ID窗口当前播放网络缓存帧数 1-50 1实时性好;3实时性较好;6实时性中,15流畅性中
@@ -202,11 +204,11 @@ AutoLoop为1代表循环播放，0不循环
 请求：{"req":"Player_PutProtoType","rid":54,"para":[{"ID":1,"ProtoType":1},{"ID":2,"ProtoType":0}]}
 分别返回：{"ret":0,"rid":54,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":54,"ID":2,"data":{"Ret":0}}
 
-15) 取指定ID窗口设备信息，仅对连接海康硬件设备登录成功后有效
+15) 取指定ID窗口设备信息，仅对连接海康及大华硬件设备登录成功后有效
 请求：{"req":"Player_GetDeviceInfo","rid":55,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":55,"ID":1,"data":{"Ret":0,"SerialNumber":"DS-3SC3Q150MY-TE20200620AACHG56168112"}} 和 {"ret":0,"rid":55,"ID":2,"data":{"Ret":-2147467262,"SerialNumber":""}}
+分别返回：{"ret":0,"rid":55,"ID":1,"aid":15,"data":{"Ret":0,"DeviceInfo":{"DevType":31,"IP":0,"DevChanNum":1,"IPChanNum":0,"AudioNum":1,"MainProto":2,"SubProto":2,"SN":"DS-2SC3Q140MY-TE20210819AACHG56068012"}}} 和 {"ret":0,"rid":55,"ID":2,"aid":13,"data":{"Ret":0,"DeviceInfo":{"DevType":20,"DiskNum":1,"DevChanNum":1,"SN":"9D0B7E0PHA14CA4"}}}
 
-16) 异步登录设备，仅对连接海康硬件设备有效，本地MP4文件播放无需登录，登录结果通过事件接收
+16) 登录设备，仅对连接海康及大华硬件设备有效，本地MP4文件播放无需登录，登录结果通过事件接收
 请求：{"req":"Player_Login","rid":56,"para":[{"ID":1,"Server":"admin:test123456@192.168.1.9:8000"},{"ID":2,"Server":"admin:test123456@192.168.1.8:8000"}]}
 分别返回：{"ret":0,"rid":56,"ID":1,"data":{"Ret":0,"LoginID":1}} 和 {"ret":0,"rid":56,"ID":2,"data":{"Ret":0,"LoginID":2}}
 LoginID为登录标识，登录结果事件中携带
@@ -219,19 +221,19 @@ LoginID为登录标识，登录结果事件中携带
 请求：{"req":"Player_GetPlayedTime","rid":58,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":58,"ID":1,"data":{"Ret":0,"PlayedTime":12}} 和 {"ret":0,"rid":58,"ID":2,"data":{"Ret":0,"PlayedTime":0}}
 
-19) 取指定ID窗口文件已播放帧数，仅对海康回放及本地MP4等文件打开播放后有效
+19) 取指定ID窗口文件已播放帧数，仅对海康及大华回放、FFPlayer和本地MP4等文件打开播放后有效
 请求：{"req":"Player_GetPlayedFrames","rid":59,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":59,"ID":1,"data":{"Ret":0,"PlayedFrames":12}} 和 {"ret":0,"rid":59,"ID":2,"data":{"Ret":0,"PlayedFrames":0}}
 
-20) 取指定ID窗口文件总播放帧数，仅对海康回放及本地MP4等文件打开播放后有效
+20) 取指定ID窗口文件总播放帧数，仅对海康及大华回放、FFPlayer和本地MP4等文件打开播放后有效
 请求：{"req":"Player_GetTotalFrames","rid":60,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":60,"ID":1,"data":{"Ret":0,"TotalFrames":12}} 和 {"ret":0,"rid":60,"ID":2,"data":{"Ret":0,"TotalFrames":0}}
 
-21) 取指定ID窗口文件播放百分比，仅对VLC引擎及本地MP4等文件打开播放后有效
+21) 取指定ID窗口文件播放百分比，仅对VLC引擎、FFPlayer及本地MP4等文件打开播放后有效
 请求：{"req":"Player_GetPlayPercent","rid":61,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":61,"ID":1,"data":{"Ret":0,"Percent":12}} 和 {"ret":0,"rid":61,"ID":2,"data":{"Ret":0,"Percent":0}}
 
-22) 设置指定ID窗口文件播放百分比，仅对VLC引擎及本地MP4等文件打开播放后有效
+22) 设置指定ID窗口文件播放百分比，仅对VLC引擎、FFPlayer及本地MP4等文件打开播放后有效
 请求：{"req":"Player_PutPlayPercent","rid":62,"para":[{"ID":1,"Percent":12},{"ID":2,"Percent":0}]}
 分别返回：{"ret":0,"rid":62,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":62,"ID":2,"data":{"Ret":0}}
 
@@ -242,21 +244,21 @@ Type类型 默认1加速播放可多次调用 2降速播放可多次调用 3倒�
 
 24) 指定ID窗口设备类型和序列号，本地MP4等文件播放无效
 请求：{"req":"Player_GetDeviceType","rid":64,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":64,"ID":1,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":64,"ID":1,"aid":15,"data":{"Ret":0,"Type":31,"SerialNumber":"DS-2SC3Q140MY-TE20210819AACHG56068012"}} 和 {"ret":0,"rid":64,"ID":2,"aid":14,"data":{"Ret":0,"Type":20,"SerialNumber":"9D0B7E0PHA14CA4"}}
 
 25) 获取或者设置指定ID窗口当前播放通道，本地MP4等文件播放无效
 获取请求：{"req":"Player_GetCurChannel","rid":65,"para":[{"ID":1},{"ID":2}]}
 设置当前播放通道请求，只对硬盘录像机有效：{"req":"Player_PutCurChannel","rid":65,"para":[{"ID":1,"Channel":33},{"ID":2,"Channel":34}]}
 分别返回：{"ret":0,"rid":65,"ID":1,"data":{"Ret":0,"CurChannel":2}} 和 {"ret":0,"rid":65,"ID":2,"data":{"Ret":0,"CurChannel":1}}
 
-26) 取指定ID窗口相关状态，本地MP4文件及VLC引擎播放登录状态无效，只有播放状态
+26) 取指定ID窗口相关状态，本地MP4文件、FFPlayer及VLC引擎播放登录状态无效，只有播放状态
 请求：{"req":"Player_GetStatus","rid":66,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":66,"ID":1,"data":{"Ret":0,"LoginStatus":2,"PlayStatus":1,"SupportTalk":1}} 和 {"ret":0,"rid":66,"ID":2,"data":{"Ret":0,"PlayStatus":1}}
-返回LoginStatus为海康私有协议登录状态
+返回LoginStatus为海康及大华私有协议登录状态
 返回PlayStatus为当前播放状态，播放状态定义参考libvlc_state_t
-返回是否支持对讲标识SupportTalk 海康私有协议播放有效
+返回是否支持对讲标识SupportTalk 海康及大华私有协议播放有效
 
-27) 指定ID窗口播放指定通道、本地文件或RTSP流地址，海康私有协议播放需要先登录
+27) 指定ID窗口播放指定通道、本地文件或RTSP流地址，海康及大华私有协议播放需要先登录
 指定Channel时为指定通道播放，指定Uri时，要么是本地路径文件，要么是服务器的RTSP流地址(包含回放地址) Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 需要注意的是比如已经启动播放本地MP4文件播放，那么这个窗口调用此接口时也只能切换本地MP4文件播放
 请求：{"req":"Player_Play","rid":67,"para":[{"ID":1,"Channel":1},{"ID":2,"Uri":"d:/zorro/test.mp4"},{"ID":3,"Uri":"rtsp://192.168.1.8:554/h264/ch1/sub/av_stream","Option":"Stream=1"}]}
@@ -290,8 +292,10 @@ AudioMode 1为独占 单路音频模式；2－共享声卡，多路音频模式
 请求：{"req":"Player_PutAudioVolume","rid":73,"para":[{"ID":1,"AudioVolume":0},{"ID":2,"AudioVolume":100}]}
 分别返回：{"ret":0,"rid":73,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":73,"ID":2,"data":{"Ret":0}}
 
-34) 指定ID窗口进行云台控制，需要先调用播放，海康私有协议播放有效
+34) 指定ID窗口进行云台控制，海康需要先调用播放，大华只需要登录即可，海康及大华私有协议有效
+Stop是否停止 0－开始，1－停止 
 Type为云台控制类型
+以下是海康云台类型定义：
 	PTZTYPE_LIGHT_PWRON		= 2,	/// 接通灯光电源
 	PTZTYPE_WIPER_PWRON		= 3,	/// 接通雨刷开关
 	PTZTYPE_FAN_PWRON		= 4,	/// 接通风扇开关
@@ -355,9 +359,112 @@ Type为云台控制类型
 	PTZTYPE_DOWN_RIGHT_ZOOM_OUT	= 71,	/// 云台以SS的速度下俯和右转&&焦距以速度SS变小(倍率变小)
 	PTZTYPE_TILT_UP_ZOOM_IN		= 72,	/// 云台以SS的速度上仰&&焦距以速度SS变大(倍率变大)
 	PTZTYPE_TILT_UP_ZOOM_OUT	= 73,	/// 云台以SS的速度上仰&&焦距以速度SS变小(倍率变小)
-Speed是否指定速度 用户按不同解码器的速度控制值设置。取值范围[1,7] 不需要速度控制时不设置此值
-Stop是否停止 0－开始，1－停止 
-请求：{"req":"Player_PTZControl","rid":74,"para":[{"ID":1,"Type":1,"Speed":5,"Stop":0}]}
+
+以上涉及速度的海康云台控制类型设置此参数：Speed是否指定速度 用户按不同解码器的速度控制值设置。取值范围[1,7] 不需要速度控制时不设置此值
+
+以下是大华云台类型定义：
+		DHPTZTYPE_UP_CONTROL = 0,                      // 上                   速度对应parma2(1-8)
+		DHPTZTYPE_DOWN_CONTROL,                        // 下                   速度对应parma2(1-8)
+		DHPTZTYPE_LEFT_CONTROL,                        // 左                   速度对应parma2(1-8)
+		DHPTZTYPE_RIGHT_CONTROL,                       // 右                   速度对应parma2(1-8)
+		DHPTZTYPE_ZOOM_ADD_CONTROL,                    // 变倍+                对应param2
+		DHPTZTYPE_ZOOM_DEC_CONTROL,                    // 变倍-                对应param2
+		DHPTZTYPE_FOCUS_ADD_CONTROL,                   // 调焦-                对应param2
+		DHPTZTYPE_FOCUS_DEC_CONTROL,                   // 调焦+                对应param2
+		DHPTZTYPE_APERTURE_ADD_CONTROL,                // 光圈+                对应param2
+		DHPTZTYPE_APERTURE_DEC_CONTROL,                // 光圈-                对应param2
+		DHPTZTYPE_POINT_MOVE_CONTROL,                  // 转至预置点           param2为预置点序号
+		DHPTZTYPE_POINT_SET_CONTROL,                   // 设置                 param2为预置点序号，最大序号可以从云台能力集中获取  param4可以传预置点名称，预置点名称最大有效值为63字节。
+		DHPTZTYPE_POINT_DEL_CONTROL,                   // 删除                 param2为预置点序号
+		DHPTZTYPE_POINT_LOOP_CONTROL,                  // 点间巡航             param1为巡航线路
+		DHPTZTYPE_LAMP_CONTROL,                        // 灯光雨刷             对应param1(1-开启,0-关闭)
+		/// 以下是云台扩展类型
+		DHEXTPTZTYPE_LEFTTOP = 0x20,                   // 左上
+		DHEXTPTZTYPE_RIGHTTOP,                         // 右上
+		DHEXTPTZTYPE_LEFTDOWN,                         // 左下
+		DHEXTPTZTYPE_RIGHTDOWN,                        // 右下
+		DHEXTPTZTYPE_ADDTOLOOP,                        // 加入预置点到巡航 巡航线路 预置点值
+		DHEXTPTZTYPE_DELFROMLOOP,                      // 删除巡航中预置点 巡航线路 预置点值
+		DHEXTPTZTYPE_CLOSELOOP,                        // 清除巡航 巡航线路
+		DHEXTPTZTYPE_STARTPANCRUISE,                   // 开始水平旋转
+		DHEXTPTZTYPE_STOPPANCRUISE,                    // 停止水平旋转
+		DHEXTPTZTYPE_SETLEFTBORDER,                    // 设置左边界
+		DHEXTPTZTYPE_SETRIGHTBORDER,                   // 设置右边界
+		DHEXTPTZTYPE_STARTLINESCAN,                    // 开始线扫
+		DHEXTPTZTYPE_CLOSELINESCAN,                    // 停止线扫
+		DHEXTPTZTYPE_SETMODESTART,                     // 设置模式开始    模式线路
+		DHEXTPTZTYPE_SETMODESTOP,                      // 设置模式结束    模式线路
+		DHEXTPTZTYPE_RUNMODE,                          // 运行模式    模式线路
+		DHEXTPTZTYPE_STOPMODE,                         // 停止模式    模式线路
+		DHEXTPTZTYPE_DELETEMODE,                       // 清除模式    模式线路
+		DHEXTPTZTYPE_REVERSECOMM,                      // 翻转命令
+		DHEXTPTZTYPE_FASTGOTO,                         // 快速定位 水平坐标(-8191~8191) 垂直坐标(-8191~8191) 变倍(-16~16)
+		DHEXTPTZTYPE_AUXIOPEN,                         // 辅助开关开 辅助点(param4对应 PTZ_CONTROL_AUXILIARY,param1、param2、param3无效,dwStop设置为FALSE)
+		DHEXTPTZTYPE_AUXICLOSE,                        // 辅助开关关 辅助点(param4对应 PTZ_CONTROL_AUXILIARY,param1、param2、param3无效,dwStop设置为FALSE)
+		DHEXTPTZTYPE_OPENMENU = 0x36,                  // 打开球机菜单
+		DHEXTPTZTYPE_CLOSEMENU,                        // 关闭菜单
+		DHEXTPTZTYPE_MENUOK,                           // 菜单确定
+		DHEXTPTZTYPE_MENUCANCEL,                       // 菜单取消
+		DHEXTPTZTYPE_MENUUP,                           // 菜单上
+		DHEXTPTZTYPE_MENUDOWN,                         // 菜单下
+		DHEXTPTZTYPE_MENULEFT,                         // 菜单左
+		DHEXTPTZTYPE_MENURIGHT,                        // 菜单右
+		DHEXTPTZTYPE_ALARMHANDLE = 0x40,               // 报警联动云台 parm1：报警输入通道；parm2：报警联动类型1-预置点2-线扫3-巡航；parm3：联动值,如预置点号
+		DHEXTPTZTYPE_MATRIXSWITCH = 0x41,              // 矩阵切换 parm1：预览器号(视频输出号)；parm2：视频输入号；parm3：矩阵号
+		DHEXTPTZTYPE_LIGHTCONTROL,                     // 灯光控制器
+		DHEXTPTZTYPE_EXACTGOTO,                        // 三维精确定位 parm1：水平角度(0~3600)；parm2：垂直坐标(-1800-1800)；parm3：变倍(1~128),变倍为档位,并非实际变倍倍数
+		DHEXTPTZTYPE_RESETZERO,                        // 三维定位重设零位
+		DHEXTPTZTYPE_MOVE_ABSOLUTELY,                  // 绝对移动控制命令,param4对应结构 PTZ_CONTROL_ABSOLUTELY
+		DHEXTPTZTYPE_MOVE_CONTINUOUSLY,                // 持续移动控制命令,param4对应结构 PTZ_CONTROL_CONTINUOUSLY
+		DHEXTPTZTYPE_GOTOPRESET,                       // 云台控制命令,以一定速度转到预置位点,parm4对应结构PTZ_CONTROL_GOTOPRESET
+		DHEXTPTZTYPE_SET_VIEW_RANGE = 0x49,            // 设置可视域(param4对应结构 PTZ_VIEW_RANGE_INFO)
+		DHEXTPTZTYPE_FOCUS_ABSOLUTELY = 0x4A,          // 绝对聚焦(param4对应结构PTZ_FOCUS_ABSOLUTELY)
+		DHEXTPTZTYPE_HORSECTORSCAN = 0x4B,             // 水平扇扫(param4对应PTZ_CONTROL_SECTORSCAN,param1、param2、param3无效)
+		DHEXTPTZTYPE_VERSECTORSCAN = 0x4C,             // 垂直扇扫(param4对应PTZ_CONTROL_SECTORSCAN,param1、param2、param3无效)
+		DHEXTPTZTYPE_SET_ABS_ZOOMFOCUS = 0x4D,         // 设定绝对焦距、聚焦值,param1为焦距,范围:[0,255],param2为聚焦,范围:[0,255],param3、param4无效
+		DHEXTPTZTYPE_SET_FISHEYE_EPTZ = 0x4E,          // 控制鱼眼电子云台,param4对应结构 PTZ_CONTROL_SET_FISHEYE_EPTZ  
+		DHEXTPTZTYPE_SET_TRACK_START = 0x4F,           // 轨道机开始控制(param4对应结构体为 PTZ_CONTROL_SET_TRACK_CONTROL,dwStop传FALSE, param1、param2、param3无效)
+		DHEXTPTZTYPE_SET_TRACK_STOP = 0x50,            // 轨道机停止控制(param4对应结构体为 PTZ_CONTROL_SET_TRACK_CONTROL,dwStop传FALSE,param1、param2、param3无效)
+		DHEXTPTZTYPE_RESTART = 0x51,                   // 云台重启命令(param1、param2、param3 param4 均无效,dwStop设置为FALSE)
+		DHEXTPTZTYPE_INTELLI_TRACKMOVE = 0x52,         // 云台连续移动,枪球联动专用,param4对应结构 PTZ_CONTROL_INTELLI_TRACKMOVE
+		DHEXTPTZTYPE_SET_FOCUS_REGION = 0x53,          // 设置区域聚焦参数(param4对应结构体为PTZ_CONTROL_SET_FOCUS_REGION,dwStop传FALSE,param1、param2、param3无效)
+		DHEXTPTZTYPE_PAUSELINESCAN = 0x54,             // 暂停线扫(param1、param2、param3param4均无效，dwStop设置为FALSE)
+		DHEXTPTZTYPE_INTELLI_SETLENSWISDOMSTATE = 0x55,// 目标跟踪时设置聚焦模式(param4对应结构体为PTZ_CONTROL_INTELLI_SETLENSWISDOMSTATE,dwStop传FALSE,param1、param2、param3无效) 
+		DHEXTPTZTYPE_INTELLI_SETFOCUSAREA = 0x56,		// 设置聚焦区域(param4对应结构体为PTZ_CONTROL_INTELLI_SETFOCUSAREA,dwStop传FALSE,param1、param2、param3无效)
+														// 注：目标跟踪若不需设置聚焦区域，因聚焦区域会沿袭上次主动设置状态，故需主动调用此接口取消设置聚焦区域
+
+		DHEXTPTZTYPE_UP_TELE = 0x70,                   // 上 + TELE param1=速度(1-8),下同
+		DHEXTPTZTYPE_DOWN_TELE,                        // 下 + TELE
+		DHEXTPTZTYPE_LEFT_TELE,                        // 左 + TELE
+		DHEXTPTZTYPE_RIGHT_TELE,                       // 右 + TELE
+		DHEXTPTZTYPE_LEFTUP_TELE,                      // 左上 + TELE
+		DHEXTPTZTYPE_LEFTDOWN_TELE,                    // 左下 + TELE
+		DHEXTPTZTYPE_TIGHTUP_TELE,                     // 右上 + TELE
+		DHEXTPTZTYPE_RIGHTDOWN_TELE,                   // 右下 + TELE
+		DHEXTPTZTYPE_UP_WIDE,                          // 上 + WIDE param1=速度(1-8),下同
+		DHEXTPTZTYPE_DOWN_WIDE,                        // 下 + WIDE
+		DHEXTPTZTYPE_LEFT_WIDE,                        // 左 + WIDE
+		DHEXTPTZTYPE_RIGHT_WIDE,                       // 右 + WIDE
+		DHEXTPTZTYPE_LEFTUP_WIDE,                      // 左上 + WIDE
+		DHEXTPTZTYPE_LEFTDOWN_WIDE,                    // 左下 + WIDE
+		DHEXTPTZTYPE_TIGHTUP_WIDE,                     // 右上 + WIDE
+		DHEXTPTZTYPE_RIGHTDOWN_WIDE,                   // 右下 + WIDE
+		DHEXTPTZTYPE_GOTOPRESETSNAP = 0x80,            // 转至预置点并抓图
+		DHEXTPTZTYPE_DIRECTIONCALIBRATION = 0x82,      // 校准云台方向（双方向校准）
+		DHEXTPTZTYPE_SINGLEDIRECTIONCALIBRATION = 0x83, // 校准云台方向（单防线校准）,param4对应结构 NET_IN_CALIBRATE_SINGLEDIRECTION
+		DHEXTPTZTYPE_MOVE_RELATIVELY = 0x84,			// 云台相对定位,param4对应结构 NET_IN_MOVERELATIVELY_INFO
+		DHEXTPTZTYPE_SET_DIRECTION = 0x85,				// 设置云台方向, param4对应结构 NET_IN_SET_DIRECTION_INFO
+		DHEXTPTZTYPE_BASE_MOVE_ABSOLUTELY = 0x86,		// 精准绝对移动控制命令, param4对应结构 NET_IN_PTZBASE_MOVEABSOLUTELY_INFO（通过 CFG_CAP_CMD_PTZ 命令获取云台能力集( CFG_PTZ_PROTOCOL_CAPS_INFO )，若bSupportReal为TRUE则设备支持该操作）
+		DHEXTPTZTYPE_BASE_MOVE_CONTINUOUSLY,			// 云台连续移动控制命令, param4 对应结构 NET_IN_PTZBASE_MOVE_CONTINUOUSLY_INFO.  通过 CFG_CAP_CMD_PTZ 命令获取云台能力集
+														// 若 CFG_PTZ_PROTOCOL_CAPS_INFO 中 stuMoveContinuously 字段的 stuType.bSupportExtra 为 TRUE, 表示设备支持该操作
+		DHEXTPTZTYPE_BASE_SET_FOCUS_MAP_VALUE,			// 设置当前位置聚焦值, param4对应结构体 NET_IN_PTZBASE_SET_FOCUS_MAP_VALUE_INFO
+		DHEXTPTZTYPE_BASE_MOVE_ABSOLUTELY_ONLYPT,		// 绝对定位独立控制PT并能以度/秒为单位的速度控制, param4对应结构 NET_IN_PTZBASE_MOVEABSOLUTELY_ONLYPT_INFO
+		DHEXTPTZTYPE_BASE_MOVE_ABSOLUTELY_ONLYZOOM,		// 绝对定位独立控制zoom，并能控制变倍速度, param4对应结构 NET_IN_PTZBASE_MOVEABSOLUTELY_ONLYZOOM_INFO
+		DHEXTPTZTYPE_STOP_MOVE,							// 云台移动停止,同时也停止巡航模式,param4对应结构体 NET_IN_STOP_MOVE_INFO
+		DHEXTPTZTYPE_TOTAL,                            // 最大命令值
+大华云台控制参数param1 param2 param3分别对应以上类型中需要的参数
+海康云台请求举例：{"req":"Player_PTZControl","rid":74,"para":[{"ID":1,"Type":25,"Speed":5,"Stop":0}]}
+大华云台请求举例：{"req":"Player_PTZControl","rid":74,"para":[{"ID":1,"Type":0,"param2":5,"Stop":0}]}
 分别返回：{"ret":0,"rid":74,"ID":1,"data":{"Ret":0}}
 
 35) 取指定ID窗口连接信息，海康私有协议播放有效
@@ -366,7 +473,7 @@ Type为获取类型 1预览 2回放
 请求：{"req":"Player_GetLinkAddr","rid":75,"para":[{"ID":1,"Type":1}]}
 分别返回：{"ret":0,"rid":75,"ID":1,"data":{"Ret":0,"LinkInfo":{}}}
 
-36) 取指定ID窗口可用视频或对讲通道，海康私有协议播放有效
+36) 取指定ID窗口可用视频或对讲通道，海康及大华私有协议播放有效
 Type获取类型 0可用视频通道 1可用对讲通道
 请求：{"req":"Player_GetChannelInfo","rid":76,"para":[{"ID":1,"Type":0},{"ID":2,"Type":1}]}
 分别返回：{"ret":0,"rid":76,"ID":1,"data":{"Ret":0,"ChannelInfo":""}} 和 {"ret":0,"rid":76,"ID":2,"data":{"Ret":0,"ChannelInfo":""}}
@@ -375,22 +482,22 @@ Type获取类型 0可用视频通道 1可用对讲通道
 请求：{"req":"Player_UpdateTalkStatus","rid":77,"para":[{"ID":1,"Channel":0}]}
 分别返回：{"ret":0,"rid":77,"ID":1,"data":{"Ret":0,"TalkStatus":""}}
 
-38) 开始指定ID窗口对讲 海康私有协议播放有效
+38) 开始指定ID窗口对讲 海康及大华私有协议播放有效
 Channel 为对讲通道，同时只能开一个对讲
 TalkVolume 对讲音量
 LocalFile和DeviceFile分别为本地和设备对讲内容保存文件路径
 请求：{"req":"Player_StartTalk","rid":78,"para":[{"ID":1,"Channel":0,"TalkVolume":60,"LocalFile":"d:/Zorro/Local.mp4","DeviceFile":"d:/Zorro/Device.mp4"}]}
 分别返回：{"ret":0,"rid":78,"ID":1,"data":{"Ret":0,"TID":1}}
 
-39) 取指定ID窗口当前对讲音量 0-100，0代表静音，100最大音量 海康私有协议播放有效
+39) 取指定ID窗口当前对讲音量 0-100，0代表静音，100最大音量 海康及大华私有协议播放有效
 请求：{"req":"Player_GetTalkVolume","rid":79,"para":[{"ID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":79,"ID":1,"data":{"Ret":0,"TalkVolume":100}} 和 {"ret":0,"rid":79,"76":2,"data":{"Ret":0,"TalkVolume":0}}
 
-40) 设置指定ID窗口当前对讲音量 0-100，0代表静音，100最大音量 海康私有协议播放有效
+40) 设置指定ID窗口当前对讲音量 0-100，0代表静音，100最大音量 海康及大华私有协议播放有效
 请求：{"req":"Player_SetTalkVolume","rid":80,"para":[{"ID":1,"TalkVolume":50},{"ID":2,"TalkVolume":50}]}
 分别返回：{"ret":0,"rid":80,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":80,"ID":2,"data":{"Ret":0}}
 
-41) 指定ID窗口对讲请求停止 海康私有协议播放有效
+41) 指定ID窗口对讲请求停止 海康及大华私有协议播放有效
 请求：{"req":"Player_StopTalk","rid":81,"para":[{"ID":1}]}
 分别返回：{"ret":0,"rid":81,"ID":1,"data":{"Ret":0}}
 
@@ -402,13 +509,12 @@ Count截取图数量，默认截一张，Delay指定延迟毫秒数开始，Inte
 FileName 指定截图文件名称,中文等需要先进行UrlEncode编码，可缺省使用默认值
 CustomPath 指定截图保存路径，中文等需要先进行UrlEncode编码，不指定时由PathType决定
 PathType 指定截图图片保存路径类型，0默认临时目录，1操作系统桌面 2当前登录用户我的图片目录 3中间件数据目录
-Quality 截取质量 0代表原图，VLC的取值0-5，海康的取值0-2，数值越大，质量越低
+Quality 截取质量 0代表原图，VLC及大华的取值0-5，海康的取值0-2，数值越大，质量越低
 请求1：{"req":"Player_SnapshotImg","rid":82,"para":[{"ID":1,"Type":3,"PathType":3,"Count":3,"Base64":1,"AutoDel":1,"Delay":1000,"Interval":200}]}
 请求2： {"req":"Player_SnapshotImg","rid":82,"para":[{"ID":1,"Type":3,"Count":3,"CustomPath":"D:/Zorro","FileName":"TestFileName"}]}
 分别返回：{"ret":0,"rid":82,"data":{"Ret":0,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}} 和 {"ret":0,"rid":82,"ID":2,"data":{"Ret":0,,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}}
 
-43) 指定ID窗口录像到文件
-43) 指定ID窗口录像到文件，不支持同时录制多个
+43) 指定ID窗口录像到文件，不支持同时录制多个 大华SDK及海康MP4文件播放不支持
 Type为录像方式(VLC或FFPlayer播放时有效) 0:VLC 1:ffmpeg 指定1时在播放小程序子目录存放ffmpeg程序
 File为录像目标文件不指定时自动生成 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用  Second为录制限时时间(秒)，0代表由前端指定停止
 Second为录制限时时间(秒)，0代表由前端指定停止
@@ -417,12 +523,12 @@ Para为录像参数 使用VLC时默认为vcodec=h264 使用ffmpeg时默认为-vc
 {"req":"Player_RecordFile","rid":83,"para":[{"ID":1,"File":"D:/Zorro/Record.mp4","Second":30}]}
 返回：{"ret":0,"rid":83,"ID":1,"data":{"Ret":0,"PID":1}}
 
-44) 指定ID窗口停止录像
+44) 指定ID窗口停止录像 大华SDK及海康MP4文件播放不支持
 {"req":"Player_StopRecord","rid":84,"para":[{"ID":1}]}
 File为录像文件路径，Size为录像文件大小
 返回：{"ret":0,"rid":84,"ID":1,"data":{"Ret":0,"PID":1,"File":"D:/Zorro/Record.mp4","Size":321}}
 
-45) 动态改变分屏数量或播放内容，海康私有协议播放需要指定服务器信息参数Server
+45) 动态改变分屏数量或播放内容，海康及大华私有协议播放需要指定服务器信息参数Server
 ShowType指定分屏数量，如果不变就不设置
 ForceDestroy VLC4.0时默认1，其它时候默认0，指定0时切换播放不销毁原有控件
 Play指定播放内容：Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
@@ -441,24 +547,29 @@ ID是当前播放窗口序号，ID是从1开始，需要确保不越界
 返回：{"ret":0,"rid":87,"ID":2,"data":{"Ret":1}}
 ID为当前播放焦点窗口
 
-48) 指定ID窗口回放指定文件，必须先登录 海康私有协议播放有效
-Uri为服务器上的文件名称 ch0001代表第一个通道 ch0002代表第二个通道 以此类推
+48) 指定ID窗口回放指定文件，必须先登录 海康及大华私有协议播放有效
+Uri为服务器上的文件名称 海康ch0001代表第一个通道 ch0002代表第二个通道 以此类推
 Reverse为1代表倒放 默认0按时间线播放
-{"req":"Player_PlayBackByName","rid":88,"para":[{"ID":1,"Reverse":0,"Uri":"ch0001_00000000129000000"},{"ID":2,"Reverse":1,"Uri":"ch0002_00000000138000000"}]}
+大华播放时需要先调用Player_SearchFile查找得到Uri指定的录像文件
+海康举例：{"req":"Player_PlayBackByName","rid":88,"para":[{"ID":1,"Reverse":0,"Uri":"ch0001_00000000129000000"},{"ID":2,"Reverse":1,"Uri":"ch0002_00000000138000000"}]}
+大华举例：{"req":"Player_PlayBackByName","rid":88,"para":[{"ID":1,"Reverse":0,"Uri":"/mnt/sd/2023-10-07/001/dav/06/06.37.14-06.37.34[M][0@0][0].dav"}]}
 返回：{"ret":0,"rid":88,"ID":1,"data":{"Ret":0,"PlayID":1}} 和 {"ret":0,"rid":88,"ID":2,"data":{"Ret":0,"PlayID":2}}
 PlayID为当前播放ID
 
-49) 指定ID窗口回放指定回放起始和结束时间，必须先登录 海康私有协议播放有效
-Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始 Reverse为1代表倒放
-{"req":"Player_PlayBackByTime","rid":89,"para":[{"ID":1,"Channel":33,"Begin":1665100800,"End":1665187200,"Reverse":0},{"ID":2,"Channel":34,"Begin":1665100800,"End":1665187200,"Reverse":1}]}
+49) 指定ID窗口回放指定回放起始和结束时间，必须先登录 海康及大华私有协议播放有效
+Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始 
+Reverse为1代表倒放
+{"req":"Player_PlayBackByTime","rid":89,"para":[{"ID":1,"Channel":33,"Begin":1696623200,"End":1696723200,"Reverse":0},{"ID":2,"Channel":34,"Begin":1696713200,"End":1696723200,"Reverse":1}]}
 返回：{"ret":0,"rid":89,"ID":1,"data":{"Ret":0,"PlayID":1}} 和 {"ret":0,"rid":89,"ID":2,"data":{"Ret":0,"PlayID":2}}
 PlayID为当前播放ID
 
-50) 指定ID窗口回放控制 海康私有协议播放有效 必须先调用了回放Player_PlayBackByName或Player_PlayBackByTime接口
-Type控制类型：1开始播放 2停止播放 3暂停播放 4恢复播放（在暂停后调用将恢复暂停前的速度播放） 5快放 6慢放 7正常速度播放
-8单帧放（恢复正常回放使用NET_DVR_PLAYNORMAL命令） 9打开声音 10关闭声音 11调节音量，取值范围[0,0xffff]
-12改变文件回放的进度 13获取文件回放的进度 14获取当前已经播放的时间(按文件回放的时候有效) 15获取当前已经播放的帧数(按文件回放的时候有效)
-16获取当前播放文件总的帧数(按文件回放的时候有效) 17获取当前播放文件总的时间(按文件回放的时候有效) 20丢B帧
+50) 指定ID窗口回放控制 海康及大华私有协议播放有效 必须先调用了回放Player_PlayBackByName或Player_PlayBackByTime接口
+Type控制类型：1开始播放 2停止播放 3暂停播放 4恢复播放（在暂停后调用将恢复暂停前的速度播放）5快放 6慢放 7正常速度播放
+8单帧放 9打开声音 10关闭声音 11调节音量，取值范围[0,0xffff] 12改变文件回放的进度 13获取文件回放的进度 
+14获取当前已经播放的时间(按文件回放的时候有效 仅海康) 15获取当前已经播放的帧数(按文件回放的时候有效 仅海康)
+16获取当前播放文件总的帧数(按文件回放的时候有效 仅海康) 17获取当前播放文件总的时间(按文件回放的时候有效 仅海康)
+24设置码流速度(海康最低256kbps 大华是帧数) 25保持于设备的心跳 仅海康 26按绝对时间定位 27获取按时间回放对应时间段内的所有文件的总长度
+29倒放转为正放 30正放改为倒放
 举例:请求暂停播放或恢复播放：
 {"req":"Player_PlayBackControl","rid":90,"para":[{"ID":1,"Type":3},{"ID":2,"Type":4}]}
 举例:11调节音量 12改变回放进度等需要设置，Val控制值
@@ -603,7 +714,7 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"Player_NetFile","rid":101,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
 
-75) 指定ID窗口检索录像文件，必须先登录 海康私有协议播放有效
+75) 指定ID窗口检索录像文件，必须先登录 海康及大华私有协议播放有效
 Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始
  StreamType 流类型 0-同一个时间段只返回一种录像，优先级顺序为：主码流、子码流、三码流，1-子码流，2-三码流，3-主码流，254-双码流搜索(优先返回主码流录像，没有主码流录像时返回子码流录像)
  FileType 文件类型
@@ -611,16 +722,20 @@ Channel指定通道号 Begin和End为指定回放起始和结束时间，时间�
 返回：{"ret":0,"rid":115,"ID":1,"data":{"Ret":0,"SID":1}} 和 {"ret":0,"rid":115,"ID":2,"data":{"Ret":0,"SID":2}}
 SID为当前搜索序号，最终搜索结果通过事件返回，事件包中包含SID参数
 
-76) 指定ID窗口根据名称下载录像文件，必须先登录 海康私有协议播放有效
-Uri为服务器上的文件名称 ch0001代表第一个通道 ch0002代表第二个通道 以此类推
+76) 指定ID窗口根据名称下载录像文件，必须先登录 海康及大华私有协议播放有效
+Uri为服务器上的文件名或下载路径  海康ch0001代表第一个通道 ch0002代表第二个通道 以此类推
+大华下载时需要先调用Player_SearchFile查找得到Uri指定的录像文件
 File为录像目标文件不指定时自动生成 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
-{"req":"Player_DownVideoByName","rid":116,"para":[{"ID":1,"Uri":"ch0001_00000000129000000","File":"D:/Zorro/ch0001_00000000129000000.mp4"},{"ID":2,"Uri":"ch0002_00000000138000000","File":"D:/Zorro/ch0002_00000000138000000.mp4"}]}
+海康具体：{"req":"Player_DownVideoByName","rid":116,"para":[{"ID":1,"Uri":"ch0001_00000000129000000","File":"D:/Zorro/ch0001_00000000129000000.mp4"},{"ID":2,"Uri":"ch0002_00000000138000000","File":"D:/Zorro/ch0002_00000000138000000.mp4"}]}
+大华举例：{"req":"Player_DownVideoByName","rid":116,"para":[{"ID":1,"Uri":"/mnt/sd/2023-10-07/001/dav/06/06.37.14-06.37.34[M][0@0][0].dav","File":"D:/Zorro/06.37.14_06.37.34.dav"}]}
 返回：{"ret":0,"rid":116,"ID":1,"data":{"Ret":0,"DID":1}} 和 {"ret":0,"rid":116,"ID":2,"data":{"Ret":0,"DID":2}}
 DID为下载序号，下载进度通知中包含此参数
 
-77) 指定ID窗口根据时间下载录像文件，必须先登录 海康私有协议播放有效
-Channel指定通道号 Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始
-{"req":"Player_DownVideoByTime","rid":117,"para":[{"ID":1,"Channel":33,"Begin":1665102256,"End":1665104363,"File":"D:/Zorro/ch0001_00000000095000000.mp4"},{"ID":2,"Channel":34,"Begin":1665104363,"End":1665108028,"File":"D:/Zorro/ch0001_00000000097000000.mp4"}]}
+77) 指定ID窗口根据时间下载录像文件，必须先登录 海康及大华私有协议播放有效
+Channel 指定通道号
+SteamType 指定下载流类型 海康默认0主码流 1子码流 大华默认0所有录像 1外部报警录像 2动态检测报警录像 3所有报警录像
+Begin和End为指定回放起始和结束时间，时间为UNIX时间戳，从1970年1月1号零点零分零秒开始
+{"req":"Player_DownVideoByTime","rid":117,"para":[{"ID":1,"Channel":33,"Begin":1665102256,"End":1665104363,"File":"D:/Zorro/ch0001_00000000095000000.mp4"},{"ID":2,"Channel":1,"Begin":1665104363,"End":1665108028,"File":"D:/Zorro/test_1665108028.dav"}]}
 返回：{"ret":0,"rid":117,"ID":1,"data":{"Ret":0,"DID":1}} 和 {"ret":0,"rid":117,"ID":2,"data":{"Ret":0,"DID":2}}
 DID为下载序号，下载进度通知中包含此参数
 
@@ -672,15 +787,12 @@ DisableDBFull 设置1时禁用，默认不禁用
 {"req":"Player_PutDisableDBFull","rid":104,"para":[{"ID":1,"DisableDBFull":1},{"ID":2,"DisableDBFull":0}]}
 分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
 
-14) 叠加网页导航结果通知
-{"event":"Player_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
-Result UrlEncode后的请求结果
+85) 获取指定分屏窗口的播放日志
+{"req":"Player_GetPlayLog","rid":105,"para":[{"ID":1},{"ID":2}]}
+分别返回：{"ret":0,"rid":105,"ID":1,"data":[]} 和 {"ret":0,"rid":105,"ID":2,"data":[]}
+data中包含播放日志记录
 
-15) 叠加网页注入脚本结果通知
-{"event":"Player_WebScriptResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
-Result UrlEncode后的请求结果
-
-5、海康视频网页播放器接收的通知：
+5、RTSP网页多引擎播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
 
 A、小程序：
@@ -698,11 +810,11 @@ ID 为窗口序号 PID为录像ID Size录像文件大小 File录像实际全路�
 4) 登录状态通知，播放MP4等本地文件无效
 {"event":"Player_LoginStatus","ID":1,"rid":1,"data":{"LID":1,"Status":0,"Desc":"登录失败"}} 
 
-5) 异常通知
+5) 海康及大华接口异常通知
 Type 0x8001语音对讲异常 0x8003网络预览异常 0x8005预览时重新连接 0x8010回放异常 0x8015预览时重连成功
-{"event":"Player_Exception","ID":1,"rid":1,"data":{"Type":1}} 
+{"event":"Player_Exception","ID":1,"rid":1,"data":{"Type":0x8001}} 
 
-6) 海康SDK错误通知 SDK支持库还未安装
+6) 海康及大华SDK错误通知
 {"event":"Player_SDKErr","ID":1,"rid":1,"data":{}} 
 
 7) 播放事件通知
@@ -736,14 +848,29 @@ Type包含的值含义如下
 11) 音柱通知 Left左声道声音大小 Right右声道声音大小
 {"event":"Player_AudioWave","ID":1,"rid":1,"data":{"Left":30,"Right":20}} 
 
-12) 海康私有协议搜索硬盘录像机上的录像结果通知
+12) 海康及大华私有协议搜索硬盘录像机上的录像结果通知
 {"event":"Player_SearchResult","ID":1,"rid":1,"data":{"SID":1,"Info":[{"Name":"ch0001_00000000094000100","Size":1053565500,"FType":0,"SType":0,"Locked":0,"STime":1665100588,"ETime":1665102259},{"Name":"ch0001_00000000095000000","Size":1065176994,"FType":0,"SType":0,"Locked":0,"STime":1665102256,"ETime":1665104363},{"Name":"ch0001_00000000097000000","Size":1065309215,"FType":0,"SType":0,"Locked":0,"STime":1665104363,"ETime":1665108028}]}}
 FType 文件类型 SType流类型 Locked是否锁定
 STime流开始时间 ETime流结束时间
 
-13) 海康私有协议下载硬盘录像机上的录像进度通知
+13) 海康及大华私有协议下载硬盘录像机上的录像进度通知
 {"event":"Player_DownPos","ID":1,"rid":2,"data":{"DID":1,"Pos":100}}
 Pos为100时下载结束
+
+14) 叠加网页导航结果通知
+{"event":"Player_WebNavResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
+
+15) 叠加网页注入脚本结果通知
+{"event":"Player_WebScriptResult","ID":1,"rid":1,"aid":1,"data":{"Result":""}]}}
+Result UrlEncode后的请求结果
+
+16) 播放错误日志通知
+{"event":"Player_PlayLog","ID":1,"rid":1,"aid":1,"data":{"Level":1,"Line":18,"Module":"","Desc":""}]}}
+Level 日志级别 1错误日志 2警告日志 4通知日志
+Module 模块名称
+Line 代码行数
+Desc 日志描述
 
 B、PluginOK支持的事件通知：
 

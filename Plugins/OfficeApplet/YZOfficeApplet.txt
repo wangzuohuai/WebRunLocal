@@ -1,5 +1,5 @@
 ﻿永中Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用永中Office(要求专业版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将永中文字、永中表格、永中简报软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
-支持永中Office2019及以上的企业版，建议使用最新版，不支持个人版。
+支持永中Office2019及以上的企业版，建议使用2024最新版，不支持个人版。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -14,7 +14,7 @@ HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS�
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
 1)、请求启动永中Office网页组件实现网页中局部加载doc/xls/ppt等文档显示：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
@@ -56,7 +56,7 @@ A、{"ret":0,"rid":7,"data":{"ID":4}}
 代表网页组件WS侦听服务就绪
 B、{"event":"Wrl_Listen","aid":4,"rid":7,"data":{"SID":"123","PID":"YZOfficeApplet","port":950}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用网页组件中的相关功能，比如打开一个文档。
-返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+返回ID为当前网页组件运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":4,"rid":7,"data":{"SID":"123","PID":"YZOfficeApplet","Port":950}}
 
 关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
@@ -112,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"8D9739F16F7AC69DEDEB022DA93FF6AB","Version":"2.2.10.10","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2A6D7F8C596B71483D1111397517044E2233B21B2A76D365E3F403110EC60640F51A698D64B9965FB92DD803517297DE5F5B1DB7533BCE6FEA608875FFCBB37BE13CC4F9DB7CD3E47261A80EA403285C07506F589D09B95D9D59222250F20381CD6B9C6F38FD7D4F060DAB2DD7FFD0172453C2B303DE789FBF44BB49619D13450AD9F9C26A7733B09FC35F437361E204C3806369844AA4ED80A3FD73834B014D9FD4BED60AE5CCF61CB3F2EB2BE37F727556B0B7407569CAE06E3DB12FADFB2F774E2EBC290C39A12FAA51167D5B61C37A650886D5E7B20EC88EFCAB9830646F63A652D4BDBA4CCE8592063346D0DCF023233C432E32FAD09A4390B8F8656ED9"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-11-19","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"033493F4B38018F3DBC3E3D9664302E7","Version":"2.2.12.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"15E6278C7E55F993545EC946EC886FA9AB255BF0101B83693C474E7237D28FE45C3FCE31D48F9639F88109CC7BFD3956A74512CE26E6CB604AB06CEB3192609C8D048CA3F43948D07EEDE86A026FE02BA8D3D7BE42B67695A756D7202450BB59698A8CFE54493E042C9D53A14702CE2E8F637938B20356256062D7F22A18D9EECEF33D71175059F70E8EF406D2CD2C284A037C1BAEEBE86AECCDB197AD01B00180984EB14B510E38FA4C96437DCA7FE193C6E4DE95B3E7A2E95E5ACAD3172FDA1CE3B6F871A43B7BD2C41970FAB1DA7D17AF0EE2DB6CFF022C437128FFEAE7D08EABDA89BF223DE5C73ECE2784DA0805D4E20B615E9BCF339FE223698427706C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"38A7266AA30642FB18488E37A73C86C4","Version":"2.2.10.10","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"61786AFB86F01356AAF0C555B941057AE34933941475D1D2272EB982549BEE4479397601F8A8E641B915895186357EC3D49507B1B5CFACB3F505AA830D85F777E136332D8F2CB07BB85B57B862ECDC2D77212594B52D23C8C3B6D9118BD6EBDF055CE201290EFF5AACAFB487033189C7873587C3F3514A22C611F8DABA9000E3F1EAE6DCC1A1F0AEA686ACA815BF16DED788C624E11F84C290A7DADD8C2A677A1C47366344C68B35E3A4C62142D673D06C13855A4B52536E7A7CD075B376BE028C10E9A715251B134462D6D65404C46CED281E45B183C2E6F7520A6B2A2A219874E06CA916733829FD4B9F45C1E77AD1172818631B28414CCE73CD55D6B84CD3"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2023-11-19","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"76C3A2DA9B31BECB623265FC1C88DB68","Version":"2.2.12.1","Size":4423680,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"24FBD8B3A9D0259174AEF3D3663956FB7BF6632647C19BC67E9AA51A8BD54D05B4888BC3FCBDFEC9372303A4C4CFFAF440AF4549A9CEBBC18A770F79260017868CE720C763AA7BCCDD863609CE474AC9CD0F638B3466F3C68E390ACC5149A22B5FC6CD85D149B2C8FFB52EFBF176CC49203F7186283C6279435793819CFA6F84305FC6C4E8B3B5C56517804EC3202EE289F55E7874F4865640F787A6AA19D2B92DBBA659B9A37D7F1588836969F5749514C7916574214F52EE8FFD905A9FF3C12214B88468F4B1D602BC5F19A84561ED807CD94DA746FF8B23837E0C8281F6EA3C42A6ECCE4360002C010585FDF88316A1F5B56467B0E75FA1E73FE10F85B3F2"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -259,7 +259,7 @@ Index为书签序号 Name为书签名称
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
 24）请求替换指定书签名称的内容，适用于永中文字软件
-Name为书签名称，Text书签内容
+Name为书签名称，Text书签内容，如内容中插入^p可实现换行
 {"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
@@ -330,9 +330,10 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 
 36）指定页码转换到图片,默认返回Base64编码数据，适用于永中文字软件
 Index为页码序号 从1开始编号，传0代表获取当前页
-File为本地文件保存路径，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
-{"req":"Office_ConvertImage","rid":36,"para":{"Index":1}}
-返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
+File不指定扩展名时Type为图片类型 3默认为JPG 4为PNG 1为BMP 2为GIF
+File为本地文件保存路径,可包含扩展名，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
+{"req":"Office_ConvertImage","rid":36,"para":{"Index":1,"Type":3}}
+返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回图片的Base64编码数据
 
 37）获取当前打开文档及其它信息，适用于永中文字、永中表格、永中简报软件
 File:本地文档路径 User:当前编辑用户名 

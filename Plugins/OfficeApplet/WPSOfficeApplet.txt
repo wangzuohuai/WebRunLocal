@@ -15,7 +15,7 @@ HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS�
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
 1)、请求启动金山WPS网页组件实现网页中局部加载doc/xls/ppt等文档显示：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
@@ -57,7 +57,7 @@ A、{"ret":0,"rid":6,"data":{"ID":3}}
 代表网页组件WS侦听服务就绪
 B、{"event":"Wrl_Listen","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","port":950}}
 返回的侦听端口，可再建立一个Web Socket连接后，调用网页组件中的相关功能，比如打开一个文档。
-返回ID为当前网页组件运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+返回ID为当前网页组件运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"WpsApplet","Port":950}}
 
 关于Option参数，如果不确定是调用启动微软Office网页组件、还是金山WPS内嵌网页组件或永中办公内嵌网页组件，请先调用指令
@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"AE90D837997F0B479B403597CA1B0806","Version":"2.2.10.10","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"13B2CCC31FA675130BCF500324EBEFA6774B10F7F1920094F0E92E07E0E8CA5849F5D62E32342979244D0629A584E7B5C5FF0C6F089C27B50B057553D0ABA5294B8064746D3E7CC40BDC2EE94C1B677F13BAF2C748010214B8684C6A79E22BAF609CD665751ED09A7D3E232C22F10099418DE6BE344FB5C1185B2EF143E4196582FDCE72FD715433802512AAA638070C040B9748C3FD6D53EEB08888BBB3F189C9187024150C33511CC0B174D4810E2DE2E7D9F86285306FC543A7C689A6C673B658183881A4FD97FD05BFBF3AC523CE9F78F0F62AB329CB0BE3044216194F9904DF626A5173DAA96C98EEA26C703BAE9076A61AB933D539443187D5433B2F9E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-11-19","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"8876C5F01027EA9BB36EC8D6F969CC06","Version":"2.2.12.1","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B0BC528C675F6C17A98E55601A9EFB0DC8AEFFCCCC58252EB7EFEBE3AF754E20E7794F430AFFE22DE0378C81E6BEFBC4E41A90E8B41CF82B181515FB68388B61970A59188852D4F2E7F7864020CE7834324592D368147C37FA736C1AF848D3C0BDFE15CA085BA3628FABD5DE0F316DE33D7B7F05577A29F7E248F2EFB8CBB5F5A9A1E6648683A4B39B38F64930699DB1E850D8DACE9CA2EE56D1665A66C97844AD819893CE4D68CD9444C5716DA29889617E7709CCB3696D0DE9EE94FB473D7906BFDC71AE0BA1AC3A7E5D4FC12AC3FF77755CFB5B136059B2C49D75F4A3F89E00EBAA5818B6341BB202C3EBC311C1240357C56937EDA22B023EF4CAE841E13D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-09-07","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"0CF0B7940115090AE1F0FC24959493F0","Version":"2.2.10.10","Size":4816896,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"41CF957CE70E07BA913347D7F87580EEB6AF4996EE3D5E1C7E88190A6D95369DE1FBAD68561A639EFB2E0628ED09E13CD52EB5FFFEF64FAA07C59A818723DDD6448A1F10BBCEF99B0F7F07A97F69E281A1CC2ADFBC5C37A89329414BC148B79BA425C618DC4357AEA68AF8D7C94FE46107CB49A4A5AACB18BE726361931CB4531669B123A04DEFA41F6EFBA50E67F25E642BD57DCE1B09178D61CA6E9C87EA0919A6E98CC1EAE577AA9336D22CF9C2707D4EADF0A25F34DD359AF7FC58EC94610AA894CC0802BF92DFA28DB45825AD0DD7B8F453A500E3719CE0B235E0C542DA0A60382ABD2A7E875F8B2CAF6C784C08FA9AFA456880E1D90AF1C2A590FD2127"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2023-11-19","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"4DB9EF242107CBBB34EB03049B687657","Version":"2.2.12.1","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B4C4F923AD5C1E963BCC2C3628846B387CCB59A7F4D3FCA0048AEE2148D36B84A22CDB39D8C89D100445C1856B40CB5FCE4EE5998DCC3050E4979EE2DBAAA17D72CFA8DE0E5073B1AE648C0056A91DA8A9513497C1BACEA9B0F7D3E33C920064D2E28AFD40FC583B7083D78F310E37A62765FA40715769CFCFF8276375289BAC9BB0323971555820E1A1182659DD2C9F69BFCC0B3949849BD60771C9FAB1D614542D7D08F4EED72ED740ADE603689D122A93B23A65AEBEFE5102CB3E51D8E897FC31593825A8D00DF98B6D78BC7EC31CBDAF5EE9293C65BC43744045937373FF9CB60B81609D7F5853340D4FFE0D4DEA3BAB3158998201263563D155F62ED77F"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -261,7 +261,7 @@ Index为书签序号 Name为书签名称
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
 24）请求替换指定书签名称的内容，适用于WPS文字软件
-Name为书签名称，Text书签内容
+Name为书签名称，Text书签内容，如内容中插入^p可实现换行
 {"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
@@ -332,11 +332,12 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
 
-36）指定页码转换到图片,默认返回Base64编码数据，适用于WPS文字
+36）指定页码转换到图片,默认返回Base64编码数据，适用于WPS文字软件
 Index为页码序号 从1开始编号，传0代表获取当前页
-File为本地文件保存路径，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
-{"req":"Office_ConvertImage","rid":36,"para":{"Index":1}}
-返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回的编码数据
+File不指定扩展名时Type为图片类型 3默认为JPG 4为PNG 1为BMP 2为GIF
+File为本地文件保存路径,可包含扩展名，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
+{"req":"Office_ConvertImage","rid":36,"para":{"Index":1,"Type":3}}
+返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回图片的Base64编码数据
 
 37）获取当前打开文档及其它信息，适用于WPS文字、WPS表格、WPS演示软件
 File:本地文档路径 User:当前编辑用户名 
