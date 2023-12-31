@@ -1,4 +1,4 @@
-﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC播放程序版权归相关公司所有。
+﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.20版本，VLC播放程序版权归相关公司所有。
 
 本程序具有如下优点：
 1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放器额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
@@ -107,13 +107,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-12-01","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"02433DFA5B24DE71AD9AB2C4E3AA0BF7","Version":"2.2.12.2","Size":8323072,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0853AE8B57832F934F400BBC8618FD7DE6C65D8B6F7C38CB79F992B11828A155F179C635F4E6420A5BFBCB94CF096E33D7A8D2A8B17D8F3F485085F01921123B17075570445387C9935E66186EE0F96F1CEC8FA2103F07A693E1E0063C60DA888F21037995BB631274320E30F5E63B08302D7EA2C14CF4CDCC6B39A92698F8DC76B3D4025F8F144E7B858008DAAD1B318BFB44EE312EA83489DD83567C335930AEDBCCEBEACD326A89A74FB07EC78CEEB84A7B399CA5B904CA4BA6E8B5C60D38944BEDBCBFF397FCFE5B2F30EC49145B759D2B8A4E9EBAA17F2B485F66038A32D7B510FAB54660BEE50633153C365BFDE2729E34CB4EBBC7CC11A5E82DF4AD47"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-12-31","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"E0EB9EBE6A175F4A0CE32E5B91C27487","Version":"2.2.12.3","Size":8486912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3B522C060A3D57F0F61DCA11876675E902C877B59037AF9539E76497E99B176CD320BDB5A0A2D8FB979E5C5AB159B4B447909600C6E5B1C567C7F8D719892099E8FBE771397F96DB4C82B6A6A0498A6D7285E83F6404616CF6FDBE021F220E8F720B45012F13B5303D1A8FBE139F01F938FB1EA394C7098501E85977AF3E6888DB71B1D05F4788449B303AE69134DE0896E8E24D8B0FC8DC329448ECE47702C7A4190F648844BDCEB47B43672C888DF0DB531F5D5952DD623AD520D78474C98CE5933A7EE97C4B9B72427E781312F320E66B381D1FA95B6694E598336F120953D8A870023E6740A92EF0FF5216153CAB6D362493CFA4644CA1BE110B96C2B796"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-12-01","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"C45F94A583A6602810124897CBFE4D13","Version":"2.2.12.2","Size":8323072,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7E0B2D9F85BC52BFCFD88C9F9EF3970D3F727970B2428EEFF19383738BE4A8004E730C811AC7632877869B2F348ECD824688E4D647B6B1C54D0C3273659B5AEBF00664451C53DAD39AA45BAA59EEC0AA1222E686E62D0E16A306E9FABCC28FEED7166CF53E317DAA4FA13C37A6EDE20C9076444AD65C94F7359C98017D28194E6F100813C01C6515423A641BB1867D5892C17A77C0AB5F103CA558650FA70CB7262044173C6315CAF472FD29BD4155B94AF22F8FCDEE8EF8A282938FCBDCAA7CA4B194441010FE9A84CEB282AB13625D7401DC0A9F0BE0FB2F0BAA8F80157B3A699620F4E9B90F33732A409E5A98F106712DE224F9F71CE685FEB2A73D9FDF0D"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2023-12-31","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"FED736884DAFE0B320248DC49865FA4F","Version":"2.2.12.3","Size":8486912,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8C0517F1128485785C10F0C952820A48DC3A6066C839361972173A2080331928EDBA94F91A89AB488A2C2F26975607B2CF5E8E28B9DDA347B132F6B281DDAEDF92FE72B474778E4A8BECC861F69BBB02BF04884B4A6288A179628C8B5EE620A2866988D8A63C1028EF0DED5404DB3CD640ED1470BBD6653CF28F8300D93293E31E5FA00B0032386EF6227C408D52F92BAAA15C826F907B9C2B579CBB63573E713697B53C47025BDAE5F7ABAEE2296A6629BC3C8A8856EF7D90B2FA1BA6ABA8522497B1168F811D4E9F5D5B2A53E78BD1010ED34BAED57746B232C2E4CA179D020909F73994BCCD9DA0CB83253B5D8D8A7F6E8A8B4819323494CEA3010A8077C1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -265,9 +265,10 @@ NameID指定时获取描述信息
 TrackID指定时获取描述信息
 请求：{"req":"VLC_VideoGet","rid":71,"para":[{"ID":1,"TrackID":1},{"ID":2}]}
 分别返回：{"ret":0,"rid":71,"ID":1,"data":{"Ret":0,"FullScreent":0,"Width":0,"Height":0,"SubTitle":0,"Track":0,"TrackCount":0,"TeleText":0,"Scale":1,"AspectRatio":"","Crop":"","Desc":""}} 和 {"ret":0,"rid":71,"ID":2,"data":{"Ret":0,"Width":0,"Height":0,"SubTitle":0,"Track":0,"TrackCount":0,"TeleText":0,"Scale":100,"AspectRatio":"","Crop":""}}
+AspectRatio为视频显示长宽比例 Crop为裁剪视频信息
 
 32) 设置指定ID窗口视频信息，举例：
-需要的才设置 FullScreen设置是否全屏显示，Scale比例 AspectRatio宽高尺寸 SubTitle子标题
+需要的才设置 FullScreen设置是否全屏显示，Scale比例 AspectRatio视频显示宽高尺寸 Crop裁剪信息 SubTitle子标题
 请求：{"req":"VLC_VideoPut","rid":72,"para":[{"ID":1,"FullScreen":1,"Scale":1,"AspectRatio":"","SubTitle":0,"TeleText":0,"Track":0},{"ID":2,"FullScreen":0}]}
 分别返回：{"ret":0,"rid":72,"data":{"Ret":0}} 和 {"ret":0,"rid":72,"ID":2,"data":{"Ret":0}}
 设置充满指定窗口大小显示：{"req":"VLC_VideoPut","rid":72,"para":[{"ID":1,"Scale":0,"AspectRatio":"480:320"}]}
@@ -489,6 +490,12 @@ EnablePlayList 设置1时启用，默认禁用
 {"req":"VLC_PutEnablePlayList","rid":105,"para":[{"ID":1,"PlayList":1},{"ID":2,"PlayList":0}]}
 分别返回：{"ret":0,"rid":105,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":105,"ID":2,"data":{"Ret":0}}
 
+66) 设置指定分屏窗口指定区域的画面放大显示
+Left及Top分别为播放窗口指定区域左上角坐标，Width及Height分别为指定区域宽度和高度
+当指定Width和Height为0时代表取消放大显示，按字母Q或R也可退出放大显示，或点击鼠标右键也可取消
+{"req":"VLC_PutCropWindow","rid":105,"para":[{"ID":1,"Left":50,"Top":50,"Width":300,"Height":300},{"ID":2,"Left":100,"Top":100,"Width":500,"Height":500}]}
+分别返回：{"ret":0,"rid":106,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":106,"ID":2,"data":{"Ret":0}}
+
 70) 设置指定ID窗口下方文字信息，定制功能，举例：
 指定的参数，需要的才设置
 Text 文字内容，必须参数
@@ -625,6 +632,13 @@ Level 日志级别 1错误日志 2警告日志 4通知日志
 Module 模块名称
 Line 代码行数
 Desc 日志描述
+
+34) 播放视频选中局部放大通知
+{"event":"VLC_ZoomOut","ID":1,"rid":2,"data":{"X":50,"Y":50,"Width":1024,"Height":768}}
+data中参数分别为点选X、Y坐标及选中区域宽度和高度
+
+35) 播放视频局部放大结束通知
+{"event":"VLC_ZoomEnd","ID":1,"rid":2,"data":{}}
 
 B、PluginOK支持的事件通知：
 

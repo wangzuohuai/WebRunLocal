@@ -1,4 +1,4 @@
-﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用3.0.3或2.2.8版，XP以上系统建议使用3.0.18版本，VLC、海康及大华SDK等播放引擎版权归相关公司所。
+﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.20版本，VLC、海康及大华SDK等播放引擎版权归相关公司所。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
@@ -134,13 +134,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-12-01","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"7954690427F3C07A80D40C6F63737C1C","Version":"2.2.12.2","Size":6127616,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"324111B1D26C665A7A5AC6723D931328AF390716A6CB588E9EC7372ED5434EA26893A8C04F37054B4014D5CC7036A17384C0A6A9489D97AEF6E1185BF0F27BB34A6B7B71530BF4BEAD2427183C0B58E94F8417AB2E977DA4E9B087F8CB88B7CD1F924E8B82C534514188CC3DAA0F886BC6168185FA151076A5653DEDCF265A29CEE1D3073D687A89AAA23F88C16EA3E207F3A5D95EBDFB92A9868815F6B301495E6340CA70CE3D029F8794989B35AC948CACAD3DD8680D6A1F4C58E1C10B07F28D3123A667FA5AB07AE4F1044DE458A0F8C97526E5DBC543113EC43B9DF8925AD685C53C27371F9B980DF648F196D444D8E3F95E8A49422A24E09F901ED6C8DC"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-12-31","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"5479C944E2375110D68DF68A89AE872B","Version":"2.2.12.3","Size":6160384,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8082C728F6599821DF0DB2832AC25CD179E1CFFF9B540D64FD25755D6D27814C88589DA2C5C351AC2ADC55473B2D480242C397C49E668BB0766884E5AB519E630AAC4BECDCD6E925D0DFF626197EE59C10DC5D4CA032CF28CABD7427F3272D3399E6EDCF5CAFAEF149F4F82B39628578ECF1A36B63D5529D89B2BE1CAD088A769407054EF172EC9A99F0174708224E9C7E144A981FA16D3E790DE13CEFFE9D4484D3BBBB686177FFAFF446D56DA2D5B600CB069276C9291A4E497FCD266FB00AF38F50067B5962EF1505E71FF35E799AB552217D15579556943C84281DABB60702C82FED9E4C70C5A26DC4AB332B69C873AEAA7D90E63B4A45F02A0B2E5C1CDF"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-12-01","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"D063221490348B86D167E169FA099885","Version":"2.2.12.2","Size":6127616,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"18B1318D9443BBA8B20D44C26B6DC99D7F609F57823005D2F3FEA48B5BCD73AFB85E9B86A0E2D9A50031E2F6FE88F63EC404179E31AB6DCBFFB9C2FC486F84DC37D9CFC5B17EEF41BCEB8A936FB97DE99C5DE523B5183703FC08948BE86A3441339626CCCCAD4327D5D024E2F2471CC8B0519FEBE1B1E32802AB6AA26E3B26C3AA75F0C782AFFE894774ABC6C0DA101BDD076A18DC2EB2B6C06A9D74C5C850B48072F7F5FA57D10570E81E54D4E6E25DBD439A3CCDF261267532067F4D0A416AAE67BFC546FE807184221289AF9F2BFBF5ABCAAFEE91946C76C8D74A6CC1135004EFA00FEEFB3DFA867482AB4CC340B70792D48980219E6B4335C6E58F3509C4"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2023-12-31","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"8629ACF2231BD4A2A3DF1CA82031F6A7","Version":"2.2.12.3","Size":6160384,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5BF5C48E410D3A003FF77645FAED63B44E2280E3FDE2C4C357F0F5E8219DF5901DDF41E6F1DAAA71828EF6FBEED0E38993E36FB63AD78B8F15A87F23BB833E65419B60631FCCB9E073F19A358132A05FBB75E3D7D3022EF100DAE8AEE7C222EB9BED1EB8114A82525896BB621EFF51051BD6ACFD5DC0056EAF327217A4F6D7A28EEF3CBB2FEADAD9643375DF986693A904D22835444284EB22F31518633BFA446297724F57E5CE2D62A608238F0ACDFD91238ED9FDB5C7922E3B40AC0F6EE7AD83A40BD2A1D976D7F9FA1565658CBF0DB819BE93ECE2E840149A14F7EE5DEC43C1B455A77486A313FDBB946BE098C1B1396B8FE603098FBF5BDC6268B3D0CFBF"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -700,8 +700,8 @@ libvlc_AudioChannel_Dolbys  =  5
 请求：{"req":"Player_MoveFrame","rid":111,"para":[{"ID":1,"FrameCount":-10},{"ID":2,"FrameCount":5}]}
 分别返回：{"ret":0,"rid":111,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":111,"ID":2,"data":{"Ret":0}}
 
-72) 请求显示下一帧(毫秒) 执行后播放暂停，效果类似在VLC桌面程序中按快捷键E的效果，VLC及FFPlayer播放引擎有效
-VLC播放引擎中FrameCount 为帧数量，不指定时默认为1 不支持回退操作，仅支持视频文件和回放流
+72) 请求显示下一帧(毫秒) 执行后播放暂停，效果类似在VLC桌面程序中按快捷键E的效果，VLC及FFPlayer播放引擎有效，海康及大华私有协议播放回放流支持
+非FFPlayer引擎中FrameCount 为帧数量，不指定时默认为1 不支持回退操作，仅支持视频文件和回放流
 FFPlayer播放引擎中FrameCount 为毫秒值，负值代表回退，正值代表向前，仅支持视频文件和回放流
 {"req":"Player_NextFrame","rid":112,"para":[{"ID":1,"FrameCount":10},{"ID":2,"FrameCount":10}]}
 分别返回：{"ret":0,"rid":112,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":112,"ID":2,"data":{"Ret":0}}
@@ -791,12 +791,18 @@ Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理�
 84) 设置指定分屏窗口是否禁用双击全屏功能
 DisableDBFull 设置1时禁用，默认不禁用
 {"req":"Player_PutDisableDBFull","rid":104,"para":[{"ID":1,"DisableDBFull":1},{"ID":2,"DisableDBFull":0}]}
-分别返回：{"ret":0,"rid":104,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":104,"ID":2,"data":{"Ret":0}}
+分别返回：{"ret":0,"rid":124,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":124,"ID":2,"data":{"Ret":0}}
 
-85) 获取指定分屏窗口的播放日志
+85) 获取指定分屏窗口的播放日志，海康及大华私有协议播放支持
 {"req":"Player_GetPlayLog","rid":105,"para":[{"ID":1},{"ID":2}]}
-分别返回：{"ret":0,"rid":105,"ID":1,"data":[]} 和 {"ret":0,"rid":105,"ID":2,"data":[]}
+分别返回：{"ret":0,"rid":125,"ID":1,"data":[]} 和 {"ret":0,"rid":125,"ID":2,"data":[]}
 data中包含播放日志记录
+
+86) 设置指定分屏窗口指定区域的画面放大显示，目前仅大华私有协议播放不支持
+Left及Top分别为播放窗口指定区域左上角坐标，Width及Height分别为指定区域宽度和高度
+当指定Width和Height为0时代表取消放大显示，按字母Q或R也可退出放大显示，或点击鼠标右键也可取消
+{"req":"Player_PutCropWindow","rid":105,"para":[{"ID":1,"Left":50,"Top":50,"Width":300,"Height":300},{"ID":2,"Left":100,"Top":100,"Width":500,"Height":500}]}
+分别返回：{"ret":0,"rid":126,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":126,"ID":2,"data":{"Ret":0}}
 
 5、RTSP网页多引擎播放器接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
@@ -877,6 +883,16 @@ Level 日志级别 1错误日志 2警告日志 4通知日志
 Module 模块名称
 Line 代码行数
 Desc 日志描述
+
+17) VLC引擎、海康MP4等播放视频分辨率通知
+{"event":"Player_VideoSize","ID":1,"rid":2,"data":{"Width":1024,"Height":768}}
+
+18) VLC引擎、FFPlayer等播放视频选中局部放大通知
+{"event":"Player_ZoomOut","ID":1,"rid":2,"data":{"X":50,"Y":50,"Width":1024,"Height":768}}
+data中参数分别为点选X、Y坐标及选中区域宽度和高度
+
+19) VLC引擎、FFPlayer等播放视频局部放大结束通知
+{"event":"Player_ZoomEnd","ID":1,"rid":2,"data":{}}
 
 B、PluginOK支持的事件通知：
 
