@@ -66,7 +66,7 @@ ClockSync=-1 指定音频是否与视频同步，默认-1播放引擎默认值
 Transform=none 指定VLC播放画面是否旋转，除默认none不旋转之外，设置支持90、180、270、hflip、vflip、transpose、antitranspose
 AudioOut=any 指定音频输出类型 可选mmdevice、directsound、waveout、amem、afile、NDI、adummy、none
 Avcodec=any 指定硬件加速类型，none不用硬件加速，可指定dxva2、d3d11va、any，any时让播放引擎自己选合适的
-Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定
+Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定，如Open中的密码包含+等一些特殊字符，需要改到Web中指定
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
 自动识别当前浏览器指定位置和大小启动：
