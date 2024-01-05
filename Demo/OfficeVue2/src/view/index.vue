@@ -114,7 +114,9 @@
 		components: {
 
 		},
-		data() {
+
+		data() 
+		{
 			return {
 				aid: 0, 		// 第一个办公网页组件实例ID
 				aid2: 0, 		// 第二个办公网页组件实例ID
@@ -148,11 +150,13 @@
 				result: [] 		//日志结果数组
 			}
 		},
+
 		computed: {
 			DebugLog() {
 				return this.result.join("\n")
 			}
 		},
+
 		mounted(){
 			//初始化配置
 			this.init()
@@ -162,13 +166,16 @@
         		_this.pageResize()
      	 	}
     	},
+
    	 	destroyed(){
      		window.onresize = null
 		},
+
 		beforeDestroy() {
 			//关闭所有websocket链接以及浏览器监听
 			this.close()
 		},
+
 		methods: {
 			init() {
 				//监听浏览器切换标签页面
@@ -185,6 +192,7 @@
 				//先获取本机Office软件安装信息
 				this.GetOfficeInfo()
 			},
+
 			windowScroll() {
 				// 滚动条距离页面顶部的距离
 				let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -193,6 +201,7 @@
 				if (this.aid2 > 0)
 					this.appScroll(2, this.aid2, scrollTop)
 			},
+
 			appScroll(si, id, scrollTop) {
 				if(id)
 				{
@@ -214,6 +223,7 @@
 					this.socket[si].sendObj(msg)
 				}
 			},
+
 			GetAppletPosition() {
 				//获取网页组件位置节点信息
 				let nScrollTop = 0
@@ -243,6 +253,7 @@
 				this.left = Math.round(react.left) + nScrollLeft
 				this.top = Math.round(react.top) + nScrollTop
 			},
+
 			handleVisiable(e) {
 				//浏览器页面切换侦听回调函数
 				if (e.target.visibilityState == 'hidden') {
@@ -253,22 +264,26 @@
 					this.showApp()
 				}
 			},
+
 			hasVerticalScrollbar(){
 				if(document.documentElement.clientHeight)
 					return document.body.scrollHeight > document.documentElement.clientHeight
    				return document.body.scrollHeight > window.innerHeight
 			},
+
 			hasHorizontalScrollbar(){
 				if(document.documentElement.clientWidth)
 					return document.body.scrollWidth > document.documentElement.clientWidth
     			return document.body.scrollWidth > window.innerWidth
 			},
+
 			pageResize(){
 				if(this.aid > 0)
 					this.SendScrollInfo(0,this.aid)
 				if(this.aid2 > 0)
 					this.SendScrollInfo(2,this.aid2)
 			},
+
 			SendScrollInfo(si,id){
 				let nScrollTop = 0
 				let nScrollLeft = 0
@@ -314,10 +329,12 @@
 				console.log(msg)
 				this.socket[si].sendObj(msg)
 			},
+			
 			unloadHandler() {
 				//关闭所有websoket链接
 				this.close()
 			},
+
 			close() {
 				//关闭网页组件实例
 				this.CloseAllApplet()
@@ -336,6 +353,7 @@
 				//关闭侦听滚动条
 				window.removeEventListener('unload', this.unloadHandler,false)
 			},
+
 			GetOfficeInfo()
 			{
 				this.isConnService = true
@@ -357,6 +375,7 @@
 				}
 				this.socket[0].sendObj(msg)
 			},
+
 			StartOfficeApplet() {
 				//启动第一个办公网页组件
 				// Web节点中参数可自行配置，目前支持这些参数：
@@ -389,6 +408,7 @@
 				}
 				this.socket[0].sendObj(msg)
 			},
+
 			openSecondApplet() {
 				if(this.aid)
 				{
@@ -437,6 +457,7 @@
 					this.$message.success('请先启动第一个网页组件')
 				}
 			},
+
 			CloseSecondApplet() {
 				if (this.StartSecond) {
 					this.isDisConnect = true
@@ -458,6 +479,7 @@
 					this.resize(0)
 				}
 			},
+
 			CloseFirstApplet()
 			{
 				if (this.aid > 0) 
@@ -484,6 +506,7 @@
 					this.isDisConnect = false
 				}
 			},
+
 			AppletFullEdit()
 			{
 				this.rid++ // 增加请求序号
@@ -497,6 +520,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			ReLoadFirst()
 			{
 				this.CloseFirstApplet()
@@ -525,6 +549,7 @@
 				}
 				this.socket[0].sendObj(Msg)
 			},
+
 			CloseAllApplet()
 			{
 				/// 先关闭第二个实例，否则socket中保存的连接序号会不正常
@@ -679,17 +704,18 @@
 					if(!this.ReStartLoad && this.isConnService && !this.isDisConnect)
 					{
 						//连接不上，认为还没有安装办公网页组件 没有安装时提示安装
-						this.$confirm('PageHi办公网页组件 尚未安装，是否马上下载？', '提示', {
+						this.$confirm('PageHi办公网页组件 服务端口连接失败，可能是尚未安装，是否马上下载安装？', '提示', {
 							confirmButtonText: '确定',
 							cancelButtonText: '取消',
 							type: 'warning'
 						}).then(() => {
-							window.open('http://local.zorrosoft.com/Files/PageHiOfficeIns.exe') // 建议改为zip等格式下载，解压后安装，EXE格式浏览器会提示是否保留
+							window.open('http://local.zorrosoft.com/Files/PageHiOfficeIns.exe') // 建议打包为zip等格式下载，解压后安装，EXE文件下载浏览器会提示是否保留
 						}).catch(() => {
 						})
 					}
 				}
 			},
+
 			resize(position) {
 				//请求改变网页组件实例显示位置或大小，如不需要改变显示位置，不传X和Y
 				if(this.aid2 > 0 && this.aid2 == this.curID){
@@ -772,6 +798,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			AddMark()
 			{
 				// 请求插入书签
@@ -786,6 +813,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			MarkRePlace()
 			{
 				// 请求替换书签内容
@@ -800,6 +828,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			InsertDJSign()
 			{
 				// 请求电子签章 Type默认0 支持北京点聚签章系统
@@ -814,6 +843,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			SaveFile()
 			{
 				// 请求保存文档
@@ -828,6 +858,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			SaveAsFile()
 			{
 				this.rid++ // 增加请求序号
@@ -847,6 +878,7 @@
 				else
 					this.socket[0].sendObj(msg)
 			},
+
 			BeginSaveAsFile(LocalFilePath)
 			{
 				// 请求开始另存文档
@@ -863,6 +895,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			ExpportFile()
 			{
 				// 请求导出文档
@@ -883,6 +916,7 @@
 				else
 					this.socket[0].sendObj(msg)
 			},
+
 			BeginExpportFile(LocalFilePath)
 			{
 				// 请求开始另存文档
@@ -899,6 +933,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			InsertImg()
 			{
 				// 请求当前光标位置插入图片 先让用户选择图片文件
@@ -919,6 +954,7 @@
 				else
 					this.socket[0].sendObj(msg)
 			},
+
 			BeginInsertImg(LocalFilePath)
 			{
 				// Save为1时自动保存文档
@@ -937,6 +973,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			GetFirstImg()
 			{
 				// 提取文档中页码序号Index的图片，先设置图片保存位置
@@ -956,6 +993,7 @@
 				else
 					this.socket[0].sendObj(msg)
 			},
+
 			BeginGetFirstImg(LocalFilePath)
 			{
 				// 提取文档中序号Index的Base64编码数据，如指定本地保存文件名File，则保存到本地文件中
@@ -987,6 +1025,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			ConvertFirstPage()
 			{
 				// 转换文档中序号为Index页码内容成图片，先设置转换图片存放位置
@@ -1006,6 +1045,7 @@
 				else
 					this.socket[0].sendObj(msg)
 			},
+
 			BeginConvertFirstPage(LocalFilePath)
 			{
 				// 转换文档中页码序号Index的Base64编码数据，如指定本地保存文件名File，则保存到本地文件中
@@ -1037,6 +1077,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			PrintFile()
 			{
 				// 请求打印当前文档
@@ -1054,6 +1095,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			EnableRevision()
 			{
 				// 请求留痕，就是修订模式
@@ -1071,6 +1113,7 @@
 					this.socket[1].sendObj(msg)
 				IsRevision = true
 			},
+
 			DisableRevision()
 			{
 				// 关闭留痕，就是关闭修订模式
@@ -1088,6 +1131,7 @@
 					this.socket[1].sendObj(msg)
 				IsRevision = false
 			},
+
 			ShowRevision()
 			{
 				// 显示留痕信息，就是显示修订内容
@@ -1104,6 +1148,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			AcceptRevision()
 			{
 				// 接受留痕，就是接受修订内容
@@ -1120,6 +1165,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			changeOpen() {
 				//重新打开文档
 				this.rid++ // 增加请求序号
@@ -1135,6 +1181,7 @@
 				else
 					this.socket[1].sendObj(msg)
 			},
+
 			showApp() {
 				//显示办公网页组件
 				if (this.aid > 0) {
@@ -1163,6 +1210,7 @@
 					this.socket[2].sendObj(msg)
 				}
 			},
+
 			hideApp(code) {
 				//隐藏办公网页组件 Code设置4是自动隐藏，如需强制隐藏，设置为32
 				if (this.aid > 0) 
@@ -1193,6 +1241,7 @@
 					this.socket[2].sendObj(msg)
 				}
 			},
+
 			CheckUpdate() {
 				//校验中间件版本是不是需要升级,如果额外指定PID参数，代表校验PID代表的网页组件，Wrl_Version功能多
 				this.rid++ // 增加请求序号
@@ -1205,6 +1254,7 @@
 				}
 				this.socket[0].sendObj(msg)
 			},
+			
 			SendUpdateJson() {
 				// 发送中间件的升级命令，实现自动升级，同时升级微软及金山办公等网页组件
 				// 注意：Wrl_Update中的请求参数如MD5 TK Size等，请根据文档“中间件制作升级包说明.pdf”中的打包工具生成

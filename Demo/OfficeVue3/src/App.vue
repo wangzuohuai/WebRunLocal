@@ -144,9 +144,11 @@ let isConnService = false //是否连接的中间件服务
 let isDisConnect = false // 是否处于断开连接过程
 let socket =[] 	//websocket对象数组，采用数组需要注意维护索引号，建议改为根据连接的SID参数存到对应的集合，需要用到连接时根据SID提取
 let result = reactive([])  		//日志结果数组
+
 const DebugLog = computed(() => {
   return result.join("\n")
 })
+
 onMounted(()=>{
   //初始化配置
   init()
@@ -155,11 +157,13 @@ onMounted(()=>{
     pageResize()
   }
 })
+
 onUnmounted(()=>{
   //关闭所有websocket链接以及浏览器监听
   close()
   window.onresize = null
 })
+
 function init() {
   //监听浏览器切换标签页面
   if(document.addEventListener)
@@ -175,6 +179,7 @@ function init() {
   //先获取本机Office软件安装信息
   GetOfficeInfo()
 }
+
 function windowScroll() {
   // 滚动条距离页面顶部的距离
   let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -183,6 +188,7 @@ function windowScroll() {
   if (aid2 > 0)
     appScroll(2, aid2, scrollTop)
 }
+
 function appScroll(si, id, scrollTop) {
   if(id)
   {
@@ -204,6 +210,7 @@ function appScroll(si, id, scrollTop) {
     socket[si].sendObj(msg)
   }
 }
+
 function GetAppletPosition() {
   //获取网页组件位置节点信息
   let nScrollTop = 0
@@ -236,6 +243,7 @@ function GetAppletPosition() {
   width.value = Math.round(react.width)
   height.value = Math.round(react.height)
 }
+
 function handleVisiable(e) {
   //浏览器页面切换侦听回调函数
   if (e.target.visibilityState == 'hidden') {
@@ -246,22 +254,26 @@ function handleVisiable(e) {
     showApp()
   }
 }
+
 function hasVerticalScrollbar(){
   if(document.documentElement.clientHeight)
     return document.body.scrollHeight > document.documentElement.clientHeight
   return document.body.scrollHeight > window.innerHeight
 }
+
 function hasHorizontalScrollbar(){
   if(document.documentElement.clientWidth)
     return document.body.scrollWidth > document.documentElement.clientWidth
   return document.body.scrollWidth > window.innerWidth
 }
+
 function pageResize(){
   if(aid > 0)
     SendScrollInfo(0,aid)
   if(aid2 > 0)
     SendScrollInfo(2,aid2)
 }
+
 function SendScrollInfo(si,id){
   let nScrollTop = 0
   let nScrollLeft = 0
@@ -307,10 +319,12 @@ function SendScrollInfo(si,id){
   console.log(msg)
   socket[si].sendObj(msg)
 }
+
 function unloadHandler() {
   //关闭所有websoket链接
   close()
 }
+
 function close() {
   //关闭网页组件实例
   CloseAllApplet()
@@ -329,6 +343,7 @@ function close() {
   //关闭侦听滚动条
   window.removeEventListener('unload', unloadHandler,false)
 }
+
 function GetOfficeInfo()
 {
   isConnService = true
@@ -349,8 +364,8 @@ function GetOfficeInfo()
     "para": {}
   }
   socket[0].sendObj(msg)
-
 }
+
 function StartOfficeApplet() {
   //启动第一个办公网页组件
   // Web节点中参数可自行配置，目前支持这些参数：
@@ -384,6 +399,7 @@ function StartOfficeApplet() {
   console.log(msg)
   socket[0].sendObj(msg)
 }
+
 function openSecondApplet() {
   if(aid)
   {
@@ -432,6 +448,7 @@ function openSecondApplet() {
     ElMessage('请先启动第一个网页组件')
   }
 }
+
 function CloseSecondApplet() {
   if (StartSecond.value) {
     isDisConnect = true
@@ -453,6 +470,7 @@ function CloseSecondApplet() {
     resize(0)
   }
 }
+
 function CloseFirstApplet()
 {
   if (aid > 0)
@@ -479,6 +497,7 @@ function CloseFirstApplet()
     isDisConnect = false
   }
 }
+
 function AppletFullEdit()
 {
   rid++ // 增加请求序号
@@ -492,6 +511,7 @@ function AppletFullEdit()
   else
     socket[1].sendObj(msg)
 }
+
 function ReLoadFirst()
 {
   CloseFirstApplet()
@@ -520,6 +540,7 @@ function ReLoadFirst()
   }
   socket[0].sendObj(Msg)
 }
+
 function CloseAllApplet()
 {
   /// 先关闭第二个实例，否则socket中保存的连接序号会不正常
@@ -675,18 +696,19 @@ function openWebsocket(port,type) {
     // 避免IE中点击重复播放及firefox断开连接提示等问题
     if(!ReStartLoad && isConnService && !isDisConnect)
     {
-      //连接不上，认为还没有安装办公网页组件 没有安装时提示安装
-      ElMessageBox.confirm('PageHi办公网页组件 尚未安装，是否马上下载？', '提示', {
+      // 连接不上，认为还没有安装PageHiOffice 没有安装时提示安装
+      ElMessageBox.confirm('PageHiOffice-佐罗软件Office网页组件 服务端口连接失败，可能是尚未安装，是否马上下载安装？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        window.open('http://local.zorrosoft.com/Files/PageHiOfficeIns.exe') // 建议改为zip等格式下载，解压后安装，EXE格式浏览器会提示是否保留
+        window.open('http://local.zorrosoft.com/Files/PageHiOfficeIns.exe') // 建议打包为zip等格式下载，解压后安装，EXE文件下载浏览器会提示是否保留
       }).catch(() => {
       })
     }
   }
 }
+
 function resize(position) {
   //请求改变网页组件实例显示位置或大小，如不需要改变显示位置，不传X和Y
   if(aid2 > 0 && aid2 == curID){
@@ -730,7 +752,7 @@ function resize(position) {
             "ID": aid,
             "X": left.value,
             "Y": top.value,
-            "Width": width,
+            "Width": width.value,
             "Height": height.value
           }
         }
@@ -751,6 +773,7 @@ function resize(position) {
     }
   }
 }
+
 function InsertContent()
 {
   // 请求插入指定的文字或链接
@@ -768,6 +791,7 @@ function InsertContent()
   else
     socket[1].sendObj(msg)
 }
+
 function AddMark()
 {
   // 请求插入书签
@@ -782,6 +806,7 @@ function AddMark()
   else
     socket[1].sendObj(msg)
 }
+
 function MarkRePlace()
 {
   // 请求替换书签内容
@@ -796,6 +821,7 @@ function MarkRePlace()
   else
     socket[1].sendObj(msg)
 }
+
 function InsertDJSign()
 {
   // 请求电子签章 Type默认0 支持北京点聚签章系统
@@ -810,6 +836,7 @@ function InsertDJSign()
   else
     socket[1].sendObj(msg)
 }
+
 function SaveFile()
 {
   // 请求保存文档
@@ -824,6 +851,7 @@ function SaveFile()
   else
     socket[1].sendObj(msg)
 }
+
 function SaveAsFile()
 {
   rid++ // 增加请求序号
@@ -843,6 +871,7 @@ function SaveAsFile()
   else
     socket[0].sendObj(msg)
 }
+
 function BeginSaveAsFile(LocalFilePath)
 {
   // 请求开始另存文档
@@ -859,6 +888,7 @@ function BeginSaveAsFile(LocalFilePath)
   else
     socket[1].sendObj(msg)
 }
+
 function ExpportFile()
 {
   // 请求导出文档
@@ -879,6 +909,7 @@ function ExpportFile()
   else
     socket[0].sendObj(msg)
 }
+
 function BeginExpportFile(LocalFilePath)
 {
   // 请求开始另存文档
@@ -895,6 +926,7 @@ function BeginExpportFile(LocalFilePath)
   else
     socket[1].sendObj(msg)
 }
+
 function InsertImg()
 {
   // 请求当前光标位置插入图片 先让用户选择图片文件
@@ -915,6 +947,7 @@ function InsertImg()
   else
     socket[0].sendObj(msg)
 }
+
 function BeginInsertImg(LocalFilePath)
 {
   // Save为1时自动保存文档
@@ -933,6 +966,7 @@ function BeginInsertImg(LocalFilePath)
   else
     socket[1].sendObj(msg)
 }
+
 function GetFirstImg()
 {
   // 提取文档中页码序号Index的图片，先设置图片保存位置
@@ -952,6 +986,7 @@ function GetFirstImg()
   else
     socket[0].sendObj(msg)
 }
+
 function BeginGetFirstImg(LocalFilePath)
 {
   // 提取文档中序号Index的Base64编码数据，如指定本地保存文件名File，则保存到本地文件中
@@ -983,6 +1018,7 @@ function BeginGetFirstImg(LocalFilePath)
   else
     socket[1].sendObj(msg)
 }
+
 function ConvertFirstPage()
 {
   // 转换文档中序号为Index页码内容成图片，先设置转换图片存放位置
@@ -1002,6 +1038,7 @@ function ConvertFirstPage()
   else
     socket[0].sendObj(msg)
 }
+
 function BeginConvertFirstPage(LocalFilePath)
 {
   // 转换文档中页码序号Index的Base64编码数据，如指定本地保存文件名File，则保存到本地文件中
@@ -1033,6 +1070,7 @@ function BeginConvertFirstPage(LocalFilePath)
   else
     socket[1].sendObj(msg)
 }
+
 function PrintFile()
 {
   // 请求打印当前文档
@@ -1050,6 +1088,7 @@ function PrintFile()
   else
     socket[1].sendObj(msg)
 }
+
 function EnableRevision()
 {
   // 请求留痕，就是修订模式
@@ -1067,6 +1106,7 @@ function EnableRevision()
     socket[1].sendObj(msg)
   IsRevision.value = true
 }
+
 function DisableRevision()
 {
   // 关闭留痕，就是关闭修订模式
@@ -1084,6 +1124,7 @@ function DisableRevision()
     socket[1].sendObj(msg)
   IsRevision.value = false
 }
+
 function ShowRevision()
 {
   // 显示留痕信息，就是显示修订内容
@@ -1100,6 +1141,7 @@ function ShowRevision()
   else
     socket[1].sendObj(msg)
 }
+
 function AcceptRevision()
 {
   // 接受留痕，就是接受修订内容
@@ -1116,6 +1158,7 @@ function AcceptRevision()
   else
     socket[1].sendObj(msg)
 }
+
 function changeOpen() {
   //重新打开文档
   rid++ // 增加请求序号
@@ -1131,6 +1174,7 @@ function changeOpen() {
   else
     socket[1].sendObj(msg)
 }
+
 function showApp() {
   //显示办公网页组件
   if (aid > 0) {
@@ -1159,6 +1203,7 @@ function showApp() {
     socket[2].sendObj(msg)
   }
 }
+
 function hideApp(code) {
   //隐藏办公网页组件 Code设置4是自动隐藏，如需强制隐藏，设置为32
   if (aid > 0)
@@ -1189,6 +1234,7 @@ function hideApp(code) {
     socket[2].sendObj(msg)
   }
 }
+
 function CheckUpdate() {
   //校验中间件版本是不是需要升级,如果额外指定PID参数，代表校验PID代表的网页组件，Wrl_Version功能多
   rid++ // 增加请求序号
@@ -1201,6 +1247,7 @@ function CheckUpdate() {
   }
   socket[0].sendObj(msg)
 }
+
 function SendUpdateJson() {
   // 发送中间件的升级命令，实现自动升级，同时升级微软及金山办公等网页组件
   // 注意：Wrl_Update中的请求参数如MD5 TK Size等，请根据文档“中间件制作升级包说明.pdf”中的打包工具生成，此处举例的升级包是在线公测版的，正式版需要自己制作
@@ -1225,6 +1272,7 @@ function SendUpdateJson() {
   }
   socket[0].sendObj(msg)
 }
+
 </script>
 <style scoped>
 .mainContainer {

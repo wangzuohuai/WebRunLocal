@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
-    <div class="mainContainer">
-      <div class="tool">
+	<div class="mainContainer">
+		<div class="tool">
 			<div class="item">窗口宽度</div>
 			<div class="item">
 				<el-input v-model="width" size="small" class="input" @blur="resize(0)"></el-input>
@@ -61,11 +60,12 @@
 				<div class="item">
 					<el-button size="small" @click="PlayFullScreen()" type="primary">全屏播放</el-button>
 				</div>
+
 			</div>
-		<div class="video-container" ref="player">
+			<div class="video-container" ref="player">
 			播放器区域
-		</div>
-		<div class="urlbox">
+			</div>
+			<div class="urlbox">
 				<div class="item">视频地址</div>
 				<div class="item input">
 					<el-input v-model="newrtsp" placeholder="这里演示动态切换播放源" size="small"></el-input>
@@ -91,27 +91,12 @@
 						</el-option>
 					</el-select>
 				</div>
-				<div class="item">引擎</div>
-				<div class="item">
-					<el-select size="small" v-model="SetPlayerEngine" placeholder="请选择" style="width: 130PX;">
-						<el-option label="LibVLC" value="LibVLC">
-						</el-option>
-						<el-option label="FFPlayer" value="FFPlayer">
-						</el-option>
-						<el-option label="海康私有协议" value="HKSDKPLAY">
-						</el-option>
-						<el-option label="大华私有协议" value="DHSDKPLAY">
-						</el-option>
-						<el-option label="海康MP4文件" value="HKMP4PLAY">
-						</el-option>
-					</el-select>
-				</div>
 				<div class="item" style="margin-left: 10px;">
-					<el-button type="primary" @click="changePlay()" size="small">播放切换</el-button>
+					<el-button type="primary" @click="changUrl()" size="small">切换源播放</el-button>
 				</div>
 		</div>
 		<div class="urlbox">
-			<div class="item">叠加透明网站地址</div>
+			<div class="item">叠加透明网页地址</div>
 				<div class="item input">
 					<el-input v-model="newfloatweb" placeholder="这里演示叠加网页内容显示" size="small"></el-input>
 				</div>
@@ -175,14 +160,13 @@
 		<el-input type="textarea" :rows="5" placeholder="调试日志" v-model="DebugLog" class="DebugLog">
 		</el-input>
 	</div>
-	</div>
 </template>
 
 <script setup>
 //集成开发说明：所有交互都是通过JS建立websocket连接后，发送或接收JSON包进行，都是异步请求，发送和接收包都携带rid用来标识请求返回包对应是哪个请求的结果
 //所有发送的msg中用到的长整形rid 可以自己指定 不同的发送请求定义唯一的rid 这样可以在回调用轻松判断
 //针对一些特殊请求，可以根据自己的实际情况把rid固定，如启动网页播放器时指定固定rid获得启动网页播放器的实例ID
-//首先建立第一个websocket连接到中间件服务端口启动RTSP多引擎网页播放器，然后获得启动的网页播放器的侦听端口建立第二个websocket连接，主要用来进行控制播放、抓图、录像等操作
+//首先建立第一个websocket连接到中间件服务端口启动RTSP网页播放器 然后获得启动RTSP网页播放器的侦听端口建立第二个websocket连接 主要用来进行控制播放、抓图、录像等操作
 //释放网页播放器，直接关闭建立的第一个websocket连接即可
 import GetDefaultConn from "./common/base.js"
 //加载websoket类
@@ -200,13 +184,12 @@ let runInfo = 1    	          // 获取本机VLC安装信息 一般只需要在�
 let RunFirst = 2  	          // 播放器启动实例1序号
 let RunSecond = 3   	      // 播放器启动实例2序号
 let win = 1 	              // 播放实例中当前操作的分屏窗口序号ID
-let newrtsp     = ref('http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8')
+let newrtsp     = 'http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8'
 let newfloatweb = ref('https://output.jsbin.com/dopavun')
-let WebCfg      = ref('[{"ID":2,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":"PlayEngine=2"},{"ID":1,"Uri":"https://media.w3.org/2010/05/sintel/trailer.mp4","Option":"Link=0 PlayEngine=2"},{"ID":4,"Server":"wzh:test123456@192.168.1.2:8000","Option":"Channel=1 Caching=1 Stream=1 Link=0"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/h265.mkv","Option":"Caching=5 PlayEngine=2"}]')
-let WebCfg2     = ref('[{"ID":1,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":"PlayEngine=3"},{"ID":2,"Uri":"https://media.w3.org/2010/05/sintel/trailer.mp4","Option":"Link=0 PlayEngine=3"},{"ID":3,"Server":"wzh:test123456@192.168.1.2:8000","Option":"Channel=33 Caching=3 Stream=0 Link=1"},{"ID":4,"Uri":"http://www.zorrosoft.com/Files/4K_H265.MP4","Option":"Caching=5 PlayEngine=3"}]')
+let WebCfg      = ref('[{"ID":2,"Uri":"https://vjs.zencdn.net/v/oceans.mp4"},{"ID":1,"Uri":"https://media.w3.org/2010/05/sintel/trailer.mp4","Option":":rtsp-tcp"},{"ID":4,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/h265.mkv","Option":":network-caching=500"}]')
+let WebCfg2     = ref('[{"ID":1,"Uri":"https://vjs.zencdn.net/v/oceans.mp4"},{"ID":2,"Uri":"https://media.w3.org/2010/05/sintel/trailer.mp4","Option":":rtsp-tcp"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4","Option":":file-caching=300"},{"ID":4,"Uri":"rtmp://mobliestream.c3tv.com:554/live/goodtv.sdp","Option":":network-caching=500"}]')
 let RecordFilePath = ref('C:/Zorro/test.mp4')
-let SetPlayerEngine = ref('LibVLC')
-let Transform = ref('none')
+let Transform = 'none'
 let recordid = 0 			   //录像时返回的录像进程PID
 let isRecordFile = false       //记录录像的状态
 let danmu = {
@@ -230,8 +213,9 @@ let IframeY = 0  		       // 网页播放器窗口模拟iFrame用的Y坐标
 let ShowType = 1 	           //分屏样式
 let isConnService = false      //是否连接的中间件服务
 let isDisConnect = false       // 是否处于断开连接过程
-let socket = [] 	               //websocket对象数组，采用数组需要注意维护索引号，可以改为根据连接的唯一SID参数存到对应的集合，需要用到连接时根据SID提取，这样可支持启动更多实例
+let socket = [] 	           //websocket对象数组，采用数组需要注意维护索引号，可以改为根据连接的唯一SID参数存到对应的集合，需要用到连接时根据SID提取，这样可支持启动更多实例
 let result = reactive([])  	   //日志结果数组
+
 const DebugLog = computed(() => {
   return result.join("\n")
 })
@@ -251,8 +235,7 @@ onUnmounted(()=>{
   window.onresize = null
 })
 
-function init() 
-{
+function init() {
   //监听浏览器切换标签页面
   if(document.addEventListener)
     document.addEventListener('visibilitychange', handleVisiable,false)
@@ -268,8 +251,7 @@ function init()
   GetPlayerInfo()
 }
 
-function windowScroll() 
-{
+function windowScroll() {
   // 滚动条距离页面顶部的距离
   let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
   if(aid > 0)
@@ -278,8 +260,7 @@ function windowScroll()
     appScroll(2, aid2, scrollTop)
 }
 
-function appScroll(si, id, scrollTop) 
-{
+function appScroll(si, id, scrollTop) {
   if(id)
   {
     // 默认纵向滚动网页播放器实例，如需要横向滚动，Code设置为1，修改Left的值
@@ -301,8 +282,7 @@ function appScroll(si, id, scrollTop)
   }
 }
 
-function GetAppletPosition() 
-{
+function GetAppletPosition() {
   //获取网页播放器位置节点信息
   let nScrollTop = 0
   let nScrollLeft = 0
@@ -335,8 +315,7 @@ function GetAppletPosition()
   height.value = Math.round(react.height)
 }
 
-function handleVisiable(e) 
-{
+function handleVisiable(e) {
   //浏览器页面切换侦听回调函数
   if (e.target.visibilityState == 'hidden') {
     //切离该页面时执行 当前页自己实现标签切换或需要在RTSP网页播放器程序窗口区域临时显示内容时，设置32强制隐藏
@@ -347,30 +326,26 @@ function handleVisiable(e)
   }
 }
 
-function hasVerticalScrollbar()
-{
+function hasVerticalScrollbar(){
   if(document.documentElement.clientHeight)
     return document.body.scrollHeight > document.documentElement.clientHeight
   return document.body.scrollHeight > window.innerHeight
 }
 
-function hasHorizontalScrollbar()
-{
+function hasHorizontalScrollbar(){
   if(document.documentElement.clientWidth)
     return document.body.scrollWidth > document.documentElement.clientWidth
   return document.body.scrollWidth > window.innerWidth
 }
 
-function pageResize()
-{
+function pageResize(){
   if(aid > 0)
     SendScrollInfo(0,aid)
   if(aid2 > 0)
     SendScrollInfo(2,aid2)
 }
 
-function SendScrollInfo(si,id)
-{
+function SendScrollInfo(si,id){
   let nScrollTop = 0
   let nScrollLeft = 0
   let BarCode = 0
@@ -416,14 +391,12 @@ function SendScrollInfo(si,id)
   socket[si].sendObj(msg)
 }
 
-function unloadHandler() 
-{
+function unloadHandler() {
   //关闭所有websoket链接
   close()
 }
 
-function close()
-{
+function close() {
   //关闭网页播放器实例
   CloseAllPlayer()
   isDisConnect = true
@@ -464,17 +437,17 @@ function GetPlayerInfo()
     "para": {}
   }
   socket[0].sendObj(msg)
+
 }
 
-function StartPlayerApplet() 
-{
-  //启动第一个多引擎网页播放器 Open为播放源，播放源也可以放到Web节点中，参考RePlayFirst中实现，差异在于，Open中指定对所有分屏有效，而在Web节点中可指定更多播放参数
+function StartPlayerApplet() {
+  //启动第一个VLC网页播放器 Open为播放源，播放源也可以放到Web节点中，参考RePlayFirst中实现，差异在于，Open中指定对所有分屏有效，而在Web节点中可指定更多播放参数
   let msg = {
-    "req": "Wrl_VideoWebPlayer",
+    "req": "Wrl_VLCWebPlayer",
     "rid": RunFirst,
     "para": {
       "Type": "0",
-      "Title": "RTSP多引擎网页播放器",
+      "Title": "VLC网页播放器",
       "Version": 0,// 设置1时代表启用独立进程来播放，独立进程播放好处是播放时如果出现进程崩溃，不会导致播放组件进程退出
       "Flag": 578,
       "Left": left.value,
@@ -486,16 +459,15 @@ function StartPlayerApplet()
       "BarW": 0,
       "BarH": 0,
       "ScrollTop": 0,
-      "Web": [{"ID":1,"Uri":"http%3A%2F%2Fwww.zorrosoft.com%2FFiles%2FPluginOKBrowserApplet.mp4","Option":"PlayEngine=2"}],
-      "ShowType": ShowType
+      "Web": [{"ID":1,"Uri":"http%3A%2F%2Fwww.zorrosoft.com%2FFiles%2FPluginOKBrowserApplet.mp4","Option":":rtsp-tcp :network-caching=500"}],
+	  "ShowType": ShowType
     }
   }
   console.log(msg)
   socket[0].sendObj(msg)
 }
 
-function openSecondPlayer() 
-{
+function openSecondPlayer() {
   if(aid)
   {
     //演示加载第二个RTSP网页播放器实例打开表格程序 先改变第一个网页播放器位置 Flag值需要在原来基础上+512以支持多实例加载
@@ -516,11 +488,11 @@ function openSecondPlayer()
     }
 
     let msg = {
-      "req": "Wrl_VideoWebPlayer",
+      "req": "Wrl_VLCWebPlayer",
       "rid": RunSecond,
       "para": {
         "Type": "0",
-        "Title": "RTSP多引擎网页播放器2",
+        "Title": "VLC网页播放器2",
         "Version": 1,
         "Flag": 578,
         "Left": left.value + 485,
@@ -544,8 +516,7 @@ function openSecondPlayer()
   }
 }
 
-function CloseSecondPlayer() 
-{
+function CloseSecondPlayer() {
   if (StartSecond.value) {
     isDisConnect = true
     /// 每个网页播放器实例占用2个连接，一个到中间件、一个到网页播放器，分别断开连接并释放
@@ -601,24 +572,24 @@ function RePlayFirst()
 	//重新启动播，Web节点配置播放源，设置分屏风格4，播放引擎从VLC改为FFPlayer
     ShowType = 4
 	let Msg = {
-		"req": "Wrl_VideoWebPlayer",
+		"req": "Wrl_VLCWebPlayer",
 		"rid": RunFirst,
 		"para": {
-			"Type": "0",
-			"Title": "RTSP多引擎网页播放器",
-			"Version": 0,
-			"Flag": 578,
-			"Left": left.value,
-			"Top": top.value,
-			"Width": width.value,
-			"Height": height.value,
-			"IframeX": IframeX,
-			"IframeY": IframeY,
-			"BarW": 0,
-			"BarH": 0,
-			"ScrollTop": 0,
-			"Web": JSON.parse(WebCfg2.value),
-			"ShowType": ShowType
+		"Type": "0",
+		"Title": "VLC网页播放器",
+		"Version": 0,
+		"Flag": 578,
+		"Left": left.value,
+		"Top": top.value,
+		"Width": width.value,
+		"Height": height.value,
+		"IframeX": IframeX,
+		"IframeY": IframeY,
+		"BarW": 0,
+		"BarH": 0,
+		"ScrollTop": 0,
+		"Web": JSON.parse(WebCfg2.value),
+		"ShowType": ShowType
 		}
 	}
 	socket[0].sendObj(Msg)
@@ -637,20 +608,20 @@ function StopSecondPlayer()
 	{
 		rid++ // 增加序号
 		let msg = {
-			"req": "Player_Control",
+			"req": "VLC_Control",
 			"rid": rid,
 			"para": [{
 				"ID": 1,
-				"Type": 2
+				"Type": "Stop"
 			},{
 				"ID": 2,
-				"Type": 2
+				"Type": "Stop"
 			},{
 				"ID": 3,
-				"Type": 2
+				"Type": "Stop"
 			},{
 				"ID": 4,
-				"Type": 2
+				"Type": "Stop"
 			}]
 		}
 		console.log(msg)
@@ -670,27 +641,27 @@ function StopFirstPlayer()
 		if(ReStartLoad.value)
 		{
 			msg = {
-				"req": "Player_Control",
+				"req": "VLC_Control",
 				"rid": rid,
 				"para": [{
 				"ID": 1,
-				"Type": 2
+				"Type": "Stop"
 				},{
 					"ID": 2,
-					"Type": 2
+					"Type": "Stop"
 				},{
 					"ID": 3,
-					"Type": 2
+					"Type": "Stop"
 				},{
-				"ID": 4,
-				"Type": 2
+					"ID": 4,
+					"Type": "Stop"
 				}]
 			}
 		}
 		else{
 			/// 不指定分屏信息时，停止所有播放
 			msg = {
-				"req": "Player_Control",
+				"req": "VLC_Control",
 				"rid": rid,
 				"para": []
 			}
@@ -706,8 +677,7 @@ function StopAllPlay()
 	StopFirstPlayer()
 }
 
-function openWebsocket(port,type) 
-{
+function openWebsocket(port,type) {
   //打开websocket服务
   let ws = GetDefaultConn(port,type)
   const socketClient = new websocket(ws, {
@@ -768,7 +738,7 @@ function openWebsocket(port,type)
       }
     }
     //切换窗口的时候 设定当前窗口为此窗口
-    if (res.event == 'Player_Selected') {
+    if (res.event == 'VLC_Selected') {
 		win = res.ID // 选中的分屏窗口序号
 		if(res.aid > 0)
 		{
@@ -777,7 +747,7 @@ function openWebsocket(port,type)
 		}
 	}
 	// 播放窗口收到鼠标按下通知
-	if (res.event == 'Player_MouseDown') {
+	if (res.event == 'VLC_MouseDown') {
 		if(res.aid > 0)
 		{
 			curID = res.aid
@@ -785,7 +755,7 @@ function openWebsocket(port,type)
 		}
 	}
 	// 定时录像结束通知
-	if (res.event == 'Player_StopRecord') {
+	if (res.event == 'VLC_StopRecord') {
 		isRecordFile = false;
 		recordid = 0;
 		$message.success("定时录像成功\n" + res.data.File);
@@ -851,8 +821,8 @@ function openWebsocket(port,type)
     // 避免IE中点击重复播放及firefox断开连接提示等问题
     if(!ReStartLoad.value && isConnService && !isDisConnect)
     {
-      //连接不上，认为还没有安装 PageHiPlayer-RTSP多引擎网页播放器 没有安装时提示安装
-      ElMessageBox.confirm('PageHiPlayer-RTSP多引擎网页播放器 服务端口连接失败，可能是尚未安装，是否马上下载安装？', '提示', {
+      //连接不上，认为还没有安装 PageHiPlayer-VLC网页播放器 没有安装时提示安装
+      ElMessageBox.confirm('PageHiPlayer-VLC网页播放器 服务端口连接失败，可能是尚未安装，是否马上下载安装？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -933,7 +903,7 @@ function getCapture()
 {
 	//请求截图，固定请求ID处理，也可以是建立一个map记录每个rid对应的含义，请求返回里再处理
 	let msg = {
-		"req": "Player_SnapshotImg",
+		"req": "VLC_VideoSnapshot",
 		"rid": 90002,
 		"para": [{
 			"ID": win,
@@ -956,7 +926,7 @@ function setText()
 	//发送字幕到指定的窗口ID
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_MarqueePut",
+		"req": "VLC_MarqueePut",
 		"rid": rid,
 		"para": [{
 			"ID": win,
@@ -982,7 +952,7 @@ function setType()
 	//动态改变屏幕数量
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_ChangePlay",
+		"req": "VLC_ChangePlay",
 		"rid": rid,
 		"para": {
 			"ShowType": ShowType
@@ -999,11 +969,11 @@ function NextFrame()
 	//请求显示下一帧 请求后播放进入暂停状态，可继续请求下一帧，或请求播放恢复正常播放状态
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_NextFrame",
+		"req": "VLC_NextFrame",
 		"rid": rid,
 		"para": [{
 			"ID":win,
-			"FrameCount": 1
+			"Count": 1
 		}]
 	}
 
@@ -1018,11 +988,11 @@ function PlayPause()
 	//请求播放进入暂停状态
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_Control",
+		"req": "VLC_Control",
 		"rid": rid,
 		"para": [{
 			"ID":win,
-			"Type": 3
+			"Type": "Pause"
 		}]
 	}
 
@@ -1037,11 +1007,11 @@ function PlayContinue()
 	//请求播放继续，或请求播放恢复正常播放状态
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_Control",
+		"req": "VLC_Control",
 		"rid": rid,
 		"para": [{
 			"ID":win,
-			"Type": 4
+			"Type": "Play"
 		}]
 	}
 
@@ -1056,7 +1026,7 @@ function PlayMute()
 	// 设置选中分屏窗口视频静音,1静音 0不静音
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_PutSoundStatus",
+		"req": "VLC_AudioPut",
 		"rid": rid,
 		"para": [{
 			"ID":win,
@@ -1075,7 +1045,7 @@ function PlaySpeed()
 	// 调整播放速度,仅限于文件或回放流，支持批量操作，当前演示针对选中分屏窗口设置2倍数播放
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_PutPlayRate",
+		"req": "VLC_PutInputInfo",
 		"rid": rid,
 		"para": [{
 			"ID":win,
@@ -1093,7 +1063,7 @@ function PlayFullScreen()
 	// 设置选中分屏窗口全屏显示 全屏后按ESC 字幕F\、双击或点击工具栏全屏图标可退出全屏状态
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_Fullscreen",
+		"req": "VLC_VideoToggleFullscreen",
 		"rid": rid,
 		"para": [{
 			"ID":win
@@ -1110,7 +1080,7 @@ function SetSelWnd() {
 	//设置选中分屏子窗口
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_SetSelect",
+		"req": "VLC_SetSelect",
 		"rid": rid,
 		"para": {
 			"ID": win
@@ -1170,11 +1140,11 @@ function RecordToFile()
 	//对指定的窗口ID进行录像 固定请求ID处理，也可以是建立一个map记录每个rid对应的含义，请求返回里再处理
 	if (isRecordFile) {
 		let msg = {
-			"req": "Player_StopRecord",
+			"req": "VLC_StopRecord",
 			"rid": 90001,
-			"para": [{
+			"para": {
 				"ID": win
-			}]
+			}
 		}
 		isRecordFile = false
 		if(aid2 > 0 && aid2 == curID)
@@ -1203,15 +1173,15 @@ function RecordToFile()
 function BeginRecordFile(LocalFilePath)
 {
 	let msg = {
-		"req": "Player_RecordFile",
+		"req": "VLC_RecordFile",
 			"rid": 90000,
-			"para": [{
+			"para": {
 				"ID": win,
 				//不指定Url时取当前焦点分屏窗口源进行录像
-				//"Url": encodeURIComponent(newrtsp.value),
+				//"Url": encodeURIComponent(newrtsp),
 				"File": encodeURIComponent(LocalFilePath),
 				"Second": 30
-			}]
+			}
 		}
 		isRecordFile = true
 		if(aid2 > 0 && aid2 == curID)
@@ -1225,7 +1195,7 @@ function watermask()
 	//对指定的窗口ID发送水印，只支持VLC引擎播放，其它引擎播放，可采用叠加透明网页的方式，参考FloatWebInfo的实现
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_PutLogoShow",
+		"req": "VLC_PutLogoShow",
 		"rid": rid,
 		"para": [{
 			"ID": win,
@@ -1243,94 +1213,21 @@ function watermask()
 		socket[1].sendObj(msg)
 }
 
-function changePlay() 
+function changUrl() 
 {
-	//动态改变指定的窗口ID的播放源，Player_ChangePlay本身支持同时改变多个分屏窗口播放源，Play支持传数组 ForceDestroy指定是否先销毁原来播放引擎 默认不销毁
+	//动态改变指定的窗口ID的播放源，VLC_ChangePlay本身支持同时改变多个分屏窗口播放源，Play支持传数组 ForceDestroy 指定是否先销毁原来播放引擎 默认不销毁
 	rid++ // 增加请求序号
-	let msg = {}
-	//切换的播放引擎 0:海康私有协议 1:海康MP4文件 2:LibVLC 3:FFPlayer 4:大华私有协议
-	if('FFPlayer' == SetPlayerEngine.value)
-	{				
-		msg = {
-		"req": "Player_ChangePlay",
+	let msg = {
+		"req": "VLC_ChangePlay",
 		"rid": rid,
 		"para": {
 			"ForceDestroy":0,
 			"Play": [{
 				"ID": win,
-				"Uri": encodeURIComponent(newrtsp.value),
-				"Option": "PlayEngine=3 Link=0"
-			}]}		
-		}
-	}
-	else if('LibVLC' == SetPlayerEngine.value)
-	{
-		msg = {
-		"req": "Player_ChangePlay",
-		"rid": rid,
-		"para": {
-			"ForceDestroy":0,
-			"Play": [{
-				"ID": win,
-				"Uri": encodeURIComponent(newrtsp.value),
-				"Option": `PlayEngine=2 Link=0 Transform=${Transform.value}`
-			}]}	
-		}
-	}
-	else if('HKSDKPLAY' == SetPlayerEngine.value)
-	{
-		msg = {
-		"req": "Player_ChangePlay",
-		"rid": rid,
-		"para": {
-			"ForceDestroy":0,
-			"Play": [{
-				"ID": win,
-				"Uri": encodeURIComponent(newrtsp.value),
-				"Option": "PlayEngine=0 Link=0"
-			}]}		
-		}
-	}
-	else if('DHSDKPLAY' == SetPlayerEngine.value)
-	{
-		msg = {
-		"req": "Player_ChangePlay",
-		"rid": rid,
-		"para": {
-			"ForceDestroy":0,
-			"Play": [{
-				"ID": win,
-				"Uri": encodeURIComponent(newrtsp.value),
-				"Option": "PlayEngine=4 Link=0"
-			}]}		
-		}
-	}
-	else if('HKMP4PLAY' == SetPlayerEngine.value)
-	{
-		msg = {
-		"req": "Player_ChangePlay",
-		"rid": rid,
-		"para": {
-			"ForceDestroy":0,
-			"Play": [{
-				"ID": win,
-				"Uri": encodeURIComponent(newrtsp.value),
-				"Option": "PlayEngine=1 Link=0"
-			}]}		
-		}
-	}
-	else
-	{
-		msg = {
-		"req": "Player_ChangePlay",
-		"rid": rid,
-		"para": {
-			"ForceDestroy":0,
-			"Play": [{
-				"ID": win,
-				"Uri": encodeURIComponent(newrtsp.value),
-				"Option": "Link=0"
-			}]}
+				"Uri": encodeURIComponent(newrtsp),
+				"Name": "new rtsp",
+				"Option": `:rtsp-tcp Transform=${Transform}`
+			}]
 		}
 	}
 	if(aid2 > 0 && aid2 == curID)
@@ -1344,7 +1241,7 @@ function FloatWebInfo()
 	//对指定的窗口ID叠加网页内容显示
 	rid++ // 增加请求序号
 	let msg = {
-		"req": "Player_FloatWebInfo",
+		"req": "VLC_FloatWebInfo",
 		"rid": rid,
 		"para": [{
 			"ID": win,
@@ -1439,11 +1336,11 @@ function SendUpdateJson() {
     "req":"Wrl_Update",
     "rid":rid,
     "para":{
-      "Name":"RTSP多引擎网页播放器升级包",
+      "Name":"VLC网页播放器升级包",
 			"Date":"2023-12-31",
 			"Desc":"1、中间件高级版内嵌小程序支持联想浏览器中加载使用；2、优化中间件访问数据文件操作及服务状态监控方式；3、PageHiPlayer海康私有协议及VLC播放引擎支持框选区域放大显示并支持前端接口调用，解决在X64系统下安装32位VLC无法使用问题，解决VLC切换播放源时可能没有成功通知；4、PageHiPlayer网页播放器增加视频长宽信息通知到前端，完善热键处理，视频画面全屏时实现自动隐藏任务栏，播放错误日志输出到单独的文件中...",
 			"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
-			"Open":"http://local.zorrosoft.com/Player",
+			"Open":"http://local.zorrosoft.com/vlc",
 			"MD5":"0BAB22C1631E508EC0C8E000FBF80AE1",
 			"Version":"2.2.12.3",
 			"Size":48463872,

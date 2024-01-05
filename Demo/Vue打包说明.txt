@@ -1,0 +1,5 @@
+1.打开控制台 cmd  
+2.cd到VUE源码工程文件夹子目录OfficeVue2或OfficeVue3 运行 npm  i  安装依赖
+3.VUE3项目跳过，VUE2使用NODEJS 大于等于17版本时执行：set NODE_OPTIONS=--openssl-legacy-provider   https://blog.csdn.net/zjjxxh/article/details/127173968
+4.打包 npm run build
+5.本地调试运行 npm run serve 或  npm run  dev  vue3
