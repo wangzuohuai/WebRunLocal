@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/websocket.js"></script>
+    <script src="js/officeApplet.js"></script>
+</head>
+<body>
+<div class="mainContainer">
+    <div class="tool">
+        <div class="item">显示宽度</div>
+        <div class="item">
+            <input class="input" name="width" onblur="resize(0)" value="1158">
+        </div>
+        <div class="item">显示高度</div>
+        <div class="item">
+            <input class="input" name="height" value="480" onblur="resize(0)">
+        </div>
+        <div class="item">左边距</div>
+        <div class="item">
+            <input class="input" name="left" value="48" onblur="resize(1)">
+        </div>
+        <div class="item">上边距</div>
+        <div class="item">
+            <input class="input" value="188" name="top" onblur="resize(1)">
+        </div>
+
+        <div class="item">
+            <button onclick="addMark()">添加书签</button>
+        </div>
+        <div class="item">
+            <button onclick="markRePlace()">替换书签内容</button>
+        </div>
+        <div class="item">
+            <button onclick="convertFirstPage()">转首页为图片</button>
+        </div>
+        <div class="item">
+            <button class="closeSecondApplet hidden" onclick="closeSecondAppletHandle(this)">
+                关闭Excel网页组件
+            </button>
+            <button class="openSecondApplet" onclick="openSecondAppletHandle(this)">
+                页内启动Excel网页组件
+            </button>
+        </div>
+    </div>
+    <div class="tool">
+        <div class="item">
+            <button onclick="insertContent()">插入内容</button>
+        </div>
+        <div class="item">
+            <button onclick="saveFile()">保存文档</button>
+        </div>
+        <div class="item">
+            <button onclick="saveAsFile()">另存文档</button>
+        </div>
+        <div class="item">
+            <button onclick="exportFile()">导出文档</button>
+        </div>
+        <div class="item">
+            <button onclick="insertImg()">插入图片印章</button>
+        </div>
+        <div class="item">
+            <button onclick="getFirstImg()">提取首图</button>
+        </div>
+        <div class="item">
+            <button onclick="printFile()">打印文档</button>
+        </div>
+        <div class="item">
+            <button class="disableRevision hidden" onclick="disableRevision(this)">
+                关闭留痕
+            </button>
+            <button class="enableRevision" onclick="enableRevision(this)">
+                启用留痕
+            </button>
+        </div>
+        <div class="item">
+            <button onclick="showRevision()">显示留痕</button>
+        </div>
+        <div class="item">
+            <button onclick="acceptRevision()">接受留痕</button>
+        </div>
+        <div class="item">
+            <button onclick="mergeDoc()">合并文档</button>
+        </div>
+        <div class="item">
+            <button onclick="compareDoc()">对比文档</button>
+        </div>
+
+    </div>
+    <div class="tool">
+        <div class="item">
+            <select name="edit" id="select" onchange="selectEdit()">
+                <option value="0">默认权限</option>
+                <option value="1">1:只读方式打开</option>
+                <option value="2">2:打开后自动处于修订模式</option>
+                <option value="4">4:禁止另存</option>
+                <option value="8">8:禁止打印</option>
+                <option value="16">16:禁止复制内容</option>
+                <option value="32">32:只能修订</option>
+                <option value="64">64:只能批注</option>
+            </select>
+        </div>
+        <div class="item">
+            <button onclick="appletSnap()">文档截图</button>
+        </div>
+        <div class="item">
+            <button onclick="insertTable()">插入表格</button>
+        </div>
+        <div class="item">
+            <button onclick="insertMark()">插入水印</button>
+        </div>
+        <div class="item">
+            <button onclick="insertNote()">插入批注</button>
+        </div>
+    <!--    <div class="item">
+            <button onclick="startTabApplet(2)">新标签启动excel网页组件</button>
+        </div>-->
+        <div class="item">
+            <button onclick="startTabApplet(3)">标签启动ppt网页组件</button>
+        </div>
+    </div>
+    <div class="urlbox">
+        <div class="item">文档路径</div>
+        <div class="item input">
+            <input name="myOpenDoc" value="C:/OfficeDoc/template.doc" placeholder="这里演示切换文档"></input>
+        </div>
+        <div class="item" style="margin-left: 10px;">
+            <button class="button-primary" onclick="changeOpen()" size="small">切换打开</button>
+        </div>
+        <div class="item" style="margin-left: 10px;">
+            <button class="button-primary" onclick="reLoadFirst(2)" type="primary">OEL嵌入</button>
+        </div>
+        <div class="item" style="margin-left: 10px;">
+            <button class="button-primary" onclick="reLoadFirst(1)" type="primary">完整嵌入</button>
+        </div>
+    </div>
+    <div class="tabs">
+        <div class="tab-item active" onclick="change(this,1)">
+<!--            <div class="close" onclick="closeTab(this,1)">x</div>-->
+            Word网页组件
+        </div>
+        <div class="tab-item hide" onclick="change(this,2)">
+            <div class="close" onclick="closeTab(this,2)">x</div>
+            excel网页组件
+        </div>
+        <div class="tab-item hide" onclick="change(this,3)">
+            <div class="close" onclick="closeTab(this,3)">x</div>
+            ppt网页组件
+        </div>
+    </div>
+    <div class="video-container">
+        办公网页组件区域
+    </div>
+    <div class="tool" style="justify-content: flex-start">
+        <div class="item">
+            <button onclick="appletFullEdit()" class="button-primary">全屏编辑</button>
+            <button type="primary" onclick="closeAllApplet()" class="button-primary">关闭所有网页组件</button>
+        </div>
+        <div class="item">最新版本号</div>
+        <div class="item">
+            <input name="version" value="2.2.12.3" size="small"></input>
+        </div>
+        <button onclick="checkUpdate()" class="button-primary">校验升级</button>
+    </div>
+    <textarea type="textarea" :rows="5" placeholder="调试日志" class="DebugLog"></textarea>
+</div>
+<div class="alert">
+    55
+</div>
+<script>
+
+    /**
+     * 规则说明 必须遵守以下规则
+     * rid 为请求的唯一标识，100以下的数字为特有map标识 其它操作不能使用
+     * *************************************************************
+     * websocket 2个为一组  一个为初始化  一个为控制  按数字依此类推
+     * *************************************************************
+     * rid = 1 代表初始化 发送Wrl_OfficeInfo信息初始化
+     * *************************************************************
+     * 1-1代表第一个Wrl_Applet 启动第一个websocket  同时启动第一个Wrl_Applet rid = 2
+     * 1-2代表第一个Wrl_Applet控制websocket  启动第二个websocket
+     **************************************************************
+     * 2-1代表启动第二个Wrl_Applet启动  启动第三个websocket rid = 3
+     * 2-2代表启动第二个Wrl_Applet控制websocket  启动第四个websocket
+     *
+     */
+    let currentIndex = 0
+    let edit = 0
+    let selectDlgType = 0  // 选择对话框类型 0另存 1导出 2插入图片 3提取首张图片 4转首页为图片
+    let resultLog = [] //保存结果数组
+    let position = {} //保存初始化applet位置的信息
+    let aid = 0 //当前操作的applet ID
+    let applet = null
+    let serverOpenFile = 'http://local.zorrosoft.com/Files/template.doc'
+    let openType = 1 // 加载类型 1启动微软Word 2启动微软Excel 3启动微软PPT 11启动金山文字 12启动金山表格 13启动金山演示 可通过请求Wrl_OfficeInfo获得需要设置的值
+    let myOpenDoc = 'C:/OfficeDoc/template.doc'
+    let myOpenDoc2 = 'C:/OfficeDoc/template2.doc'
+    let myOpenExcel = 'C:/OfficeDoc/test.xls'
+    let myOpenPptx = 'C:/OfficeDoc/template.pptx'
+    let saveAsDoc = 'C:/OfficeDoc/SaveAs.doc'
+    let exportDoc = 'C:/OfficeDoc/test.pdf'
+    let insertImgFile = 'http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png'
+    let printPathFile = 'C:/OfficeDoc/testprint.pdf'
+
+
+    //初始化用到的浏览器事件 例如切换标签、侦听滚动条等
+    initEvent()
+    //初始化程序运行 启动websocket等
+    initConfig()
+
+    async function initConfig() {
+
+        // 获取需要加载小程序的位置 然后设置位置
+        let res = await getAppletPosition()
+
+        position = res
+        //设置文本框数值为初始化位置
+        document.querySelector("input[name=left]").value = position.left
+        document.querySelector("input[name=top]").value = position.top
+        document.querySelector("input[name=width]").value = position.width
+        document.querySelector("input[name=height]").value = position.height
+        //创建一个officeApplet示例
+        applet = new officeApplet()
+        //启动websocket
+        let result = await startWebsocket()
+        applet.ws = result.ws
+        //映射ws
+        officeApplet.setAidArr(2,0,1,result.ws)
+        //启动第一个办公网页组件，加延迟等待Wrl_OfficeInfo的请求返回
+        setTimeout(()=>{startFirstApplet(2, openType,serverOpenFile)},500)
+    }
+
+
+    function startFirstApplet(rid = 2, openType, serverOpenFile,version=2) {
+        applet.openType = openType
+        applet.startFirst(rid, position.left, position.top, position.width, position.height, serverOpenFile, edit,version)
+    }
+
+    function startSecondApplet(rid = 3, openType, serverOpenFile) {
+
+        applet.openType = openType
+        applet.startSecond(rid, position.left + position.width / 2, position.top, position.width / 2, position.height, serverOpenFile, edit)
+    }
+    async function startTabApplet(index){
+        //这里启动的rid是固定的，因为上面演示的嵌入打开已经占用了3以及以下的数字，所以标签页面打开rid从4开始
+
+        currentIndex = index
+
+        let rid = index+2
+
+        //切换标签
+        document.querySelectorAll('.tab-item').forEach((item,index)=>{
+            item.classList.remove("active")
+            if((index+1)==currentIndex){
+                item.classList.add("active")
+                item.classList.remove("hide")
+            }
+        })
+        //隐藏其它applet
+        hideAllApp(rid)
+        //启动websocket
+        let result = await startWebsocket()
+        //映射ws
+        applet.ws = result.ws
+        officeApplet.setAidArr(rid,0,1,result.ws)
+        if(index==2){
+            applet.openType = openType+1
+            applet.startSecond(rid, position.left, position.top, position.width, position.height, myOpenExcel, edit)
+        }else{
+            applet.openType = openType+2
+            applet.startSecond(rid, position.left, position.top, position.width, position.height, myOpenPptx, edit)
+        }
+
+    }
+    function startWebsocket(port = '') {
+        return new Promise((resolve, reject) => {
+            //启动websocket
+            const ws = new websocket(port)
+            console.log(ws.getInstance())
+            ws.success = () => {
+                resolve({
+                    ws: ws
+                })
+            }
+            ws.getInstance().onmessage = (e) => {
+                const res = JSON.parse(e.data)
+                console.log(res)
+                switch (res.req) {
+                    case 'Wrl_OfficeInfo':
+                        // 解析当前Office安装情况
+                        for (let OfficeItem in res.data.Info) {
+                            if (res.data.Info[OfficeItem].Cur == 1) {
+                                openType = res.data.Info[OfficeItem].Type
+                            }
+                        }
+                        resultLog.push("当前Office类型:" + openType)
+                        break;
+                    case 'Wrl_Version':
+                        if (res.data.Update == 1) {
+                            /// 先强制隐藏办公网页组件，避免弹框显示不出来
+                            hideApp(32);
+                            let isBool = confirm('提示：有新版本发布, 是否马上升级?')
+                            if (isBool) {
+                                closeAllApplet()
+                                applet.ws = websocket.wsArr[0]
+                                applet.sendUpdateJson()
+                            } else {
+                                showApp()
+                            }
+                        } else {
+                            alert('已经是最新版本！')
+                            /// 说明：即使版本号是最新的，也是可以发起升级请求SendUpdateJson()的，相当于覆盖安装，用于更新比如中间件或网页组件的配置文件等
+                        }
+                        break;
+                    case 'Wrl_AppletSnap':
+                        alertHandle('截图成功，路径：'+res.data.File)
+                        break;
+                }
+                switch (res.event) {
+                    case 'Wrl_AppletOK':
+
+                        break
+                    case 'Wrl_Listen':
+                        //网页组件建立侦听成功 这里得到当前网页组件返回的端口
+                        //这里创建另外一个websocket到办公网页组件端口 来实现重新打开文档、提取图片、保存、书签等操作
+                        //
+                        aid = res.aid
+                        startWebsocket(res.data.port).then((result)=>{
+                            officeApplet.setAidArr(res.rid,res.aid,2,result.ws)
+                        })
+                        break
+                    case 'Wrl_SelectFile':
+                        handelSelectFile(res)
+                        break
+                    case 'WORD_Save':
+                        alertHandle('保存成功，路径：'+res.data.File)
+                        break
+                }
+                if (res.err) {
+                    // 请求返回错误
+                    console.log(res.err)
+                }
+                //记录日志
+                if (resultLog.length > 100) {
+                    resultLog = []
+                }
+                resultLog.push(e.data)
+                document.querySelector(".DebugLog").value = resultLog.join("\n")
+
+            }
+
+        })
+
+    }
+
+    function initEvent() {
+        //浏览器尺寸发生变化
+        window.onresize = () => {
+            pageResize()
+        }
+        //监听浏览器切换标签页面
+        if (document.addEventListener)
+            document.addEventListener('visibilitychange', handleVisiable, false)
+        else
+            document.attachEvent('visibilitychange', handleVisiable, false)	/// 老版本浏览器
+        //侦听滚动条
+        window.addEventListener('scroll', windowScroll, true)
+        //监听当页面离开时候
+        window.addEventListener('unload', unloadHandler, false)
+    }
+
+    async function pageResize() {
+        // 获取需要加载小程序的位置 然后设置位置
+        let res = await getAppletPosition()
+        applet.setWebsocket(aid)
+        applet.sendScrollInfo(res.BarCode, res.s_left, res.s_top)
+    }
+
+    function handleVisiable(e) {
+        //浏览器页面切换侦听回调函数
+        if (e.target.visibilityState == 'hidden') {
+            //切离该页面时执行 当前页自己实现标签切换或需要在办公程序窗口区域临时显示内容时，设置32强制隐藏
+            hideApp(4)
+        } else if (e.target.visibilityState == 'visible') {
+            //切换到该页面时执行
+            showApp(0)
+        }
+    }
+
+    function showApp(rid=0) {
+        //如果rid=0 显示所有app
+        //如果rid>0 显示rid所属的applet
+        officeApplet.aidArr.forEach((item, index) => {
+            if(rid==0 && item.aid>0){
+                applet.setWebsocket(item.aid, 1)
+                applet.showApp()
+            }
+            if(rid > 0 && item.aid>0 && item.rid == rid) {
+                applet.setWebsocket(item.aid, 1)
+                applet.showApp()
+            }
+        })
+    }
+
+    function hideApp(code) {
+        console.log(officeApplet.aidArr,websocket.wsArr)
+        hideAllApp(0,code)
+    }
+    function hideAllApp(rid=0,code=32){
+        //如果rid=0 隐藏所有app
+        //如果rid>0 隐藏除rid以外的所有app
+        officeApplet.aidArr.forEach((item, index) => {
+            if(rid==0 && item.aid>0){
+                applet.setWebsocket(item.aid, 1)
+                applet.hideApp(code)
+            }
+            if(rid > 0 && item.aid>0 && item.rid != rid) {
+                applet.setWebsocket(item.aid, 1)
+                applet.hideApp(code)
+            }
+        })
+    }
+    function windowScroll(e) {
+        // 滚动条距离页面顶部的距离
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+
+        officeApplet.aidArr.forEach((item, index) => {
+            if(item.aid>0){
+                applet.aid = item.aid
+                applet.ws = item.ws1
+                applet.appScroll(0,scrollTop)
+            }
+        })
+
+    }
+
+    function unloadHandler() {
+        //关闭所有websoket链接
+        closeAllApplet()
+        //关闭侦听浏览器页面切换
+        if (document.addEventListener)
+            document.removeEventListener('visibilitychange', handleVisiable, false)
+        else
+            document.detachEvent('visibilitychange', handleVisiable, false)	/// 老版本浏览器
+        //关闭侦听滚动条
+        document.body.removeEventListener('scroll', windowScroll, false)
+        //关闭侦听滚动条
+        window.removeEventListener('unload', unloadHandler, false)
+    }
+
+    //添加书签
+    function addMark() {
+        applet.setWebsocket(aid, 2)
+        applet.addMark()
+    }
+
+    //替换书签内容
+    function markRePlace() {
+        applet.setWebsocket(aid, 2)
+        applet.markRePlace()
+    }
+
+    //转首页为图片
+    function convertFirstPage() {
+        selectDlgType = 4
+        applet.setWebsocket(aid, 1)
+        applet.convertFirstPage()
+    }
+
+    function insertContent() {
+        applet.setWebsocket(aid, 2)
+        applet.insertContent()
+    }
+
+    function saveFile() {
+        applet.setWebsocket(aid, 2)
+        applet.saveFile()
+    }
+
+    function saveAsFile() {
+        selectDlgType = 0
+        applet.setWebsocket(aid, 1)
+        applet.saveAsFile()
+    }
+
+    function exportFile() {
+        selectDlgType = 1
+        applet.setWebsocket(aid, 1)
+        applet.exportFile()
+    }
+
+    function insertImg() {
+        selectDlgType = 2
+        applet.setWebsocket(aid, 1)
+        applet.insertImg()
+    }
+
+    function getFirstImg() {
+        selectDlgType = 3
+        applet.setWebsocket(aid, 1)
+        applet.getFirstImg()
+    }
+
+    function printFile() {
+        applet.setWebsocket(aid, 2)
+        applet.printFile(printPathFile)
+    }
+
+    function disableRevision(obj) {
+        obj.classList.add("hidden")
+        document.querySelector(".enableRevision").classList.remove("hidden")
+        applet.setWebsocket(aid, 2)
+        applet.disableRevision()
+    }
+
+    function enableRevision(obj) {
+        obj.classList.add("hidden")
+        document.querySelector(".disableRevision").classList.remove("hidden")
+        applet.setWebsocket(aid, 2)
+        applet.enableRevision()
+    }
+
+    function showRevision() {
+        applet.setWebsocket(aid, 2)
+        applet.showRevision()
+    }
+
+    function acceptRevision() {
+        applet.setWebsocket(aid, 2)
+        applet.acceptRevision()
+    }
+
+    function appletFullEdit() {
+        applet.setWebsocket(aid, 2)
+        applet.appletFullEdit()
+    }
+
+    function closeAllApplet(rid=0) {
+        officeApplet.aidArr.forEach((item, index) => {
+            if(rid==0 && item.aid>0 && item.rid>2){
+                officeApplet.aidArr[index].aid = 0
+                officeApplet.aidArr[index].ws1 = null
+                officeApplet.aidArr[index].ws2 = null
+            }
+        })
+        websocket.wsArr.forEach((item, index) => {
+            if(index>1){
+                websocket.wsArr[index].getInstance().close()
+            }
+        })
+
+        document.querySelectorAll('.tab-item').forEach((item,index)=>{
+            item.classList.remove("active")
+            if(index==0){
+                item.classList.add("active")
+            }
+            if(index>0){
+                item.classList.add("hide")
+            }
+        })
+
+        currentIndex = 1
+        showApp(2)
+        websocket.wsArr.splice(2,websocket.wsArr.length)
+        aid = officeApplet.getAidArr(2)
+    }
+
+    function checkUpdate() {
+        let version = document.querySelector("input[name=version]").value
+        applet.aid = officeApplet.getAidArr(2)
+        applet.ws = websocket.wsArr[0]
+        applet.checkUpdate(version)
+    }
+
+    function changeOpen() {
+
+        applet.setWebsocket(officeApplet.getAidArr(2),2)
+        let myOpenDoc = document.querySelector("input[name=myOpenDoc]").value
+        applet.changeOpen(myOpenDoc)
+    }
+
+    function compareDoc() {
+        applet.setWebsocket(aid, 2)
+        applet.compareDoc(myOpenDoc2)
+    }
+
+    function mergeDoc() {
+        applet.setWebsocket(aid, 2)
+        applet.mergeDoc(myOpenDoc2)
+    }
+
+    function appletSnap() {
+        applet.setWebsocket(aid, 1)
+        applet.snapDoc()
+    }
+
+    function insertTable() {
+        applet.setWebsocket(aid, 2)
+        applet.insertTable()
+    }
+
+    function insertMark() {
+        applet.setWebsocket(aid, 2)
+        applet.insertMark(insertImgFile)
+    }
+
+    function insertNote() {
+        applet.setWebsocket(aid, 2)
+        applet.insertNote()
+    }
+
+    function closeFirstApplet() {
+        if (websocket.wsArr.length == 2) {
+            applet.setWebsocket(aid,1)
+            applet.closeApplet()
+            //关闭websocket
+            websocket.wsArr[1].getInstance().close()
+            websocket.wsArr.splice(1, 1)
+            //复位aid
+            officeApplet.setAidArr(2,0,2,null)
+            aid = 0
+        }
+    }
+
+    function closeSecondApplet() {
+        //是不是启动了第二个网页组件
+        if (websocket.wsArr.length > 2) {
+            websocket.wsArr[3].getInstance().close()
+            websocket.wsArr[2].getInstance().close()
+            websocket.wsArr.splice(2, 2)
+        }
+        //复位aid
+        officeApplet.setAidArr(3,0,0,null)
+        aid = officeApplet.getAidArr(2)
+    }
+
+    function reLoadFirst(version) {
+
+        //设置文本框数值为初始化位置
+
+        document.querySelector("input[name=left]").value = position.left
+        document.querySelector("input[name=top]").value = position.top
+        document.querySelector("input[name=width]").value = position.width
+        document.querySelector("input[name=height]").value = position.height
+
+        closeFirstApplet()
+
+        applet.ws = websocket.wsArr[0]
+
+        startFirstApplet(2, openType, myOpenDoc,version)
+
+    }
+
+    function resize(index) {
+        let left = document.querySelector("input[name=left]").value
+        let top = document.querySelector("input[name=top]").value
+        let width = document.querySelector("input[name=width]").value
+        let height = document.querySelector("input[name=height]").value
+
+        applet.setWebsocket(aid,1)
+        if (index == 1) {
+            applet.resizeMargin(left, top, width, height)
+        }
+        if (index == 0) {
+            applet.resize(width, height)
+        }
+
+    }
+
+    function handelSelectFile(res) {
+        if (!res.data) {
+            return
+        }
+        if (0 == selectDlgType) {
+            if (res.data.length) {
+                applet.setWebsocket(aid, 2)
+                applet.beginSaveAsFile(res.data[0].File) /// 使用返回的文件位置
+            } else {
+                applet.beginSaveAsFile(saveAsDoc) // 取消指定，使用默认位置文件
+            }
+        } else if (1 == selectDlgType) {
+            if (res.data.length) {
+                applet.setWebsocket(aid, 2)
+                applet.beginExpportFile(res.data[0].File) /// 使用返回的文件位置
+            } else {
+                applet.beginExpportFile(exportDoc) // 取消指定，使用默认位置文件
+            }
+        } else if (2 == selectDlgType) {
+            if (res.data.length) {
+                applet.setWebsocket(aid, 2)
+                applet.beginInsertImg(res.data[0].File) /// 使用返回的文件位置
+            } else {
+                applet.beginInsertImg(insertImgFile) // 取消指定，使用默认位置文件
+            }
+        } else if (3 == selectDlgType) {
+            if (res.data.length) {
+                applet.setWebsocket(aid, 2)
+                applet.beginGetFirstImg(res.data[0].File) /// 使用返回的文件位置
+            } else {
+                applet.beginGetFirstImg('') // 取消指定，直接返回图片BASE64编码，这种情况返回JPG格式图片数据
+            }
+        } else if (4 == selectDlgType) {
+            if (res.data.length) {
+                applet.setWebsocket(aid, 2)
+                applet.beginConvertFirstPage(res.data[0].File)/// 使用返回的文件位置
+            } else {
+                applet.beginConvertFirstPage('') // 取消指定，直接返回图片BASE64编码，这种情况返回JPG格式图片数据
+            }
+        }
+    }
+
+    async function openSecondAppletHandle(obj) {
+        obj.classList.add("hidden")
+        document.querySelector(".closeSecondApplet").classList.remove("hidden")
+
+        //先修改第一个applet的位置
+        document.querySelector("input[name=width]").value = position.width / 2 - 20
+        resize(0)
+        //启动websocket
+        let result = await startWebsocket()
+        applet.ws = result.ws
+        //映射ws
+        officeApplet.setAidArr(3,0,1,result.ws)
+        startSecondApplet(3, openType + 1, myOpenExcel)
+    }
+
+    function closeSecondAppletHandle(obj) {
+        obj.classList.add("hidden")
+        document.querySelector(".openSecondApplet").classList.remove("hidden")
+        //先修改第一个applet的位置
+        closeSecondApplet()
+        document.querySelector("input[name=width]").value = position.width
+        resize(0)
+    }
+
+    function hasVerticalScrollbar() {
+        if (document.documentElement.clientHeight)
+            return document.body.scrollHeight > document.documentElement.clientHeight
+        return document.body.scrollHeight > window.innerHeight
+    }
+
+    function hasHorizontalScrollbar() {
+        if (document.documentElement.clientWidth)
+            return document.body.scrollWidth > document.documentElement.clientWidth
+        return document.body.scrollWidth > window.innerWidth
+    }
+
+    /**
+     * 获取Applet启动时候相关位置信息
+     * return {left,top,width,height}
+     */
+    function getAppletPosition() {
+        //获取网页组件位置节点信息
+        return new Promise((resolve, reject) => {
+            let BarCode = 0
+            let nScrollTop = 0
+            let nScrollLeft = 0
+            let bHorizontalBar = hasHorizontalScrollbar()
+            let bVerticalBar = hasVerticalScrollbar()
+            if (bHorizontalBar) {
+                if (window.pageXOffset != undefined)
+                    nScrollLeft = Math.round(window.pageXOffset)
+                else {                //获取页面的scrollLeft(兼容写法)
+                    nScrollLeft = Math.round(document.documentElement.scrollLeft || document.body.scrollLeft)
+                }
+            }
+            if (bVerticalBar) {
+                if (window.pageYOffset != undefined)
+                    nScrollTop = Math.round(window.pageYOffset)
+                else {
+                    //获取页面的scrollTop(兼容写法)
+                    nScrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop)
+                }
+            }
+            if (bHorizontalBar)
+                BarCode = 1
+            if (bVerticalBar)
+                BarCode += 2
+            let react = document.querySelector(".video-container").getBoundingClientRect()
+            let left = Math.round(react.left) + nScrollLeft
+            let top = Math.round(react.top) + nScrollTop
+            let s_left = nScrollLeft
+            let s_top = nScrollTop
+            resolve({
+                'left': left,
+                'top': top,
+                's_left': s_left,
+                's_top': s_top,
+                'width': react.width,
+                'height': react.height,
+                'BarCode': BarCode
+            })
+        })
+    }
+
+    function selectEdit() {
+        let index = document.getElementById("select").selectedIndex;
+        //根据index获取选中项的value值
+
+         edit = document.getElementById("select").options[index].value;
+        console.log(edit)
+    }
+
+    //tab切换
+    function change(obj,index){
+
+        document.querySelectorAll('.tab-item').forEach(item=>{
+            item.classList.remove("active")
+            if(item==obj){
+                obj.classList.add("active")
+            }
+        })
+
+        currentIndex = index
+
+        if(index==1){
+            showApp(index+1)
+            hideAllApp(index+1)
+            aid = officeApplet.getAidArr(index+1)
+        }else{
+            hideAllApp(index+2)
+            showApp(index+2)
+            aid = officeApplet.getAidArr(index+2)
+        }
+    }
+    function alertHandle(msg){
+        document.querySelector('.alert').classList.add('show')
+        document.querySelector('.alert').innerHTML=msg
+        setTimeout(()=>{
+            document.querySelector('.alert').classList.add('hide')
+            document.querySelector('.alert').classList.remove('show')
+        },3000)
+    }
+    function closeTab(obj,current){
+        let rid = 0
+        if(current==1){
+            rid = 2
+        }else{
+            rid = current+2
+        }
+
+        obj.parentNode.classList.remove("active")
+        obj.parentNode.classList.add("hide")
+
+
+        officeApplet.aidArr.forEach((item, index) => {
+            if(rid==item.rid && item.aid>0){
+                officeApplet.aidArr[index].aid = 0
+                officeApplet.aidArr[index].ws1.getInstance().close()
+                officeApplet.aidArr[index].ws1 = null
+                officeApplet.aidArr[index].ws2.getInstance().close()
+                officeApplet.aidArr[index].ws2 = null
+            }
+        })
+        setTimeout(()=>{
+            document.querySelectorAll('.tab-item').forEach((item,index)=>{
+                if(index==0){
+                    change(item,1)
+                }
+            })
+        },500)
+
+
+
+    }
+
+</script>
+</body>
+</html>
