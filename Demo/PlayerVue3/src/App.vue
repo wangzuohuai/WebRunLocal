@@ -24,10 +24,10 @@
 				</el-input-number>
 			</div>
 			<el-button size="small" v-if="StartSecond" @click="CloseSecondPlayer">
-				关闭第二个播放器
+				关闭多进程播放器
 			</el-button>
 			<el-button size="small" @click="openSecondPlayer" v-else>
-				启动第二个播放器
+				启动多进程播放器
 			</el-button>
 		</div>
 			<div class="tool">
@@ -191,7 +191,7 @@ import {ref,reactive, computed,onMounted,onUnmounted} from 'vue'
 import { ElMessage,ElMessageBox } from 'element-plus'
 
 const player = ref()
-let version = ref('2.2.12.3') //中间件版本信息
+let version = ref('2.2.12.5') //中间件版本信息
 let aid = 0		              // 第一个播放器实例ID
 let aid2 = 0		          // 第二个播放器实例ID
 let curID = 0 		          // 当前操作播放器实例ID
@@ -1439,18 +1439,18 @@ function SendUpdateJson() {
     "req":"Wrl_Update",
     "rid":rid,
     "para":{
-      "Name":"RTSP多引擎网页播放器升级包",
-			"Date":"2023-12-31",
-			"Desc":"1、中间件高级版内嵌小程序支持联想浏览器中加载使用；2、优化中间件访问数据文件操作及服务状态监控方式；3、PageHiPlayer海康私有协议及VLC播放引擎支持框选区域放大显示并支持前端接口调用，解决在X64系统下安装32位VLC无法使用问题，解决VLC切换播放源时可能没有成功通知；4、PageHiPlayer网页播放器增加视频长宽信息通知到前端，完善热键处理，视频画面全屏时实现自动隐藏任务栏，播放错误日志输出到单独的文件中...",
-			"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
-			"Open":"http://local.zorrosoft.com/Player",
-			"MD5":"0BAB22C1631E508EC0C8E000FBF80AE1",
-			"Version":"2.2.12.3",
-			"Size":48463872,
-			"HideIns":0,
-			"Cookie":"",
-			"Auth":"",
-			"TK":"AC3B7B95CF42EE17939C1CEB5F6F1C9F0CE97DE39C80F51A0E710D876401802E1252665005EF2DF7230C0995D7787BB7D3568AE435D1160571F6CC7E40EEE56911A47467D6D9E3BCE74284E4BB6AB848B96C950EAB762CB106C0125B8EF28918A5555C5F1B2B9E0C648D8D8AB1B08C69436BED3B827068651A4A159EEC069543D7C0054B1B775212D20E5135E5CAA2BF4ACFEBF1348C3FAB3263221871F0F29D51F7F79DBA0A51C23872774551B009A727036A49CBFDCB44CC1E1252206ADED55826B549C5787360902619530E70572EAD0E79124692ADECBAC284A84D68357ADE4154CC73DDE94266B3BFD1F71006B50B32687F4C8867C801CE79FDA257AB30"
+      	"Name":"RTSP多引擎网页播放器升级包",
+	  	"Date":"2024-01-17",
+		"Desc":"1、优化中间件高级版内嵌小程序嵌入网页后对输入焦点的处理；2、优化尤其是存在副屏时对浏览器的兼容性；3、PageHiPlayer多引擎网页播放器VLC播放时增加静音和打开声音通知，优化Windows 11以下全屏播放实现；4、解决PageHiPlayer多进程模式启动时工具栏按钮无法点击问题，双击全屏不正常等问题...",
+		"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
+		"Open":"http://local.zorrosoft.com/Player",
+		"MD5":"B36995A917571704707724965F699418",
+		"Version":"2.2.12.5",
+		"Size":35717120,
+		"HideIns":0,
+		"Cookie":"",
+		"Auth":"",
+		"TK":"0C91A42B33374A4546DB8B628F31639E9265015B372002DDB74165DF9D94CA6699C475833782D7C6688105EE4FF818EAB60A8CBB04BF3A73CB9D0F9A717D8330BAC750FFCEED7854CC4488BD57321719C4B74E4D478462488A1FE0D70C6EBA03FE6713685EF1AD1C9B9B968CC4C5909C65192F446E442C92E3A005AB69EA7FDCB1C03A78663974CE619A56CFF43CC533BAF3BC839224414A5F8FE0BD570F215FE21909AEDD9D5E23C8FD8AB1D896442307E75CB88BDE4F39D6D1548AAFA6AF6EF15373D7F77B44F7AA62CA201A9869FF5CEDF68B737A00BBCBB466B1BA339D42E1301B4B90178FF38577D2D38DA2DA48FAC230CF6AD49178E702FFD824D8A42D"
     }
   }
   socket[0].sendObj(msg)
