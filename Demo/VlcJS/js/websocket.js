@@ -83,7 +83,7 @@ function createObject(id) {
 /*获取socket链接*/
 function getDefaultConn(port) {
 	if (location.protocol.indexOf('https') > -1)
-		return 'wss://wrl.zorrosoft.com:443?sid=' + getrandom(5).toLocaleString() + '&flag=1';
+		return 'wss://wrl.zorrosoft.com:' + port + '?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 	else
 		return 'ws://127.0.0.1:' + port + '?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 }
