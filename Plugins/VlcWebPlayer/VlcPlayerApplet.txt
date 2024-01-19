@@ -1,4 +1,4 @@
-﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用3.0.20版本，VLC播放程序版权归相关公司所有。
+﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序3.0及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本，VLC播放程序版权归相关公司所有。
 
 本程序具有如下优点：
 1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放器额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
@@ -378,7 +378,7 @@ ID为窗口序号 Flag为1代表启用，0代表禁用
 分别返回：{"ret":0,"rid":89,"ID":1,"data":{"Ret":0,"Enable":1}} 和 {"ret":0,"rid":89,"ID":2,"data":{"Ret":0,"Enable":0}}
 
 50) 对指定视频流录像到文件，不支持同时录制多个
-Type为录像方式 0:VLC 1:ffmpeg 指定1时在播放小程序子目录存放ffmpeg程序
+Type为录像方式 0:VLC 1:ffmpeg 指定1时在播放小程序所在目录的ffmpeg子目录下存放ffmpeg程序
 ID为分屏窗口，此分屏窗口必须有可播放的视频
 Url为RTSP流地址，不指定ID和Url时取当前焦点窗口流的
 File为录像目标文件不指定时自动生成 Second为录制限时时间(秒)，0代表由前端指定停止

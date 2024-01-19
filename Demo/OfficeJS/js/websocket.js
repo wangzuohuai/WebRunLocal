@@ -11,10 +11,26 @@ function websocket(port='',type=0){
 
     this.connect = () => {
         this.url = this.getDefaultConn(this.port,this.type)
-        this.ws = new WebSocket(this.url);
-        this.ws.onopen = this.onopen
-        this.ws.onerror = this.onerror
-        this.ws.onclose = this.onclose
+        if (typeof WebSocket != 'undefined') 
+        {
+            this.ws = new WebSocket(this.url);
+            this.ws.onopen = this.onopen
+            this.ws.onerror = this.onerror
+            this.ws.onclose = this.onclose
+        }
+        else
+        {
+            console.log("您的浏览器不支持Websocket通信协议，请使用Chrome或者Firefox浏览器！")
+			this.ws = createObject(getrandom(5))
+			this.ws.EnableLog = true
+			if (this.instance) 
+			{
+				if (this.ws.ReadyState > 1) {
+					// 还未连接
+					this.ws.Connect(url);
+				}
+			} 		
+        }
     }
     this.getInstance = ()=>{
         return this.ws
@@ -51,7 +67,19 @@ function websocket(port='',type=0){
     this.sendMessage = (msg) => {
         this.ws.send(JSON.stringify(msg));
     }
-//获取ws连接的地址
+  
+    /*IE中创建WebSocket控件对象*/
+    this.createObject = (id) => {
+        var obj = $('<object></object>');
+        obj.attr('ID', id);
+        obj.attr('CLASSID', 'CLSID:21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A');/*单机版请替换为C0971B90-4513-4E2D-A0B6-15B915FE748A*/
+        obj.attr('width', 0);
+        obj.attr('height', 0);
+        obj.appendTo('body') 
+        return document.getElementById(id)
+    } 
+
+    //获取ws连接的地址
     this.getDefaultConn = (port='',type=0)=>{
         /// flag为1代表启用日志输出，系统正式上线后设置0可提高运行速度
         /// sid代表本次连接的会话ID，必须保证唯一

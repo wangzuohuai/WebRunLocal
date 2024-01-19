@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="./css/bootstrap.css" rel="stylesheet">
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/websocket.js"></script>
+		<style>
+			.buttons {
+				text-align: center;
+				height: 100vh;
+				width: 140px;
+				left: 0;
+				top: 0;
+				background-color: #efefef;
+				position: absolute;
+			}
+			.buttons button{
+				display: block;
+				margin-top: 10px;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="video-container" ref="player">
+			播放器区域
+		</div>
+		<div class="buttons container">
+			<button onclick="SnapImg()" type="button" class="btn btn-primary">请求抓图</button>
+			<button onclick="ChangePlay()" type="button" class="btn btn-primary">切换分屏</button>
+			<button onclick="setText()" type="button" class="btn btn-primary">设置字幕</button>
+			<button onclick="watermask()" type="button" class="btn btn-primary">图片水印</button>
+			<button onclick="changUrl()" type="button" class="btn btn-primary">切换播放源</button>
+			<button onclick="RecordFile()" type="button" class="btn btn-primary">开始录像</button>
+			<button onclick="StopRecord()" type="button" class="btn btn-primary">停止录像</button>
+			<button onclick="changePos()" type="button" class="btn btn-primary">调整播放窗口</button>
+			<button onclick="StartSecondApplet()" type="button" class="btn btn-primary">启动多进程播放</button>
+			<button onclick="closeAll()" type="button" class="btn btn-primary">关闭播放器</button>
+			<button onclick="CheckUpate()" type="button" class="btn btn-primary">校验版本</button>
+		</div>
+		<p style="height: 2000px;"></p>
+		<script>
+			// 集成开发说明：所有交互都是通过JS建立websocket连接后，发送或接收JSON包进行，都是异步请求，发送和接收包都携带rid用来标识请求返回包对应是哪个请求的结果
+			// 所有发送的msg中用到的长整形rid 可以自己指定 不同的发送请求定义唯一的rid 这样可以在回调用轻松判断
+			// 针对一些特殊请求，可以根据自己的实际情况把rid固定，如启动播放时指定固定rid获得启动播放的实例ID
+			// 首先建立第一个websocket连接到中间件服务默认端口83启动vlc网页播放器 然后获得启动的播放器侦听端口建立第二个websocket连接 主要用来进行控制播放、截图、录像、设置字幕等操作
+			// 多路播放时分屏窗口id 是固定的参数 从1开始计数 计数顺序为 从左到右，从上到下
+
+			// 启动的socket要保存到socketClient中， 这里可以固定成map类型，正常操作一个网页播放器需要2个WS连接，每个播放器启动用单独的WS连接，这样在关闭这个连接时只释放这个连接启动的播放器
+			// 根据顺序 从3000开头 3000-3003 
+			// 这里演示建立4个socket连接，其中2个启动播放器，另外2个负责控制播放器
+
+			var rtsp = 'http://devimages.apple.com/iphone/samples/bipbop/gear3/prog_index.m3u8'
+			// Uri中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 Uri如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
+			var WebCfg = '[{"ID":2,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":":network-caching=3000"},{"ID":3,"Uri":"http://www.zorrosoft.com/Files/test.ts","Option":":network-caching=500"},{"ID":4,"Uri":"https://media.w3.org/2010/05/sintel/trailer.mp4","Option":":file-caching=300"}]'
+			var WebCfg2 = '[{"ID":2,"Uri":"http://www.zorrosoft.com/Files/test.ts","Option":":network-caching=500 Transform=90"},{"ID":3,"Uri":"https://vjs.zencdn.net/v/oceans.mp4","Option":":network-caching=1000"}]'
+
+			var port = '930' 	// 第一个网页播放器默认侦听端口，启动第二个对应931，在启动播放时会实际返回给准确的端口
+			var win = 1 		// 当前操作的窗口ID
+			var rid = 10 		// 起始请求序号
+			var recordid = 0 	// 录像返回ID
+			var CheckVer = '2.2.12.5' // 指定的校验版本，也就是最新需要升级的版本
+			
+			var socketClient = {
+				3000: null,
+				3001: null,
+				3002: null,
+				3003: null
+			}
+
+			// 记录启动的网页播放器实例ID
+			var appIds = {
+				3000: 0,
+				3001: 0,
+				3002: 0,
+				3003: 0
+			}
+
+			// 监听浏览器切换标签页面
+			window.addEventListener('visibilitychange', visibilitychange)
+			// 侦听滚动条
+			window.addEventListener('scroll', windowScroll)
+			// 监听当页面离开时候
+			window.addEventListener('unload', unload)
+
+			// 自动启动第一个播放器
+			StartFirstApplet()
+
+			// 启动单进程网页播放器
+			function StartFirstApplet() 
+			{
+				let Protocol = location.protocol;
+				if (Protocol.toUpperCase().indexOf('HTTPS') > -1)
+					openSocket(3000, 453, getMsgOne) 
+				else
+					openSocket(3000, 83, getMsgOne)
+
+				setTimeout(function() {
+					StartFirtPlayer(socketClient[3000])
+				}, 500)
+			}
+
+			// 启动多进程网页播放器演示
+			function StartSecondApplet() 
+			{
+				if(appIds[3002])
+					return // 已经启动
+				let Protocol = location.protocol;
+				if (Protocol.toUpperCase().indexOf('HTTPS') > -1)
+					openSocket(3002, 83, getMsgThree)
+				else
+					openSocket(3002, 83, getMsgThree)
+
+				setTimeout(function() {
+					StartSecondPlayer(socketClient[3002]);
+				}, 500)	
+			}
+
+			// 启动第一个网页播放器配置，以下为启动参数说明
+			// 1)、请求启动VLC网页播放器：
+			// Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+			// Title：网页标题中的关键词
+			// Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
+			// Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+			// Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+			// Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
+			// ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1到31的数值，多达31种分屏，注意此值不代表分屏个数
+			// IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+			// BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+			// 小程序实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+			// Option：播放参数，多个参数中间用空格区分
+			// :rtsp-tcp 指定TCP连接播放
+			// :network-caching=300 指定网络缓存时间，毫秒为单位，如果是播放文件时，设置:file-caching=300
+			// LogFlag=1 指定VLC错误日志输出，默认1
+			// ClockSync=-1 指定音频是否与视频同步，默认-1播放引擎默认值
+			// AudioOut=any 指定音频输出类型 可选mmdevice、directsound、waveout、amem、afile、NDI、adummy、none
+			// Avcodec=any 指定硬件加速类型，none不用硬件加速，可指定dxva2、d3d11va、any，any时让播放引擎自己选合适的
+			// Transform=none 指定VLC播放画面是否旋转，除默认none不旋转之外，设置支持90、180、270、hflip、vflip、transpose、antitranspose
+			// Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定，如Open中的密码包含+等一些特殊字符，需要改到Web中指定
+			// 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
+
+			function StartFirtPlayer(socketClient) {
+				var start_app_config = {
+					"req": "Wrl_VLCWebPlayer",
+					"rid": 3000, 		// 启动网页播放器唯一标识
+					"para": {
+						"Type": "0",
+						"Title": "VLC单进程网页播放器",
+						"Flag": 578,
+						"Left": 150, 	// 设置网页播放器距离左边的距离
+						"Top": 20, 		// 设置网页播放器距离顶部的距离
+						"Width": 480, 	// 设置网页播放器播放器宽度
+						"Height": 320, 	// 设置网页播放器播放器高度
+						"IframeX": -10,
+						"IframeY": 0,
+						"BarW": 0,
+						"BarH": 0,
+						"Version": "0",	// 指定单进程方式
+						"ShowType": 1,
+						"Web": [{"ID":1,"Uri":"http%3A%2F%2Fwww.zorrosoft.com%2FFiles%2FPluginOKBrowserApplet.mp4","Option":":rtsp-tcp :network-caching=500"}]
+					}
+				}
+				socketClient.sendObj(start_app_config)
+			}
+
+			// 启动第二个网页播放器配置
+			function StartSecondPlayer(socketClient) {
+				var start_app_config = {
+					"req": "Wrl_VLCWebPlayer",
+					"rid": 3002, 	// 启动网页播放器唯一标识
+					"para": {
+						"Type": "0",
+						"Title": "VLC多进程网页播放器",
+						"Flag":578,
+						"Left": 800, 	// 设置网页播放器距离左边的距离
+						"Top": 120, 	// 设置网页播放器距离顶部的距离
+						"Width": 480, 	// 设置网页播放器播放器宽度
+						"Height": 320,  // 设置网页播放器播放器高度
+						"IframeX": -10,
+						"IframeY": 0,
+						"BarW": 0,
+						"BarH": 0,
+						"ScrollTop": 0,
+						"Version": "1",	// 指定多进程方式，多进程的好处是每路播放都是独立的进程，如果遇到崩溃不影响其它路的播放
+						"ShowType": 1,
+						"Web": [{"ID":1,"Uri":"https%3A%2F%2Fmedia.w3.org%2F2010%2F05%2Fsintel%2Ftrailer.mp4","Option":":rtsp-tcp :network-caching=500"}]
+					}
+				}
+				socketClient.sendObj(start_app_config)
+			}
+
+			// 演示截图请求
+			function SnapImg() {
+				// 启动截图需要的socket
+				if (socketClient[3001])
+				{
+					var msg = {
+						"req": "VLC_VideoSnapshot",
+						"rid": 80000,
+						"para": [{
+							"ID": win,			// 对当前选中分屏窗口操作
+							"Type": 4,  		// 图片类型
+							"Count": 1, 		// 抓图数量，支持多张
+							"Delay": 1000, 		// 当前请求执行后延迟多久开始抓取，可设置0马上执行
+							"Interval": 200, 	// 每张图片抓取间隔
+							"PathType": 1		// 图片保存路径类型
+						}]
+					}
+					socketClient[3001].sendObj(msg)
+				}
+
+				if (socketClient[3003])
+				{
+					// 同时对第二个播放器操作
+					var msg = {
+						"req": "VLC_VideoSnapshot",
+						"rid": 80000,
+						"para": [{
+							"ID": win,
+							"Type": 4,
+							"Count": 3,
+							"Delay": 0,
+							"Interval": 200,
+							"PathType": 1
+						}]
+					}
+					socketClient[3003].sendObj(msg)
+				}
+			}
+
+			// 演示改变屏幕数量
+			function ChangePlay() 
+			{ 
+				if (socketClient[3001]) 
+				{
+					rid++
+					var msg = {
+						"req": "VLC_ChangePlay",
+						"rid": rid,
+						"para": {
+							"ShowType": 4, 				// 这里设置分屏数量
+							"Play":JSON.parse(WebCfg)	// 同时配置多路播放信息
+						}
+					}
+					socketClient[3001].sendObj(msg)
+				}
+
+				// 改变第二个播放器分屏及播放源
+				if (socketClient[3003]) 
+				{
+					rid++
+					var msg = {
+						"req": "VLC_ChangePlay",
+						"rid": rid,
+						"para": {
+							"ShowType": 3, 				// 这里设置分屏数量
+							"Play":JSON.parse(WebCfg2)	// 同时配置多路播放信息
+						}
+					}
+					socketClient[3003].sendObj(msg)
+				}
+			}
+
+			// 发送字幕到指定的窗口ID
+			function setText() 
+			{
+				if (socketClient[3001]) 
+				{
+					rid++
+					var msg = {
+						"req": "VLC_MarqueePut",
+						"rid": rid,
+						"para": [{
+							"ID": win,
+							"Text": '您好呀，O(∩_∩)O哈哈~',
+							"Position": 'TOP',
+							"Timeout": 0,
+							"Color": "#ff0000",
+							"Opacity": 128,
+							"Refresh": 1,
+							"Size": 100,
+							"X": 0,
+							"Y": 0
+						}]
+					}
+					socketClient[3001].sendObj(msg)
+				}
+
+				if (socketClient[3003]) 
+				{
+					rid++
+					var msg = {
+						"req": "VLC_MarqueePut",
+						"rid": rid,
+						"para": [{
+							"ID": win,
+							"Text": '您好呀，O(∩_∩)O哈哈~',
+							"Position": 'TOP',
+							"Timeout": 0,
+							"Color": "#ff0000",
+							"Opacity": 128,
+							"Refresh": 1,
+							"Size": 100,
+							"X": 0,
+							"Y": 0
+						}]
+					}
+					socketClient[3003].sendObj(msg)
+				}
+			}
+
+			// 对指定的窗口ID发送水印
+			function watermask() {
+				if (socketClient[3001]) 
+				{
+					rid++
+					var msg = {
+						"req": "VLC_PutLogoShow",
+						"rid": rid,
+						"para": [{
+							"ID": win,
+							"File": "VLC.png",
+							"Delay": 20,
+							"Repeat": -1,
+							"Opacity": 128,
+							"X": 100,
+							"Y": 100
+						}]
+					}
+					socketClient[3001].sendObj(msg)
+				}
+
+				if (socketClient[3003]) 
+				{
+					rid++
+					var msg = {
+						"req": "VLC_PutLogoShow",
+						"rid": rid,
+						"para": [{
+							"ID": win,
+							"File": "VLC.png",
+							"Delay": 20,
+							"Repeat": -1,
+							"Opacity": 128,
+							"X": 100,
+							"Y": 100
+						}]
+					}
+					socketClient[3003].sendObj(msg)
+				}
+			}
+
+			// 动态改变指定的窗口ID的播放源
+			function changUrl() 
+			{
+				if (socketClient[3001])
+				{
+					rid++
+					var msg = {
+						"req": "VLC_ChangePlay",
+						"rid": rid,
+						"para": {
+							"Play": [{
+								"ID": win,
+								"Uri": rtsp,
+								"Name": "NewPlay",
+								"Option": ":rtsp-tcp"
+							}]
+						}
+					}
+					socketClient[3001].sendObj(msg)
+				}
+			}
+
+			//对指定的窗口ID进行录像
+			function RecordFile() 
+			{
+				if (socketClient[3001]) 
+				{
+					var msg = {
+						"req": "VLC_RecordFile",
+						"rid": 90000,
+						"para": {
+							"Type": 0,					// 录像类型，0使用VLC，1使用ffmpeg 用1时播放器程序所在目录的子目录ffmpeg下存放ffmpeg程序
+							"File": "C:/Zorro/test.mp4", // 录像保存位置
+							"Second": 15				// 定时15秒结束
+						}
+					}
+					socketClient[3001].sendObj(msg)
+				}
+			}
+
+			// 停止录像
+			function StopRecord()
+			{
+				if(recordid)
+				{
+					if(socketClient[3001])
+					{
+						var msg = {
+							"req": "VLC_StopRecord",
+							"rid": 90001,
+							"para": {
+								"PID": recordid	// 录像ID
+							}
+						}
+						socketClient[3001].sendObj(msg)
+					}
+					recordid = 0
+				}
+			}
+
+			//滚动网页播放器实例
+			function appScroll(map, scrollTop) 
+			{
+				if(socketClient[map]==null){
+					return
+				}
+				rid++
+				var msg = {
+					"req": "Wrl_AppletScroll",
+					"rid": rid,
+					"para": {
+						"ID": appIds[map],
+						"Code": 2, 			// 滚动掩码 1指定横向滚动 2指定纵向滚动 3横向纵向同时滚动
+						"Left": 0,			// 指定横向滚动
+						"Top": scrollTop 	// 指定纵向滚动
+					}
+				}
+				socketClient[map].sendObj(msg)
+			}
+
+			//请求改变网页播放器显示位置或大小
+			function changePos() 
+			{
+				if(appIds[3000])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletResize",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3000],
+							"Width": 640,
+							"Height": 480,
+							"X": 150,
+							"Y": 220
+						}
+					}
+					socketClient[3000].sendObj(msg)
+				}
+			}
+
+			// 关闭所有播放器实例
+			function closeAllApplet()
+			{
+				if(appIds[3000])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletControl",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3000],
+							"Code": 1
+						}
+					}
+					appIds[3000] = 0
+					socketClient[3000].sendObj(msg)
+				}
+				if(appIds[3002])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletControl",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3002],
+							"Code": 1
+						}
+					}
+					appIds[3002] = 0
+					socketClient[3002].sendObj(msg)
+				}
+			}
+
+			/// 发送升级请求
+			function sendUpdateJson()
+			{
+				if(!socketClient[3000])
+					return
+				rid++
+				var msg = {
+					"req":"Wrl_Update",
+					"rid":rid,
+					"para":{
+						"Name":"猿大师RTSP网页播放器升级包",
+						"Date":"2024-01-17",
+						"Desc":"1、优化中间件高级版内嵌小程序嵌入网页后对输入焦点的处理；2、优化尤其是存在副屏时对浏览器的兼容性；3、PageHiPlayer多引擎网页播放器VLC播放时增加静音和打开声音通知，优化Windows 11以下全屏播放实现；4、解决PageHiPlayer多进程模式启动时工具栏按钮无法点击问题，双击全屏不正常等问题...",
+						"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
+						"Open":"http://test.yuanmaster.com/vlc",
+						"MD5":"B36995A917571704707724965F699418",
+						"Version":"2.2.12.5",
+						"Size":35717120,
+						"HideIns":0,
+						"Cookie":"",
+						"Auth":"",
+						"TK":"0C91A42B33374A4546DB8B628F31639E9265015B372002DDB74165DF9D94CA6699C475833782D7C6688105EE4FF818EAB60A8CBB04BF3A73CB9D0F9A717D8330BAC750FFCEED7854CC4488BD57321719C4B74E4D478462488A1FE0D70C6EBA03FE6713685EF1AD1C9B9B968CC4C5909C65192F446E442C92E3A005AB69EA7FDCB1C03A78663974CE619A56CFF43CC533BAF3BC839224414A5F8FE0BD570F215FE21909AEDD9D5E23C8FD8AB1D896442307E75CB88BDE4F39D6D1548AAFA6AF6EF15373D7F77B44F7AA62CA201A9869FF5CEDF68B737A00BBCBB466B1BA339D42E1301B4B90178FF38577D2D38DA2DA48FAC230CF6AD49178E702FFD824D8A42D"
+					}
+				}
+				socketClient[3000].sendObj(msg)
+			}
+
+			// 请求隐藏播放器窗口
+			function hideApp(code) 
+			{
+				if(appIds[3000])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletControl",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3000],
+							"Code": code
+						}
+					}
+					socketClient[3000].sendObj(msg)
+				}
+				if(appIds[3002])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletControl",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3002],
+							"Code": code
+						}
+					}
+					socketClient[3002].sendObj(msg)
+				}
+			}
+			
+			// 请求恢复播放窗口显示
+			function showApp() 
+			{
+				if(appIds[3000])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletControl",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3000],
+							"Code": 8
+						}
+					}
+					socketClient[3000].sendObj(msg)
+				}
+				if(appIds[3002])
+				{
+					rid++
+					var msg = {
+						"req": "Wrl_AppletControl",
+						"rid": rid,
+						"para": {
+							"ID": appIds[3002],
+							"Code": 8
+						}
+					}
+					socketClient[3002].sendObj(msg)
+				}
+			}
+
+			//启动一个websocket链接
+			function openSocket(sign, port, callback) 
+			{
+				if(socketClient[sign])
+					return
+				socketClient[sign] = new websocket(port)
+				socketClient[sign].connect()
+
+				// 接收信息并处理
+				socketClient[sign].onMessage = function(msg) {			 
+					callback(JSON.parse(msg.data))
+				}
+
+				// 处理连接失败
+				socketClient[sign].onError = function(event) 
+				{
+					if (3000 == sign) 
+					{
+						let isBool = confirm('提示：猿大师RTSP网页播放器 服务端口连接失败，可能是尚未安装，是否马上下载安装？')
+						if (isBool) {
+							window.open('http://www.yuanmaster.com/Yuandashi.exe') // 建议打包为zip等格式下载，解压后安装，EXE文件下载浏览器会提示是否保留
+						}
+					}
+				}
+			}
+
+			// 连接中间件端口启动第一个播放器处理
+			function getMsgOne(res) 
+			{
+				//网页播放器创建成功后台 获取当前网页播放器返回的端口 
+				//这里开通另外一个websocket 来实现重新指定播放源，暂停播放，抓图等
+				if (res.event == 'Wrl_AppletOK') 
+				{
+					// 连接到播放器侦听端口，便于从这个连接发送操作播放器的接口
+					if(3000 == res.rid)
+					{
+						port = res.data.Port
+						appIds[3000] = res.aid
+						openSocket(3001, port, getMsgTwo)
+					}
+				}
+				if (res.req == 'Wrl_Version') 
+				{
+					hideApp(32);
+					if (res.data.Update == 1) 
+					{
+                        /// 先强制隐藏网页播放器，避免弹框显示不出来
+                        let isBool = confirm('提示：有新版本发布, 是否马上升级?')
+                        if (isBool) 
+						{
+                            closeAllApplet()
+                            sendUpdateJson()
+                        } 
+						else 
+						{
+                            showApp()
+                        }
+                    } 
+					else 
+					{
+                        alert('已经是最新版本！')
+						showApp()
+                         /// 说明：即使版本号是最新的，也是可以发起升级请求SendUpdateJson()的，相当于覆盖安装，用于更新比如中间件或网页组件的配置文件等
+                    }
+				}
+			}
+
+			// 连接播放器端口处理
+			function getMsgTwo(res) 
+			{
+				if (res.rid == 80000) {
+					console.log("截图成功\n" + res.data.Img[0].File);
+				}
+				else if (res.rid == 90000) {
+					//请求录像返回录像标识，可用于停止录像
+					recordid = res.data.PID
+				}
+				else if (res.rid == 90001) {
+					//请求停止录像返回
+					console.log("停止录像成功\n" + res.data.File);
+					hideApp(32);
+					alert("停止录像成功\n" + res.data.File)
+					showApp()
+				}
+				// 切换窗口的时候 设定当前窗口为此窗口
+				if (res.event == 'VLC_Selected') 
+				{
+					// 记录当前选中分屏窗口编号
+					win = res.ID
+				}
+				else if(res.event == 'VLC_StopRecord')
+				{
+					// 定时录像通知
+					console.log("定时录像成功\n" + res.data.File);
+					hideApp(32);
+					alert("定时录像成功\n" + res.data.File)
+					showApp()
+				}
+			}
+
+			//  连接中间件端口启动第二个播放器处理
+			function getMsgThree(res) {
+				//网页播放器创建成功后台 获取当前网页播放器返回的端口 
+				//这里开通另外一个websocket 来实现重新指定播放源，暂停播放，抓图等
+				if (res.event == 'Wrl_AppletOK') 
+				{
+					// 连接到播放器侦听端口，便于从这个连接发送操作播放器的接口
+					if(3002 == res.rid)
+					{
+						port = res.data.Port
+						appIds[3002] = res.aid
+						openSocket(3003, port, getMsgTwo)
+					}
+				}
+			}
+
+			// 浏览器标签切换回调函数
+			function visibilitychange(e) 
+			{
+				// 浏览器页面切换侦听回调函数
+				if (e.target.visibilityState == 'hidden') 
+				{
+					// 切离该页面时执行
+					if(appIds[3000])
+					{
+						rid++
+						// 隐藏VLC网页播放器
+						var msg = {
+							"req": "Wrl_AppletControl",
+							"rid": rid,
+							"para": {
+								"ID": appIds[3000],
+								"Code": 4
+							}
+						}
+						socketClient[3000].sendObj(msg)
+					}
+
+					// 如果启动了第二个网页播放器 也隐藏
+					if (socketClient[3002] != null) 
+					{
+						rid++
+						var msg = {
+							"req": "Wrl_AppletControl",
+							"rid": rid,
+							"para": {
+								"ID": appIds[3002],
+								"Code": 4
+							}
+						}
+						socketClient[3002].sendObj(msg)
+					}
+				} 
+				else if (e.target.visibilityState == 'visible') 
+				{
+					// 切换到该页面时执行
+					if(appIds[3000])
+					{
+						rid++
+						// 显示VLC网页播放器
+						var msg = {
+							"req": "Wrl_AppletControl",
+							"rid": rid,
+							"para": {
+								"ID": appIds[3000],
+								"Code": 8
+							}
+						}
+						socketClient[3000].sendObj(msg)
+					}
+
+					// 如果启动了第二个网页播放器 也显示
+					if (socketClient[3002] != null) 
+					{
+						rid++
+						var msg = {
+							"req": "Wrl_AppletControl",
+							"rid": rid,
+							"para": {
+								"ID": appIds[3002],
+								"Code": 8
+							}
+						}
+						socketClient[3002].sendObj(msg)
+					}
+				}
+			}
+
+			// 指定版本号CheckVer，请求和实际运行的版本进行校验
+			function CheckUpate()
+			{
+				if(!socketClient[3000])
+					return
+				rid++
+				var msg = {
+						"req": "Wrl_Version",
+						"rid": rid,
+						"para": {
+							"Version": CheckVer
+						}
+					}
+				socketClient[3000].sendObj(msg)
+			}
+
+			// 请求关闭所有WS连接，如果这个连接中启动了播放器，自动释放
+			function closeAll()
+			{
+				for (var i in socketClient) 
+				{
+					if(socketClient[i]){
+						socketClient[i].close()
+					}					
+				}
+
+				socketClient = {
+					3000: null,
+					3001: null,
+					3002: null,
+					3003: null
+				}
+
+				appIds = {
+					3000: 0,
+					3001: 0,
+					3002: 0,
+					3003: 0
+				}
+			}
+
+			// 释放
+			function unload(e) 
+			{
+				// 关闭所有websoket链接
+				for (var i in socketClient) {
+					if(socketClient[i]){
+						socketClient[i].close()
+					}					
+				}
+
+				socketClient = {
+					3000: null,
+					3001: null,	
+					3002: null,
+					3003: null
+				}
+
+				// 关闭侦听浏览器页面切换
+				window.removeEventListener('visibilitychange')
+				// 关闭侦听滚动条
+				window.removeEventListener('scroll')
+				// 关闭侦听当页面离开
+				window.removeEventListener('unload')
+			}
+
+			// 滚动处理
+			function windowScroll(e) 
+			{
+				// 滚动条距离页面顶部的距离
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				console.log(scrollTop);
+				// 这里自行决定是否响应滚动
+				if(appIds[3000])
+					appScroll(3000, scrollTop)
+				if(appIds[3002])
+					appScroll(3002, scrollTop)
+			}
+
+		</script>
+	</body>
+</html>
