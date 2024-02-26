@@ -72,7 +72,7 @@ function websocket(port='',type=0){
     this.createObject = (id) => {
         var obj = $('<object></object>');
         obj.attr('ID', id);
-        obj.attr('CLASSID', 'CLSID:21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A');/*单机版请替换为C0971B90-4513-4E2D-A0B6-15B915FE748A*/
+        obj.attr('CLASSID', 'CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A');
         obj.attr('width', 0);
         obj.attr('height', 0);
         obj.appendTo('body') 

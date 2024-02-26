@@ -284,12 +284,13 @@ function getrandom(nums)
 				|| jsondata.req == "Wrl_PdfWebApplet"
 				|| jsondata.req == "Wrl_OfficeApplet"
 				|| jsondata.req == "Wrl_ACADApplet"
+				|| jsondata.req == "Wrl_RdpApplet"
 				|| jsondata.req == "Wrl_TXWebApplet"
 				|| jsondata.req == "Wrl_PCLWebPlayer"
 				|| jsondata.req == "Wrl_IEPage"
 				|| jsondata.req == "Wrl_SWCadApplet"
 				|| jsondata.req == "Wrl_CatiaApplet"
-				|| jsondata.req == "Wrl_JTGOApplet"
+				|| jsondata.req == "Wrl_ProEApplet"
 				|| jsondata.req == "Wrl_AppletStart")
 			{
 				nRequstAppletID = jsondata.rid;

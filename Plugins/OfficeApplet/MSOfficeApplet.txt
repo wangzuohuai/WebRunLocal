@@ -112,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-01-17","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"B227284E3640B850DAC400A9AAB01459","Version":"2.2.12.5","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"24962F66EEF32015DD30E5FCBC88B58B2C2B757B1EBF9B402AB6842E6B7AC81417F490F1D98F5AC560037581B8E8C078FD27C87C7B6CFCCDA04A11387A03CDFB6D93B59D3B6DB3BAD8BA1E3240F6D25999B6100086C60EACEBF46A33A6CACF932B528109C2B94E4F2B08CA4714444A71A99A76FA9437D6968C15562A0B195F53C1FA0B71BFA977921844A78B7E8A66FB6B791CB49440605D33CBCD6B91C30F8DB1D05EA03096157F2BF6BF4CD4E41019C75CF5807E75E04B0DE79D61F420E92AD3B551BE868EC1674788FE61DC9E84E2AEB002285811554A009937E88E2F3D9C898DCEF607ACF7DD56209B5C4E1F1D5E468761FF76CE369A595F887D6AF7814A"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"C27596980DFDEF0BC8FCC938059AAB88","Version":"2.2.13.1","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3DC3BC1FAEB77636A812A3935ACEF221BAB35610B50F423F15FAC9B9C088AAED7B731BC0004BCDA5AB363A28531C538E8F9930AE9118A22368C923542201CB59933CCF3FDC5D960D31C770C44751A1306F765C2C1D9A52DBA42FA8F964BC169E0C4651EDE3C0D65CBAA80069B7BC177A7557BFD7B226379B3A461F0D6339DE170D3ABFA95AB5ABE69F8F0A211F6453087D34E9947BDBDDFB71E16EC1627F765086C1115A3890C32197830BC1AE7CB4A5334BDBC52E834BAEB875B7F9F3EA23B445AFDADF955042D11F2497D7D6235101018BA202E64E727889960273F0F92C6E4AB44FF7021992A5CE5B22B6132408982BE955B69210AFAF6F776B49C5A3A640"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-01-17","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"2E1A07D649B69C4646F6E87960E865FA","Version":"2.2.12.5","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"26815A32AB8D0E97B04F516E6F1BDAB267ACFC513963027081586CF4B9CC4768FFB240D085466A932C58DBD187EF21BC778D63D4A2BF91D32C6C1DFE85A53FDE572AA480817E0A564CC3DBF26A54BBB58A698FC3247AAB38C39C057B4E8131B20F22C9BD70D98F473299D1E6FCC2C83EB36568B4F0320E918AEB2760D5650645EDADD390369D9964F957BD8CFFD3B040D83515C49F8C376ED7F9482A4DDF74A8909477DFF5FFEDCD769F71C95E4FA41E99B8086E920F732A400BA2581AF3FCC5B7557FFDB28BDDFB1D33C02E0248277D685E1528802E7C6EA884CDF76D7AE07FA813148DBB7BE4F68601002F71E78DFEB19E576080B90E9E668C87CBEDD3E374"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"EA2FC7DCDAF16075D26CA4C34D926940","Version":"2.2.13.1","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9CEAB12A13A69C74C925779E55FECCBB38027C427AAED4653E9C852A33A19EB97177E4DCBFF2331EB3F96097E72FD890B8842DDCCB0ACDD1672EAD3762873EB9210D0702EF0EEDF49C8FA372CDF9F854C80CE098DE2F079FBCCDF61897B070442114DCA9C3FE50043962F7D4F7E5EE0F31E39B02E24FCED1D699809A6F75A2A1E2714E51EE8738840C277698E58A66404014D381F100493B09632C6E0CE2CC66164943AD6006385D9761218487C93040F8F9C5023D23BDA9488597C5648CC5DEE66EDAA44F9E9F0AA63D4CD5DDD5EA1E9F60BC899A5FD1925CF5E963AC10A79B03C77D555B0222857CA3A372F4CB3811FCB9012F728D165E7B02863C29301BA9"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -296,9 +296,9 @@ Files为被合并文档数组 如非全路径，除非启动时指定了数据�
 {"req":"Office_FileMerge","rid":30,"para":{"Files":["D:/Zorro/TestMark.docx","D:/Zorro/Test.docx"]}}
 返回：{"ret":0,"rid":30,"data":{"Ret":"0"}}
 
-31）盖章，适用于Word、Excel、PPT软件
-Type 签章类型 Type默认0 支持北京点聚签章系统
-{"req":"Office_SealInsert","rid":31,"para":{"Type":0}}
+31）调用菜单及工具栏按钮功能，适用于Word、Excel、PPT软件
+BarName:菜单栏名称 BtnName:请求功能名称或功能序号
+举例，调用北京点聚电子印章的盖章功能：{"req":"Office_CallCmdbar","rid":31,"para":{"BarName":"电子印章","BtnName":"盖章"}} 或者 {"req":"Office_CallCmdbar","rid":31,"para":{"BarName":"电子印章","BtnName":"1"}}
 返回：{"ret":0,"rid":31,"data":{"Ret":"0"}}
 
 32）以修订标记方式显示文档差别，适用于Word软件 启动时必须指定Version为1，非OLE嵌入方式支持
@@ -434,6 +434,47 @@ Index为修订序号，默认1，总数通过Office_GetRevisionsCount获取，�
 Index为批注序号，默认1，总数通过Office_GetCommentCount获取，指定0时代表返回所有批注数据
 {"req":"Office_GetCommentInfo","rid":49,"para":{"Index":1}}
 返回：{"ret":0,"rid":49,"data":{"Ret":"0","Comments":[]}}
+
+50）请求对当前文档做套红操作，适用于Word软件
+Position 套红模版正文开始位置，请设置书签名称或跳跃行数，如果没有设置或没找到指定书签，从文档第二行位置开始
+File为套红模版文件 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+模版文件在本地 {"req":"Office_RedTemplate","rid":50,"para":{"Position":"Content","File":"D:/Zorro/template.doc"}}
+模版文件在服务器 {"req":"Office_RedTemplate","rid":50,"para":{"Position":"Content","File":"http://local.zorrosoft.com/Files/template.doc"}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+
+51）调用VBA中内置的宏过程(Sub)或者函数(Function)，适用于Word、Excel、PPT软件 需要在软件选项的信任中心宏设置中启用宏代码
+Name需要调用的Sub或Function名称
+Para1-Para7 参数1-7，如果不需要参数就不传，当前最多支持7个参数，如有更多参数需求请和我们联系
+举例1：{"req":"Office_CallMacro","rid":51,"para":{"Name":"SetMyFont"}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
+举例2：{"req":"Office_CallMacro","rid":51,"para":{"Name":"SetFontFunc","Para1":"宋体"}}
+返回2：{"ret":0,"rid":51,"data":{"Ret":"0","Val":"宋体"}}
+宏代码范例：
+Function SetFontFunc(MyFont As String)
+   ActiveDocument.Content.Font.Name = "Times New Roman"
+   Selection.Find.ClearFormatting
+   Selection.Find.Replacement.ClearFormatting
+   With Selection.Find
+       .Text = "[" & ChrW(8220) & ChrW(8221) & "]"
+       .Replacement.Text = ""
+       .Forward = True
+       .Wrap = wdFindContinue
+       .Format = True
+       .MatchCase = False
+       .MatchWholeWord = False
+       .MatchByte = False
+       .MatchAllWordForms = False
+       .MatchSoundsLike = False
+       .MatchWildcards = True
+       .Replacement.Font.Name = MyFont
+   End With
+   Selection.Find.Execute Replace:=wdReplaceAll
+ SetFontFunc = MyFont
+End Function
+
+Sub SetMyFont()
+  SetFontFunc ("宋体")
+End Sub
 
 5、事件通知：
 A、以下为Word程序通知

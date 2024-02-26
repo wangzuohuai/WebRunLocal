@@ -290,7 +290,7 @@ function getrandom(nums)
 				|| jsondata.req == "Wrl_IEPage"
 				|| jsondata.req == "Wrl_SWCadApplet"
 				|| jsondata.req == "Wrl_CatiaApplet"
-				|| jsondata.req == "Wrl_JTGOApplet"
+				|| jsondata.req == "Wrl_ProEApplet"
 				|| jsondata.req == "Wrl_AppletStart")
 			{
 				nRequstAppletID = jsondata.rid;

@@ -1,4 +1,4 @@
-﻿CatiaCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Catia软件VBA接口及3DXML PLAYER的OCX控件实现可程序化驱动的三维工程图在线查看、编辑等，可将Catia软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿CatiaCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Catia软件自动化接口实现可程序化驱动的三维工程图在线查看、编辑等，可将Catia软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -37,7 +37,7 @@ B、网页中嵌入元素
 
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
-1)、请求启动CatiaCAD网页组件实现网页中局部加载dwg/dxf等文档进行操作：
+1)、请求启动CatiaCAD网页组件实现网页中局部加载CATPart等文档进行操作：
 Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
@@ -49,19 +49,14 @@ Web中参数说明：
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：0是启动Catia实现在线编辑 1启动3DXML PLAYER在线查看
+Option：0是启动Catia实现在线编辑 可提前通过接口Wrl_CADInfo获取当前电脑是否已经安装相关软件
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
-自动识别当前浏览器并启动Catia CAD程序在线编辑CATPart等文档
-{"req":"Wrl_CatiaCadApplet","rid":6,"para":{"Type":"0","Title":"Catia Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.CATPart"}}
-
-自动识别当前浏览器并启动3DXML PLAYER程序在线查看或转换CATPart文档
-{"req":"Wrl_CatiaCadApplet","rid":6,"para":{"Type":"0","Title":"Catia Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.CATPart"}}
+{"req":"Wrl_CatiaApplet","rid":6,"para":{"Type":"0","Title":"Catia Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"http://local.zorrosoft.com/Files/test.CATPart"}}
 
 自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
-{"req":"Wrl_CatiaCadApplet","rid":6,"para":{"Type":"0","Title":"Catia Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.CATPart"}}
-
+{"req":"Wrl_CatiaApplet","rid":6,"para":{"Type":"0","Title":"Catia Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.CATPart"}}
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/CatiaCadframe.html
 
@@ -72,6 +67,11 @@ B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"CatiaCadApp
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
 代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"CatiaCadApplet","Port":1020}}
+
+关于接口Wrl_CADInfo的说明：
+请求：{"req":"Wrl_CADInfo","rid":1,"para":{}}，返回信息举例：
+{"ret":0,"rid":1,"req":"Wrl_CADInfo","data":{"Info":[{"Type":21,"Option":0,"X64":0,"Ver":"5.21.0.11063","Path":"F:/Soft/DSB21/intel_a/code/bin/CNEXT.exe"},{"Type":21,"Option":1,"X64":1,"Ver":"6.419.4.16354","Path":"F:/Soft/3D XML Player/win_b64/code/bin/3DXMLPlayer.exe"}]}}
+Type等于21的代表Catia小程序的安装信息
 
 2)、请求控制CatiaCAD网页组件：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -100,7 +100,7 @@ ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
 6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
-ID为Wrl_CatiaCadApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+ID为Wrl_CatiaApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
@@ -117,14 +117,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装CatiaCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"54BA4041C6AD1BF966EBF08022BEF52B","Version":"2.2.12.5","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B37A32A2D17A4991545757F7E82A1165A19CA0B7CAF46822205CDB52FC168AE6CBFAA642C3CE4F927FD6750DC1F13993CAC77819E87FA7DDF3D6DAD7DAEBFD307367DB77BCB069C80077CBED48C71996F197EF8B4F8D9EE93D63CA26030A7F44DA4E0327E77A4592C0D81C2A7566D884567F5621A858575CAC060E3ED0FB607BD79E38C2CCFB177686BF614481804E2343E3CECDAF744D5D2E5F828E521CC7D4AFEFD5918D1CA88918E7D61AE215D0EF28B2A5F370605732EBD50DFC458976283375EBD95C2E2B5756541AB3F2618F23542D049BBCE2A8F6BE7B35D171A264DA0EAC2703769EEDFF68A41CCFC9C3E3ABA436665412582647C66CC01C7D426E04"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"7AF57097EA28EFD4EA6827FA2BC5504A","Version":"2.2.13.1","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0593CC21255B2ABC5B66E09D53719151C8B9C41F0875F84A287728D75E8918BC032512C77E87C72B39C6E15D4716829F768D15B8AD4A6E057C93C540339503C365CB2495F21E2635F34FC8728BC94A5BD1EB22CF39A8C8F1A24F884C95B1F00C9FE93EE263965526D51DFE958F243FCB4012E62D596B702201549FACC4D3DF0F6EF52DF55A5FC0C3F3CC40D270491F6B9C3211284708A1313D42DD22D8B362794CEC3C55B9549AC443493EE2A365427401FA999C31F4CAF5B728A70185FDE26FC0A2198E47B3E3D2423B5B11FC9C17A7C8396E9121E52DCA94F3DB381A4B95C2AFE4F4DF74D0A68D9194027C606FEB30411D46A3F74904E7CCDE0FE1EC7AAFE3"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级CatiaCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"FA328C44376BBD16937BDEEB16DC800E","Version":"2.2.12.5","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5ABA459BDCA8CAB15B1CD70015612FB4B8BF9E9BAD00560AFC13147CFBBA3EAC056546F8DEF0F1318E6897BED02857467182922DB6F259E319213B1EA17B0BA0E40CCC2747001B0BB5C76DFF8C37EB45A7B13D753A53C595EF5D3AE17866CFE1E6A300816C968FC051EFE73C01D80A52B119B8345329ECE9C3A3EFC63ED48E945C0C56F77A8AE3B8EE94111857208C39761F14E10B43054FB30B01D3233D102EBC0F23E4B883EE5853D1E475600D7F7FBA961A6DF59451FC23DD391EE6C8D87F65A49C503FE5640FDE2FAE82F644F2F5EBAA6AB2F901E4D36B5ADB5847FFB3B026EE9E830C5A03E3ABE4E94427E56069CB0E8425A37D755ACC455AF982A989D1"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"9B28D4A3444C83D0EE355A86628810CF","Version":"2.2.13.1","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3D9089B4C6A51F89149501A069EBB89547C98C69C2ADE792BAE5963569EA29D8D2CC8EB7631A3246736AEAA2140DF8CEA7ABD561B714B95FCDF091F775B056BE86C130CD1A84BAB3ECC4B4EA7A2875487D73254A5961727C69FAD70BFEF4B4D079C13B08794F256BC723D0001ED8AD5B4927E2F9CC9F3E470F6997E3D9D8942354B2934A4EB126DB4C40979C8141903FD2F63984045E5531ADE6184A1C4B61FA71A904EA1B6AEBE19CEA38BFB76EE24692B527890D25441E5E6A0F439CEE5456460054D9AA2D8BF3ED2231A7A842C35C62D8CA0417D4A5ECB8854D3476504D4FA0ECF495ED0FD581500A47F990285F53D477712D665FED43A581A02F55BF3F7F"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -132,7 +132,7 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"CatiaCadApplet","Type":8}}
 
-4、CatiaCAD网页组件转调用软件VBA接口及3DXML PLAYER的OCX控件接口，先根据Wrl_CatiaCadApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、CatiaCAD网页组件转调用软件VBA接口及3DXML PLAYER的OCX控件接口，先根据Wrl_CatiaApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
 1)、请求退出小程序

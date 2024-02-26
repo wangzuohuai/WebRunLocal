@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-01-17","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"C708B9AAC8F86C32506E95C6090DC80A","Version":"2.2.12.5","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AB802BFE071331CB9F6FC8074D83830945ADAAB8A83DECF61E5C313CB7F0F3357E175CDBA26E9974A0391B1E701B3F57A4EF40C72E1DC2E515AFEC245F3F86A5728C387C7A6453748AA096DBC3771A64469E27F28D6DCB56A818898D19D52DDDFE3B4ECC0768E5F5C2292A0DE60CE111E0400B0FDC8D7619EB2D06C0E5C60C6137A1920F69E29A6BC0E1FFC57DFD809461F47D7B10E7C6673E045583EC27A75D751381631323D1AD2C838F5382B95C77174B559B8E08A07B5EA3A4006F0445208CA3746830041F06E2B57C65894AD388BBE958F30CADE12B01BB769CF05056184052BD7BBD605752AC181D326AD7052F49F9FB83A37FC6531FE9ABB1C4857838"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"A24263C85CE1F91A4B1CA818B74B9A2D","Version":"2.2.13.1","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2BC4406D2B697F7D92CD8A1903773662D77ECA542FC015ED0EFB4745E730B2672FFDA7D3B376936F0006B4293E37BA7C29474AC5DE4FD81302177F14974282D20ED1F8F44151A3A8F37377BCB4BCA556293333063AD022D87AF2DBE2880DE299915823241773FE44AF010D8CDCC78C48B20752229DC758E89CCA0E66D18279C8E45684E7438B3956E56B97CD95026C16824AFA71BCD27988CA66B82E605AAB6029F7E4F069C5F7D20F3E0F67D835F94BEEC5705BD774C06AEB59D6598F5016055DAE59AF7E2986E2A1F64F0B31426BD3FCE197586DA77F894AB8F80E1F7C8F7EE057AE838C84A7D1C4590982C1D7D5CE0A8D920D276AE78C962997EF6B24AD59"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-01-17","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"7F094FF2A53A09E291F8F61D02E2F8C7","Version":"2.2.12.5","Size":4849664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8170E13156735E36430182FE47850E711A1098F303112E56361F23D692685E5EA803BD283C1B4F7FA3A9954635F48496A859113C646A5386734DBAF696F3E72EFF0F61C6533C81AE3F6A3DD4F33EAA4E2CD7800C05BB3262763BB50323FED42058B2D18B6EBF004FC93E18089C6157097987C8A1A495E940CFF3428940CF55ACCD92F02174CE3CC0544D68578115174CA1B5DBA06D1001DF15A3EADA40D868AA6A91E9432F59A9E39D38ADFED97ACE8C7B6AE82067F158B712B5698A3EB930E890019259BF7FF29E1077545F7D2E0EBC71ABC8EA5ECC6F7FFB50132FDDA2B65B6BC366AC0F19C4687D15D0F05FF4521E369A659865EADCCA5BAD9C441E42F927"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"AF8B91805AA4B581B7F30FF403ADEB81","Version":"2.2.13.1","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"912591C8514D2FA128D16BB1E71E5003203131068CFDE911DFAA0AEE634CDDD26F0EC6908889DF88E1E4E8A1F13C8F5CB380E7BE262BFCDD1933FA4AB73C4C137AE70DCCC18B82B11A8813D89C4B17DBA72830371159E84B243AEC5D47C9071EBB0D375F53F827E9B30ECE24807B0712DF632731AA3150BEF1FB35C9324C9CAC075E322EB6D7BA3A43F168278C82EF24744E2EAB7A60E6B1053F8815B9BD42BB5BA142ACBF93B10FA0BCB10828C9DA25852A4EF5993177539431DEDEC7C1FAEE2FB873EE13980563AF4D231229E9E4DDF2B379A6BB2352E4484C49995453657C0D9412E3355417B3D89E5D1AF3FDF8397EECF5662E6094639C2EFAA724E57838"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -298,9 +298,9 @@ Files为被合并文档数组 如非全路径，除非启动时指定了数据�
 {"req":"Office_FileMerge","rid":30,"para":{"Files":["D:/Zorro/TestMark.docx","D:/Zorro/Test.docx"]}}
 返回：{"ret":0,"rid":30,"data":{"Ret":"0"}}
 
-31）盖章，适用于WPS文字、WPS表格、WPS演示软件
-Type 签章类型 Type默认0 支持北京点聚签章系统
-{"req":"Office_SealInsert","rid":31,"para":{"Type":0}}
+31）调用菜单及工具栏按钮功能，适用于WPS文字、WPS表格、WPS演示软件
+BarName:菜单栏名称 BtnName:请求功能名称或功能序号
+举例，调用北京点聚电子印章的盖章功能：{"req":"Office_CallCmdbar","rid":31,"para":{"BarName":"电子印章","BtnName":"盖章"}} 或者 {"req":"Office_CallCmdbar","rid":31,"para":{"BarName":"电子印章","BtnName":"1"}}
 返回：{"ret":0,"rid":31,"data":{"Ret":"0"}}
 
 32）以修订标记方式显示文档差别，适用于WPS文字软件 启动时必须指定Version为1，非OLE嵌入方式支持
@@ -434,6 +434,30 @@ Index为修订序号，默认1，总数通过Office_GetRevisionsCount获取，�
 Index为批注序号，默认1，总数通过Office_GetCommentCount获取，指定0时代表返回所有批注数据
 {"req":"Office_GetCommentInfo","rid":49,"para":{"Index":1}}
 返回：{"ret":0,"rid":49,"data":{"Ret":"0","Comments":[]}}
+
+50）请求对当前文档做套红操作，适用于WPS文字软件
+Position 套红模版正文开始位置，请设置书签名称或跳跃行数，如果没有设置或没找到指定书签，从文档第二行位置开始
+File为套红模版文件 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+模版文件在本地 {"req":"Office_RedTemplate","rid":50,"para":{"Position":"Content","File":"D:/Zorro/template.doc"}}
+模版文件在服务器 {"req":"Office_RedTemplate","rid":50,"para":{"Position":"Content","File":"http://local.zorrosoft.com/Files/template.doc"}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+
+51）调用VBA中内置的宏过程(Sub)或者函数(Function)，适用于WPS文字、WPS表格、WPS演示软件 需要在软件选项的信任中心宏设置中启用宏代码
+Name需要调用的Sub或Function名称
+Para1-Para7 参数1-7，如果不需要参数就不传，当前最多支持7个参数，如有更多参数需求请和我们联系
+举例1：{"req":"Office_CallMacro","rid":51,"para":{"Name":"SetMyFont"}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
+举例2：{"req":"Office_CallMacro","rid":51,"para":{"Name":"SetFontFunc","Para1":"宋体"}}
+返回2：{"ret":0,"rid":51,"data":{"Ret":"0","Val":"宋体"}}
+宏代码范例：
+function SetFontFunc(MyFont)
+{
+	return MyFont
+}
+function SetMyFont()
+{
+	SetFontFunc("宋体")
+}
 
 5、事件通知：
 A、以下为WPS文字程序通知

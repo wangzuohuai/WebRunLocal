@@ -70,6 +70,9 @@
 
 			</div>
 			<div class="urlbox">
+				<div class="item" style="margin-right: 10px;">
+					<el-button size="small" @click="DocRed">公文套红</el-button>
+				</div>
 				<div class="item">文档路径</div>
 				<div class="item input">
 					<el-input v-model="MyOpenDoc" placeholder="这里演示切换文档" size="small"></el-input>
@@ -125,7 +128,7 @@
 				runInfo:1,  	// 获取办公软件安装信息 一般只需要在启动时获取一次
 				RunFirst:2, 	// 办公网页组件启动实例1序号
 				RunSecond:3, 	// 办公网页组件启动实例2序号
-				version: '2.2.12.5', //中间件版本信息
+				version: '2.2.13.1', //中间件版本信息
 				ServerOpenFile: 'http://local.zorrosoft.com/Files/template.doc',
 				MyOpenDoc: 'd:/zorro/test.docx',
 				MyOpenExcel: 'd:/zorro/test.xlsx',
@@ -1078,6 +1081,24 @@
 					this.socket[1].sendObj(msg)
 			},
 
+			DocRed()
+			{
+				// 请求对当前文档进行套红操作
+				this.rid++ // 增加请求序号
+				let msg = {
+					"req": "Office_RedTemplate",
+					"rid": this.rid,
+					"para": {
+						"Position": "Content", // 指定的模版文件需要有书签Content，用于定位公文正文的开始位置，也可以用模版文件指定行数，比如"Position": "10" 代表模版文件的第10行开始是正文
+						"File": "http://local.zorrosoft.com/Files/template.doc" // 模版文件，也可以是本地路径
+					}
+				}
+				if(this.aid2 > 0 && this.aid2 == this.curID)
+					this.socket[3].sendObj(msg)
+				else
+					this.socket[1].sendObj(msg)
+			},
+			
 			PrintFile()
 			{
 				// 请求打印当前文档
@@ -1263,18 +1284,18 @@
 					"req":"Wrl_Update",
 					"rid":this.rid,
 					"para":{
-						"Name":"PageHiOffice网页组件升级包",
-						"Date":"2024-01-17",
-						"Desc":"1、优化中间件高级版内嵌小程序嵌入网页后对输入焦点的处理，解决内嵌时偶发导致浏览器崩溃问题；2、解决中间件重新安装后可能导致内嵌小程序不能正常启动问题，优化尤其是存在副屏时对浏览器的兼容性；3、优化中间件网络版授权服务器有效授权统计算法，解决服务管理器部分过期记录无法删除问题...",
-						"DownAddr":"http://local.zorrosoft.com/Files/Update/Office_Update.pid",
-						"Open":"http://local.zorrosoft.com/office",
-						"MD5":"E9D3821D6068AFA16777E7187990D91A",
-						"Version":"2.2.12.5",
-						"Size":33259520,
-						"HideIns":0,
-						"Cookie":"",
-						"Auth":"",
-						"TK":"9AC691F8C70DFABC2E8E6E39EBF1D421D694B0A8F0C33C1768DE98960E485308F489BBC1A0C2C34EE355B31E0C82F1012B0CB6C8D1DC1219DF13EB1A36AF5F6D8C832C60080ACCF8CBCA32B2EC0ABC50D6F1EF707DA595038852039BDDF9B4187B39B40F4C85844EB1F76B8B34BA492F27A812964E7EDD062D9432CF9FDC40A9FE74256BC80C9B4BF7D845FF730D3F8EC4601837E943A3B178D370C6E020B4EE4F1D0C166CD2B3BDB595ED4F38FF0B12BAB10AE1521A76C6B50BFDDCB9022BCB1B2B395439A9A14FDF88139DD9229B9DA7C3573753DE00D9DC30C62FB47C6D5444B45E0D2B87E10D84CE437F3EB30CF7F2FCDE93B9F42A4B77195B4D691E1A02"
+						"Name": "PageHiOffice网页组件升级包",
+						"Date": "2024-02-27",
+						"Desc": "1、中间件及相关小程序发布海外版，支持360安全浏览器64位版；2、网络版服务管理器终端用户信息导出支持txt格式，解决授权服务器不同于默认授权方式授权到期处理问题；3、优化中间件高级版小程序嵌入网页后焦点处理；4、PageHiOffice网页组件增加公文套红支持，支持调用工具栏功能及宏代码函数...",
+						"DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
+						"Open": "http://local.zorrosoft.com/office",
+						"MD5": "677B04721D062408AA8A2B8E71202F24",
+						"Version": "2.2.13.1",
+						"Size": 28409856,
+						"HideIns": 0,
+						"Cookie": "",
+						"Auth": "",
+						"TK": "91EE9BCA0370B1E3B56DE6B321D4EA8C4C0D3537AFE70ED03C92251EC6882842B1C3AF143D47F9A98BEF157C587C4BE2F4D6D44559B94BFC54BBA26B9DEAAD84A59FE6A7201500C128425C314F25549D0F7B7975C3D3E2A3E2A562AE87B1D16FE59B66C127DA04CB97F6036E5CB1B27AC676F8DF216FC02754036472D3FA27354FE4C8F84D306F0FC89226712087A3D0EF8453B80A3CB941DECB2967338F1B9C89891B21AABF3CEC05F64067999866266FA39952144AE06D7F4971FF057D00EA20E7079B70B7CA4B1E82E7DE5D6D72CB1651F3A4B87C4208C92A4FF49A5907D37327E82D72C4D54D02893A76DE769C6B4945D82ADE5F3196326F65B806087424"
 					}
 				}
 				this.socket[0].sendObj(msg)

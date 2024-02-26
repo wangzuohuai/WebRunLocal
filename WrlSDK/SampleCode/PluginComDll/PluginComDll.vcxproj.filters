@@ -43,6 +43,12 @@
     <ClCompile Include="TextFileHelper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="WRLRegKey.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseFuncLib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -76,6 +82,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TextFileHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AppletVersionDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WRLRegKey.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseFuncLib.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

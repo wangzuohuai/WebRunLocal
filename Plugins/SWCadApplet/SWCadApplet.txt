@@ -1,4 +1,4 @@
-﻿SWCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Solidworks软件VBA接口及eDrawings的OCX控件实现可程序化驱动的xt、step、sldprt等三维工程图在线查看、编辑等，可将Solidworks eDrawings软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿SWCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Solidworks软件自动化接口及eDrawings的OCX控件实现可程序化驱动的xt、step、sldprt等三维工程图在线查看、编辑等，可将Solidworks eDrawings软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK(牛插)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -49,7 +49,7 @@ Web中参数说明：
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：0是启动Solidworks实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1启动eDrawings在线查看
+Option：0是启动Solidworks实现在线编辑(推荐用2015及以上版本，可根据具体版本定制) 1启动eDrawings在线查看 可提前通过接口Wrl_CADInfo获取当前电脑是否已经安装相关软件 
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -62,6 +62,9 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
 {"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.xt"}}
 
+自动识别当前浏览器并启动eDrawings程序在线查看服务器文档
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet Full","Flag":72,"IframeX":0,"IframeY":0,"ScrollTop":0,"Web": [],"Open":"http://local.zorrosoft.com/Files/Test.sldprt","Option":1}}
+
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/SWCadframe.html
 
@@ -72,6 +75,11 @@ B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"SWCadApplet
 返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
 代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"SWCadApplet","Port":1010}}
+
+关于接口Wrl_CADInfo的说明：
+请求：{"req":"Wrl_CADInfo","rid":1,"para":{}}，返回信息举例：
+{"ret":0,"rid":1,"req":"Wrl_CADInfo","data":{"Info":[{"Type":11,"Option":1,"X64":1,"Ver":"32.1.0.0076","Path":"C:/Program Files/Common Files/eDrawings2024/EModelViewer.exe"}]}}
+Type等于11的代表Solidworks小程序的相关安装信息
 
 2)、请求控制SWCAD网页组件：
 当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
@@ -100,7 +108,7 @@ ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
 6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
-ID为Wrl_ACADApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+ID为Wrl_SWCadApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
@@ -117,14 +125,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装SWCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"8F4EB69162714B50655F9EB6820F9051","Version":"2.2.12.5","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"929D96768E93087C12641E7C948A73C7DF10A9334D08A501937FA151B252175ECC8290E77D0133FEA53496F60936A5E02BB4B478315B95CD1609AD889F4C623F239DB630D68391BCE1F6869F725AE0CA7EF354887B874FE99712283D6489579F263332454AEDD32306EAD43B0B40F8F3AF50C0FC833384931604125AE194488BCF1FF486E353CD89B0072B8035A573AFB4A366A1A512E2E7F6EAB400630F5FCE015C1046A0B0A19A2AF914D8DF42A6B8A77807EA7C377FDCFB39E6396F0DA53098E4AC6C5265C715103C062650293BCE3E54CBBCB33DBC9EBBF920A344DDB88EECF1AD17BBE32B14AA9FBD7846E3779E0FE585EA0FFAD8BCEFC27864FA25798E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"C18A1AA00BECB5BC61B0AE664899136A","Version":"2.2.13.1","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"851BF1D3333DC52598FBF4241F3BE2886B7543E89930940073A8996A3DF4D5088D19D8D184C63BB47784A9375F949A4F7FDA5E185CA167001EFCCAD1F35566DD9B5C29DE76ECE9786EF3B90874CCAF90380D6E26DE1B8B4A849B65796B707BB7F7FE1028EF50563E27D099F062532D1328E1E633F1E3CD74031929C9C09A7BB7AB50EE02C8DAC3F885A9762E1F1D7F794B4C7EBE410329BEA94FD81881702AFA62A411CAC1FC5F4D814971DF392C5D3BD0B5E6456B287D07BDD4C5AD7C2C68C7542490661105999CEE26EA6AB41A73D268F621D72483A12A648661FB889FE0B90B043520A6589989A9CB2725F96FCA40370D5165956DF6C7929DBD17C41B3B7E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级SWCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"2B4980B70B92C9E3073495ED98634EC4","Version":"2.2.12.5","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B44492C9AB24ABEDD24FE13413CC6C7AB4FC50C46AECB871F4EF2162E2FEBBA27F279316D25BAE9AF44D06EEDE8F11E1EA153DECD272DA3CD2604E4AECC2E9F2100B498EF33A1FDDC8485E792BC0AA052941E9B70E6D5819CF0CF8E4CDF27738DC7EA32B9A004DB8A99B37C5CD5D13F745455A9C23DB6A744D0C7BA6A5E76636F936FC9BAFCBD35DEAFE91DA04A2C89D345C0EAE9DD3B9B101E58239185DCFDA3D14EDAA36C5C97102BB828044D8664B1728BB976389F67773D99C00D418A186CFB5C36396C49F6C375D40B3E146CAA307E3FCF53952B820CE165C3C5C084502576C2BF325D64E93C0A4011E29A8F12B6D45F7A7684C09F9805917BF65B97F38"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"2AFA33F1C528DDF18AE032D530C794CE","Version":"2.2.13.1","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"46CE3628B3458C66F90CE6F71C9161C0DF862604954B4E497A3603A5AEC1E2A941609E0D56C7913C169DA60AC09B7760C14D1FCC3AB7BF1FF33B5AC62A24F9851F8E58D8358ED978E7E63A8D0B5DA2EAF47AACD129F11433BBFD4A38E5D77357F3F43712DF007BA9F9E8CEC782703A731B8F0C4937AD5C41B4E9E7FD55A449129CA9D29A9C0E67959635583C61AACCDF0D4B28E059BA220486ADA21992226F4B5B1C5DAF927362FDE405B547CAED5966CB8F9463CD90B19F98AF6E4CFDBDE4E0B3F642735A97A8AD007EDDC02F267CECF93E1B8AD8526EFA1EBE98039105EB6943281CC2A4B4C6EFB7C15E036A3ABC77ECED5A1B86F726BFB3134A537E34B95B"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -132,19 +140,19 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"SWCadApplet","Type":8}}
 
-4、SWCAD网页组件转调用软件VBA接口及eDrawings的OCX控件接口，先根据Wrl_SWCadApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、SWCAD网页组件转调用Solidworks软件自动化接口及eDrawings的OCX控件接口，先根据Wrl_SWCadApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
-1)、请求退出小程序
+1)、请求退出小程序 适用于Solidworks软件及eDrawings控件
 正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
 {"req":"CAD_Exit","rid":1,"para":{}}
 无返回
 
-2)、请求关闭当前打开的文档
+2)、请求关闭当前打开的文档 适用于Solidworks软件及eDrawings控件
 {"req":"CAD_Close","rid":2,"para":{}}
 返回: {"ret":0,"rid":2,"data":{"Ret":"0"}} Ret为0代表成功
 
-3)、请求打开文档
+3)、请求打开文档 适用于Solidworks软件及eDrawings控件
 Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码 Read为1代表只读打开
 {"req":"CAD_Open","rid":3,"para":{"Open":"D:/Zorro/Test.sldprt","PW":"","Read":0}}
 返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
@@ -155,7 +163,7 @@ DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先�
 {"req":"CAD_ConvertTo","rid":4,"para":{"SrcFile":"D:/Zorro/Test.sldprt","DestFile":"D:/Zorro/test2.pdf","PW":""}}
 返回: {"ret":0,"rid":4,"data":{"Ret":"0"}} Ret为0代表成功
 
-5）网络文件操作
+5）网络文件操作 适用于Solidworks软件及eDrawings控件
 Type 1上传文件 0下载文件
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
@@ -165,6 +173,200 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.sldprt","Url":"http://local.zorrosoft.com/Files/test.sldprt"}}
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+B、eDrawings的OCX控件专用接口：
+101)、对应OCX中获取属性FileName 请求获取文件名
+{"req":"CADVIEW_GetFileName","rid":101,"para":{}}
+返回: {"ret":0,"rid":101,"data":{"Ret":"0","FileName":""}}
+
+102)、对应OCX中设置属性FileName 请求设置文件名
+{"req":"CADVIEW_SetFileName","rid":102,"para":{"FileName":""}}
+返回: {"ret":0,"rid":102,"data":{"Ret":"0"}}
+
+103)、对应OCX中设置属性UserName 请求设置用户名
+{"req":"CADVIEW_SetUserName","rid":103,"para":{"UserName":""}}
+返回: {"ret":0,"rid":103,"data":{"Ret":"0"}}
+
+104)、对应OCX中设置属性Password 请求设置密码
+{"req":"CADVIEW_SetPassword","rid":104,"para":{"Password":""}}
+返回: {"ret":0,"rid":104,"data":{"Ret":"0"}}
+
+105)、对应OCX中获取属性SheetCount 请求获取表单数量
+{"req":"CADVIEW_GetSheetCount","rid":105,"para":{}}
+返回: {"ret":0,"rid":105,"data":{"Ret":"0","SheetCount":""}}
+
+106)、对应OCX获取属性CurrentSheetIndex 请求获取当前表单序号
+{"req":"CADVIEW_GetCurrentSheetIndex","rid":106,"para":{}}
+返回: {"ret":0,"rid":106,"data":{"Ret":"0","SheetIndex":""}}
+
+107)、对应OCX中获取属性ConfigurationCount 请求获取配置数量
+{"req":"CADVIEW_GetConfigurationCount","rid":107,"para":{}}
+返回: {"ret":0,"rid":107,"data":{"Ret":"0","ConfigCount":""}}
+
+108)、对应OCX中获取属性EnableFeatures 请求获取EnableFeatures
+{"req":"CADVIEW_GetEnableFeatures","rid":108,"para":{}}
+返回: {"ret":0,"rid":108,"data":{"Ret":"0","EnableFeatures":""}}
+
+109)、对应OCX中的方法GetIsMarkupModified 请求获取IsMarkupModified
+{"req":"CADVIEW_GetIsMarkupModified","rid":109,"para":{}}
+返回: {"ret":0,"rid":109,"data":{"Ret":"0","IsMarkupModified":""}}
+
+110)、对应OCX中获取属性Width和Height 请求获取宽度和高度
+{"req":"CADVIEW_GetSize","rid":110,"para":{}}
+返回: {"ret":0,"rid":110,"data":{"Ret":"0","Width":"","Height":""}}
+
+111)、对应OCX中获取属性CurrentConfigurationIndex 请求获取当前配置序号
+{"req":"CADVIEW_GetCurrentConfigurationIndex","rid":111,"para":{}}
+返回: {"ret":0,"rid":111,"data":{"Ret":"0","ConfigIndex":""}}
+
+112)、对应OCX中获取属性SheetWidth和SheetHeight 请求获取表单宽度和高度
+{"req":"CADVIEW_GetSheetSize","rid":112,"para":{}}
+返回: {"ret":0,"rid":112,"data":{"Ret":"0","SheetWidth":"","SheetHeight":""}}
+
+113)、对应OCX中获取属性SheetName 请求获取指定序号的表单名称
+{"req":"CADVIEW_GetSheetName","rid":113,"para":{"Index":"1"}}
+返回: {"ret":0,"rid":113,"data":{"Ret":"0","SheetName":""}}
+
+114)、对应OCX中的方法GetTooltipID 请求获取指定序号的TooltipID
+{"req":"CADVIEW_GetTooltipID","rid":114,"para":{"Index":"1"}}
+返回: {"ret":0,"rid":114,"data":{"Ret":"0","TooltipID":""}}
+
+115)、对应OCX中获取属性ConfigurationName 请求获取指定序号的配置名称
+{"req":"CADVIEW_GetConfigurationName","rid":115,"para":{"Index":"1"}}
+返回: {"ret":0,"rid":115,"data":{"Ret":"0","ConfigName":""}}
+
+116)、对应OCX中设置属性EnableFeatures 请求设置EnableFeatures
+{"req":"CADVIEW_SetEnableFeatures","rid":116,"para":{"EnableFeatures":""}}
+返回: {"ret":0,"rid":116,"data":{"Ret":"0"}}
+
+117)、对应OCX中设置属性PostUploadPath 请求设置上传路径
+{"req":"CADVIEW_SetPostUploadPath","rid":117,"para":{"UploadPath":""}}
+返回: {"ret":0,"rid":117,"data":{"Ret":"0"}}
+
+118)、对应OCX中设置属性ViewOperator 请求设置ViewOperator
+{"req":"CADVIEW_SetViewOperator","rid":118,"para":{"Operator":""}}
+返回: {"ret":0,"rid":118,"data":{"Ret":"0"}}
+
+119)、对应OCX中设置属性ViewOrientation 请求设置ViewOrientation
+{"req":"CADVIEW_SetViewOrientation","rid":119,"para":{"Orientation":""}}
+返回: {"ret":0,"rid":119,"data":{"Ret":"0"}}
+
+120)、对应OCX中的方法ShowConfiguration 请求显示指定序号的配置
+{"req":"CADVIEW_ShowConfiguration","rid":120,"para":{"Index":""}}
+返回: {"ret":0,"rid":120,"data":{"Ret":"0"}}
+
+121)、对应OCX中的方法ShowSheet 请求显示指定序号的表单
+{"req":"CADVIEW_ShowSheet","rid":121,"para":{"Index":""}}
+返回: {"ret":0,"rid":121,"data":{"Ret":"0"}}
+
+122)、对应OCX中的方法Animate 请求指定类型的动画
+{"req":"CADVIEW_Animate","rid":122,"para":{"Animating":""}}
+返回: {"ret":0,"rid":122,"data":{"Ret":"0"}}
+
+123)、对应OCX中的方法GetEnableFeature 请求获取指定特征的功能是否启用
+{"req":"CADVIEW_GetEnableFeature","rid":123,"para":{"Feature":""}}
+返回: {"ret":0,"rid":123,"data":{"Ret":"0","Enable":"1"}}
+
+124)、对应OCX中的方法SetEnableFeature 请求设置指定特征的功能是否启用
+{"req":"CADVIEW_SetEnableFeature","rid":124,"para":{"Feature":"","Enable":"1"}}
+返回: {"ret":0,"rid":124,"data":{"Ret":"0"}}
+
+125)、对应OCX中的方法ShowHelp 请求显示帮助
+{"req":"CADVIEW_ShowHelp","rid":125,"para":{}}
+返回: {"ret":0,"rid":125,"data":{"Ret":"0"}}
+
+126)、对应OCX中的方法ShowSend 请求显示帮助
+{"req":"CADVIEW_ShowSend","rid":126,"para":{}}
+返回: {"ret":0,"rid":126,"data":{"Ret":"0"}}
+
+127)、对应OCX中的方法Refresh 请求显示帮助
+{"req":"CADVIEW_Refresh","rid":127,"para":{}}
+返回: {"ret":0,"rid":127,"data":{"Ret":"0"}}
+
+128)、对应OCX中的方法OpenMarkupFile 请求打开Markup文件
+{"req":"CADVIEW_OpenMarkupFile","rid":128,"para":{"File":""}}
+返回: {"ret":0,"rid":128,"data":{"Ret":"0"}}
+
+129)、对应OCX中的方法CreateTooltip 请求创建Tooltip
+{"req":"CADVIEW_CreateTooltip","rid":129,"para":{"Title":"","Text":"","XCoordinate":"","YCoordinate":"","ShowAtMousePosition":""}}
+返回: {"ret":0,"rid":129,"data":{"Ret":"0","TooltipID":"1"}}
+
+130)、对应OCX中的方法0:HideTooltip 1:ShowTooltip 2:HideAllTooltips 3:ShowAllTooltips 请求控制Tooltips
+Flag为1和2时需要指定ID
+{"req":"CADVIEW_ControlTooltip","rid":130,"para":{"Flag":"","ID":"0"}}
+返回: {"ret":0,"rid":130,"data":{"Ret":"0"}}
+
+131)、对应OCX中的方法SetTipTitle 请求设置指定ID的TipTitle
+{"req":"CADVIEW_SetTipTitle","rid":131,"para":{"ID":"1","TipTitle":""}}
+返回: {"ret":0,"rid":131,"data":{"Ret":"0"}}
+
+132)、对应OCX中的方法GetTipTitle 请求获取指定ID的TipTitle
+{"req":"CADVIEW_GetTipTitle","rid":132,"para":{"ID":"1"}}
+返回: {"ret":0,"rid":132,"data":{"Ret":"0","TipTitle":""}}
+
+133)、对应OCX中的方法SetTipText 请求设置指定ID的TipText
+{"req":"CADVIEW_SetTipText","rid":133,"para":{"ID":"1","TipText":""}}
+返回: {"ret":0,"rid":133,"data":{"Ret":"0"}}
+
+134)、对应OCX中的方法GetTipText 请求获取指定ID的TipText
+{"req":"CADVIEW_GetTipText","rid":134,"para":{"ID":"1"}}
+返回: {"ret":0,"rid":134,"data":{"Ret":"0","TipText":""}}
+
+135)、对应OCX中的方法SetShowTipAtMousePosition 请求设置指定ID的MousePosition
+{"req":"CADVIEW_SetShowTipAtMousePosition","rid":135,"para":{"ID":"1","ShowTipAtMousePosition":""}}
+返回: {"ret":0,"rid":135,"data":{"Ret":"0"}}
+
+136)、对应OCX中的方法GetShowTipAtMousePosition 请求获取指定ID的MousePosition
+{"req":"CADVIEW_GetShowTipAtMousePosition","rid":136,"para":{"ID":"1"}}
+返回: {"ret":0,"rid":136,"data":{"Ret":"0","ShowTipAtMousePosition":""}}
+
+137)、对应OCX中的方法SetTipXCoordinate 请求设置指定ID的TipXCoordinate
+{"req":"CADVIEW_SetTipXCoordinate","rid":137,"para":{"ID":"1","XCoordinate":""}}
+返回: {"ret":0,"rid":137,"data":{"Ret":"0"}}
+
+138)、对应OCX中的方法GetTipXCoordinate 请求获取指定ID的TipXCoordinate
+{"req":"CADVIEW_GetTipXCoordinate","rid":138,"para":{"ID":"1"}}
+返回: {"ret":0,"rid":138,"data":{"Ret":"0","XCoordinate":""}}
+
+139)、对应OCX中的方法SetTipYCoordinate 请求设置指定ID的TipYCoordinate
+{"req":"CADVIEW_SetTipYCoordinate","rid":139,"para":{"ID":"1","YCoordinate":""}}
+返回: {"ret":0,"rid":139,"data":{"Ret":"0"}}
+
+140)、对应OCX中的方法GetTipYCoordinate 请求获取指定ID的TipYCoordinate
+{"req":"CADVIEW_GetTipYCoordinate","rid":140,"para":{"ID":"1"}}
+返回: {"ret":0,"rid":140,"data":{"Ret":"0","YCoordinate":""}}
+
+141)、对应OCX中的方法GetViewState 请求获取指定状态的ViewState
+{"req":"CADVIEW_GetViewState","rid":141,"para":{"State":"1"}}
+返回: {"ret":0,"rid":141,"data":{"Ret":"0","ViewState":""}}
+
+142)、对应OCX中的方法SetViewState 请求设置指定ID的ViewState
+{"req":"CADVIEW_SetViewState","rid":142,"para":{"State":"1","Flag":""}}
+返回: {"ret":0,"rid":142,"data":{"Ret":"0"}}
+
+143)、对应OCX中的方法GetComponentState 请求获取指定的ComponentState
+{"req":"CADVIEW_GetComponentState","rid":143,"para":{"State":"1","Name":""}}
+返回: {"ret":0,"rid":143,"data":{"Ret":"0","ComponentState":""}}
+
+144)、对应OCX中的方法SetComponentState 请求设置指定的ComponentState
+{"req":"CADVIEW_SetComponentState","rid":144,"para":{"State":"1","Name":"","ComponentState":""}}
+返回: {"ret":0,"rid":144,"data":{"Ret":"0"}}
+
+145)、对应OCX中的方法GetComponentCount 请求获取指定的ComponentCount
+{"req":"CADVIEW_GetComponentCount","rid":145,"para":{"Config":"1"}}
+返回: {"ret":0,"rid":145,"data":{"Ret":"0","ComponentCount":""}}
+
+146)、对应OCX中的方法GetComponentName 请求获取指定的ComponentName
+{"req":"CADVIEW_GetComponentName","rid":146,"para":{"Index":"1","Config":"1"}}
+返回: {"ret":0,"rid":146,"data":{"Ret":"0","ComponentName":""}}
+
+147)、对应OCX中的方法GetMassProperty 请求获取指定的MassProperty
+{"req":"CADVIEW_GetMassProperty","rid":147,"para":{"Property":""}}
+返回: {"ret":0,"rid":147,"data":{"Ret":"0","MassProperty":""}}
+
+148)、对应OCX中的方法GetMaterialPropertyName 请求获取MaterialPropertyName
+{"req":"CADVIEW_GetMaterialPropertyName","rid":148,"para":{}}
+返回: {"ret":0,"rid":148,"data":{"Ret":"0","MaterialPropertyName":""}}
 
 5、事件通知：
 A、
@@ -179,5 +381,5 @@ B、PluginOK支持的事件通知：
 
 6、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“开发者手册.pdf”及“中间件安全解决方案.pdf”。
 如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

@@ -112,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"854B6315969F441BF9A5648248C05DB1","Version":"2.2.12.5","Size":10190848,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6E6DE5796DB2136FCB95FA1561C93DF0DE9DFE15358ECCB207AE13994D80B0FAC9F0A81C2F4792F94446A2932E1B2A6080EA8DD605655C23CA5E319378A305296C66F4145D93AD470D98BED218FA61383926A93BECB2CB33A6E6218B562727B281AE1025747C9018106A5CDE11565DA5C35E63BA5D719945D7B0CD58BB32C13FBB85109CFBEA1AADAF6FCACE111E2D4B56BE3412053502535111028450D6DE78F87705012A21ED02C7444D0F146B4129F35DDA192E9F96BC5340A82C522DD049163E08E45FDC814998050640B8E154A33DD920CA6A11ECC72D6DE0833A95D88C2A82174BE52641D60D38CE4EDF2E08D442B74C72E057E86C7A56D90934D51CFC"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"AD8379556DE19D8829E9803D0F72D3C9","Version":"2.2.13.1","Size":4456448,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"037A98C64BA9C7F750A8DE07635A5A5FE322A1813FAE6120A08E84DF463E92233B832D594D9422DC69B3E6609794FAD10E69D729DAE38D33162AF9C9F020C00EA759E485C93117F9EB16303748524B05C7D77700C13C32891E2464319C306D7B19B45634BF13683568DF609F277E6034512F33C5E3150DBF996B93B001B56194207E10C592C95EDF20DF67A25E5F798DA5E7167941F8C3C227C965A0D08428AE76EB7BAA57BB56F374616D7C56760F469D71494A32EAED047E5165495C8D570AC5949EEA9F6E83FFEBED7102B06CBF0B56D566F87DF70EEA1C4043F2C9FF1B798B17EF25308E560F899C6711460196595CC089EC7A4235AA7A19EB441DCDFEA8"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"599F50E6FFFEB198E3E369331265F4F4","Version":"2.2.12.5","Size":10190848,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"618FD1D37567A215FE5D0058EE9BB3575D6A1FD0FA8745803FBDA4414BD64D2185EA42BD9A434ED4419235C277311A3B2B5FA32B12CF41B4E55C909BE9E41F537C63776795DDB2EAB6C9C98E767968D69F736D51AF27EC8F23CFC3480E41C81CEED010421AD7C077460E041F34E89022CCEB7E799ECD0A4B192136C28603A3985809FFB33980A47278D43D59DA3D57813DE9663859ECE5808F1A3FF4DA3D2E426D0CFB87718E831B5A77A92C6F4E3CF2E504A335894EDD63C6EB44BC6E4DD10801ED7EB822DB070E116875BFF3075E293EFC328175C5FD808F30D6633EC1A410A187BC76659A1076A07A8680AE3A3223740E622B757AC550DBE01D7D852F610C"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"B8DC612587057BFCAB3E98F7385089D3","Version":"2.2.13.1","Size":4456448,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"09F8BA3AFA3FED348670996E1F9DE2BB448680619742EFE28E8B5594B9835715C5D2567437A0A7064BE4FAF11050AB3699E0C900112B8ADDB1505ED548232A68DA662BF56D3E0B1DDDA99E18E899F35305D11DA5C52C7BEA1E7C33E7DBF5016F9929CE2A86B06A645AD791ABF748A9911607BBDBB3DB1B704BEDF4172AA19F448F1EDA612245B123E24979C2AE55405EA50705B0559CE5CC65601F6138577AA58B0A780C3EA20EEC4643B1C5B391E7D9ACC1FCFE4522EB3ACE1DB6792639EB03E8536474418787E73DEED102586AD577B37D0D3066146367448A84ACE66438F67088EA52F9CF516B53CF37C24E8CB3F928DE69FD649F25A43301AD302DD6AA9B"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -294,8 +294,9 @@ Marks指定需要替换的书签名称数组
 Files为被合并文档数组 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 {"req":"Office_FileMerge","rid":30,"para":{"Files":["D:/Zorro/TestMark.docx","D:/Zorro/Test.docx"]}}
 
-31）切换全屏编辑状态，适用于永中文字、永中表格、永中简报软件
-{"req":"Office_SwitchFullScreen","rid":31,"para":{}}
+31）调用菜单及工具栏按钮功能，适用于永中文字、永中表格、永中简报软件
+BarName:菜单栏名称 BtnName:请求功能名称
+举例，调用北京点聚电子印章的盖章功能：{"req":"Office_CallCmdbar","rid":31,"para":{"BarName":"电子印章","BtnName":"盖章"}}
 返回：{"ret":0,"rid":31,"data":{"Ret":"0"}}
 
 32）以修订标记方式显示文档差别，适用于永中文字软件 启动时必须指定Version为1，非OLE嵌入方式支持
@@ -421,6 +422,47 @@ Index为修订序号，默认1，总数通过Office_GetRevisionsCount获取，�
 Index为批注序号，默认1，总数通过Office_GetCommentCount获取，指定0时代表返回所有批注数据
 {"req":"Office_GetCommentInfo","rid":49,"para":{"Index":1}}
 返回：{"ret":0,"rid":49,"data":{"Ret":"0","Comments":[]}}
+
+50）请求对当前文档做套红操作，适用于永中文字软件
+Position 套红模版正文开始位置，请设置书签名称或跳跃行数，如果没有设置或没找到指定书签，从文档第二行位置开始
+File为套红模版文件 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+模版文件在本地 {"req":"Office_RedTemplate","rid":50,"para":{"Position":"Content","File":"D:/Zorro/template.doc"}}
+模版文件在服务器 {"req":"Office_RedTemplate","rid":50,"para":{"Position":"Content","File":"http://local.zorrosoft.com/Files/template.doc"}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+
+51）调用VBA中内置的宏过程(Sub)或者函数(Function)，适用于永中文字、永中表格、永中简报软件 需要在软件选项的信任中心宏设置中启用宏代码
+Name需要调用的Sub或Function名称
+Para1-Para7 参数1-7，如果不需要参数就不传，当前最多支持7个参数，如有更多参数需求请和我们联系
+举例1：{"req":"Office_CallMacro","rid":51,"para":{"Name":"SetMyFont"}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
+举例2：{"req":"Office_CallMacro","rid":51,"para":{"Name":"SetFontFunc","Para1":"宋体"}}
+返回2：{"ret":0,"rid":51,"data":{"Ret":"0","Val":"宋体"}}
+宏代码范例：
+Function SetFontFunc(MyFont As String)
+   ActiveDocument.Content.Font.Name = "Times New Roman"
+   Selection.Find.ClearFormatting
+   Selection.Find.Replacement.ClearFormatting
+   With Selection.Find
+       .Text = "[" & ChrW(8220) & ChrW(8221) & "]"
+       .Replacement.Text = ""
+       .Forward = True
+       .Wrap = wdFindContinue
+       .Format = True
+       .MatchCase = False
+       .MatchWholeWord = False
+       .MatchByte = False
+       .MatchAllWordForms = False
+       .MatchSoundsLike = False
+       .MatchWildcards = True
+       .Replacement.Font.Name = MyFont
+   End With
+   Selection.Find.Execute Replace:=wdReplaceAll
+ SetFontFunc = MyFont
+End Function
+
+Sub SetMyFont()
+  SetFontFunc ("宋体")
+End Sub
 
 5、事件通知：
 A、以下为永中文字程序通知

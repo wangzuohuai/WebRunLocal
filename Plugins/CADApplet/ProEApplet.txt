@@ -1,0 +1,1209 @@
+﻿ProE CAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用PTC公司Creo View的OCX控件实现可程序化驱动的frm等三维工程图在线查看，可将PTC Creo View软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK(牛插)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+
+2、ProE CAD网页组件控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://local.zorrosoft.com/ProECadfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/ProECadframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
+前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
+A、标记小程序的显示位置和大小
+.ProECadApplet {
+            margin: 20px 0 0 20px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+        }
+或者
+.ProECadApplet {
+            width: 480px;
+            height: 320px;
+            top: 20px;
+            left: 20px;
+            border: 1px solid blue;
+        }
+如果在网页Header区没有标记小程序初始显示位置和大小，请在启动小程序的JSON参数里，添加以下参数：
+"Left":20,"Top":20,"Width":480,"Height":320
+
+B、网页中嵌入元素
+支持IFrame的：
+<iframe name="ProECadApplet" id="ProECadApplet" src="ProECadApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no></iframe>
+或者直接用
+<div id="ProECadApplet" class="ProECadApplet"</div>
+
+另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
+
+1)、请求启动ProE CAD网页组件实现网页中局部加载xt、step等文档进行操作：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	Edit代表编辑权限 1只读打开
+	DataPath代表文档查找和保存默认路径
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：1启动Creo View在线查看 可提前通过接口Wrl_CADInfo获取当前电脑是否已经安装相关软件 
+Open：为需要打开的文档路径，磁盘目录斜杠用/
+注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器并启动Solidworks程序在线编辑frm等文档
+{"req":"Wrl_ProEApplet","rid":6,"para":{"Type":"0","Title":"ProE Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.frm"}}
+
+自动识别当前浏览器并启动Creo View程序在线查看或转换frm等文档
+{"req":"Wrl_ProEApplet","rid":6,"para":{"Type":"0","Title":"ProE Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.frm"}}
+
+自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
+{"req":"Wrl_ProEApplet","rid":6,"para":{"Type":"0","Title":"ProE Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.frm"}}
+
+当前页指定位置自动适配网页加载测试
+http://local.zorrosoft.com/ProECadframe.html
+
+启动后会前后收到三个JSON数据包
+A、{"ret":0,"rid":8,"data":{"ID":7}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"ProEApplet","port":1020}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
+代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"ProEApplet","Port":1020}}
+
+关于接口Wrl_CADInfo的说明：
+请求：{"req":"Wrl_CADInfo","rid":1,"para":{}}，返回信息举例：
+{"ret":0,"rid":1,"req":"Wrl_CADInfo","data":{"Info":[{"Type":31,"Option":1,"X64":1,"Ver":"32.1.0.0076","Path":"C:/Program Files/Common Files/eDrawings2024/EModelViewer.exe"}]}}
+Type等于31的代表ProE CAD程序的相关安装信息
+
+2)、请求控制ProE CAD网页组件：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1正常关闭 128强制迅速关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动ProE CAD网页组件：
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回JSON中的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变ProE CAD网页组件显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或同时设置小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为Wrl_ProEApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装ProE CAD网页组件
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ProE CAD内嵌网页小程序","PID":"ProEApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的ProE CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌ProE CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ProEApplet.pid","MD5":"E4BA2C9D18227A356F0DBB6999DEBE4F","Version":"2.2.13.1","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9570F2FD7A5BC5E3E2C794966248A883BD53A66513F1346383070B75815F25F553AF2FCBFB19FC50DCECEEBD8E2C44D83D61DA84DBDA63AD6047879CA3721336D9C1DAE5BC572EC4012C7398180A2FE87D5CF03FCA862A86D6243B9906410EC284773634A21644E44D03BEFB300F18422D9FFCD789CB51CEC97EB3E6252D50AA5E781E968BA2432341198E507EDB4BC0F6651C32E4E9804C59C8812343E580A54A1ED1DBAC17EB3D5687D8525E2C4A76CD6E96C6B99361987FF8F68CC2C40FF6CB079F6307943FF9B312200F20F061FD9DAC26C2EAFFD94F2FB5F6607744A3BAB3CDCF19F1B19DFFC733675C2CE08B3410B8F7FE0DD189682D28859DA7143C40"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
+
+2)、请求升级ProE CAD网页组件：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ProE CAD内嵌网页小程序","PID":"ProEApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的ProE CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌ProE CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ProEApplet_Update.pid","MD5":"BB2C7368F6CB6E232D9DFF4E40F708A2","Version":"2.2.13.1","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"69B035700DDC3691160A0370772951E30791E6405ED8A5B97D8B858E54EB25121EDA716ECC1D36D309568AD752C57C11C72562028C56022762B8A1B48EAA2184D7AFF289FDD49FA75A9A3C741D11E7CBDFF47063E48FFE5B047122654B50DF93032C7975A48BDA656557F74226A29D3A2DFC5687037F01EBD99F5C77E04E5045FC4952892CA21D614871BB9DB0F3D75E1B88DE0B967DD5ECAA268A0BAC1BF3C5150AC369CB940B68E9E948D08B768A7A8538E43AEC74A653DE1F730C562DB6403318E9C0B03BEEDB63392917D99B98D728FD121F49CEDB38FC8C6E8E9ECFB742C1891413264E3747DA5A500B2C71470EDDC2B1E2AF64C25751FC8FCFB43640C5"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+3)、请求卸载ProE CAD网页组件：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"ProEApplet","Type":8}}
+
+4、ProE CAD网页组件转调用Creo View的OCX控件接口，先根据Wrl_ProEApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+
+1)、请求退出小程序 适用于Creo View控件
+正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
+{"req":"CAD_Exit","rid":1,"para":{}}
+无返回
+
+2)、请求关闭当前打开的文档 适用于Creo View控件
+{"req":"CAD_Close","rid":2,"para":{}}
+返回: {"ret":0,"rid":2,"data":{"Ret":"0"}} Ret为0代表成功
+
+3)、请求打开文档 适用于Creo View控件
+Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码 Read为1代表只读打开
+{"req":"CAD_Open","rid":3,"para":{"Open":"D:/Zorro/Test.frm","PW":"","Read":0}}
+返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
+
+4)、打开文档转换到PDF 适用于Creo View控件
+SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如已打开可不设置
+DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先编码
+{"req":"CAD_ConvertTo","rid":4,"para":{"SrcFile":"D:/Zorro/Test.frm","DestFile":"D:/Zorro/test2.pdf","PW":""}}
+返回: {"ret":0,"rid":4,"data":{"Ret":"0"}} Ret为0代表成功
+
+5）网络文件操作 适用于Creo View控件
+Type 1上传文件 0下载文件
+Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
+Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
+Url 上传或下载的地址，需要做UrlEncode编码
+Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
+Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
+{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.frm","Url":"http://local.zorrosoft.com/Files/test.frm"}}
+{"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+B、Creo View控件专用功能请求：
+101)、对应OCX中获取sourceUrl属性 请求获取SourceUrl
+{"req":"CADVIEW_GetSourceUrl","rid":101,"para":{}}
+返回: {"ret":0,"rid":101,"data":{"Ret":"0","SourceUrl":""}}
+
+102)、对应OCX中设置sourceUrl属性 请求设置SourceUrl
+{"req":"CADVIEW_GetSourceUrl","rid":102,"para":{"SourceUrl":""}}
+返回: {"ret":0,"rid":102,"data":{"Ret":"0"}}
+
+103)、对应OCX中获取EdUrl属性 请求获取EdUrl
+{"req":"CADVIEW_GetEdUrl","rid":103,"para":{}}
+返回: {"ret":0,"rid":103,"data":{"Ret":"0","EdUrl":""}}
+
+104)、对应OCX中设置edurl属性 请求设置EdUrl
+{"req":"CADVIEW_PutEdUrl","rid":104,"para":{"EdUrl":""}}
+返回: {"ret":0,"rid":104,"data":{"Ret":"0"}}
+
+105)、对应OCX中获取mapurl属性 请求获取MapUrl
+{"req":"CADVIEW_GetMapUrl","rid":105,"para":{}}
+返回: {"ret":0,"rid":105,"data":{"Ret":"0","MapUrl":""}}
+
+106)、对应OCX中设置mapurl属性 请求设置MapUrl
+{"req":"CADVIEW_PutMapUrl","rid":106,"para":{"MapUrl":""}}
+返回: {"ret":0,"rid":106,"data":{"Ret":"0"}}
+
+107)、对应OCX中获取urltemplate属性 请求获取UrlTemplate
+{"req":"CADVIEW_GetUrlTemplate","rid":107,"para":{}}
+返回: {"ret":0,"rid":107,"data":{"Ret":"0","UrlTemplate":""}}
+
+108)、对应OCX中设置urltemplate属性 请求设置UrlTemplate
+{"req":"CADVIEW_PutUrlTemplate","rid":108,"para":{"UrlTemplate":""}}
+返回: {"ret":0,"rid":108,"data":{"Ret":"0"}}
+
+109)、对应OCX中获取getmarkupurl属性 请求获取MarkupUrl
+{"req":"CADVIEW_GetMarkupUrl","rid":109,"para":{}}
+返回: {"ret":0,"rid":109,"data":{"Ret":"0","MarkupUrl":""}}
+
+110)、对应OCX中设置getmarkupurl属性 请求设置MarkupUrl
+{"req":"CADVIEW_PutMarkupUrl","rid":110,"para":{"MarkupUrl":""}}
+返回: {"ret":0,"rid":110,"data":{"Ret":"0"}}
+
+111)、对应OCX中获取viewableoid属性 请求获取Viewableoid
+{"req":"CADVIEW_GetViewableoid","rid":111,"para":{}}
+返回: {"ret":0,"rid":111,"data":{"Ret":"0","Viewableoid":""}}
+
+112)、对应OCX中设置viewableoid属性 请求设置Viewableoid
+{"req":"CADVIEW_PutViewableoid","rid":112,"para":{"Viewableoid":""}}
+返回: {"ret":0,"rid":112,"data":{"Ret":"0"}}
+
+113)、对应OCX中获取uiconfigurl属性 请求获取UIConfigUrl
+{"req":"CADVIEW_GetUIConfigUrl","rid":113,"para":{}}
+返回: {"ret":0,"rid":113,"data":{"Ret":"0","UIConfigUrl":""}}
+
+114)、对应OCX中设置uiconfigurl属性 请求设置UIConfigUrl
+{"req":"CADVIEW_PutUIConfigUrl","rid":114,"para":{"UIConfigUrl":""}}
+返回: {"ret":0,"rid":114,"data":{"Ret":"0"}}
+
+115)、对应OCX中获取thumbnailView属性 请求获取ThumbnailView
+{"req":"CADVIEW_GetThumbnailView","rid":115,"para":{}}
+返回: {"ret":0,"rid":115,"data":{"Ret":"0","ThumbnailView":""}}
+
+116)、对应OCX中设置thumbnailView属性 请求设置ThumbnailView
+{"req":"CADVIEW_PutThumbnailView","rid":116,"para":{"ThumbnailView":""}}
+返回: {"ret":0,"rid":116,"data":{"Ret":"0"}}
+
+117)、对应OCX中获取pvt属性 请求获取Pvt
+{"req":"CADVIEW_GetPvt","rid":117,"para":{}}
+返回: {"ret":0,"rid":117,"data":{"Ret":"0","Pvt":""}}
+
+118)、对应OCX中设置pvt属性 请求设置Pvt
+{"req":"CADVIEW_PutPvt","rid":118,"para":{"Pvt":""}}
+返回: {"ret":0,"rid":118,"data":{"Ret":"0"}}
+
+119)、对应OCX中获取pvt属性 请求获取Pvt
+{"req":"CADVIEW_GetPvt","rid":119,"para":{}}
+返回: {"ret":0,"rid":119,"data":{"Ret":"0","Pvt":""}}
+
+120)、对应OCX中设置pvt属性 请求设置Pvt
+{"req":"CADVIEW_PutPvt","rid":120,"para":{"Pvt":""}}
+返回: {"ret":0,"rid":120,"data":{"Ret":"0"}}
+
+121)、对应OCX中获取img属性 请求获取Img
+{"req":"CADVIEW_GetImg","rid":121,"para":{}}
+返回: {"ret":0,"rid":121,"data":{"Ret":"0","Img":""}}
+
+122)、对应OCX中设置img属性 请求设置Img
+{"req":"CADVIEW_PutImg","rid":122,"para":{"Img":""}}
+返回: {"ret":0,"rid":122,"data":{"Ret":"0"}}
+
+123)、对应OCX中获取renderatstartup属性 请求获取RenderAtStartup
+{"req":"CADVIEW_GetRenderAtStartup","rid":123,"para":{}}
+返回: {"ret":0,"rid":123,"data":{"Ret":"0","RenderAtStartup":""}}
+
+124)、对应OCX中设置renderatstartup属性 请求设置RenderAtStartup
+{"req":"CADVIEW_PutRenderAtStartup","rid":124,"para":{"RenderAtStartup":""}}
+返回: {"ret":0,"rid":124,"data":{"Ret":"0"}}
+
+125)、对应OCX中设置urlbase属性 请求设置UrlBase
+{"req":"CADVIEW_PutUrlBase","rid":125,"para":{"UrlBase":""}}
+返回: {"ret":0,"rid":125,"data":{"Ret":"0"}}
+
+126)、对应OCX中获取urlbase属性 请求获取UrlBase
+{"req":"CADVIEW_GetUrlBase","rid":126,"para":{}}
+返回: {"ret":0,"rid":126,"data":{"Ret":"0","UrlBase":""}}
+
+127)、对应OCX中设置modifymarkupurl属性 请求设置ModifyMarkupUrl
+{"req":"CADVIEW_PutModifyMarkupUrl","rid":127,"para":{"ModifyMarkupUrl":""}}
+返回: {"ret":0,"rid":127,"data":{"Ret":"0"}}
+
+128)、对应OCX中获取modifymarkupurl属性 请求获取ModifyMarkupUrl
+{"req":"CADVIEW_GetModifyMarkupUrl","rid":128,"para":{}}
+返回: {"ret":0,"rid":128,"data":{"Ret":"0","ModifyMarkupUrl":""}}
+
+129)、对应OCX中设置username属性 请求设置UserName
+{"req":"CADVIEW_PutUserName","rid":129,"para":{"UserName":""}}
+返回: {"ret":0,"rid":129,"data":{"Ret":"0"}}
+
+130)、对应OCX中获取username属性 请求获取UserName
+{"req":"CADVIEW_GetUserName","rid":130,"para":{}}
+返回: {"ret":0,"rid":130,"data":{"Ret":"0","UserName":""}}
+
+131)、对应OCX中设置useremail属性 请求设置UserEmail
+{"req":"CADVIEW_PutUserEmail","rid":131,"para":{"UserEmail":""}}
+返回: {"ret":0,"rid":131,"data":{"Ret":"0"}}
+
+132)、对应OCX中获取useremail属性 请求获取UserEmail
+{"req":"CADVIEW_GetUserEmail","rid":132,"para":{}}
+返回: {"ret":0,"rid":132,"data":{"Ret":"0","UserEmail":""}}
+
+133)、对应OCX中设置usertelno属性 请求设置UserTelNo
+{"req":"CADVIEW_PutUserTelNo","rid":133,"para":{"UserTelNo":""}}
+返回: {"ret":0,"rid":133,"data":{"Ret":"0"}}
+
+134)、对应OCX中获取usertelno属性 请求获取UserTelNo
+{"req":"CADVIEW_GetUserTelNo","rid":134,"para":{}}
+返回: {"ret":0,"rid":134,"data":{"Ret":"0","UserTelNo":""}}
+
+135)、对应OCX中设置modifymarkupparam属性 请求设置ModifyMarkupParam
+{"req":"CADVIEW_PutModifyMarkupParam","rid":135,"para":{"ModifyMarkupParam":""}}
+返回: {"ret":0,"rid":135,"data":{"Ret":"0"}}
+
+136)、对应OCX中获取modifymarkupparam属性 请求获取ModifyMarkupParam
+{"req":"CADVIEW_GetModifyMarkupParam","rid":136,"para":{}}
+返回: {"ret":0,"rid":136,"data":{"Ret":"0","ModifyMarkupParam":""}}
+
+137)、对应OCX中设置backgroundcolor属性 请求设置BackgroundColor
+{"req":"CADVIEW_PutBackgroundColor","rid":137,"para":{"BackgroundColor":""}}
+返回: {"ret":0,"rid":137,"data":{"Ret":"0"}}
+
+138)、对应OCX中获取backgroundcolor属性 请求获取BackgroundColor
+{"req":"CADVIEW_GetBackgroundColor","rid":138,"para":{}}
+返回: {"ret":0,"rid":138,"data":{"Ret":"0","BackgroundColor":""}}
+
+139)、对应OCX中设置viewingmode属性 请求设置ViewingMode
+{"req":"CADVIEW_PutViewingMode","rid":139,"para":{"ViewingMode":""}}
+返回: {"ret":0,"rid":139,"data":{"Ret":"0"}}
+
+140)、对应OCX中获取viewingmode属性 请求获取ViewingMode
+{"req":"CADVIEW_GetViewingMode","rid":140,"para":{}}
+返回: {"ret":0,"rid":140,"data":{"Ret":"0","ViewingMode":""}}
+
+141)、对应OCX中设置helpurl属性 请求设置HelpUrl
+{"req":"CADVIEW_PutHelpUrl","rid":141,"para":{"HelpUrl":""}}
+返回: {"ret":0,"rid":141,"data":{"Ret":"0"}}
+
+142)、对应OCX中获取helpurl属性 请求获取HelpUrl
+{"req":"CADVIEW_GetHelpUrl","rid":142,"para":{}}
+返回: {"ret":0,"rid":142,"data":{"Ret":"0","HelpUrl":""}}
+
+143)、对应OCX中设置heading属性 请求设置Heading
+{"req":"CADVIEW_PutHeading","rid":143,"para":{"Heading":""}}
+返回: {"ret":0,"rid":143,"data":{"Ret":"0"}}
+
+144)、对应OCX中获取heading属性 请求获取Heading
+{"req":"CADVIEW_GetHeading","rid":144,"para":{}}
+返回: {"ret":0,"rid":144,"data":{"Ret":"0","Heading":""}}
+
+145)、对应OCX中设置renderannotation属性 请求设置RenderAnnotation
+{"req":"CADVIEW_PutRenderAnnotation","rid":145,"para":{"RenderAnnotation":""}}
+返回: {"ret":0,"rid":145,"data":{"Ret":"0"}}
+
+146)、对应OCX中获取renderannotation属性 请求获取RenderAnnotation
+{"req":"CADVIEW_GetRenderAnnotation","rid":146,"para":{}}
+返回: {"ret":0,"rid":146,"data":{"Ret":"0","RenderAnnotation":""}}
+
+147)、对应OCX中设置renderviewable属性 请求设置RenderViewable
+{"req":"CADVIEW_PutRenderViewable","rid":147,"para":{"RenderViewable":""}}
+返回: {"ret":0,"rid":147,"data":{"Ret":"0"}}
+
+148)、对应OCX中获取renderviewable属性 请求获取RenderViewable
+{"req":"CADVIEW_GetRenderViewable","rid":148,"para":{}}
+返回: {"ret":0,"rid":148,"data":{"Ret":"0","RenderViewable":""}}
+
+149)、对应OCX中设置edition属性 请求设置Edition
+{"req":"CADVIEW_PutEdition","rid":149,"para":{"Edition":""}}
+返回: {"ret":0,"rid":149,"data":{"Ret":"0"}}
+
+150)、对应OCX中获取edition属性 请求获取Edition
+{"req":"CADVIEW_GetEdition","rid":150,"para":{}}
+返回: {"ret":0,"rid":150,"data":{"Ret":"0","Edition":""}}
+
+151)、对应OCX中设置hosttype属性 请求设置HostType
+{"req":"CADVIEW_PutHostType","rid":151,"para":{"HostType":""}}
+返回: {"ret":0,"rid":151,"data":{"Ret":"0"}}
+
+152)、对应OCX中获取hosttype属性 请求获取HostType
+{"req":"CADVIEW_GetHostType","rid":152,"para":{}}
+返回: {"ret":0,"rid":152,"data":{"Ret":"0","HostType":""}}
+
+153)、对应OCX中设置configoptions属性 请求设置ConfigOptions
+{"req":"CADVIEW_PutConfigOptions","rid":153,"para":{"ConfigOptions":""}}
+返回: {"ret":0,"rid":153,"data":{"Ret":"0"}}
+
+154)、对应OCX中获取configoptions属性 请求获取ConfigOptions
+{"req":"CADVIEW_GetConfigOptions","rid":154,"para":{}}
+返回: {"ret":0,"rid":154,"data":{"Ret":"0","ConfigOptions":""}}
+
+155)、对应OCX中设置configurl属性 请求设置ConfigOptions
+{"req":"CADVIEW_PutConfigUrl","rid":155,"para":{"ConfigOptions":""}}
+返回: {"ret":0,"rid":155,"data":{"Ret":"0"}}
+
+156)、对应OCX中获取configurl属性 请求获取ConfigUrl
+{"req":"CADVIEW_GetConfigUrl","rid":156,"para":{}}
+返回: {"ret":0,"rid":156,"data":{"Ret":"0","ConfigUrl":""}}
+
+157)、对应OCX中设置locParamNames属性 请求设置LocParamNames
+{"req":"CADVIEW_PutLocParamNames","rid":157,"para":{"LocParamNames":""}}
+返回: {"ret":0,"rid":157,"data":{"Ret":"0"}}
+
+158)、对应OCX中获取locParamNames属性 请求获取LocParamNames
+{"req":"CADVIEW_GetLocParamNames","rid":158,"para":{}}
+返回: {"ret":0,"rid":158,"data":{"Ret":"0","LocParamNames":""}}
+
+159)、对应OCX中设置locParamValues属性 请求设置LocParamValues
+{"req":"CADVIEW_PutLocParamValues","rid":159,"para":{"LocParamValues":""}}
+返回: {"ret":0,"rid":159,"data":{"Ret":"0"}}
+
+160)、对应OCX中获取locParamValues属性 请求获取LocParamValues
+{"req":"CADVIEW_GetLocParamValues","rid":160,"para":{}}
+返回: {"ret":0,"rid":160,"data":{"Ret":"0","LocParamValues":""}}
+
+161)、对应OCX中设置PVXConnectionID属性 请求设置PVXConnectionID
+{"req":"CADVIEW_PutPVXConnectionID","rid":161,"para":{"PVXConnectionID":""}}
+返回: {"ret":0,"rid":161,"data":{"Ret":"0"}}
+
+162)、对应OCX中获取PVXConnectionID属性 请求获取PVXConnectionID
+{"req":"CADVIEW_GetPVXConnectionID","rid":162,"para":{}}
+返回: {"ret":0,"rid":162,"data":{"Ret":"0","PVXConnectionID":""}}
+
+163)、对应OCX中设置saveurl属性 请求设置SaveUrl
+{"req":"CADVIEW_PutSaveUrl","rid":163,"para":{"SaveUrl":""}}
+返回: {"ret":0,"rid":163,"data":{"Ret":"0"}}
+
+164)、对应OCX中获取saveurl属性 请求获取SaveUrl
+{"req":"CADVIEW_GetSaveUrl","rid":164,"para":{}}
+返回: {"ret":0,"rid":164,"data":{"Ret":"0","SaveUrl":""}}
+
+165)、对应OCX中设置src属性 请求设置Src
+{"req":"CADVIEW_PutSrc","rid":165,"para":{"Src":""}}
+返回: {"ret":0,"rid":165,"data":{"Ret":"0"}}
+
+166)、对应OCX中获取src属性 请求获取Src
+{"req":"CADVIEW_GetSrc","rid":166,"para":{}}
+返回: {"ret":0,"rid":166,"data":{"Ret":"0","Src":""}}
+
+167)、对应OCX中设置batchprint属性 请求设置BatchPrint
+{"req":"CADVIEW_PutBatchPrint","rid":167,"para":{"SrcBatchPrint":""}}
+返回: {"ret":0,"rid":167,"data":{"Ret":"0"}}
+
+168)、对应OCX中获取batchprint属性 请求获取BatchPrint
+{"req":"CADVIEW_GetBatchPrint","rid":168,"para":{}}
+返回: {"ret":0,"rid":168,"data":{"Ret":"0","BatchPrint":""}}
+
+169)、对应OCX中设置disableCaching属性 请求设置DisableCaching
+{"req":"CADVIEW_PutDisableCaching","rid":169,"para":{"DisableCaching":""}}
+返回: {"ret":0,"rid":169,"data":{"Ret":"0"}}
+
+170)、对应OCX中获取disableCaching属性 请求获取DisableCaching
+{"req":"CADVIEW_GetDisableCaching","rid":170,"para":{}}
+返回: {"ret":0,"rid":170,"data":{"Ret":"0","DisableCaching":""}}
+
+171)、对应OCX中设置maxDownloads属性 请求设置MaxDownloads
+{"req":"CADVIEW_PutMaxDownloads","rid":171,"para":{"MaxDownloads":""}}
+返回: {"ret":0,"rid":171,"data":{"Ret":"0"}}
+
+172)、对应OCX中获取maxDownloads属性 请求获取MaxDownloads
+{"req":"CADVIEW_GetMaxDownloads","rid":172,"para":{}}
+返回: {"ret":0,"rid":172,"data":{"Ret":"0","MaxDownloads":""}}
+
+173)、对应OCX中设置getetb属性 请求设置GetEtb
+{"req":"CADVIEW_PutGetEtb","rid":171,"para":{"GetEtb":""}}
+返回: {"ret":0,"rid":171,"data":{"Ret":"0"}}
+
+174)、对应OCX中获取getetb属性 请求获取GetEtb
+{"req":"CADVIEW_GetGetEtb","rid":172,"para":{}}
+返回: {"ret":0,"rid":172,"data":{"Ret":"0","GetEtb":""}}
+
+175)、对应OCX中设置linkUrl属性 请求设置LinkUrl
+{"req":"CADVIEW_PutLinkUrl","rid":173,"para":{"LinkUrl":""}}
+返回: {"ret":0,"rid":173,"data":{"Ret":"0"}}
+
+176)、对应OCX中获取linkUrl属性 请求获取LinkUrl
+{"req":"CADVIEW_GetLinkUrl","rid":174,"para":{}}
+返回: {"ret":0,"rid":174,"data":{"Ret":"0","LinkUrl":""}}
+
+177)、对应OCX中设置userid属性 请求设置UserID
+{"req":"CADVIEW_PutUserID","rid":177,"para":{"UserID":""}}
+返回: {"ret":0,"rid":177,"data":{"Ret":"0"}}
+
+178)、对应OCX中获取userid属性 请求获取UserID
+{"req":"CADVIEW_GetUserID","rid":178,"para":{}}
+返回: {"ret":0,"rid":178,"data":{"Ret":"0","UserID":""}}
+
+179)、对应OCX中设置nosettitle属性 请求设置NoSetTitle
+{"req":"CADVIEW_PutNoSetTitle","rid":179,"para":{"NoSetTitle":""}}
+返回: {"ret":0,"rid":179,"data":{"Ret":"0"}}
+
+180)、对应OCX中获取nosettitle属性 请求获取NoSetTitle
+{"req":"CADVIEW_GetNoSetTitle","rid":180,"para":{}}
+返回: {"ret":0,"rid":180,"data":{"Ret":"0","NoSetTitle":""}}
+
+181)、对应OCX中设置settitle属性 请求设置SetTitle
+{"req":"CADVIEW_PutSetTitle","rid":181,"para":{"SetTitle":""}}
+返回: {"ret":0,"rid":181,"data":{"Ret":"0"}}
+
+182)、对应OCX中获取settitle属性 请求获取SetTitle
+{"req":"CADVIEW_GetSetTitle","rid":182,"para":{}}
+返回: {"ret":0,"rid":182,"data":{"Ret":"0","SetTitle":""}}
+
+183)、对应OCX中设置defaultDisplayLanguages属性 请求设置DefaultDisplayLanguages
+{"req":"CADVIEW_PutDefaultDisplayLanguages","rid":183,"para":{"DefaultDisplayLanguages":""}}
+返回: {"ret":0,"rid":183,"data":{"Ret":"0"}}
+
+184)、对应OCX中获取defaultDisplayLanguages属性 请求获取DefaultDisplayLanguages
+{"req":"CADVIEW_GetDefaultDisplayLanguages","rid":184,"para":{}}
+返回: {"ret":0,"rid":184,"data":{"Ret":"0","DefaultDisplayLanguages":""}}
+
+185)、对应OCX中设置interferencepropertiesurl属性 请求设置InterferencePropertiesUrl
+{"req":"CADVIEW_PutInterferencePropertiesUrl","rid":185,"para":{"InterferencePropertiesUrl":""}}
+返回: {"ret":0,"rid":185,"data":{"Ret":"0"}}
+
+186)、对应OCX中获取interferencepropertiesurl属性 请求获取InterferencePropertiesUrl
+{"req":"CADVIEW_GetInterferencePropertiesUrl","rid":186,"para":{}}
+返回: {"ret":0,"rid":186,"data":{"Ret":"0","InterferencePropertiesUrl":""}}
+
+187)、对应OCX中设置nonce属性 请求设置Nonce
+{"req":"CADVIEW_PutNonce","rid":187,"para":{"Nonce":""}}
+返回: {"ret":0,"rid":187,"data":{"Ret":"0"}}
+
+188)、对应OCX中获取nonce属性 请求获取Nonce
+{"req":"CADVIEW_GetNonce","rid":188,"para":{}}
+返回: {"ret":0,"rid":188,"data":{"Ret":"0","Nonce":""}}
+
+89)、对应OCX中设置apprulesurl属性 请求设置ApprulesUrl
+{"req":"CADVIEW_PutApprulesUrl","rid":189,"para":{"ApprulesUrl":""}}
+返回: {"ret":0,"rid":189,"data":{"Ret":"0"}}
+
+190)、对应OCX中获取apprulesurl属性 请求获取ApprulesUrl
+{"req":"CADVIEW_GetApprulesUrl","rid":190,"para":{}}
+返回: {"ret":0,"rid":190,"data":{"Ret":"0","ApprulesUrl":""}}
+
+191)、对应OCX中设置interferencereportoid属性 请求设置InterferenceReportoid
+{"req":"CADVIEW_PutInterferenceReportoid","rid":191,"para":{"InterferenceReportoid":""}}
+返回: {"ret":0,"rid":191,"data":{"Ret":"0"}}
+
+192)、对应OCX中获取interferencereportoid属性 请求获取InterferenceReportoid
+{"req":"CADVIEW_GetInterferenceReportoid","rid":192,"para":{}}
+返回: {"ret":0,"rid":192,"data":{"Ret":"0","InterferenceReportoid":""}}
+
+193)、对应OCX中设置blparams属性 请求设置BLParams
+{"req":"CADVIEW_PutBLParams","rid":193,"para":{"BLParams":""}}
+返回: {"ret":0,"rid":193,"data":{"Ret":"0"}}
+
+194)、对应OCX中获取blparams属性 请求获取BLParams
+{"req":"CADVIEW_GetBLParams","rid":194,"para":{}}
+返回: {"ret":0,"rid":194,"data":{"Ret":"0","BLParams":""}}
+
+195)、对应OCX中设置locale属性 请求设置Locale
+{"req":"CADVIEW_PutLocale","rid":195,"para":{"Locale":""}}
+返回: {"ret":0,"rid":195,"data":{"Ret":"0"}}
+
+196)、对应OCX中获取locale属性 请求获取Locale
+{"req":"CADVIEW_GetLocale","rid":196,"para":{}}
+返回: {"ret":0,"rid":196,"data":{"Ret":"0","Locale":""}}
+
+97)、对应OCX中设置containeroid属性 请求设置Containeroid
+{"req":"CADVIEW_PutContaineroid","rid":197,"para":{"Containeroid":""}}
+返回: {"ret":0,"rid":197,"data":{"Ret":"0"}}
+
+198)、对应OCX中获取containeroid属性 请求获取Containeroid
+{"req":"CADVIEW_GetContaineroid","rid":198,"para":{}}
+返回: {"ret":0,"rid":198,"data":{"Ret":"0","Containeroid":""}}
+
+199)、对应OCX中方法SelectInstance
+{"req":"CADVIEW_SelectInstance","rid":199,"para":{"ID":""}}
+返回: {"ret":0,"rid":199,"data":{"Ret":"0"}}
+
+200)、对应OCX中方法DeSelectInstance
+{"req":"CADVIEW_DeSelectInstance","rid":200,"para":{"ID":""}}
+返回: {"ret":0,"rid":200,"data":{"Ret":"0"}}
+
+201)、对应OCX中方法SelectAll
+{"req":"CADVIEW_SelectAll","rid":201,"para":{}}
+返回: {"ret":0,"rid":201,"data":{"Ret":"0"}}
+
+202)、对应OCX中方法DeSelectAll
+{"req":"CADVIEW_DeSelectAll","rid":202,"para":{}}
+返回: {"ret":0,"rid":202,"data":{"Ret":"0"}}
+
+203)、对应OCX中方法IsRunning
+{"req":"CADVIEW_IsRunning","rid":203,"para":{}}
+返回: {"ret":0,"rid":203,"data":{"Ret":"0"}}
+
+204)、对应OCX中方法SetInstanceColor
+{"req":"CADVIEW_SetInstanceColor","rid":204,"para":{"Inst":"","Color":""}}
+返回: {"ret":0,"rid":204,"data":{"Ret":"0"}}
+
+205)、对应OCX中方法CaptureScreen
+{"req":"CADVIEW_CaptureScreen","rid":205,"para":{"Width":"","Height":"","ImageFormat":""}}
+返回: {"ret":0,"rid":205,"data":{"Ret":"0"}}
+
+206)、对应OCX中方法HideInstance
+{"req":"CADVIEW_HideInstance","rid":206,"para":{"ID":""}}
+返回: {"ret":0,"rid":206,"data":{"Ret":"0"}}
+
+207)、对应OCX中方法ShowInstance
+{"req":"CADVIEW_ShowInstance","rid":207,"para":{"ID":""}}
+返回: {"ret":0,"rid":207,"data":{"Ret":"0"}}
+
+208)、对应OCX中方法IsInstanceVisible
+{"req":"CADVIEW_IsInstanceVisible","rid":208,"para":{"ID":""}}
+返回: {"ret":0,"rid":208,"data":{"Ret":"0","InstanceVisible":""}}
+
+209)、对应OCX中方法ListInstances
+{"req":"CADVIEW_ListInstances","rid":209,"para":{}}
+返回: {"ret":0,"rid":209,"data":{"Ret":"0"}}
+
+210)、对应OCX中方法LoadAnnotation
+{"req":"CADVIEW_LoadAnnotation","rid":210,"para":{"Name":""}}
+返回: {"ret":0,"rid":210,"data":{"Ret":"0"}}
+
+211)、对应OCX中方法GetAnnotationName
+{"req":"CADVIEW_GetAnnotationName","rid":210,"para":{"Name":""}}
+返回: {"ret":0,"rid":210,"data":{"Ret":"0"}}
+
+212)、对应OCX中方法AddAnnotation
+{"req":"CADVIEW_AddAnnotation","rid":212,"para":{"Type":"","Value":""}}
+返回: {"ret":0,"rid":212,"data":{"Ret":"0"}}
+
+213)、对应OCX中方法AddAnnotationLabel
+{"req":"CADVIEW_AddAnnotationLabel","rid":213,"para":{"BGColor":"","FontColor":"","Value":""}}
+返回: {"ret":0,"rid":213,"data":{"Ret":"0"}}
+
+214)、对应OCX中方法DeleteAnnotation
+{"req":"CADVIEW_DeleteAnnotation","rid":214,"para":{"Name":""}}
+返回: {"ret":0,"rid":214,"data":{"Ret":"0"}}
+
+215)、对应OCX中方法CreateAnnotation
+{"req":"CADVIEW_CreateAnnotation","rid":215,"para":{"Name":"","Author":"","Telephone":"","EMail":"","Comment":""}}
+返回: {"ret":0,"rid":215,"data":{"Ret":"0"}}
+
+216)、对应OCX中方法RenameAnnotation
+{"req":"CADVIEW_RenameAnnotation","rid":216,"para":{"CurrentName":"","NewName":""}}
+返回: {"ret":0,"rid":216,"data":{"Ret":"0"}}
+
+217)、对应OCX中方法SaveAnnotation
+{"req":"CADVIEW_SaveAnnotation","rid":217,"para":{"Name":""}}
+返回: {"ret":0,"rid":217,"data":{"Ret":"0"}}
+
+218)、对应OCX中方法GetNumOfAnnotations
+{"req":"CADVIEW_GetNumOfAnnotations","rid":218,"para":{}}
+返回: {"ret":0,"rid":218,"data":{"Ret":"0","NumOfAnnotations":""}}
+
+219)、对应OCX中方法GetNumOfViewables
+{"req":"CADVIEW_GetNumOfViewables","rid":219,"para":{}}
+返回: {"ret":0,"rid":219,"data":{"Ret":"0","NumOfAnnotations":""}}
+
+220)、对应OCX中方法GetViewableName
+{"req":"CADVIEW_GetViewableName","rid":220,"para":{"Index":"0"}}
+返回: {"ret":0,"rid":220,"data":{"Ret":"0","ViewableName":""}}
+
+221)、对应OCX中方法LoadViewable
+{"req":"CADVIEW_LoadViewable","rid":221,"para":{"Num":""}}
+返回: {"ret":0,"rid":221,"data":{"Ret":"0"}}
+
+222)、对应OCX中方法IsolateSelected
+{"req":"CADVIEW_IsolateSelected","rid":222,"para":{"ID":""}}
+返回: {"ret":0,"rid":222,"data":{"Ret":"0"}}
+
+223)、对应OCX中方法ShowAll
+{"req":"CADVIEW_ShowAll","rid":223,"para":{}}
+返回: {"ret":0,"rid":223,"data":{"Ret":"0"}}
+
+224)、对应OCX中方法CopyToClipboard
+{"req":"CADVIEW_CopyToClipboard","rid":224,"para":{}}
+返回: {"ret":0,"rid":224,"data":{"Ret":"0"}}
+
+225)、对应OCX中方法GetInstanceLocation
+{"req":"CADVIEW_GetInstanceLocation","rid":225,"para":{"ID":""}}
+返回: {"ret":0,"rid":225,"data":{"Ret":"0","Location":""}}
+
+226)、对应OCX中方法SetInstanceLocation
+{"req":"CADVIEW_SetInstanceLocation","rid":226,"para":{"ID":"","Location":""}}
+返回: {"ret":0,"rid":226,"data":{"Ret":"0"}}
+
+227)、对应OCX中方法ResetInstanceLocation
+{"req":"CADVIEW_ResetInstanceLocation","rid":227,"para":{"ID":""}}
+返回: {"ret":0,"rid":227,"data":{"Ret":"0"}}
+
+228)、对应OCX中方法RestoreAllLocations
+{"req":"CADVIEW_RestoreAllLocations","rid":228,"para":{}}
+返回: {"ret":0,"rid":228,"data":{"Ret":"0"}}
+
+229)、对应OCX中方法SetMode
+{"req":"CADVIEW_SetMode","rid":229,"para":{"Mode":""}}
+返回: {"ret":0,"rid":229,"data":{"Ret":"0"}}
+
+230)、对应OCX中方法SetInstanceTransparency
+{"req":"CADVIEW_SetInstanceTransparency","rid":230,"para":{"Inst":"","Transparency":""}}
+返回: {"ret":0,"rid":230,"data":{"Ret":"0"}}
+
+231)、对应OCX中方法GetViewOrientation
+{"req":"CADVIEW_GetViewOrientation","rid":231,"para":{}}
+返回: {"ret":0,"rid":231,"data":{"Ret":"0","ViewOrientation":""}}
+
+232)、对应OCX中方法SetViewOrientation
+{"req":"CADVIEW_SetViewOrientation","rid":232,"para":{"ViewOrientation":""}}
+返回: {"ret":0,"rid":232,"data":{"Ret":"0"}}
+
+233)、对应OCX中方法LoadInstance
+{"req":"CADVIEW_LoadInstance","rid":233,"para":{"ID":""}}
+返回: {"ret":0,"rid":233,"data":{"Ret":"0"}}
+
+234)、对应OCX中方法UnloadInstance
+{"req":"CADVIEW_UnloadInstance","rid":234,"para":{"ID":""}}
+返回: {"ret":0,"rid":234,"data":{"Ret":"0"}}
+
+235)、对应OCX中方法LoadInstanceAndDescendents
+{"req":"CADVIEW_LoadInstanceAndDescendents","rid":235,"para":{"ID":""}}
+返回: {"ret":0,"rid":235,"data":{"Ret":"0"}}
+
+236)、对应OCX中方法UnloadInstanceAndDescendents
+{"req":"CADVIEW_UnloadInstanceAndDescendents","rid":236,"para":{"ID":""}}
+返回: {"ret":0,"rid":236,"data":{"Ret":"0"}}
+
+237)、对应OCX中方法GetPropertyValue
+{"req":"CADVIEW_GetPropertyValue","rid":237,"para":{"ID":"","Group":"","Property":""}}
+返回: {"ret":0,"rid":237,"data":{"Ret":"0","Value":""}}
+
+238)、对应OCX中方法ListPropertyGroups
+{"req":"CADVIEW_ListPropertyGroups","rid":238,"para":{}}
+返回: {"ret":0,"rid":238,"data":{"Ret":"0","ViewOrientation":""}}
+
+239)、对应OCX中方法LoadPropertyGroup
+{"req":"CADVIEW_LoadPropertyGroup","rid":239,"para":{"Name":""}}
+返回: {"ret":0,"rid":239,"data":{"Ret":"0"}}
+
+240)、对应OCX中方法FindInstancesWithProperty
+{"req":"CADVIEW_FindInstancesWithProperty","rid":240,"para":{"Value":"","Group":"","Property":""}}
+返回: {"ret":0,"rid":240,"data":{"Ret":"0","Value":""}}
+
+241)、对应OCX中方法GetInstanceName
+{"req":"CADVIEW_GetInstanceName","rid":241,"para":{"ID":""}}
+返回: {"ret":0,"rid":241,"data":{"Ret":"0","InstanceName":""}}
+
+242)、对应OCX中方法DeleteSelectedAnnotations
+{"req":"CADVIEW_DeleteSelectedAnnotations","rid":242,"para":{}}
+返回: {"ret":0,"rid":242,"data":{"Ret":"0"}}
+
+243)、对应OCX中方法GetOrthographicWidth
+{"req":"CADVIEW_GetOrthographicWidth","rid":243,"para":{}}
+返回: {"ret":0,"rid":243,"data":{"Ret":"0","OrthographicWidth":""}}
+
+244)、对应OCX中方法GetPerspectiveHFOV
+{"req":"CADVIEW_GetPerspectiveHFOV","rid":244,"para":{}}
+返回: {"ret":0,"rid":244,"data":{"Ret":"0","PerspectiveHFOV":""}}
+
+245)、对应OCX中方法SetPerspectiveHFOV
+{"req":"CADVIEW_SetPerspectiveHFOV","rid":245,"para":{"HFov":""}}
+返回: {"ret":0,"rid":245,"data":{"Ret":"0"}}
+
+246)、对应OCX中方法GetViewLocation
+{"req":"GetViewLocation","rid":246,"para":{}}
+返回: {"ret":0,"rid":246,"data":{"Ret":"0","ViewLocation":""}}
+
+247)、对应OCX中方法SetViewLocation
+{"req":"CADVIEW_SetViewLocation","rid":247,"para":{"ViewLocation":""}}
+返回: {"ret":0,"rid":247,"data":{"Ret":"0"}}
+
+248)、对应OCX中方法SpinCenter
+{"req":"CADVIEW_GetSpinCenter","rid":248,"para":{}}
+返回: {"ret":0,"rid":248,"data":{"Ret":"0","SpinCenter":""}}
+
+249)、对应OCX中方法SetSpinCenter
+{"req":"CADVIEW_SetSpinCenter","rid":249,"para":{"X":"","Y":"","Z":""}}
+返回: {"ret":0,"rid":249,"data":{"Ret":"0"}}
+
+250)、对应OCX中方法SetNavMethod
+{"req":"CADVIEW_SetNavMethod","rid":250,"para":{"NavMethod":""}}
+返回: {"ret":0,"rid":250,"data":{"Ret":"0"}}
+
+251)、对应OCX中方法MoveUp
+{"req":"CADVIEW_MoveUp","rid":251,"para":{"Step":""}}
+返回: {"ret":0,"rid":251,"data":{"Ret":"0"}}
+
+252)、对应OCX中方法MoveDown
+{"req":"CADVIEW_MoveDown","rid":252,"para":{"Step":""}}
+返回: {"ret":0,"rid":252,"data":{"Ret":"0"}}
+
+253)、对应OCX中方法MoveLeft
+{"req":"CADVIEW_MoveLeft","rid":253,"para":{"Step":""}}
+返回: {"ret":0,"rid":253,"data":{"Ret":"0"}}
+
+254)、对应OCX中方法MoveRight
+{"req":"CADVIEW_MoveRight","rid":254,"para":{"Step":""}}
+返回: {"ret":0,"rid":254,"data":{"Ret":"0"}}
+
+255)、对应OCX中方法MoveForward
+{"req":"CADVIEW_MoveForward","rid":255,"para":{"Step":""}}
+返回: {"ret":0,"rid":255,"data":{"Ret":"0"}}
+
+256)、对应OCX中方法MoveBackward
+{"req":"CADVIEW_MoveBackward","rid":256,"para":{"Step":""}}
+返回: {"ret":0,"rid":256,"data":{"Ret":"0"}}
+
+257)、对应OCX中方法RotateLeft
+{"req":"CADVIEW_RotateLeft","rid":257,"para":{"Step":""}}
+返回: {"ret":0,"rid":257,"data":{"Ret":"0"}}
+
+258)、对应OCX中方法RotateRight
+{"req":"CADVIEW_RotateRight","rid":258,"para":{"Step":""}}
+返回: {"ret":0,"rid":258,"data":{"Ret":"0"}}
+
+259)、对应OCX中方法RotateUp
+{"req":"CADVIEW_RotateUp","rid":259,"para":{"Step":""}}
+返回: {"ret":0,"rid":259,"data":{"Ret":"0"}}
+
+260)、对应OCX中方法RotateDown
+{"req":"CADVIEW_RotateDown","rid":260,"para":{"Step":""}}
+返回: {"ret":0,"rid":260,"data":{"Ret":"0"}}
+
+261)、对应OCX中方法RotateClockwise
+{"req":"CADVIEW_RotateClockwise","rid":261,"para":{"Step":""}}
+返回: {"ret":0,"rid":261,"data":{"Ret":"0"}}
+
+262)、对应OCX中方法RotateCounterClockwise
+{"req":"CADVIEW_RotateCounterClockwise","rid":262,"para":{"Step":""}}
+返回: {"ret":0,"rid":262,"data":{"Ret":"0"}}
+
+263)、对应OCX中方法ZoomToAll
+{"req":"CADVIEW_ZoomToAll","rid":263,"para":{"Delay":""}}
+返回: {"ret":0,"rid":263,"data":{"Ret":"0"}}
+
+264)、对应OCX中方法ZoomToSelected
+{"req":"CADVIEW_ZoomToSelected","rid":264,"para":{"Delay":""}}
+返回: {"ret":0,"rid":264,"data":{"Ret":"0"}}
+
+265)、对应OCX中方法ZoomToAllTime
+{"req":"CADVIEW_ZoomToAllTime","rid":265,"para":{"Delay":""}}
+返回: {"ret":0,"rid":265,"data":{"Ret":"0"}}
+
+266)、对应OCX中方法ZoomToSelectedTime
+{"req":"CADVIEW_ZoomToSelectedTime","rid":266,"para":{"Delay":""}}
+返回: {"ret":0,"rid":266,"data":{"Ret":"0"}}
+
+267)、对应OCX中方法SetRenderMode
+{"req":"CADVIEW_SetRenderMode","rid":267,"para":{"RenderMode":""}}
+返回: {"ret":0,"rid":267,"data":{"Ret":"0"}}
+
+268)、对应OCX中方法GetNumberOfSheets
+{"req":"CADVIEW_GetNumberOfSheets","rid":268,"para":{}}
+返回: {"ret":0,"rid":268,"data":{"Ret":"0","NumberOfSheets":""}}
+
+269)、对应OCX中方法GetCurrentSheet
+{"req":"CADVIEW_GetCurrentSheet","rid":269,"para":{}}
+返回: {"ret":0,"rid":269,"data":{"Ret":"0","SheetNumber":""}}
+
+270)、对应OCX中方法SetCurrentSheet
+{"req":"CADVIEW_SetCurrentSheet","rid":270,"para":{"SheetNumber":""}}
+返回: {"ret":0,"rid":270,"data":{"Ret":"0"}}
+
+271)、对应OCX中方法SetShapeMarkupColor
+{"req":"CADVIEW_SetShapeMarkupColor","rid":271,"para":{"AutoExpand":"","InstanceId":"","MarkupId":"","Color":""}}
+返回: {"ret":0,"rid":271,"data":{"Ret":"0"}}
+
+272)、对应OCX中方法ListViewStates
+{"req":"CADVIEW_ListViewStates","rid":272,"para":{}}
+返回: {"ret":0,"rid":272,"data":{"Ret":"0"}}
+
+273)、对应OCX中方法CancelPendingDownloads
+{"req":"CADVIEW_CancelPendingDownloads","rid":273,"para":{}}
+返回: {"ret":0,"rid":273,"data":{"Ret":"0"}}
+
+274)、对应OCX中方法InsertBranchLink
+{"req":"CADVIEW_InsertBranchLink","rid":274,"para":{"AutoLoadGeom":"","Node":"","Name":"","Src":"","MapSrc":"","Info":""}}
+返回: {"ret":0,"rid":274,"data":{"Ret":"0"}}
+
+275)、对应OCX中方法Select
+{"req":"CADVIEW_Select","rid":275,"para":{"ID":"","Descendents":""}}
+返回: {"ret":0,"rid":275,"data":{"Ret":"0"}}
+
+276)、对应OCX中方法DeSelect
+{"req":"CADVIEW_DeSelect","rid":276,"para":{"ID":"","Descendents":""}}
+返回: {"ret":0,"rid":276,"data":{"Ret":"0"}}
+
+277)、对应OCX中方法CreateBoundingBox
+{"req":"CADVIEW_CreateBoundingBox","rid":277,"para":{"Draggable":"","Transparency":"","MinX":"","MinY":"","MinZ":"","MaxX":"","MaxY":"","MaxZ":"","Color":""}}
+返回: {"ret":0,"rid":277,"data":{"Ret":"0","BoundingBoxID":""}}
+
+278)、对应OCX中方法CADVIEW_UpdateBoundingBox
+{"req":"CADVIEW_UpdateBoundingBox","rid":278,"para":{"ID":"","Transparency":"","MinX":"","MinY":"","MinZ":"","MaxX":"","MaxY":"","MaxZ":"","Color":""}}
+返回: {"ret":0,"rid":278,"data":{"Ret":"0"}}
+
+279)、对应OCX中方法DeleteBoundingBox
+{"req":"CADVIEW_DeleteBoundingBox","rid":279,"para":{"ID":""}}
+返回: {"ret":0,"rid":279,"data":{"Ret":"0"}}
+
+280)、对应OCX中方法CreateSphere
+{"req":"CADVIEW_CreateSphere","rid":280,"para":{"Draggable":"","Transparency":"","X":"","Y":"","Z":"","Radius":"","Color":""}}
+返回: {"ret":0,"rid":280,"data":{"Ret":"0","SphereID":""}}
+
+281)、对应OCX中方法UpdateSphere
+{"req":"CADVIEW_UpdateSphere","rid":281,"para":{"ID":"","Radius":"","Transparency":"","X":"","Y":"","Z":"","Color":""}}
+返回: {"ret":0,"rid":281,"data":{"Ret":"0"}}
+
+282)、对应OCX中方法DeleteSphere
+{"req":"CADVIEW_DeleteSphere","rid":282,"para":{"ID":""}}
+返回: {"ret":0,"rid":282,"data":{"Ret":"0"}}
+
+283)、对应OCX中方法HideInstanceAndDescendants
+{"req":"CADVIEW_HideInstanceAndDescendants","rid":283,"para":{"ID":""}}
+返回: {"ret":0,"rid":283,"data":{"Ret":"0"}}
+
+284)、对应OCX中方法ShowInstanceAndDescendants
+{"req":"CADVIEW_ShowInstanceAndDescendants","rid":284,"para":{"ID":""}}
+返回: {"ret":0,"rid":284,"data":{"Ret":"0"}}
+
+285)、对应OCX中方法DownloadTest
+{"req":"CADVIEW_DownloadTest","rid":285,"para":{"Input":"","Output":"","Options":""}}
+返回: {"ret":0,"rid":285,"data":{"Ret":"0"}}
+
+286)、对应OCX中方法CalculateBoundingBox
+{"req":"CADVIEW_CalculateBoundingBox","rid":286,"para":{"InstanceIds":""}}
+返回: {"ret":0,"rid":286,"data":{"Ret":"0","BoundingBox":""}}
+
+287)、对应OCX中方法CalculateBoundingSphere
+{"req":"CADVIEW_CalculateBoundingSphere","rid":287,"para":{"InstanceIds":""}}
+返回: {"ret":0,"rid":287,"data":{"Ret":"0","BoundingSphere":""}}
+
+288)、对应OCX中方法RestoreInstanceColor
+{"req":"CADVIEW_RestoreInstanceColor","rid":288,"para":{"InstanceIds":""}}
+返回: {"ret":0,"rid":288,"data":{"Ret":"0"}}
+
+289)、对应OCX中方法StartAnimation
+{"req":"CADVIEW_StartAnimation","rid":289,"para":{"FromBeginning":""}}
+返回: {"ret":0,"rid":289,"data":{"Ret":"0"}}
+
+290)、对应OCX中方法StopAnimation
+{"req":"CADVIEW_StopAnimation","rid":290,"para":{}}
+返回: {"ret":0,"rid":290,"data":{"Ret":"0"}}
+
+291)、对应OCX中方法SetAnimationOffset
+{"req":"CADVIEW_SetAnimationOffset","rid":291,"para":{}}
+返回: {"ret":0,"rid":291,"data":{"Ret":"0"}}
+
+292)、对应OCX中方法GetLoadProgress
+{"req":"CADVIEW_GetLoadProgress","rid":292,"para":{}}
+返回: {"ret":0,"rid":292,"data":{"Ret":"0"}}
+
+293)、对应OCX中方法HideSelectedInstance
+{"req":"CADVIEW_HideSelectedInstance","rid":293,"para":{}}
+返回: {"ret":0,"rid":293,"data":{"Ret":"0"}}
+
+294)、对应OCX中方法PlayAnimation
+{"req":"CADVIEW_PlayAnimation","rid":294,"para":{"AutoStart":"","Loop":"","StartPosition":"","StopPosition":"","Name":""}}
+返回: {"ret":0,"rid":294,"data":{"Ret":"0"}}
+
+295)、对应OCX中方法GetNumberOfItems
+{"req":"CADVIEW_GetNumberOfItems","rid":295,"para":{}}
+返回: {"ret":0,"rid":295,"data":{"Ret":"0","NumberOfItems":""}}
+
+296)、对应OCX中方法GetItemNumber
+{"req":"CADVIEW_GetItemNumber","rid":296,"para":{"Index":""}}
+返回: {"ret":0,"rid":296,"data":{"Ret":"0","ItemNumber":""}}
+
+297)、对应OCX中方法GetItemNameTag
+{"req":"CADVIEW_GetItemNameTag","rid":297,"para":{"Index":""}}
+返回: {"ret":0,"rid":297,"data":{"Ret":"0","ItemNameTag":""}}
+
+298)、对应OCX中方法GetItemQty
+{"req":"CADVIEW_GetItemQty","rid":298,"para":{"Index":""}}
+返回: {"ret":0,"rid":298,"data":{"Ret":"0","ItemQty":""}}
+
+299)、对应OCX中方法GetItemFromCalloutId
+{"req":"CADVIEW_GetItemFromCalloutId","rid":299,"para":{"CalloutID":""}}
+返回: {"ret":0,"rid":299,"data":{"Ret":"0","CalloutID":""}}
+
+300)、对应OCX中方法GetItemFromPartId
+{"req":"CADVIEW_GetItemFromPartId","rid":300,"para":{"Index":""}}
+返回: {"ret":0,"rid":300,"data":{"Ret":"0","PartID":""}}
+
+301)、对应OCX中方法CopyToClipBoardWithUrl
+{"req":"CADVIEW_CopyToClipBoardWithUrl","rid":301,"para":{"Url":""}}
+返回: {"ret":0,"rid":301,"data":{"Ret":"0","Val":""}}
+
+302)、对应OCX中方法HasAnimation
+{"req":"CADVIEW_HasAnimation","rid":302,"para":{}}
+返回: {"ret":0,"rid":302,"data":{"Ret":"0","HasAnimation":""}}
+
+303)、对应OCX中方法CADVIEW_SetTransparency
+{"req":"CADVIEW_SetTransparency","rid":303,"para":{"Inst":"","Transparency":"","Children":""}}
+返回: {"ret":0,"rid":303,"data":{"Ret":"0"}}
+
+304)、对应OCX中方法GetItemFromInstance
+{"req":"CADVIEW_GetItemFromInstance","rid":304,"para":{"ID":""}}
+返回: {"ret":0,"rid":304,"data":{"Ret":"0","Item":""}}
+
+305)、对应OCX中方法SelectItemsListItem
+{"req":"CADVIEW_SelectItemsListItem","rid":305,"para":{"Index":""}}
+返回: {"ret":0,"rid":305,"data":{"Ret":"0"}}
+
+306)、对应OCX中方法SelectCallout
+{"req":"CADVIEW_SelectCallout","rid":306,"para":{"Index":""}}
+返回: {"ret":0,"rid":306,"data":{"Ret":"0"}}
+
+307)、对应OCX中方法DeleteAnnotations
+{"req":"CADVIEW_DeleteAnnotations","rid":307,"para":{"Type":""}}
+返回: {"ret":0,"rid":307,"data":{"Ret":"0"}}
+
+308)、对应OCX中方法ZoomToInstance
+{"req":"CADVIEW_ZoomToInstance","rid":308,"para":{"Ids":""}}
+返回: {"ret":0,"rid":308,"data":{"Ret":"0"}}
+
+309)、对应OCX中方法GetNumSequenceSteps
+{"req":"CADVIEW_GetNumSequenceSteps","rid":309,"para":{}}
+返回: {"ret":0,"rid":309,"data":{"Ret":"0","NumSequenceSteps":""}}
+
+310)、对应OCX中方法PlaySequence
+{"req":"CADVIEW_PlaySequence","rid":310,"para":{"IncludeCam":"","StartIndex":"","EndIndex":""}}
+返回: {"ret":0,"rid":310,"data":{"Ret":"0"}}
+
+311)、对应OCX中方法PlayStep
+{"req":"CADVIEW_PlayStep","rid":311,"para":{"IncludeCam":"","StartIndex":""}}
+返回: {"ret":0,"rid":311,"data":{"Ret":"0"}}
+
+312)、对应OCX中方法PauseSequence
+{"req":"CADVIEW_PauseSequence","rid":312,"para":{}}
+返回: {"ret":0,"rid":312,"data":{"Ret":"0"}}
+
+313)、对应OCX中方法ResetSequence
+{"req":"CADVIEW_ResetSequence","rid":313,"para":{"IncludeCam":""}}
+返回: {"ret":0,"rid":313,"data":{"Ret":"0"}}
+
+314)、对应OCX中方法ShowNotesOnScreen
+{"req":"CADVIEW_ShowNotesOnScreen","rid":314,"para":{"Show":"","TitleOnly":""}}
+返回: {"ret":0,"rid":314,"data":{"Ret":"0"}}
+
+315)、对应OCX中方法GetCurrentStepIndex
+{"req":"CADVIEW_GetCurrentStepIndex","rid":315,"para":{}}
+返回: {"ret":0,"rid":315,"data":{"Ret":"0","StepIndex":""}}
+
+316)、对应OCX中方法GetStepResourceCount
+{"req":"CADVIEW_GetStepResourceCount","rid":316,"para":{"StepIndex":""}}
+返回: {"ret":0,"rid":316,"data":{"Ret":"0","ResourceCount":""}}
+
+317)、对应OCX中方法GetStepResource
+{"req":"CADVIEW_GetStepResource","rid":317,"para":{"ResIndex":"","StepIndex":""}}
+返回: {"ret":0,"rid":317,"data":{"Ret":"0","StepResource":""}}
+
+318)、对应OCX中方法AcknowledgeStep
+{"req":"CADVIEW_AcknowledgeStep","rid":318,"para":{"Step":"","0ption":""}}
+返回: {"ret":0,"rid":318,"data":{"Ret":"0"}}
+
+319)、对应OCX中方法GetItemsFromCalloutId
+{"req":"CADVIEW_GetItemsFromCalloutId","rid":319,"para":{"CalloutId":""}}
+返回: {"ret":0,"rid":319,"data":{"Ret":"0","Item":""}}
+
+320)、对应OCX中方法GetProperty
+{"req":"CADVIEW_GetProperty","rid":320,"para":{"Dpview":""}}
+返回: {"ret":0,"rid":320,"data":{"Ret":"0","Property":""}}
+
+321)、对应OCX中方法GetPosition
+{"req":"CADVIEW_GetPosition","rid":321,"para":{}}
+返回: {"ret":0,"rid":321,"data":{"Ret":"0"}}
+
+322)、对应OCX中方法CreatePoint
+{"req":"CADVIEW_CreatePoint","rid":322,"para":{"Dpview10":"","Dpview11":"","Dpview12":"","Dpview13":"","Dpview14":""}}
+返回: {"ret":0,"rid":322,"data":{"Ret":"0","PointID":""}}
+
+323)、对应OCX中方法UpdatePoint
+{"req":"CADVIEW_UpdatePoint","rid":323,"para":{"ID":"","Color":""}}
+返回: {"ret":0,"rid":323,"data":{"Ret":"0"}}
+
+324)、对应OCX中方法RemovePoint
+{"req":"CADVIEW_RemovePoint","rid":324,"para":{"ID":""}}
+返回: {"ret":0,"rid":324,"data":{"Ret":"0"}}
+
+325)、对应OCX中方法CreateView
+{"req":"CADVIEW_CreateView","rid":325,"para":{"Dpview15":"","Dpview16":""}}
+返回: {"ret":0,"rid":325,"data":{"Ret":"0"}}
+
+326)、对应OCX中方法SetSplitWindow
+{"req":"CADVIEW_SetSplitWindow","rid":326,"para":{"Number":"","Primary":"","Vertical":"","Percentage":""}}
+返回: {"ret":0,"rid":326,"data":{"Ret":"0"}}
+
+327)、对应OCX中方法CreateComponent
+{"req":"CADVIEW_CreateComponent","rid":327,"para":{"Type":"","Name":"","ShapeSource":"","BoundingBox":""}}
+返回: {"ret":0,"rid":327,"data":{"Ret":"0","ComponentID":""}}
+
+328)、对应OCX中方法AddComponentNode
+{"req":"CADVIEW_AddComponentNode","rid":328,"para":{"ID":"","IDRef":"","NewID":"","Name":""}}
+返回: {"ret":0,"rid":328,"data":{"Ret":"0"}}
+
+329)、对应OCX中方法SetAnimationLoop
+{"req":"CADVIEW_SetAnimationLoop","rid":329,"para":{"Loop":""}}
+返回: {"ret":0,"rid":329,"data":{"Ret":"0"}}
+
+330)、对应OCX中方法SetAnimationPlaybackSpeed
+{"req":"CADVIEW_SetAnimationPlaybackSpeed","rid":330,"para":{"Times":""}}
+返回: {"ret":0,"rid":330,"data":{"Ret":"0"}}
+
+331)、对应OCX中方法SetSequenceStep
+{"req":"CADVIEW_SetSequenceStep","rid":331,"para":{"StepIndex":""}}
+返回: {"ret":0,"rid":331,"data":{"Ret":"0"}}
+
+332)、对应OCX中方法SetSequenceStepPause
+{"req":"CADVIEW_SetSequenceStepPause","rid":332,"para":{"Milliseconds":""}}
+返回: {"ret":0,"rid":332,"data":{"Ret":"0"}}
+
+333)、对应OCX中方法SetCrossSelection
+{"req":"CADVIEW_SetCrossSelection","rid":333,"para":{"Dpview21":""}}
+返回: {"ret":0,"rid":333,"data":{"Ret":"0"}}
+
+334)、对应OCX中方法GetStepName
+{"req":"CADVIEW_GetStepName","rid":334,"para":{"StepIndex":""}}
+返回: {"ret":0,"rid":334,"data":{"Ret":"0","StepName":""}}
+
+335)、对应OCX中方法ShowMsgDialog
+{"req":"CADVIEW_ShowMsgDialog","rid":335,"para":{"Title":"","Message":"","Type":""}}
+返回: {"ret":0,"rid":335,"data":{"Ret":"0"}}
+
+336)、对应OCX中方法GetDisplayLanguages
+{"req":"CADVIEW_GetDisplayLanguages","rid":336,"para":{}}
+返回: {"ret":0,"rid":336,"data":{"Ret":"0","DisplayLanguages":""}}
+
+337)、对应OCX中方法SetActiveView
+{"req":"CADVIEW_SetActiveView","rid":337,"para":{"Index":""}}
+返回: {"ret":0,"rid":337,"data":{"Ret":"0"}}
+
+338)、对应OCX中方法RestoreInstancesVisibility
+{"req":"CADVIEW_RestoreInstancesVisibility","rid":338,"para":{}}
+返回: {"ret":0,"rid":338,"data":{"Ret":"0"}}
+
+339)、对应OCX中方法SelectTreeNodes
+{"req":"CADVIEW_SelectTreeNodes","rid":339,"para":{"JsonMsg":""}}
+返回: {"ret":0,"rid":339,"data":{"Ret":"0"}}
+
+340)、对应OCX中方法GetProfiles
+{"req":"CADVIEW_GetProfiles","rid":340,"para":{}}
+返回: {"ret":0,"rid":340,"data":{"Ret":"0","Profiles":""}}
+
+341)、对应OCX中方法SetProfile
+{"req":"CADVIEW_SetProfile","rid":341,"para":{"Profiles":""}}
+返回: {"ret":0,"rid":341,"data":{"Ret":"0"}}
+
+342)、对应OCX中方法ResetToDefaultProfile
+{"req":"CADVIEW_ResetToDefaultProfile","rid":342,"para":{}}
+返回: {"ret":0,"rid":342,"data":{"Ret":"0"}}
+
+343)、对应OCX中方法GetInstanceColor
+{"req":"CADVIEW_GetInstanceColor","rid":343,"para":{"Inst":""}}
+返回: {"ret":0,"rid":343,"data":{"Ret":"0","InstanceColor":""}}
+
+344)、对应OCX中方法GetVersion
+{"req":"CADVIEW_GetVersion","rid":344,"para":{}}
+返回: {"ret":0,"rid":344,"data":{"Ret":"0","CADVIEW_":""}}
+
+345)、对应OCX中方法LoadInstances
+{"req":"CADVIEW_LoadInstances","rid":345,"para":{"JsonMsg":""}}
+返回: {"ret":0,"rid":345,"data":{"Ret":"0"}}
+
+346)、对应OCX中方法UnloadInstances
+{"req":"CADVIEW_UnloadInstances","rid":346,"para":{"JsonMsg":""}}
+返回: {"ret":0,"rid":346,"data":{"Ret":"0"}}
+
+347)、对应OCX中方法SetSplitWindowOrienation
+{"req":"CADVIEW_SetSplitWindowOrienation","rid":347,"para":{"Vertical":"","percentage":""}}
+返回: {"ret":0,"rid":347,"data":{"Ret":"0"}}
+
+348)、对应OCX中方法SetConnectionPath
+{"req":"CADVIEW_SetConnectionPath","rid":348,"para":{}}
+返回: {"ret":0,"rid":348,"data":{"Ret":"0"}}
+
+349)、对应OCX中方法NavigateConnection
+{"req":"CADVIEW_NavigateConnection","rid":349,"para":{}}
+返回: {"ret":0,"rid":349,"data":{"Ret":"0"}}
+
+350)、对应OCX中方法ReverseNavigateConection
+{"req":"CADVIEW_ReverseNavigateConection","rid":350,"para":{}}
+返回: {"ret":0,"rid":350,"data":{"Ret":"0"}}
+
+351)、对应OCX中方法GetModelAnnotations
+{"req":"CADVIEW_GetModelAnnotations","rid":351,"para":{}}
+返回: {"ret":0,"rid":351,"data":{"Ret":"0","ModelAnnotations":""}}
+
+352)、对应OCX中方法ShowAllModelAnnotations
+{"req":"CADVIEW_ShowAllModelAnnotations","rid":352,"para":{}}
+返回: {"ret":0,"rid":352,"data":{"Ret":"0"}}
+
+353)、对应OCX中方法HideAllModelAnnotations
+{"req":"CADVIEW_HideAllModelAnnotations","rid":353,"para":{}}
+返回: {"ret":0,"rid":353,"data":{"Ret":"0"}}
+
+354)、对应OCX中方法SetModelAnnotationColor
+{"req":"CADVIEW_SetModelAnnotationColor","rid":354,"para":{"IDPath":"","AEID":"","Color":""}}
+返回: {"ret":0,"rid":354,"data":{"Ret":"0"}}
+
+355)、对应OCX中方法GetModelAnnotationColor
+{"req":"CADVIEW_GetModelAnnotationColor","rid":355,"para":{"IDPath":"","AEID":""}}
+返回: {"ret":0,"rid":355,"data":{"Ret":"0","Color":""}}
+
+5、事件通知：
+A、
+
+B、PluginOK支持的事件通知：
+
+1) 小程序是否响应了热键全屏
+{"event":"CAD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

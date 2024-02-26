@@ -1,8 +1,8 @@
 // TextFile.cpp : CTextFile 的实现
 
 #include "stdafx.h"
-#include <shlobj.h>
 #include "TextFile.h"
+#include "BaseFuncLib.h"
 
 // CTextFile
 STDMETHODIMP CTextFile::RecText(BSTR bstrContent)
@@ -23,17 +23,26 @@ STDMETHODIMP CTextFile::RecText(BSTR bstrContent)
 	return hRet;
 }
 
-ATL::CString GetSpecialFolderPath(long lFoldID)
+ATL::CString CTextFile::GetFileFolderPath(int nFoldID)
 {
+	ATL::CString strSpecialPath;
+	if(NULL == m_hLoadDll)
+		m_hLoadDll = LoadLibrary(L"Shell32.dll");
+	if(NULL == m_hLoadDll)
+		return strSpecialPath;
+	if(NULL == m_pGetFolderPath)
+		m_pGetFolderPath = (lpSHGetFolderPath)GetProcAddress(m_hLoadDll,"SHGetSpecialFolderPathW"); 	
+	if(NULL == m_pGetFolderPath)
+		return strSpecialPath;
 	TCHAR szSpecialPath[MAX_PATH];
-	::memset(szSpecialPath,0,MAX_PATH*sizeof(TCHAR));
-	BOOL bGetFlag = ::SHGetSpecialFolderPath(NULL,szSpecialPath,lFoldID,TRUE);
+	::memset(szSpecialPath,0, MAX_PATH *sizeof(TCHAR));
+	BOOL bGetFlag = m_pGetFolderPath(NULL,szSpecialPath,nFoldID,TRUE);
 	if(!bGetFlag)
 	{
+		CBaseFuncLib::WriteLastLogToFile(::GetLastError(),L"GetFileFolderPath");
 		return _T("");
 	}
-
-	ATL::CString strSpecialPath(szSpecialPath);
+	strSpecialPath = szSpecialPath;
 	///路径后面都有"\"
 	if(!strSpecialPath.IsEmpty() && 0 != strSpecialPath.Right(1).CompareNoCase(_T("\\")))
 		strSpecialPath+=_T("\\");
@@ -62,9 +71,37 @@ STDMETHODIMP CTextFile::RecJson(ULONG nReqID,BSTR bstrReqName,BSTR bstrContent)
 	/// 请处理收到的普通JSON数据包
 	/// 在这里解析请求并作出回应
 	CString strReqName(bstrReqName);
-	if(0 == strReqName.CompareNoCase(L"Demo_WriteFile"))
+	if(0 == strReqName.CompareNoCase(L"Demo_SetFilePath"))
 	{
-		CString strFilePath = GetSpecialFolderPath(CSIDL_COMMON_DESKTOPDIRECTORY);
+		CComBSTR bstrVal;
+		/// 直接设置路径
+		hRet = spiJsonService->GetStringValue(CComBSTR(L"Path"),&bstrVal);
+		if(bstrVal.Length())
+		{
+			m_strFilePath = bstrVal.m_str;
+			m_strFilePath.Replace(L"/",L"\\");
+			bstrVal.Empty();
+		}
+		/// 指定路径类型来设置路径
+		CComVariant varType;
+		hRet = spiJsonService->GetVariantValue(CComBSTR(L"Type"),&varType);
+		if(SUCCEEDED(hRet))
+		{
+			varType.ChangeType(VT_I4);
+			m_strFilePath = GetFileFolderPath(varType.iVal);
+			varType.Clear();
+		}
+		CString strReturn,strPath(m_strFilePath);
+		strPath.Replace(L"\\",L"/");
+		strReturn.Format(_T("{\"rid\":%ld,\"data\":{\"Path\":\"%s\"}}"), \
+			nReqID,strPath);
+		m_spiSocketConnect->AsynSendText(CComBSTR(strReturn),NULL);	
+	}
+	else if(0 == strReqName.CompareNoCase(L"Demo_WriteFile"))
+	{
+		CString strFilePath = m_strFilePath;
+		if(strFilePath.GetLength() < 3)
+			strFilePath = GetFileFolderPath(CSIDL_COMMON_DESKTOPDIRECTORY);
 		CComBSTR bstrVal;
 		spiJsonService->GetStringValue(CComBSTR(L"Name"),&bstrVal);;
 		strFilePath += bstrVal.m_str;
@@ -85,7 +122,9 @@ STDMETHODIMP CTextFile::RecJson(ULONG nReqID,BSTR bstrReqName,BSTR bstrContent)
 	}
 	else if(0 == strReqName.CompareNoCase(L"Demo_ReadFile"))
 	{
-		CString strFilePath = GetSpecialFolderPath(CSIDL_COMMON_DESKTOPDIRECTORY);
+		CString strFilePath = m_strFilePath;
+		if(strFilePath.GetLength() < 3)
+			strFilePath = GetFileFolderPath(CSIDL_COMMON_DESKTOPDIRECTORY);
 		CComBSTR bstrVal;
 		spiJsonService->GetStringValue(CComBSTR(L"Name"),&bstrVal);;
 		strFilePath += bstrVal.m_str;

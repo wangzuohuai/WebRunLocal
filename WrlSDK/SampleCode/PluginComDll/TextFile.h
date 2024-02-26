@@ -3,6 +3,8 @@
 #pragma once
 #include "resource.h"       // 主符号
 #include <atlcomtime.h>
+#include <shlobj.h>
+
 #ifdef _USRDLL
 #include "PluginComDll_i.h"
 #else
@@ -14,6 +16,8 @@
 #if defined(_WIN32_WCE) && !defined(_CE_DCOM) && !defined(_CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA)
 #error "Windows CE 平台(如不提供完全 DCOM 支持的 Windows Mobile 平台)上无法正确支持单线程 COM 对象。定义 _CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA 可强制 ATL 支持创建单线程 COM 对象实现并允许使用其单线程 COM 对象实现。rgs 文件中的线程模型已被设置为“Free”，原因是该模型是非 DCOM Windows CE 平台支持的唯一线程模型。"
 #endif
+
+typedef BOOL (__stdcall *lpSHGetFolderPath)(HWND hwnd,LPWSTR pszPath,int csidl,BOOL fCreate);
 
 // CTextFile
 
@@ -27,9 +31,22 @@ class ATL_NO_VTABLE CTextFile :
 #else
 	public IDispatchImpl<ITextFile, &IID_ITextFile, &LIBID_PluginComExeLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
 #endif
+#ifdef WRL_VRSION_STANDALONE
 	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_WrlBase, /* wMajor = */ 1>
+#else
+	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_ZbaBase, /* wMajor = */ 1>
+#endif
 {
 protected:
+
+	/// 调用范例DLL
+	HMODULE	m_hLoadDll;
+
+	/// 调用范例DLL的函数
+	lpSHGetFolderPath m_pGetFolderPath;
+
+	/// 文件操作路径
+	ATL::CString	m_strFilePath;
 
 	/// WEB SOCKET连接对象
 	IWebSocketConnectPtr m_spiSocketConnect;
@@ -37,6 +54,8 @@ protected:
 public:
 	CTextFile()
 		:m_spiSocketConnect(NULL)
+		,m_hLoadDll(NULL)
+		,m_pGetFolderPath((NULL))
 	{
 	}
 
@@ -55,6 +74,8 @@ public:
 
 	DECLARE_PROTECT_FINAL_CONSTRUCT()
 
+	ATL::CString GetFileFolderPath(int nFoldID);
+
 	HRESULT FinalConstruct()
 	{
 		return S_OK;
@@ -62,6 +83,12 @@ public:
 
 	void FinalRelease()
 	{
+		m_pGetFolderPath = NULL;
+		if(NULL != m_hLoadDll)
+		{
+			::FreeLibrary(m_hLoadDll);
+			m_hLoadDll = NULL;
+		}
 		if (NULL != m_spiSocketConnect)
 			m_spiSocketConnect = NULL;
 	}

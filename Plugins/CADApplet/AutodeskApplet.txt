@@ -1,4 +1,4 @@
-﻿ACAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk公司的AutoCAD软件VBA及DWG TrueView或Design Review的OCX控件接口实现的dwg、dxf等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review等软件窗口内嵌到网页指定区域运行并调用内部实现的各种接口功能。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿ACAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk公司的AutoCAD软件自动化接口、DWG TrueView或Design Review的OCX控件接口实现的dwg、dxf等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review等软件窗口内嵌到网页指定区域运行并调用内部实现的各种接口功能。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 支持Autodesk公司AutoCAD 2007及以上版本的桌面安装版、建议使用官方发布的AutoCAD 2013及以上版本的激活版,AutoCAD商标及相关软件版权归Autodesk所有。
 
 1、PluginOK(牛插)中间件的安装：
@@ -28,7 +28,7 @@ Web中参数说明：
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：0启动AutoCAD实现在线编辑 1启动DWG TrueView在线查看和转换 2启动Design Review在线审阅
+Option：0启动AutoCAD实现在线编辑 1启动DWG TrueView在线查看和转换 2启动Design Review在线审阅 可提前通过接口Wrl_CADInfo获取当前电脑是否已经安装相关软件
 Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -39,7 +39,7 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 {"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动Design Review程序在线审阅dwg、dxf文档(推荐方式启动)
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"2","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"2","Open":"D:/Zorro/test.dxf"}}
 
 自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
 {"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
@@ -54,6 +54,11 @@ B、{"event":"Wrl_Listen","aid":3,"rid":6,"data":{"SID":"123","PID":"ACadApplet"
 返回的侦听端口，可再建立一个Web Socket连接后，调用网页组件中的相关功能，比如放大缩小图纸。
 代表网页组件创建成功，返回ID为当前网页组件运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
 C、{"event":"Wrl_AppletOK","aid":3,"rid":6,"data":{"SID":"123","PID":"ACadApplet","Port":997}}
+
+关于接口Wrl_CADInfo的说明：
+请求：{"req":"Wrl_CADInfo","rid":1,"para":{}}，返回信息举例：
+{"ret":0,"rid":1,"req":"Wrl_CADInfo","data":{"Info":[{"Type":1,"Option":0,"X64":1,"Ver":"R24.1.51.0.0","Path":"F:/Soft/Autodesk/AutoCAD 2022/acad.exe"},{"Type":1,"Option":1,"X64":1,"Ver":"22.0.50.0.0","Path":"C:/Program Files/Common Files/Autodesk Shared/dwgviewrAcCtrl.dll"},{"Type":1,"Option":2,"X64":0,"Ver":"14.0.0.177","Path":"C:/Program Files (x86)/Common Files/Autodesk Shared/DWF Common/AdView.dll"}]}}
+Type等于1的代表AutoCAD相关小程序的安装信息
 
 2)、请求控制ACAD网页组件：
 当前端不再需要网页组件时可指定关闭，或者显示/隐藏及全屏显示等
@@ -99,14 +104,14 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 1)、请求安装ACAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"FD2561ED4A3A2A8F286091A6FE976F4A","Version":"2.2.12.5","Size":3670016,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0F9040B2B488761E978BE6EF608C34B73B3B9F9151AFD2EAD7FF5B1FBE79038C09FBE89958C9217B4B6CEBDF4FB4AA1D3BB700CB1943BE044A26A80DB947C03653C55D421614375EBA1A9B65DEA048CD65E0A3AC5681F9D49A82888ADEEA18EF8A066A31C0E134200AFA1BB13C201697BF5B461220B8A1BA3BAC8C3D4E3BC2854DFC128390B56B2EFC8D3D741EBBFCCBF9D19E6848AD22B7E1FB930135220DEB57B066AD702079EF5E9C4C4BAE51D3A467EE83449A983576510FC887C76216C24C880AFD608EAED0800EB004E0F59548AE5A0BCE344D1395A85FF640C541F8CC802E395CF3C73836B3ABD3A99E79536E0CD55D66C850153B9B554AEB9B8889C7"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"540FD4A8375657856E0598B685DC00C6","Version":"2.2.13.1","Size":3735552,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8C7E48EEAE963F5E48ED5A8B3D809C70C637E5151BDB80E2D807EAAEDC57A5A83566A1ABABF7649C49D0F5D21103CBACF5432E016D75603A6ABA6099BF9653DF01E05DF541AF692FE9E459CCC6A15D0F38D2FAD649C0ED3DD60FA48A05DC18C4F249FA06F5B9EFA2AEAE549D774E4648A74AE1D39CD12DB9E51EFA26BF25733D62E8BD13CC0547A5F7235B2E0754C2825C7736787D7835FA810C947E8B46E5242FECCC120623EB08CDD875CE11E9805E15C7CEC2DA2BE91A0EE27DCC322075839BA29569A2FA0674544B694A87041B392DD87DBBEA05DA625D82EF4819E6C06DFAB08179AABACC4BC3A88E7DF00287188CFFECC8F157E89CC8CCA29D5C22D36C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级ACAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-01-16","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"58F8C885244BACFCF176E605240C7FD4","Version":"2.2.12.5","Size":3670016,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6304A8A09333F52B6A5B99A30D1C31BDC8EC03ED7745A7241C17F0BCC35082A45DA7E07C4946831639C5C8E025691D417EA40849B23666AF6528AB85486ADA42B78BD3B4E1AFAE7F2B526676E663658B9852FBFFF5B6221F8564271C2B485CEDC87DF5279A840CF083E1FEC9DC2AD47C135AFE5B714FD26A200E354DF77202457C22AE69318031C068EAC0908F9B5D452EB11594315D1F8B76C443F151002A98DE8FB74EEE9969D0E3E8FC0A2E94551820243C2CE2F163E27572DF9E2C6FBB673C69DBEEDF4CFAC9832CFC5DC676ED00C8DA9F6C5340667C9811BA9422677547C386B76582F6979E278E9300275386A919A83A13F621A6108A085A202E793B4D"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"72DE776804CD4C565D36E2E985E9001D","Version":"2.2.13.1","Size":3735552,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"395FC4B70CB8464BCC5349D591E44534CE61AD16C842A751505C85743D5E39FCECB825434BA5349E900EEE8B753FBD682AA332A9BB22DBE22C90E6DA6228B8E79CCAF30D38E78EF58BAF969216F72D09D16E0A208D5F9DDA083B8B1334184B69F8259D0B63C2171746EB3909058BC34A572601E6B0FE920A9189EDA89F73E95CDA53939A8AF0D7B5E4FD7B33B503E19AD5CFF4211CFD4258F76339401EE377EE26B8EC25C50EADE7A8801075B01150765F887883528E1A75973F202528380D6F677BBA93333DD9233C67A284F2F62C4C53A726129D88DEC6FD950112F650B940C440E515A2D07002D906A881A6B70F7AA3128CAD66FF499A382A93DCA1292618"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -114,19 +119,19 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"ACadApplet","Type":8}}
 
-4、ACAD网页组件转调用Autodesk的AutoCAD软件VBA接口及DWG TrueView或Design Review的OCX控件接口，先根据Wrl_ACADApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、ACAD网页组件转调用Autodesk的AutoCAD软件自动化接口、DWG TrueView或Design Review的OCX控件接口，先根据Wrl_ACADApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
-1)、请求获取当前打开文档信息
+1)、请求获取当前打开文档信息 适用于autocad、DWG TrueView及Design Review软件
 {"req":"CAD_GetCurOpen","rid":1,"para":{}}
 返回：{"ret":0,"rid":1,"data":{"Ret":"0","File":"C:/CADDoc/test.dwg","Edit":0,"Option":0,"Hide":0}}
 
-2)、请求关闭当前打开的文档
+2)、请求关闭当前打开的文档 适用于autocad、DWG TrueView及Design Review软件
 Save指定是否保存，不指定时根据程序配置判断是否自动保存
 {"req":"CAD_Close","rid":2,"para":{"Save":0}}
 返回: {"ret":0,"rid":2,"data":{"Ret":"0"}} Ret为0代表成功
 
-3)、请求打开文档
+3)、请求打开文档 适用于autocad、DWG TrueView及Design Review软件
 Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 PW打开密码
 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
@@ -156,16 +161,16 @@ DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先�
 {"req":"CAD_ConvertTo","rid":6,"para":{"SrcFile":"D:/Zorro/test1.dwg","DestFile":"D:/Zorro/test1.pdf","PW":""}}
 返回: {"ret":0,"rid":6,"data":{"Ret":"0"}} Ret为0代表成功
 
-7）创建指定目录
+7）创建指定目录 适用于autocad、DWG TrueView及Design Review软件
 Dir为子目录名称，可为全路径，需要确保有创建子目录权限，非全路径时，为启动指定数据文件路径DataPath的子目录，没指定DataPath时为中间件data的子目录
 {"req":"CAD_CreateDir","rid":7,"para":{"Dir":"/doc"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0"}}
 
-8）切换全屏编辑状态
+8）切换全屏编辑状态 适用于autocad、DWG TrueView及Design Review软件
 {"req":"CAD_SwitchFullScreen","rid":8,"para":{}}
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
 
-9）网络文件操作
+9）网络文件操作 适用于autocad、DWG TrueView及Design Review软件
 Type 1上传文件 0下载文件
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
@@ -182,10 +187,290 @@ Count 打印份数，不设置默认1
 {"req":"CAD_Print","rid":10,"para":{"SrcFile":"D:/Zorro/test1.dwg","PW":"","Count":1}}
 返回: {"ret":0,"rid":10,"data":{"Ret":"0"}} Ret为0代表成功
 
-5、事件通知：
-A、
+B、DWG TrueView专用功能请求：
 
-B、PluginOK支持的事件通知：
+101)、对应OCX中的方法Plot 切换到平面图
+{"req":"CADVIEW_Plot","rid":101,"para":{}}
+返回: {"ret":0,"rid":101,"data":{"Ret":"0"}}
+
+102)、对应OCX中的方法Plot_Preview 平面图预览
+{"req":"CADVIEW_PlotPreview","rid":102,"para":{}}
+返回: {"ret":0,"rid":102,"data":{"Ret":"0"}}
+
+103)、对应OCX中的方法ViewPlotDetails 查看平面图详情
+{"req":"CADVIEW_ViewPlotDetails","rid":103,"para":{}}
+返回: {"ret":0,"rid":103,"data":{"Ret":"0"}}
+
+104)、对应OCX中的方法PublishForMarkup
+{"req":"CADVIEW_PublishForMarkup","rid":104,"para":{"FullPath":"D:/Zorro/Publish.dwg","Space":1}}
+返回: {"ret":0,"rid":104,"data":{"Ret":"0","Status":"0"}}
+
+105)、对应OCX中的方法Publish 发布图
+{"req":"CADVIEW_Publish","rid":105,"para":{}}
+返回: {"ret":0,"rid":105,"data":{"Ret":"0"}}
+
+106)、对应OCX中的方法ViewPublishDetails 查看发布图详情
+{"req":"CADVIEW_ViewPublishDetails","rid":106,"para":{}}
+返回: {"ret":0,"rid":106,"data":{"Ret":"0"}}
+
+107)、对应OCX中的方法Drawing_Properties 图纸属性
+{"req":"CADVIEW_DrawingProperties","rid":107,"para":{}}
+返回: {"ret":0,"rid":107,"data":{"Ret":"0"}}
+
+108)、对应OCX中的方法Zoom_Realtime 实时缩放
+{"req":"CADVIEW_ZoomRealtime","rid":108,"para":{}}
+返回: {"ret":0,"rid":108,"data":{"Ret":"0"}}
+
+109)、对应OCX中的方法Zoom_Previous 缩放预览
+{"req":"CADVIEW_ZoomPrevious","rid":109,"para":{}}
+返回: {"ret":0,"rid":109,"data":{"Ret":"0"}}
+
+110)、对应OCX中的方法Zoom_Window 缩放窗口
+{"req":"CADVIEW_ZoomWindow","rid":110,"para":{}}
+返回: {"ret":0,"rid":110,"data":{"Ret":"0"}}
+
+111)、对应OCX中的方法Zoom_Dynamic 动态缩放
+{"req":"CADVIEW_ZoomDynamic","rid":111,"para":{}}
+返回: {"ret":0,"rid":111,"data":{"Ret":"0"}}
+
+112)、对应OCX中的方法Zoom_Center 居中缩放
+{"req":"CADVIEW_ZoomCenter","rid":112,"para":{}}
+返回: {"ret":0,"rid":112,"data":{"Ret":"0"}}
+
+113)、对应OCX中的方法Zoom_In 视图放大
+{"req":"CADVIEW_ZoomIn","rid":113,"para":{}}
+返回: {"ret":0,"rid":113,"data":{"Ret":"0"}}
+
+114)、对应OCX中的方法Zoom_Out 视图缩小
+{"req":"CADVIEW_ZoomOut","rid":114,"para":{}}
+返回: {"ret":0,"rid":114,"data":{"Ret":"0"}}
+
+115)、对应OCX中的方法Zoom_All 缩放全部
+{"req":"CADVIEW_ZoomAll","rid":115,"para":{}}
+返回: {"ret":0,"rid":115,"data":{"Ret":"0"}}
+
+116)、对应OCX中的方法Zoom_Extents 缩放范围
+{"req":"CADVIEW_ZoomExtents","rid":116,"para":{}}
+返回: {"ret":0,"rid":116,"data":{"Ret":"0"}}
+
+117)、对应OCX中的方法Pan_Realtime 实时平移
+{"req":"CADVIEW_PanRealtime","rid":117,"para":{}}
+返回: {"ret":0,"rid":117,"data":{"Ret":"0"}}
+
+118)、对应OCX中的方法Pan_Point 按点平移
+{"req":"CADVIEW_PanPoint","rid":118,"para":{}}
+返回: {"ret":0,"rid":118,"data":{"Ret":"0"}}
+
+119)、对应OCX中的方法Named_Views 命名视图
+{"req":"CADVIEW_NamedViews","rid":119,"para":{}}
+返回: {"ret":0,"rid":119,"data":{"Ret":"0"}}
+
+120)、对应OCX中的方法View_3D_Orbit 查看3D轨道
+{"req":"CADVIEW_View3DOrbit","rid":120,"para":{}}
+返回: {"ret":0,"rid":120,"data":{"Ret":"0"}}
+
+121)、对应OCX中的方法Shade_2D_Wireframe 着色2D线框
+{"req":"CADVIEW_Shade2DWireframe","rid":121,"para":{}}
+返回: {"ret":0,"rid":121,"data":{"Ret":"0"}}
+
+122)、对应OCX中的方法Shade_3D_Wireframe 着色3D线框
+{"req":"CADVIEW_Shade3DWireframe","rid":122,"para":{}}
+返回: {"ret":0,"rid":122,"data":{"Ret":"0"}}
+
+123)、对应OCX中的方法Shade_Hidden 着色隐藏
+{"req":"CADVIEW_ShadeHidden","rid":123,"para":{}}
+返回: {"ret":0,"rid":123,"data":{"Ret":"0"}}
+
+124)、对应OCX中的方法Shade_Flat_Shaded 遮挡平面阴影
+{"req":"CADVIEW_ShadeFlatShaded","rid":124,"para":{}}
+返回: {"ret":0,"rid":124,"data":{"Ret":"0"}}
+
+125)、对应OCX中的方法Shade_Gourand_Shaded 遮挡Gourand阴影
+{"req":"CADVIEW_ShadeGourandShaded","rid":125,"para":{}}
+返回: {"ret":0,"rid":125,"data":{"Ret":"0"}}
+
+126)、对应OCX中的方法Shade_Flat_Shaded_Edges_On 遮蔽平坦的阴影边缘
+{"req":"CADVIEW_ShadeFlatShadedEdgesOn","rid":126,"para":{}}
+返回: {"ret":0,"rid":126,"data":{"Ret":"0"}}
+
+127)、对应OCX中的方法Shade_Gourand_Shaded_Edges_On 遮荫Gourand阴影边缘
+{"req":"CADVIEW_ShadeGourandShadedEdgesOn","rid":127,"para":{}}
+返回: {"ret":0,"rid":127,"data":{"Ret":"0"}}
+
+128)、对应OCX中的方法callBackImageResolve 回调图像解析
+{"req":"CADVIEW_callBackImageResolve","rid":128,"para":{"ParentFileName":"","EmbeddedName":""}}
+返回: {"ret":0,"rid":128,"data":{"Ret":"0","FileName":"","Code":""}}
+
+129)、对应OCX中的方法callBackFileResolve 回调文件解析
+{"req":"CADVIEW_callBackFileResolve","rid":129,"para":{"ParentFileName":"","EmbeddedName":""}}
+返回: {"ret":0,"rid":129,"data":{"Ret":"0","FileName":"","Code":""}}
+
+130)、对应OCX中的方法Layer_Properties_Manager 图层属性管理器
+{"req":"CADVIEW_LayerPropertiesManager","rid":130,"para":{}}
+返回: {"ret":0,"rid":130,"data":{"Ret":"0"}}
+
+131)、对应OCX中的方法Options 显示选项
+{"req":"CADVIEW_Options","rid":131,"para":{}}
+返回: {"ret":0,"rid":131,"data":{"Ret":"0"}}
+
+132)、对应OCX中的方法Help 显示帮助
+{"req":"CADVIEW_Help","rid":132,"para":{}}
+返回: {"ret":0,"rid":132,"data":{"Ret":"0"}}
+
+133)、获取OCX中的属性ActiveSheet 获取活动表单号
+{"req":"CADVIEW_GetActiveSheet","rid":133,"para":{}}
+返回: {"ret":0,"rid":133,"data":{"Ret":"0","ActiveSheet":""}}
+
+134)、设置OCX中的属性ActiveSheet 设置活动表单号
+{"req":"CADVIEW_PutActiveSheet","rid":134,"para":{"ActiveSheet":""}}
+返回: {"ret":0,"rid":134,"data":{"Ret":"0"}}
+
+135)、对应OCX中的方法CheckAutocadActiveState 检查AutoCAD激活状态
+{"req":"CADVIEW_CheckAutocadActiveState","rid":135,"para":{}}
+返回: {"ret":0,"rid":135,"data":{"Ret":"0","ActiveState":""}}
+
+136)、对应OCX中的方法Deactivate 关闭
+{"req":"CADVIEW_Deactivate","rid":136,"para":{}}
+返回: {"ret":0,"rid":136,"data":{"Ret":"0"}}
+
+137)、对应OCX中的方法SilentPublish 静默发布
+{"req":"CADVIEW_SilentPublish","rid":137,"para":{}}
+返回: {"ret":0,"rid":137,"data":{"Ret":"0"}}
+
+138)、对应OCX中的方法VisualStyle_2D_Wireframe
+{"req":"CADVIEW_VisualStyle2DWireframe","rid":138,"para":{}}
+返回: {"ret":0,"rid":138,"data":{"Ret":"0"}}
+
+139)、对应OCX中的方法VisualStyle_3D_Wireframe
+{"req":"CADVIEW_VisualStyle3DWireframe","rid":139,"para":{}}
+返回: {"ret":0,"rid":139,"data":{"Ret":"0"}}
+
+140)、对应OCX中的方法VisualStyle_Hidden
+{"req":"CADVIEW_VisualStyleHidden","rid":140,"para":{}}
+返回: {"ret":0,"rid":140,"data":{"Ret":"0"}}
+
+141)、对应OCX中的方法VisualStyle_Realistic
+{"req":"CADVIEW_VisualStyleRealistic","rid":141,"para":{}}
+返回: {"ret":0,"rid":141,"data":{"Ret":"0"}}
+
+142)、对应OCX中的方法VisualStyle_Conceptual
+{"req":"CADVIEW_VisualStyleConceptual","rid":142,"para":{}}
+返回: {"ret":0,"rid":142,"data":{"Ret":"0"}}
+
+143)、对应OCX中的方法SetPc3File 设置Pc3文件
+{"req":"CADVIEW_SetPc3File","rid":143,"para":{}}
+返回: {"ret":0,"rid":143,"data":{"Ret":"0"}}
+
+C、Design Review专用功能请求：
+
+201)、对应OCX获取属性BackColor
+{"req":"CADREVIEW_GetBackColor","rid":201,"para":{}}
+返回: {"ret":0,"rid":201,"data":{"Ret":"0","BackColor":""}}
+
+202)、对应OCX设置属性BackColor
+{"req":"CADREVIEW_PutBackColor","rid":202,"para":{"BackColor":""}}
+返回: {"ret":0,"rid":202,"data":{"Ret":"0"}}
+
+203)、对应OCX获取属性EmbedSourceDocument
+{"req":"CADREVIEW_GetEmbedSourceDoc","rid":203,"para":{}}
+返回: {"ret":0,"rid":203,"data":{"Ret":"0","EmbedSourceDoc":""}}
+
+204)、对应OCX设置属性BackColor
+{"req":"CADREVIEW_PutEmbedSourceDoc","rid":204,"para":{"EmbedSourceDoc":""}}
+返回: {"ret":0,"rid":204,"data":{"Ret":"0"}}
+
+205)、对应OCX调用方法ShowPrintDialog
+{"req":"CADREVIEW_ShowPrintDialog","rid":205,"para":{}}
+返回: {"ret":0,"rid":205,"data":{"Ret":"0"}}
+
+206)、对应OCX调用方法NavigateToUrl
+{"req":"CADREVIEW_NavigateToUrl","rid":206,"para":{"Url":""}}
+返回: {"ret":0,"rid":206,"data":{"Ret":"0"}}
+
+207)、对应OCX调用方法ExecuteCommand或ExecuteCommandEx
+自定了Val参数的调用ExecuteCommandEx
+{"req":"CADREVIEW_ExecuteCommand","rid":207,"para":{"Command":"","Val":""}}
+返回: {"ret":0,"rid":207,"data":{"Ret":"0"}}
+
+208)、对应OCX获取属性DocumentParams
+{"req":"CADREVIEW_GetDocParams","rid":208,"para":{}}
+返回: {"ret":0,"rid":208,"data":{"Ret":"0","DocParams":""}}
+
+209)、对应OCX获取属性HistoryParams
+{"req":"CADREVIEW_GetHistoryParams","rid":209,"para":{}}
+返回: {"ret":0,"rid":209,"data":{"Ret":"0","HistoryParams":""}}
+
+210)、对应OCX获取属性LocalFilePath
+{"req":"CADREVIEW_GetLocalFilePath","rid":210,"para":{}}
+返回: {"ret":0,"rid":210,"data":{"Ret":"0","LocalFilePath":""}}
+
+211)、对应OCX获取属性ViewerParams
+{"req":"CADREVIEW_ViewerParams","rid":211,"para":{}}
+返回: {"ret":0,"rid":211,"data":{"Ret":"0","ViewerParams":""}}
+
+212)、对应OCX设置属性ViewerParams
+{"req":"CADREVIEW_PutViewerParams","rid":212,"para":{"ViewerParams":""}}
+返回: {"ret":0,"rid":212,"data":{"Ret":"0"}}
+
+213)、对应OCX调用方法GoBack
+{"req":"CADREVIEW_GoBack","rid":213,"para":{}}
+返回: {"ret":0,"rid":213,"data":{"Ret":"0"}}
+
+214)、对应OCX调用方法GoForward
+{"req":"CADREVIEW_GoForward","rid":214,"para":{}}
+返回: {"ret":0,"rid":214,"data":{"Ret":"0"}}
+
+215)、对应OCX调用方法SaveHistory
+{"req":"CADREVIEW_SaveHistory","rid":215,"para":{}}
+返回: {"ret":0,"rid":215,"data":{"Ret":"0"}}
+
+216)、对应OCX调用方法ShowHelp
+{"req":"CADREVIEW_ShowHelp","rid":216,"para":{}}
+返回: {"ret":0,"rid":216,"data":{"Ret":"0"}}
+
+217)、对应OCX获取属性DocType
+{"req":"CADREVIEW_GetDocType","rid":217,"para":{}}
+返回: {"ret":0,"rid":217,"data":{"Ret":"0","DocType":""}}
+
+218)、对应OCX获取属性GradientBackColor
+{"req":"CADREVIEW_GetGradientBackColor","rid":218,"para":{}}
+返回: {"ret":0,"rid":218,"data":{"Ret":"0","GradientBackColor":""}}
+
+219)、对应OCX设置属性GradientBackColor
+{"req":"CADREVIEW_PutGradientBackColor","rid":219,"para":{"GradientBackColor":""}}
+返回: {"ret":0,"rid":219,"data":{"Ret":"0"}}
+
+220)、对应OCX获取属性GradientBackgroundEnabled
+{"req":"CADREVIEW_GetGradientBackgroundEnabled","rid":220,"para":{}}
+返回: {"ret":0,"rid":220,"data":{"Ret":"0","GradientBackgroundEnabled":""}}
+
+221)、对应OCX设置属性GradientBackColor
+{"req":"CADREVIEW_PutGradientBackgroundEnabled","rid":221,"para":{"GradientBackgroundEnabled":""}}
+返回: {"ret":0,"rid":221,"data":{"Ret":"0"}}
+
+222)、对应OCX获取属性CanvasEmpty
+{"req":"CADREVIEW_GetCanvasEmpty","rid":222,"para":{}}
+返回: {"ret":0,"rid":222,"data":{"Ret":"0","CanvasEmpty":""}}
+
+223)、对应OCX设置属性CanvasEmpty
+{"req":"CADREVIEW_PutCanvasEmpty","rid":223,"para":{"CanvasEmpty":""}}
+返回: {"ret":0,"rid":223,"data":{"Ret":"0"}}
+
+5、事件通知：
+A、AutoCAD事件
+1) 
+
+B、DWG TrueView事件
+1) CADVIEW_callBackFileResolve回调结果通知
+{"event":"CADVIEW_FileResolve","data":{"ParentFileName":"","InEmbeddedName":"","OutFileName":"","Code":""}}
+
+2) CADVIEW_callBackImageResolve回调结果通知
+{"event":"CADVIEW_ImageResolve","data":{"ParentFileName":"","InEmbeddedName":"","OutFileName":"","Code":""}}
+
+C、Design Review事件
+1) 
+
+D、PluginOK支持的事件通知：
 
 1) 小程序是否响应了热键全屏
 {"event":"CAD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记

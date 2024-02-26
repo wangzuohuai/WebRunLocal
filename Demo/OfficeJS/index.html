@@ -115,6 +115,9 @@
         <div class="item">
             <button onclick="insertNote()">插入批注</button>
         </div>
+        <div class="item">
+            <button onclick="DocRed()">公文套红</button>
+        </div>
     <!--    <div class="item">
             <button onclick="startTabApplet(2)">新标签启动excel网页组件</button>
         </div>-->
@@ -161,7 +164,7 @@
         </div>
         <div class="item">最新版本号</div>
         <div class="item">
-            <input name="version" value="2.2.12.5" size="small"></input>
+            <input name="version" value="2.2.12.3" size="small"></input>
         </div>
         <button onclick="checkUpdate()" class="button-primary">校验升级</button>
     </div>
@@ -610,6 +613,11 @@
     function insertNote() {
         applet.setWebsocket(aid, 2)
         applet.insertNote()
+    }
+
+    function DocRed() {
+        applet.setWebsocket(aid, 2)
+        applet.DocRed()
     }
 
     function closeFirstApplet() {
