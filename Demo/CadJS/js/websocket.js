@@ -55,9 +55,9 @@ function websocket(port='',type=0){
 
     this.onerror = (event) => {
         if (this.ws.readyState == 3 && websocket.wsArr.length==0) {
-            let isBool = confirm('提示：PageHi办公网页组件 服务端口连接失败，可能是尚未安装，是否马上下载安装？')
+            let isBool = confirm('提示：PageHiCAD网页组件 服务端口连接失败，可能是尚未安装，是否马上下载安装？')
             if (isBool) {
-                window.open('http://local.zorrosoft.com/Files/PageHiOfficeIns.exe') // 建议打包为zip等格式下载，解压后安装，EXE文件下载浏览器会提示是否保留
+                window.open('http://local.zorrosoft.com/Files/PageHiCADIns.exe') // 建议打包为zip等格式下载，解压后安装，EXE文件下载浏览器会提示是否保留
             }
         }
     }
