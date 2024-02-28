@@ -1,9 +1,9 @@
 # WebRunLocal
-PluginOK中间件，原名WebRunLocal(本网通)，是一个实现浏览器与桌面程序之间可双向调用的低成本、强兼容、高性能、安全可控、轻量级、易集成、可扩展、跨浏览器的原生小程序系统。通过此中间件可实现在网页中无障碍操作终端电脑连接的各种硬件设备、调用操作系统API及本地DLL功能，可彻底解决ActiveX控件及桌面自动化程序(如微软Office、金山WPS、AutoCAD、Solidworks等)在Chrome、Edge、Firefox、IE、Opera、Electron、Vivaldi、Brave、360、QQ、搜狗、联想等浏览器中的嵌入使用问题，是浏览器进行功能扩展的秘密武器，是FireBreath的首选替代方案，也是原来采用了微软Silverlight和Adobe Flex等RIA技术的ERP、CRM等系统实现兼容Chrome、Edge等最新版浏览器的优选框架。PluginOK中间件提供的前端集成接口于开发语言无关，网页中只需使用简单的JS脚本即可完成与B/S系统的对接，让浏览器成为各种信息化、数字化系统集成的最佳容器，彻底解决B/S系统的各种痛点和难点，让桌面程序迁移到浏览器中运行从此再无障碍。
+PluginOK中间件，原名WebRunLocal(本网通)，是一个实现浏览器与桌面程序之间可双向调用的低成本、强兼容、高性能、安全可控、轻量级、易集成、可扩展、跨浏览器的原生小程序系统。通过此中间件可实现在网页中无障碍操作终端电脑连接的各种硬件设备、调用操作系统API及本地DLL功能，可彻底解决ActiveX控件及桌面自动化程序(如微软Office、金山WPS、AutoCAD、Solidworks、CATIA、ProE、UG等)在Chrome、Edge、Firefox、IE、Opera、Electron、Vivaldi、Brave、360、QQ、搜狗、联想等浏览器中的嵌入使用问题，是浏览器进行功能扩展的秘密武器，是FireBreath的首选替代方案，也是原来采用了微软Silverlight和Adobe Flex等RIA技术的ERP、CRM等系统实现兼容Chrome、Edge等最新版浏览器的优选框架。PluginOK中间件提供的前端集成接口于开发语言无关，网页中只需使用简单的JS脚本即可完成与B/S系统的对接，让浏览器成为各种信息化、数字化系统集成的最佳容器，彻底解决B/S系统的各种痛点和难点，让桌面程序迁移到浏览器中运行从此再无障碍。
 
 PluginOK(牛插)中间件及相关小程序由成都佐罗软件有限公司研发并销售，咨询热线电话：18081958957、4006831589，公司网站：http://www.zorrosoft.com 微信在线沟通：ZorroSoft 咨询报价及集成方案请先添加微信便于沟通，谢谢！
 
-操作系统兼容性： 1、全面兼容Windows XP、Vista、7、8、8.1、10、11等各版本32及64位X86桌面系统； 2、全面兼容Windows Server 2008、2012、2016、2019、2022等各版本32及64位X86服务系统。
+操作系统兼容性： 1、全面兼容Windows XP、Vista、7、8、8.1、10、11等各版本32及64位桌面系统； 2、全面兼容Windows Server 2008、2012、2016、2019、2022等各版本32及64位服务系统。
 
 高级版内嵌网页小程序的浏览器兼容性： 1、IE 8及以上版本； 2、Chrome 41及以上版本； 3、FireFox 50及以上版本； 4、Edge(Chrome内核) 80及以上版本； 5、Opera 36及以上版本； 6、Brave浏览器； 7、Vivaldi浏览器； 8、Electron桌面程序； 9、360极速浏览器(X) 9.5及以上版本； 10、360安全及企业安全浏览器； 11、QQ浏览器10及以上版本； 12、搜狗浏览器；13、华为浏览器；14、联想浏览器；15、齐安信浏览器；16、海泰红莲花浏览器；17、微信网页窗口...
 
@@ -32,7 +32,8 @@ PluginOK中间件及小程序授权：商业用途需付费使用，非商业用
 
 网页中RTSP实时视频流低延迟多路VLC引擎原生播放演示网站：http://local.zorrosoft.com/vlc 
 网页中RTSP实时视频流低延迟多路多引擎原生播放演示网站：http://local.zorrosoft.com/player 
-PageHiOffice网页组件在线体验网站：http://local.zorrosoft.com/office
+PageHiOffice网页组件在线体验网站：http://local.zorrosoft.com/officeJS
+PageHiCAD网页组件在线体验网站：http://local.zorrosoft.com/CadJS
 
 欢迎点击以上网站体验强大的PluginOK中间件！
 
@@ -56,7 +57,7 @@ PluginOK中间件产品大记事：
 17、2023年05月29日发布升级版，中间件支持齐安信、华为、海泰红莲花等浏览器，PageHiOffice网页控件文档安全操作增强，PageHiPlayer播放器支持同类视频合并；
 18、2023年09月26日发布升级版，中间件高级版优化启动性能，支持360企业安全浏览器，优化微信网页窗口加载，支持叠加小窗口的透明网页内容，PageHiPlayer多引擎支持大华私有协议播放、FFPlayer支持框选放大视频画面显示；
 19、2023年12月31日发布升级版，中间件高级版支持联想浏览器，PageHiPlayer的VLC及海康私有协议播放支持视频放大及旋转操作，支持调用ffmpeg实现录像和合并视频，PageHiOffice优化内容转图片效果，改进书签内容替换接口等；
-20、2025年02月27日发布升级版，中间件高级版支持360安全浏览器64位版，PageHiOffice支持文档套红及调用工具栏功能，CAD网页组件支持调用DWG TrueView或Design Review的OCX控件看图，支持调用eDrawings及Creo View控件看图，完善AutoCAD、Solidworks及Catia软件内嵌加载效果。
+20、2024年02月27日发布升级版，中间件高级版支持360安全浏览器64位版，PageHiOffice支持文档套红及调用工具栏功能，CAD网页组件支持调用DWG TrueView或Design Review的OCX控件看图，支持调用eDrawings及Creo View控件看图，完善AutoCAD、Solidworks及Catia软件内嵌加载效果。
 
 PluginOK支持真正内嵌网页运行的高级版发布以来，已获得不少上市公司的采购合同：http://zorrosoft.com/?p=944 他们的选择就是本产品实力的最好证明，^_^ 友情提醒：PluginOK中间件是此领域市场上唯一实现商用的成熟中间件，核心技术已获得国家知识产权局颁发的软件发明专利证书，专利号：ZL 2019 1 1323165.1，请大家注意识别仿冒或抄袭者，选择那些冒牌货不仅仅会因为其产品不成熟对您造成巨大损失不说，还有侵犯本公司知识产权的巨大风险！
 
