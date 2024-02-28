@@ -1,0 +1,1105 @@
+Menu Bar:文件:1
+Menu Bar:编辑:2
+Menu Bar:视图:3
+Menu Bar:插入:4
+Menu Bar:格式:5
+Menu Bar:工具:6
+Menu Bar:幻灯片放映:7
+Menu Bar:窗口:8
+Menu Bar:操作:9
+Menu Bar:帮助:10
+Menu Bar (Slide Show):文件:1
+Menu Bar (Slide Show):编辑:2
+Menu Bar (Slide Show):浏览:3
+Menu Bar (Slide Show):窗口:4
+Menu Bar (Slide Show):帮助:5
+&Legacy Keyboard Support:编辑:1
+&Legacy Keyboard Support:视图:2
+&Legacy Keyboard Support:插入:3
+&Legacy Keyboard Support:格式:4
+&Legacy Keyboard Support:工具:5
+&Legacy Keyboard Support:幻灯片放映:6
+Standard:新建:1
+Standard:打开:2
+Standard:保存:3
+Standard:权限:4
+Standard:邮件收件人:5
+Standard:快速打印:6
+Standard:打印预览:7
+Standard:拼写检查:8
+Standard:信息检索:9
+Standard:剪切:10
+Standard:复制:11
+Standard:粘贴:12
+Standard:格式刷:13
+Standard:无法撤消:14
+Standard:无法恢复:15
+Standard:墨迹注释:16
+Standard:图表:17
+Standard:插入表格:18
+Standard:“表格和边框”工具栏:19
+Standard:超链接:20
+Standard:全部展开:21
+Standard:显示格式:22
+Standard:显示/隐藏网格:23
+Standard:颜色/灰度:24
+Standard:显示比例:25
+Standard:帮助:26
+Formatting:字体:1
+Formatting:字号:2
+Formatting:加粗:3
+Formatting:倾斜:4
+Formatting:下划线:5
+Formatting:阴影:6
+Formatting:左对齐:7
+Formatting:居中:8
+Formatting:右对齐:9
+Formatting:编号:10
+Formatting:项目符号:11
+Formatting:从左向右:12
+Formatting:从右向左:13
+Formatting:增大字号:14
+Formatting:减小字号:15
+Formatting:减少缩进量:16
+Formatting:增加缩进量:17
+Formatting:字体颜色:18
+Formatting:设计:19
+Formatting:新建幻灯片:20
+Slide Sorter:隐藏幻灯片:1
+Slide Sorter:排练计时:2
+Slide Sorter:编制幻灯片摘要:3
+Slide Sorter:新建幻灯片:4
+Web:返回:1
+Web:向前:2
+Web:停止:3
+Web:刷新:4
+Web:起始页:5
+Web:搜索 Web:6
+Web:收藏夹:7
+Web:前往:8
+Web:只显示“Web”工具栏:9
+Web:地址:10
+Drawing:绘图:1
+Drawing:选择对象:2
+Drawing:自选图形:3
+Drawing:直线:4
+Drawing:直线箭头:5
+Drawing:矩形:6
+Drawing:椭圆:7
+Drawing:水平:8
+Drawing:垂直:9
+Drawing:艺术字:10
+Drawing:图示:11
+Drawing:剪贴画:12
+Drawing:图片:13
+Drawing:墨迹绘图与书写:14
+Drawing:填充颜色:15
+Drawing:线条颜色:16
+Drawing:字体颜色:17
+Drawing:线型:18
+Drawing:虚线线型:19
+Drawing:箭头样式:20
+Drawing:阴影样式:21
+Drawing:三维效果样式:22
+Print Preview:上一页:1
+Print Preview:下一页:2
+Print Preview:打印:3
+Print Preview:打印内容::4
+Print Preview:打印内容:5
+Print Preview:显示比例:6
+Print Preview:横向:7
+Print Preview:纵向:8
+Print Preview:选项:9
+Print Preview:关闭:10
+Stop Recording:停止录制:1
+Slide Master View:新建幻灯片:1
+Slide Master View:删除幻灯片:2
+Slide Master View:保留:3
+Slide Master View:重命名母版:4
+Slide Master View:幻灯片版式:5
+Slide Master View:关闭母版视图:6
+Handout Master View:显示每页一张幻灯片的讲义位置:1
+Handout Master View:显示每页两张幻灯片的讲义位置:2
+Handout Master View:显示每页三张幻灯片的讲义位置:3
+Handout Master View:显示每页四张幻灯片的讲义位置:4
+Handout Master View:显示每页六张幻灯片的讲义位置:5
+Handout Master View:显示每页九张幻灯片的讲义位置:6
+Handout Master View:显示大纲位置:7
+Handout Master View:幻灯片版式:8
+Handout Master View:关闭母版视图:9
+Notes Master View:幻灯片版式:1
+Notes Master View:关闭母版视图:2
+Grayscale View:设置:1
+Grayscale View:关闭灰度视图:2
+WordArt:艺术字:1
+WordArt:编辑文字:2
+WordArt:艺术字库:3
+WordArt:设置对象格式:4
+WordArt:艺术字形状:5
+WordArt:艺术字字母高度相同:6
+WordArt:艺术字竖排文字:7
+WordArt:艺术字对齐方式:8
+WordArt:艺术字字符间距:9
+Picture:图片:1
+Picture:颜色:2
+Picture:增加对比度:3
+Picture:降低对比度:4
+Picture:增加亮度:5
+Picture:降低亮度:6
+Picture:裁剪:7
+Picture:向左旋转 90°:8
+Picture:线型:9
+Picture:压缩图片:10
+Picture:图片重新着色:11
+Picture:设置对象格式:12
+Picture:设置透明色:13
+Picture:重置图片:14
+Drawing Canvas:适应页面:1
+Drawing Canvas:扩大:2
+Drawing Canvas:缩放绘图:3
+Diagram:插入形状:1
+Diagram:后移形状:2
+Diagram:前移形状:3
+Diagram:反转图示:4
+Diagram:版式:5
+Diagram:自动套用格式:6
+Diagram:更改为:7
+Ink Drawing and Writing:绘图与书写笔:1
+Ink Drawing and Writing:橡皮擦:2
+Ink Drawing and Writing:选择对象:3
+Ink Drawing and Writing:线条颜色:4
+Ink Drawing and Writing:线型:5
+Ink Drawing and Writing:停止擦除:6
+Ink Annotations:批注笔:1
+Ink Annotations:笔划橡皮擦:2
+Ink Annotations:选择对象:3
+Ink Annotations:线条颜色:4
+Ink Annotations:线型:5
+Ink Annotations:标记:6
+Ink Annotations:停止墨迹书写:7
+Tables and Borders:绘制表格:1
+Tables and Borders:橡皮擦:2
+Tables and Borders:边框样式:3
+Tables and Borders:边框宽度:4
+Tables and Borders:边框颜色:5
+Tables and Borders:边框:6
+Tables and Borders:填充颜色:7
+Tables and Borders:表格:8
+Tables and Borders:合并单元格:9
+Tables and Borders:拆分单元格:10
+Tables and Borders:顶端对齐:11
+Tables and Borders:垂直居中:12
+Tables and Borders:底端对齐:13
+Tables and Borders:平均分布各行:14
+Tables and Borders:平均分布各列:15
+Tables and Borders:设置从左向右式表格:16
+Tables and Borders:设置从右向左式表格:17
+Organization Chart:插入形状:1
+Organization Chart:版式:2
+Organization Chart:选择:3
+Organization Chart:适应文字:4
+Organization Chart:自动套用格式:5
+Organization Chart:显示比例:6
+Recording:下一项:1
+Recording:暂停:2
+Recording:幻灯片放映时间:3
+Recording:幻灯片放映时间:4
+Recording:重复:5
+Recording:时间总计:6
+Slide Show:重新开始幻灯片放映:1
+Reviewing:标记:1
+Reviewing:上一条:2
+Reviewing:下一条:3
+Reviewing:墨迹注释:4
+Reviewing:新建批注:5
+Reviewing:编辑批注:6
+Reviewing:删除批注:7
+Shadow Settings:设置/取消阴影:1
+Shadow Settings:略向上移:2
+Shadow Settings:略向下移:3
+Shadow Settings:略向左移:4
+Shadow Settings:略向右移:5
+Shadow Settings:阴影颜色:6
+3-D Settings:设置/取消三维效果:1
+3-D Settings:下俯:2
+3-D Settings:上翘:3
+3-D Settings:左偏:4
+3-D Settings:右偏:5
+3-D Settings:深度:6
+3-D Settings:方向:7
+3-D Settings:照明角度:8
+3-D Settings:表面效果:9
+3-D Settings:三维颜色:10
+Control Toolbox:属性:1
+Control Toolbox:查看代码:2
+Control Toolbox:复选框:3
+Control Toolbox:文本框:4
+Control Toolbox:命令按钮:5
+Control Toolbox:选项按钮:6
+Control Toolbox:列表框:7
+Control Toolbox:组合框:8
+Control Toolbox:切换按钮:9
+Control Toolbox:数值调节钮:10
+Control Toolbox:滚动条:11
+Control Toolbox:标签:12
+Control Toolbox:图像:13
+Control Toolbox:其他控件:14
+Visual Basic:宏:1
+Visual Basic:录制新宏:2
+Visual Basic:安全:3
+Visual Basic:Visual Basic编辑器:4
+Outlining:升级:1
+Outlining:降级:2
+Outlining:上移:3
+Outlining:下移:4
+Outlining:折叠:5
+Outlining:展开:6
+Outlining:全部折叠:7
+Outlining:全部展开:8
+Outlining:编制幻灯片摘要:9
+Outlining:显示格式:10
+Shortcut Menus:文字:1
+Shortcut Menus:表格:2
+Shortcut Menus:绘图:3
+Shortcut Menus:幻灯片:4
+Custom Animation:动画窗格:1
+Reuse Slides:重用幻灯片:1
+Comments:批注:1
+Revisions:修订:1
+Slider Sorter:剪切:1
+Slider Sorter:复制:2
+Slider Sorter:粘贴:3
+Slider Sorter:新建幻灯片:4
+Slider Sorter:删除幻灯片:5
+Slider Sorter:新增节:6
+Slider Sorter:发布幻灯片:7
+Slider Sorter:检查更新:8
+Slider Sorter:背景:9
+Slider Sorter:隐藏幻灯片:10
+Thumbnails:剪切:1
+Thumbnails:复制:2
+Thumbnails:粘贴:3
+Thumbnails:新建幻灯片:4
+Thumbnails:插入版式:5
+Thumbnails:复制幻灯片:6
+Thumbnails:删除幻灯片:7
+Thumbnails:新增节:8
+Thumbnails:保留母版:9
+Thumbnails:重命名母版:10
+Thumbnails:发布幻灯片:11
+Thumbnails:检查更新:12
+Thumbnails:幻灯片版式:13
+Thumbnails:重设幻灯片:14
+Thumbnails:背景:15
+Thumbnails:相册:16
+Thumbnails:隐藏幻灯片:17
+Slide Gap:剪切:1
+Slide Gap:复制:2
+Slide Gap:粘贴:3
+Slide Gap:新建幻灯片:4
+Slide Gap:新增节:5
+Slide Gap:插入版式:6
+Section Label:重命名节:1
+Section Label:删除节:2
+Section Label:删除节和幻灯片:3
+Section Label:删除所有节:4
+Section Label:向上移动节:5
+Section Label:向下移动节:6
+Section Label:全部折叠:7
+Section Label:全部展开:8
+SlideShow Go To Section:转到节:1
+SlideShow Go To Section:转到节:2
+SlideShow Go To Section:转到节:3
+SlideShow Go To Section:转到节:4
+SlideShow Go To Section:转到节:5
+SlideShow Go To Section:转到节:6
+SlideShow Go To Section:转到节:7
+SlideShow Go To Section:转到节:8
+SlideShow Go To Section:转到节:9
+SlideShow Go To Section:转到节:10
+SlideShow Go To Section:转到节:11
+SlideShow Go To Section:转到节:12
+SlideShow Go To Section:转到节:13
+SlideShow Go To Section:转到节:14
+SlideShow Go To Section:转到节:15
+SlideShow Go To Section:转到节:16
+SlideShow Go To Section:转到节:17
+SlideShow Go To Section:转到节:18
+SlideShow Go To Section:转到节:19
+SlideShow Go To Section:转到节:20
+SlideShow Go To Section:转到节:21
+SlideShow Go To Section:转到节:22
+SlideShow Go To Section:转到节:23
+SlideShow Go To Section:转到节:24
+SlideShow Go To Section:转到节:25
+SlideShow Go To Section:转到节:26
+SlideShow Go To Section:转到节:27
+SlideShow Go To Section:转到节:28
+SlideShow Go To Section:转到节:29
+SlideShow Go To Section:转到节:30
+SlideShow Go To Section:转到节:31
+SlideShow Go To Section:转到节:32
+SlideShow Go To Section:转到节:33
+SlideShow Go To Section:转到节:34
+SlideShow Go To Section:转到节:35
+SlideShow Go To Section:转到节:36
+SlideShow Go To Section:转到节:37
+SlideShow Go To Section:转到节:38
+SlideShow Go To Section:转到节:39
+SlideShow Go To Section:转到节:40
+SlideShow Go To Section:转到节:41
+SlideShow Go To Section:转到节:42
+SlideShow Go To Section:转到节:43
+SlideShow Go To Section:转到节:44
+SlideShow Go To Section:转到节:45
+SlideShow Go To Section:转到节:46
+SlideShow Go To Section:转到节:47
+SlideShow Go To Section:转到节:48
+SlideShow Go To Section:转到节:49
+SlideShow Go To Section:转到节:50
+SlideShow Go To Section:转到节:51
+SlideShow Go To Section:转到节:52
+SlideShow Go To Section:转到节:53
+SlideShow Go To Section:转到节:54
+SlideShow Go To Section:转到节:55
+SlideShow Go To Section:转到节:56
+SlideShow Go To Section:转到节:57
+SlideShow Go To Section:转到节:58
+SlideShow Go To Section:转到节:59
+SlideShow Go To Section:转到节:60
+SlideShow Go To Section:所有幻灯片:61
+Notes Pane:剪切:1
+Notes Pane:复制:2
+Notes Pane:粘贴:3
+Notes Pane:汉字重选:4
+Notes Pane:字体:5
+Notes Pane:查阅:6
+Notes Pane:解释:7
+Notes Pane:同义词:8
+Outliner:剪切:1
+Outliner:复制:2
+Outliner:粘贴:3
+Outliner:汉字重选:4
+Outliner:显示格式:5
+Outliner:编制幻灯片摘要:6
+Outliner:升级:7
+Outliner:降级:8
+Outliner:上移:9
+Outliner:下移:10
+Outliner:新建幻灯片:11
+Outliner:删除幻灯片:12
+Outliner:发布幻灯片:13
+Outliner:检查更新:14
+Outliner:字体:15
+Outliner:折叠:16
+Outliner:展开:17
+Outliner:超链接:18
+Outliner:编辑超链接:19
+Outliner:打开超链接:20
+Outliner:复制超链接:21
+Outliner:取消超链接:22
+Outliner:查阅:23
+Outliner:解释:24
+Outliner:同义词:25
+Slide Show:下一张:1
+Slide Show:上一张:2
+Slide Show:上次查看的位置:3
+Slide Show:查看所有幻灯片:4
+Slide Show:放大:5
+Slide Show:缩小:6
+Slide Show:自定义放映:7
+Slide Show:显示演示者视图:8
+Slide Show:屏幕:9
+Slide Show:指针选项:10
+Slide Show:保持幻灯片更新:11
+Slide Show:更新幻灯片:12
+Slide Show:帮助:13
+Slide Show:暂停:14
+Slide Show:暂停录音:15
+Slide Show:结束放映:16
+Slide Show:上次查看的位置:1
+Slide Show:自定义放映:2
+Slide Show:显示演示者视图:3
+Slide Show:屏幕:4
+Slide Show:保持幻灯片更新:5
+Slide Show:更新幻灯片:6
+Slide Show:帮助:7
+Slide Show:暂停:8
+Slide Show:暂停录音:9
+Slide Show:结束放映:10
+Nondefault Drag and Drop:移动:1
+Nondefault Drag and Drop:复制:2
+Nondefault Drag and Drop:复制对象:3
+Nondefault Drag and Drop:链接对象:4
+Nondefault Drag and Drop:插入超链接:5
+Nondefault Drag and Drop:插入的对象显示为图标:6
+Nondefault Drag and Drop:插入超链接:7
+Nondefault Drag and Drop:附加超链接:8
+Nondefault Drag and Drop:取消:9
+Curve:剪切:1
+Curve:复制:2
+Curve:将墨迹复制为文本:3
+Curve:粘贴:4
+Curve:另存为图片:5
+Curve:编辑顶点:6
+Curve:开放路径:7
+Curve:关闭路径:8
+Curve:组合:9
+Curve:排序:10
+Curve:设置自选图形的默认效果:11
+Curve:灰度设置:12
+Curve:自定义动画:13
+Curve:动作设置:14
+Curve:设置对象格式:15
+Curve:超链接:16
+Curve:编辑超链接:17
+Curve:打开超链接:18
+Curve:复制超链接:19
+Curve:取消超链接:20
+OLE Object:剪切:1
+OLE Object:复制:2
+OLE Object:粘贴:3
+OLE Object:另存为图片:4
+OLE Object:编辑对象:5
+OLE Object:更新链接:6
+OLE Object:组合:7
+OLE Object:排序:8
+OLE Object:灰度设置:9
+OLE Object:自定义动画:10
+OLE Object:动作设置:11
+OLE Object:设置对象格式:12
+Connector:剪切:1
+Connector:复制:2
+Connector:粘贴:3
+Connector:另存为图片:4
+Connector:添加文本:5
+Connector:字体:6
+Connector:直接连接符:7
+Connector:连接符: 肘形:8
+Connector:曲线连接符:9
+Connector:重排连接符:10
+Connector:设置自选图形的默认效果:11
+Connector:灰度设置:12
+Connector:自定义动画:13
+Connector:动作设置:14
+Connector:设置对象格式:15
+WordArt Context Menu:剪切:1
+WordArt Context Menu:复制:2
+WordArt Context Menu:粘贴:3
+WordArt Context Menu:另存为图片:4
+WordArt Context Menu:汉字重选:5
+WordArt Context Menu:编辑文字:6
+WordArt Context Menu:组合:7
+WordArt Context Menu:排序:8
+WordArt Context Menu:设置自选图形的默认效果:9
+WordArt Context Menu:灰度设置:10
+WordArt Context Menu:自定义动画:11
+WordArt Context Menu:动作设置:12
+WordArt Context Menu:设置对象格式:13
+WordArt Context Menu:超链接:14
+WordArt Context Menu:编辑超链接:15
+WordArt Context Menu:打开超链接:16
+WordArt Context Menu:复制超链接:17
+WordArt Context Menu:取消超链接:18
+Rotate Mode:剪切:1
+Rotate Mode:复制:2
+Rotate Mode:粘贴:3
+Rotate Mode:退出旋转方式:4
+Rotate Mode:设置自选图形的默认效果:5
+Rotate Mode:灰度设置:6
+Rotate Mode:自定义动画:7
+Rotate Mode:动作设置:8
+Rotate Mode:设置对象格式:9
+Rotate Mode:查阅:10
+Rotate Mode:解释:11
+Curve Segment:添加顶点:1
+Curve Segment:删除线段:2
+Curve Segment:开放路径:3
+Curve Segment:关闭路径:4
+Curve Segment:抻直弓形:5
+Curve Segment:曲线段:6
+Curve Segment:退出编辑顶点:7
+Curve Segment:设置自选图形的默认效果:8
+Curve Segment:灰度设置:9
+Curve Segment:自定义动画:10
+Curve Segment:动作设置:11
+Curve Segment:设置对象格式:12
+Curve Node:添加顶点:1
+Curve Node:删除顶点:2
+Curve Node:开放路径:3
+Curve Node:关闭路径:4
+Curve Node:自动顶点:5
+Curve Node:平滑顶点:6
+Curve Node:直线点:7
+Curve Node:角部顶点:8
+Curve Node:退出编辑顶点:9
+Curve Node:设置自选图形的默认效果:10
+Curve Node:灰度设置:11
+Curve Node:自定义动画:12
+Curve Node:动作设置:13
+Curve Node:设置对象格式:14
+ActiveX Control:剪切:1
+ActiveX Control:复制:2
+ActiveX Control:粘贴:3
+ActiveX Control:另存为图片:4
+ActiveX Control:属性:5
+ActiveX Control:查看代码:6
+ActiveX Control:编辑对象:7
+ActiveX Control:组合:8
+ActiveX Control:排序:9
+ActiveX Control:灰度设置:10
+ActiveX Control:动作设置:11
+ActiveX Control:设置对象格式:12
+ActiveX Control:编辑超链接:13
+ActiveX Control:打开超链接:14
+ActiveX Control:复制超链接:15
+ActiveX Control:取消超链接:16
+Spelling:没有建议:1
+Spelling:拼写更改:2
+Spelling:拼写更改:3
+Spelling:拼写更改:4
+Spelling:拼写更改:5
+Spelling:拼写更改:6
+Spelling:全部忽略:7
+Spelling:忽略:8
+Spelling:添加到词典:9
+Spelling:语音选词:10
+Pictures Context Menu:剪切:1
+Pictures Context Menu:复制:2
+Pictures Context Menu:粘贴:3
+Pictures Context Menu:另存为图片:4
+Pictures Context Menu:填充标签:5
+Pictures Context Menu:锁定标签:6
+Pictures Context Menu:取消锁定标签:7
+Pictures Context Menu:播放:8
+Pictures Context Menu:添加文本:9
+Pictures Context Menu:组合:10
+Pictures Context Menu:排序:11
+Pictures Context Menu:灰度设置:12
+Pictures Context Menu:自定义动画:13
+Pictures Context Menu:动作设置:14
+Pictures Context Menu:设置对象格式:15
+Pictures Context Menu:超链接:16
+Pictures Context Menu:编辑超链接:17
+Pictures Context Menu:打开超链接:18
+Pictures Context Menu:复制超链接:19
+Pictures Context Menu:取消超链接:20
+Pictures Context Menu:显示图片工具:21
+Canvas Popup:剪切:1
+Canvas Popup:复制:2
+Canvas Popup:粘贴:3
+Canvas Popup:另存为图片:4
+Canvas Popup:适应页面:5
+Canvas Popup:扩大:6
+Canvas Popup:缩放绘图:7
+Canvas Popup:组合:8
+Canvas Popup:排序:9
+Canvas Popup:灰度设置:10
+Canvas Popup:自定义动画:11
+Canvas Popup:动作设置:12
+Canvas Popup:自动套用格式:13
+Canvas Popup:设置对象格式:14
+Canvas Popup:超链接:15
+Canvas Popup:编辑超链接:16
+Canvas Popup:打开超链接:17
+Canvas Popup:复制超链接:18
+Canvas Popup:取消超链接:19
+Frames:粘贴:1
+Frames:幻灯片版式:2
+Frames:重设幻灯片:3
+Frames:网格和参考线:4
+Frames:标尺:5
+Frames:保存背景:6
+Frames:背景:7
+Frames:灰度设置:8
+Frames:插入批注:9
+Shapes:剪切:1
+Shapes:复制:2
+Shapes:将墨迹复制为文本:3
+Shapes:粘贴:4
+Shapes:另存为图片:5
+Shapes:汉字重选:6
+Shapes:添加文本:7
+Shapes:字体:8
+Shapes:项目符号和编号:9
+Shapes:组合:10
+Shapes:排序:11
+Shapes:设置自选图形的默认效果:12
+Shapes:灰度设置:13
+Shapes:自定义动画:14
+Shapes:动作设置:15
+Shapes:设置对象格式:16
+Shapes:解释:17
+Shapes:超链接:18
+Shapes:编辑超链接:19
+Shapes:打开超链接:20
+Shapes:复制超链接:21
+Shapes:取消超链接:22
+Shapes:查阅:23
+Shapes:同义词:24
+Notes View Slide:剪切:1
+Notes View Slide:复制:2
+Notes View Slide:粘贴:3
+Notes View Slide:汉字重选:4
+Notes View Slide:添加文本:5
+Slide Show Browse:下一张:1
+Slide Show Browse:上一张:2
+Slide Show Browse:定位至幻灯片:3
+Slide Show Browse:转到节:4
+Slide Show Browse:放大:5
+Slide Show Browse:缩小:6
+Slide Show Browse:打印预览和打印:7
+Slide Show Browse:复制幻灯片:8
+Slide Show Browse:编辑幻灯片:9
+Slide Show Browse:全屏显示:10
+Slide Show Browse:结束放映:11
+PowerPoint Previewer:下一张:1
+PowerPoint Previewer:上一张:2
+PowerPoint Previewer:复制幻灯片:3
+Hyperlinked Object:打开超链接:1
+Hyperlinked Object:复制超链接:2
+Hyperlinked Object:添加到收藏夹:3
+Tables:剪切:1
+Tables:复制:2
+Tables:粘贴:3
+Tables:另存为图片:4
+Tables:字体:5
+Tables:项目符号和编号:6
+Tables:自定义动画:7
+Tables:取消组合:8
+Tables:灰度设置:9
+Tables:边框和底纹:10
+Tables:编辑超链接:11
+Tables:打开超链接:12
+Tables:复制超链接:13
+Tables:取消超链接:14
+Table Cells:剪切:1
+Table Cells:复制:2
+Table Cells:粘贴:3
+Table Cells:汉字重选:4
+Table Cells:字体:5
+Table Cells:项目符号和编号:6
+Table Cells:表格:7
+Table Cells:删除单元格:8
+Table Cells:合并单元格:9
+Table Cells:边框和底纹:10
+Table Cells:灰度设置:11
+Table Cells:选择表格:12
+Table Cells:编辑超链接:13
+Table Cells:打开超链接:14
+Table Cells:复制超链接:15
+Table Cells:取消超链接:16
+Table Cells:查阅:17
+Table Cells:同义词:18
+Organization Chart Popup:添加文本:1
+Organization Chart Popup:下属:2
+Organization Chart Popup:同事:3
+Organization Chart Popup:助手:4
+Organization Chart Popup:删除:5
+Organization Chart Popup:版式:6
+Organization Chart Popup:选择:7
+Organization Chart Popup:自动套用格式:8
+Organization Chart Popup:设置对象格式:9
+Organization Chart Popup:超链接:10
+Organization Chart Popup:编辑超链接:11
+Organization Chart Popup:打开超链接:12
+Organization Chart Popup:复制超链接:13
+Organization Chart Popup:取消超链接:14
+Diagram:添加文本:1
+Diagram:插入形状:2
+Diagram:删除图形:3
+Diagram:自动套用格式:4
+Diagram:设置对象格式:5
+OrgChart Text Edit PopUp:剪切:1
+OrgChart Text Edit PopUp:复制:2
+OrgChart Text Edit PopUp:粘贴:3
+OrgChart Text Edit PopUp:汉字重选:4
+OrgChart Text Edit PopUp:添加文本:5
+OrgChart Text Edit PopUp:字体:6
+OrgChart Text Edit PopUp:项目符号和编号:7
+OrgChart Text Edit PopUp:自定义动画:8
+OrgChart Text Edit PopUp:动作设置:9
+OrgChart Text Edit PopUp:设置对象格式:10
+OrgChart Text Edit PopUp:解释:11
+OrgChart Text Edit PopUp:超链接:12
+OrgChart Text Edit PopUp:编辑超链接:13
+OrgChart Text Edit PopUp:打开超链接:14
+OrgChart Text Edit PopUp:复制超链接:15
+OrgChart Text Edit PopUp:取消超链接:16
+OrgChart Text Edit PopUp:查阅:17
+OrgChart Text Edit PopUp:同义词:18
+Comment Popup:编辑批注:1
+Comment Popup:复制文字:2
+Comment Popup:插入批注:3
+Comment Popup:删除批注:4
+Slide View Ink Annotation Popup:显示详细信息:1
+Slide View Ink Annotation Popup:编辑批注:2
+Slide View Ink Annotation Popup:删除批注:3
+Revision Marker Popup:接受修订:1
+Revision Marker Popup:拒绝更改:2
+Revision Marker Popup:显示详细信息:3
+Fill Color:无颜色:1
+Fill Color:自动配色:2
+Fill Color:配色方案:3
+Fill Color:最近所用颜色:4
+Fill Color:其他填充颜色:5
+Fill Color:填充效果:6
+Line Color:无颜色:1
+Line Color:自动配色:2
+Line Color:配色方案:3
+Line Color:最近所用颜色:4
+Line Color:其他轮廓颜色:5
+Line Color:带图案线条:6
+Font Color:自动配色:1
+Font Color:配色方案:2
+Font Color:最近所用颜色:3
+Font Color:其他颜色:4
+Annotation Pens:打开:1
+Annotation Pens:幻灯片设计:2
+Annotation Pens:新建:3
+Annotation Pens:剪切:4
+Annotation Pens:新建:5
+Annotation Pens:新建:6
+Annotation Pens:幻灯片设计:7
+Annotation Pens:将形状改为爆炸形 2:8
+Annotation Pens:较小:9
+Annotation Pens:无法撤消:10
+Annotation Pens:幻灯片设计:11
+Annotation Pens:幻灯片设计:12
+Annotation Pens:幻灯片设计:13
+Annotation Pens:幻灯片设计:14
+Annotation Pens:幻灯片设计:15
+Annotation Pens:幻灯片设计:16
+Annotation Pens:轻微放大:17
+Annotation Pens:幻灯片设计:18
+Annotation Pens:幻灯片设计:19
+Annotation Pens:幻灯片设计:20
+Annotation Pens:幻灯片设计:21
+Annotation Pens:幻灯片设计:22
+Annotation Pens:居中:23
+Annotation Pens:幻灯片设计:24
+Annotation Pens:幻灯片设计:25
+Annotation Pens:居中:26
+Annotation Pens:新建:27
+Annotation Pens:自定义边距:28
+Annotation Pens:居中:29
+Annotation Pens:另存为图片:30
+Annotation Pens:幻灯片设计:31
+Drawing and Writing Pens:打开:1
+Drawing and Writing Pens:幻灯片设计:2
+Drawing and Writing Pens:新建:3
+Drawing and Writing Pens:剪切:4
+Drawing and Writing Pens:新建:5
+Drawing and Writing Pens:新建:6
+Drawing and Writing Pens:幻灯片设计:7
+Drawing and Writing Pens:将形状改为棱台:8
+Drawing and Writing Pens:编辑顶点:9
+Drawing and Writing Pens:保存当前主题...:10
+Drawing and Writing Pens:幻灯片设计:11
+Drawing and Writing Pens:幻灯片设计:12
+Drawing and Writing Pens:幻灯片设计:13
+Drawing and Writing Pens:幻灯片设计:14
+Drawing and Writing Pens:幻灯片设计:15
+Drawing and Writing Pens:幻灯片设计:16
+Drawing and Writing Pens:到左下部:17
+Drawing and Writing Pens:幻灯片设计:18
+Drawing and Writing Pens:幻灯片设计:19
+Drawing and Writing Pens:幻灯片设计:20
+Drawing and Writing Pens:幻灯片设计:21
+Drawing and Writing Pens:幻灯片设计:22
+Drawing and Writing Pens:居中:23
+Drawing and Writing Pens:幻灯片设计:24
+Drawing and Writing Pens:幻灯片设计:25
+Drawing and Writing Pens:居中:26
+Drawing and Writing Pens:新建:27
+Drawing and Writing Pens:自定义边距:28
+Drawing and Writing Pens:居中:29
+Drawing and Writing Pens:另存为图片:30
+Drawing and Writing Pens:幻灯片设计:31
+Annotation Pens:黑色:1
+Annotation Pens:蓝色:2
+Annotation Pens:红色:3
+Annotation Pens:黑色:4
+Annotation Pens:蓝色:5
+Annotation Pens:红色:6
+Annotation Pens:黄色:7
+Annotation Pens:青绿色:8
+Annotation Pens:粉红色:9
+Drawing and Writing Pens:黑色:1
+Drawing and Writing Pens:蓝色:2
+Drawing and Writing Pens:红色:3
+Drawing and Writing Pens:黑色:4
+Drawing and Writing Pens:蓝色:5
+Drawing and Writing Pens:红色:6
+Drawing and Writing Pens:黄色:7
+Drawing and Writing Pens:青绿色:8
+Drawing and Writing Pens:粉红色:9
+Order:置于顶层:1
+Order:置于底层:2
+Order:前移一层:3
+Order:后移一层:4
+Nudge:向上:1
+Nudge:向下:2
+Nudge:向左:3
+Nudge:向右:4
+Rotate or Flip:自由旋转:1
+Rotate or Flip:向左旋转 90°:2
+Rotate or Flip:向右旋转 90°:3
+Rotate or Flip:水平翻转:4
+Rotate or Flip:垂直翻转:5
+Align or Distribute:左对齐:1
+Align or Distribute:水平居中:2
+Align or Distribute:右对齐:3
+Align or Distribute:顶端对齐:4
+Align or Distribute:垂直居中:5
+Align or Distribute:底端对齐:6
+Align or Distribute:横向分布:7
+Align or Distribute:纵向分布:8
+Align or Distribute:与幻灯片对齐:9
+Align or Distribute:相对于画布:10
+Align or Distribute:相对于组织结构图:11
+Align or Distribute:相对于页:12
+Insert Shape:下属:1
+Insert Shape:同事:2
+Insert Shape:助手:3
+Lines:直线:1
+Lines:直线箭头:2
+Lines:双箭头直线:3
+Lines:曲线:4
+Lines:任意多边形: 形状:5
+Lines:任意多边形: 自由曲线:6
+Connectors:直接连接符:1
+Connectors:直接箭头连接符:2
+Connectors:直接双箭头连接符:3
+Connectors:连接符: 肘形:4
+Connectors:连接符: 肘形箭头:5
+Connectors:连接符: 肘形双箭头:6
+Connectors:连接符: 曲线:7
+Connectors:连接符: 曲线箭头:8
+Connectors:连接符: 曲线双箭头:9
+Basic Shapes:矩形:1
+Basic Shapes:平行四边形:2
+Basic Shapes:梯形:3
+Basic Shapes:菱形:4
+Basic Shapes:矩形: 圆角:5
+Basic Shapes:八边形:6
+Basic Shapes:等腰三角形:7
+Basic Shapes:直角三角形:8
+Basic Shapes:椭圆:9
+Basic Shapes:六边形:10
+Basic Shapes:十字形:11
+Basic Shapes:五边形:12
+Basic Shapes:圆柱体:13
+Basic Shapes:立方体:14
+Basic Shapes:矩形: 棱台:15
+Basic Shapes:矩形: 折角:16
+Basic Shapes:笑脸:17
+Basic Shapes:圆: 空心:18
+Basic Shapes:禁止符:19
+Basic Shapes:空心弧:20
+Basic Shapes:心形:21
+Basic Shapes:闪电形:22
+Basic Shapes:太阳形:23
+Basic Shapes:新月形:24
+Basic Shapes:弧形:25
+Basic Shapes:双括号:26
+Basic Shapes:双大括号:27
+Basic Shapes:缺角矩形:28
+Basic Shapes:左中括号:29
+Basic Shapes:右中括号:30
+Basic Shapes:左大括号:31
+Basic Shapes:右大括号:32
+Callouts:对话气泡: 矩形:1
+Callouts:对话气泡: 圆角矩形:2
+Callouts:对话气泡: 椭圆形:3
+Callouts:思想气泡: 云:4
+Callouts:标注: 线形:5
+Callouts:线形标注 2:6
+Callouts:线形标注 3:7
+Callouts:线形标注 4:8
+Callouts:线形标注 1:9
+Callouts:线形标注 2:10
+Callouts:线形标注 3:11
+Callouts:线形标注 4:12
+Callouts:线形标注 1:13
+Callouts:线形标注 2:14
+Callouts:线形标注 3:15
+Callouts:线形标注 4:16
+Callouts:线形标注 1:17
+Callouts:线形标注 2:18
+Callouts:线形标注 3:19
+Callouts:线形标注 4:20
+Flowchart:流程图: 过程:1
+Flowchart:流程图: 可选过程:2
+Flowchart:流程图: 决策:3
+Flowchart:流程图: 数据:4
+Flowchart:流程图: 预定义过程:5
+Flowchart:流程图: 内部贮存:6
+Flowchart:流程图: 文档:7
+Flowchart:流程图: 多文档:8
+Flowchart:流程图: 终止:9
+Flowchart:流程图: 准备:10
+Flowchart:流程图: 手动输入:11
+Flowchart:流程图: 手动操作:12
+Flowchart:流程图: 接点:13
+Flowchart:流程图: 离页连接符:14
+Flowchart:流程图: 卡片:15
+Flowchart:流程图: 资料带:16
+Flowchart:流程图: 汇总连接:17
+Flowchart:流程图: 或者:18
+Flowchart:流程图: 对照:19
+Flowchart:流程图: 排序:20
+Flowchart:流程图: 摘录:21
+Flowchart:流程图: 合并:22
+Flowchart:流程图: 存储数据:23
+Flowchart:流程图: 延期:24
+Flowchart:流程图: 顺序访问存储器:25
+Flowchart:流程图: 磁盘:26
+Flowchart:流程图: 直接访问存储器:27
+Flowchart:流程图: 显示:28
+Block Arrows:箭头: 右:1
+Block Arrows:箭头: 左:2
+Block Arrows:箭头: 上:3
+Block Arrows:箭头: 下:4
+Block Arrows:箭头: 左右:5
+Block Arrows:箭头: 上下:6
+Block Arrows:箭头: 十字:7
+Block Arrows:箭头: 丁字:8
+Block Arrows:箭头: 圆角右:9
+Block Arrows:箭头: 手杖形:10
+Block Arrows:箭头: 直角双向:11
+Block Arrows:箭头: 直角上:12
+Block Arrows:箭头: 左弧形:13
+Block Arrows:箭头: 右弧形:14
+Block Arrows:箭头: 下弧形:15
+Block Arrows:箭头: 上弧形:16
+Block Arrows:箭头: 虚尾:17
+Block Arrows:箭头: 燕尾形:18
+Block Arrows:箭头: 五边形:19
+Block Arrows:箭头: V 形:20
+Block Arrows:标注: 右箭头:21
+Block Arrows:标注: 左箭头:22
+Block Arrows:标注: 上箭头:23
+Block Arrows:标注: 下箭头:24
+Block Arrows:标注: 左右箭头:25
+Block Arrows:标注: 上下箭头:26
+Block Arrows:标注: 十字箭头:27
+Block Arrows:箭头: 环形:28
+Stars & Banners:爆炸形: 8 pt :1
+Stars & Banners:爆炸形: 14 pt :2
+Stars & Banners:星形: 四角:3
+Stars & Banners:星形: 五角:4
+Stars & Banners:星形: 八角:5
+Stars & Banners:星形: 十六角:6
+Stars & Banners:星形: 二十四角:7
+Stars & Banners:星形: 三十二角:8
+Stars & Banners:带形: 上凸:9
+Stars & Banners:带形: 前凸:10
+Stars & Banners:带形: 上凸弯:11
+Stars & Banners:带形: 前凸弯:12
+Stars & Banners:卷形: 垂直:13
+Stars & Banners:卷形: 水平:14
+Stars & Banners:波形:15
+Stars & Banners:双波形:16
+Action Buttons:动作按钮: 空白:1
+Action Buttons:动作按钮: 转到主页:2
+Action Buttons:动作按钮: 帮助:3
+Action Buttons:动作按钮: 获取信息:4
+Action Buttons:动作按钮: 后退或前一项:5
+Action Buttons:动作按钮: 前进或下一项:6
+Action Buttons:动作按钮: 转到开头:7
+Action Buttons:动作按钮: 转到结尾:8
+Action Buttons:动作按钮: 上一张:9
+Action Buttons:动作按钮: 文档:10
+Action Buttons:动作按钮: 声音:11
+Action Buttons:动作按钮: 视频:12
+Borders:外侧框线:1
+Borders:所有框线:2
+Borders:内部框线:3
+Borders:无框线:4
+Borders:上框线:5
+Borders:下框线:6
+Borders:左框线:7
+Borders:右框线:8
+Borders:内部横框线:9
+Borders:内部竖框线:10
+Borders:斜下框线:11
+Borders:斜上框线:12
+AutoShapes:线条:1
+AutoShapes:连接线:2
+AutoShapes:基本形状:3
+AutoShapes:箭头总汇:4
+AutoShapes:流程图:5
+AutoShapes:星与旗帜:6
+AutoShapes:标注:7
+AutoShapes:动作按钮:8
+AutoShapes:其他自选图形:9
+Envelope:信封:1
+System:还原:1
+System:移动:2
+System:大小:3
+System:最小化:4
+System:最大化:5
+System:关闭:6
+Task Pane:任务窗格:1
+Document Recovery:文档恢复:1
+Office Clipboard:Office 剪贴板:1
+XML Source:任务窗格:1
+Research:任务窗格:1
+XML Document:任务窗格:1
+Signatures:任务窗格:1
+Document Actions:任务窗格:1
+Clip Art:任务窗格:1
+Business Bar:Business Bar:1
+Format Object:任务窗格:1
+Document Management:任务窗格:1
+Document Updates:任务窗格:1
+Mail Merge Panes:任务窗格:1
+Fax Service:任务窗格:1
+Meeting Workspace:任务窗格:1
+Attachment Options:任务窗格:1
+Accessibility:任务窗格:1
+Editor:任务窗格:1
+Dictionaries:任务窗格:1
+Thesaurus:任务窗格:1
+History:任务窗格:1
+Share:任务窗格:1
+Smart Lookup:任务窗格:1
+Version History:任务窗格:1
+Researcher:任务窗格:1
+Insert From File:任务窗格:1
+Help:任务窗格:1
+Online Content:任务窗格:1
+Feedback:任务窗格:1
+Data Selector:任务窗格:1
+Comments:任务窗格:1
+Contact Support:任务窗格:1
+Troubleshooter:任务窗格:1
+Activity:任务窗格:1
+Admin Tenant Portal:任务窗格:1
+Notifications:任务窗格:1
+User Voice:任务窗格:1
+Search Feedback:任务窗格:1
+Outlook Room Finder Pane:任务窗格:1
+Outlook Meeting Insights Pane:任务窗格:1
+Outlook Notifications Pane:任务窗格:1
+Diagnostic Pane:任务窗格:1
+Diagnostic Pane:任务窗格:1
+Diagnostic Pane:任务窗格:1
+Diagnostic Pane:任务窗格:1
+Data Types Refresh Settings:任务窗格:1
+Outlook My Day Pane:任务窗格:1
+Changes:任务窗格:1
+Outlook FindTime Pane:任务窗格:1
+Unsaved Changes:任务窗格:1
+Workbook Performance:任务窗格:1
+Excel Task Pane:任务窗格:1
+Workbook Links:任务窗格:1
+Diagnostics:任务窗格:1
+Python in Excel (preview):任务窗格:1
+Hello AI:任务窗格:1
+Accessibility Assistant:任务窗格:1
+Advertisement:任务窗格:1
+Outlook MetaOS App Side Pane:任务窗格:1
+Status Bar:状态栏:1
+Ribbon:Ribbon:1

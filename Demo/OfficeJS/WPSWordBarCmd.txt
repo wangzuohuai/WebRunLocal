@@ -1,0 +1,1994 @@
+Standard:新建空白文档:1
+Standard:打开:2
+Standard:保存:3
+Standard:(自由访问) 的权限:4
+Standard:邮件收件人:5
+Standard:打印:6
+Standard:打印预览:7
+Standard:中文简繁转换:8
+Standard:拼写和语法:9
+Standard:信息检索:10
+Standard:剪切:11
+Standard:复制:12
+Standard:粘贴:13
+Standard:格式刷:14
+Standard:无法撤消:15
+Standard:无法恢复:16
+Standard:插入墨迹注释:17
+Standard:超链接:18
+Standard:“表格和边框”工具栏:19
+Standard:更改文字方向:23
+Standard:绘图:24
+Standard:文档结构图:25
+Standard:显示/隐藏编辑标记:26
+Standard:显示比例:27
+Standard:Microsoft Office Word 帮助:28
+Standard:阅读:29
+Standard:新建:30
+Standard:转换为繁体中文:35
+Standard:插入表格:38
+Standard:查找:41
+Formatting:样式和格式:1
+Formatting:样式:2
+Formatting:字体:3
+Formatting:字号:4
+Formatting:键盘语言:5
+Formatting:加粗:6
+Formatting:倾斜:7
+Formatting:下划线:8
+Formatting:字符边框:9
+Formatting:字符底纹:10
+Formatting:字符缩放:11
+Formatting:两端对齐:12
+Formatting:居中:13
+Formatting:右对齐:14
+Formatting:分散对齐:15
+Formatting:行距:16
+Formatting:从左向右:17
+Formatting:从右向左:18
+Formatting:编号:19
+Formatting:项目符号:20
+Formatting:减少缩进量:21
+Formatting:增加缩进量:22
+Formatting:突出显示:23
+Formatting:字体颜色:24
+Formatting:拼音指南:25
+Formatting:带圈字符:26
+Tables and Borders:绘制表格:1
+Tables and Borders:擦除:2
+Tables and Borders:边框线型:3
+Tables and Borders:边框宽度:4
+Tables and Borders:边框颜色:5
+Tables and Borders:边框:6
+Tables and Borders:底纹色:7
+Tables and Borders:表格插入:8
+Tables and Borders:合并单元格:9
+Tables and Borders:拆分单元格:10
+Tables and Borders:单元格对齐方式:11
+Tables and Borders:平均分布各行:12
+Tables and Borders:平均分布各列:13
+Tables and Borders:表格自动套用格式:14
+Tables and Borders:隐藏虚框:15
+Tables and Borders:升序排序:16
+Tables and Borders:降序排序:17
+Tables and Borders:自动求和:18
+Tables and Borders:拆分表格:19
+Tables and Borders:删除单元格:23
+Tables and Borders:根据窗口调整表格:24
+Database:数据表单:1
+Database:管理域:2
+Database:添加记录:3
+Database:删除记录:4
+Database:升序排序:5
+Database:降序排序:6
+Database:数据库:7
+Database:更新域:8
+Database:在域中查找:9
+Database:主文档:10
+Drawing:绘图:1
+Drawing:选择对象:2
+Drawing:自选图形:3
+Drawing:直线:4
+Drawing:箭头:5
+Drawing:矩形:6
+Drawing:椭圆:7
+Drawing:文本框:8
+Drawing:竖排文本框:9
+Drawing:艺术字:10
+Drawing:图示:11
+Drawing:剪贴画:12
+Drawing:图片:13
+Drawing:墨迹绘图与书写:14
+Drawing:填充颜色:15
+Drawing:线条颜色:16
+Drawing:字体颜色:17
+Drawing:线型:18
+Drawing:虚线线型:19
+Drawing:箭头样式:20
+Drawing:阴影样式:21
+Drawing:三维效果样式:22
+Forms:编辑框:1
+Forms:复选框:2
+Forms:组合框:3
+Forms:属性:4
+Forms:绘制表格:5
+Forms:图文框:7
+Forms:显示域底纹:8
+Forms:重新设置窗体域:9
+Forms:保护窗体:10
+Full Screen:全屏显示:1
+Edit Picture:调整页边距:1
+Edit Picture:关闭图片:2
+Visual Basic:宏:1
+Visual Basic:录制新宏:2
+Visual Basic:安全性:3
+Visual Basic:Visual Basic 编辑器:4
+Visual Basic:控件工具箱:5
+Visual Basic:设计模式:6
+Visual Basic:Microsoft 脚本编辑器:7
+Stop Recording:停止录制:1
+Stop Recording:暂停录制:2
+Stop Recording:录制新宏:3
+Mail Merge:主文档设置:1
+Mail Merge:打开数据源:2
+Mail Merge:邮件合并收件人:3
+Mail Merge:插入地址块:4
+Mail Merge:插入问候语:5
+Mail Merge:插入合并字段:6
+Mail Merge:插入 Word 域:7
+Mail Merge:显示域/值:8
+Mail Merge:突出显示合并域:9
+Mail Merge:匹配域:10
+Mail Merge:宣传标签:11
+Mail Merge:首记录:12
+Mail Merge:上一记录:13
+Mail Merge:记录:14
+Mail Merge:下一记录:15
+Mail Merge:尾记录:16
+Mail Merge:查找条目:17
+Mail Merge:错误检查合并:18
+Mail Merge:合并文档:19
+Mail Merge:合并到打印机:20
+Mail Merge:合并至电子邮件:21
+Mail Merge:合并至传真:22
+Microsoft:Microsoft Excel:1
+Microsoft:Microsoft Office PowerPoint:2
+Microsoft:Microsoft Outlook:3
+Microsoft:Microsoft Access:4
+Microsoft:Microsoft Visual FoxPro:5
+Microsoft:Microsoft Project:6
+Microsoft:Microsoft Schedule+:7
+Microsoft:Microsoft Publisher:8
+Header and Footer:所有词条:1
+Header and Footer:页码:2
+Header and Footer:页数:3
+Header and Footer:设置页码格式:4
+Header and Footer:日期:5
+Header and Footer:时间:6
+Header and Footer:页面设置:7
+Header and Footer:隐藏正文:8
+Header and Footer:链接到前一节:9
+Header and Footer:显示页眉/页脚:10
+Header and Footer:前一条页眉:11
+Header and Footer:下一条页眉:12
+Header and Footer:关闭:13
+Outlining:提升至标题 1:1
+Outlining:升级:2
+Outlining:大纲级别:3
+Outlining:降级:4
+Outlining:降级为正文:5
+Outlining:上移:6
+Outlining:下移:7
+Outlining:展开:8
+Outlining:折叠:9
+Outlining:显示级别:10
+Outlining:只查看首行:11
+Outlining:显示格式:12
+Outlining:更新目录:13
+Outlining:转到目录:14
+Outlining:主控文档视图:15
+Outlining:折叠子文档:16
+Outlining:创建子文档:17
+Outlining:删除子文档:18
+Outlining:导入子文档:19
+Outlining:合并子文档:20
+Outlining:拆分子文档:21
+Outlining:保护子文档:22
+Print Preview:打印:1
+Print Preview:放大镜:2
+Print Preview:单页:3
+Print Preview:多页:4
+Print Preview:显示比例:5
+Print Preview:标尺:6
+Print Preview:减少一页:7
+Print Preview:全屏显示:8
+Print Preview:关闭:9
+Print Preview:关闭:10
+Print Preview:打印:11
+Word for Macintosh 5.0:新建空白文档:1
+Word for Macintosh 5.0:打开:2
+Word for Macintosh 5.0:保存:3
+Word for Macintosh 5.0:剪切:4
+Word for Macintosh 5.0:复制:5
+Word for Macintosh 5.0:粘贴:6
+Word for Macintosh 5.0:无法撤消:7
+Word for Macintosh 5.0:编号:8
+Word for Macintosh 5.0:项目符号:9
+Word for Macintosh 5.0:减少缩进量:10
+Word for Macintosh 5.0:增加缩进量:11
+Word for Macintosh 5.0:图文框:14
+Word for Macintosh 5.0:绘图:15
+Word for Macintosh 5.0:图表:16
+Word for Macintosh 5.0:信封:17
+Word for Macintosh 5.0:拼写和语法:18
+Word for Macintosh 5.0:打印:19
+Word for Macintosh 5.0:单页:20
+Word for Macintosh 5.0:比例 100%:21
+Word for Macintosh 5.0:适于窗口:22
+Read Mail:答复发件人:1
+Read Mail:全部答复:2
+Read Mail:转发:3
+Read Mail:打印:4
+Read Mail:复制:5
+Read Mail:移动邮件:6
+Read Mail:删除邮件:7
+Read Mail:项目:8
+Read Mail:项目:9
+Read Mail:自动套用格式:10
+Read Mail:突出显示:11
+Read Mail:邮件头:12
+Read Mail:文档结构图:13
+Read Mail:全部显示:14
+Read Mail:显示比例:15
+Read Mail:Microsoft Office Word 帮助:16
+Send Mail:邮件收件人:1
+Send Mail:选择姓名:2
+Send Mail:检查姓名:3
+Send Mail:属性:4
+Send Mail:保存:5
+Send Mail:打印:6
+Send Mail:拼写和语法:7
+Send Mail:剪切:8
+Send Mail:复制:9
+Send Mail:粘贴:10
+Send Mail:格式刷:11
+Send Mail:无法撤消:12
+Send Mail:无法恢复:13
+Send Mail:超链接:14
+Send Mail:文件:15
+Send Mail:自动套用格式:17
+Send Mail:邮件头:18
+Send Mail:文档结构图:19
+Send Mail:全部显示:20
+Send Mail:显示比例:21
+Send Mail:Microsoft Office Word 帮助:22
+Extended Formatting:突出显示:1
+Extended Formatting:着重号:2
+Extended Formatting:双删除线:3
+Extended Formatting:拼音指南:4
+Extended Formatting:合并字符:5
+Extended Formatting:带圈字符:6
+Extended Formatting:单倍行距:7
+Extended Formatting:1.5 倍行距:8
+Extended Formatting:2 倍行距:9
+Extended Formatting:字符边框:11
+Extended Formatting:字符底纹:12
+AutoText:自动图文集:1
+AutoText:所有词条:2
+AutoText:新建:3
+Web:返回:1
+Web:向前:2
+Web:停止:3
+Web:刷新:4
+Web:开始页:5
+Web:搜索 Web:6
+Web:收藏夹:7
+Web:前往:8
+Web:只显示“Web”工具栏:9
+Web:地址:10
+WordArt:艺术字:1
+WordArt:编辑文字:2
+WordArt:艺术字库:3
+WordArt:设置对象格式:4
+WordArt:艺术字形状:5
+WordArt:文字环绕:6
+WordArt:艺术字字母高度相同:7
+WordArt:艺术字竖排文字:8
+WordArt:艺术字对齐方式:9
+WordArt:艺术字字符间距:10
+3-D Settings:设置/取消三维效果:1
+3-D Settings:下俯:2
+3-D Settings:上翘:3
+3-D Settings:左偏:4
+3-D Settings:右偏:5
+3-D Settings:深度:6
+3-D Settings:方向:7
+3-D Settings:照明角度:8
+3-D Settings:表面效果:9
+3-D Settings:三维颜色:10
+Shadow Settings:设置/取消阴影:1
+Shadow Settings:略向上移:2
+Shadow Settings:略向下移:3
+Shadow Settings:略向左移:4
+Shadow Settings:略向右移:5
+Shadow Settings:阴影颜色:6
+Picture:图片:1
+Picture:颜色:2
+Picture:增加对比度:3
+Picture:降低对比度:4
+Picture:增加亮度:5
+Picture:降低亮度:6
+Picture:裁剪:7
+Picture:向左旋转 90°:8
+Picture:线型:9
+Picture:压缩图片:10
+Picture:文字环绕:11
+Picture:对象:12
+Picture:设置透明色:13
+Picture:重设图片:14
+Picture:设置对象格式:15
+Drawing Canvas:调整:1
+Drawing Canvas:扩大:2
+Drawing Canvas:缩放绘图:3
+Drawing Canvas:文字环绕:4
+Organization Chart:插入形状:1
+Organization Chart:版式:2
+Organization Chart:选择:3
+Organization Chart:自动套用格式:4
+Organization Chart:文字环绕:5
+Organization Chart:显示比例:6
+Diagram:插入形状:1
+Diagram:后移图形:2
+Diagram:前移图形:3
+Diagram:反转图示:4
+Diagram:版式:5
+Diagram:自动套用格式:6
+Diagram:更改为:7
+Diagram:文字环绕:8
+Reviewing:显示以便审阅:1
+Reviewing:显示:2
+Reviewing:上一个:3
+Reviewing:下一个:4
+Reviewing:接受修订:5
+Reviewing:拒绝修订/删除批注:6
+Reviewing:墨迹注释:7
+Reviewing:墨迹批注:8
+Reviewing:批注:9
+Reviewing:突出显示:10
+Reviewing:修订:11
+Reviewing:回复时包含更改:12
+Reviewing:结束审阅:13
+Reviewing:审阅窗格:14
+AutoSummarize:突出显示/只显示摘要:1
+AutoSummarize:原百分比:2
+AutoSummarize:关闭:3
+Exit Design Mode:设计模式:1
+Control Toolbox:设计模式:1
+Control Toolbox:属性:2
+Control Toolbox:查看代码:3
+Control Toolbox:复选框:4
+Control Toolbox:文本框:5
+Control Toolbox:命令按钮:6
+Control Toolbox:选项按钮:7
+Control Toolbox:列表框:8
+Control Toolbox:组合框:9
+Control Toolbox:切换按钮:10
+Control Toolbox:数值调节钮:11
+Control Toolbox:滚动条:12
+Control Toolbox:标签:13
+Control Toolbox:图像:14
+Control Toolbox:其他控件:15
+Text Box:创建文本框链接:1
+Text Box:断开向前链接:2
+Text Box:前一文本框:3
+Text Box:下一文本框:4
+Text Box:更改文字方向:5
+Outlook Read Mail:答复发件人:1
+Outlook Read Mail:全部答复:2
+Outlook Read Mail:转发:3
+Outlook Read Mail:打印:4
+Outlook Read Mail:复制:5
+Outlook Read Mail:自动套用格式:6
+Outlook Read Mail:移动邮件:7
+Outlook Read Mail:删除邮件:8
+Outlook Read Mail:项目:9
+Outlook Read Mail:项目:10
+Outlook Read Mail:文档结构图:11
+Outlook Read Mail:全部显示:12
+Outlook Read Mail:显示比例:13
+Outlook Read Mail:Microsoft Office Word 帮助:14
+Outlook Send Mail:邮件收件人:1
+Outlook Send Mail:保存:2
+Outlook Send Mail:打印:3
+Outlook Send Mail:剪切:4
+Outlook Send Mail:复制:5
+Outlook Send Mail:粘贴:6
+Outlook Send Mail:格式刷:7
+Outlook Send Mail:无法撤消:8
+Outlook Send Mail:无法恢复:9
+Outlook Send Mail:选择姓名:10
+Outlook Send Mail:文件:11
+Outlook Send Mail:全部显示:13
+Outlook Send Mail:显示比例:14
+Outlook Send Mail:Microsoft Office Word 帮助:15
+Function Key Display:功能键 1:1
+Function Key Display:功能键 2:2
+Function Key Display:功能键 3:3
+Function Key Display:功能键 4:4
+Function Key Display:功能键 5:5
+Function Key Display:功能键 6:6
+Function Key Display:功能键 7:7
+Function Key Display:功能键 8:8
+Function Key Display:功能键 9:9
+Function Key Display:功能键 10:10
+Function Key Display:功能键 11:11
+Function Key Display:功能键 12:12
+Web Tools:设计模式:1
+Web Tools:属性:2
+Web Tools:Microsoft 脚本编辑器:3
+Web Tools:复选框:4
+Web Tools:选项按钮:5
+Web Tools:下拉框:6
+Web Tools:列表框:7
+Web Tools:文本框:8
+Web Tools:文本区:9
+Web Tools:提交:10
+Web Tools:带图像提交:11
+Web Tools:重新设置:12
+Web Tools:隐藏:13
+Web Tools:密码:14
+Web Tools:影片:15
+Web Tools:声音:16
+Web Tools:滚动文字:17
+Word Count:字数统计:1
+Word Count:重新计数:2
+Japanese Greetings:问候语:1
+Japanese Greetings:开头语:2
+Japanese Greetings:结束语:3
+Japanese Greetings:插入原先的问候语:4
+Menu Bar:文件:1
+Menu Bar:编辑:2
+Menu Bar:视图:3
+Menu Bar:插入:4
+Menu Bar:格式:5
+Menu Bar:工具:6
+Menu Bar:表格:7
+Menu Bar:操作:8
+Menu Bar:窗口:9
+Menu Bar:帮助:10
+Refresh:刷新:1
+Refresh:不刷新:2
+Frames:框架集中的目录:1
+Frames:左侧新框架:2
+Frames:右侧新框架:3
+Frames:上方新框架:4
+Frames:下方新框架:5
+Frames:删除框架:6
+Frames:框架属性:7
+E-mail:绘图与书写笔:1
+E-mail:保存:2
+E-mail:打印:3
+E-mail:剪切:4
+E-mail:复制:5
+E-mail:粘贴:6
+E-mail:字体:7
+E-mail:字号:8
+E-mail:字体颜色:9
+E-mail:加粗:10
+E-mail:倾斜:11
+E-mail:下划线:12
+E-mail:两端对齐:13
+E-mail:居中:14
+E-mail:右对齐:15
+E-mail:分散对齐:16
+E-mail:从左向右:17
+E-mail:从右向左:18
+E-mail:编号:19
+E-mail:项目符号:20
+E-mail:减少缩进量:21
+E-mail:增加缩进量:22
+E-mail:翻译:23
+Reading Layout:保存:1
+Reading Layout:打印:2
+Reading Layout:文档结构图:3
+Reading Layout:缩略图:4
+Reading Layout:查找:5
+Reading Layout:信息检索:6
+Reading Layout:增大文本字号:7
+Reading Layout:减小文本字号:8
+Reading Layout:实际页数:9
+Reading Layout:允许多页:10
+Reading Layout:关闭:11
+Document Layout:取消锁定文档版式:1
+Document Layout:帮助:2
+Compare Side by Side:同步滚动:1
+Compare Side by Side:重置窗口位置:2
+Compare Side by Side:并排比较:3
+Ink Drawing and Writing:绘图与书写笔:1
+Ink Drawing and Writing:橡皮擦:2
+Ink Drawing and Writing:选择对象:3
+Ink Drawing and Writing:线条颜色:4
+Ink Drawing and Writing:线型:5
+Ink Drawing and Writing:停止擦除:6
+Ink Annotations:批注笔:1
+Ink Annotations:橡皮擦:2
+Ink Annotations:选择对象:3
+Ink Annotations:线条颜色:4
+Ink Annotations:线型:5
+Ink Annotations:标记:6
+Ink Annotations:停止擦除:7
+Ink Comment:笔:1
+Ink Comment:橡皮擦:2
+Task Pane:任务窗格:1
+Drop Caps:剪切:1
+Drop Caps:复制:2
+Drop Caps:粘贴:3
+Drop Caps:删除批注:4
+Drop Caps:边框和底纹:5
+Drop Caps:首字下沉:6
+Endnotes:剪切:1
+Endnotes:复制:2
+Endnotes:粘贴:3
+Endnotes:删除批注:4
+Endnotes:汉字重选:5
+Endnotes:字体:6
+Endnotes:段落:7
+Endnotes:样式:8
+Endnotes:定位至尾注:9
+Endnotes:脚注和尾注:10
+Endnotes:转换至尾注:11
+Endnotes:符号:12
+Endnotes:超链接:13
+Endnotes:编辑超链接:14
+Endnotes:打开超链接:15
+Endnotes:选定超链接:16
+Endnotes:复制超链接:17
+Endnotes:取消超链接:18
+Endnotes:查阅:19
+Endnotes:选择性粘贴:20
+Fields:剪切:1
+Fields:复制:2
+Fields:粘贴:3
+Fields:粘贴表格:4
+Fields:删除批注:5
+Fields:更新域:6
+Fields:编辑域:7
+Fields:切换域代码:8
+Fields:字体:9
+Fields:段落:10
+Fields:项目符号和编号:11
+Fields:符号:12
+Fields:选择性粘贴:13
+Fields:汉字重选:14
+Display Fields:剪切:1
+Display Fields:复制:2
+Display Fields:粘贴:3
+Display Fields:粘贴表格:4
+Display Fields:删除批注:5
+Display Fields:编辑域:6
+Display Fields:切换域代码:7
+Display Fields:字体:8
+Display Fields:段落:9
+Display Fields:项目符号和编号:10
+Display Fields:符号:11
+Field Display List Numbers:剪切:1
+Field Display List Numbers:复制:2
+Field Display List Numbers:粘贴:3
+Field Display List Numbers:粘贴表格:4
+Field Display List Numbers:删除批注:5
+Field Display List Numbers:编辑域:6
+Field Display List Numbers:切换域代码:7
+Field Display List Numbers:减少缩进量:8
+Field Display List Numbers:增加缩进量:9
+Field Display List Numbers:字体:10
+Field Display List Numbers:段落:11
+Field Display List Numbers:项目符号和编号:12
+Field Display List Numbers:符号:13
+Form Fields:剪切:1
+Form Fields:复制:2
+Form Fields:粘贴:3
+Form Fields:粘贴表格:4
+Form Fields:删除批注:5
+Form Fields:汉字重选:6
+Form Fields:属性:7
+Form Fields:字体:8
+Form Fields:段落:9
+Form Fields:项目符号和编号:10
+Form Fields:符号:11
+Form Fields:检查姓名:12
+Form Fields:超链接:13
+Form Fields:编辑超链接:14
+Form Fields:打开超链接:15
+Form Fields:选定超链接:16
+Form Fields:复制超链接:17
+Form Fields:取消超链接:18
+Footnotes:剪切:1
+Footnotes:复制:2
+Footnotes:粘贴:3
+Footnotes:汉字重选:4
+Footnotes:字体:5
+Footnotes:段落:6
+Footnotes:样式:7
+Footnotes:定位至脚注:8
+Footnotes:脚注和尾注:9
+Footnotes:转换至尾注:10
+Footnotes:符号:11
+Footnotes:超链接:12
+Footnotes:编辑超链接:13
+Footnotes:打开超链接:14
+Footnotes:选定超链接:15
+Footnotes:复制超链接:16
+Footnotes:取消超链接:17
+Footnotes:查阅:18
+Footnotes:选择性粘贴:19
+Frames:剪切:1
+Frames:复制:2
+Frames:粘贴:3
+Frames:粘贴表格:4
+Frames:删除批注:5
+Frames:边框和底纹:6
+Frames:设置图文框格式:7
+Frames:选择性粘贴:8
+Frames:字体:9
+Frames:段落:10
+Frames:项目符号和编号:11
+Headings:剪切:1
+Headings:复制:2
+Headings:粘贴:3
+Headings:粘贴表格:4
+Headings:删除批注:5
+Headings:汉字重选:6
+Headings:减少缩进量:7
+Headings:增加缩进量:8
+Headings:字体:9
+Headings:段落:10
+Headings:项目符号和编号:11
+Headings:符号:12
+Headings:检查姓名:13
+Headings:超链接:14
+Headings:编辑超链接:15
+Headings:打开超链接:16
+Headings:选定超链接:17
+Headings:复制超链接:18
+Headings:取消超链接:19
+Headings:查阅:20
+Headings:同义词:21
+Headings:翻译:22
+Linked Headings:剪切:1
+Linked Headings:复制:2
+Linked Headings:粘贴:3
+Linked Headings:粘贴表格:4
+Linked Headings:删除批注:5
+Linked Headings:汉字重选:6
+Linked Headings:对象:7
+Linked Headings:字体:8
+Linked Headings:段落:9
+Linked Headings:项目符号和编号:10
+Linked Headings:符号:11
+Linked Headings:查阅:12
+Linked Headings:同义词:13
+Linked Headings:翻译:14
+Linked Headings:检查姓名:15
+Linked Headings:超链接:16
+Linked Headings:编辑超链接:17
+Linked Headings:打开超链接:18
+Linked Headings:选定超链接:19
+Linked Headings:复制超链接:20
+Linked Headings:取消超链接:21
+Script Anchor Popup:剪切:1
+Script Anchor Popup:复制:2
+Script Anchor Popup:粘贴:3
+Script Anchor Popup:删除批注:4
+Script Anchor Popup:插入脚本:5
+Lists:剪切:1
+Lists:复制:2
+Lists:粘贴:3
+Lists:粘贴表格:4
+Lists:删除批注:5
+Lists:汉字重选:6
+Lists:重新开始编号:7
+Lists:继续编号:8
+Lists:减少缩进量:9
+Lists:增加缩进量:10
+Lists:字体:11
+Lists:段落:12
+Lists:项目符号和编号:13
+Lists:符号:14
+Lists:检查姓名:15
+Lists:超链接:16
+Lists:编辑超链接:17
+Lists:打开超链接:18
+Lists:选定超链接:19
+Lists:复制超链接:20
+Lists:取消超链接:21
+Lists:查阅:22
+Lists:同义词:23
+Lists:翻译:24
+Inline Picture:剪切:1
+Inline Picture:复制:2
+Inline Picture:粘贴:3
+Inline Picture:粘贴表格:4
+Inline Picture:删除批注:5
+Inline Picture:对象:6
+Inline Picture:显示“图片”工具栏:7
+Inline Picture:边框和底纹:8
+Inline Picture:题注:9
+Inline Picture:对象:10
+Inline Picture:超链接:11
+Inline Picture:编辑超链接:12
+Inline Picture:打开超链接:13
+Inline Picture:选定超链接:14
+Inline Picture:复制超链接:15
+Inline Picture:取消超链接:16
+Inline Picture:设置自选图形的默认效果:17
+Inline Picture:设置对象格式:18
+Inline Canvas:剪切:1
+Inline Canvas:复制:2
+Inline Canvas:粘贴:3
+Inline Canvas:粘贴表格:4
+Inline Canvas:删除批注:5
+Inline Canvas:显示绘图画布工具栏:6
+Inline Canvas:题注:7
+Inline Canvas:自动套用格式:8
+Inline Canvas:对象:9
+Inline Canvas:超链接:10
+Inline Canvas:编辑超链接:11
+Inline Canvas:打开超链接:12
+Inline Canvas:选定超链接:13
+Inline Canvas:复制超链接:14
+Inline Canvas:取消超链接:15
+Horizontal Line Popup:剪切:1
+Horizontal Line Popup:复制:2
+Horizontal Line Popup:粘贴:3
+Horizontal Line Popup:粘贴表格:4
+Horizontal Line Popup:删除批注:5
+Horizontal Line Popup:对象:6
+Tables:剪切:1
+Tables:复制:2
+Tables:粘贴:3
+Tables:粘贴表格:4
+Tables:删除批注:5
+Tables:删除单元格:7
+Tables:合并/拆分单元格:8
+Tables:平均分布各行:9
+Tables:平均分布各列:10
+Tables:边框和底纹:11
+Tables:文字方向:12
+Tables:单元格对齐方式:13
+Tables:自动调整:14
+Tables:表格属性:15
+Table Cells:剪切:1
+Table Cells:复制:2
+Table Cells:粘贴:3
+Table Cells:粘贴表格:4
+Table Cells:删除批注:5
+Table Cells:汉字重选:6
+Table Cells:插入表格:7
+Table Cells:删除单元格:8
+Table Cells:合并/拆分单元格:9
+Table Cells:边框和底纹:10
+Table Cells:文字方向:11
+Table Cells:单元格对齐方式:12
+Table Cells:自动调整:13
+Table Cells:表格属性:14
+Table Cells:选择性粘贴:15
+Table Cells:拆分表格:17
+Table Cells:全选表格:18
+Table Cells:合并单元格:19
+Table Cells:拆分单元格:20
+Table Headings:剪切:1
+Table Headings:复制:2
+Table Headings:粘贴:3
+Table Headings:粘贴表格:4
+Table Headings:删除批注:5
+Table Headings:汉字重选:6
+Table Headings:插入表格:7
+Table Headings:删除单元格:8
+Table Headings:绘制表格:9
+Table Headings:边框和底纹:10
+Table Headings:表格自动套用格式:11
+Table Headings:字体:12
+Table Headings:段落:13
+Table Headings:符号:14
+Table Lists:剪切:1
+Table Lists:复制:2
+Table Lists:粘贴:3
+Table Lists:粘贴表格:4
+Table Lists:删除批注:5
+Table Lists:汉字重选:6
+Table Lists:项目符号和编号:7
+Table Lists:减少缩进量:8
+Table Lists:增加缩进量:9
+Table Lists:插入表格:10
+Table Lists:删除单元格:11
+Table Lists:绘制表格:12
+Table Lists:边框和底纹:13
+Table Lists:表格自动套用格式:14
+Table Lists:超链接:15
+Table Lists:查阅:16
+Table Lists:同义词:17
+Table Lists:翻译:18
+Table Lists:字体:19
+Table Lists:段落:20
+Table Lists:文字方向:21
+Table Lists:符号:22
+Table Lists:检查姓名:23
+Table Pictures:剪切:1
+Table Pictures:复制:2
+Table Pictures:粘贴:3
+Table Pictures:粘贴表格:4
+Table Pictures:删除批注:5
+Table Pictures:对象:6
+Table Pictures:边框和底纹:7
+Table Pictures:题注:8
+Table Pictures:插入表格:9
+Table Pictures:删除单元格:10
+Table Pictures:绘制表格:11
+Table Pictures:表格自动套用格式:12
+Table Pictures:超链接:13
+Table Text:剪切:1
+Table Text:复制:2
+Table Text:粘贴:3
+Table Text:粘贴表格:4
+Table Text:删除批注:5
+Table Text:汉字重选:6
+Table Text:插入表格:7
+Table Text:删除单元格:8
+Table Text:合并/拆分单元格:9
+Table Text:边框和底纹:10
+Table Text:文字方向:11
+Table Text:单元格对齐方式:12
+Table Text:自动调整:13
+Table Text:表格属性:14
+Table Text:项目符号和编号:15
+Table Text:检查姓名:16
+Table Text:超链接:17
+Table Text:查阅:18
+Table Text:同义词:19
+Table Text:翻译:20
+Table Text:选择性粘贴:21
+Table Text:拆分表格:23
+Table Text:全选表格:24
+Table Text:拆分单元格:25
+Whole Table:剪切:1
+Whole Table:复制:2
+Whole Table:粘贴:3
+Whole Table:粘贴表格:4
+Whole Table:删除批注:5
+Whole Table:合并/拆分单元格:6
+Whole Table:平均分布各行:7
+Whole Table:平均分布各列:8
+Whole Table:绘制表格:9
+Whole Table:边框和底纹:10
+Whole Table:表格自动套用格式:11
+Whole Table:单元格对齐方式:12
+Whole Table:自动调整:13
+Whole Table:题注:14
+Whole Table:表格属性:15
+Whole Table:选择性粘贴:16
+Whole Table:插入表格:18
+Whole Table:拆分表格:19
+Whole Table:删除表格:20
+Whole Table:合并单元格:21
+Whole Table:拆分单元格:22
+Whole Table:文字方向:23
+Linked Table:剪切:1
+Linked Table:复制:2
+Linked Table:粘贴:3
+Linked Table:粘贴表格:4
+Linked Table:删除批注:5
+Linked Table:对象:6
+Linked Table:平均分布各行:7
+Linked Table:平均分布各列:8
+Linked Table:表格属性:9
+Linked Table:绘制表格:10
+Linked Table:边框和底纹:11
+Linked Table:表格自动套用格式:12
+Linked Table:题注:13
+Text:剪切:1
+Text:复制:2
+Text:粘贴:3
+Text:删除批注:4
+Text:汉字重选:5
+Text:字体:6
+Text:段落:7
+Text:项目符号和编号:8
+Text:文字方向:9
+Text:符号:10
+Text:超链接:11
+Text:检查姓名:12
+Text:查阅:13
+Text:解释:14
+Text:同义词:15
+Text:翻译:16
+Text:选择性粘贴:18
+Linked Text:剪切:1
+Linked Text:复制:2
+Linked Text:粘贴:3
+Linked Text:删除批注:4
+Linked Text:汉字重选:5
+Linked Text:对象:6
+Linked Text:字体:7
+Linked Text:段落:8
+Linked Text:项目符号和编号:9
+Linked Text:文字方向:10
+Linked Text:符号:11
+Linked Text:检查姓名:12
+Font Popup:剪切:1
+Font Popup:复制:2
+Font Popup:粘贴:3
+Font Popup:汉字重选:4
+Font Popup:字体:5
+Font Paragraph:剪切:1
+Font Paragraph:复制:2
+Font Paragraph:粘贴:3
+Font Paragraph:汉字重选:4
+Font Paragraph:字体:5
+Font Paragraph:段落:6
+Format Inspector Popup in Normal Mode:修改:1
+Format Inspector Popup in Normal Mode:使属性与周围文本的格式相匹配:2
+Format Inspector Popup in Compare Mode:修改:1
+Format Inspector Popup in Compare Mode:属性与原选定内容的格式相匹配:2
+Spelling:拼写检查:1
+Spelling:查阅:2
+Spelling:检查姓名:3
+Spelling:剪切:4
+Spelling:复制:5
+Spelling:粘贴:6
+Spelling:删除批注:7
+Grammar:语法:1
+Grammar:查阅:2
+Grammar:检查姓名:3
+Grammar:剪切:4
+Grammar:复制:5
+Grammar:粘贴:6
+Grammar:删除批注:7
+Grammar (2):查阅:1
+Grammar (2):剪切:2
+Grammar (2):复制:3
+Grammar (2):粘贴:4
+Grammar (2):删除批注:5
+Format consistency:剪切:1
+Format consistency:复制:2
+Format consistency:粘贴:3
+Format consistency:删除批注:4
+Background Proofing Status Bar:隐藏拼写错误:1
+Background Proofing Status Bar:隐藏语法错误:2
+Background Proofing Status Bar:选项:3
+Track Changes:剪切:1
+Track Changes:复制:2
+Track Changes:粘贴:3
+Track Changes:粘贴表格:4
+Track Changes:删除批注:5
+Track Changes:汉字重选:6
+Track Changes:接受修订:7
+Track Changes:拒绝修订:8
+Track Changes:修订:9
+Track Changes:超链接:10
+Track Changes:编辑超链接:11
+Track Changes:打开超链接:12
+Track Changes:选定超链接:13
+Track Changes:复制超链接:14
+Track Changes:取消超链接:15
+Track Changes:选择性粘贴:16
+Track Changes:字体:17
+Track Changes:段落:18
+Frame Properties:框架属性:1
+Hyperlink Context Menu:剪切:1
+Hyperlink Context Menu:复制:2
+Hyperlink Context Menu:粘贴:3
+Hyperlink Context Menu:粘贴表格:4
+Hyperlink Context Menu:删除批注:5
+Hyperlink Context Menu:编辑超链接:6
+Hyperlink Context Menu:选定超链接:7
+Hyperlink Context Menu:打开超链接:8
+Hyperlink Context Menu:复制超链接:9
+Hyperlink Context Menu:取消超链接:10
+Hyperlink Context Menu:字体:11
+Hyperlink Context Menu:段落:12
+Hyperlink Context Menu:项目符号和编号:13
+Hyperlink Context Menu:符号:14
+Hyperlink Context Menu:检查姓名:15
+Hyperlink Context Menu:选择性粘贴:16
+Hyperlink Context Menu:汉字重选:17
+AutoSignature Popup:电子邮件签名:1
+Field AutoText:新建:1
+Document Map:文档结构图:1
+Document Map:展开:2
+Document Map:折叠:3
+Document Map:显示至标题 1:4
+Document Map:显示至标题 2:5
+Document Map:显示至标题 3:6
+Document Map:显示至标题 4:7
+Document Map:显示至标题 5:8
+Document Map:显示至标题 6:9
+Document Map:显示至标题 7:10
+Document Map:显示至标题 8:11
+Document Map:显示至标题 9:12
+Document Map:全部:13
+Document Map:靠左:14
+Document Map:靠右:15
+Document Map:隐藏:16
+Shapes:剪切:1
+Shapes:复制:2
+Shapes:将墨迹作为文本复制:3
+Shapes:粘贴:4
+Shapes:删除批注:5
+Shapes:编辑文字:6
+Shapes:组合:7
+Shapes:叠放次序:8
+Shapes:设置自选图形的默认效果:9
+Shapes:设置对象格式:10
+Shapes:超链接:11
+Shapes:编辑超链接:12
+Shapes:打开超链接:13
+Shapes:选定超链接:14
+Shapes:复制超链接:15
+Shapes:取消超链接:16
+Shapes:另存为图片:17
+Shapes:更改形状:18
+Shapes:添加文字:19
+Shapes:创建文本框链接:20
+Shapes:断开向前链接:21
+Shapes:前一文本框:22
+Shapes:下一文本框:23
+Curve:剪切:1
+Curve:复制:2
+Curve:将墨迹作为文本复制:3
+Curve:粘贴:4
+Curve:删除批注:5
+Curve:编辑顶点:6
+Curve:开放路径:7
+Curve:关闭路径:8
+Curve:显示墨迹绘图与书写工具栏:9
+Curve:显示墨迹注释工具栏:10
+Curve:组合:11
+Curve:叠放次序:12
+Curve:设置自选图形的默认效果:13
+Curve:设置对象格式:14
+Curve:超链接:15
+Curve:编辑超链接:16
+Curve:打开超链接:17
+Curve:选定超链接:18
+Curve:复制超链接:19
+Curve:取消超链接:20
+Curve:更改图片:21
+Curve:另存为图片:22
+Curve:创建文本框链接:23
+Curve:断开向前链接:24
+Curve:前一文本框:25
+Curve:下一文本框:26
+Curve:其他布局选项:27
+Curve Node:添加顶点:1
+Curve Node:删除顶点:2
+Curve Node:开放路径:3
+Curve Node:关闭路径:4
+Curve Node:平滑顶点:5
+Curve Node:直线点:6
+Curve Node:角部顶点:7
+Curve Node:退出编辑顶点:8
+Curve Segment:添加顶点:1
+Curve Segment:删除线段:2
+Curve Segment:开放路径:3
+Curve Segment:关闭路径:4
+Curve Segment:抻直弓形:5
+Curve Segment:曲线段:6
+Curve Segment:退出编辑顶点:7
+Floating Picture:剪切:1
+Floating Picture:复制:2
+Floating Picture:粘贴:3
+Floating Picture:删除批注:4
+Floating Picture:编辑图片:5
+Floating Picture:显示“图片”工具栏:6
+Floating Picture:组合:7
+Floating Picture:叠放次序:8
+Floating Picture:设置自选图形的默认效果:9
+Floating Picture:设置对象格式:10
+Floating Picture:超链接:11
+Floating Picture:编辑超链接:12
+Floating Picture:打开超链接:13
+Floating Picture:选定超链接:14
+Floating Picture:复制超链接:15
+Floating Picture:取消超链接:16
+Floating Picture:更改图片:17
+Floating Picture:另存为图片:18
+Floating Picture:其他布局选项:19
+Canvas Popup:剪切:1
+Canvas Popup:复制:2
+Canvas Popup:粘贴:3
+Canvas Popup:删除批注:4
+Canvas Popup:显示绘图画布工具栏:5
+Canvas Popup:组合:6
+Canvas Popup:叠放次序:7
+Canvas Popup:自动套用格式:8
+Canvas Popup:设置对象格式:9
+Canvas Popup:超链接:10
+Canvas Popup:编辑超链接:11
+Canvas Popup:打开超链接:12
+Canvas Popup:选定超链接:13
+Canvas Popup:复制超链接:14
+Canvas Popup:取消超链接:15
+OLE Object:剪切:1
+OLE Object:复制:2
+OLE Object:粘贴:3
+OLE Object:删除批注:4
+OLE Object:对象:5
+OLE Object:显示“图片”工具栏:6
+OLE Object:组合:7
+OLE Object:叠放次序:8
+OLE Object:设置自选图形的默认效果:9
+OLE Object:设置对象格式:10
+OLE Object:超链接:11
+OLE Object:编辑超链接:12
+OLE Object:打开超链接:13
+OLE Object:选定超链接:14
+OLE Object:复制超链接:15
+OLE Object:取消超链接:16
+OLE Object:Object Menu:17
+OLE Object:另存为图片:18
+OLE Object:保存到文件:19
+ActiveX Control:剪切:1
+ActiveX Control:复制:2
+ActiveX Control:粘贴:3
+ActiveX Control:删除批注:4
+ActiveX Control:属性:5
+ActiveX Control:查看代码:6
+ActiveX Control:对象:7
+ActiveX Control:组合:8
+ActiveX Control:叠放次序:9
+ActiveX Control:设置对象格式:10
+ActiveX Control:超链接:11
+ActiveX Control:编辑超链接:12
+ActiveX Control:打开超链接:13
+ActiveX Control:选定超链接:14
+ActiveX Control:复制超链接:15
+ActiveX Control:取消超链接:16
+ActiveX Control:设置自选图形的默认效果:17
+WordArt Context Menu:剪切:1
+WordArt Context Menu:复制:2
+WordArt Context Menu:粘贴:3
+WordArt Context Menu:删除批注:4
+WordArt Context Menu:编辑文字:5
+WordArt Context Menu:显示“艺术字”工具栏:6
+WordArt Context Menu:组合:7
+WordArt Context Menu:叠放次序:8
+WordArt Context Menu:设置自选图形的默认效果:9
+WordArt Context Menu:设置对象格式:10
+WordArt Context Menu:超链接:11
+WordArt Context Menu:编辑超链接:12
+WordArt Context Menu:打开超链接:13
+WordArt Context Menu:选定超链接:14
+WordArt Context Menu:复制超链接:15
+WordArt Context Menu:取消超链接:16
+WordArt Context Menu:另存为图片:17
+Rotate Mode:剪切:1
+Rotate Mode:复制:2
+Rotate Mode:粘贴:3
+Rotate Mode:删除批注:4
+Rotate Mode:退出旋转方式:5
+Rotate Mode:设置自选图形的默认效果:6
+Rotate Mode:设置对象格式:7
+Rotate Mode:超链接:8
+Rotate Mode:编辑超链接:9
+Rotate Mode:打开超链接:10
+Rotate Mode:选定超链接:11
+Rotate Mode:复制超链接:12
+Rotate Mode:取消超链接:13
+Comment:剪切:1
+Comment:复制:2
+Comment:粘贴:3
+Comment:汉字重选:4
+Comment:编辑批注:5
+Comment:删除批注:6
+Comment:字体:7
+Comment:段落:8
+Comment:项目符号和编号:9
+Comment:文字方向:10
+Comment:符号:11
+Comment:解释:12
+Comment:检查姓名:13
+Comment:超链接:14
+Comment:编辑超链接:15
+Comment:打开超链接:16
+Comment:选定超链接:17
+Comment:复制超链接:18
+Comment:取消超链接:19
+Comment:查阅:20
+Comment:选择性粘贴:21
+Organization Chart Popup:编辑文字:1
+Organization Chart Popup:下属:2
+Organization Chart Popup:同事:3
+Organization Chart Popup:助手:4
+Organization Chart Popup:删除:5
+Organization Chart Popup:版式:6
+Organization Chart Popup:选择:7
+Organization Chart Popup:自动套用格式:8
+Organization Chart Popup:设置对象格式:9
+Diagram:编辑文字:1
+Diagram:插入形状:2
+Diagram:删除图形:3
+Diagram:自动套用格式:4
+Diagram:设置对象格式:5
+Connector:剪切:1
+Connector:复制:2
+Connector:粘贴:3
+Connector:删除批注:4
+Connector:直接连接符:5
+Connector:肘形连接符:6
+Connector:曲线连接符:7
+Connector:重排连接符:8
+Connector:设置自选图形的默认效果:9
+Connector:设置对象格式:10
+Connector:超链接:11
+Connector:编辑超链接:12
+Connector:打开超链接:13
+Connector:选定超链接:14
+Connector:复制超链接:15
+Connector:取消超链接:16
+Connector:另存为图片:17
+Connector:组合:18
+Connector:叠放次序:19
+Connector:其他布局选项:20
+Track Changes Indicator:修订:1
+Track Changes Indicator:审阅窗格:2
+Track Changes Indicator:选项:3
+Address Block Popup:剪切:1
+Address Block Popup:复制:2
+Address Block Popup:粘贴:3
+Address Block Popup:粘贴表格:4
+Address Block Popup:删除批注:5
+Address Block Popup:更新域:6
+Address Block Popup:编辑地址块:7
+Address Block Popup:切换域代码:8
+Address Block Popup:字体:9
+Address Block Popup:段落:10
+Address Block Popup:项目符号和编号:11
+Address Block Popup:符号:12
+Greeting Line Popup:剪切:1
+Greeting Line Popup:复制:2
+Greeting Line Popup:粘贴:3
+Greeting Line Popup:粘贴表格:4
+Greeting Line Popup:删除批注:5
+Greeting Line Popup:更新域:6
+Greeting Line Popup:编辑问候语:7
+Greeting Line Popup:切换域代码:8
+Greeting Line Popup:字体:9
+Greeting Line Popup:段落:10
+Greeting Line Popup:项目符号和编号:11
+Greeting Line Popup:符号:12
+Inline ActiveX Control:剪切:1
+Inline ActiveX Control:复制:2
+Inline ActiveX Control:粘贴:3
+Inline ActiveX Control:删除批注:4
+Inline ActiveX Control:属性:5
+Inline ActiveX Control:查看代码:6
+Inline ActiveX Control:对象:7
+Inline ActiveX Control:设置对象格式:8
+Inline ActiveX Control:超链接:9
+Inline ActiveX Control:编辑超链接:10
+Inline ActiveX Control:打开超链接:11
+Inline ActiveX Control:选定超链接:12
+Inline ActiveX Control:复制超链接:13
+Inline ActiveX Control:取消超链接:14
+XML Error Options:剪切:1
+XML Error Options:复制:2
+XML Error Options:粘贴:3
+XML Error Options:删除批注:4
+Ink Comment:复制:1
+Ink Comment:粘贴:2
+Ink Comment:删除批注:3
+AutoShapes:线条:1
+AutoShapes:连接符:2
+AutoShapes:基本形状:3
+AutoShapes:箭头总汇:4
+AutoShapes:流程图:5
+AutoShapes:星与旗帜:6
+AutoShapes:标注:7
+AutoShapes:其他自选图形:8
+Callouts:矩形标注:1
+Callouts:圆角矩形标注:2
+Callouts:椭圆形标注:3
+Callouts:云形标注:4
+Callouts:线形标注 1:5
+Callouts:线形标注 2:6
+Callouts:线形标注 3:7
+Callouts:线形标注 4:8
+Callouts:线形标注 1:9
+Callouts:线形标注 2:10
+Callouts:线形标注 3:11
+Callouts:线形标注 4:12
+Callouts:线形标注 1:13
+Callouts:线形标注 2:14
+Callouts:线形标注 3:15
+Callouts:线形标注 4:16
+Callouts:线形标注 1:17
+Callouts:线形标注 2:18
+Callouts:线形标注 3:19
+Callouts:线形标注 4:20
+Flowchart:流程图: 过程:1
+Flowchart:流程图: 可选过程:2
+Flowchart:流程图: 决策:3
+Flowchart:流程图: 数据:4
+Flowchart:流程图: 预定义过程:5
+Flowchart:流程图: 内部贮存:6
+Flowchart:流程图: 文档:7
+Flowchart:流程图: 多文档:8
+Flowchart:流程图: 终止:9
+Flowchart:流程图: 准备:10
+Flowchart:流程图: 手动输入:11
+Flowchart:流程图: 手动操作:12
+Flowchart:流程图: 联系:13
+Flowchart:流程图: 离页连接符:14
+Flowchart:流程图: 卡片:15
+Flowchart:流程图: 资料带:16
+Flowchart:流程图: 汇总连接:17
+Flowchart:流程图: 或者:18
+Flowchart:流程图: 对照:19
+Flowchart:流程图: 排序:20
+Flowchart:流程图: 摘录:21
+Flowchart:流程图: 合并:22
+Flowchart:流程图: 库存数据:23
+Flowchart:流程图: 延期:24
+Flowchart:流程图: 顺序访问存储器:25
+Flowchart:流程图: 磁盘:26
+Flowchart:流程图: 直接访问存储器:27
+Flowchart:流程图: 显示:28
+Block Arrows:右箭头:1
+Block Arrows:左箭头:2
+Block Arrows:上箭头:3
+Block Arrows:下箭头:4
+Block Arrows:左右箭头:5
+Block Arrows:上下箭头:6
+Block Arrows:十字箭头:7
+Block Arrows:丁字箭头:8
+Block Arrows:圆角右箭头:9
+Block Arrows:手杖形箭头:10
+Block Arrows:直角双向箭头:11
+Block Arrows:直角上箭头:12
+Block Arrows:左弧形箭头:13
+Block Arrows:右弧形箭头:14
+Block Arrows:下弧形箭头:15
+Block Arrows:上弧形箭头:16
+Block Arrows:虚尾箭头:17
+Block Arrows:燕尾形箭头:18
+Block Arrows:五边形:19
+Block Arrows:燕尾形:20
+Block Arrows:右箭头标注:21
+Block Arrows:左箭头标注:22
+Block Arrows:上箭头标注:23
+Block Arrows:下箭头标注:24
+Block Arrows:左右箭头标注:25
+Block Arrows:上下箭头标注:26
+Block Arrows:十字箭头标注:27
+Block Arrows:环形箭头:28
+Stars & Banners:爆炸形 1:1
+Stars & Banners:爆炸形 2:2
+Stars & Banners:十字星:3
+Stars & Banners:五角星:4
+Stars & Banners:八角星:5
+Stars & Banners:十六角星:6
+Stars & Banners:二十四角星:7
+Stars & Banners:三十二角星:8
+Stars & Banners:上凸带形:9
+Stars & Banners:前凸带形:10
+Stars & Banners:上凸弯带形:11
+Stars & Banners:前凸弯带形:12
+Stars & Banners:竖卷形:13
+Stars & Banners:横卷形:14
+Stars & Banners:波形:15
+Stars & Banners:双波形:16
+Lines:直线:1
+Lines:箭头:2
+Lines:双箭头:3
+Lines:曲线:4
+Lines:任意多边形:5
+Lines:自由曲线:6
+Basic Shapes:矩形:1
+Basic Shapes:平行四边形:2
+Basic Shapes:梯形:3
+Basic Shapes:菱形:4
+Basic Shapes:圆角矩形:5
+Basic Shapes:八边形:6
+Basic Shapes:等腰三角形:7
+Basic Shapes:直角三角形:8
+Basic Shapes:椭圆:9
+Basic Shapes:六边形:10
+Basic Shapes:十字形:11
+Basic Shapes:正五边形:12
+Basic Shapes:圆柱形:13
+Basic Shapes:立方体:14
+Basic Shapes:棱台:15
+Basic Shapes:折角形:16
+Basic Shapes:笑脸:17
+Basic Shapes:同心圆:18
+Basic Shapes:禁止符:19
+Basic Shapes:空心弧:20
+Basic Shapes:心形:21
+Basic Shapes:闪电形:22
+Basic Shapes:太阳形:23
+Basic Shapes:新月形:24
+Basic Shapes:弧形:25
+Basic Shapes:双括号:26
+Basic Shapes:双大括号:27
+Basic Shapes:缺角矩形:28
+Basic Shapes:左小括号:29
+Basic Shapes:右小括号:30
+Basic Shapes:左大括号:31
+Basic Shapes:右大括号:32
+Connectors:直接连接符:1
+Connectors:直接箭头连接符:2
+Connectors:直接双箭头连接符:3
+Connectors:肘形连接符:4
+Connectors:肘形箭头连接符:5
+Connectors:肘形双箭头连接符:6
+Connectors:曲线连接符:7
+Connectors:曲线箭头连接符:8
+Connectors:曲线双箭头连接符:9
+Fill Color:无颜色:1
+Fill Color:标准色:2
+Fill Color:最近所用颜色:3
+Fill Color:其他填充颜色:4
+Fill Color:填充效果:5
+Insert Shape:下属:1
+Insert Shape:同事:2
+Insert Shape:助手:3
+Line Color:无颜色:1
+Line Color:标准色:2
+Line Color:最近所用颜色:3
+Line Color:其他线条颜色:4
+Line Color:带图案线条:5
+Drawing and Writing Pens:圆珠笔:1
+Drawing and Writing Pens:黑色:2
+Drawing and Writing Pens:蓝色:3
+Drawing and Writing Pens:红色:4
+Drawing and Writing Pens:毡尖笔:5
+Drawing and Writing Pens:黑色:6
+Drawing and Writing Pens:蓝色:7
+Drawing and Writing Pens:红色:8
+Drawing and Writing Pens:荧光笔:9
+Drawing and Writing Pens:黄色:10
+Drawing and Writing Pens:青绿色:11
+Drawing and Writing Pens:粉红色:12
+Annotation Pens:圆珠笔:1
+Annotation Pens:黑色:2
+Annotation Pens:蓝色:3
+Annotation Pens:红色:4
+Annotation Pens:毡尖笔:5
+Annotation Pens:黑色:6
+Annotation Pens:蓝色:7
+Annotation Pens:红色:8
+Annotation Pens:荧光笔:9
+Annotation Pens:黄色:10
+Annotation Pens:青绿色:11
+Annotation Pens:粉红色:12
+Drawing and Writing Pens:黑色:1
+Drawing and Writing Pens:蓝色:2
+Drawing and Writing Pens:红色:3
+Drawing and Writing Pens:黑色:4
+Drawing and Writing Pens:蓝色:5
+Drawing and Writing Pens:红色:6
+Drawing and Writing Pens:黄色:7
+Drawing and Writing Pens:青绿色:8
+Drawing and Writing Pens:粉红色:9
+Annotation Pens:黑色:1
+Annotation Pens:蓝色:2
+Annotation Pens:红色:3
+Annotation Pens:黑色:4
+Annotation Pens:蓝色:5
+Annotation Pens:红色:6
+Annotation Pens:黄色:7
+Annotation Pens:青绿色:8
+Annotation Pens:粉红色:9
+Align or Distribute:左对齐:1
+Align or Distribute:水平居中:2
+Align or Distribute:右对齐:3
+Align or Distribute:顶端对齐:4
+Align or Distribute:垂直居中:5
+Align or Distribute:底端对齐:6
+Align or Distribute:横向分布:7
+Align or Distribute:纵向分布:8
+Align or Distribute:相对于页:9
+Align or Distribute:相对于画布:10
+Align or Distribute:相对于组织结构图:11
+Align or Distribute:相对于图示:12
+Rotate or Flip:自由旋转:1
+Rotate or Flip:向左旋转 90°:2
+Rotate or Flip:向右旋转 90°:3
+Rotate or Flip:水平翻转:4
+Rotate or Flip:垂直翻转:5
+Order:置于顶层:1
+Order:置于底层:2
+Order:上移一层:3
+Order:下移一层:4
+Order:浮于文字上方:5
+Order:衬于文字下方:6
+Nudge:向上:1
+Nudge:向下:2
+Nudge:向左:3
+Nudge:向右:4
+Borders:外侧框线:1
+Borders:所有框线:2
+Borders:上框线:3
+Borders:左框线:4
+Borders:内部横框线:5
+Borders:斜下框线:6
+Borders:横线:7
+Borders:内部框线:8
+Borders:无框线:9
+Borders:下框线:10
+Borders:右框线:11
+Borders:内部竖框线:12
+Borders:斜上框线:13
+Font Color:自动配色:1
+Font Color:颜色:2
+Font Color:其他颜色:3
+Shading Color:无颜色:1
+Shading Color:标准色:2
+Shading Color:其他颜色:3
+Cell Alignment:靠上两端对齐:1
+Cell Alignment:靠上居中:2
+Cell Alignment:靠上右对齐:3
+Cell Alignment:中部两端对齐:4
+Cell Alignment:中部居中:5
+Cell Alignment:中部右对齐:6
+Cell Alignment:靠下两端对齐:7
+Cell Alignment:靠下居中:8
+Cell Alignment:靠下右对齐:9
+Text Wrapping:嵌入型:1
+Text Wrapping:四周型环绕:2
+Text Wrapping:紧密型环绕:3
+Text Wrapping:衬于文字下方:4
+Text Wrapping:浮于文字上方:5
+Text Wrapping:上下型环绕:6
+Text Wrapping:穿越型环绕:7
+Text Wrapping:编辑环绕顶点:8
+Envelope:信封:1
+System:还原:1
+System:移动:2
+System:大小:3
+System:最小化:4
+System:最大化:5
+System:关闭:6
+Online Meeting:参加人名单:1
+Online Meeting:呼叫参加人:2
+Online Meeting:删除参加人:3
+Online Meeting:允许他人编辑:4
+Online Meeting:显示闲谈窗口:5
+Online Meeting:显示白板:6
+Online Meeting:结束会议:7
+Header Area Popup:编辑页眉:1
+Footer Area Popup:编辑页脚:1
+TabBar NewFile:新建:1
+Footnotes Hyperlink Popup Menu:复制:1
+Footnotes Hyperlink Popup Menu:剪切:2
+Footnotes Hyperlink Popup Menu:粘贴:3
+Footnotes Hyperlink Popup Menu:选择性粘贴:4
+Footnotes Hyperlink Popup Menu:汉字重选:5
+Footnotes Hyperlink Popup Menu:字体:6
+Footnotes Hyperlink Popup Menu:段落:7
+Footnotes Hyperlink Popup Menu:定位至脚注:8
+Footnotes Hyperlink Popup Menu:转换至尾注:9
+Footnotes Hyperlink Popup Menu:脚注和尾注:10
+Footnotes Hyperlink Popup Menu:编辑超链接:11
+Footnotes Hyperlink Popup Menu:选定超链接:12
+Footnotes Hyperlink Popup Menu:打开超链接:13
+Footnotes Hyperlink Popup Menu:复制超链接:14
+Footnotes Hyperlink Popup Menu:取消超链接:15
+Footnotes Table Popup Menu:复制:1
+Footnotes Table Popup Menu:剪切:2
+Footnotes Table Popup Menu:粘贴:3
+Footnotes Table Popup Menu:选择性粘贴:4
+Footnotes Table Popup Menu:汉字重选:5
+Footnotes Table Popup Menu:字体:6
+Footnotes Table Popup Menu:段落:7
+Footnotes Table Popup Menu:定位至脚注:8
+Footnotes Table Popup Menu:转换至尾注:9
+Footnotes Table Popup Menu:脚注和尾注:10
+Footnotes Table Popup Menu:拆分表格:11
+Footnotes Table Popup Menu:自动调整:12
+Footnotes Table Popup Menu:全选表格:13
+Footnotes Table Popup Menu:单元格对齐方式:14
+Footnotes Table Popup Menu:边框和底纹:15
+Footnotes Table Popup Menu:表格属性:16
+Footnotes Table Popup Menu:超链接:17
+Footnotes Field Popup Menu:复制:1
+Footnotes Field Popup Menu:剪切:2
+Footnotes Field Popup Menu:粘贴:3
+Footnotes Field Popup Menu:选择性粘贴:4
+Footnotes Field Popup Menu:更新域:5
+Footnotes Field Popup Menu:编辑域:6
+Footnotes Field Popup Menu:切换域代码:7
+Footnotes Field Popup Menu:汉字重选:8
+Footnotes Field Popup Menu:字体:9
+Footnotes Field Popup Menu:段落:10
+Footnotes Field Popup Menu:定位至脚注:11
+Footnotes Field Popup Menu:转换至尾注:12
+Footnotes Field Popup Menu:脚注和尾注:13
+Endnotes Hyperlink Popup Menu:复制:1
+Endnotes Hyperlink Popup Menu:剪切:2
+Endnotes Hyperlink Popup Menu:粘贴:3
+Endnotes Hyperlink Popup Menu:选择性粘贴:4
+Endnotes Hyperlink Popup Menu:汉字重选:5
+Endnotes Hyperlink Popup Menu:字体:6
+Endnotes Hyperlink Popup Menu:段落:7
+Endnotes Hyperlink Popup Menu:定位至尾注:8
+Endnotes Hyperlink Popup Menu:转换至尾注:9
+Endnotes Hyperlink Popup Menu:脚注和尾注:10
+Endnotes Hyperlink Popup Menu:编辑超链接:11
+Endnotes Hyperlink Popup Menu:选定超链接:12
+Endnotes Hyperlink Popup Menu:打开超链接:13
+Endnotes Hyperlink Popup Menu:复制超链接:14
+Endnotes Hyperlink Popup Menu:取消超链接:15
+Endnotes Table Popup Menu:复制:1
+Endnotes Table Popup Menu:剪切:2
+Endnotes Table Popup Menu:粘贴:3
+Endnotes Table Popup Menu:选择性粘贴:4
+Endnotes Table Popup Menu:汉字重选:5
+Endnotes Table Popup Menu:字体:6
+Endnotes Table Popup Menu:段落:7
+Endnotes Table Popup Menu:定位至尾注:8
+Endnotes Table Popup Menu:转换至尾注:9
+Endnotes Table Popup Menu:脚注和尾注:10
+Endnotes Table Popup Menu:拆分表格:11
+Endnotes Table Popup Menu:自动调整:12
+Endnotes Table Popup Menu:全选表格:13
+Endnotes Table Popup Menu:单元格对齐方式:14
+Endnotes Table Popup Menu:边框和底纹:15
+Endnotes Table Popup Menu:表格属性:16
+Endnotes Table Popup Menu:超链接:17
+Endnotes Field Popup Menu:复制:1
+Endnotes Field Popup Menu:剪切:2
+Endnotes Field Popup Menu:粘贴:3
+Endnotes Field Popup Menu:选择性粘贴:4
+Endnotes Field Popup Menu:更新域:5
+Endnotes Field Popup Menu:编辑域:6
+Endnotes Field Popup Menu:切换域代码:7
+Endnotes Field Popup Menu:汉字重选:8
+Endnotes Field Popup Menu:字体:9
+Endnotes Field Popup Menu:段落:10
+Endnotes Field Popup Menu:定位至尾注:11
+Endnotes Field Popup Menu:转换至尾注:12
+Endnotes Field Popup Menu:脚注和尾注:13
+Comment Text Popup Menu:复制:1
+Comment Text Popup Menu:剪切:2
+Comment Text Popup Menu:粘贴:3
+Comment Text Popup Menu:选择性粘贴:4
+Comment Text Popup Menu:删除批注:5
+Comment Text Popup Menu:汉字重选:6
+Comment Text Popup Menu:字体:7
+Comment Text Popup Menu:段落:8
+Comment Text Popup Menu:项目符号和编号:9
+Comment Text Popup Menu:超链接:10
+Comment Hyperlink Popup Menu:复制:1
+Comment Hyperlink Popup Menu:剪切:2
+Comment Hyperlink Popup Menu:粘贴:3
+Comment Hyperlink Popup Menu:选择性粘贴:4
+Comment Hyperlink Popup Menu:删除批注:5
+Comment Hyperlink Popup Menu:编辑超链接:6
+Comment Hyperlink Popup Menu:选定超链接:7
+Comment Hyperlink Popup Menu:打开超链接:8
+Comment Hyperlink Popup Menu:复制超链接:9
+Comment Hyperlink Popup Menu:取消超链接:10
+Comment Hyperlink Popup Menu:汉字重选:11
+Comment Hyperlink Popup Menu:字体:12
+Comment Hyperlink Popup Menu:段落:13
+Comment Hyperlink Popup Menu:项目符号和编号:14
+Comment Table Popup Menu:复制:1
+Comment Table Popup Menu:剪切:2
+Comment Table Popup Menu:粘贴:3
+Comment Table Popup Menu:选择性粘贴:4
+Comment Table Popup Menu:删除批注:5
+Comment Table Popup Menu:汉字重选:6
+Comment Table Popup Menu:插入表格:7
+Comment Table Popup Menu:删除单元格:8
+Comment Table Popup Menu:合并单元格:9
+Comment Table Popup Menu:拆分单元格:10
+Comment Table Popup Menu:全选表格:11
+Comment Table Popup Menu:拆分表格:12
+Comment Table Popup Menu:单元格对齐方式:13
+Comment Table Popup Menu:自动调整:14
+Comment Table Popup Menu:文字方向:15
+Comment Table Popup Menu:边框和底纹:16
+Comment Table Popup Menu:表格属性:17
+Comment Table Popup Menu:字体:18
+Comment Table Popup Menu:段落:19
+Comment Table Popup Menu:项目符号和编号:20
+Comment Field Popup Menu:复制:1
+Comment Field Popup Menu:剪切:2
+Comment Field Popup Menu:粘贴:3
+Comment Field Popup Menu:选择性粘贴:4
+Comment Field Popup Menu:删除批注:5
+Comment Field Popup Menu:更新域:6
+Comment Field Popup Menu:编辑域:7
+Comment Field Popup Menu:切换域代码:8
+Comment Field Popup Menu:汉字重选:9
+Comment Field Popup Menu:字体:10
+Comment Field Popup Menu:段落:11
+Comment Field Popup Menu:项目符号和编号:12
+Numbered Popup Menu:复制:1
+Numbered Popup Menu:剪切:2
+Numbered Popup Menu:粘贴:3
+Numbered Popup Menu:选择性粘贴:4
+Numbered Popup Menu:减少缩进量:7
+Numbered Popup Menu:增加缩进量:8
+Numbered Popup Menu:汉字重选:9
+Numbered Popup Menu:字体:10
+Numbered Popup Menu:段落:11
+Numbered Popup Menu:项目符号和编号:12
+Numbered Popup Menu:超链接:13
+Bulleted Popup Menu:复制:1
+Bulleted Popup Menu:剪切:2
+Bulleted Popup Menu:粘贴:3
+Bulleted Popup Menu:选择性粘贴:4
+Bulleted Popup Menu:减少缩进量:5
+Bulleted Popup Menu:增加缩进量:6
+Bulleted Popup Menu:汉字重选:7
+Bulleted Popup Menu:字体:8
+Bulleted Popup Menu:段落:9
+Bulleted Popup Menu:项目符号和编号:10
+Bulleted Popup Menu:超链接:11
+Ruler Popup Menu:左对齐式制表位:1
+Ruler Popup Menu:居中对齐式制表位:2
+Ruler Popup Menu:右对齐式制表位:3
+Ruler Popup Menu:小数点对齐式制表位:4
+Ruler Popup Menu:首行缩进:5
+Ruler Popup Menu:悬挂缩进:6
+Drag Popup Menu:移动到此处:1
+Drag Popup Menu:复制到此处:2
+Drag Popup Menu:取消:3
+TabMenu Popup Menu:关闭窗口:1
+TabMenu Popup Menu:保存:2
+TabMenu Popup Menu:保存所有文档:3
+TabMenu Popup Menu:另存为:4
+TabMenu Popup Menu:关闭其他窗口:6
+TabMenu Popup Menu:关闭所有文档:7
+TabMenu Popup Menu:打开所在文件夹:8
+TabMenu Popup Menu:文档加密:9
+TabMenu Popup Menu:发送邮件:10
+TabMenu Popup Menu:属性:11
+TabBarMenu Popup Menu:新建:1
+TabBarMenu Popup Menu:保存所有文档:2
+TabBarMenu Popup Menu:关闭所有文档:3
+Formfeilds Popup Menu:复制:1
+Formfeilds Popup Menu:剪切:2
+Formfeilds Popup Menu:粘贴:3
+Formfeilds Popup Menu:选择性粘贴:4
+Formfeilds Popup Menu:属性:5
+Formfeilds Popup Menu:字体:6
+Formfeilds Popup Menu:段落:7
+Formfeilds Popup Menu:项目符号和编号:8
+Formfeilds Popup Menu:超链接:9
+Smart Paste Popup Menu:保留源格式:1
+Smart Paste Popup Menu:匹配当前格式:2
+Smart Paste Popup Menu:只粘贴文本:3
+Smart Paste Popup Menu:选择性粘贴:4
+Spelling Suggestions Popup Menu:拼写建议:1
+Spelling Suggestions Popup Menu:全部忽略:2
+Spelling Suggestions Popup Menu:添加到词典:3
+Spelling Suggestions Popup Menu:复制:4
+Spelling Suggestions Popup Menu:剪切:5
+Spelling Suggestions Popup Menu:粘贴:6
+Spelling Suggestions Popup Menu:字体:7
+Spelling Suggestions Popup Menu:段落:8
+Spelling Suggestions Popup Menu:项目符号和编号:9
+Spelling Suggestions Popup Menu:超链接:10
+Spelling Popup Menu:输入时拼写检查:1
+Spelling Popup Menu:显示拼写忽略单词:2
+Spelling Popup Menu:选项:3
+Dml Shapes:复制:1
+Dml Shapes:剪切:2
+Dml Shapes:粘贴:3
+Dml Shapes:另存为图片:4
+Dml Shapes:更改形状:5
+Dml Shapes:编辑顶点:6
+Dml Shapes:添加文字:7
+Dml Shapes:编辑文字:8
+Dml Shapes:创建文本框链接:9
+Dml Shapes:断开向前链接:10
+Dml Shapes:前一文本框:11
+Dml Shapes:下一文本框:12
+Dml Shapes:组合:13
+Dml Shapes:叠放次序:14
+Dml Shapes:设置自选图形的默认效果:15
+Dml Shapes:其他布局选项:16
+Dml Shapes:设置对象格式:17
+Table Row Popup Menu:复制:1
+Table Row Popup Menu:剪切:2
+Table Row Popup Menu:粘贴:3
+Table Row Popup Menu:选择性粘贴:4
+Table Row Popup Menu:插入表格:6
+Table Row Popup Menu:拆分表格:7
+Table Row Popup Menu:自动调整:8
+Table Row Popup Menu:全选表格:9
+Table Row Popup Menu:合并单元格:10
+Table Row Popup Menu:拆分单元格:11
+Table Row Popup Menu:删除行:12
+Table Row Popup Menu:单元格对齐方式:13
+Table Row Popup Menu:边框和底纹:14
+Table Row Popup Menu:文字方向:15
+Table Row Popup Menu:表格属性:16
+Table Column Popup Menu:复制:1
+Table Column Popup Menu:剪切:2
+Table Column Popup Menu:粘贴:3
+Table Column Popup Menu:选择性粘贴:4
+Table Column Popup Menu:插入表格:6
+Table Column Popup Menu:拆分表格:7
+Table Column Popup Menu:自动调整:8
+Table Column Popup Menu:全选表格:9
+Table Column Popup Menu:合并单元格:10
+Table Column Popup Menu:拆分单元格:11
+Table Column Popup Menu:删除列:12
+Table Column Popup Menu:单元格对齐方式:13
+Table Column Popup Menu:边框和底纹:14
+Table Column Popup Menu:文字方向:15
+Table Column Popup Menu:表格属性:16
+Picture Context Menu:复制:1
+Picture Context Menu:剪切:2
+Picture Context Menu:粘贴:3
+Picture Context Menu:更改图片:4
+Picture Context Menu:另存为图片:5
+Picture Context Menu:组合:6
+Picture Context Menu:叠放次序:7
+Picture Context Menu:题注:8
+Picture Context Menu:设置自选图形的默认效果:9
+Picture Context Menu:设置对象格式:10
+Picture Context Menu:超链接:11
+Picture Context Menu:编辑超链接:12
+Picture Context Menu:打开超链接:13
+Picture Context Menu:取消超链接:14
+Picture Context Menu:其他布局选项:15
+Status bar Popup Menu:页码:1
+Status bar Popup Menu:页面:2
+Status bar Popup Menu:节:3
+Status bar Popup Menu:行号:4
+Status bar Popup Menu:列:5
+Status bar Popup Menu:字数统计:6
+Status bar Popup Menu:改写:7
+Status bar Popup Menu:修订:8
+Status bar Popup Menu:拼写检查:9
+Status bar Popup Menu:单位:10
+Status bar Popup Menu:视图快捷方式:11
+Status bar Popup Menu:显示比例:12
+Status bar Popup Menu:缩放滑块:13
+Align:置于顶层:1
+Align:置于底层:2
+Align:上移一层:3
+Align:下移一层:4
+Align:组合:5
+Align:取消组合:6
+Align:浮于文字上方:7
+Align:衬于文字下方:8
+Align:左对齐:9
+Align:水平居中:10
+Align:右对齐:11
+Align:顶端对齐:12
+Align:垂直居中:13
+Align:底端对齐:14
+Align:横向分布:15
+Align:纵向分布:16
+Compare Views:同步滚动:1
+Compare Views:重置窗口位置:2
+Compare Views:并排比较:3
+Curve Node For VML:添加顶点:1
+Curve Node For VML:删除顶点:2
+Curve Node For VML:开放路径:3
+Curve Node For VML:关闭路径:4
+Curve Node For VML:自动顶点:5
+Curve Node For VML:平滑顶点:6
+Curve Node For VML:直线点:7
+Curve Node For VML:角部顶点:8
+Curve Node For VML:退出编辑顶点:9
+Chart Area Popup Menu:复制:1
+Chart Area Popup Menu:剪切:2
+Chart Area Popup Menu:粘贴:3
+Chart Area Popup Menu:重设以匹配样式:4
+Chart Area Popup Menu:字体:5
+Chart Area Popup Menu:另存为图片:7
+Plot Area:重设以匹配样式:2
+Format Data Series:重设以匹配样式:2
+Format Data Series:添加数据标签:5
+Data Point Popup Menu:重设以匹配样式:2
+Data Point Popup Menu:添加数据标签:5
+Title Bar (Charting):重设以匹配样式:2
+Title Bar (Charting):编辑文字:3
+Title Bar (Charting):退出文本编辑:4
+Title Bar (Charting):字体:5
+Data Table Popup Menu:重设以匹配样式:2
+Data Table Popup Menu:字体:3
+Format Axis:重设以匹配样式:2
+Format Axis:字体:3
+Format Axis:添加主要网格线:6
+Format Axis:添加次要网格线:7
+Legend Key Popup Menu:重设以匹配样式:2
+Legend Key Popup Menu:字体:3
+Format Legend Entry:删除系列:2
+Format Legend Entry:重设以匹配样式:3
+Format Legend Entry:字体:4
+Data Label Popup Menu:重设以匹配样式:2
+Data Label Popup Menu:编辑文字:3
+Data Label Popup Menu:退出文本编辑:4
+Data Label Popup Menu:字体:5
+Trendline:重设以匹配样式:2
+NewChart TrendLineLabel Menu:重设以匹配样式:2
+NewChart TrendLineLabel Menu:编辑文字:3
+NewChart TrendLineLabel Menu:退出文本编辑:4
+NewChart TrendLineLabel Menu:字体:5
+Axis Title Popup Menu:重设以匹配样式:2
+Axis Title Popup Menu:编辑文字:3
+Axis Title Popup Menu:退出文本编辑:4
+Axis Title Popup Menu:字体:5
+Up Bars Popup Menu:重设以匹配样式:2
+Down Bars Popup Menu:重设以匹配样式:2
+Error Bars Popup Menu:重设以匹配样式:2
+Hi Lo Line Popup Menu:重设以匹配样式:2
+Drop Line Popup Menu:重设以匹配样式:2
+Series Line Popup Menu:重设以匹配样式:2
+Gridlines Popup Menu:重设以匹配样式:2
+Gridlines Popup Menu:添加坐标轴:7
+Display Unit Label Popup Menu:重设以匹配样式:2
+Display Unit Label Popup Menu:编辑文字:3
+Display Unit Label Popup Menu:退出文本编辑:4
+Display Unit Label Popup Menu:字体:5
+Lead Line Popup Menu:重设以匹配样式:2
+Horizontal Line:剪切:1
+Horizontal Line:复制:2
+Horizontal Line:将墨迹作为文本复制:3
+Horizontal Line:粘贴:4
+Horizontal Line:删除批注:5
+Horizontal Line:编辑文字:6
+Horizontal Line:组合:7
+Horizontal Line:叠放次序:8
+Horizontal Line:设置自选图形的默认效果:9
+Horizontal Line:设置对象格式:10
+Horizontal Line:超链接:11
+Horizontal Line:编辑超链接:12
+Horizontal Line:打开超链接:13
+Horizontal Line:选定超链接:14
+Horizontal Line:复制超链接:15
+Horizontal Line:取消超链接:16
+Horizontal Line:另存为图片:17
+Horizontal Line:创建文本框链接:20
+Horizontal Line:断开向前链接:21
+Horizontal Line:前一文本框:22
+Horizontal Line:下一文本框:23
+Contents Popup Menu:复制:1
+Contents Popup Menu:剪切:2
+Contents Popup Menu:粘贴:3
+Contents Popup Menu:选择性粘贴:4
+Contents Popup Menu:删除内容控件:5
+Contents Popup Menu:更新目录:6
+Contents Popup Menu:汉字重选:7
+Contents Popup Menu:字体:8
+Contents Popup Menu:段落:9
+Contents Popup Menu:项目符号和编号:10
+ReadingView Text Popup:复制:1
+ReadingView Text Popup:批注:2
+ReadingView Drawing Popup:复制:2
+ReadingView Drawing Popup:另存为图片:3
+ReadingView Drawing Popup:批注:4
+ReadingView Comment Popup:复制:1
+ReadingView Comment Popup:删除批注:2
+NavigationPane DocMapView Popup Menu:升级:1
+TaskPane:保护文档:1
+WebExtension Popup Menu:复制:1
+WebExtension Popup Menu:剪切:2
+WebExtension Popup Menu:粘贴:3
+WebExtension Popup Menu:另存为图片:4
+WebExtension Popup Menu:置于顶层:5
+WebExtension Popup Menu:置于底层:6
+Manual Contents Popup Menu:复制:1
+Manual Contents Popup Menu:剪切:2
+Manual Contents Popup Menu:粘贴:3
+Manual Contents Popup Menu:选择性粘贴:4
+Manual Contents Popup Menu:删除内容控件:5
+Manual Contents Popup Menu:重新识别目录:6
+Manual Contents Popup Menu:汉字重选:7
+Manual Contents Popup Menu:字体:8
+Manual Contents Popup Menu:段落:9
+Manual Contents Popup Menu:项目符号和编号:10
+电子印章:盖章:1
+电子印章:全屏手写:2
+电子印章:骑缝章:3
+电子印章:BeforeSave:4
+Status Bar:Status Bar:1
+Ribbon:Ribbon:1

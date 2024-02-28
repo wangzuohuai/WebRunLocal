@@ -1,0 +1,1403 @@
+Worksheet Menu Bar:文件:1
+Worksheet Menu Bar:编辑:2
+Worksheet Menu Bar:视图:3
+Worksheet Menu Bar:插入:4
+Worksheet Menu Bar:格式:5
+Worksheet Menu Bar:工具:6
+Worksheet Menu Bar:数据:7
+Worksheet Menu Bar:操作:8
+Worksheet Menu Bar:窗口:9
+Worksheet Menu Bar:帮助:10
+Worksheet Menu Bar:图表:11
+Chart Menu Bar:文件:1
+Chart Menu Bar:编辑:2
+Chart Menu Bar:视图:3
+Chart Menu Bar:插入:4
+Chart Menu Bar:格式:5
+Chart Menu Bar:工具:6
+Chart Menu Bar:图表:7
+Chart Menu Bar:操作:8
+Chart Menu Bar:窗口:9
+Chart Menu Bar:帮助:10
+Standard:新建:1
+Standard:打开:2
+Standard:保存:3
+Standard:权限:4
+Standard:邮件收件人:5
+Standard:打印:6
+Standard:打印预览:7
+Standard:拼写检查:8
+Standard:信息检索:9
+Standard:剪切:10
+Standard:复制:11
+Standard:粘贴:12
+Standard:格式刷:13
+Standard:撤消:14
+Standard:恢复:15
+Standard:墨迹注释:16
+Standard:超链接:17
+Standard:自动求和:18
+Standard:升序排序:19
+Standard:降序排序:20
+Standard:图表向导:21
+Standard:绘图:22
+Standard:显示比例:23
+Standard:Microsoft Excel 帮助:24
+Standard:新建:25
+Standard:公式:30
+Standard:自动筛选:31
+Standard:查找:33
+Formatting:字体:1
+Formatting:字号:2
+Formatting:加粗:3
+Formatting:倾斜:4
+Formatting:下划线:5
+Formatting:左对齐:6
+Formatting:居中:7
+Formatting:右对齐:8
+Formatting:合并及居中:9
+Formatting:货币样式:10
+Formatting:百分比样式:11
+Formatting:千位分隔样式:12
+Formatting:增加小数位数:13
+Formatting:减少小数位数:14
+Formatting:减少缩进量:15
+Formatting:增加缩进量:16
+Formatting:边框:17
+Formatting:填充颜色:18
+Formatting:字体颜色:19
+Formatting:合并单元格:23
+PivotTable:数据透视表:1
+PivotTable:数据透视图:2
+PivotTable:设置报告格式:3
+PivotTable:图表向导:4
+PivotTable:隐藏明细数据:5
+PivotTable:显示明细数据:6
+PivotTable:刷新数据:7
+PivotTable:隐藏总计项目:8
+PivotTable:始终显示项目:9
+PivotTable:字段设置:10
+PivotTable:显示字段列表:11
+Chart:图表对象:1
+Chart:所选对象:2
+Chart:图表类型:3
+Chart:图例:4
+Chart:数据表:5
+Chart:行中系列:6
+Chart:列中系列:7
+Chart:顺时针斜排:8
+Chart:逆时针斜排:9
+Reviewing:批注:1
+Reviewing:前一批注:2
+Reviewing:下一批注:3
+Reviewing:显示/隐藏批注:4
+Reviewing:批注:5
+Reviewing:删除批注:6
+Reviewing:墨迹注释:7
+Reviewing:隐藏墨迹注释:8
+Reviewing:删除所有墨迹注释:9
+Reviewing:创建 Microsoft Office Outlook 任务:10
+Reviewing:更新文件:11
+Reviewing:邮件收件人:12
+Reviewing:回复时包含更改:13
+Reviewing:结束审阅:14
+Forms:标签:1
+Forms:编辑框:2
+Forms:分组框:3
+Forms:按钮:4
+Forms:复选框:5
+Forms:选项按钮:6
+Forms:列表框:7
+Forms:组合框:8
+Forms:组合式列表编辑框:9
+Forms:组合式下拉编辑框:10
+Forms:滚动条:11
+Forms:微调项:12
+Forms:控件属性:13
+Forms:代码:14
+Forms:切换网格:15
+Forms:执行对话框:16
+Stop Recording:停止录制:1
+Stop Recording:相对引用:2
+External Data:编辑查询:1
+External Data:数据区域属性:2
+External Data:参数:3
+External Data:刷新数据:4
+External Data:取消刷新:5
+External Data:全部刷新:6
+External Data:更新状态:7
+Formula Auditing:错误检查:1
+Formula Auditing:追踪引用单元格:2
+Formula Auditing:移去引用单元格追踪箭头:3
+Formula Auditing:追踪从属单元格:4
+Formula Auditing:移去从属单元格追踪箭头:5
+Formula Auditing:取消所有追踪箭头:6
+Formula Auditing:追踪错误:7
+Formula Auditing:批注:8
+Formula Auditing:圈释无效数据:9
+Formula Auditing:清除无效数据标识圈:10
+Formula Auditing:显示监视窗口:11
+Formula Auditing:公式求值:12
+Full Screen:全屏显示:1
+Circular Reference:定位循环引用:1
+Circular Reference:追踪从属单元格:2
+Circular Reference:追踪引用单元格:3
+Circular Reference:取消所有追踪箭头:4
+Visual Basic:宏:1
+Visual Basic:录制新宏:2
+Visual Basic:安全...:3
+Visual Basic:Visual Basic 编辑器:4
+Visual Basic:控件工具箱:5
+Visual Basic:设计模式:6
+Visual Basic:Microsoft 脚本编辑器:7
+Web:返回:1
+Web:向前:2
+Web:停止:3
+Web:刷新:4
+Web:开始页:5
+Web:搜索 Web:6
+Web:收藏夹:7
+Web:前往:8
+Web:只显示“Web”工具栏:9
+Web:地址:10
+Control Toolbox:设计模式:1
+Control Toolbox:控件属性:2
+Control Toolbox:查看代码:3
+Control Toolbox:复选框:4
+Control Toolbox:文本框:5
+Control Toolbox:命令按钮:6
+Control Toolbox:选项按钮:7
+Control Toolbox:列表框:8
+Control Toolbox:组合框:9
+Control Toolbox:切换按钮:10
+Control Toolbox:数值调节钮:11
+Control Toolbox:滚动条:12
+Control Toolbox:标签:13
+Control Toolbox:图像:14
+Control Toolbox:其他控件:15
+Exit Design Mode:设计模式:1
+Borders:绘图边框:1
+Borders:擦除边框:2
+Borders:线条样式:3
+Borders:线条颜色:4
+Borders:绘图边框:5
+Protection:锁定单元格:1
+Protection:允许用户编辑范围:2
+Protection:保护工作表:3
+Protection:保护工作簿:4
+Protection:保护并共享工作簿:5
+Text To Speech:朗读单元格:1
+Text To Speech:停止朗读:2
+Text To Speech:按行:3
+Text To Speech:按列:4
+Text To Speech:按回车键开始朗读:5
+List:列表:1
+List:切换汇总行:2
+List:同步列表:3
+List:放弃更改并刷新:4
+List:刷新 XML 数据:5
+List:导入:6
+List:导出:7
+List:XML 映射属性:8
+List:编辑查询:9
+List:图表向导:10
+List:打印列表:11
+Compare Side by Side:同步滚动:1
+Compare Side by Side:重置窗口位置:2
+Compare Side by Side:并排比较:3
+Drawing:绘图:1
+Drawing:选择对象:2
+Drawing:自选图形:3
+Drawing:直线:4
+Drawing:箭头:5
+Drawing:矩形:6
+Drawing:椭圆:7
+Drawing:文本框:8
+Drawing:竖排文本框:9
+Drawing:艺术字:10
+Drawing:图示:11
+Drawing:剪贴画:12
+Drawing:来自文件:13
+Drawing:墨迹绘图与书写:14
+Drawing:填充颜色:15
+Drawing:线条颜色:16
+Drawing:字体颜色:17
+Drawing:线型:18
+Drawing:虚线线型:19
+Drawing:箭头样式:20
+Drawing:阴影样式:21
+Drawing:三维效果样式:22
+Drawing:线条样式:27
+PivotChart Menu:字段设置:1
+PivotChart Menu:表选项:2
+PivotChart Menu:刷新数据:3
+PivotChart Menu:隐藏数据透视图字段按钮:4
+PivotChart Menu:公式:5
+PivotChart Menu:删除字段:6
+Workbook tabs:工作表列表:1
+Workbook tabs:工作表列表:2
+Workbook tabs:工作表列表:3
+Workbook tabs:工作表列表:4
+Workbook tabs:工作表列表:5
+Workbook tabs:工作表列表:6
+Workbook tabs:工作表列表:7
+Workbook tabs:工作表列表:8
+Workbook tabs:工作表列表:9
+Workbook tabs:工作表列表:10
+Workbook tabs:工作表列表:11
+Workbook tabs:工作表列表:12
+Workbook tabs:工作表列表:13
+Workbook tabs:工作表列表:14
+Workbook tabs:工作表列表:15
+Workbook tabs:工作表列表:16
+Cell:剪切:1
+Cell:复制:2
+Cell:粘贴:3
+Cell:选择性粘贴:4
+Cell:单元格:5
+Cell:删除:6
+Cell:清除内容:7
+Cell:插入批注:8
+Cell:删除批注:9
+Cell:显示/隐藏批注:10
+Cell:单元格:11
+Cell:从下拉列表中选择:12
+Cell:添加监视点:13
+Cell:创建列表:14
+Cell:超链接:15
+Cell:编辑超链接:16
+Cell:打开超链接:17
+Cell:取消超链接:18
+Cell:查阅:19
+Cell:插入:21
+Cell:插入复制单元格:22
+Cell:插入已剪切的单元格:24
+Cell:删除:26
+Cell:接受修订:27
+Cell:拒绝修订:28
+Cell:删除分页符:30
+Cell:插入分页符:31
+Cell:重置所有分页符:32
+Cell:设置显示区域:33
+Cell:合并及居中:34
+Column:剪切:1
+Column:复制:2
+Column:粘贴:3
+Column:选择性粘贴:4
+Column:列:5
+Column:删除列:6
+Column:清除内容:7
+Column:单元格:8
+Column:列宽:9
+Column:隐藏:10
+Column:取消隐藏:11
+Column:插入:13
+Column:插入复制单元格:14
+Column:插入复制单元格:15
+Column:插入已剪切的单元格:16
+Column:插入已剪切的单元格:17
+Column:删除:18
+Column:插入分页符:19
+Column:删除分页符:20
+Column:重置所有分页符:21
+Row:剪切:1
+Row:复制:2
+Row:粘贴:3
+Row:选择性粘贴:4
+Row:行:5
+Row:删除行:6
+Row:清除内容:7
+Row:单元格:8
+Row:行高:9
+Row:隐藏:10
+Row:取消隐藏:11
+Row:插入:13
+Row:插入复制单元格:14
+Row:插入复制单元格:15
+Row:插入已剪切的单元格:16
+Row:插入已剪切的单元格:17
+Row:删除:18
+Row:插入分页符:19
+Row:删除分页符:20
+Row:重置所有分页符:21
+Cell:剪切:1
+Cell:复制:2
+Cell:粘贴:3
+Cell:选择性粘贴:4
+Cell:单元格:5
+Cell:删除:6
+Cell:清除内容:7
+Cell:插入批注:8
+Cell:删除批注:9
+Cell:显示/隐藏批注:10
+Cell:单元格:11
+Cell:插入分页符:12
+Cell:重置所有分页符:13
+Cell:设置打印区域:14
+Cell:添加到打印区域:15
+Cell:排除在打印区域之外:16
+Cell:重设打印区域:17
+Cell:页面设置:18
+Column:剪切:1
+Column:复制:2
+Column:粘贴:3
+Column:选择性粘贴:4
+Column:列:5
+Column:删除列:6
+Column:清除内容:7
+Column:单元格:8
+Column:列宽:9
+Column:隐藏:10
+Column:取消隐藏:11
+Column:插入分页符:12
+Column:重置所有分页符:13
+Column:设置打印区域:14
+Column:添加到打印区域:15
+Column:排除在打印区域之外:16
+Column:重设打印区域:17
+Column:页面设置:18
+Row:剪切:1
+Row:复制:2
+Row:粘贴:3
+Row:选择性粘贴:4
+Row:行:5
+Row:删除行:6
+Row:清除内容:7
+Row:单元格:8
+Row:行高:9
+Row:隐藏:10
+Row:取消隐藏:11
+Row:插入分页符:12
+Row:重置所有分页符:13
+Row:设置打印区域:14
+Row:添加到打印区域:15
+Row:排除在打印区域之外:16
+Row:重设打印区域:17
+Row:页面设置:18
+Ply:取消成组工作表:1
+Ply:插入:2
+Ply:删除:3
+Ply:重命名:4
+Ply:移动或复制工作表:5
+Ply:选定全部工作表:6
+Ply:工作表标签颜色:7
+Ply:查看代码:8
+Ply:保护工作表:9
+Ply:隐藏:10
+Ply:取消隐藏:11
+Ply:字号:12
+XLM Cell:剪切:1
+XLM Cell:复制:2
+XLM Cell:粘贴:3
+XLM Cell:选择性粘贴:4
+XLM Cell:单元格:5
+XLM Cell:删除:6
+XLM Cell:清除内容:7
+XLM Cell:插入批注:8
+XLM Cell:删除批注:9
+XLM Cell:显示/隐藏批注:10
+XLM Cell:单元格:11
+XLM Cell:宏:12
+Document:保存:1
+Document:另存为:2
+Document:打印:3
+Document:页面设置:4
+Document:拼写检查:5
+Document:新建窗口:6
+Document:重排窗口:7
+Document:显示比例:8
+Document:查看代码:9
+Desktop:新建:1
+Desktop:打开:2
+Desktop:保存工作区:3
+Desktop:开始计算:4
+Desktop:选项:5
+Desktop:工具栏:6
+Nondefault Drag and Drop:移动到此位置:1
+Nondefault Drag and Drop:复制到此位置:2
+Nondefault Drag and Drop:仅复制数值:3
+Nondefault Drag and Drop:仅复制格式:4
+Nondefault Drag and Drop:链接此处:5
+Nondefault Drag and Drop:在此创建超链接:6
+Nondefault Drag and Drop:复制选定区域，原有区域下移:7
+Nondefault Drag and Drop:复制选定区域，原有区域右移:8
+Nondefault Drag and Drop:移动选定区域，原有区域下移:9
+Nondefault Drag and Drop:移动选定区域，原有区域右移:10
+Nondefault Drag and Drop:取消:11
+AutoFill:复制单元格:1
+AutoFill:以序列方式填充:2
+AutoFill:仅填充格式:3
+AutoFill:不带格式填充:4
+AutoFill:以天数填充:5
+AutoFill:以工作日填充:6
+AutoFill:以月填充:7
+AutoFill:以年填充:8
+AutoFill:等差序列:9
+AutoFill:等比序列:10
+AutoFill:序列:11
+Button:剪切:1
+Button:复制:2
+Button:将墨迹作为文本复制:3
+Button:粘贴:4
+Button:清除内容:5
+Button:对象:6
+Button:对象:7
+Button:单元格:8
+Button:置于顶层:9
+Button:置于底层:10
+Button:分组:11
+Button:指定宏:12
+Dialog:粘贴:1
+Dialog:Tab 键次序:2
+Dialog:执行对话框:3
+Series:所选对象:1
+Series:图表类型:2
+Series:源数据:3
+Series:添加趋势线:4
+Series:清除内容:5
+Plot Area:所选对象:1
+Plot Area:图表类型:2
+Plot Area:源数据:3
+Plot Area:图表选项:4
+Plot Area:位置:5
+Plot Area:设置三维视图格式:6
+Plot Area:图表窗口:7
+Plot Area:清除内容:8
+Plot Area:重设以匹配样式:11
+Floor and Walls:所选对象:1
+Floor and Walls:设置三维视图格式:2
+Floor and Walls:清除内容:3
+Trendline:所选对象:1
+Trendline:清除内容:2
+Trendline:重设以匹配样式:5
+Chart:所选对象:1
+Chart:清除内容:2
+Format Data Series:所选对象:1
+Format Data Series:图表类型:2
+Format Data Series:源数据:3
+Format Data Series:添加趋势线:4
+Format Data Series:隐藏明细数据:5
+Format Data Series:显示详情:6
+Format Data Series:清除内容:8
+Format Data Series:重设以匹配样式:10
+Format Data Series:添加数据标签:13
+Format Axis:所选对象:1
+Format Axis:清除内容:2
+Format Axis:隐藏明细数据:3
+Format Axis:显示明细数据:4
+Format Axis:重设以匹配样式:7
+Format Axis:字体:8
+Format Axis:添加主要网格线:11
+Format Axis:添加次要网格线:12
+Format Legend Entry:所选对象:1
+Format Legend Entry:隐藏明细数据:2
+Format Legend Entry:显示明细数据:3
+Format Legend Entry:清除内容:4
+Format Legend Entry:删除系列:7
+Format Legend Entry:重设以匹配样式:8
+Format Legend Entry:字体:9
+Formula Bar:剪切:1
+Formula Bar:复制:2
+Formula Bar:粘贴:3
+Formula Bar:单元格:4
+Formula Bar:汉字重选:5
+Formula Bar:朝鲜文及朝鲜文汉字转换:6
+Formula Bar:编辑:7
+Formula Bar:从下拉列表中选择:8
+Formula Bar:查阅:9
+PivotTable Context Menu:复制:1
+PivotTable Context Menu:单元格:2
+PivotTable Context Menu:数据透视图:3
+PivotTable Context Menu:刷新数据:4
+PivotTable Context Menu:删除:5
+PivotTable Context Menu:自定义:6
+PivotTable Context Menu:选定:7
+PivotTable Context Menu:组及显示明细数据:8
+PivotTable Context Menu:顺序:9
+PivotTable Context Menu:字段设置:10
+PivotTable Context Menu:表选项:11
+PivotTable Context Menu:显示数据透视表工具栏:12
+PivotTable Context Menu:显示字段列表:13
+Query:剪切:1
+Query:复制:2
+Query:粘贴:3
+Query:选择性粘贴:4
+Query:单元格:5
+Query:删除:6
+Query:清除内容:7
+Query:插入批注:8
+Query:删除批注:9
+Query:显示/隐藏批注:10
+Query:单元格:11
+Query:编辑查询:12
+Query:数据区域属性:13
+Query:参数:14
+Query:刷新数据:15
+Query Layout:剪切:1
+Query Layout:复制:2
+Query Layout:粘贴:3
+Query Layout:选择性粘贴:4
+Query Layout:单元格:5
+Query Layout:删除:6
+Query Layout:清除内容:7
+Query Layout:插入批注:8
+Query Layout:删除批注:9
+Query Layout:显示/隐藏批注:10
+Query Layout:单元格:11
+Query Layout:编辑查询:12
+Query Layout:数据区域属性:13
+Query Layout:参数:14
+Query Layout:刷新数据:15
+Query Layout:插入分页符:16
+Query Layout:重置所有分页符:17
+Query Layout:设置打印区域:18
+Query Layout:添加到打印区域:19
+Query Layout:排除在打印区域之外:20
+Query Layout:重设打印区域:21
+Query Layout:页面设置:22
+AutoCalculate:无:1
+AutoCalculate:平均值:2
+AutoCalculate:计数:3
+AutoCalculate:计数值:4
+AutoCalculate:最大值:5
+AutoCalculate:最小值:6
+AutoCalculate:求和:7
+Object/Plot:所选对象:1
+Object/Plot:图表类型:2
+Object/Plot:源数据:3
+Object/Plot:图表选项:4
+Object/Plot:位置:5
+Object/Plot:设置三维视图格式:6
+Object/Plot:图表窗口:7
+Object/Plot:剪切:8
+Object/Plot:复制:9
+Object/Plot:粘贴:10
+Object/Plot:清除内容:11
+Object/Plot:置于顶层:12
+Object/Plot:置于底层:13
+Object/Plot:指定宏:14
+Title Bar (Charting):打印:1
+Title Bar (Charting):页面设置:2
+Title Bar (Charting):拼写检查:3
+Title Bar (Charting):清除内容:5
+Title Bar (Charting):重设以匹配样式:7
+Title Bar (Charting):编辑文字:8
+Title Bar (Charting):退出文本编辑:9
+Title Bar (Charting):字体:10
+Layout:单元格:1
+Layout:删除:2
+Layout:数据透视表向导:3
+Layout:刷新数据:4
+Layout:选定:5
+Layout:组及显示明细数据:6
+Layout:公式:7
+Layout:字段设置:8
+Layout:表选项:9
+Layout:分页显示:10
+Layout:插入分页符:11
+Layout:重置所有分页符:12
+Layout:设置打印区域:13
+Layout:添加到打印区域:14
+Layout:排除在打印区域之外:15
+Layout:重设打印区域:16
+Layout:页面设置:17
+Pivot Chart Popup:所选对象:1
+Pivot Chart Popup:表选项:2
+Pivot Chart Popup:数据透视表向导:3
+Pivot Chart Popup:刷新数据:4
+Pivot Chart Popup:隐藏数据透视图字段按钮:5
+Pivot Chart Popup:组及显示明细数据:6
+Pivot Chart Popup:清除内容:7
+Phonetic Information:剪切:1
+Phonetic Information:复制:2
+Phonetic Information:粘贴:3
+Phonetic Information:从拼音列表选取:4
+Auto Sum:自动求和:1
+Auto Sum:平均值:2
+Auto Sum:计数:3
+Auto Sum:最大值:4
+Auto Sum:最小值:5
+Auto Sum:其他函数:6
+Paste Special Dropdown:公式:1
+Paste Special Dropdown:粘贴数值:2
+Paste Special Dropdown:无边框:3
+Paste Special Dropdown:转置:4
+Paste Special Dropdown:粘贴链接:5
+Paste Special Dropdown:选择性粘贴:6
+Find Format:格式:1
+Find Format:从单元格选择格式:2
+Find Format:清除查找格式:3
+Replace Format:格式:1
+Replace Format:从单元格选择格式:2
+Replace Format:清除替换格式:3
+List Range Popup:剪切:1
+List Range Popup:复制:2
+List Range Popup:粘贴:3
+List Range Popup:选择性粘贴:4
+List Range Popup:插入:5
+List Range Popup:删除:6
+List Range Popup:选择:7
+List Range Popup:清除内容:8
+List Range Popup:列表:9
+List Range Popup:XML:10
+List Range Popup:数据区域属性:11
+List Range Popup:插入批注:12
+List Range Popup:删除批注:13
+List Range Popup:显示/隐藏批注:14
+List Range Popup:单元格:15
+List Range Popup:从下拉列表中选择:16
+List Range Popup:超链接:17
+List Range Popup:编辑超链接:18
+List Range Popup:打开超链接:19
+List Range Popup:取消超链接:20
+List Range Popup:查阅:21
+List Range Layout Popup:剪切:1
+List Range Layout Popup:复制:2
+List Range Layout Popup:粘贴:3
+List Range Layout Popup:选择性粘贴:4
+List Range Layout Popup:插入:5
+List Range Layout Popup:删除:6
+List Range Layout Popup:清除内容:7
+List Range Layout Popup:列表:8
+List Range Layout Popup:XML:9
+List Range Layout Popup:数据区域属性:10
+List Range Layout Popup:插入批注:11
+List Range Layout Popup:删除批注:12
+List Range Layout Popup:显示/隐藏批注:13
+List Range Layout Popup:单元格:14
+List Range Layout Popup:插入分页符:15
+List Range Layout Popup:重置所有分页符:16
+List Range Layout Popup:设置打印区域:17
+List Range Layout Popup:添加到打印区域:18
+List Range Layout Popup:排除在打印区域之外:19
+List Range Layout Popup:重设打印区域:20
+List Range Layout Popup:页面设置:21
+XML Range Popup:剪切:1
+XML Range Popup:复制:2
+XML Range Popup:粘贴:3
+XML Range Popup:选择性粘贴:4
+XML Range Popup:单元格:5
+XML Range Popup:删除:6
+XML Range Popup:清除内容:7
+XML Range Popup:XML:8
+XML Range Popup:插入批注:9
+XML Range Popup:删除批注:10
+XML Range Popup:显示/隐藏批注:11
+XML Range Popup:单元格:12
+XML Range Popup:从下拉列表中选择:13
+XML Range Popup:添加监视点:14
+XML Range Popup:超链接:15
+XML Range Popup:编辑超链接:16
+XML Range Popup:打开超链接:17
+XML Range Popup:取消超链接:18
+XML Range Popup:查阅:19
+List Range Layout Popup:剪切:1
+List Range Layout Popup:复制:2
+List Range Layout Popup:粘贴:3
+List Range Layout Popup:选择性粘贴:4
+List Range Layout Popup:单元格:5
+List Range Layout Popup:删除:6
+List Range Layout Popup:清除内容:7
+List Range Layout Popup:XML:8
+List Range Layout Popup:插入批注:9
+List Range Layout Popup:删除批注:10
+List Range Layout Popup:显示/隐藏批注:11
+List Range Layout Popup:单元格:12
+List Range Layout Popup:插入分页符:13
+List Range Layout Popup:重置所有分页符:14
+List Range Layout Popup:设置打印区域:15
+List Range Layout Popup:添加到打印区域:16
+List Range Layout Popup:排除在打印区域之外:17
+List Range Layout Popup:重设打印区域:18
+List Range Layout Popup:页面设置:19
+WordArt:艺术字:1
+WordArt:编辑文字:2
+WordArt:艺术字库:3
+WordArt:单元格:4
+WordArt:艺术字形状:5
+WordArt:艺术字字母高度相同:6
+WordArt:艺术字竖排文字:7
+WordArt:艺术字对齐方式:8
+WordArt:艺术字字符间距:9
+Picture:来自文件:1
+Picture:颜色:2
+Picture:增加对比度:3
+Picture:降低对比度:4
+Picture:增加亮度:5
+Picture:降低亮度:6
+Picture:裁剪:7
+Picture:向左旋转 90°:8
+Picture:线型:9
+Picture:压缩图片:10
+Picture:单元格:11
+Picture:设置透明色:12
+Picture:重设图片:13
+Picture:线条样式:14
+Shadow Settings:设置/取消阴影:1
+Shadow Settings:略向上移:2
+Shadow Settings:略向下移:3
+Shadow Settings:略向左移:4
+Shadow Settings:略向右移:5
+Shadow Settings:阴影颜色:6
+3-D Settings:设置/取消三维效果:1
+3-D Settings:下俯:2
+3-D Settings:上翘:3
+3-D Settings:左偏:4
+3-D Settings:右偏:5
+3-D Settings:深度:6
+3-D Settings:方向:7
+3-D Settings:照明角度:8
+3-D Settings:表面效果:9
+3-D Settings:三维颜色:10
+Drawing Canvas:调整:1
+Drawing Canvas:扩大:2
+Drawing Canvas:缩放绘图:3
+Organization Chart:插入形状:1
+Organization Chart:版式:2
+Organization Chart:选择:3
+Organization Chart:自动套用格式:4
+Organization Chart:显示比例:5
+Diagram:插入形状:1
+Diagram:后移图形:2
+Diagram:前移图形:3
+Diagram:反转图示:4
+Diagram:版式:5
+Diagram:自动套用格式:6
+Diagram:更改为:7
+Ink Drawing and Writing:绘图与书写笔:1
+Ink Drawing and Writing:橡皮擦:2
+Ink Drawing and Writing:选择对象:3
+Ink Drawing and Writing:线条颜色:4
+Ink Drawing and Writing:线型:5
+Ink Drawing and Writing:停止擦除:6
+Ink Annotations:批注笔:1
+Ink Annotations:橡皮擦:2
+Ink Annotations:选择对象:3
+Ink Annotations:线条颜色:4
+Ink Annotations:线型:5
+Ink Annotations:隐藏墨迹注释:6
+Ink Annotations:停止擦除:7
+Borders:边框:1
+Borders:绘图边框:2
+Borders:边框:1
+Draw Border:绘图边框:1
+Draw Border:绘图边框网格:2
+Chart Type:图表类型:1
+Pattern:图案:1
+Pattern:自动配色:2
+Pattern:配色方案:3
+Pattern:颜色:4
+Font Color:自动配色:1
+Font Color:配色方案:2
+Font Color:颜色:3
+Fill Color:无颜色:1
+Fill Color:配色方案:2
+Fill Color:标准色:3
+Fill Color:其他填充颜色:5
+Fill Color:填充效果:6
+Fill Color:填充效果:7
+Line Color:自动配色:2
+Line Color:配色方案:3
+Line Color:标准色:4
+Line Color:其他线条颜色:6
+Line Color:带图案线条:7
+Drawing and Writing Pens:黑色:2
+Drawing and Writing Pens:蓝色:3
+Drawing and Writing Pens:红色:4
+Drawing and Writing Pens:黑色:6
+Drawing and Writing Pens:蓝色:7
+Drawing and Writing Pens:红色:8
+Drawing and Writing Pens:黄色:10
+Drawing and Writing Pens:青绿色:11
+Drawing and Writing Pens:粉红色:12
+Annotation Pens:黑色:2
+Annotation Pens:蓝色:3
+Annotation Pens:红色:4
+Annotation Pens:黑色:6
+Annotation Pens:蓝色:7
+Annotation Pens:红色:8
+Annotation Pens:黄色:10
+Annotation Pens:青绿色:11
+Annotation Pens:粉红色:12
+Drawing and Writing Pens:黑色:1
+Drawing and Writing Pens:蓝色:2
+Drawing and Writing Pens:红色:3
+Drawing and Writing Pens:黑色:4
+Drawing and Writing Pens:蓝色:5
+Drawing and Writing Pens:红色:6
+Drawing and Writing Pens:黄色:7
+Drawing and Writing Pens:青绿色:8
+Drawing and Writing Pens:粉红色:9
+Annotation Pens:黑色:1
+Annotation Pens:蓝色:2
+Annotation Pens:红色:3
+Annotation Pens:黑色:4
+Annotation Pens:蓝色:5
+Annotation Pens:红色:6
+Annotation Pens:黄色:7
+Annotation Pens:青绿色:8
+Annotation Pens:粉红色:9
+Order:置于顶层:1
+Order:置于底层:2
+Order:上移一层:3
+Order:下移一层:4
+Nudge:向上:1
+Nudge:向下:2
+Nudge:向左:3
+Nudge:向右:4
+Align or Distribute:左对齐:1
+Align or Distribute:水平居中:2
+Align or Distribute:右对齐:3
+Align or Distribute:顶端对齐:4
+Align or Distribute:垂直居中:5
+Align or Distribute:底端对齐:6
+Align or Distribute:横向分布:7
+Align or Distribute:纵向分布:8
+Align or Distribute:相对于画布:9
+Align or Distribute:相对于组织结构图:10
+Align or Distribute:相对于图示:11
+Rotate or Flip:自由旋转:1
+Rotate or Flip:向左旋转 90°:2
+Rotate or Flip:向右旋转 90°:3
+Rotate or Flip:水平翻转:4
+Rotate or Flip:垂直翻转:5
+Lines:直线:1
+Lines:箭头:2
+Lines:双箭头:3
+Lines:曲线:4
+Lines:任意多边形:5
+Lines:自由曲线:6
+Connectors:直接连接符:1
+Connectors:直接箭头连接符:2
+Connectors:直接双箭头连接符:3
+Connectors:肘形连接符:4
+Connectors:肘形箭头连接符:5
+Connectors:肘形双箭头连接符:6
+Connectors:曲线连接符:7
+Connectors:曲线箭头连接符:8
+Connectors:曲线双箭头连接符:9
+AutoShapes:线条:1
+AutoShapes:连接符:2
+AutoShapes:基本形状:3
+AutoShapes:箭头总汇:4
+AutoShapes:流程图:5
+AutoShapes:星与旗帜:6
+AutoShapes:标注:7
+AutoShapes:其他自选图形:8
+Callouts:矩形标注:1
+Callouts:圆角矩形标注:2
+Callouts:椭圆形标注:3
+Callouts:云形标注:4
+Callouts:线形标注 1:5
+Callouts:线形标注 2:6
+Callouts:线形标注 3:7
+Callouts:线形标注 4:8
+Callouts:线形标注 1:9
+Callouts:线形标注 2:10
+Callouts:线形标注 3:11
+Callouts:线形标注 4:12
+Callouts:线形标注 1:13
+Callouts:线形标注 2:14
+Callouts:线形标注 3:15
+Callouts:线形标注 4:16
+Callouts:线形标注 1:17
+Callouts:线形标注 2:18
+Callouts:线形标注 3:19
+Callouts:线形标注 4:20
+Flowchart:流程图: 过程:1
+Flowchart:流程图: 可选过程:2
+Flowchart:流程图: 决策:3
+Flowchart:流程图: 数据:4
+Flowchart:流程图: 预定义过程:5
+Flowchart:流程图: 内部贮存:6
+Flowchart:流程图: 文档:7
+Flowchart:流程图: 多文档:8
+Flowchart:流程图: 终止:9
+Flowchart:流程图: 准备:10
+Flowchart:流程图: 手动输入:11
+Flowchart:流程图: 手动操作:12
+Flowchart:流程图: 联系:13
+Flowchart:流程图: 离页连接符:14
+Flowchart:流程图: 卡片:15
+Flowchart:流程图: 资料带:16
+Flowchart:流程图: 汇总连接:17
+Flowchart:流程图: 或者:18
+Flowchart:流程图: 对照:19
+Flowchart:流程图: 排序:20
+Flowchart:流程图: 摘录:21
+Flowchart:流程图: 合并:22
+Flowchart:流程图: 库存数据:23
+Flowchart:流程图: 延期:24
+Flowchart:流程图: 顺序访问存储器:25
+Flowchart:流程图: 磁盘:26
+Flowchart:流程图: 直接访问存储器:27
+Flowchart:流程图: 显示:28
+Block Arrows:右箭头:1
+Block Arrows:左箭头:2
+Block Arrows:上箭头:3
+Block Arrows:下箭头:4
+Block Arrows:左右箭头:5
+Block Arrows:上下箭头:6
+Block Arrows:十字箭头:7
+Block Arrows:丁字箭头:8
+Block Arrows:圆角右箭头:9
+Block Arrows:手杖形箭头:10
+Block Arrows:直角双向箭头:11
+Block Arrows:直角上箭头:12
+Block Arrows:左弧形箭头:13
+Block Arrows:右弧形箭头:14
+Block Arrows:下弧形箭头:15
+Block Arrows:上弧形箭头:16
+Block Arrows:虚尾箭头:17
+Block Arrows:燕尾形箭头:18
+Block Arrows:五边形:19
+Block Arrows:燕尾形:20
+Block Arrows:右箭头标注:21
+Block Arrows:左箭头标注:22
+Block Arrows:上箭头标注:23
+Block Arrows:下箭头标注:24
+Block Arrows:左右箭头标注:25
+Block Arrows:上下箭头标注:26
+Block Arrows:十字箭头标注:27
+Block Arrows:环形箭头:28
+Stars & Banners:爆炸形 1:1
+Stars & Banners:爆炸形 2:2
+Stars & Banners:十字星:3
+Stars & Banners:五角星:4
+Stars & Banners:八角星:5
+Stars & Banners:十六角星:6
+Stars & Banners:二十四角星:7
+Stars & Banners:三十二角星:8
+Stars & Banners:上凸带形:9
+Stars & Banners:前凸带形:10
+Stars & Banners:上凸弯带形:11
+Stars & Banners:前凸弯带形:12
+Stars & Banners:竖卷形:13
+Stars & Banners:横卷形:14
+Stars & Banners:波形:15
+Stars & Banners:双波形:16
+Basic Shapes:矩形:1
+Basic Shapes:平行四边形:2
+Basic Shapes:梯形:3
+Basic Shapes:菱形:4
+Basic Shapes:圆角矩形:5
+Basic Shapes:八边形:6
+Basic Shapes:等腰三角形:7
+Basic Shapes:直角三角形:8
+Basic Shapes:椭圆:9
+Basic Shapes:六边形:10
+Basic Shapes:十字形:11
+Basic Shapes:正五边形:12
+Basic Shapes:圆柱形:13
+Basic Shapes:立方体:14
+Basic Shapes:棱台:15
+Basic Shapes:折角形:16
+Basic Shapes:笑脸:17
+Basic Shapes:同心圆:18
+Basic Shapes:禁止符:19
+Basic Shapes:空心弧:20
+Basic Shapes:心形:21
+Basic Shapes:闪电形:22
+Basic Shapes:太阳形:23
+Basic Shapes:新月形:24
+Basic Shapes:弧形:25
+Basic Shapes:双括号:26
+Basic Shapes:双大括号:27
+Basic Shapes:缺角矩形:28
+Basic Shapes:左小括号:29
+Basic Shapes:右小括号:30
+Basic Shapes:左大括号:31
+Basic Shapes:右大括号:32
+Insert Shape:下属:1
+Insert Shape:同事:2
+Insert Shape:助手:3
+Shapes:剪切:1
+Shapes:复制:2
+Shapes:将墨迹作为文本复制:3
+Shapes:粘贴:4
+Shapes:汉字重选:5
+Shapes:编辑文字:6
+Shapes:组合:7
+Shapes:叠放次序:8
+Shapes:指定宏:9
+Shapes:设置自选图形的默认效果:10
+Shapes:单元格:11
+Shapes:超链接:12
+Shapes:编辑超链接:13
+Shapes:打开超链接:14
+Shapes:取消超链接:15
+Shapes:更改图片:16
+Shapes:更改形状:17
+Shapes:另存为图片:18
+Shapes:添加文字:19
+Inactive Chart:剪切:1
+Inactive Chart:复制:2
+Inactive Chart:粘贴:3
+Inactive Chart:对象:4
+Inactive Chart:组合:5
+Inactive Chart:叠放次序:6
+Inactive Chart:指定宏:7
+Inactive Chart:设置自选图形的默认效果:8
+Inactive Chart:单元格:9
+Excel Control:剪切:1
+Excel Control:复制:2
+Excel Control:粘贴:3
+Excel Control:编辑文字:4
+Excel Control:组合:5
+Excel Control:叠放次序:6
+Excel Control:指定宏:7
+Excel Control:单元格:8
+Curve:剪切:1
+Curve:复制:2
+Curve:将墨迹作为文本复制:3
+Curve:粘贴:4
+Curve:编辑顶点:5
+Curve:开放路径:6
+Curve:关闭路径:7
+Curve:显示墨迹注释工具栏:8
+Curve:显示墨迹绘图与书写工具栏:9
+Curve:组合:10
+Curve:叠放次序:11
+Curve:指定宏:12
+Curve:设置自选图形的默认效果:13
+Curve:单元格:14
+Curve:超链接:15
+Curve:编辑超链接:16
+Curve:打开超链接:17
+Curve:取消超链接:18
+Curve:更改图片:19
+Curve:另存为图片:20
+Curve Node:添加顶点:1
+Curve Node:删除顶点:2
+Curve Node:开放路径:3
+Curve Node:关闭路径:4
+Curve Node:自动顶点:5
+Curve Node:平滑顶点:6
+Curve Node:直线点:7
+Curve Node:角部顶点:8
+Curve Node:退出编辑顶点:9
+Curve Node:设置自选图形的默认效果:10
+Curve Node:单元格:11
+Curve Node:超链接:12
+Curve Node:编辑超链接:13
+Curve Node:打开超链接:14
+Curve Node:取消超链接:15
+Curve Node:指定宏:16
+Curve Segment:添加顶点:1
+Curve Segment:删除线段:2
+Curve Segment:开放路径:3
+Curve Segment:关闭路径:4
+Curve Segment:抻直弓形:5
+Curve Segment:曲线段:6
+Curve Segment:退出编辑顶点:7
+Curve Segment:设置自选图形的默认效果:8
+Curve Segment:单元格:9
+Curve Segment:超链接:10
+Curve Segment:编辑超链接:11
+Curve Segment:打开超链接:12
+Curve Segment:取消超链接:13
+Curve Segment:指定宏:14
+Pictures Context Menu:剪切:1
+Pictures Context Menu:复制:2
+Pictures Context Menu:粘贴:3
+Pictures Context Menu:显示“图片”工具栏:4
+Pictures Context Menu:组合:5
+Pictures Context Menu:叠放次序:6
+Pictures Context Menu:指定宏:7
+Pictures Context Menu:单元格:8
+Pictures Context Menu:超链接:9
+Pictures Context Menu:编辑超链接:10
+Pictures Context Menu:打开超链接:11
+Pictures Context Menu:取消超链接:12
+Pictures Context Menu:更改图片:13
+Pictures Context Menu:另存为图片:14
+Pictures Context Menu:设置自选图形的默认效果:15
+OLE Object:剪切:1
+OLE Object:复制:2
+OLE Object:粘贴:3
+OLE Object:对象:4
+OLE Object:显示“图片”工具栏:5
+OLE Object:组合:6
+OLE Object:叠放次序:7
+OLE Object:指定宏:8
+OLE Object:单元格:9
+OLE Object:Object Menu:10
+OLE Object:另存为图片:11
+OLE Object:保存到文件:12
+OLE Object:设置自选图形的默认效果:13
+ActiveX Control:剪切:1
+ActiveX Control:复制:2
+ActiveX Control:粘贴:3
+ActiveX Control:控件属性:4
+ActiveX Control:查看代码:5
+ActiveX Control:对象:6
+ActiveX Control:组合:7
+ActiveX Control:叠放次序:8
+ActiveX Control:单元格:9
+ActiveX Control:设置自选图形的默认效果:10
+WordArt Context Menu:剪切:1
+WordArt Context Menu:复制:2
+WordArt Context Menu:粘贴:3
+WordArt Context Menu:编辑文字:4
+WordArt Context Menu:显示“艺术字”工具栏:5
+WordArt Context Menu:组合:6
+WordArt Context Menu:叠放次序:7
+WordArt Context Menu:指定宏:8
+WordArt Context Menu:设置自选图形的默认效果:9
+WordArt Context Menu:单元格:10
+WordArt Context Menu:超链接:11
+WordArt Context Menu:编辑超链接:12
+WordArt Context Menu:打开超链接:13
+WordArt Context Menu:取消超链接:14
+WordArt Context Menu:更改图片:15
+WordArt Context Menu:另存为图片:16
+Rotate Mode:剪切:1
+Rotate Mode:复制:2
+Rotate Mode:粘贴:3
+Rotate Mode:退出旋转方式:4
+Rotate Mode:设置自选图形的默认效果:5
+Rotate Mode:单元格:6
+Connector:剪切:1
+Connector:复制:2
+Connector:粘贴:3
+Connector:直接连接符:4
+Connector:肘形连接符:5
+Connector:曲线连接符:6
+Connector:重排连接符:7
+Connector:指定宏:8
+Connector:设置自选图形的默认效果:9
+Connector:单元格:10
+Connector:超链接:11
+Connector:编辑超链接:12
+Connector:打开超链接:13
+Connector:取消超链接:14
+Connector:另存为图片:15
+Connector:分组:16
+Connector:叠放次序:17
+Script Anchor Popup:剪切:1
+Script Anchor Popup:复制:2
+Script Anchor Popup:粘贴:3
+Script Anchor Popup:插入脚本:4
+Canvas Popup:剪切:1
+Canvas Popup:复制:2
+Canvas Popup:粘贴:3
+Canvas Popup:显示绘图画布工具栏:4
+Canvas Popup:组合:5
+Canvas Popup:叠放次序:6
+Canvas Popup:自动套用格式:7
+Canvas Popup:单元格:8
+Canvas Popup:超链接:9
+Canvas Popup:编辑超链接:10
+Canvas Popup:打开超链接:11
+Canvas Popup:取消超链接:12
+Organization Chart Popup:编辑文字:1
+Organization Chart Popup:下属:2
+Organization Chart Popup:同事:3
+Organization Chart Popup:助手:4
+Organization Chart Popup:删除:5
+Organization Chart Popup:版式:6
+Organization Chart Popup:选择:7
+Organization Chart Popup:自动套用格式:8
+Organization Chart Popup:单元格:9
+Diagram:编辑文字:1
+Diagram:插入形状:2
+Diagram:删除图形:3
+Diagram:自动套用格式:4
+Diagram:单元格:5
+Select:级别:1
+Select:分支:2
+Select:所有助手:3
+Select:所有连接线:4
+Layout:标准:1
+Layout:两边悬挂:2
+Layout:左悬挂:3
+Layout:右悬挂:4
+Layout:自动版式:5
+Add Command:文件:1
+Add Command:编辑:2
+Add Command:视图:3
+Add Command:插入:4
+Add Command:格式:5
+Add Command:工具:6
+Add Command:数据:7
+Add Command:窗口和帮助:8
+Add Command:绘图:9
+Add Command:自选图形:10
+Add Command:制作图表:11
+Add Command:Web:12
+Add Command:窗体:13
+Add Command:控件工具箱:14
+Add Command:宏:15
+Built-in Menus:文件:1
+Built-in Menus:打印区域:2
+Built-in Menus:发送:3
+Built-in Menus:编辑:4
+Built-in Menus:填充:5
+Built-in Menus:清除:6
+Built-in Menus:对象:7
+Built-in Menus:视图:8
+Built-in Menus:工具栏:9
+Built-in Menus:插入:10
+Built-in Menus:名称:11
+Built-in Menus:图片:12
+Built-in Menus:格式:13
+Built-in Menus:行:14
+Built-in Menus:列:15
+Built-in Menus:工作表:16
+Built-in Menus:拼音指南:17
+Built-in Menus:工具:18
+Built-in Menus:修订:19
+Built-in Menus:保护:20
+Built-in Menus:公式审核:21
+Built-in Menus:宏:22
+Built-in Menus:数据:23
+Built-in Menus:筛选:24
+Built-in Menus:组及分级显示:25
+Built-in Menus:导入外部数据:26
+Built-in Menus:窗口:27
+Built-in Menus:帮助:28
+Built-in Menus:文件:29
+Built-in Menus:发送:30
+Built-in Menus:编辑:31
+Built-in Menus:清除:32
+Built-in Menus:视图:33
+Built-in Menus:工具栏:34
+Built-in Menus:插入:35
+Built-in Menus:图片:36
+Built-in Menus:格式:37
+Built-in Menus:工作表:38
+Built-in Menus:工具:39
+Built-in Menus:修订:40
+Built-in Menus:保护:41
+Built-in Menus:宏:42
+Built-in Menus:图表:43
+Built-in Menus:窗口:44
+Built-in Menus:帮助:45
+Built-in Menus:语音:46
+Task Pane:任务窗格:1
+Ribbon:任务窗格:1
+Status bar Popup Menu:无:1
+Status bar Popup Menu:平均值:2
+Status bar Popup Menu:计数:3
+Status bar Popup Menu:计数值:4
+Status bar Popup Menu:最小值:5
+Status bar Popup Menu:最大值:6
+Status bar Popup Menu:求和:7
+Status bar Popup Menu:带中文单位分隔:8
+Status bar Popup Menu:使用千位分隔符:9
+Status bar Popup Menu:按万位分隔:10
+Axis Title Popup Menu:重设以匹配样式:2
+Axis Title Popup Menu:编辑文字:3
+Axis Title Popup Menu:退出文本编辑:4
+Axis Title Popup Menu:字体:5
+Display Unit Label Popup Menu:重设以匹配样式:2
+Display Unit Label Popup Menu:编辑文字:3
+Display Unit Label Popup Menu:退出文本编辑:4
+Display Unit Label Popup Menu:字体:5
+Gridlines Popup Menu:重设以匹配样式:2
+Gridlines Popup Menu:添加坐标轴:7
+Chart Area Popup Menu:复制:1
+Chart Area Popup Menu:剪切:2
+Chart Area Popup Menu:粘贴:3
+Chart Area Popup Menu:重设以匹配样式:4
+Chart Area Popup Menu:字体:5
+Chart Area Popup Menu:另存为图片:7
+Chart Area Popup Menu:指定宏:9
+NewChart TrendLineLabel Menu:重设以匹配样式:2
+NewChart TrendLineLabel Menu:编辑文字:3
+NewChart TrendLineLabel Menu:退出文本编辑:4
+NewChart TrendLineLabel Menu:字体:5
+Series Line Popup Menu:重设以匹配样式:2
+Data Point Popup Menu:删除系列:1
+Data Point Popup Menu:重设以匹配样式:2
+Data Point Popup Menu:添加数据标签:5
+Data Label Popup Menu:重设以匹配样式:2
+Data Label Popup Menu:编辑文字:3
+Data Label Popup Menu:退出文本编辑:4
+Data Label Popup Menu:字体:5
+Lead Line Popup Menu:重设以匹配样式:2
+Legend Key Popup Menu:重设以匹配样式:2
+Legend Key Popup Menu:字体:3
+Drop Line Popup Menu:重设以匹配样式:2
+Hi Lo Line Popup Menu:重设以匹配样式:2
+Data Table Popup Menu:重设以匹配样式:2
+Data Table Popup Menu:字体:3
+Error Bars Popup Menu:重设以匹配样式:2
+Up Bars Popup Menu:重设以匹配样式:2
+Down Bars Popup Menu:重设以匹配样式:2
+Dlg Formula Bar Popup Menu:复制:1
+Dlg Formula Bar Popup Menu:剪切:2
+Dlg Formula Bar Popup Menu:粘贴:3
+Dlg Formula Bar Popup Menu:撤消:4
+Dlg Formula Bar Popup Menu:恢复:5
+Numberincell Fortext Popup Menu:文本转换成数值:1
+Numberincell Fortext Popup Menu:在公式编辑栏中编辑:2
+Numberincell Fortext Popup Menu:错误检查:3
+TabBar NewFile:新建:1
+Timing Backup Popup Menu:设置定时备份:1
+Print Preview:打印:3
+Print Preview:页面设置:7
+Print Preview:分页预览:9
+Dml Shapes:复制:1
+Dml Shapes:剪切:2
+Dml Shapes:粘贴:3
+Dml Shapes:更改形状:5
+Dml Shapes:另存为图片:6
+Dml Shapes:添加文字:7
+Dml Shapes:编辑文字:8
+Dml Shapes:编辑顶点:9
+Dml Shapes:分组:10
+Dml Shapes:叠放次序:11
+Dml Shapes:指定宏:12
+Dml Shapes:设置自选图形的默认效果:13
+Dml Shapes:单元格:14
+Dml Shapes:超链接:15
+Dml Shapes:编辑超链接:16
+Dml Shapes:打开超链接:17
+Dml Shapes:取消超链接:18
+Curve Node For VML:添加顶点:1
+Curve Node For VML:删除顶点:2
+Curve Node For VML:开放路径:3
+Curve Node For VML:关闭路径:4
+Curve Node For VML:自动顶点:5
+Curve Node For VML:平滑顶点:6
+Curve Node For VML:直线点:7
+Curve Node For VML:角部顶点:8
+Curve Node For VML:退出编辑顶点:9
+Form Control:复制:1
+Form Control:剪切:2
+Form Control:粘贴:3
+Form Control:编辑文字:4
+Form Control:分组:5
+Form Control:叠放次序:6
+Form Control:指定宏:7
+Form Control:单元格:8
+Text Edit Popup Menu:复制:1
+Text Edit Popup Menu:剪切:2
+Text Edit Popup Menu:粘贴:3
+Text Edit Popup Menu:退出文本编辑:4
+Text Edit Popup Menu:字体:5
+Text Edit Popup Menu:段落:6
+Text Edit Popup Menu:超链接:7
+Text Edit Popup Menu:编辑超链接:8
+Text Edit Popup Menu:打开超链接:9
+Text Edit Popup Menu:取消超链接:10
+Text Edit Popup Menu:指定宏:11
+Text Edit Popup Menu:单元格:12
+Custom Popup 2:表列数据:1
+Custom Popup 2:整个表列:2
+Custom Popup 2:表行:3
+Custom Popup 1:编辑查询:3
+Custom Popup 1:数据区域属性:4
+Custom Popup 3:刷新数据:1
+Custom Popup 3:全部刷新:2
+Slicer:复制:1
+Slicer:剪切:2
+Pivot Field Button Popup Menu:复制:1
+Pivot Field Button Popup Menu:剪切:2
+Equation Accent Popup Menu:保存:2
+Equation Accent Popup Menu:另存为:4
+Equation Accent Popup Menu:属性:9
+电子印章:盖章:1
+Status Bar:Status Bar:1
+Ribbon:Ribbon:1

@@ -1,0 +1,652 @@
+Menu Bar:文件:1
+Menu Bar:编辑:2
+Menu Bar:视图:3
+Menu Bar:插入:4
+Menu Bar:格式:5
+Menu Bar:工具:6
+Menu Bar:幻灯片放映:7
+Slide Background Popup Menu:复制:1
+Slide Background Popup Menu:剪切:2
+Slide Background Popup Menu:版式:4
+Slide Background Popup Menu:重设幻灯片:5
+Slide Background Popup Menu:幻灯片切换:6
+Slide Background Popup Menu:网格和参考线:7
+Slide Background Popup Menu:标尺:8
+Slide Background Popup Menu:更换背景图片:9
+Slide Background Popup Menu:删除背景图片:10
+Slide Background Popup Menu:背景另存为图片...:11
+Slide Background Popup Menu:设置背景格式:12
+Slide Background Popup Menu:插入批注:13
+Shapes:复制:1
+Shapes:剪切:2
+Shapes:更改图片:4
+Shapes:更改形状:5
+Shapes:另存为图片:6
+Shapes:添加文字:7
+Shapes:编辑文字:8
+Shapes:退出文本编辑:9
+Shapes:字体:10
+Shapes:段落:11
+Shapes:项目符号和编号:12
+Shapes:播放视频:13
+Shapes:更改视频:14
+Shapes:播放音频:15
+Shapes:裁剪音频:16
+Shapes:裁剪视频:17
+Shapes:置于顶层:19
+Shapes:置于底层:20
+Shapes:超链接:21
+Shapes:超链接:22
+Shapes:动作设置:23
+Shapes:设为默认形状样式:24
+Shapes:动画窗格:25
+Shapes:设置对象格式:26
+Dml Shapes:复制:1
+Dml Shapes:剪切:2
+Dml Shapes:删除:4
+Dml Shapes:更改形状:5
+Dml Shapes:编辑顶点:6
+Dml Shapes:填充图片:7
+Dml Shapes:另存为图片:8
+Dml Shapes:添加文字:9
+Dml Shapes:编辑文字:10
+Dml Shapes:退出文本编辑:11
+Dml Shapes:字体:12
+Dml Shapes:段落:13
+Dml Shapes:项目符号和编号:14
+Dml Shapes:播放视频:15
+Dml Shapes:更改视频:16
+Dml Shapes:播放音频:17
+Dml Shapes:裁剪音频:18
+Dml Shapes:裁剪视频:19
+Dml Shapes:置于顶层:21
+Dml Shapes:置于底层:22
+Dml Shapes:超链接:23
+Dml Shapes:超链接:24
+Dml Shapes:动作设置:25
+Dml Shapes:设为默认形状样式:26
+Dml Shapes:动画窗格:27
+Dml Shapes:设置对象格式:28
+Dml Shapes:插入批注:29
+OLE Object:复制:1
+OLE Object:剪切:2
+OLE Object:删除:4
+OLE Object:更新链接:5
+OLE Object:更改源文件:6
+OLE Object:Object Menu:7
+OLE Object:另存为图片:8
+OLE Object:保存到文件:9
+OLE Object:置于顶层:11
+OLE Object:置于底层:12
+OLE Object:超链接:13
+OLE Object:超链接:14
+OLE Object:动作设置:15
+OLE Object:动画窗格:16
+OLE Object:设置对象格式:17
+Curve:复制:1
+Curve:剪切:2
+Curve:删除:4
+Curve:另存为图片:5
+Curve:编辑顶点:6
+Curve:开放路径:7
+Curve:关闭路径:8
+Curve:置于顶层:10
+Curve:置于底层:11
+Curve:超链接:12
+Curve:超链接:13
+Curve:动作设置:14
+Curve:设为默认形状样式:15
+Curve:动画窗格:16
+Curve:设置对象格式:17
+Curve Segment:添加顶点:1
+Curve Segment:删除线段:2
+Curve Segment:开放路径:3
+Curve Segment:关闭路径:4
+Curve Segment:抻直弓形:5
+Curve Segment:曲线段:6
+Curve Segment:退出顶点编辑:7
+Curve Point:添加顶点:1
+Curve Point:删除顶点:2
+Curve Point:开放路径:3
+Curve Point:关闭路径:4
+Curve Point:平滑顶点:5
+Curve Point:直线点:6
+Curve Point:角部顶点:7
+Curve Point:退出顶点编辑:8
+Curve Point For VML:添加顶点:1
+Curve Point For VML:删除顶点:2
+Curve Point For VML:开放路径:3
+Curve Point For VML:关闭路径:4
+Curve Point For VML:自动顶点:5
+Curve Point For VML:平滑顶点:6
+Curve Point For VML:直线点:7
+Curve Point For VML:角部顶点:8
+Curve Point For VML:退出顶点编辑:9
+Motion Path Popup Menu:编辑顶点:1
+Motion Path Popup Menu:开放路径:2
+Motion Path Popup Menu:关闭路径:3
+Motion Path Popup Menu:反转路径方向:4
+Motion Path Segment Popup Menu:添加顶点:1
+Motion Path Segment Popup Menu:删除线段:2
+Motion Path Segment Popup Menu:开放路径:3
+Motion Path Segment Popup Menu:关闭路径:4
+Motion Path Segment Popup Menu:抻直弓形:5
+Motion Path Segment Popup Menu:曲线段:6
+Motion Path Segment Popup Menu:退出顶点编辑:7
+Motion Path Point Popup Menu:添加顶点:1
+Motion Path Point Popup Menu:删除顶点:2
+Motion Path Point Popup Menu:开放路径:3
+Motion Path Point Popup Menu:关闭路径:4
+Motion Path Point Popup Menu:自动顶点:5
+Motion Path Point Popup Menu:平滑顶点:6
+Motion Path Point Popup Menu:直线点:7
+Motion Path Point Popup Menu:角部顶点:8
+Motion Path Point Popup Menu:退出顶点编辑:9
+Table Cell Popup Menu:复制:1
+Table Cell Popup Menu:剪切:2
+Table Cell Popup Menu:粘贴:3
+Table Cell Popup Menu:选择性粘贴:4
+Table Cell Popup Menu:字体:5
+Table Cell Popup Menu:段落:6
+Table Cell Popup Menu:项目符号和编号:7
+Table Cell Popup Menu:超链接:8
+Table Cell Popup Menu:超链接:9
+Table Cell Popup Menu:插入:10
+Table Cell Popup Menu:删除行:11
+Table Cell Popup Menu:删除列:12
+Table Cell Popup Menu:合并单元格:13
+Table Cell Popup Menu:拆分单元格:14
+Table Cell Popup Menu:选择表格:15
+Table Cell Popup Menu:设置对象格式:16
+Table Cell Popup Menu:插入批注:17
+Table:复制:1
+Table:剪切:2
+Table:粘贴:3
+Table:选择性粘贴:4
+Table:字体:5
+Table:项目符号和编号:6
+Table:动画窗格:7
+Table:设置对象格式:8
+Table:超链接:9
+Notes Pane:复制:1
+Notes Pane:剪切:2
+Notes Pane:粘贴:3
+Notes Pane:选择性粘贴:4
+Notes Pane:字体:5
+Notes Pane:段落:6
+None Slide Miniature Popup Menu:复制:1
+None Slide Miniature Popup Menu:剪切:2
+None Slide Miniature Popup Menu:粘贴:3
+None Slide Miniature Popup Menu:选择性粘贴:4
+None Slide Miniature Popup Menu:新建幻灯片:5
+None Slide Miniature Popup Menu:新幻灯片母版:6
+None Slide Miniature Popup Menu:新幻灯片版式:7
+None Slide Miniature Popup Menu:从文字大纲导入:8
+None Slide Miniature Popup Menu:新增节:9
+Slide Miniature Popup Menu:复制:1
+Slide Miniature Popup Menu:剪切:2
+Slide Miniature Popup Menu:粘贴:3
+Slide Miniature Popup Menu:选择性粘贴:4
+Slide Miniature Popup Menu:新建幻灯片:5
+Slide Miniature Popup Menu:复制幻灯片:6
+Slide Miniature Popup Menu:删除幻灯片:7
+Slide Miniature Popup Menu:新增节:8
+Slide Miniature Popup Menu:版式:9
+Slide Miniature Popup Menu:重设幻灯片:10
+Slide Miniature Popup Menu:幻灯片切换:11
+Slide Miniature Popup Menu:隐藏幻灯片:12
+Slide Miniature Popup Menu:更换背景图片:13
+Slide Miniature Popup Menu:删除背景图片:14
+Slide Miniature Popup Menu:设置背景格式:15
+Slide Miniature Popup Menu:插入批注:16
+Section Miniature Popup Menu:重命名节:1
+Section Miniature Popup Menu:删除节:2
+Section Miniature Popup Menu:删除节和幻灯片:3
+Section Miniature Popup Menu:删除所有节:4
+Section Miniature Popup Menu:向上移动节:5
+Section Miniature Popup Menu:向下移动节:6
+Section Miniature Popup Menu:全部折叠:7
+Section Miniature Popup Menu:全部展开:8
+Ruler Popup Menu:制表位（左对齐）:1
+Ruler Popup Menu:制表位（居中对齐）:2
+Ruler Popup Menu:制表位（右对齐）:3
+Ruler Popup Menu:制表位（小数点对齐）:4
+Text Edit Popup Menu:复制:1
+Text Edit Popup Menu:剪切:2
+Text Edit Popup Menu:粘贴:3
+Text Edit Popup Menu:选择性粘贴:4
+Text Edit Popup Menu:退出文本编辑:6
+Text Edit Popup Menu:字体:7
+Text Edit Popup Menu:段落:8
+Text Edit Popup Menu:项目符号和编号:9
+Text Edit Popup Menu:超链接:10
+Text Edit Popup Menu:超链接:11
+Text Edit Popup Menu:动作设置:12
+Text Edit Popup Menu:设为默认形状样式:13
+Text Edit Popup Menu:动画窗格:14
+Text Edit Popup Menu:设置对象格式:15
+Text Edit Popup Menu:插入批注:16
+Master Miniature Popup Menu:复制:1
+Master Miniature Popup Menu:剪切:2
+Master Miniature Popup Menu:粘贴:3
+Master Miniature Popup Menu:选择性粘贴:4
+Master Miniature Popup Menu:新幻灯片母版:5
+Master Miniature Popup Menu:新幻灯片版式:6
+Master Miniature Popup Menu:删除母版:7
+Master Miniature Popup Menu:保护母版:8
+Master Miniature Popup Menu:重命名母版:9
+Master Miniature Popup Menu:母版版式:10
+Master Miniature Popup Menu:设置背景格式:11
+Master Miniature Popup Menu:幻灯片切换:12
+Layout Miniature Popup Menu:复制:1
+Layout Miniature Popup Menu:剪切:2
+Layout Miniature Popup Menu:粘贴:3
+Layout Miniature Popup Menu:选择性粘贴:4
+Layout Miniature Popup Menu:新幻灯片母版:5
+Layout Miniature Popup Menu:新幻灯片版式:6
+Layout Miniature Popup Menu:删除版式:7
+Layout Miniature Popup Menu:重命名版式:8
+Layout Miniature Popup Menu:母版版式:9
+Layout Miniature Popup Menu:设置背景格式:10
+Layout Miniature Popup Menu:幻灯片切换:11
+Slide Object in Slide Sorter Popup Menu:复制:1
+Slide Object in Slide Sorter Popup Menu:剪切:2
+Slide Object in Slide Sorter Popup Menu:新建幻灯片:4
+Slide Object in Slide Sorter Popup Menu:删除幻灯片:5
+Slide Object in Slide Sorter Popup Menu:新增节:6
+Slide Object in Slide Sorter Popup Menu:设置背景格式:7
+Slide Object in Slide Sorter Popup Menu:幻灯片切换:8
+Slide Object in Slide Sorter Popup Menu:隐藏幻灯片:9
+Paint Brush Popup Menu:箭头:1
+Paint Brush Popup Menu:圆珠笔:2
+Paint Brush Popup Menu:水彩笔:3
+Paint Brush Popup Menu:荧光笔:4
+Paint Brush Popup Menu:绘制形状:5
+Paint Brush Popup Menu:墨迹颜色:6
+Paint Brush Popup Menu:橡皮擦:7
+Paint Brush Popup Menu:擦除幻灯片上的所有墨迹:8
+Draw Figure Popup Menu:自由曲线:1
+Draw Figure Popup Menu:直线:2
+Draw Figure Popup Menu:波浪线:3
+Draw Figure Popup Menu:矩形:4
+Spotlight Popup Menu:激光笔:1
+Spotlight Popup Menu:放大镜:2
+Spotlight Popup Menu:聚光灯:3
+More Options Popup Menu:放大:1
+More Options Popup Menu:演讲备注:2
+More Options Popup Menu:箭头选项:3
+More Options Popup Menu:幻灯片放映帮助:4
+More Options Popup Menu:结束放映:5
+Slide Show:下一页:1
+Slide Show:上一页:2
+Slide Show:第一页:3
+Slide Show:最后一页:4
+Slide Show:定位:5
+Slide Show:放大:6
+Slide Show:屏幕:7
+Slide Show:墨迹画笔:8
+Slide Show:演示焦点:9
+Slide Show:演讲备注:10
+Slide Show:暂停播放背景音乐:11
+Slide Show:继续播放背景音乐:12
+Slide Show:幻灯片放映帮助:13
+Slide Show:结束放映:14
+Slide Show:下一页:1
+Slide Show:上一页:2
+Slide Show:第一页:3
+Slide Show:最后一页:4
+Slide Show:定位:5
+Slide Show:暂停播放背景音乐:6
+Slide Show:继续播放背景音乐:7
+Slide Show:幻灯片放映帮助:8
+Slide Show:结束放映:9
+Slide Show Short Popup Menu:下一页:1
+Slide Show Short Popup Menu:上一页:2
+Slide Show Short Popup Menu:第一页:3
+Slide Show Short Popup Menu:最后一页:4
+Slide Show Short Popup Menu:定位:5
+Slide Show Short Popup Menu:屏幕:6
+Slide Show Short Popup Menu:墨迹画笔:7
+Slide Show Short Popup Menu:幻灯片放映帮助:8
+Slide Show Short Popup Menu:结束放映:9
+Picture:复制:1
+Picture:剪切:2
+Picture:删除:4
+Picture:更改图片:5
+Picture:编辑图片:6
+Picture:设为背景...:7
+Picture:另存为图片:8
+Picture:提取图中文字:9
+Picture:置于顶层:11
+Picture:置于底层:12
+Picture:超链接:13
+Picture:超链接:14
+Picture:动作设置:15
+Picture:动画窗格:16
+Picture:设置对象格式:17
+WordArt:复制:1
+WordArt:剪切:2
+WordArt:删除:4
+WordArt:另存为图片:5
+WordArt:编辑文字:6
+WordArt:置于顶层:8
+WordArt:置于底层:9
+WordArt:超链接:10
+WordArt:超链接:11
+WordArt:动作设置:12
+WordArt:设为默认形状样式:13
+WordArt:动画窗格:14
+WordArt:设置对象格式:15
+Connector:复制:1
+Connector:剪切:2
+Connector:删除:4
+Connector:另存为图片:5
+Connector:直线连接符:6
+Connector:肘形连接符:7
+Connector:曲线连接符:8
+Connector:置于顶层:10
+Connector:置于底层:11
+Connector:超链接:12
+Connector:超链接:13
+Connector:动作设置:14
+Connector:设为默认形状样式:15
+Connector:动画窗格:16
+Connector:设置对象格式:17
+Rotate Mode:复制:1
+Rotate Mode:剪切:2
+Rotate Mode:退出旋转:4
+Rotate Mode:动作设置:5
+Rotate Mode:设为默认形状样式:6
+Rotate Mode:动画窗格:7
+Rotate Mode:设置对象格式:8
+ActiveX Control:复制:1
+ActiveX Control:剪切:2
+ActiveX Control:属性:4
+ActiveX Control:查看代码:5
+ActiveX Control:对象:6
+ActiveX Control:置于顶层:8
+ActiveX Control:置于底层:9
+JdeControl Popup Menu:复制:1
+JdeControl Popup Menu:剪切:2
+JdeControl Popup Menu:粘贴:3
+JdeControl Popup Menu:粘贴更早复制的内容:4
+JdeControl Popup Menu:属性:5
+JdeControl Popup Menu:查看代码:6
+JdeControl Popup Menu:置于顶层:8
+JdeControl Popup Menu:置于底层:9
+TabMenu Popup Menu:关闭窗口:1
+TabMenu Popup Menu:保存:2
+TabMenu Popup Menu:保存所有文档:3
+TabMenu Popup Menu:另存为:4
+TabMenu Popup Menu:保存到云文档:5
+TabMenu Popup Menu:关闭其他窗口:6
+TabMenu Popup Menu:关闭所有文档:7
+TabMenu Popup Menu:打开所在文件夹:8
+TabMenu Popup Menu:文档加密:9
+TabMenu Popup Menu:分享:10
+TabMenu Popup Menu:发送邮件:11
+TabMenu Popup Menu:历史版本:12
+TabMenu Popup Menu:属性:13
+TabBarMenu Popup Menu:新建??:1
+TabBarMenu Popup Menu:保存所有文档:2
+TabBarMenu Popup Menu:关闭所有文档:3
+Toolbar List:任务窗格:8
+TabBar NewFile:新建:1
+Chart Area Popup Menu:复制:1
+Chart Area Popup Menu:剪切:2
+Chart Area Popup Menu:删除:4
+Chart Area Popup Menu:重设以匹配样式:5
+Chart Area Popup Menu:字体:6
+Chart Area Popup Menu:更改图表类型:7
+Chart Area Popup Menu:另存为模板:8
+Chart Area Popup Menu:另存为图片:9
+Chart Area Popup Menu:编辑数据:10
+Chart Area Popup Menu:选择数据:11
+Chart Area Popup Menu:三维旋转:12
+Chart Area Popup Menu:置于顶层:13
+Chart Area Popup Menu:置于底层:14
+Chart Area Popup Menu:设置图表区域格式:15
+Chart Area Popup Menu:添加到资源夹:16
+WebExtension Popup Menu:复制:1
+WebExtension Popup Menu:剪切:2
+WebExtension Popup Menu:粘贴:3
+WebExtension Popup Menu:删除:4
+WebExtension Popup Menu:另存为图片:5
+Equation Bar Popup Menu:复制:1
+Equation Bar Popup Menu:剪切:2
+Equation Bar Popup Menu:粘贴:3
+Equation Bar Popup Menu:数学选项:4
+Equation Bar Popup Menu:退出文本编辑:5
+Equation Bar Popup Menu:字体:6
+Equation Bar Popup Menu:段落:7
+Equation Bar Popup Menu:项目符号和编号:8
+Equation Bar Popup Menu:设为默认形状样式:9
+Equation Bar Popup Menu:动画窗格:10
+Equation Bar Popup Menu:动作设置:11
+Equation Bar Popup Menu:设置对象格式:12
+Equation Bar Popup Menu:超链接:13
+Equation Bar Popup Menu:编辑超链接:14
+Equation Bar Popup Menu:打开超链接:15
+Equation Bar Popup Menu:复制超链接:16
+Equation Bar Popup Menu:取消超链接:17
+Equation BorderBox Popup Menu:复制:1
+Equation BorderBox Popup Menu:剪切:2
+Equation BorderBox Popup Menu:粘贴:3
+Equation BorderBox Popup Menu:数学选项:4
+Equation BorderBox Popup Menu:退出文本编辑:5
+Equation BorderBox Popup Menu:字体:6
+Equation BorderBox Popup Menu:段落:7
+Equation BorderBox Popup Menu:项目符号和编号:8
+Equation BorderBox Popup Menu:设为默认形状样式:9
+Equation BorderBox Popup Menu:动画窗格:10
+Equation BorderBox Popup Menu:动作设置:11
+Equation BorderBox Popup Menu:设置对象格式:12
+Equation BorderBox Popup Menu:超链接:13
+Equation BorderBox Popup Menu:编辑超链接:14
+Equation BorderBox Popup Menu:打开超链接:15
+Equation BorderBox Popup Menu:复制超链接:16
+Equation BorderBox Popup Menu:取消超链接:17
+Equation Operator Popup Menu:复制:1
+Equation Operator Popup Menu:剪切:2
+Equation Operator Popup Menu:粘贴:3
+Equation Operator Popup Menu:数学选项:4
+Equation Operator Popup Menu:退出文本编辑:5
+Equation Operator Popup Menu:字体:6
+Equation Operator Popup Menu:段落:7
+Equation Operator Popup Menu:项目符号和编号:8
+Equation Operator Popup Menu:设为默认形状样式:9
+Equation Operator Popup Menu:动画窗格:10
+Equation Operator Popup Menu:动作设置:11
+Equation Operator Popup Menu:设置对象格式:12
+Equation Operator Popup Menu:超链接:13
+Equation Operator Popup Menu:编辑超链接:14
+Equation Operator Popup Menu:打开超链接:15
+Equation Operator Popup Menu:复制超链接:16
+Equation Operator Popup Menu:取消超链接:17
+Equation Delimiter Popup Menu:复制:1
+Equation Delimiter Popup Menu:剪切:2
+Equation Delimiter Popup Menu:粘贴:3
+Equation Delimiter Popup Menu:数学选项:4
+Equation Delimiter Popup Menu:退出文本编辑:5
+Equation Delimiter Popup Menu:字体:6
+Equation Delimiter Popup Menu:段落:7
+Equation Delimiter Popup Menu:项目符号和编号:8
+Equation Delimiter Popup Menu:设为默认形状样式:9
+Equation Delimiter Popup Menu:动画窗格:10
+Equation Delimiter Popup Menu:动作设置:11
+Equation Delimiter Popup Menu:设置对象格式:12
+Equation Delimiter Popup Menu:超链接:13
+Equation Delimiter Popup Menu:编辑超链接:14
+Equation Delimiter Popup Menu:打开超链接:15
+Equation Delimiter Popup Menu:复制超链接:16
+Equation Delimiter Popup Menu:取消超链接:17
+Equation Array Popup Menu:复制:1
+Equation Array Popup Menu:剪切:2
+Equation Array Popup Menu:粘贴:3
+Equation Array Popup Menu:数学选项:4
+Equation Array Popup Menu:退出文本编辑:5
+Equation Array Popup Menu:字体:6
+Equation Array Popup Menu:段落:7
+Equation Array Popup Menu:项目符号和编号:8
+Equation Array Popup Menu:设为默认形状样式:9
+Equation Array Popup Menu:动画窗格:10
+Equation Array Popup Menu:动作设置:11
+Equation Array Popup Menu:设置对象格式:12
+Equation Array Popup Menu:超链接:13
+Equation Array Popup Menu:编辑超链接:14
+Equation Array Popup Menu:打开超链接:15
+Equation Array Popup Menu:复制超链接:16
+Equation Array Popup Menu:取消超链接:17
+Equation Fraction Popup Menu:复制:1
+Equation Fraction Popup Menu:剪切:2
+Equation Fraction Popup Menu:粘贴:3
+Equation Fraction Popup Menu:数学选项:4
+Equation Fraction Popup Menu:退出文本编辑:5
+Equation Fraction Popup Menu:字体:6
+Equation Fraction Popup Menu:段落:7
+Equation Fraction Popup Menu:项目符号和编号:8
+Equation Fraction Popup Menu:设为默认形状样式:9
+Equation Fraction Popup Menu:动画窗格:10
+Equation Fraction Popup Menu:动作设置:11
+Equation Fraction Popup Menu:设置对象格式:12
+Equation Fraction Popup Menu:超链接:13
+Equation Fraction Popup Menu:编辑超链接:14
+Equation Fraction Popup Menu:打开超链接:15
+Equation Fraction Popup Menu:复制超链接:16
+Equation Fraction Popup Menu:取消超链接:17
+Equation Function Popup Menu:复制:1
+Equation Function Popup Menu:剪切:2
+Equation Function Popup Menu:粘贴:3
+Equation Function Popup Menu:数学选项:4
+Equation Function Popup Menu:退出文本编辑:5
+Equation Function Popup Menu:字体:6
+Equation Function Popup Menu:段落:7
+Equation Function Popup Menu:项目符号和编号:8
+Equation Function Popup Menu:设为默认形状样式:9
+Equation Function Popup Menu:动画窗格:10
+Equation Function Popup Menu:动作设置:11
+Equation Function Popup Menu:设置对象格式:12
+Equation Function Popup Menu:超链接:13
+Equation Function Popup Menu:编辑超链接:14
+Equation Function Popup Menu:打开超链接:15
+Equation Function Popup Menu:复制超链接:16
+Equation Function Popup Menu:取消超链接:17
+Equation Limit Popup Menu:复制:1
+Equation Limit Popup Menu:剪切:2
+Equation Limit Popup Menu:粘贴:3
+Equation Limit Popup Menu:数学选项:4
+Equation Limit Popup Menu:退出文本编辑:5
+Equation Limit Popup Menu:字体:6
+Equation Limit Popup Menu:段落:7
+Equation Limit Popup Menu:项目符号和编号:8
+Equation Limit Popup Menu:设为默认形状样式:9
+Equation Limit Popup Menu:动画窗格:10
+Equation Limit Popup Menu:动作设置:11
+Equation Limit Popup Menu:设置对象格式:12
+Equation Limit Popup Menu:超链接:13
+Equation Limit Popup Menu:编辑超链接:14
+Equation Limit Popup Menu:打开超链接:15
+Equation Limit Popup Menu:复制超链接:16
+Equation Limit Popup Menu:取消超链接:17
+Equation Group Popup Menu:复制:1
+Equation Group Popup Menu:剪切:2
+Equation Group Popup Menu:粘贴:3
+Equation Group Popup Menu:数学选项:4
+Equation Group Popup Menu:退出文本编辑:5
+Equation Group Popup Menu:字体:6
+Equation Group Popup Menu:段落:7
+Equation Group Popup Menu:项目符号和编号:8
+Equation Group Popup Menu:设为默认形状样式:9
+Equation Group Popup Menu:动画窗格:10
+Equation Group Popup Menu:动作设置:11
+Equation Group Popup Menu:设置对象格式:12
+Equation Group Popup Menu:超链接:13
+Equation Group Popup Menu:编辑超链接:14
+Equation Group Popup Menu:打开超链接:15
+Equation Group Popup Menu:复制超链接:16
+Equation Group Popup Menu:取消超链接:17
+Equation Normal Popup Menu:复制:1
+Equation Normal Popup Menu:剪切:2
+Equation Normal Popup Menu:粘贴:3
+Equation Normal Popup Menu:数学选项:4
+Equation Normal Popup Menu:退出文本编辑:5
+Equation Normal Popup Menu:字体:6
+Equation Normal Popup Menu:段落:7
+Equation Normal Popup Menu:项目符号和编号:8
+Equation Normal Popup Menu:设为默认形状样式:9
+Equation Normal Popup Menu:动画窗格:10
+Equation Normal Popup Menu:动作设置:11
+Equation Normal Popup Menu:设置对象格式:12
+Equation Normal Popup Menu:超链接:13
+Equation Normal Popup Menu:编辑超链接:14
+Equation Normal Popup Menu:打开超链接:15
+Equation Normal Popup Menu:复制超链接:16
+Equation Normal Popup Menu:取消超链接:17
+Equation Matrix Popup Menu:复制:1
+Equation Matrix Popup Menu:剪切:2
+Equation Matrix Popup Menu:粘贴:3
+Equation Matrix Popup Menu:数学选项:4
+Equation Matrix Popup Menu:退出文本编辑:5
+Equation Matrix Popup Menu:字体:6
+Equation Matrix Popup Menu:段落:7
+Equation Matrix Popup Menu:项目符号和编号:8
+Equation Matrix Popup Menu:设为默认形状样式:9
+Equation Matrix Popup Menu:动画窗格:10
+Equation Matrix Popup Menu:动作设置:11
+Equation Matrix Popup Menu:设置对象格式:12
+Equation Matrix Popup Menu:超链接:13
+Equation Matrix Popup Menu:编辑超链接:14
+Equation Matrix Popup Menu:打开超链接:15
+Equation Matrix Popup Menu:复制超链接:16
+Equation Matrix Popup Menu:取消超链接:17
+Equation Large Operator Popup Menu:复制:1
+Equation Large Operator Popup Menu:剪切:2
+Equation Large Operator Popup Menu:粘贴:3
+Equation Large Operator Popup Menu:数学选项:4
+Equation Large Operator Popup Menu:退出文本编辑:5
+Equation Large Operator Popup Menu:字体:6
+Equation Large Operator Popup Menu:段落:7
+Equation Large Operator Popup Menu:项目符号和编号:8
+Equation Large Operator Popup Menu:设为默认形状样式:9
+Equation Large Operator Popup Menu:动画窗格:10
+Equation Large Operator Popup Menu:动作设置:11
+Equation Large Operator Popup Menu:设置对象格式:12
+Equation Large Operator Popup Menu:超链接:13
+Equation Large Operator Popup Menu:编辑超链接:14
+Equation Large Operator Popup Menu:打开超链接:15
+Equation Large Operator Popup Menu:复制超链接:16
+Equation Large Operator Popup Menu:取消超链接:17
+Equation Radical Popup Menu:复制:1
+Equation Radical Popup Menu:剪切:2
+Equation Radical Popup Menu:粘贴:3
+Equation Radical Popup Menu:数学选项:4
+Equation Radical Popup Menu:退出文本编辑:5
+Equation Radical Popup Menu:字体:6
+Equation Radical Popup Menu:段落:7
+Equation Radical Popup Menu:项目符号和编号:8
+Equation Radical Popup Menu:设为默认形状样式:9
+Equation Radical Popup Menu:动画窗格:10
+Equation Radical Popup Menu:动作设置:11
+Equation Radical Popup Menu:设置对象格式:12
+Equation Radical Popup Menu:超链接:13
+Equation Radical Popup Menu:编辑超链接:14
+Equation Radical Popup Menu:打开超链接:15
+Equation Radical Popup Menu:复制超链接:16
+Equation Radical Popup Menu:取消超链接:17
+Equation Script Popup Menu:复制:1
+Equation Script Popup Menu:剪切:2
+Equation Script Popup Menu:粘贴:3
+Equation Script Popup Menu:数学选项:4
+Equation Script Popup Menu:退出文本编辑:5
+Equation Script Popup Menu:字体:6
+Equation Script Popup Menu:段落:7
+Equation Script Popup Menu:项目符号和编号:8
+Equation Script Popup Menu:设为默认形状样式:9
+Equation Script Popup Menu:动画窗格:10
+Equation Script Popup Menu:动作设置:11
+Equation Script Popup Menu:设置对象格式:12
+Equation Script Popup Menu:超链接:13
+Equation Script Popup Menu:编辑超链接:14
+Equation Script Popup Menu:打开超链接:15
+Equation Script Popup Menu:复制超链接:16
+Equation Script Popup Menu:取消超链接:17
