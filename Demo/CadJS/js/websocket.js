@@ -40,7 +40,7 @@ function websocket(port='',type=0){
         //只发送一次，获取本机安装的office软件信息，启动时需要判断哪个Office是当前使用的类型Option
         if(websocket.wsArr.length==0){
             let msg = {
-                "req": "Wrl_OfficeInfo",
+                "req": "Wrl_CADInfo",
                 "rid": 1,
                 "para": {}
             }
