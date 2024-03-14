@@ -117,14 +117,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装CatiaCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"7AF57097EA28EFD4EA6827FA2BC5504A","Version":"2.2.13.1","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0593CC21255B2ABC5B66E09D53719151C8B9C41F0875F84A287728D75E8918BC032512C77E87C72B39C6E15D4716829F768D15B8AD4A6E057C93C540339503C365CB2495F21E2635F34FC8728BC94A5BD1EB22CF39A8C8F1A24F884C95B1F00C9FE93EE263965526D51DFE958F243FCB4012E62D596B702201549FACC4D3DF0F6EF52DF55A5FC0C3F3CC40D270491F6B9C3211284708A1313D42DD22D8B362794CEC3C55B9549AC443493EE2A365427401FA999C31F4CAF5B728A70185FDE26FC0A2198E47B3E3D2423B5B11FC9C17A7C8396E9121E52DCA94F3DB381A4B95C2AFE4F4DF74D0A68D9194027C606FEB30411D46A3F74904E7CCDE0FE1EC7AAFE3"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"0EA9B9BF3C04438E9FC0C8C3241F0A80","Version":"2.2.13.2","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6113A88FA298A3DC097ED3FDB879EA1C3907B098B247C24FBDF0F6B013DA6CFCD453E0CC390744F1B4B720ABB9BDD31108A6FF163160C397500AC679E772E663CEF454125A132C035A4FEEED070B087377856E141A0EA84573E2DD35FB8529B02C1C3593B272E5913D0D51F37FA0A55A1AAD95B0928F1384EEBF373C1B8EA60EBF1CDB2F2487D002C593656E63A6E33BE83CC48238066F59EC0207BBEE6BB866A3581278A0E2CCF84AE8F9831EAF9BE4E5ECD446B9D700FF9F69C37CB643CF40B157F6C659229D870A1EA023A49623F789339CA7FD136FE777511DCC116AE39E300E741C55E3F39D46D34CD4238589EA361B709298D75BB8361BA732415DC8F7"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级CatiaCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"9B28D4A3444C83D0EE355A86628810CF","Version":"2.2.13.1","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3D9089B4C6A51F89149501A069EBB89547C98C69C2ADE792BAE5963569EA29D8D2CC8EB7631A3246736AEAA2140DF8CEA7ABD561B714B95FCDF091F775B056BE86C130CD1A84BAB3ECC4B4EA7A2875487D73254A5961727C69FAD70BFEF4B4D079C13B08794F256BC723D0001ED8AD5B4927E2F9CC9F3E470F6997E3D9D8942354B2934A4EB126DB4C40979C8141903FD2F63984045E5531ADE6184A1C4B61FA71A904EA1B6AEBE19CEA38BFB76EE24692B527890D25441E5E6A0F439CEE5456460054D9AA2D8BF3ED2231A7A842C35C62D8CA0417D4A5ECB8854D3476504D4FA0ECF495ED0FD581500A47F990285F53D477712D665FED43A581A02F55BF3F7F"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"FF8F6D05D68B497D157D17C9109948D1","Version":"2.2.13.2","Size":2162688,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5FCA91329CA8C69FF9E7E244A643B05B46256E176D4F1F81BD8796D02B38C1BF67DBE97218E03B9833727A7430D8BDE8A5D8965BF41A70CB902480213362FA38241DB3D0813C56DD97909F3AD9F755747640F52B49E3A2900772FA43A43D825EDD8EAA6D301538F3AD3A19D93E8AC8B6E3F3D148B985A86E25E218F53D848B8BC198ABB96137D78D64526CDFDA8CBAE960A610E70806DA6F1BE18A5223AC3E3C16537F8E1361E35E4EEA87DF5C01FEAE111E4E60CFC40E8786F34D0D869E8FF5523389DA8F9CFB1B8B7263AB55D099F6757FC4F3165606C7FD10A4A798D2C86681717A722DD33F9B45E8427F526406B5876E073044D30A5A1E846A4832FD14DE"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -165,6 +165,10 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.CATPart","Url":"http://local.zorrosoft.com/Files/test.CATPart"}}
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+6）切换全屏编辑状态
+{"req":"CAD_SwitchFullScreen","rid":6,"para":{}}
+返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、

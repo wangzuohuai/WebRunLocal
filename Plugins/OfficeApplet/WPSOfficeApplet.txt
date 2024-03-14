@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"A24263C85CE1F91A4B1CA818B74B9A2D","Version":"2.2.13.1","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2BC4406D2B697F7D92CD8A1903773662D77ECA542FC015ED0EFB4745E730B2672FFDA7D3B376936F0006B4293E37BA7C29474AC5DE4FD81302177F14974282D20ED1F8F44151A3A8F37377BCB4BCA556293333063AD022D87AF2DBE2880DE299915823241773FE44AF010D8CDCC78C48B20752229DC758E89CCA0E66D18279C8E45684E7438B3956E56B97CD95026C16824AFA71BCD27988CA66B82E605AAB6029F7E4F069C5F7D20F3E0F67D835F94BEEC5705BD774C06AEB59D6598F5016055DAE59AF7E2986E2A1F64F0B31426BD3FCE197586DA77F894AB8F80E1F7C8F7EE057AE838C84A7D1C4590982C1D7D5CE0A8D920D276AE78C962997EF6B24AD59"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"CBFA54FDD645214FCBF3A9BB09FB3264","Version":"2.2.13.2","Size":4915200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2A68D5282A1DBEDFD67E6E4ED19932BAC80931C37D8884E2F9E7DD157D317A9991DF3CD31D6A21475F679A532951AF5B07DA75870FCE21121D8F9944CB9EA9252C86CF5FA30919A1CA5790F4039600E994D0AEDA85078393CE9F17399063650049A8D0BFE5172740D875AA6FA65536632AB86631A7AC2D722A10E904B781753F3FB3C1DB2DD07A9445262A2B8DE0A89689B9C125F5B830DBB113ADC5AA10035B8F2D757940A30F0D56A77A931D1086F1A62CDFE7C72BBBD248263B338609B85463F09B1ACF3AA2C17BF3955FEEBD7A58072AFF540269B82AE6EDCB9634B9F3ABAD5DC1981D54D10BA759D146DBF3B74A17556E2912458B4B880CD42E97C104F2"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-02-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"AF8B91805AA4B581B7F30FF403ADEB81","Version":"2.2.13.1","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"912591C8514D2FA128D16BB1E71E5003203131068CFDE911DFAA0AEE634CDDD26F0EC6908889DF88E1E4E8A1F13C8F5CB380E7BE262BFCDD1933FA4AB73C4C137AE70DCCC18B82B11A8813D89C4B17DBA72830371159E84B243AEC5D47C9071EBB0D375F53F827E9B30ECE24807B0712DF632731AA3150BEF1FB35C9324C9CAC075E322EB6D7BA3A43F168278C82EF24744E2EAB7A60E6B1053F8815B9BD42BB5BA142ACBF93B10FA0BCB10828C9DA25852A4EF5993177539431DEDEC7C1FAEE2FB873EE13980563AF4D231229E9E4DDF2B379A6BB2352E4484C49995453657C0D9412E3355417B3D89E5D1AF3FDF8397EECF5662E6094639C2EFAA724E57838"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"99DEB5BFCDE496921D0208B578E1590D","Version":"2.2.13.2","Size":4915200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3B81BC5AA974B50E38260DB9B5FF18C83A434A1B5586BA7DE1695DB30E6800F09CCA371A5AF5F3CFB3583F808E5F76E896B550E452E1F04FDE96E999093FE3A69CA85E33DC3AF98322CFA3BDFCB726DE96DC99C376BE616B6B09F43A7F939E6A04A1899E74258F6E785F44584B67D7420E91273E659AAD8611F7007E15047E0290D0156AAA596E2D0B448000ACEB18324CB410F44A437E671352F12D83F1FF011D0BA7F0BA44A62BC775BF8F9EDD99DFFC56E8AFF4CB13E19936BAFA05E57D1514D2FD786E2969A5CC536969A615591608E01EAD9FEEBAC945AA7F57D06FDC26525FD4071528C0BFDB92C8EE0A51D30B055E03E26E1D856123563204DFBB7DF4"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -242,28 +242,37 @@ Text为添加批注的文字描述
 {"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档书签数量，适用于WPS文字软件
+20）请求获取当前文档书签(超链接)数量，适用于WPS文字、表格、演示软件
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
 {"req":"Office_MarkCount","rid":20,"para":{}}
 返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求判断当前书签是否存在，适用于WPS文字软件
-Name为书签名称
+21）请求判断当前书签(超链接)是否存在，适用于WPS文字、表格、演示软件
+Name为书签(超链接)名称，WPS演示不支持Name 
+Address为地址，WPS文字不支持
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 WPS文字和表格不需要
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求获取当前文档所有书签，适用于WPS文字软件
+22）请求获取当前文档所有书签(超链接)，适用于WPS文字、表格、演示软件
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 WPS文字、表格不需要
 {"req":"Office_AllMark","rid":22,"para":{}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
-23）请求指定序号的书签名称或指定名称的文字内容，适用于WPS文字软件
-Index为书签序号 Name为书签名称
-{"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1"}}
+23）请求指定序号的书签(超链接)名称或指定名称的文字内容，适用于WPS文字、表格、演示软件
+Index为书签(超链接)序号 Name为书签(超链接)名称，WPS演示不支持Name Address为地址，WPS文字不支持 
+Detail为1获取详情，仅对WPS文字有效，如果设置0只返回书签名称
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+{"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1","Detail":"1"}}
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
-24）请求替换指定书签名称的内容，适用于WPS文字软件
-Name为书签名称，Text书签内容，如内容中插入^p可实现换行
-{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
+24）请求替换指定书签(超链接)名称的内容，适用于WPS文字、表格、演示软件
+Name为书签(超链接)名称，Text书签(超链接)内容，表格、演示如内容中插入^p可实现换行
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 WPS文字、表格不需要
+WPS文字:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
+WPS表格:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":{"Address":"地址","SubAddr":"子地址"}},{"Address":"地址","Text":{"Name":"公文标题","SubAddr":"子地址"}}]}}
+WPS演示:{"req":"Office_PutMarkText","rid":24,"para":{"Slide":1,"Marks":[{"Address":"地址1","Text":{"Name":"公文标题","SubAddr":"子地址"}},{"Address":"地址1","Text":{"Name":"公文标题","SubAddr":"子地址"}}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
 25）光标跳转到指定名称的书签，适用于WPS文字软件
@@ -414,9 +423,9 @@ Sort 排序类型 0默认按名称 1按位置
 返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
-46）请求删除指定书签，适用于WPS文字软件
-Name为书签名称
-DelContent 是否同时删除书签内容，默认0不删除
+46）请求删除指定书签(超链接)，适用于WPS文字、表格、演示软件
+Name为书签(超链接)名称
+DelContent 是否同时删除书签(超链接)内容，默认0不删除，仅WPS文字支持
 {"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
 返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
 
