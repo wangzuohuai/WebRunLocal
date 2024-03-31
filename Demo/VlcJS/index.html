@@ -63,7 +63,7 @@
 			var win = 1 		// 当前操作的窗口ID
 			var rid = 10 		// 起始请求序号
 			var recordid = 0 	// 录像返回ID
-			var CheckVer = '2.2.13.1' // 指定的校验版本，也就是最新需要升级的版本
+			var CheckVer = '2.2.13.3' // 指定的校验版本，也就是最新需要升级的版本
 			
 			var socketClient = {
 				3000: null,
@@ -498,18 +498,18 @@
 					"req":"Wrl_Update",
 					"rid":rid,
 					"para":{
-						"Name":"PageHiPlayer-RTSP网页播放器升级包",
-						"Date":"2024-02-27",
-						"Desc":"1、中间件及相关小程序发布海外版，支持360安全浏览器64位版；2、网络版服务管理器终端用户信息导出支持txt格式，解决授权服务器不同于默认授权方式授权到期处理问题；3、优化中间件高级版小程序嵌入网页后焦点处理；4、解决个别情况下加载了高级版内嵌网页小程序窗口无法最小化显示等问题...",
+						"Name":"PageHiPlayer—RTSP低延迟网页播放器升级包",
+						"Date":"2024-03-31",
+						"Desc":"1、优化中间件中获取下载地址文件名算法，解决未提供文件大小的任务下载不能正常停止问题；2、优化中间件WS侦听服务过程，解决网络版授权服务器可能不正常重启服务问题；3、优化中间件高级版浏览器窗口改变大小处理过程，解决不断改变大小时可能导致浏览器异常退出问题；4、PageHiPlayer网页播放器增加在播放窗口区支持弹窗，解决多引擎播放中大华私有协议播放不支持录像机视频问题...",
 						"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
 						"Open":"http://local.zorrosoft.com/VlcJS",
-						"MD5":"59FBC9AC0FC3F362575DE683EE47732B",
-						"Version":"2.2.13.1",
-						"Size":44007424,
+						"MD5":"824BA050DBC96E7DEDEA01FA836DA356",
+						"Version":"2.2.13.3",
+						"Size":45613056,
 						"HideIns":0,
 						"Cookie":"",
 						"Auth":"",
-						"TK":"416AE8DC158F4F80214C85ABB4B7B4D6B8BAC1B7CFCFC93661CB8C3252344F79DE40E7CAD1F8948A0DFFBA87008D1A5F1CE6753FE1CD98E06104B8CE42D9C447DFB8BB62C667915586EB5E7C099221AA7ECDDB5A51E2D5311360BAF74973E8FF46539DC9FC297816EEE718139718ABD31BD1435E0DFD082E545F8ACCEE73844CE332A1918564483BB3B19C35E6797B2BDB65A7B25AD716BC33E0F78BBBC87E9EDCC3EAEB492F35EC69231FF9AB663D5FEA7BD0276AE55F216BE16F693234DFFEA443FDF2D8229155EE04666DFC315EA1C48530B8578F54BD9AA832CCC4323C4E8AACAE51E76FC6BD6D8D9815A35008DCEE48758A7A5CED0D10DF42FCF83A8A77"
+						"TK":"2284FD4591A444EA841AB925D84675EE5BF76B134DB55B4F84E3F0BB51746FB0008D3B009CE053BF79A6E40F240A19837B7F03CE7D18871274E13CB44AABB75B44B459D1E0A4B4AB098BFBC4C0011D1C6BE340AB36438C57A6084F49968D9FA5B29715D433B4BECF41AB28780ACA8CA715A5D5B84E5A05B6E37702C60E8B51A6E9735086619F9BE62722EE61CF00D93E21788C1D98DC735AE69452783CE1D14E8195ECA14D83C2DD0451DA97A564DAF233C2A6E2B86CE1327CF342AED97F047977EB16464E0E2B3026598229EACCCE0F1E216CCA0B2022A17288D45A1A2640F0771E5C4F582550280E859023DF60C22866AFAF4DD2DC197A1814D169146E8FEF"
 					}
 				}
 				socketClient[3000].sendObj(msg)
@@ -595,7 +595,7 @@
 				{
 					if (3000 == sign) 
 					{
-						let isBool = confirm('提示：PageHiPlayer-RTSP网页播放器 服务端口连接失败，可能是尚未安装，是否马上下载安装？')
+						let isBool = confirm('提示：PageHiPlayer—RTSP低延迟网页播放器 服务端口连接失败，可能是尚未安装，是否马上下载安装？')
 						if (isBool) {
 							window.open('http://local.zorrosoft.com/Files/RtspWebPlayerIns.exe') // 建议打包为zip等格式下载，解压后安装，EXE文件下载浏览器会提示是否保留
 						}

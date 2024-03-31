@@ -276,22 +276,24 @@ function getrandom(nums)
 		{
 			var jsondata = $.parseJSON(Data);
 			if(jsondata.req == "Wrl_IEApplet"
-				|| jsondata.req == "Wrl_IETab"
-				|| jsondata.req == "Wrl_VLCApplet"
-				|| jsondata.req == "Wrl_VLCWebPlayer"
-				|| jsondata.req == "Wrl_HKWebPlayer"
-				|| jsondata.req == "Wrl_VideoWebPlayer"
-				|| jsondata.req == "Wrl_PdfWebApplet"
-				|| jsondata.req == "Wrl_OfficeApplet"
-				|| jsondata.req == "Wrl_ACADApplet"
-				|| jsondata.req == "Wrl_RdpApplet"
-				|| jsondata.req == "Wrl_TXWebApplet"
-				|| jsondata.req == "Wrl_PCLWebPlayer"
-				|| jsondata.req == "Wrl_IEPage"
-				|| jsondata.req == "Wrl_SWCadApplet"
-				|| jsondata.req == "Wrl_CatiaApplet"
-				|| jsondata.req == "Wrl_ProEApplet"
-				|| jsondata.req == "Wrl_AppletStart")
+			|| jsondata.req == "Wrl_IEPage"
+			|| jsondata.req == "Wrl_VLCApplet"
+			|| jsondata.req == "Wrl_VLCWebPlayer"
+			|| jsondata.req == "Wrl_HKWebPlayer"
+			|| jsondata.req == "Wrl_VideoWebPlayer"
+			|| jsondata.req == "Wrl_PdfWebApplet"
+			|| jsondata.req == "Wrl_OfficeApplet"
+			|| jsondata.req == "Wrl_TXWebApplet"
+			|| jsondata.req == "Wrl_ACADApplet"
+			|| jsondata.req == "Wrl_SWCadApplet"
+			|| jsondata.req == "Wrl_CatiaApplet"
+			|| jsondata.req == "Wrl_ProEApplet"
+			|| jsondata.req == "Wrl_UGApplet"
+			|| jsondata.req == "Wrl_ZWApplet"
+			|| jsondata.req == "Wrl_PCLWebPlayer"
+			|| jsondata.req == "Wrl_RdpApplet"
+			|| jsondata.req == "Wrl_IETab"
+			|| jsondata.req == "Wrl_AppletStart")
 			{
 				nRequstAppletID = jsondata.rid;
 				if(1 == (1 & jsondata.para.Flag) || 16 == (16 & jsondata.para.Flag))

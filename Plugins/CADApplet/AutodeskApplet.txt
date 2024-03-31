@@ -1,7 +1,7 @@
-﻿ACAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk公司的AutoCAD软件自动化接口、DWG TrueView或Design Review的OCX控件接口实现的dwg、dxf等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review等软件窗口内嵌到网页指定区域运行并调用内部实现的各种接口功能。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿ACAD网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Autodesk公司的AutoCAD软件自动化接口、DWG TrueView或Design Review的OCX控件接口实现的dwg、dxf等工程图在线查看、编辑、审阅等，可分别将AutoCAD、DWG TrueView、Design Review等软件窗口内嵌到网页指定区域运行并调用内部实现的各种接口功能。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 支持Autodesk公司AutoCAD 2007及以上版本的桌面安装版、建议使用官方发布的AutoCAD 2013及以上版本的激活版,AutoCAD商标及相关软件版权归Autodesk所有。
 
-1、PluginOK(牛插)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
@@ -19,12 +19,13 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
-Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
 	Edit代表编辑权限 1只读打开 4禁止另存 8禁止打印 
-	Hide代表隐藏的界面元素 1隐藏菜单 2隐藏标准工具栏
-	PW代表打开文档需要的密码 
-	DataPath代表文档查找和保存默认路径
+	User 代表编辑图纸的用户名称 
+	PW代表打开图纸需要的密码 
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -33,16 +34,16 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动AutoCAD程序在线编辑dwg、dxf等文档
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"0","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动DWG TrueView程序在线查看或转换dwg文档
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"1","Open":"D:/Zorro/test.dwg"}}
 
 自动识别当前浏览器并启动Design Review程序在线审阅dwg、dxf文档(推荐方式启动)
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"2","Open":"D:/Zorro/test.dxf"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"2","Open":"D:/Zorro/test.dxf"}}
 
 自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
-{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.dwg"}}
+{"req":"Wrl_ACADApplet","rid":6,"para":{"Type":"0","Title":"Autodesk Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"0","Open":"D:/Zorro/test.dwg"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/acadframe.html
@@ -104,14 +105,14 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 1)、请求安装ACAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"E5FD2589A52D4BC8C4384C7E12B85619","Version":"2.2.13.2","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"981EB5CDD2A4541D78A37E5749DBAC225789A70B1AC26D6133072280B4DAD4E1EEBFD4B6E2CC7AAD71BA55D83DCC03AFE90DBC97901BA709BA1342CC7850F17574FE58B1B2F1EC4E45584A484FCDCBB97121321B7FF15A8E5A26C59B2197F7495CFD5AF34402FC573288E9944941DAE125DC15AD00D961518D060301AF2E1CBB814133555EC4E38C7E452101AC869A27E22CF5F9D16433A0DC6C9477DB85FB8D20501D52F01F45D4DFC22AD9C0973ADC3F17DF6B8A6C34F845F7980D8DBFC76966BE4E9B4E82A9A9BFC88E33EDBA55F1A5E79AC0C3CB547DE2CC874B90861EAEA4E8D3A143BDFC624F963F11918400EFB98C26C7D638C20D3917E3E06F418951"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"F74464DFCB4271029343B31311D11A2A","Version":"2.2.13.3","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5F3682A22D3AA91A1A488AC26C441597738A9BB68D8DEF27C41FBC19E9E24833BECEDB534252E927B4B6E9D05B30E1C3E8ED4D3BC6C5EAB17614DAF3A70BAF78886193E9423D44E3AD4F3ABE35297B2C2A31D16E46E2CBC43641EE8FF0E21E65B038C686D18920D540117FA87FE82A7F2BE61149094F5DEA3E850C378D87369E2A5F6DCBB12F1012140ECF7D05118834AD077BF6EDA3E98BEC1187B96B684BA4D7D823518FA631816466150A52A4ABBD02F6DFBB0337E784A41AD905FF7748ED3387D391E6526A5C74A0BA17A980671B69AF16F49BCEE2B52CCFE943DED05A9C9F82DB5DD9BEA8282CFA565B3C3FC8C54A65BEBE115216F93CF7B25B8DCD8CA3"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级ACAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"11AC15B6DDDB64505D660242DF365638","Version":"2.2.13.2","Size":3964928,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"07D7DFA369FFAD2B20ED93A8A8D813B789596C5E943B0BCC007A2B5F473EBE81E1D46E0CA40C23E7DBD17E1B15A1C1042A45C859A21B4D3C215CAE7267ACA740E89B9679E0FB87415CCC4B752A1F1176B24E56F0F34D48F54978D7E7534FA6429BE2DD4BD586B91231E3D344D4AF9EFCE5C3DD809544B22BBC1E03BF1290FC9D372A5D929C7F76DAB91B7C03B17D124C2FE400E0BBB5D9DC15CA3D7C72A28945BDB9E23ADA103A138D7158D600D0DF1EE0A94B2CFA37387EB2C0B7B675C29F1ED2C975F73B9CC1272C2B82AD8DCD5673A381AB54A5E351A52E71DB6A959DF0E3954E89817B5124FEBEC5240EF2B1AE8211BED91ADFD59BEF64738803728DFE16"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"070ADB767969ECC2BDA4C6520B309CD1","Version":"2.2.13.3","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"752DB96D9C78E095D716371A337DF5599EE8356698232AFC4EFA9F9DC2ECB5F67B88F2EBF279FE732C4A4A59B87C20711C373309FFB268430FCEC90A167236C8BB41F91BE404113B0A10C27A5FA24E39ADFF333D477E516B65AC139A45F8748C08285A5CA41C4FEE62F6C978C77A5514B60C538A48CAC66731D5221E374DE05605370EFDD8521AFE3018B35D2DEED108B1007D1D7E702970BA2683DA08A7AF11BD6218BD33AA3F0E4C7B8056B2217F9B1749E8F1301DD0E9357D44043522466AEE9267A0B5F4615CE9AC203C9B2FA8AC897C8FB916B3AAFF68101A5F93687BF155C610C28D6FF9EBA68F82EE144BDA65A7AB49706E64F1EDF4083ACE02B3BF67"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -177,7 +178,7 @@ Local 上传文件本地路径或下载文件保存路径，如果不指定默�
 Url 上传或下载的地址，需要做UrlEncode编码
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
-{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.dwg","Url":"http://local.zorrosoft.com/Files/test.dwg"}}
+{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/CadDoc/test.dwg","Url":"http://local.zorrosoft.com/Files/test.dwg"}}
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
 
@@ -186,6 +187,14 @@ SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编
 Count 打印份数，不设置默认1
 {"req":"CAD_Print","rid":10,"para":{"SrcFile":"D:/Zorro/test1.dwg","PW":"","Count":1}}
 返回: {"ret":0,"rid":10,"data":{"Ret":"0"}} Ret为0代表成功
+
+11）请求在嵌入窗口区域内弹出一个消息对话框
+Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
+Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
+Wait为等待多少秒自动消失 0代表不自动消失
+Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
+{"req":"CAD_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
 
 B、DWG TrueView专用功能请求：
 

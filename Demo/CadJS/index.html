@@ -58,7 +58,10 @@
             <button onclick="startTabApplet(3)">标签启动CATIA编辑</button>
         </div>
         <div class="item">
-            <button onclick="startTabApplet(4)">标签启动CreoView看图</button>
+            <button onclick="startTabApplet(4)">标签启动中望CAD编辑</button>
+        </div>
+       <div class="item">
+            <button onclick="startTabApplet(5)">标签启动CreoView看图</button>
         </div>
     </div>
     <div class="urlbox">
@@ -85,6 +88,10 @@
         </div>
         <div class="tab-item hide" onclick="change(this,4)">
             <div class="close" onclick="closeTab(this,4)">x</div>
+            中望CAD组件
+        </div>
+        <div class="tab-item hide" onclick="change(this,5)">
+            <div class="close" onclick="closeTab(this,5)">x</div>
             ProE组件
         </div>
     </div>
@@ -98,7 +105,7 @@
         </div>
         <div class="item">最新版本号</div>
         <div class="item">
-            <input name="version" value="2.2.13.2" size="small"></input>
+            <input name="version" value="2.2.13.3" size="small"></input>
         </div>
         <button onclick="checkUpdate()" class="button-primary">校验升级</button>
     </div>
@@ -133,7 +140,7 @@
     let aid = 0 //当前操作的applet ID
     let applet = null
     let myFirstDwg = 'http://local.zorrosoft.com/Files/Test.dwg'
-    let openType = 0 // 加载类型 可通过请求Wrl_CadInfo获得需要设置的值
+    let openType = 0 // 加载类型 可通过请求Wrl_CadInfo获得当前电脑安装的CAD软件及OCX控件信息
     let myOpenDwg = 'C:/CadDoc/test.dwg'
     let myOpenSld = 'http://local.zorrosoft.com/Files/Test.sldprt'
     let myOpenCatia = 'http://local.zorrosoft.com/Files/Test.CATPart'
@@ -213,6 +220,12 @@
             //支持启动在线编辑图纸
             applet.openType = 0
             applet.StartCatiaApplet(rid, position.left, position.top, position.width, position.height, myOpenCatia, edit)
+        }
+        else if(index==4)
+        {
+            //支持启动在线编辑图纸
+            applet.openType = 0
+            applet.StartZWCadApplet(rid, position.left, position.top, position.width, position.height, myOpenDwg, edit)
         }
         else
         {

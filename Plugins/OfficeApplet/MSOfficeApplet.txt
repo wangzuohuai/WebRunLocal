@@ -18,7 +18,7 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
-Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
 	Edit 代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
 	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
@@ -26,7 +26,7 @@ Web中参数说明：
 	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
-	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置的Cookie
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -112,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"84BC8FDE0C7CEC18FAF7D707CB89833E","Version":"2.2.13.2","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4C2D1D4AD8DC84795F6C6B9C1925F47D8A717C6AFC20F8D3A6C4B334D4811E36AC01E8D42A1E0066A22616C603159DCEEC682D796ACE0F6E290ABF51AA935F0AC23F217FC489A625718EB5FD2B220ED9696A3D1B0CA3E53A979C37DC46715EC6ADE5DFC61BA580715EFB9FCCD2D2A05EEE4C663C7B07431D0854A6EE04D276CEF20F67844FF47BAE26C0846ACEDED1B5F0677E7E4003F494DB834DB996FA3202E3BDA5CC237A0D0D14EC2020A87E2C32A0F991CA2E7D5A6FBC8AB6979D3F81AC5B5C6B251C20B45CC5839E9B0B25CC2263DDE88FD6C7E4E52D1B66B29CF2DC97060458BE8329C5EB026209465C2D9B93785D092FC187F04261011587029F2F6D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"0FE58404AD14FB47C293FFDAF34A1BC8","Version":"2.2.13.3","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B7A56A1892B6D326A31F6E292DDDF1E3C9549DD87523E31C804A1EF92FB90227098A2FE7D86834E60F4A5EBE9A187970678755C0C3436593ED38442CF22DA30D790139CA0E7D3535F22588B70AA92682B1A88DCF58C782BF49AE8FB623F2ACFE4EE3CA9904B00F894759E0D312419E13A54D1AC0563D7B1534A3894C07D02D3F3ACB3E61AD4DE25592D1206BE90C5E60DAA54CE74C141885B5183E30EB5AD388E7F064BA89B6DE3D4A3552ED06508FD186B270B06B20BFC9DB99BA49B645E42D88A6C0C1C40BBCD807C27C458FBE126825BA6E4005AED81637EEAA65F80974B018857243A461502633955F81A2E7F11A20D8D4C725A88A76FE573DB74822FAF0"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"9BE0519D81AEF25AC3620CDD662E1C5D","Version":"2.2.13.2","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"50B634D224D95AE53368ABD3D05B5272A48398F48C0BC4E929A35DB5404EF3FF33226392574C922696E7CE5C4DF9A0E093E20F537158264254CAE92A7F1F8F83538BFF2D9A9931510C40C27EC1FAA72D6440E74A9CEDFAA0172C2B0004BBEDF0903088D7EDF6CE108B06EA906B97452195DCB2129B58AE485CE9AD8F4368A667C5478A782A4EAB22CAE6FE15EDE99DCEC158AB1C11DF8BD7BFCD1B8E5C6A6AFC0A14A9FA5C95C0EC161EEA35A1EF6B6563E0B2E33112349BBA3FAC83577E155FA72735AB2B644CC7E440F1F321A9DD414F5E6D28DD71E187D22462BA217825CED55B7B2C1141D2022BA47F1DE0FB7F0C0991DB08D0D705B775A8A51F910FE2BF"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"52CB7311A5A5503D33AE0FAE6A0DCE03","Version":"2.2.13.3","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4D76E19CBDBDB797F599E1F812AF598F08579A7AD1E17291300C49D00E227BA8D14DBD9D8DB1D2E0FA7B909DD3667989418CC6146DA6B829E8B72C44142BE926F1E5ABD21676C3123E4F50C3E3B52D22FC960D71EB47E7C2C24577BF6335C574553C588325BA8B31EFB990E6DC3CD11CBDF7CABD2D5356A7B767B29F89482F0B89B2D1CC28F2820B0C1CE117FFBFC02DD72D2DFED24871029822EA157D02FEC4BF332985E074470939A486F6E5618305B377F55DF70245FE5583A92A184DFD251A0537B4008591044C23B49711110F3E76624A4FF491C4C05C2D04B58651015DA5A101ED30BAE011494BDEF7CA938570B5615D91124A9DFC9C8A128AAD704FA1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -173,7 +173,8 @@ NewFile如非全路径，除非启动时指定了数据文件目录DataPath，�
 Link为1则只是链接到文件(网络路径不支持1)
 Save是否插入后自动保存到文档
 ImgFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-Order设置图片和文字关系，5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+Order设置图片和文字关系，适用于Word 5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+Wrap图片文字环绕类型，适用于Word 具体参考定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdwraptype
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
@@ -240,37 +241,29 @@ Text为添加批注的文字描述
 {"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档书签(超链接)数量，适用于Word、Excel、PPT软件
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+20）请求获取当前文档书签数量，适用于Word软件
 {"req":"Office_MarkCount","rid":20,"para":{}}
 返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求判断当前书签(超链接)是否存在，适用于Word、Excel、PPT软件
-Name为书签(超链接)名称，PPT不支持Name 
-Address为地址，Word不支持
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+21）请求判断当前书签是否存在，适用于Word软件
+Name为书签名称
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求获取当前文档所有书签(超链接)，适用于Word、Excel、PPT软件
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+22）请求获取当前文档所有书签，适用于Word软件
 {"req":"Office_AllMark","rid":22,"para":{}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
-23）请求指定序号的书签(超链接)名称或指定名称的文字内容，适用于Word、Excel、PPT软件
-Index为书签(超链接)序号 Name为书签(超链接)名称，PPT不支持Name Address为地址，Word不支持 
-Detail为1获取详情，仅对Word有效，如果设置0只返回书签名称
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+23）请求指定序号的书签名称或指定名称的文字内容，适用于Word软件
+Index为书签序号 Name为书签名称
+Detail为1获取详情，默认是设置0只返回书签名称
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1","Detail":"1"}}
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
-24）请求替换指定书签(超链接)名称的内容，适用于Word、Excel、PPT软件
-Name为书签(超链接)名称，Text书签(超链接)内容，WORD如内容中插入^p可实现换行
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+24）请求替换指定书签名称的内容，适用于Word软件
+Name为书签名称，Text书签内容，如内容中插入^p可实现换行
 Word:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
-Excel:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":{"Address":"地址","SubAddr":"子地址"}},{"Address":"地址","Text":{"Name":"公文标题","SubAddr":"子地址"}}]}}
-PPT:{"req":"Office_PutMarkText","rid":24,"para":{"Slide":1,"Marks":[{"Address":"地址1","Text":{"Name":"公文标题","SubAddr":"子地址"}},{"Address":"地址1","Text":{"Name":"公文标题","SubAddr":"子地址"}}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
 25）光标跳转到指定名称的书签，适用于Word软件
@@ -423,9 +416,9 @@ Sort 排序类型 0默认按名称 1按位置
 返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
-46）请求删除指定书签(超链接)，适用于Word、Excel、PPT软件
-Name为书签(超链接)名称
-DelContent 是否同时删除书签(超链接)内容，默认0不删除，仅Word支持
+46）请求删除指定书签，适用于Word软件
+Name为书签名称
+DelContent 是否同时删除书签内容，默认0不删除
 {"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
 返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
 
@@ -484,6 +477,67 @@ End Function
 Sub SetMyFont()
   SetFontFunc ("宋体")
 End Sub
+
+52）请求在嵌入窗口区域内弹出一个消息对话框，适用于Word、Excel、PPT软件
+Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
+Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
+Wait为等待多少秒自动消失 0代表不自动消失
+Type代表弹窗类型 0是MB_OK，具体见Windows SDK定义
+{"req":"Office_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+
+53）插入超链接，适用于Word、EXCEL软件
+Address 超链接地址
+SubAddress 子地址
+ScreenTip 屏幕提示
+TextToDisplay 是否文字显示到屏幕
+{"req":"Office_InsertHyperlink","rid":53,"para":{"Address":"Test","SubAddress":"Sheet1!A1","ScreenTip":"","TextToDisplay":"Sheet1!A1"}}
+返回：{"ret":0,"rid":53,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+54）请求获取当前文档超链接数量，适用于Word、Excel、PPT软件
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+{"req":"Office_HyperlinkCount","rid":54,"para":{}}
+返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
+
+55）请求判断当前超链接是否存在，适用于Word、Excel、PPT软件
+Name为超链接名称，PPT不支持Name 
+Address为地址
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+{"req":"Office_HyperlinkIsExist","rid":55,"para":{"Name":"Caption"}}
+返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
+
+56）请求获取当前文档所有超链接，适用于Word、Excel、PPT软件
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+{"req":"Office_AllHyperlink","rid":56,"para":{}}
+返回：{"ret":0,"rid":56,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
+
+57）请求指定序号的超链接或指定名称的文字内容，适用于Word、Excel、PPT软件
+Index为超链接序号 
+Name为超链接名称，PPT不支持Name 
+Address为地址，Word不支持 
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+{"req":"Office_GetHyperlinkInfo","rid":57,"para":{"Index":"1"}}
+{"req":"Office_GetHyperlinkInfo","rid":57,"para":{"Name":"Caption"}}
+{"req":"Office_GetHyperlinkInfo","rid":57,"para":{"Address":"http://www.zorrosoft.com/"}}
+返回：{"ret":0,"rid":57,"data":{"Ret":"0"}}
+
+58）请求替换指定超链接名称的内容，适用于Word、Excel、PPT软件
+Name为超链接名称，PPT不支持
+Text超链接内容
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+Word or Excel:{"req":"Office_PutHyperlinkText","rid":58,"para":{"Hyperlinks":[{"Name":"http://www.zorrosoft.com/","Text":{"Address":"http://zorrosoft.com/","ScreenTip":"zorrosoft"}}]}}
+PPT:{"req":"Office_PutHyperlinkText","rid":58,"para":{"Slide":1,"Hyperlinks":[{"Address":"http://www.zorrosoft.com/","Text":{"Address":"http://zorrosoft.com/","ScreenTip":"zorrosoft"}}]}}
+返回：{"ret":0,"rid":58,"data":{"Ret":"0"}}
+
+59）请求删除指定超链接，适用于Word、Excel、PPT软件
+Name为超链接名称 PPT不支持Name
+Addr为超链接地址
+Index为序号 仅PPT支持Index
+{"req":"Office_DelHyperlink","rid":59,"para":{"Name":"Test"}}
+{"req":"Office_DelHyperlink","rid":59,"para":{"Address":"http://www.zorrosoft.com/"}}
+{"req":"Office_DelHyperlink","rid":59,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":59,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为Word程序通知

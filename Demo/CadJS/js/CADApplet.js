@@ -1,7 +1,7 @@
 function CADApplet(ws = null, aid = 0) {
     this.ws = ws
     this.aid = aid
-    this.openType = 1  // 加载类型 1启动微软Word 2启动微软Excel 3启动微软PPT 11启动金山文字 12启动金山表格 13启动金山演示 可通过请求Wrl_OfficeInfo获得需要设置的值
+    this.openType = 0  // 加载类型 0默认打开软件在线编辑图纸 1 OCX看图
     this.IframeX = -10 //根据情况自己修改把
     this.IframeY = 0  //根据情况自己修改把
 }
@@ -15,6 +15,8 @@ CADApplet.aidArr = [
     {aid: 0, rid: 5, ws1: null, ws2: null},
     {aid: 0, rid: 6, ws1: null, ws2: null},
     {aid: 0, rid: 7, ws1: null, ws2: null},
+    {aid: 0, rid: 8, ws1: null, ws2: null},
+    {aid: 0, rid: 9, ws1: null, ws2: null},
 ];
 /**
  * 让rid和aid和ws都映射起来
@@ -199,6 +201,32 @@ CADApplet.prototype.StartProEApplet = function (rid, left, top, width, height, O
             "ScrollTop": 0,
             "Web": {"Edit": edit, "Hide": 0, "User": "test", "Cookie": "", "DataPath": "c:/CadDoc"},
             "Option": 1,
+            "Open": encodeURIComponent(OpenFile)
+        }
+    }
+    this.ws.sendMessage(msg)
+}
+
+CADApplet.prototype.StartZWCadApplet = function (rid, left, top, width, height, OpenFile, edit) {
+    //启动一个中望CAD网页组件，参数参考CADApplet-class.js中的startACAD
+    let msg = {
+        "req": "Wrl_ZWApplet",
+        "rid": rid,
+        "para": {
+            "Type": "0",
+            "Title": "CAD网页组件",
+            "Flag": 578,
+            "Left": left,
+            "Top": top,
+            "Width": width,
+            "Height": height,
+            "IframeX": this.IframeX,
+            "IframeY": this.IframeY,
+            "BarW": 0,
+            "BarH": 0,
+            "ScrollTop": 0,
+            "Web": {"Edit": edit, "Hide": 0, "User": "test", "Cookie": "", "DataPath": "c:/CadDoc"},
+            "Option": 0,
             "Open": encodeURIComponent(OpenFile)
         }
     }
@@ -440,17 +468,17 @@ CADApplet.prototype.sendUpdateJson = function () {
         "rid": CADApplet.rid,
         "para": {
             "Name": "PageHiCAD-图纸在线编辑组件升级包",
-            "Date": "2024-03-13",
-            "Desc": "1、优化高级版内嵌网页小程序识别当前启动浏览器网页过程；2、解决浏览器窗口加载内嵌网页小程序后放大缩小等操作可能引发崩溃问题，改进对IE浏览器的兼容性；3、CAD网页组件支持全屏编辑，解决Solidworks在线编辑点击其它区域可能显示不正常问题，解决CAD网页看图组件加载时显示区域和窗口大小不匹配问题...",
+            "Date": "2024-03-31",
+            "Desc": "1、优化中间件中获取下载地址文件名算法，解决未提供文件大小的任务下载不能正常停止问题；2、优化中间件WS侦听服务过程，解决网络版授权服务器可能不正常重启服务问题；3、优化中间件高级版浏览器窗口改变大小处理过程，解决不断改变大小时可能导致浏览器异常退出问题；4、PageHiCAD网页组件增加中望CAD软件内嵌浏览器运行支持，增加在CAD网页组件窗口区弹窗支持，优化保存实现...",
             "DownAddr": "http://local.zorrosoft.com/Files/Update/CAD_Update.pid",
             "Open": "http://local.zorrosoft.com/CADJS",
-            "MD5": "065F0C89BF195C505AD305543A06F4B1",
-            "Version": "2.2.13.2",
-            "Size": 23003136,
+            "MD5": "7FD34C1F2EB11440EF53194A3A3E46C4",
+            "Version": "2.2.13.3",
+            "Size": 24117248,
             "HideIns": 0,
             "Cookie": "",
             "Auth": "",
-            "TK": "A9713198188B0F7831752758E8C797D09195F917E5D92190179F889738C59EF51A36833767F71CF36A1D3315CBC5DF6E6C221BFE0EB4A89376E12EB2935DD1D71201B2A1BA93E2B208B383FF2F163614C969E6C0CDAC074F2D6BEEA43A794FAB744747EF85F4C6ADA70D3E3AF2285C708C796B779499468659859D2D353FBEDD8AF0F060917912FE5FAFE4D4B991EB7B21E96E119BCD9974FA5974192D4A5420050B202F7213DD9C8F942A0BA315EDB0C7C29DA7A2B7B7A15D0FDC46FD3507371B9D5D46D412A380932640DED5A38A481D26102CC8B7A58243A18724A2F7C92F82DAE2599A234ACBE1DE7BE4CB189F4CBEBD7CF8939FDFD295D62D641F2DDD01"
+            "TK": "8433AA980EF302FEE31FDC50506033A7A21CF849AE9771EC3B2A5B55B8BA3923082F120B3CA9BCA298BFF6798D874C6DB256CD316593D9EE6D5EF23EAF1F7A6F065CF1F0B09EF0A62FCA6C62FE0AF24B64DDEAA74A944F7014DAE215418C8856A2BC96ACED2B4BFB2A2C21061FE3751C64191E05816F9DEBD793D00918EAD14BA5120152735F1AE5899E2790B3FDB1694BD097F78AB60535E8AED093F248329C503243411370576411EDE34EF87B615943AD33DF875B05D243DBAADF2B83047E9047CC271CF1F452AEC727698DACE5D724D7364E00C63F8F54686E0D9682248B38F97A4D13D1AF8FBA9EE84BA74C25A2A54F96B38CD8AFD611E1D7A2D3E602C2"
         }
     }
     this.ws.sendMessage(msg)

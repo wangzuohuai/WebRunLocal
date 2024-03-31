@@ -1,6 +1,6 @@
-﻿SWCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Solidworks软件自动化接口及eDrawings的OCX控件实现可程序化驱动的xt、step、sldprt等三维工程图在线查看、编辑等，可将Solidworks eDrawings软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿SWCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Solidworks软件自动化接口及eDrawings的OCX控件实现可程序化驱动的xt、step、sldprt等三维工程图在线查看、编辑等，可将Solidworks eDrawings软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
 
-1、PluginOK(牛插)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
@@ -42,10 +42,13 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
-Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读打开
-	DataPath代表文档查找和保存默认路径
+	Edit代表编辑权限 1只读打开 4禁止另存 8禁止打印 
+	User 代表编辑图纸的用户名称 
+	PW代表打开图纸需要的密码 
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -54,16 +57,16 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/
 注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档
-{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.xt"}}
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"0","Open":"D:/Zorro/test.xt"}}
 
 自动识别当前浏览器并启动eDrawings程序在线查看或转换xt、step文档
-{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"1","Open":"D:/Zorro/test.xt"}}
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"1","Open":"D:/Zorro/test.xt"}}
 
 自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
-{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":[],"Option":"0","Open":"D:/Zorro/test.xt"}}
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"0","Open":"D:/Zorro/test.xt"}}
 
 自动识别当前浏览器并启动eDrawings程序在线查看服务器文档
-{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet Full","Flag":72,"IframeX":0,"IframeY":0,"ScrollTop":0,"Web": [],"Open":"http://local.zorrosoft.com/Files/Test.sldprt","Option":1}}
+{"req":"Wrl_SWCadApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet Full","Flag":72,"IframeX":0,"IframeY":0,"ScrollTop":0,"Web": {"DataPath":"c:/CadDoc"},"Open":"http://local.zorrosoft.com/Files/Test.sldprt","Option":1}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/SWCadframe.html
@@ -125,14 +128,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装SWCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"581E16DF0E39A87559018FBDF6B19CEE","Version":"2.2.13.2","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"261D6DF6EE523959EFBDC38BF1F70A6666A4235D6AEC1D9C43BF134E9827C989FCDDA7D1B1DD7FD989DBBDA290970AF416DD623523D074461E59D77D8F60DC1AAEF34D5314AED37011FA90028658BE5F80A9930B91FDB7A513280834247CCDB6BC958CDB4992B41D884F5666469F3E14148D679E416765D2750043963B0146FA440BDA2A53F283020B3ED8D894F039D66DD574B991DBBE9BDCB2589923168AE98F8943BD0F54716EFD8D2E8E3A1B5CAC8E68C833D54068FFD3827A69291B022003270B69FC03EE138584BA3846E4CBEC7CF82DDEE673D105266702FFF585B925E5304D062B767C606AF90318E93BC2FC1CFCA3DA37D878C0F0BC8D17C8A7BF39"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet.pid","MD5":"6FD7EF5EA284DD7B54B7464547C8BF0E","Version":"2.2.13.3","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B93A6CEEDAAD9B4B8DD72E0F846BE9C95340E4E8BE16E109A0E9A00A7A9779E02DC27B57BB367DA697F3D898B802162BE293F85477AEB19C6B1AB3D210680065FA344832D98F94F8328F3899E8D5332D836F4582954C2CDD0A137BB7E3EB5139D5330AE41AF981147A7AC26DE7450E1D65F84776DDF93EFA94CD06B227E8C58381E7B8DE61C7556D2628510C44A7A26DD809F4F417F44E4888DF05AD86C9CA5734E7D7E8DD990E5167396898363E6AE2914C6EF7519396C9CAEAA746EB5DBE4607459D3F7011ED7EE00278003E68FAD1FFB891275E9E0A5ABCEE0D546D5297E618DA3DF0256D4605208130EA64593DFD0C2DFED84927FB51589A78A84604C6A5"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级SWCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"3FF4CE782CCDF9953E8C687737578B05","Version":"2.2.13.2","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7B3BD927E3ADEB1F7B823FC0002547E1A0B292C0621D41E5C722B40781023616E454A3CF797C04C28905CC6E7948CFB63523709A9D34BFC6D3F503EDAF82B26BA828CA6E41A26ACE25107063807DB80D80970211BE5DF3BE360DCE559B5A7BF96097F90495ED5B00EC42721E341916D53E60A37EE276C272D734D9102BB5BB90E94D1FEA91D440809A63CAEAB8282AA17763323B9292458ECC4566E2B9447DC483549A08352F3E2681B429191BDA5FA91035F0BFA2F3B3085D2A60B2736E2738337A01F6BC9A54700E0F18B10E6673DC3C120A17D3AC107BCD1189371C65919304F328F111B9CBBB52B96402750AA118C0BC1D76506310D734C0B95E10724F55"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"SWCAD网页组件","PID":"SWCadApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的网页内嵌Solidworks软件实现在线编辑三维工程图小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Solidworks等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/SWCadApplet_Update.pid","MD5":"A07BFC9E30BBCFEA7DE158DBC62D348C","Version":"2.2.13.3","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3BFD0575CD44526F2252434C5DE40808A475181ACE7E5147CFCFA3212BF1E4A9EE220773642B4E6D7FDA1698C33E11A6C271A89F8A4785ACB726F9A570EF60DE4D1F2DDCEF2726C849C3CC038EFE29EE5A9DFDC4C646FA21B75489860590F18C2AB6435716BDBC65C25D616DB38E423FD668761D9A44FCD6100212F95266914750A09E84537FC51D7A11E387F1C3E8B266CBBC5FAF77FF7130AD1D64C78127A8EC9322661B8F871B71AEDCE2C9ABA46BF4DDB2904F2890382827511FE286AFC9E486318DA3463566067A0BA944087601598EC24F903DABD89E79B810319E31FDFFDF2772D02ECD8938D066FC77D67E81F4F5E81A3E5006C7324D01AD03FE65C2"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -157,26 +160,41 @@ Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码
 {"req":"CAD_Open","rid":3,"para":{"Open":"D:/Zorro/Test.sldprt","PW":"","Read":0}}
 返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
 
-4)、打开文档转换到PDF
-SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如已打开可不设置
-DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先编码
-{"req":"CAD_ConvertTo","rid":4,"para":{"SrcFile":"D:/Zorro/Test.sldprt","DestFile":"D:/Zorro/test2.pdf","PW":""}}
-返回: {"ret":0,"rid":4,"data":{"Ret":"0"}} Ret为0代表成功
+4）请求保存，如是新建文档，会创建一个临时文件名保存，适用于Solidworks软件
+如果指定了CAD_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+{"req":"CAD_Save","rid":4,"para":{}}
+{"req":"CAD_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
-5）网络文件操作 适用于Solidworks软件及eDrawings控件
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Solidworks软件
+支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+如果指定了CAD_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+{"req":"CAD_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.sldprt"}}
+{"req":"CAD_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/upload.sldprt","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
+
+6）网络文件操作 适用于Solidworks软件及eDrawings控件
 Type 1上传文件 0下载文件
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
 Url 上传或下载的地址，需要做UrlEncode编码
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
-{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.sldprt","Url":"http://local.zorrosoft.com/Files/test.sldprt"}}
+{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/CadDoc/test.sldprt","Url":"http://local.zorrosoft.com/Files/test.sldprt"}}
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
 
-6）切换全屏编辑状态
+7）切换全屏编辑状态
 {"req":"CAD_SwitchFullScreen","rid":6,"para":{}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
+
+8）请求在嵌入窗口区域内弹出一个消息对话框
+Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
+Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
+Wait为等待多少秒自动消失 0代表不自动消失
+Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
+{"req":"CAD_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
 
 B、eDrawings的OCX控件专用接口：
 101)、对应OCX中获取属性FileName 请求获取文件名

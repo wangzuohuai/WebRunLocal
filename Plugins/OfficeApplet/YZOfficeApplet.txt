@@ -18,7 +18,7 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
-Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
 	Edit 代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
 	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
@@ -26,7 +26,7 @@ Web中参数说明：
 	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
 	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
-	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置的Cookie
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -112,14 +112,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"B183FFC658DF31A9A8D88FF9320E5005","Version":"2.2.13.2","Size":4489216,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2A9F1ABCD32838C3CFCB9E0165B01E4BD32DB1919605C426390632114E3D1EB0AE8374793552F97BDF7E2E9450F403193B5B8646DB444F749592DC48D2F9C2BF49BA1CEF60673FF17E3B12862CDE22B1F49C9B76654BE5A047F828DA0BBA8BCBBA6BF56DDFC29CB1085D9AEB95CE9563A19E7C7B5DD1FEECD4F266BE15752F727E3750B76089CB0D3873408A0378674D7C14AE982008AF5976E7C487B89E6488B12010EDC3A7B5789D1CBCB2DD746F591068C20B208C39191B37EEDE56420644892DB7C1926805D91D7BC36094AEB10690C082E2827B7E8F9AA911CAF19B48FD9855EE184E33FF3F13C5B63655AF06E69F149B12FD24DBF0AF8B5BCA7FD2CFB1"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"24724E9BD6FA88E4DBAC4825E8A0E129","Version":"2.2.13.3","Size":4489216,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B20B6AF1737BE286FE129ACFC36BE73D9A8AD47EC71BEFD0F4DA6DE83BC8109268B7FEDE290E94C88D91954DFE3A84EBEE820794AEEFF66D7A9F7326AB28355F261C39EBAD18B4226431FB4AFFEE7758E3D0798F6EB560EE0BFDF60394FB4CD36E9518B05F891F0DEAD12ED79447727C6F715C864BF014AB0BAE14990641A5D819DF44CC9619FFB301DB354059E3DE72D7F04A742986B1339AB7A8D08D1239BAC42B2823F17D039AB395DF748C00FBB709434DD24A1EAA8945FDBAE0E2F60F60ED8835B24FBB5DB7B5F73735077959C44A864880D8266F19203C1D87342837694121A5175F099CF6FE0EFA4415BDA9E16ECA3801E0549A9A7393BF05E2FA8F7F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"BA3F1A6630ED235FFD95D12EF268B01B","Version":"2.2.13.2","Size":4489216,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"969542B1E7B83136BEDC7447BC7100F84FDBCE11568B6CE90591EB17D6DBCF9698849372C4CA0E49052430C5AA35F4FCC84132D898E12A3A5A2ADD0D3876F57C4D7653B92C7DE7022763BEBDCCCE01BD981B06B1A548B7F694CDE7EE53EC2BA42285CE500AD4397671798266E97B8280D7DAB460882B20E4A7FB6DEE88B612C95522E15A37E424CF41A73A01C2D2F35CEA8D3C55EA293182B2914FF6D62787C22E6FD6BC2E3FA2EC71D8F2361767B51E157A5F958248249EB01E58AD0803CF68840BBABA5AA1EB7DF9F5E8D07A9BDC1D5469368B39268E5C9533C8826FCFE0660061871E3D6FC282EF68C7B38301EDE7984CE93D76B3375D41D1D24654E4725A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"E9EE45DFC521D5399065224EFBF0DFA8","Version":"2.2.13.3","Size":4489216,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6FA029FCD406BC76EA25EE5CE340CC4E028FF476EE99F128E454F14C164251EEA9EE1FCC901E6AAF2B13722EDA3773214D9F58BF37F7416277C8216D06E7CC0FFECBB56462328F1CABAA22D7BB6D36670B20B7402D2DC7ADB275225503952D8D9D358224BD9939618D4D48603F7AAA8EC7A69540824771C0E12AE64A9EEA327B6E8D8B426D8D75F4858B0495B6B08E24A90B9156CEC3C62D4C60672DEC0DF951D1795F92DAEE6CE06581398367684BEEFFEECF3A8B5A2C277D50389C82EE4217D730785E14A10F622725E59361A7E82DB2A6FBB290DD1F6380827772BBEA957E10DEF7723AC4596EE55DFD1C66D68B314F32DCBC8624B8747911B3C5392BA99D"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -173,7 +173,8 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 Link为1则只是链接到文件(网络路径不支持1) 
 ImgFile 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 Save是否插入后自动保存到文档
-Order设置图片和文字关系，5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+Order设置图片和文字关系，适用于永中文字 5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+Wrap图片文字环绕类型，适用于永中文字 具体参考定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdwraptype
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
@@ -239,37 +240,29 @@ Text为添加批注的文字描述
 {"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档书签(超链接)数量，适用于永中文字、表格、简报软件
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+20）请求获取当前文档书签数量，适用于永中文字软件
 {"req":"Office_MarkCount","rid":20,"para":{}}
 返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求判断当前书签(超链接)是否存在，适用于永中文字、表格、简报软件
-Name为书签(超链接)名称，永中简报不支持Name 
-Address为地址，永中文字不支持
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字和表格不需要
+21）请求判断当前书签是否存在，适用于永中文字软件
+Name为书签名称
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求获取当前文档所有书签(超链接)，适用于永中文字、表格、简报软件
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、表格不需要
+22）请求获取当前文档所有书签，适用于永中文字软件
 {"req":"Office_AllMark","rid":22,"para":{}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
-23）请求指定序号的书签(超链接)名称或指定名称的文字内容，适用于永中文字、表格、简报软件
-Index为书签(超链接)序号 Name为书签(超链接)名称，永中简报不支持Name Address为地址，永中文字不支持 
-Detail为1获取详情，仅对永中文字有效，如果设置0只返回书签名称
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 Word和Excel不需要
+23）请求指定序号的书签名称或指定名称的文字内容，适用于永中文字软件
+Index为书签序号 Name为书签名称
+Detail为1获取详情，默认是设置0只返回书签名称
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1","Detail":"1"}}
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
-24）请求替换指定书签(超链接)名称的内容，适用于永中文字、表格、简报软件
-Name为书签(超链接)名称，Text书签(超链接)内容，表格、简报如内容中插入^p可实现换行
-Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、表格不需要
-永中文字:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
-永中表格:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":{"Address":"地址","SubAddr":"子地址"}},{"Address":"地址","Text":{"Name":"公文标题","SubAddr":"子地址"}}]}}
-永中简报:{"req":"Office_PutMarkText","rid":24,"para":{"Slide":1,"Marks":[{"Address":"地址1","Text":{"Name":"公文标题","SubAddr":"子地址"}},{"Address":"地址1","Text":{"Name":"公文标题","SubAddr":"子地址"}}]}}
+24）请求替换指定书签名称的内容，适用于永中文字软件
+Name为书签名称，Text书签内容，如内容中插入^p可实现换行
+{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
 25）光标跳转到指定名称的书签，适用于永中文字软件
@@ -397,7 +390,7 @@ Forward: 默认1向前搜索 (向文档的末尾) 0先后搜索，向文档初�
 WholeWord:是否完全匹配 默认0 指定1时只查找匹配的完整单词，而并非作为一个长单词的一部分的文字。相当于“编辑”菜单“查找和替换”对话框中的“全字匹配”复选框
 Wildcards:是否指定通配符及其他高级搜索条件，默认0。指定1时“*(ing)” 将查找以“ing”结尾的所有单词 对应于查找和替换对话框中的使用通配符复选框
 Type:替换类型 2:wdReplaceAll(替换所有匹配项，默认) 1:wdReplaceOne(替换遇到的第一个匹配项) 0:wdReplaceNone(不替换任何匹配项)
-Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域后，Microsoft Word 会显示一条消息，询问是否搜索文档的其他部分)
+Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域后，永中文字会显示一条消息，询问是否搜索文档的其他部分)
 	1:wdFindContinue(到达搜索区域的开始或者结尾时，继续执行查找操作) 0:wdFindStop(到达搜索范围的开始或者结尾时，停止执行查找操作，默认)
 {"req":"Office_Replace","rid":44,"para":{"Find":"test","Replace":"test content","Case":1,"WholeWord":1,"Wildcards":1}}
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
@@ -411,9 +404,9 @@ Sort 排序类型 0默认按名称 1按位置
 返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
-46）请求删除指定书签(超链接)，适用于永中文字、永中表格、永中简报软件
-Name为书签(超链接)名称
-DelContent 是否同时删除书签(超链接)内容，默认0不删除，仅永中文字支持
+46）请求删除指定书签，适用于永中文字软件
+Name为书签名称
+DelContent 是否同时删除书签内容，默认0不删除
 {"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
 返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
 
@@ -472,6 +465,67 @@ End Function
 Sub SetMyFont()
   SetFontFunc ("宋体")
 End Sub
+
+52）请求在嵌入窗口区域内弹出一个消息对话框，适用于永中文字、永中表格、永中简报软件
+Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
+Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
+Wait为等待多少秒自动消失 0代表不自动消失
+Type代表弹窗类型 0是MB_OK，具体见Windows SDK定义
+{"req":"Office_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+
+53）插入超链接，适用于永中文字、永中表格
+Address 超链接地址
+SubAddress 子地址
+ScreenTip 屏幕提示
+TextToDisplay 是否文字显示到屏幕
+{"req":"Office_InsertHyperlink","rid":53,"para":{"Address":"Test","SubAddress":"Sheet1!A1","ScreenTip":"","TextToDisplay":"Sheet1!A1"}}
+返回：{"ret":0,"rid":53,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+54）请求获取当前文档超链接数量，适用于永中文字、永中表格、永中简报软件
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、永中表格不需要
+{"req":"Office_HyperlinkCount","rid":54,"para":{}}
+返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
+
+55）请求判断当前超链接是否存在，适用于永中文字、永中表格、永中简报软件
+Name为超链接名称，永中简报不支持Name 
+Address为地址
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、永中表格不需要
+{"req":"Office_HyperlinkIsExist","rid":55,"para":{"Name":"Caption"}}
+返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
+
+56）请求获取当前文档所有超链接，适用于永中文字、永中表格、永中简报软件
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、永中表格不需要
+{"req":"Office_AllHyperlink","rid":56,"para":{}}
+返回：{"ret":0,"rid":56,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
+
+57）请求指定序号的超链接或指定名称的文字内容，适用于永中文字、永中表格、永中简报软件
+Index为超链接序号 
+Name为超链接名称，永中简报不支持Name 
+Address为地址，永中简报不支持 
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、永中表格不需要
+{"req":"Office_GetHyperlinkInfo","rid":57,"para":{"Index":"1"}}
+{"req":"Office_GetHyperlinkInfo","rid":57,"para":{"Name":"Caption"}}
+{"req":"Office_GetHyperlinkInfo","rid":57,"para":{"Address":"http://www.zorrosoft.com/"}}
+返回：{"ret":0,"rid":57,"data":{"Ret":"0"}}
+
+58）请求替换指定超链接名称的内容，适用于永中文字、永中表格、永中简报软件
+Name为超链接名称，永中简报不支持
+Text超链接内容
+Slide 指定幻灯片序号，不指定时默认取当前幻灯片的 永中文字、永中表格不需要
+永中文字、永中表格:{"req":"Office_PutHyperlinkText","rid":58,"para":{"Hyperlinks":[{"Name":"http://www.zorrosoft.com/","Text":{"Address":"http://zorrosoft.com/","ScreenTip":"zorrosoft"}}]}}
+永中简报:{"req":"Office_PutHyperlinkText","rid":58,"para":{"Slide":1,"Hyperlinks":[{"Address":"http://www.zorrosoft.com/","Text":{"Address":"http://zorrosoft.com/","ScreenTip":"zorrosoft"}}]}}
+返回：{"ret":0,"rid":58,"data":{"Ret":"0"}}
+
+59）请求删除指定超链接，适用于永中文字、永中表格、永中简报软件
+Name为超链接名称 永中简报不支持Name
+Addr为超链接地址
+Index为序号 仅永中简报支持Index
+{"req":"Office_DelHyperlink","rid":59,"para":{"Name":"Test"}}
+{"req":"Office_DelHyperlink","rid":59,"para":{"Address":"http://www.zorrosoft.com/"}}
+{"req":"Office_DelHyperlink","rid":59,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":59,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为永中文字程序通知

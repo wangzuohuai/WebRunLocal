@@ -1,4 +1,4 @@
-﻿PDF网页小程序：基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Adobe公司的ActiveX控件AcroPDF.dll实现文档阅读及编辑，需要安装Adobe Acrobat等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿PDF网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Adobe公司的ActiveX控件AcroPDF.dll实现文档阅读及编辑，需要安装Adobe Acrobat等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、牛插(PluginOK)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -17,7 +17,11 @@ Type：为浏览器类型，传0自动判断(前提是当前浏览器已启动�
 Title：网页标题中的关键词，用于识别指定的嵌入网页
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag：掩码标记 1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
-Web：可自定义的JSON配置 Flag包含64时可替换Url参数使用
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	Edit代表编辑权限 1只读打开 4禁止另存 8禁止打印 
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -27,10 +31,10 @@ Open：为需要播放的多媒体路径，磁盘目录斜杠用/
 注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"1","Option":"0","Web":[],"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"1","Option":"0","Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Version":"1","Option":"0","Zoom":100,"ScrollTop":0,"Web":[],"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Version":"1","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/pdfframe.html
@@ -88,13 +92,13 @@ ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序�
 1)、请求安装PDF网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"F0CDA15EC91369EB1D5A57FAE98EA8E9","Version":"2.2.13.2","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B44568CECE06E34B597BF675764DF72AF23F68539186B65A403B16F8AC56341D1FFA1212EFEBE415B0E07A14C33AC555546422BCB0B2F817CFCA855EE376AA3368D6E614C894651393403901F5926EB038B0F7286AA27C81C002634DB12DD8AF74C08770124179D06BEECAB7038FBE86085A9186B9A09C40C2E807987B98F71C152235498921A30DE61D9AA9BDBD1D07CC65A6615C8B05A6C20939B0C6D9E6B894CFD6C4838F695E20BD1FC1293BD8FD869B63B5E3C3237A5A09BF0C924CFE2F4292F0EA0EFAD95B16387C042901E93DE2A8576A2B8EDE968F27FC207F13D02891F905E4790EC193746C84396FCD4725522637EE1F15F4AF3724AE41B746D895"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"62C5FB95D094A9E0059CA23805B69EF6","Version":"2.2.13.3","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B0E06996DB71F0215487EEEDA18D977017166DC35EBA7227997B0DEBD4591A5542AC4BC1B88D599DE93A36F894D86E43FEACAB14620AD16598F3FE1BA1A7D272B7A12C68970BF8EF0CCE0D221C6D3685BBD915DC02CF5764B13976EC2396E21C8BFCEDA856BADC35EB31ECF557B57B6B673DB45B9C955E7E24F9AF66C124AFA84D852F1CDAF4CA4F6F74809D2B621B3666E442F122B97B7C6075E219BB182F06CFA2A362D6E286D3EDB50AB10BF53F85EF7128D9E34D393E64A382F52D4C591B8FBEBBB1AD785E5E996780A8CD00A16487BA8A16C34A31066F3B67E94AB75C7289AF47593F60686BADDD56B7C18A66AF89FF18FC980D82F2458AE0A2AC0BD38F"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级PDF网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2024-03-12","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"C306A778FC33135F701842926F811C19","Version":"2.2.13.2","Size":524288,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6BC94DDD5C0311937C6EE46CBD67ABE76ED3CDE60121EE66618EC9FA32B78FD844198501A45E0D0398FC5645993A7DAC13D0E23048CE148BBF9B5FB477BEDA4CA1D212B103FED9FF393F4285B0B61E0DC20AD1A010E092CEC344475D4A710B6642F5F89848B18B693D6774A4ECCDC5D4C93CE2E148AF695C932335AF41E20E79E2BF90E8C76D15CD79D3A28260EBAB04FDAD51B386100BE1FEA4E750450AC9766DBE9E7F291C85E6361E70483F9134EA0DFE20C82F09246F5CD490D860138D9E9930B4673493953569827A3D7DC51118D629B7AB81096E3BF4CAAFA6499D45D86813C806994E0B0C0500C23C7D34F56469CD083F361460BA55C7ABEE4F9DCC7D"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"33366C20CEDF18B3E4E8907815489C06","Version":"2.2.13.3","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A34E661552D0D5D3E97ADD54F707CBE7E6E0312BF677C2C11BDC08C322C88C5F25553A51DE9B4A97609A939EC9F5121AF655FACD564B68E467A0CA0C1D9DA9B43173258A25CFE3457494897DD0163F8C647F151AA43E120C0F1BF8BCF974162196EE44E715F3AFED96DEAD6E62BF111022AE0B79EF0E600EAB4A5DAB89DAD03EB4501E56295D2CB9C2299962F1CFAE619FACCFC9B40A117B032F9006588474DDF639E3C937C80F64FA582C584FF50EAB5089562BEDAFD5DBD3F30107258C7FB6E889B1119046A290156374EB193EB2E70565F0E2F4F505F7723F9381662FDD9AFF4006D5EDA5081FBDF829939B46A15708688BC7B3C9AD9DB79C9F86A426D178"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
