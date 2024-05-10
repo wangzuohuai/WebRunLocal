@@ -11,7 +11,6 @@ using System.Windows.Forms;
 /// 添加核心组件引用
 using ZbaEngine;
 using ZbaBase;
-using ZbaApplet;
 
 namespace PluginExeDemo
 {

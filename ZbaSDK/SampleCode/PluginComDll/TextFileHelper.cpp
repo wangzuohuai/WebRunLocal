@@ -1,4 +1,4 @@
-/*	NOTE: If you running this in a none-Windows platform, 
+ï»¿/*	NOTE: If you running this in a none-Windows platform, 
 	then you should remove the include file below.
   */
 #include "stdafx.h"
@@ -11,28 +11,26 @@
 
 #pragma warning( disable : 4996)
 
-//ÔÚ¶ÎÄ£Ê½ÏÂ£¬Ã»Ìõ¼ÇÂ¼ÔÊĞíµÄ¶ÎÊı
+//åœ¨æ®µæ¨¡å¼ä¸‹ï¼Œæ²¡æ¡è®°å½•å…è®¸çš„æ®µæ•°
 #define ENABLESECTION_SECTION_COUNT		10
 
 //Base constructor
 CTextFileBase::CTextFileBase()
 {
-	#if PEK_TX_TECHLEVEL > 0
+#if PEK_TX_TECHLEVEL > 0
 	m_codepage = CP_ACP;
 	m_unknownChar = 0;
-	#else
+#else
 	m_unknownChar = '?';
-	#endif
+#endif
 
-	#if PEK_TX_TECHLEVEL == 1
+#if PEK_TX_TECHLEVEL == 1
 	m_hFile = INVALID_HANDLE_VALUE;
-	#elif PEK_TX_TECHLEVEL == 2
+#elif PEK_TX_TECHLEVEL == 2
 	m_file = NULL;
 	m_closeAndDeleteFile = false;
-	#endif
-
+#endif
 	m_datalost = false;
-
 	m_buffpos = -1;
 }
 
@@ -95,50 +93,27 @@ inline void CTextFileBase::WcharToString(const wchar_t* from, string &to)
 void CTextFileBase::ConvertCharToWstring(const char* from, wstring &to, UINT codepage)
 {
 	to = L"";
-
 	ATLASSERT(IsLegalCodePage(codepage));
 	//Use api convert routine
-	int wlen = MultiByteToWideChar( codepage,
-									0,
-									from,
-									-1,
-									NULL,
-									0);
+	int wlen = MultiByteToWideChar(codepage,0,from,-1,NULL,0);
 
 	//if wlen == 0, some unknown codepage was probably used.
 	ATLASSERT(wlen);
 	if(wlen == 0) 
 		return;
-
 	wchar_t* wbuffer = new wchar_t[wlen+2];
-
-    MultiByteToWideChar(    codepage,
-                            0,
-                            from,
-                            -1,
-                            wbuffer,
-                            wlen);
+    MultiByteToWideChar(codepage,0,from,-1,wbuffer,wlen);
 	to = wbuffer;
 	delete [] wbuffer;
-
 }
 
 //(Windows-specific) Convert wchar_* to string
 void CTextFileBase::ConvertWcharToString(const wchar_t* from, string &to, 
-										 UINT codepage, bool* datalost, char unknownchar)
+	UINT codepage, bool* datalost, char unknownchar)
 {
 	to = "";
-
-	ATLASSERT(IsLegalCodePage(codepage));
-	
-	int alen = 	WideCharToMultiByte(	codepage,
-							0,
-							from,
-							-1, 
-							NULL,
-							0,
-							NULL,
-							NULL);
+	ATLASSERT(IsLegalCodePage(codepage));	
+	int alen = 	WideCharToMultiByte(codepage,0,from,-1,NULL,0,NULL,NULL);
 
 	//if alen == 0, some unknown codepage was probably used.
 	ATLASSERT(alen);
@@ -148,15 +123,8 @@ void CTextFileBase::ConvertWcharToString(const wchar_t* from, string &to,
 	char* abuffer = new char[alen+2]; 
 	BOOL UsedDefault=FALSE;
 
-	WideCharToMultiByte(	codepage,
-							0,
-							from,
-							-1,
-							abuffer,
-							alen, 
-							(unknownchar != 0 ? &unknownchar : NULL),
-							(datalost != NULL ? &UsedDefault : NULL)
-						);
+	WideCharToMultiByte(codepage,0,from,-1,abuffer,alen, 
+		(unknownchar != 0 ? &unknownchar:NULL),(datalost != NULL ? &UsedDefault:NULL));
 
 	if( datalost != NULL && UsedDefault != FALSE)
 		*datalost = true;
@@ -183,10 +151,8 @@ inline void CTextFileBase::WcharToString(const wchar_t* from, string &to)
 void CTextFileBase::ConvertCharToWstring(const char* from, wstring &to)
 {
 	to = L"";
-
 	size_t pos=0;
 	wchar_t temp[1];
-
 	while(true)
 	{
 		size_t len = mbtowc(temp, from+pos, MB_CUR_MAX);
@@ -237,7 +203,6 @@ void CTextFileBase::ConvertWcharToString(const wchar_t* from, string &to, bool* 
 	}
 	delete [] temp;
 }
-
 #endif
 
 //Return file encoding
@@ -275,7 +240,6 @@ void CTextFileBase::Close()
 		}		
 #endif
 	}
-
 #if PEK_TX_TECHLEVEL == 2
 	if(m_closeAndDeleteFile)
 	{
@@ -285,7 +249,7 @@ void CTextFileBase::Close()
 #endif
 }
 
-BOOL IsPathExist(const ATL::CString& strPath)
+BOOL IsPathExist(const CString& strPath)
 {
 	BOOL bRet = FALSE;
 	if(strPath.IsEmpty())
@@ -293,14 +257,13 @@ BOOL IsPathExist(const ATL::CString& strPath)
 	WIN32_FIND_DATA	data;
 	BOOL bFindDir = FALSE;
 
-	ATL::CString strFind(strPath);
+	CString strFind(strPath);
 	if (0 == strPath.Right(1).CompareNoCase( _T("\\")))
 	{
-		/// ²éÕÒÄ¿Â¼
+		/// æŸ¥æ‰¾ç›®å½•
 		bFindDir = TRUE;
 		strFind+=_T("*.*");
-	}
-		
+	}		
 	HANDLE hFindFile = ::FindFirstFile(strFind,&data);
 	if(INVALID_HANDLE_VALUE != hFindFile)
 	{
@@ -328,10 +291,10 @@ BOOL IsPathExist(const ATL::CString& strPath)
 	return bRet;
 }
 
-BOOL CreatePath(const ATL::CString& strLocalDir)
+BOOL CreatePath(const CString& strLocalDir)
 {
 	BOOL bCreateFlag = FALSE;
-	ATL::CString strWorkDir,strPath=strLocalDir;
+	CString strWorkDir,strPath=strLocalDir;
 	int index = -2;
 	index = strPath.Find(_T('\\'));
 	if(index == -1)
@@ -369,7 +332,7 @@ CTextFileWrite::CTextFileWrite(const FILENAMECHAR* filename, TEXTENCODING encodi
 	int iFind = strFilPath.ReverseFind(_T('\\'));
 	if(-1 != iFind)
 	{
-		/// ´´½¨Ä¿Â¼
+		/// åˆ›å»ºç›®å½•
 		CreatePath(strFilPath.Left(iFind));
 	}
 
@@ -393,9 +356,7 @@ CTextFileWrite::CTextFileWrite(const FILENAMECHAR* filename, TEXTENCODING encodi
 #endif
 	m_buffpos = -1;
 	m_buffsize = 0;
-
 	m_encoding = encoding;
-	
 	WriteBOM();
 }
 
@@ -469,11 +430,9 @@ void CTextFileWrite::Flush()
 		//Throw exception
 		throw CTextFileException(GetLastError());
 	}
-
 #else
 	m_file->Write(m_buf, m_buffpos+1);	
-#endif
-	
+#endif	
 	m_buffpos = -1;
 }
 
@@ -504,25 +463,20 @@ void CTextFileWrite::WriteWchar(const wchar_t ch)
 		{
 			//U-00000000 - U-0000007F:  0xxxxxxx  
 			WriteByte( (unsigned char) ch );
-		}
-
-		//Two bytes?
-		else if(ch <= 0x7FF)
+		}	
+		else if(ch <= 0x7FF)//Two bytes?
 		{
 			//U-00000080 - U-000007FF:  110xxxxx 10xxxxxx  
 			WriteByte( (unsigned char) (0xC0 | (ch>>6)) );
 			WriteByte( (unsigned char) (0x80 | (ch&0x3F)) );
-		}
-
-		//Three bytes?
-		else if(ch <= 0xFFFF)
+		}		
+		else if(ch <= 0xFFFF)//Three bytes?
 		{
 			//U-00000800 - U-0000FFFF:  1110xxxx 10xxxxxx 10xxxxxx  
 			WriteByte( (unsigned char) (0xE0 | (  ch>>12)		));
 			WriteByte( (unsigned char) (0x80 | ( (ch>>6)&0x3F ) ));
 			WriteByte( (unsigned char) (0x80 | ( ch&0x3F )		));
 		}
-
 		/* //UPS! I did some coding for UTF-32, may be useful in the future :-)
 		//Four bytes?
 		else if(ch <= 0x1FFFFF)
@@ -675,7 +629,6 @@ void CTextFileWrite::Write(const char* text)
 		{
 			WriteWchar(*i);
 		}
-
 	}
 }
 
@@ -716,14 +669,8 @@ CTextFileRead::CTextFileRead(const FILENAMECHAR* filename)
 	//If not Windows, do this
 	m_file.open(filename, ios::binary | ios::in);
 #elif PEK_TX_TECHLEVEL == 1
-
-	m_hFile = ::CreateFile(	filename, 
-							GENERIC_READ,
-							FILE_SHARE_READ,
-							NULL,
-							OPEN_EXISTING, 
-							FILE_ATTRIBUTE_NORMAL,
-							NULL);
+	m_hFile = ::CreateFile(	filename, GENERIC_READ,FILE_SHARE_READ,
+		NULL,OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL,NULL);
 #else
 	m_file = new CFile;
 	//In windows, do this
@@ -736,20 +683,16 @@ CTextFileRead::CTextFileRead(const FILENAMECHAR* filename)
 
 	//Force reading to buffer next time
 	m_buffpos=-1;
-
-	m_useExtraBuffer = false;
-	
-	//¶ÎÂäĞÅÏ¢ÎŞĞ§
+	m_useExtraBuffer = false;	
+	//æ®µè½ä¿¡æ¯æ— æ•ˆ
 	m_section_enable = false;
 
 	m_buf_first_section = -1;
-	m_wbuf_first_section = -1;
-
+	m_wbuf_first_section = 
 	m_current_pos = 0;
 	m_section_count = 0;
 
 	m_dirty = false;
-
 	ReadBOM();
 }
 
@@ -848,24 +791,20 @@ void CTextFileRead::ReadByte(unsigned char& ch)
 	}
 	else
 		m_buffsize = (int) dwRead;
-
 #else
 		m_buffsize=m_file->Read(m_buf, BUFFSIZE);
 #endif
-
 		if(m_buffsize == 0)
 		{
 			m_endoffile=true;
 			ch = 0;
 			return;
 		}
-
 		m_buffpos=0;
 	}
 	else
 	{
 		m_buffpos++;
-
 		if(m_buffpos >= m_buffsize)
 		{
 			m_endoffile=true;
@@ -874,9 +813,8 @@ void CTextFileRead::ReadByte(unsigned char& ch)
 		}
 	}
 
-	//µ±Ç°Î»ÖÃÔö¼Ó
+	//å½“å‰ä½ç½®å¢åŠ 
 	m_current_pos++;
-
 	ch = m_buf[m_buffpos];
 }
 
@@ -898,9 +836,9 @@ void CTextFileRead::ReadWchar(wchar_t& ch)
 
 		int onesBeforeZero = 0;
 
-		{	//Calc how many ones before the first zero...
+		{
+			//Calc how many ones before the first zero...
 			unsigned char temp = byte;
-
 			while( (temp & 0x80)!=0 )
 			{
 				temp = (unsigned char) (temp << 1);
@@ -918,11 +856,7 @@ void CTextFileRead::ReadWchar(wchar_t& ch)
 			//U-00000080 - U-000007FF:  110xxxxx 10xxxxxx  
 			unsigned char byteb;
 			ReadByte(byteb);
-
-			ch = (wchar_t)		 ( ((0x1F & byte) << 6)| 
-								    (0x3F & byteb)
-								 ) ;
-
+			ch = (wchar_t)( ((0x1F & byte) << 6)| (0x3F & byteb)) ;
 			return;
 		}
 		else if(onesBeforeZero == 3)
@@ -932,16 +866,12 @@ void CTextFileRead::ReadWchar(wchar_t& ch)
 			ReadByte(byteb);
 			ReadByte(bytec);
 
-			ch = (wchar_t)  ( ((0x0F & byte) << 12) |
-							  ((0x3F & byteb) << 6) | 
-							  (0x3F & bytec) );
-
+			ch = (wchar_t)( ((0x0F & byte) << 12) | ((0x3F & byteb) << 6) | (0x3F & bytec) );
 			return;
 		}
 
 		//This should never happend! It it do, something is wrong with the file.
 		ch = 0xFFFD;
-
 	}
 	else
 	{
@@ -951,13 +881,9 @@ void CTextFileRead::ReadWchar(wchar_t& ch)
 		ReadByte(bytes[1]); 
 
 		if(m_encoding == UNI16_BE)
-			ch = (wchar_t) ( ((wchar_t) bytes[0] << 8) | 
-							  (wchar_t) bytes[1] 
-						   ) ;
+			ch = (wchar_t) ( ((wchar_t) bytes[0] << 8) | (wchar_t) bytes[1] ) ;
 		else
-			ch = (wchar_t) ( ((wchar_t) bytes[1] << 8) | 
-							  (wchar_t) bytes[0] 
-							);
+			ch = (wchar_t) ( ((wchar_t) bytes[1] << 8) | (wchar_t) bytes[0] );
 	}
 }
 
@@ -979,12 +905,10 @@ void CTextFileRead::ResetFilePointer()
 #endif
 	//Force reread buffer
 	m_buffpos=-1;
-
 	m_current_pos = 0;
 
 	m_firstLine = true;
 	m_endoffile = false;
-
 }
 
 bool CTextFileRead::ReadLine(string& line,bool bRecordSection )
@@ -993,7 +917,7 @@ bool CTextFileRead::ReadLine(string& line,bool bRecordSection )
 	if(Eof())
 		return false;
 
-	//Ê¹ÓÃÕÂ½ÚĞòºÅ»ñÈ¡µÄ»°£¬²»ÔÊĞíÕı³£µÄ»ñÈ¡·½·¨ÁË
+	//ä½¿ç”¨ç« èŠ‚åºå·è·å–çš„è¯ï¼Œä¸å…è®¸æ­£å¸¸çš„è·å–æ–¹æ³•äº†
 	if(!m_section_enable)
 		ATLASSERT(!bRecordSection);
 
@@ -1001,15 +925,11 @@ bool CTextFileRead::ReadLine(string& line,bool bRecordSection )
 	{
 		return ReadCharLine(line);
 	}
-
 	wstring wline;
-
 	if(!ReadWcharLine(wline))
 		return false;
-
 	//Convert
 	WcharToString(wline.c_str(), line);
-
 	return true;
 }
 
@@ -1018,17 +938,13 @@ bool CTextFileRead::ReadLine(wstring& line,bool bRecordSection)
 	//EOF?
 	if(Eof())
 		return false;
-
 	if(m_encoding == ASCII)
 	{
 		string cline;
-
 		if(!ReadCharLine(cline))
 			return false;
-
 		//Convert to wstring
 		CharToWstring(cline.c_str(), line);
-
 		return true;
 	}
 	return ReadWcharLine(line);
@@ -1036,27 +952,25 @@ bool CTextFileRead::ReadLine(wstring& line,bool bRecordSection)
 
 bool CTextFileRead::ReadLineByID(string& line,long section_id)
 {
-	ATLASSERT(m_section_enable);			//¶ÎÂä´ò¿ª
-
+	ATLASSERT(m_section_enable);			//æ®µè½æ‰“å¼€
 	ATLASSERT(section_id >= 0);
 	ATLASSERT(section_id < m_section_count);
-
 	ATLASSERT(m_hFile);
 
 	if(m_buf_first_section != section_id/ENABLESECTION_SECTION_COUNT * ENABLESECTION_SECTION_COUNT)
 	{
-		//µ±Ç°¶Î²»ÔÚ»º³åÇø£¬Ìî³ä»º³åÇø
+		//å½“å‰æ®µä¸åœ¨ç¼“å†²åŒºï¼Œå¡«å……ç¼“å†²åŒº
 		m_section_buf.clear();
 		m_buf_first_section = section_id/ENABLESECTION_SECTION_COUNT * ENABLESECTION_SECTION_COUNT;
 
-		//ÉèÖÃÎÄ¼şÎ»ÖÃ
+		//è®¾ç½®æ–‡ä»¶ä½ç½®
 		::SetFilePointer(m_hFile, m_section_position[section_id/ENABLESECTION_SECTION_COUNT], NULL, FILE_BEGIN);
 		m_section_position[section_id/ ENABLESECTION_SECTION_COUNT];
 		m_buffpos = -1;
 		m_endoffile = false;
 		m_useExtraBuffer=false;
 
-		//Ìø¹ıÇ°¼¸¸ö
+		//è·³è¿‡å‰å‡ ä¸ª
 		for(long i = m_buf_first_section;
 			i < ENABLESECTION_SECTION_COUNT+m_buf_first_section && i< m_section_count; i++)
 		{
@@ -1064,34 +978,31 @@ bool CTextFileRead::ReadLineByID(string& line,long section_id)
 			m_section_buf.push_back(line); 
 		}
 	}
-
 	line = m_section_buf[section_id%ENABLESECTION_SECTION_COUNT];
 	return true;
 }
 
 bool CTextFileRead::ReadLineByID(wstring& line,long section_id)
 {
-	ATLASSERT(m_section_enable);			//¶ÎÂä´ò¿ª
-
+	ATLASSERT(m_section_enable);			//æ®µè½æ‰“å¼€
 	ATLASSERT(section_id >= 0);
 	ATLASSERT(section_id < m_section_count);
-
 	ATLASSERT(m_hFile);
 
 	if(m_wbuf_first_section != section_id/ENABLESECTION_SECTION_COUNT * ENABLESECTION_SECTION_COUNT)
 	{
-		//µ±Ç°¶Î²»ÔÚ»º³åÇø£¬Ìî³ä»º³åÇø
+		//å½“å‰æ®µä¸åœ¨ç¼“å†²åŒºï¼Œå¡«å……ç¼“å†²åŒº
 		m_wsection_buf.clear();
 		m_wbuf_first_section = section_id/ENABLESECTION_SECTION_COUNT * ENABLESECTION_SECTION_COUNT;
 
-		//ÉèÖÃÎÄ¼şÎ»ÖÃ
+		//è®¾ç½®æ–‡ä»¶ä½ç½®
 		::SetFilePointer(m_hFile, m_section_position[section_id/ENABLESECTION_SECTION_COUNT], NULL, FILE_BEGIN);
 		m_section_position[section_id/ ENABLESECTION_SECTION_COUNT];
 		m_buffpos = -1;
 		m_endoffile = false;
 		m_useExtraBuffer=false;
 
-		//Ìø¹ıÇ°¼¸¸ö
+		//è·³è¿‡å‰å‡ ä¸ª
 		for(long i = m_wbuf_first_section;
 			i < ENABLESECTION_SECTION_COUNT+m_wbuf_first_section && i< m_section_count; i++)
 		{
@@ -1108,13 +1019,11 @@ bool CTextFileRead::Read(string& all, const string newline)
 {
 	if(!IsOpen())
 		return false;
-
-	int buffsize = GuessCharacterCount()+2;
 	int buffpos = 0;
+	int buffsize = GuessCharacterCount()+2;
 
 	//Create buffer
 	char* buffer = new char[buffsize];
-
 	//If not possible, don't use any buffer
 	if(buffer == NULL) 
 		buffsize = 0;
@@ -1152,16 +1061,13 @@ bool CTextFileRead::Read(string& all, const string newline)
 			}
 		}
 	};
-
 	//Copy to all string
 	if(buffpos != 0)
 	{
 		all.append(buffer, buffpos);
 	}
-
 	if(buffer != NULL)
 		delete [] buffer;
-
 	return true;
 }
 
@@ -1169,9 +1075,8 @@ bool CTextFileRead::Read(wstring& all, const wstring newline)
 {
 	if(!IsOpen())
 		return false;
-	
-	int buffsize = GuessCharacterCount()+2;
 	int buffpos = 0;
+	int buffsize = GuessCharacterCount()+2;
 
 	//Create buffer
 	wchar_t* buffer = new wchar_t[buffsize];
@@ -1220,32 +1125,28 @@ bool CTextFileRead::Read(wstring& all, const wstring newline)
 	{
 		all.append(buffer, buffpos);
 	}
-
 	if(buffer != NULL)
 		delete [] buffer;
-
 	return true;
 }
 
 int CTextFileRead::GuessCharacterCount()
 {
-	#if PEK_TX_TECHLEVEL==2
+#if PEK_TX_TECHLEVEL==2
 	int bytecount = (int) m_file->GetLength();
-	#else
+#else
 	//Code needed to get file size when not using MFC
 	int bytecount = 1024*1024; //Default: 1 MB
-	#endif
-
+#endif
 	//If ASCII, the number of characters is the byte count.
 	//If UTF-8, it can't be more than bytecount, so use byte count
 	if(m_encoding == ASCII || m_encoding == UTF_8)
 		return bytecount;
-
 	//Otherwise, every two byte in one character
 	return bytecount/2;
 }
 
-#if PEK_TX_TECHLEVEL==2
+#if PEK_TX_TECHLEVEL == 2
 
 bool CTextFileRead::ReadLine(CString& line)
 {
@@ -1272,13 +1173,11 @@ bool CTextFileRead::Read(CString& all, const CString newline)
 
 	if(!Read(temp, n))
 		return false;
-
 	all = temp.c_str();
 	return true;
 }
 
 #endif
-
 
 //Returns false if end-of-file was reached
 //(line will not be changed). If returns true,
@@ -1288,7 +1187,6 @@ bool CTextFileRead::ReadWcharLine(wstring& line)
 	//EOF?
 	if(Eof())
 		return false;
-
 	wchar_t ch=0;
 	
 	//Ignore 0x0D and 0x0A
@@ -1325,7 +1223,6 @@ bool CTextFileRead::ReadWcharLine(wstring& line)
 		//(then we should ignore \r\n)
 		m_firstLine = false;
 	}
-
 	//Clear line
 	line = L"";
 
@@ -1359,7 +1256,6 @@ bool CTextFileRead::ReadWcharLine(wstring& line)
 	//Save currents character in extra buffer
 	m_useExtraBuffer=true;
 	m_extraBuffer_wchar=ch;
-
 	return true;
 }
 
@@ -1371,7 +1267,6 @@ bool CTextFileRead::ReadCharLine(string& line)
 	//EOF?
 	if(Eof())
 		return false;
-
 	unsigned char ch=0;
 	
 	//Ignore 0x0D and 0x0A
@@ -1406,7 +1301,6 @@ bool CTextFileRead::ReadCharLine(string& line)
 		//(then we should ignore \r\n)
 		m_firstLine = false;
 	}
-
 	//Clear line
 	line = "";
 
@@ -1440,16 +1334,14 @@ bool CTextFileRead::ReadCharLine(string& line)
 	//Save currents character in extra buffer
 	m_useExtraBuffer=true;
 	m_extraBuffer_char=ch;
-
 	return true;
 }
-
 
 long CTextFileRead::EnableSection(HANDLE hRecorder)
 {
 	ATLASSERT(m_hFile);
 	m_section_enable = true;
-	//ÔØÈë³É¹¦±êÖ¾
+	//è½½å…¥æˆåŠŸæ ‡å¿—
 	bool load_ok = false;
 
 	if(hRecorder)
@@ -1457,7 +1349,7 @@ long CTextFileRead::EnableSection(HANDLE hRecorder)
 
 	if(!load_ok)
 	{
-		//ÔØÈëÊ§°Ü£¬½øĞĞÖØ½¨
+		//è½½å…¥å¤±è´¥ï¼Œè¿›è¡Œé‡å»º
 		m_section_count = 0;
 
 		for(;;)
@@ -1485,8 +1377,8 @@ bool CTextFileRead::LoadSectionInfo(HANDLE hRecorder)
 	ATLASSERT(hRecorder);
 	ATLASSERT(m_hFile);
 
-	//»ñÈ¡ĞŞ¸Ä
-	FILETIME last_write_time;		//ĞŞ¸ÄÊ±¼ä
+	//è·å–ä¿®æ”¹
+	FILETIME last_write_time;		//ä¿®æ”¹æ—¶é—´
 	if(!GetFileTime(m_hFile,NULL,NULL,&last_write_time))
 		return false;
 
@@ -1494,24 +1386,23 @@ bool CTextFileRead::LoadSectionInfo(HANDLE hRecorder)
 	BOOL bResult = FALSE;
 
 	FILETIME last_write_time_recorder;
-	//¶ÁÈ¡×îºóĞŞ¸ÄÊ±¼ä
+	//è¯»å–æœ€åä¿®æ”¹æ—¶é—´
 	bResult = ReadFile(hRecorder,&last_write_time_recorder,sizeof(FILETIME),&dwReadSize,NULL);
 
 	if(!bResult || dwReadSize != sizeof(FILETIME))
 		return false;
-	//±È½ÏĞŞ¸ÄÊ±¼ä
+	//æ¯”è¾ƒä¿®æ”¹æ—¶é—´
 	if(memcmp(&last_write_time,&last_write_time_recorder,sizeof(FILETIME)) != 0)
 		return false;
 
-	//¶ÁÈ¡Ã¿Ìõ¼ÇÂ¼µÄ¶ÎÂäÊı
+	//è¯»å–æ¯æ¡è®°å½•çš„æ®µè½æ•°
 	long	recorder_section_count = 0;
 	bResult = ReadFile(hRecorder,&recorder_section_count,sizeof(long),&dwReadSize,NULL);
 	if(!bResult || dwReadSize != sizeof(long))
 		return false;
 	if(recorder_section_count != ENABLESECTION_SECTION_COUNT)
 		return false;
-
-	//¶ÁÈ¡¶ÎÂäÊı
+	//è¯»å–æ®µè½æ•°
 	bResult = ReadFile(hRecorder,&m_section_count,sizeof(long),&dwReadSize,NULL);
 	if(!bResult || dwReadSize != sizeof(long))
 		return false;
@@ -1520,7 +1411,7 @@ bool CTextFileRead::LoadSectionInfo(HANDLE hRecorder)
 	long lSectionCount = m_section_count /  ENABLESECTION_SECTION_COUNT;
 	if(m_section_count%ENABLESECTION_SECTION_COUNT)
 		lSectionCount++;
-	//¶ÁÈ¡¸÷¸ö¶ÎÂäµÄÎÄ¼şÎ»ÖÃ
+	//è¯»å–å„ä¸ªæ®µè½çš„æ–‡ä»¶ä½ç½®
 	for(long section = 0; section < lSectionCount; section++)
 	{
 		long section_pos = 0;
@@ -1533,41 +1424,31 @@ bool CTextFileRead::LoadSectionInfo(HANDLE hRecorder)
 		}
 		m_section_position.push_back(section_pos);
 	}
-
 	return true;
 }
 
 bool CTextFileRead::SaveSectionInfo(HANDLE hRecorder)
 {
 	ATLASSERT(hRecorder);
-
 	if(!m_dirty)
-		return true;/// ²»ĞèÒª±£´æ
-
-	//»ñÈ¡ĞŞ¸Ä
-	FILETIME last_write_time;		//ĞŞ¸ÄÊ±¼ä
+		return true;/// ä¸éœ€è¦ä¿å­˜
+	//è·å–ä¿®æ”¹
+	FILETIME last_write_time;		//ä¿®æ”¹æ—¶é—´
 	if(!GetFileTime(m_hFile,NULL,NULL,&last_write_time))
 		return false;
-
 	DWORD dwReadSize = 0;
 	BOOL bResult = 0;
-
-	//Ğ´Èë×îºóĞŞ¸ÄÊ±¼ä
+	//å†™å…¥æœ€åä¿®æ”¹æ—¶é—´
 	bResult = WriteFile(hRecorder,&last_write_time,sizeof(FILETIME),&dwReadSize,NULL);
-
 	if(!bResult || dwReadSize != sizeof(FILETIME))
 		return false;
-
-	//Ğ´ÈëÃ¿Ìõ¼ÇÂ¼¶ÎÂäÊı
+	//å†™å…¥æ¯æ¡è®°å½•æ®µè½æ•°
 	long	recorder_section_count = ENABLESECTION_SECTION_COUNT;
 	bResult = WriteFile(hRecorder,&recorder_section_count,sizeof(long),&dwReadSize,NULL);
-
 	if(!bResult || dwReadSize != sizeof(long))
 		return false;
-
-	//Ğ´Èë¶ÎÂäÊı
+	//å†™å…¥æ®µè½æ•°
 	bResult = WriteFile(hRecorder,&m_section_count,sizeof(long),&dwReadSize,NULL);
-
 	if(!bResult || dwReadSize != sizeof(long))
 		return false;
 	long lSectionCount = m_section_count / ENABLESECTION_SECTION_COUNT;
@@ -1581,7 +1462,6 @@ bool CTextFileRead::SaveSectionInfo(HANDLE hRecorder)
 		if(!bResult || dwReadSize != sizeof(long))
 			return false;
 	}
-
 	return ::FlushFileBuffers(hRecorder)?true:false; 
 }
 

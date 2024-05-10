@@ -3,5 +3,8 @@
   "AutoSave" : 1,
   "CloseExist" : 0,
   "EmbedWindow" : 0,
+  "ThreadSize" : 3,
+  "MaxThread" : 8,
+  "ThreadPrior" : 0,
   "FullPath" : 1
 }

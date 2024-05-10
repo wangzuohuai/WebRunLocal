@@ -240,6 +240,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseFuncLib.cpp" />
+    <ClCompile Include="BaseHelper.cpp" />
+    <ClCompile Include="ComHelper.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -254,6 +256,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="EngineHelper.cpp" />
     <ClCompile Include="PluginComDll.cpp" />
     <ClCompile Include="PluginComDll_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -297,6 +300,8 @@
   <ItemGroup>
     <ClInclude Include="AppletVersionDef.h" />
     <ClInclude Include="BaseFuncLib.h" />
+    <ClInclude Include="BaseHelper.h" />
+    <ClInclude Include="ComHelper.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="PluginComDll_i.h" />
     <ClInclude Include="Resource.h" />

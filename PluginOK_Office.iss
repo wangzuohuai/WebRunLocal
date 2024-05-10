@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "PageHiOfice网页组件"
-#define MyAppVersion "2.2.13.3"
+#define MyAppVersion "2.2.15.1"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "ZbaSetup.exe"

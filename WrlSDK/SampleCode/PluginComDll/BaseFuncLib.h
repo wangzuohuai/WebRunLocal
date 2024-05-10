@@ -191,9 +191,8 @@ public:
 class CThreadDataLock
 {
 public:
-
  	CThreadDataLock() 
-		:m_bLogFlag(FALSE)
+		: m_bLogFlag(FALSE)
 	{
 		memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
 
@@ -219,34 +218,33 @@ public:
 		}
 	}
 
-	BOOL Lock(TCHAR* szFuncName = NULL,USHORT nWaitCount = 0);
+	inline BOOL Lock(TCHAR* szFuncName = NULL);
 
-	void Unlock(TCHAR* szFuncName = NULL);
+	BOOL TryLock(TCHAR* szFuncName = NULL);
 
-	BOOL IsLock()
-	{
-		if(NULL == m_pSection || !m_pSection->RecursionCount)
-			return FALSE;
-		return TRUE;
-	}
+	inline void Unlock(TCHAR* szFuncName = NULL);
 
-	void SetLog(BOOL bLogFlag)
+	inline void SetLog(BOOL bLogFlag)
 	{
 		m_bLogFlag = bLogFlag;
 	}
 
 protected:
-
-	CThreadDataLock(const CThreadDataLock&);  
+	CThreadDataLock(const CThreadDataLock&);
 
 	CThreadDataLock& operator=(const CThreadDataLock&);
-  
+ 
+	inline BOOL IsLock()
+	{
+		if(NULL == m_pSection || -1 == m_pSection->LockCount)
+			return FALSE;
+		return TRUE;
+	}
+ 
 	/// 是否启用日志 
 	BOOL			m_bLogFlag;
-
 	/// 上一个请求名称
 	TCHAR			m_szPreName[MAX_PATH];
-
 	/// 临界区
 	CRITICAL_SECTION* m_pSection;
 };

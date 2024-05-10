@@ -25,8 +25,8 @@
 #include "WRLRegKey.h"
 #include "BaseFuncLib.h"
 
-CWrlRegKey::CWrlRegKey(const ATL::CString& strMainRegPath,\
-		const ATL::CString& strChildName, HKEY hKey,REGSAM samDesired)
+CWrlRegKey::CWrlRegKey(const CString& strMainRegPath,\
+		const CString& strChildName, HKEY hKey,REGSAM samDesired)
 {
 	m_bOpenFlag = FALSE;
 	m_dwLastErr = 0;
@@ -43,13 +43,13 @@ void CWrlRegKey::Close()
 	m_bOpenFlag = FALSE;
 }
 
-BOOL CWrlRegKey::NewRegPath(const ATL::CString& strMainRegPath,\
-		const ATL::CString& strChildName, HKEY hKey,REGSAM samDesired)
+BOOL CWrlRegKey::NewRegPath(const CString& strMainRegPath,\
+		const CString& strChildName, HKEY hKey,REGSAM samDesired)
 {
 	if(m_bOpenFlag)
 		Close();
 
-	ATL::CString strRegPath;
+	CString strRegPath;
 	if(!strChildName.IsEmpty())
 		strRegPath.Format(_T("%s\\%s"),strMainRegPath,strChildName);
 	else
@@ -58,7 +58,8 @@ BOOL CWrlRegKey::NewRegPath(const ATL::CString& strMainRegPath,\
 	m_dwLastErr = Open(hKey,strRegPath,samDesired);
 	if(ERROR_SUCCESS != m_dwLastErr)
 	{
-		if(ERROR_ACCESS_DENIED != m_dwLastErr && ERROR_WRITE_PROTECT != m_dwLastErr)
+		if(ERROR_ACCESS_DENIED != m_dwLastErr && ERROR_WRITE_PROTECT != m_dwLastErr 
+			&& (KEY_WRITE == (KEY_WRITE & samDesired)))
 		{
 			/// 还不存在指定注册项目，自动创建
 			m_dwLastErr = Create(hKey,strRegPath,NULL,0,samDesired);
@@ -72,7 +73,7 @@ BOOL CWrlRegKey::NewRegPath(const ATL::CString& strMainRegPath,\
 }
 
 BOOL CWrlRegKey::GetRegStringVal(
-		const ATL::CString& strKeyName,ATL::CString& strKeyValue)
+		const CString& strKeyName,CString& strKeyValue)
 {
 	BOOL bGetFlag = FALSE;
 	if(!m_bOpenFlag)
@@ -116,8 +117,8 @@ BOOL CWrlRegKey::GetRegStringVal(
 	return bGetFlag;
 }
 
-BOOL CWrlRegKey::SetRegStringVal(const ATL::CString& strKeyName,
-								  const ATL::CString& strKeyValue)
+BOOL CWrlRegKey::SetRegStringVal(const CString& strKeyName,
+								  const CString& strKeyValue)
 {
 	if(!m_bOpenFlag)
 		return FALSE;
@@ -127,7 +128,7 @@ BOOL CWrlRegKey::SetRegStringVal(const ATL::CString& strKeyName,
 	return TRUE;
 }
 
-BOOL CWrlRegKey::GetRegDwordVal(const ATL::CString& strKeyName,
+BOOL CWrlRegKey::GetRegDwordVal(const CString& strKeyName,
 								 DWORD& dwKeyValue)
 {
 	dwKeyValue = 0;
@@ -139,7 +140,7 @@ BOOL CWrlRegKey::GetRegDwordVal(const ATL::CString& strKeyName,
 	return TRUE;
 }
 
-BOOL CWrlRegKey::SetRegDwordVal(const ATL::CString& strKeyName,
+BOOL CWrlRegKey::SetRegDwordVal(const CString& strKeyName,
 								 DWORD dwKeyValue)
 {
 	if(!m_bOpenFlag)
@@ -150,7 +151,7 @@ BOOL CWrlRegKey::SetRegDwordVal(const ATL::CString& strKeyName,
 	return TRUE;
 }
 
-BOOL CWrlRegKey::DelKeyName(const ATL::CString& strKeyName)
+BOOL CWrlRegKey::DelKeyName(const CString& strKeyName)
 {
 	if(!m_bOpenFlag)
 		return FALSE;

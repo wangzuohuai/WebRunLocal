@@ -239,6 +239,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseFuncLib.cpp" />
+    <ClCompile Include="BaseHelper.cpp" />
+    <ClCompile Include="ComHelper.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -253,6 +256,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="EngineHelper.cpp" />
     <ClCompile Include="PluginComDll.cpp" />
     <ClCompile Include="PluginComDll_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -277,6 +281,7 @@
     <ClCompile Include="SysInfo.cpp" />
     <ClCompile Include="TextFile.cpp" />
     <ClCompile Include="TextFileHelper.cpp" />
+    <ClCompile Include="WRLRegKey.cpp" />
     <ClCompile Include="xdlldata.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -294,6 +299,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppletVersionDef.h" />
+    <ClInclude Include="BaseFuncLib.h" />
+    <ClInclude Include="BaseHelper.h" />
+    <ClInclude Include="ComHelper.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="PluginComDll_i.h" />
     <ClInclude Include="Resource.h" />
@@ -302,6 +310,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextFile.h" />
     <ClInclude Include="TextFileHelper.h" />
+    <ClInclude Include="WRLRegKey.h" />
     <ClInclude Include="xdlldata.h" />
     <ClInclude Include="_ISysInfoEvents_CP.h" />
     <ClInclude Include="_ITextFileEvents_CP.h" />

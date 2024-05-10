@@ -236,6 +236,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseFuncLib.cpp" />
+    <ClCompile Include="BaseHelper.cpp" />
+    <ClCompile Include="ComHelper.cpp" />
+    <ClCompile Include="EngineHelper.cpp" />
     <ClCompile Include="MainDlg.cpp" />
     <ClCompile Include="PluginWinExe.cpp" />
     <ClCompile Include="ProxyServerEvent.cpp" />

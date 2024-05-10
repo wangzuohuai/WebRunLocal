@@ -33,6 +33,15 @@
     <ClCompile Include="BaseFuncLib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BaseHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ComHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -56,9 +65,6 @@
     <ClInclude Include="BaseFuncLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WRLBaseDef.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AppletVersionDef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\PluginWinExe.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Config.json">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="PluginConfig.json">

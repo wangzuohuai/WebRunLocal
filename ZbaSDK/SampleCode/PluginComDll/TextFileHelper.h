@@ -1,4 +1,4 @@
-// TextFileHelper.h: interface for the CTextFile class.
+ï»¿// TextFileHelper.h: interface for the CTextFile class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -299,7 +299,7 @@ public:
 	 *
 	 *
 	 * @param filename 
-	 * @param hRecorder		ÎÄ¼ş¼ÇÂ¼¾ä±ú
+	 * @param hRecorder		æ–‡ä»¶è®°å½•å¥æŸ„
 	 * @return 
 	 */
 	CTextFileRead(const FILENAMECHAR* filename);
@@ -313,7 +313,7 @@ public:
 	bool ReadLine(string& line,bool bRecordSection = false);
 	bool ReadLine(wstring& line,bool bRecordSection = false);
 
-	//Í¨¹ı¶ÎÂäĞòºÅ£¬»ñÈ¡¶ÎÂäÄÚÈİ
+	//é€šè¿‡æ®µè½åºå·ï¼Œè·å–æ®µè½å†…å®¹
 	bool ReadLineByID(string& line,long section_id);
 	bool ReadLineByID(wstring& line,long section_id);
 
@@ -321,19 +321,19 @@ public:
 	bool Read(string& all, const string newline="\r\n");
 	bool Read(wstring& all, const wstring newline=L"\r\n");
 
-	//±£´æºÍÔØÈë¶ÎÂäĞÅÏ¢
+	//ä¿å­˜å’Œè½½å…¥æ®µè½ä¿¡æ¯
 	bool LoadSectionInfo(HANDLE hRecorder);
 	bool SaveSectionInfo(HANDLE hRecorder);
 
 	/**
-	 * @brief ¶ÎÂäĞÅÏ¢ÓĞĞ§
+	 * @brief æ®µè½ä¿¡æ¯æœ‰æ•ˆ
 	 *
 	 *
-	 * @param hRecorder ÓĞĞ§¶ÎÂäĞÅÏ¢µÄÎÄ¼ş¾ä±ú
+	 * @param hRecorder æœ‰æ•ˆæ®µè½ä¿¡æ¯çš„æ–‡ä»¶å¥æŸ„
 	 */
 	long EnableSection(HANDLE hRecorder = NULL);
 
-	//»ñÈ¡ÎÄ¼ş´óĞ¡
+	//è·å–æ–‡ä»¶å¤§å°
 	DWORD GetFileSize();
 
 #if PEK_TX_TECHLEVEL == 2
@@ -380,18 +380,18 @@ private:
 		wchar_t m_extraBuffer_wchar;
 	};
 
-	//¶ÎÂäÎ»ÖÃÓ³Éä±í
+	//æ®µè½ä½ç½®æ˜ å°„è¡¨
 	std::vector<long>		m_section_position;
 	bool					m_section_enable;
-	long					m_current_pos;					//µ±Ç°¶ÁÈ¡µÄÎ»ÖÃ
-	bool					m_dirty;						//Ğ´ÎÄ¼ş±êÖ¾
-	long					m_section_count;				//¶ÎÊı
+	long					m_current_pos;					//å½“å‰è¯»å–çš„ä½ç½®
+	bool					m_dirty;						//å†™æ–‡ä»¶æ ‡å¿—
+	long					m_section_count;				//æ®µæ•°
 
-	std::vector<string>		m_section_buf;					//¶ÎÂäµÄ»º´æ
-	long					m_buf_first_section;			//¶ÎÂä»º´æÊ×¶ÎºÅ
+	std::vector<string>		m_section_buf;					//æ®µè½çš„ç¼“å­˜
+	long					m_buf_first_section;			//æ®µè½ç¼“å­˜é¦–æ®µå·
 
-	std::vector<wstring>	m_wsection_buf;					//¶ÎÂäµÄ»º´æ
-	long					m_wbuf_first_section;			//¶ÎÂä»º´æÊ×¶ÎºÅ
+	std::vector<wstring>	m_wsection_buf;					//æ®µè½çš„ç¼“å­˜
+	long					m_wbuf_first_section;			//æ®µè½ç¼“å­˜é¦–æ®µå·
 };
 
 #if PEK_TX_TECHLEVEL == 1

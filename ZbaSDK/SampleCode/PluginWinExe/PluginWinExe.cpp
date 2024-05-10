@@ -6,6 +6,12 @@
 #include "MainDlg.h"
 #include "WrlRegKey.h"
 
+#ifdef WRL_VRSION_OVERSEAS
+CString				g_strLang = L"ENG";
+#else
+CString				g_strLang = L"CHS";
+#endif
+
 CAppModule _Module;
 
 void InitBrowerConfig()
@@ -45,9 +51,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	ATLASSERT(SUCCEEDED(hRes));
 	hRes = CoInitializeSecurity( NULL, -1, NULL, NULL, 
 		RPC_C_AUTHN_LEVEL_DEFAULT, RPC_C_IMP_LEVEL_IMPERSONATE,NULL,EOAC_NONE,NULL);
-
-	// this resolves ATL window thunking problem when Microsoft Layer for Unicode (MSLU) is used
-	::DefWindowProc(NULL, 0, 0, 0L);
 
 	AtlInitCommonControls(ICC_BAR_CLASSES|ICC_DATE_CLASSES);	// add flags to support other controls
 

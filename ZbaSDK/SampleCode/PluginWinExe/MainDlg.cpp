@@ -9,7 +9,7 @@
 
 CComVariant	g_varWebHeader = CComVariant(L"Accept: */*\r\nAccept-Language: zh-CN\r\nAccept-Charset: utf-8\r\nContent-Type:  application/x-www-form-urlencoded\r\n");
 
-int Us2ToChar(const ATL::CString& strSrc, char** pDst,int nCodePage)
+int Us2ToChar(const CString& strSrc, char** pDst,int nCodePage)
 {
 	int iLength=::WideCharToMultiByte(nCodePage,0,strSrc,-1,NULL,0,NULL,NULL);
  	if(!iLength)
@@ -46,13 +46,13 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	m_nSocketProxyCookie = 0;
 	m_spiSocketProxy = NULL;
 	m_spiSocketProxyEvent = NULL;
-
+	//CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)m_hWnd) + L" MainWnd");
 	this->PostMessage(WM_APP,0,0);	/// 异步初始化侦听服务
 	SetCheckTimer(500);
 	return TRUE;
 }
 
-BOOL FindProName(DWORD dwPID,ATL::CString& strFileName)
+BOOL FindProName(DWORD dwPID,CString& strFileName)
 {
 	BOOL bFindFlag = FALSE;
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
@@ -85,12 +85,14 @@ LRESULT CMainDlg::OnTimer ( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 	if(wParam == WRL_BROWSER_CHECKTIMER)
 	{
 		DWORD dwPID = 0;
-		/// 检查最顶层窗口是否为谷歌浏览器
+		/// 检查顶层窗口是否为启动的浏览器，如果是，启动的弹窗应用置于前端，此操作非必要，根据自己需要来做
 		HWND hWnd = ::GetForegroundWindow();
+		if(NULL == hWnd)
+			return 0;
 		::GetWindowThreadProcessId(hWnd,&dwPID);
 		if(dwPID != ::GetCurrentProcessId())
 		{
-			/// 根据进程ID获得执行程序文件名，判断是否为对应的谷歌浏览器
+			/// 根据进程ID获得执行程序文件名，判断是否为对应的浏览器
 			CString strExeFile;
 			FindProName(dwPID,strExeFile);
 			CString strExeName;
@@ -108,13 +110,22 @@ LRESULT CMainDlg::OnTimer ( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 			case BROWSERTYPE_OPERA:
 				strExeName = L"opera.exe";
 				break;
+			case BROWSERTYPE_BRAVE:
+				strExeName = L"brave.exe";
+				break;
+			case BROWSERTYPE_VIVALDI:
+				strExeName = L"vivaldi.exe";
+				break;
 			case BROWSERTYPE_360:
 				strExeName = L"360chrome.exe";
+				break;
+			case BROWSERTYPE_360X:
+				strExeName = L"360chromex.exe";
 				break;
 			case BROWSERTYPE_360SE:
 				strExeName = L"360se.exe";
 				break;
-			case BROWSERTYPE_360ENTSE:
+			case BROWSERTYPE_360ENT:
 				strExeName = L"360ent.exe";
 				break;
 			case BROWSERTYPE_QQ:
@@ -129,11 +140,8 @@ LRESULT CMainDlg::OnTimer ( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 			}
 			if(-1 != strExeFile.CompareNoCase(strExeName))
 			{
-				SetWindowPos(HWND_TOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
-			}
-			else
-			{
-				SetWindowPos(HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+				::BringWindowToTop(m_hWnd);
+				::SetForegroundWindow(m_hWnd);
 			}
 		}
 	}
@@ -350,6 +358,11 @@ LRESULT CMainDlg::OnInitConn(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 			m_spiSocketProxy->get_LastErrInfo(NULL,&bstrErr);
 			this->MessageBox(bstrErr.m_str);
 			bstrErr.Empty();
+		}
+		else
+		{
+			::BringWindowToTop(m_hWnd);
+			::SetForegroundWindow(m_hWnd);
 		}
 	}
 	InitWebCtrl();

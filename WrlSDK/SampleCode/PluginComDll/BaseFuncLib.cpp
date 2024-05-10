@@ -4,11 +4,13 @@
 #include <shlobj.h>
 #include <shellapi.h>
 #include <atltypes.h>
-#include <string>
+#include <WtsApi32.h>
 #include <tlhelp32.h>
+#include <string>
 #include "WRLRegKey.h"
 #include "WRLBaseDef.h"
 #include "BaseFuncLib.h"
+#include "BaseHelper.h"
 
 #pragma warning( disable : 4819 )
 
@@ -38,6 +40,11 @@ typedef DWORD ( __stdcall *lpGetModuleFileNameEx)(HANDLE hProcess,HMODULE hModul
 typedef DWORD ( __stdcall *lpGetProcessImageFileName)(HANDLE hProcess,\
 	LPWSTR lpFilename,DWORD nSize);
 
+typedef BOOL (WINAPI *LPWTSSendMessage)(
+	IN HANDLE hServer,IN DWORD SessionId,LPWSTR pTitle,
+	IN DWORD TitleLength,LPWSTR pMessage,IN DWORD MessageLength,
+	IN DWORD Style,IN DWORD Timeout,DWORD *pResponse,IN BOOL bWait);
+
 /// 全局模块句柄
 HINSTANCE		g_hInstance = NULL;
 
@@ -56,34 +63,83 @@ CString GetFileInfo(const CString& strPathFile,const CString& strNode)
 {
 	CString strVersion;
 	DWORD dwHandle = 0;
-	DWORD InfoSize = GetFileVersionInfoSize(strPathFile,&dwHandle) + 1;
+	DWORD InfoSize = GetFileVersionInfoSize(strPathFile,&dwHandle);
 	if(!InfoSize)
 		return strVersion;
+	InfoSize++;
 	TCHAR *InfoBuf = new TCHAR[InfoSize];
 	if(NULL == InfoBuf)
 		return strVersion;
 	memset(InfoBuf,0,InfoSize*sizeof(TCHAR));
 	GetFileVersionInfo(strPathFile,0,InfoSize - 1,InfoBuf);
-	unsigned int  cbTranslate = 0;
-	VerQueryValue(InfoBuf, TEXT("\\VarFileInfo\\Translation"), (LPVOID*)&lpTranslate, &cbTranslate);
-	for(unsigned int i = 0;i < (cbTranslate/sizeof(struct LANGANDCODEPAGE));i++)
+	unsigned int cbTranslate = 0;
+	BOOL bRet = VerQueryValue(InfoBuf,L"\\VarFileInfo\\Translation",(LPVOID*)&lpTranslate,&cbTranslate);
+	unsigned int nSize = (cbTranslate/sizeof(struct LANGANDCODEPAGE));
+	for(unsigned int i = 0;i < nSize;i++)
 	{
-		TCHAR  SubBlock[200];
-		wsprintf(SubBlock,
-			TEXT("\\StringFileInfo\\%04x%04x\\%s"),
-			lpTranslate[i].wLanguage,
-			lpTranslate[i].wCodePage,strNode);
+		TCHAR SubBlock[MAX_PATH];
+		wsprintf(SubBlock,L"\\StringFileInfo\\%04x%04x\\%s",\
+			lpTranslate[i].wLanguage,lpTranslate[i].wCodePage,strNode);
 		void *lpBuffer = NULL;
 		unsigned int dwBytes = 0;
-		VerQueryValue(InfoBuf, SubBlock, &lpBuffer, &dwBytes);
-		strVersion += (TCHAR*)lpBuffer;
-		lpBuffer = NULL;
+		bRet = VerQueryValue(InfoBuf,SubBlock,&lpBuffer,&dwBytes);
+#ifdef _DEBUG
+		if(!bRet)
+		{
+			CBaseFuncLib::WriteLastLogToFile(::GetLastError(),L"GetFileInfo");
+		}
+#endif
+		if(dwBytes)
+		{
+			strVersion += (TCHAR*)lpBuffer;
+			lpBuffer = NULL;
+		}
 		if(strVersion.GetLength())
 			break;
 	}
 	delete []InfoBuf;
 	InfoBuf = NULL;
 	return strVersion;
+}
+
+/// 用户层显示提示信息 Wtsapi32.dll
+DWORD UIShowMsgBox(const CString& strMessage,const CString& strTitle,DWORD dwStyle,DWORD dwWait)
+{
+	/// https://docs.microsoft.com/zh-cn/windows/desktop/api/wtsapi32/nf-wtsapi32-wtssendmessagea
+    DWORD dwResponse = 0;/// dwReesp返回值IDABORT IDCANCEL IDCONTINUE IDIGNORE
+	// IDNO IDOK IDRETRY IDTRYAGAIN IDYES IDASYNC IDTIMEOUT
+	CString strSysPath = CBaseFuncLib::GetSpecialFolderPath(CSIDL_SYSTEM);
+	HINSTANCE hModule = LoadLibrary(strSysPath + L"wtsapi32.dll");
+	if(NULL == hModule)
+	{
+		/// XP系统，直接弹出窗口
+		::MessageBox(NULL,strMessage,strTitle,MB_OK | MB_SERVICE_NOTIFICATION);
+		return dwResponse;
+	}
+	/// VISTA才支持
+	LPWTSSendMessage lpWtsSendMessage = (LPWTSSendMessage)GetProcAddress(hModule,"WTSSendMessageW");
+	if(NULL != lpWtsSendMessage)
+	{
+		IFileToolPtr spiFileTool = CBaseHelper::GetFileTool();
+		ULONG dwSessionID = 0;
+		if(NULL != spiFileTool)
+		{
+			spiFileTool->get_SessionID((ULONG)hModule,&dwSessionID);
+			spiFileTool = NULL;
+		}
+		lpWtsSendMessage(WTS_CURRENT_SERVER_HANDLE,dwSessionID,(LPTSTR)(LPCTSTR)strTitle,
+			 2*strTitle.GetLength(),(LPTSTR)(LPCTSTR)strMessage, 
+			 2*strMessage.GetLength(),dwStyle,dwWait,&dwResponse,TRUE);
+		lpWtsSendMessage = NULL;
+	}
+	else
+	{
+		/// XP系统，直接弹出窗口
+		::MessageBox(NULL,strMessage,strTitle,MB_OK | MB_SERVICE_NOTIFICATION);
+	}
+	FreeLibrary(hModule);
+	hModule = NULL;
+	return dwResponse;
 }
 
 BOOL CBaseFuncLib::IsX64Exe(const CString& strAppPath)
@@ -683,12 +739,11 @@ CString CBaseFuncLib::GetShowSize(DWORD dwFileSize,int iPoint)
 ULONG CBaseFuncLib::GetFileSize(const CString &strFilePath)
 {
 	WIN32_FIND_DATA	data;
-	ULONG dwFileSize = 0;
-		
-	HANDLE hFindFile = ::FindFirstFile(strFilePath, &data);
+	ULONG dwFileSize = 0;	
+	HANDLE hFindFile = ::FindFirstFile(strFilePath,&data);
 	if(INVALID_HANDLE_VALUE != hFindFile && NULL != hFindFile)
 	{
-		dwFileSize = data.nFileSizeLow+data.nFileSizeHigh*MAXDWORD+data.nFileSizeHigh;
+		dwFileSize = data.nFileSizeLow + data.nFileSizeHigh*MAXDWORD + data.nFileSizeHigh;
 		::FindClose(hFindFile);
 		hFindFile = NULL;
 	}
@@ -812,7 +867,19 @@ BOOL CBaseFuncLib::IsPathExist(const CString& strPath)
 			if(!GetFileSize(strFind))
 			{
 				/// 0大小文件
-				::DeleteFile(strFind);
+				::SetFileAttributes(strFind,FILE_ATTRIBUTE_NORMAL);
+				int nFind = strFind.ReverseFind(L'\\');
+				if(-1 != nFind)
+				{
+					CString strFileName(strFind.Right(strFind.GetLength() - nFind - 1));
+					if(-1 != strFileName.Find(L'.'))
+					{
+						if(IsPathExist(strFind + L".err"))
+							::DeleteFile(strFind + L".err");
+						/// 改名
+						::MoveFile(strFind,strFind + L".err");
+					}
+				}
 				bRet = FALSE;
 			}
 		}
@@ -1825,12 +1892,25 @@ void CBaseFuncLib::UrlEncodeToFile(const CString& strPara,HANDLE hFileHandle,BOO
 char* CBaseFuncLib::UrlEncodeToChar(const CString& strPara)
 {
 	CString strParaTem = strPara;
-	strParaTem.Replace(_T("%"),_T("%25"));
-	strParaTem.Replace(_T("\""),_T("%22"));
-	strParaTem.Replace(_T("@"),_T("%40"));
-	strParaTem.Replace(_T(";"),_T("%3B"));
-	strParaTem.Replace(_T(" "),_T("%20"));
-	strParaTem.Replace(_T("'"),_T("%27"));
+	strParaTem.Replace(L"%",L"%25");
+	strParaTem.Replace(L"\"",L"%22");
+	strParaTem.Replace(L"@",L"%40");
+	strParaTem.Replace(L";",L"%3B");
+	strParaTem.Replace(L" ",L"%20");
+	strParaTem.Replace(L"'",L"%27");
+	strParaTem.Replace(L"[",L"%5B");
+	strParaTem.Replace(L"]",L"%5D");
+	strParaTem.Replace(L"\\",L"%5C");
+	strParaTem.Replace(L"\r",L"%5Cr");
+	strParaTem.Replace(L"\n",L"%5Cn");
+	strParaTem.Replace(_T("#"),_T("%23"));
+	strParaTem.Replace(_T("&"),_T("%26"));
+	strParaTem.Replace(_T("+"),_T("%2B"));
+	strParaTem.Replace(_T("-"),_T("%2D"));
+	strParaTem.Replace(_T(":"),_T("%3A"));
+	strParaTem.Replace(_T("?"),_T("%3F"));
+	strParaTem.Replace(_T("/"),_T("%2F"));
+	strParaTem.Replace(_T("="),_T("%3D"));
 
 	char *inbuffer = NULL;
 	US2ToUtf8(strParaTem,&inbuffer);
@@ -2068,7 +2148,7 @@ DWORD CBaseFuncLib::RunExe(LPWSTR szAppPath,WORD wShowFlag,\
 }
 
 ///////////////////////////////////		CThreadDataLock	//////////////////////////////////////////////////
-BOOL CThreadDataLock::Lock(TCHAR* szFuncName,USHORT nWaitCount)
+inline BOOL CThreadDataLock::Lock(TCHAR* szFuncName)
 {
 	BOOL bLockFlag = FALSE;
 	if(NULL == m_pSection)
@@ -2087,12 +2167,10 @@ BOOL CThreadDataLock::Lock(TCHAR* szFuncName,USHORT nWaitCount)
 			}
 			else
 			{
-			{
 				if(NULL != m_szPreName)
 					strLockInfo.Format(L"%s 已锁定！新执行->%s",CString(m_szPreName),CString(szFuncName));
 				else
 					strLockInfo.Format(L"新执行->%s",CString(szFuncName));
-			}
 			}
 			CBaseFuncLib::WriteLogToFile(strLockInfo);
 			strLockInfo.Empty();
@@ -2111,34 +2189,58 @@ BOOL CThreadDataLock::Lock(TCHAR* szFuncName,USHORT nWaitCount)
 			strLockInfo.Empty();
 		}
 	}
-	//bLockFlag = ::TryEnterCriticalSection(m_pSection);
-	::EnterCriticalSection(m_pSection);
-	bLockFlag = TRUE;
 	if(m_bLogFlag && NULL != m_szPreName && NULL != szFuncName)
 	{
 		memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
 		memcpy(m_szPreName,szFuncName,sizeof(TCHAR)*::_tcslen(szFuncName));
 	}
+	::EnterCriticalSection(m_pSection);
+	bLockFlag = TRUE;
 	return bLockFlag;
 }
 
-void CThreadDataLock::Unlock(TCHAR* szFuncName)
+BOOL CThreadDataLock::TryLock(TCHAR* szFuncName)
 {
+	BOOL bLockFlag = FALSE;
 	if(NULL == m_pSection)
-		return;
-	if(!IsLock())
-		return;
-	if(m_bLogFlag && NULL != szFuncName)
+		return bLockFlag;
+	bLockFlag = ::TryEnterCriticalSection(m_pSection);
+	if(bLockFlag && m_bLogFlag && NULL != szFuncName)
 	{
+		if(NULL != m_szPreName)
+		{
+			memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
+			memcpy(m_szPreName,szFuncName,sizeof(TCHAR)*::_tcslen(szFuncName));
+		}
 		CString strLockInfo;
 		if(0 == g_strLang.CompareNoCase(L"ENG"))
-			strLockInfo.Format(L"%s Unlock->",CString(szFuncName));
+			strLockInfo.Format(L"TryLock->%s",CString(szFuncName));
 		else
-			strLockInfo.Format(L"%s 解锁->",CString(szFuncName));
+			strLockInfo.Format(L"尝试锁定->%s",CString(szFuncName));
 		CBaseFuncLib::WriteLogToFile(strLockInfo);
 		strLockInfo.Empty();
 	}
-	if(m_bLogFlag && NULL != m_szPreName)
-		memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
-	::LeaveCriticalSection(m_pSection);
+	return bLockFlag;
+}
+
+inline void CThreadDataLock::Unlock(TCHAR* szFuncName)
+{
+	if(NULL == m_pSection)
+		return;
+	if(IsLock())
+	{
+		if(m_bLogFlag && NULL != szFuncName)
+		{
+			CString strLockInfo;
+			if(0 == g_strLang.CompareNoCase(L"ENG"))
+				strLockInfo.Format(L"%s Unlock->",CString(szFuncName));
+			else
+				strLockInfo.Format(L"%s 解锁->",CString(szFuncName));
+			CBaseFuncLib::WriteLogToFile(strLockInfo);
+			strLockInfo.Empty();
+		}
+		::LeaveCriticalSection(m_pSection);
+		if(m_bLogFlag && NULL != m_szPreName)
+			memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
+	}
 }

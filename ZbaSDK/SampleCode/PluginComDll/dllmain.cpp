@@ -6,6 +6,12 @@
 #include "dllmain.h"
 #include "xdlldata.h"
 
+#ifdef WRL_VRSION_OVERSEAS
+CString				g_strLang = L"ENG";
+#else
+CString				g_strLang = L"CHS";
+#endif
+
 CPluginComDllModule _AtlModule;
 
 // DLL Èë¿Úµã

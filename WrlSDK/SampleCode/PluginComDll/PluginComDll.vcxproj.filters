@@ -49,6 +49,15 @@
     <ClCompile Include="BaseFuncLib.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="BaseHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ComHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -91,6 +100,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="BaseFuncLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ComHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseHelper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,17 +1,17 @@
-文件操作浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)单机标准版开发，提供本地文件HTTP协议的上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+文件操作浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK中间件(https://github.com/wangzuohuai/WebRunLocal)单机标准版开发，提供本地文件HTTP协议的上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
-1、PluginOK(牛插)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有WrlService.txt日志文件输出运行情况。
 
 2、请求安装文件操作小程序，在测试页面上输入 ws://localhost:80?sid=123&flag=1 先连接上中间件服务，然后输入以下内容点击发送：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-03-13","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet.pid","MD5":"92F72998CA36B3CA1CC10B8CEB8B1620","Version":"1.5.13.2","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"878B7CA5CB47CF032C55C531A9142FB0E6464D09C3A1E9924662159C069F4AD588ECDA9A33C8C74E9A1F5EF092306BEADE68CFF18A68614020C43A3BFED5EF110E0FC1D2C9C41140AD748B7300433C09B346FC312F301A81E879F9D12D7B9E29757E23FAAECDE8022F5ABE620C31E907FE6BD1576300015944E8DEC53B62077B7036CF1841CF469E16DAF2F0E9AA6BDCB3685BE73CFAFB6632644F979DEB180355BC7E2F52684BB4CB844936FEE6B3D079E96B7C2FF2C000707BC00C6C72D405F1A9CD581CBF19D8C6AA28C49131A2AF9F1823C5DA2B399E8512750270E80E9A99EAAC04DFC1E1F563C905C5715D600D5017ADCA5FB5D8499F49CBDB63B5DD6D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-05-08","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet.pid","MD5":"5C0DE461765A0F25ECB3836C3D702545","Version":"1.5.15.1","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"40D596BDDBD53F6545DCC170A34E8E30D404119DE627CD598B9AA1F10A42E8571F64BC20FF5737DD67C1971ACDA9C21B30FB6915E33E120A99F9539EB0AC7D7FD675BC81168CF04DEE786CC672FC2EC0166FBBE7E3BDF0B6A200612B0D8192C607003975131913B6B60561D0574C87DA1CB605EA11493DA1C33A81EBE36192EBBB4A60948EB9C6278639BD6DC1ED8D84C615E01F3B77B4A0F9657B5441088DA01AF135BAD918C83684D21842875CC6180C474A8483B88BD1F6FD2E3894FAC2DDA9BCDC423A3031580AC47AD8F2B572CC38AA4D7FDDE6A272391B1FAEA191F144D33287DEA5EA077C080D3B6688E21FC91721F6419264A5AF0BFD7691BF00BBCD"}}
 
 3、请求更新文件操作小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-03-13","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet_Update.pid","MD5":"6D773B3CD45103BD1C1E622FA0C26232","Version":"1.5.13.2","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"7E9D5CE6CAA6768C1F0F6D370DC64FEECD75A7A822B0197B8A1F13D37E50609DD0EB2C47FCBBEA9CF90DC34CC5FA26FD0F3AE18B5858E58D8B2245044B57E142F4DD6C52B5450DC3671B27A53B6097B2A64A19C6BC1E21810C77214E46B6D49476842318E678EDA21EB3E653384A505D99C4E744B01C0799F3D136DEA41D444C4B7B2B0C12E8489F5C93FA055BE0C3802A7B9C6337B160D28D43FD3BAFC84FBA52A6D9B0790839344CEBED900555292F308A4715DB36E62951754F699580AB0EE5FA3BBB0B09B92B53CB406E49D15317A0808828E980552469F87D9FA322B076EA7EAB5C66DFE5E3ECC01378C549D34F90AD2674D390C45AF33FE4F7BFF25996"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-05-08","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Plugin/WrlFileApplet_Update.pid","MD5":"40F9222296746C7D0AF0C60DF0B210D8","Version":"1.5.15.1","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"2F9DC298DBD03ACC5C480780B4CD084C204F46F04B7C1413EF0B1B070F4F867EECF2AF6787DA63FB1C62F7A751D9F5C888EAF53A8F5121584C53F3887DB0FCB27C2B637A3DF8D937034CF3EB77C8EA1E8AAE403F1C6D398D533AEE583654E5BDAF6D61F96387F48E00C5DF7E23E3D6B90E326BCE214FFCA8443C9B66E85D02434A9D07887D2CEF89C682BC35A9507685804059628A19D75BDD007AA75A61F03BA3D4738CE74218578FBAB3BA97F007A59FD52C23B7BA675AEFDF8B34F3EB0F2D7BB1B1ACCEF53B4B402828A781832062CD86FEDC54CE1AA25C29AC992AE42D32BBB752DEE17CF67816346A0CAD96CD813AECC2DC044151219107EEEEB98C2F60"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -90,33 +90,55 @@ Para CMD命令参数，需要先做UrlEncode再传
 打开测试网页，输入地址：ws://localhost:80?sid=678&pid=762C3400-B3E5-4F00-8AA7-18E00F13E414&flag=1 点击连接；
 支持的协议功能如下：
 
-A、下载文件
-Url、File传入前需进行UrlEncode编码，分别为文件下载地址和本地保存路径
-下载权限参数Cookie和Auth，服务器要求的，MD5和Size分别为下载文件MD5哈希值及大小，可没有
-批量下载指定URL及文件名File等参数的文件,ID是前端指定的唯一ID，返回添加成功数量，重复的不计算
-{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","Items":[{"ID":"1","Url":"http%3A%2F%2F129.226.151.192%3A8080%2Ffile%2Fdownload%3FfilePath%3DLzFlYTlmNmEyNTllMTRjN2Y5MGU1MzI4M2ZjOGVlYTU1LzFlYTlmNmEyNTllMTRjN2Y5MGU1MzI4M2ZjOGVlYTU1LmRvY3g%3D","File":"test.docx","MD5":"","Size":0}]}} 
+A、下载文件，可批量操作
+Url、File传入前需进行UrlEncode编码，支持全路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
+Cookie或Auth设置下载权限参数，传入前需要先做Base64编码，还需指定下载URL、本地保存路径及文件的File等参数,PID为小程序唯一编号，可为空
+ID是请求方指定的唯一任务ID,MD5用于校验文件下载的完整性,Size用于判断文件是否下载结束及通知进度
+{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","PID":"","Items":[{"ID":"123","Url":"http://local.zorrosoft.com/Files/template.doc","File":"","MD5":""}]}}
+返回添加成功数量，重复的不计算
 
-B、上传文件
-Url、Items子项目传入前需进行UrlEncode编码，Url为上传URL地址，ID为上传序号
-Para为POST数据包中需要传递的参数param，默认上传文件名为upfile，否则通过NodeName设置自己的文件参数名称
-批量上传到指定URL的本地文件，返回添加成功数量，重复的不计算 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
-{"req":"File_Upload","rid":2,"para":{"ID":"","Url":"","Cookie":"","Auth":"","Para":"","Items":["c:/Newtest.jpg","c:/test.jpg"]}} 
+B、上传到指定URL的本地文件，支持批量
+Url、Items子项目传入前需进行UrlEncode编码，Url为上传接收文件URL地址，ID为请求方赋予的唯一上传序号
+Para POST数据包中需要传递的参数param，默认上传节点名称为upfile，否则通过NodeName设置自己的文件参数名称
+Items 需要上传的文件支持全路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用,PID为小程序唯一编号，可为空
+DelSrc 上传成功是否删除源文件，默认0不删除
+{"req":"File_Upload","rid":2,"para":{"ID":"","Url":"","Cookie":"","Auth":"","PID":"","DelSrc":0,"Para":"","Items":["c:/Newtest.jpg","c:/test.jpg"]}} 
+返回添加成功数量，重复的不计算
 
 C、停止上传/下载 一般用于页面退出
-{"req":"File_Stop","rid":3,"para":{""Type":1}} 不指定停止所有，指定Type时1代表下载 2代表上传
+不指定停止所有，指定Type时1代表下载 2代表上传
+{"req":"File_Stop","rid":3,"para":{"Type":1}}
 
 D、删除数据记录
-{"req":"File_Delete","rid":4,"para":{"Day":7}} 删除指定Day前数据库中的上传下载任务记录
+删除指定Day前数据库中的上传或下载任务记录
+PID是小程序PID，可不指定
+{"req":"File_Delete","rid":4,"para":{"Day":7,"PID":""}}
+
+E、查询上传或下载记录列表
+Type 1代表下载 2代表上传 默认1
+Status 记录状态 默认0所有
+Day 指定天数以内数据库中的上传或下载任务记录
+PID是小程序PID，可不指定
+{"req":"File_GetList","rid":5,"para":{"Type":1,"Day":7,"PID":""}}
+
+F、开始上传或下载
+Type 1代表下载 2代表上传 默认1
+PID是小程序PID，可不指定
+{"req":"File_Start","rid":6"para":{"Type":1,"PID":""}}
+上传及下载进度及状态事件通知:
 
 /// 单个下载任务通知
-{"event":"File_Status","data":{"ID":"","Url":"","File":"","Type":1,"Status":0,"Percent":0,"Error":""}} Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述
+ ID为请求方指定的唯一下载ID Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述
+{"event":"File_Status","data":{"ID":"","Url":"","File":"","Type":1,"Status":0,"Percent":0,"Error":""}}
+
 /// 单个上传任务通知
-{"event":"File_Status","data":{"ID":"","Ret":"","Type":2,"Status":0,"Percent":0,"Error":""}} Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述 Ret为上传成功服务器返回的数据包
+ ID为请求方指定的唯一上传ID Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述 Ret为上传成功服务器返回的BASE64编码后的数据包
+{"event":"File_Status","data":{"ID":"","Ret":"","Type":2,"Status":0,"Percent":0,"Error":""}}
 
 /// 上传或下载全部结束通知
 {"event":"File_OK","data":{"Type":1"}} 通知上传或下载结束，Type 1代表下载全部完成 2代码上传全部完成
 
 5、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。
-更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案”。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“PluginOK开发者手册.pdf”及“PluginOK中间件安全解决方案.pdf”。
 如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938
