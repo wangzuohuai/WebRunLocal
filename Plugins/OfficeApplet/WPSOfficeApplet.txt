@@ -1,6 +1,6 @@
 ﻿金山WPS网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用金山WPS(要求企业或专业增强版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将WPS文字、WPS表格、WPS演示软件窗口内嵌到网页指定区域运行并操控。
 最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
-金山WPS支持2016及以上版本、建议使用支持OFD格式导出的2019专业版(下载网页：https://ep.wps.cn/download 选择PC版下载)，如使用免费版(建议使用企业版，网页地址：https://365.wps.cn/download 选择PC版下载)，尽量避免使用个人版，因只支持在非管理员权限启动浏览器时使用，一些功能受限。
+金山WPS支持2016及以上版本、建议使用支持OFD格式导出的2019专业版(下载网页：https://ep.wps.cn/download 选择PC版下载)，其次建议使用商业版，网页地址：https://365.wps.cn/download 选择PC版下载)，尽量避免使用个人版，因只支持在非管理员权限启动浏览器时使用，部分功能受限。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -28,6 +28,7 @@ Web中参数说明：
 	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
 	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
+	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 v实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -38,16 +39,16 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HT
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动金山文字程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"11","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Version":2,"Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"11","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动金山表格程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"12","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Version":1,"Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"12","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动金山演示程序
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"13","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Version":0,"Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"13","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"11","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":6,"para":{"Type":"0","Version":2,"Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"11","Open":"D:/Zorro/test.doc"}}
 
 打开服务器文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
@@ -113,14 +114,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"527C98531415E59065AA1A2A6DECD55C","Version":"2.2.13.3","Size":4915200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8B7E43538CDB9982E3B089ACA802289F04957644771303BCFCB669F86A6412F641D04602DC267378D1AEE37C58B7D1A0BDD45DEB7DF9D2F5B63F42656EAB5E8E3886693898C45D412CE0BB1CBF960EA786802D672790C00AEF7BDC17DB482C63757759E9193BC40A0BDAE0D2E89C4E2BEBD1ABE1E2EE379E1D1553626650F9819754B253E1DCF53DA23CCF9DC7E701DBEB3ED45C296A337AC144E224D2A9654C67974B35115F937F741463A64F2838F1CFEFB69D2D8A111859B398B68973204B4F7FBB13632FE26E7D2CA64EB217A73D12A91BBEDC30B806C4589F5971E4509C9F7CBC545A1F48BFB40ED3932616ABA43AD2A62DCCA4C277DF8682524AE1D00F"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-05-23","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"D124851CDFE50264B1DCAF9B28CB8859","Version":"2.2.15.2","Size":5668864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"17D9D40E5316A545EEE3C5D675997D59340D3E69AAC34B85E175A2F1E3FE755734AA35804F820278D1396F0D3DFE22A49E3866D422762DCB028917A3259F30AD4968D5CA16BCBAA9A39671888545F0D0F85858C51130ABFFCC43B1D9125147AA58758BE3D5014053105FF5647DD80336C7469D7C330A909972613F3C5D24F3947FCADB215F99F3183F6E8D2DC4CDC7F6CE8D18C9B7E55BD7866550718EC4AB53EEB2F36F7671B2F43B858BE5A11969FF08A981FE56BC1103ABBCC5AC95527DCD1D6DBB356FE4306DCBCE22C25325FC54A9102CC141F61763231D8E9DC5DCBF01F0EA208D198FD51C049BC654D3D2B7EE8A93649EDD71CA3F2A70AA9B619E22B1"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"8ECB2ECCA54FA589AE10D4461249EC64","Version":"2.2.13.3","Size":4915200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7B8269D218D2CB88E4E150841BAC30FA012285DB77A8D7B135960EE27B8FBABD5318B2BADC43BD907D6106E4E2FE1501FAA3D2497F919295B2ACA05DF464B555780FB0FCA3016E24D8F2DA8CF76FD861B89EC50DA5EA7744CD8DED318B5501D15C9D32B66159A2465B71C1EA205D45A458FC6732861375131BC8D780D2AF7D67C08EA9253556F5D3660BAF90313D139B18E77AEAC0DBC56D915532E88BDF7898D8FBE9A9F08389906A4D5F84738839861327FDA81FC62B78622E7ACF58323DDA38CB4C2755172AF6B76A060E236CCEE97A0EE45F2FFC5F25008B50BD0597D20D64B82077051048185182761DC0C7FC826100BA2C942CC5FF9870E4557B95B4B6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-05-23","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"EF4C4407BA98E17A119C6B00E061FC9A","Version":"2.2.15.2","Size":5668864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6D94D01A35403989959F8F29194D540A9B1FD5D1FE96C36F3B4627080AB655D54E6F83D343A4B85CAF2748CFD602F4B250C1295CD7390F885B09BFFAAC15B7E862F77C3A8AEE6BA0AD8EFD39CFD876DE3DA968F764BCE6B71FFEA00FCCF928F9B07FB328DA5FE3FD18B08E33DCAAE967C2F44CC43CAC20A3E6323757A200D51CC63F60BF51E058231341C9727F5A65C8EB3580CF0EB8CA2586E5B6C1B15E8CC414B3D5373AABE9BC824AAB309BF437F7E5748FF26F19324E57BCB4E5C748D6ED8B3DEBC59E99D0A6E94ED6DC6D915145D19A54E84005421F2BF19B739DB74E619C2B18C9EA08BBA5609635566C779161AA8E18FB2A0EA0258A2AD5595AE5C0B0"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -152,23 +153,24 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 4）请求保存，适用于WPS文字、WPS表格、WPS演示软件，如是新建文档，会创建一个临时文件名保存
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Save","rid":4,"para":{}}
-{"req":"Office_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
+{"req":"Office_Save","rid":4,"para":{"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":"","Info":{}}} 其中FilePath为实际保存路径 Info为上传接口返回的数据包，务必用JSON来描述
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件
-WPS文字支持导出为OFD文件(Format是25 个人版不支持)或者UOF文件(Format是103) NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+WPS文字支持另存为OFD文件(Format是25 个人版不支持)或者UOF文件(Format是103) NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 当另存为ppt或pptx时，可指定参数EmbedFonts是否嵌入TrueType字体，默认嵌入
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc"}}
 {"req":"Office_SaveAs","rid":5,"para":{"Format":25,"NewFile":"D:/Zorro/test.ofd"}}
-{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
+{"req":"Office_SaveAs","rid":5,"para":{"Asyn":0,"NewFile":"D:/Zorro/testSA.doc","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":"","Info":{}}} 其中FilePath为实际保存路径 Info为上传接口返回的数据包，务必用JSON来描述
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
 NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+{"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/testExport.pdf","Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格、WPS演示软件  ImgFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
@@ -177,6 +179,8 @@ ImgFile 支持相对路径，如非全路径，除非启动时指定了数据文
 Save是否插入后自动保存到文档
 Order设置图片和文字关系，适用于WPS文字 5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
 Wrap图片文字环绕类型，适用于WPS文字 具体参考定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdwraptype
+PTT中可指定插入图片的位置及尺寸
+Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Height分别为图片的宽度和高度
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
@@ -326,14 +330,15 @@ Out保存对比结果文档
 
 35）网络文件操作，适用于WPS文字、WPS表格、WPS演示软件
 Type 1上传文件 0下载文件
+Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
 Url 上传或下载的地址，需要做UrlEncode编码
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
-{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
-{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
+{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Asyn":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
+{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息，务必用JSON格式来描述
 
 36）指定页码转换到图片,默认返回Base64编码数据，适用于WPS文字软件
 Index为页码序号 从1开始编号，传0代表获取当前页
@@ -522,6 +527,96 @@ Index为序号 仅PPT支持Index
 {"req":"Office_DelHyperlink","rid":59,"para":{"Address":"http://www.zorrosoft.com/"}}
 {"req":"Office_DelHyperlink","rid":59,"para":{"Index":"1"}}
 返回：{"ret":0,"rid":59,"data":{"Ret":"0"}}
+
+60）请求获取当前文档域数量，适用于WPS文字软件
+{"req":"Office_FieldCount","rid":60,"para":{}}
+返回：{"ret":0,"rid":60,"data":{"Ret":"0"}}
+
+61）请求判断当前域是否存在，适用于WPS文字软件
+Type为域类型
+Code为域代码
+{"req":"Office_FieldIsExist","rid":61,"para":{"Type":"3","Code":"REF%20%20Caption%20"}}
+返回：{"ret":0,"rid":61,"data":{"Ret":"0"}}
+
+62）请求获取当前文档所有域，适用于WPS文字软件
+{"req":"Office_AllField","rid":62,"para":{}}
+返回：{"ret":0,"rid":62,"data":{"Ret":[{"Index":1,"Type":1,"Data":"","Code":"","Result":"","Kind":1,"Locked":0,"ShowCodes":0}]}}
+
+63）请求指定序号的域信息，适用于WPS文字软件
+Index为Field序号
+{"req":"Office_GetFieldInfo","rid":63,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":63,"data":{"Ret":{"Index":1,"Type":1,"Data":"","Code":"","Result":"","Kind":1,"Locked":0,"ShowCodes":0}}}
+
+64）请求替换指定域的内容，适用于WPS文字软件
+Data 域数据 需要先做UrlEncode
+Code 域代码 需要先做UrlEncode
+Result 结果 需要先做UrlEncode
+Locked 是否锁定
+ShowCodes 是否显示代码
+举例:{"req":"Office_PutFieldInfo","rid":64,"para":{"Fields":[{"Index":1,"Code":"REF%20%20Caption%20","Locked":0,"ShowCodes":0}]}}
+返回：{"ret":0,"rid":64,"data":{"Ret":"0"}}
+
+65）在当前位置插入域，适用于WPS文字软件
+Text 域文字 需要先做UrlEncode编码
+Type 域类型 定义参见 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdfieldtype
+PreserveFormatting 是否保持格式
+举例，插入页码：{"req":"Office_InsertField","rid":65,"para":{"Text":"SECTIONPAGES","Type":"-1","PreserveFormatting":1}}
+返回：{"ret":0,"rid":65,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+66）请求删除指定序号的域，适用于WPS文字软件
+Index为序号
+{"req":"Office_DelField","rid":66,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":66,"data":{"Ret":"0"}}
+
+67）请求获取当前视图模式，适用于WPS文字、WPS表格、WPS演示软件
+关于视图模式ViewType的定义，请分别搜索参考WdViewType、XlWindowView、PpViewType的定义
+{"req":"Office_GetViewType","rid":67,"para":{}}
+返回：{"ret":0,"rid":67,"data":{"Ret":"0","ViewType":"0"}}
+
+68）请求设置视图模式，适用于WPS文字、WPS表格、WPS演示软件
+ViewType 视图模式
+{"req":"Office_SetViewType","rid":68,"para":{"ViewType":"1"}}
+返回：{"ret":0,"rid":68,"data":{"Ret":"0"}}
+
+69）请求高亮或取消高亮指定书签内容，适用于WPS文字软件
+Index为书签序号 Name为书签名称 二选一使用
+Color 高亮颜色，取消高亮设置0，高亮默认7:wdYellow 详细定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdcolorindex
+{"req":"Office_HighLight","rid":69,"para":{"Name":"Caption","Color":7}}
+返回：{"ret":0,"rid":69,"data":{"Ret":"0"}}
+
+70) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+{"req":"Office_FloatWebInfo","rid":70,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"Office_FloatWebInfo","rid":70,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":70,"data":{"Ret":0}}
+
+71) 指定ID窗口叠加网页注入脚本运行
+Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取消叠加
+Init 初始化
+{"req":"Office_FloatWebInjectScript","rid":71,"para":{"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"}}
+返回：{"ret":0,"rid":71,"data":{"Ret":0}}
+
+80）请求开始播放幻灯片，适用于WPS演示软件
+Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始
+FullScreen 默认全屏播放，0窗口内播放
+{"req":"Office_BeginPlay","rid":80,"para":{"Slide":1,"FullScreen":1}}
+返回：{"ret":0,"rid":80,"data":{"Ret":"0"}}
+
+81）请求退出播放幻灯片，适用于WPS演示软件
+{"req":"Office_EndPlay","rid":81,"para":{}}
+返回：{"ret":0,"rid":81,"data":{"Ret":"0"}}
+
+82）请求幻灯片中插入多媒体，适用于WPS演示软件
+Link 为1则只是链接到文件(网络路径不支持1)
+Save 是否插入后自动保存到文档
+Slide 指定幻灯片序号，不设置时取当前的
+MediaFile 需要做UrlEncode编码，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+指定插入多媒体显示的位置及尺寸 Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Height须指定
+{"req":"Office_InsertMedia","rid":81,"para":{"Slide":1,"MediaFile":"d:/zorro/test.mp4","Width":300,"Height":300}}
+返回：{"ret":0,"rid":81,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为WPS文字程序通知

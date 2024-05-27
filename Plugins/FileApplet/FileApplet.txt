@@ -1,17 +1,17 @@
-文件操作浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK(牛插)中间件(https://github.com/wangzuohuai/WebRunLocal)网络标准版开发，提供本地文件HTTP协议上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+文件操作浏览器小程序，基于跨浏览器的原生小程序系统-PluginOK中间件(https://github.com/wangzuohuai/WebRunLocal)网络标准版开发，提供本地文件HTTP协议上传与下载、本地图像文件旋转与缩放、本地文件访问、本地程序运行等服务。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、Vivaldi、Brave、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
-1、PluginOK(牛插)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
 
 2、请求安装文件操作小程序，在测试页面上输入 ws://localhost:83?sid=123&flag=1 先连接上中间件服务，然后输入以下内容点击发送：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-03-13","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"59A981E19BD5DD5A9D672422CB494405","Version":"2.2.13.2","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"5DACFBFDCDC23CE1A96E68057C07110265DF237C1DCFE093D7DAF780CBFD7173CC4ECE6BD8CB1FC90AE2260953CA2A7B06F34CCE6436FC4C1A5231CD31579976A8F600D12FFFBF4F0DE501F5A479D611F5BF777D7B58147D2FB8364FBBBE4704D4330DE816E966ADD049E18830788FE75B0C9ADED85A24AC23F71D75E7ACCF1D85040726B41FF33BE225115C6CA778052EC7DECF04DBF6DD46D55CFF725FAA851C8494C8564B56C2B13147BD868E367CD094BD90477CE9101C8AEA957422D2BBC2B8764E72609868EA52BC796DD991BE93219381E55D55C9434858FE66E79FF2AD6A6DFB5BCAFBC25AF44D93D810494B0BEBC027BC4FC02EA921A2164956C6AA"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-05-08","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet.pid","MD5":"EFE1B70FB6535852F248D590B43C2161","Version":"2.2.15.1","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"99AF36B0F569977C201FE5F71EF12CE71E649A1B593C0871963543A60473EEEF3EE73DDEBEC2F42968D0355123581EA6249B9B8CE00F0F931B8324977FCA802F1A771C57E236D27719E393D99D0AB4E0398BCD7EBCB1D2171A6393943984B1FF3A51BB7327982051D3CD269CEBE580A453BC0F719F22CF4F708064046043F2AC5D076D4D805E4904CD54E8E2F3049921724C9A363CE2FDE1851D8661AAE041A4C7A988A9DD2D3709277FDE09984633AE9159F5F401F067C3C01AFDF90BD2C77A853DD0384FCFCAB86E575C6F2789B3979AB990A0A7B383BCBFB77224952EBBC50DA7A81D62B8EB9C332F8F77D14A54D04791891A0054E9E7B1A3FC4DC11F57CB"}}
 
 3、请求更新文件操作小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-03-13","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"11C9FDDAB558F2847A19FCDF314C0AEC","Version":"2.2.13.2","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"8A826ED0930B66DC5B58E6E1CAB140769972F496DCC453D5A1E55FDBBABFC951CF8FD8D78B97DB1632A3D3C532CF0AFA72E6DA6CA8D661DB3911A8363D522DA9EA6D7294024ADEC139F31B701611068F728DE4766389A8633282BC9556EAFF34C3CDB3D0258B147C7E4F956ACB95C25ABC778D1D9427F03C41BFC29D29D66E8C66A9C368F4BC94980EC015963C61C06BA270E98FBFB22451BDE58BE28129E0A3DC54FE9DEA87E6DC47770E7CDA3ECA307B136ECCF8FE3D49DA9DA3517F551534470EB391547D670C55B0A533CABA4BD0D7A657B31B13FCF5DF20B52F58902B1397D0CE20A69279C5073915B6CC2AF76FFCB5367071FC7099D3DA21758FF98206"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"文件操作小程序","PID":"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3","Date":"2024-05-08","Desc":"PluginOK中间件之上跨浏览器的文件操作小程序，提供文件HTTP协议上传与下载、本地图像文件缩放与旋转、本地文件访问、本地程序运行等服务，可在Chrome、Edge、Firefox、IE、Opera、360、QQ等的浏览器最新版中调用","DownAddr":"http://local.zorrosoft.com/Files/Net/WrlFileApplet_Update.pid","MD5":"A8BEB85D7CE691F02D0A8D0DA7B0BF9F","Version":"2.2.15.1","Size":524288,"HideIns":0,"Type":1,"Cookie":"","Auth":"","TK":"70B3A6FA700788FF727CC123E28B9D919F81BC8C882E93D1FED8E332A2B631D6F69264CDD03901058FF0D87F869D11DB73FD89C8927E55C18ABA6D652D0737BB9C94B61E6758FA39F44A34B80D6B6CFE8C3CC42885E7950BC1C61F9515B5546902A9DDE39AE1945FD8D28179D29EEE00DE40FFE15DEB346B4295789BF4869392D2E8530B064C9EC6681147D15E3D2782DD5FFBC388D90E4884955A909AB7A37E1E85781C1B9EE0FD356D51AE5029B6CB3E6025EA3E381B2C0B3C95EA959186665D7A15261360795B2E7F8AACE597D34AB1480CDBE6678860E4B5548FDBF82B07A80DC6AEA5494492DAFBAF87685B62F16F7225918018F9F376348E19CA57C4D0"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -90,30 +90,54 @@ Para CMD命令参数，需要先做UrlEncode再传
 打开测试网页，输入地址：ws://localhost:83?sid=678&pid=762C3400-B3E5-4F00-8AA7-18E00F13E414&flag=1 点击连接；
 支持的协议功能如下：
 
-A、下载文件
-Url、File传入前需进行UrlEncode编码 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
-{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","Items":[{"ID":"","Url":"","File":"","MD5":"","Size":300}]}} 批量下载指定URL及文件名File等参数的文件,ID是前端指定的唯一ID，返回添加成功数量，重复的不计算，增加下载权限参数Cookie及Auth
+A、下载文件，可批量操作
+Url、File传入前需进行UrlEncode编码，支持全路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
+Cookie或Auth设置下载权限参数，传入前需要先做Base64编码，还需指定下载URL、本地保存路径及文件的File等参数,PID为小程序唯一编号，可为空
+ID是请求方指定的唯一任务ID,MD5用于校验文件下载的完整性,Size用于判断文件是否下载结束及通知进度
+{"req":"File_Download","rid":1,"para":{"Cookie":"","Auth":"","PID":"","Items":[{"ID":"123","Url":"http://local.zorrosoft.com/Files/template.doc","File":"","MD5":""}]}}
+返回添加成功数量，重复的不计算
 
-B、上传文件
-Url、Items子项目传入前需进行UrlEncode编码，Url为上传URL地址，ID为上传序号
-Para为POST数据包中需要传递的参数param，默认上传文件名为upfile，否则通过NodeName设置自己的文件参数名称
-批量上传到指定URL的本地文件，返回添加成功数量，重复的不计算 支持相对路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用
-{"req":"File_Upload","rid":2,"para":{"ID":"","Url":"","Cookie":"","Auth":"","Para":"","Items":["c:/Newtest.jpg","c:/test.jpg"]}} 
+B、上传到指定URL的本地文件，支持批量
+Url、Items子项目传入前需进行UrlEncode编码，Url为上传接收文件URL地址，ID为请求方赋予的唯一上传序号
+Para POST数据包中需要传递的参数param，默认上传节点名称为upfile，否则通过NodeName设置自己的文件参数名称
+Items 需要上传的文件支持全路径，如非全路径，默认使用中间件程序Data子目录作为根目录使用,PID为小程序唯一编号，可为空
+DelSrc 上传成功是否删除源文件，默认0不删除
+{"req":"File_Upload","rid":2,"para":{"ID":"","Url":"","Cookie":"","Auth":"","PID":"","DelSrc":0,"Para":"","Items":["c:/Newtest.jpg","c:/test.jpg"]}} 
+返回添加成功数量，重复的不计算
 
 C、停止上传/下载 一般用于页面退出
-{"req":"File_Stop","rid":3,"para":{""Type":1}} 不指定停止所有，指定Type时1代表下载 2代表上传
+不指定停止所有，指定Type时1代表下载 2代表上传
+{"req":"File_Stop","rid":3,"para":{"Type":1}}
 
 D、删除数据记录
-{"req":"File_Delete","rid":4,"para":{"Day":7}} 删除指定Day前数据库中的上传下载任务记录
+删除指定Day前数据库中的上传或下载任务记录
+PID是小程序PID，可不指定
+{"req":"File_Delete","rid":4,"para":{"Day":7,"PID":""}}
+
+E、查询上传或下载记录列表
+Type 1代表下载 2代表上传 默认1
+Status 记录状态 默认0所有
+Day 指定天数以内数据库中的上传或下载任务记录
+PID是小程序PID，可不指定
+{"req":"File_GetList","rid":5,"para":{"Type":1,"Day":7,"PID":""}}
+
+F、开始上传或下载
+Type 1代表下载 2代表上传 默认1
+PID是小程序PID，可不指定
+{"req":"File_Start","rid":6"para":{"Type":1,"PID":""}}
+
+上传及下载进度及状态事件通知:
 
 /// 单个下载任务通知
-{"event":"File_Status","data":{"ID":"","Url":"","File":"","Type":1,"Status":0,"Percent":0,"Error":""}} Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述
+ ID为请求方指定的唯一下载ID Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述
+{"event":"File_Status","data":{"ID":"","Url":"","File":"","Type":1,"Status":0,"Percent":0,"Error":""}}
+
 /// 单个上传任务通知
-{"event":"File_Status","data":{"ID":"","Ret":"","Type":2,"Status":0,"Percent":0,"Error":""}} Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述 Ret为上传成功服务器返回的数据包
+ ID为请求方指定的唯一上传ID Status为状态码(1等待 2 正在进行 4成功 8取消 16错误) Percent为百分比 Error错误描述 Ret为上传成功服务器返回的BASE64编码后的数据包
+{"event":"File_Status","data":{"ID":"","Ret":"","Type":2,"Status":0,"Percent":0,"Error":""}}
 
 /// 上传或下载全部结束通知
 {"event":"File_OK","data":{"Type":1"}} 通知上传或下载结束，Type 1代表下载全部完成 2代码上传全部完成
-
 
 5、其它
 请求参数的JSON数据包，请确保是UTF-8无签名的编码。

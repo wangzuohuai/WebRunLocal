@@ -184,10 +184,14 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 {"req":"Wrl_UpdateAuth","rid":2,"para":{}}
 说明：连接主服务后可执行。
 
+3)、导入SSL新证书到授权文件：
+{"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}
+说明：在授权服务器上启动浏览器打开网页http://local.zorrosoft.com，WS连接地址修改为类似这样的：ws://*.*.*.*:800?sid=438140&flag=1，其中*.*.*.*:800是你的授权服务器启动侦听后的IP和端口，然后点击连接成功就可以执行Wrl_UpdateSslCert请求了，记得把新的SSL证书放到单独的一个子目录，命令中Path为证书目录，然后执行此命令，成功时返回SSL证书绑定的域名，再到授权服务器程序目录，找到更新后的授权文件，替换到终端所用的软件包里，给新电脑部署使用，已经部署的电脑，只要能访问授权服务器，会自动更新证书。
+
 4、PluginOK中间件升级请求：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet中间件网络版升级包","Date":"2024-05-09","Desc":"1、中间件实现多线程下载和文件异步上传功能，解决高级版内嵌网页小程序启动偶尔卡死问题；2、PageHiPlayer的VLC引擎支持异步播放及连接超时设置，支持从当前画面开始；3、PageHiOffice增加支持高亮书签，支持当前位置插入书签，给前端提供域的相关操作接口，支持叠加透明网页窗口显示；4、PageHiOffice嵌入PPT窗口时，支持自动进入播放画面或预览状态，前端也可调用接口结束播放状态，另外增加支持插入多媒体和三维模型(仅微软Office支持)元素...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"3E47BA9091A3DECFEC3655EDB48CA011","Version":"2.2.15.1","Size":14614528,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"5EF66F2ECB4F1EC7EE892D55237B271ACC4BE9440CA57F4EF1CB5C460FDDEA9A90FE742A673E33C90DD6A51F432E404AF6251C629C427CFA5C4315B7B208595135A9794CD861E214BA4502BFA5725FCA8AAF75766C3B2FBEB96F03B62C87BF028AC010474FAB4829F02DADA49CB5C9E7FC4954F159BAEE62CFF345A9685E67A9825B5D27C6DF4725F656A913FD0D219E57129B356B46C69EF222C32A1A0FFB839556F208D92B22537A88A546A245CA2E442986763EFA12E451A416611C5E5476C698D193570A41EF5B5F80CF9C33B97F1EABC04E52A0C868C7DE30C2DECA9B6F4384DF7864F1038A6C02B09437191F5FACDB9F5D3F931A3A29AC05804D134B60"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet中间件网络版升级包","Date":"2024-05-25","Desc":"1、中间件WebSocket侦听及连接服务正式支持传输二进制数据；2、优化PageHiPlayer异步打开播放的兼容支持；3、解决PageHiPlayer多引擎播放可能指定引擎无效及视频缓存设置无效问题，优化FFPlay播放效果；4、PageHiOffice启动打开服务器文档时，支持Auth参数设置下载权限，处于保护状态的文档直接支持进行书签内容替换...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"1B7DE5E5BB7B735B5B4ACFC7D2641B65","Version":"2.2.15.2","Size":14123008,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"5038FD144F17EA4DB3E0320D0C11B25EE15394662F6FEB1B0CF7CE5EEB4F4B8CCE7EF4D4358BDCFBA3F6B7511C81770701761E20B5044D97AB25CACB5E93C1583CCAE5136F3B97E2F9327D8A8720E0C23C8F1DD7099CB702DC7C754D76B968BD425C5F6F2B0FB0CEE59BADCB7FF950A7EAD11FB835CCCC54BED55049C845E343AABFBFCF8D6C3DAA9A61B11A11F8845F3BA01CD7A4939BEA399A228A1F07BA93C20E3C7EC9E1EF44B479ED8CD2746277935C16548366125C3818BDAC620672FF0411FCFD9BFF89CB0314D79A88087725CC5F397878E04EE8096360B4077D9AC3F4D5BA1575BE2E71B628E645900BA94F95F6CBA33FF8A322C91D652B516ACD37"}}
 
 2)、针对HTTPS网站，需要搭配SSL证书使用，而SSL证书是有期限的，需要定期导入SSL新证书：
 {"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}

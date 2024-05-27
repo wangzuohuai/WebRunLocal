@@ -68,6 +68,8 @@ ClockSync=-1 指定音频是否与视频同步，默认-1播放引擎默认值
 Transform=none 指定VLC播放画面是否旋转，除默认none不旋转之外，设置支持90、180、270、hflip、vflip、transpose、antitranspose
 AudioOut=any 指定音频输出类型 可选mmdevice、directsound、waveout、amem、afile、NDI、adummy、none
 Avcodec=any 指定硬件加速类型，none不用硬件加速，可指定dxva2、d3d11va、any，any时让播放引擎自己选合适的
+StartTime=3.000 指定起始时间，3秒，小数点后面是毫秒，只支持VLC引擎回放及文件视频
+StopTime=300.000 指定停止时间，300秒，小数点后面是毫秒，只支持VLC引擎回放及文件视频
 Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定，如Open中的密码包含+等一些特殊字符，需要改到Web中指定
 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 举例：
@@ -136,13 +138,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"BE2E00DA1DE664B7F4E096CD96231E5B","Version":"2.2.13.3","Size":5963776,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7FC451693724C9CF08B030075F152FA7C8D0CC18F162D19B79D664A1020D18C1CB87939EDE71C826557949F0B271952AC1D584092CB26F2A9EE91444D20ED8D52EA847FDC500F831CA962D7654E7BEF02A5C665C407125CEF3CE4E7F85392868D9E8B7D9FE19425D8CEBDD02F5EBF3D44A3F7B4808257A5258BCBFD5EE122C50B261D0EF7F72F5F0598BB0491A7E8E7AE83594592D823C63F5C41BFEC26E8F84BFCA054742D8E313E8BC573C0B78A3CE9F1990C42207EBF04F13C60D1DDBE9DD7FC778C834C419709BFB08768E66BC4A1F5DF3287488375D7C1058CA4F7A322B5959A9E78A5E5CD61B8A6708F4D5AC31B3C239560EE8E910DA0FAC7F9CB4C799"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2024-05-23","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"7FD9F28A0CEEF4909F6A4E050A840D97","Version":"2.2.15.2","Size":6553600,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"63BB19A3DA36162EFCF4E12DE39C57B289FE597EDB7417DDBB513EFD5350711A04940C887B8062E5C709576144189060E772460758A433CDCE66F8BCEC6266B9D1BEDFDD24F2E7CDF857B6C3D8EA16FA08D3BC59245E7F0BB50AADF33014428461B4C9438AFCC4C01C942192CF8EDEC006A4BDDBE7A0993861FC1AA0AEB0ABDDA961E280E15BFF4E34905B2999AED7630C5EFF30FFFF5ED46550C3947FCE3251AB4945CE6C0D473915CA10BF6056E66E0FE344C91A00AEEF72FC47DE12938BD7A307929E736C956D5A80A3C1C0249FB3235A2BB8A8A13E5A274796BD67E5315F071699A6AC49270F0C0BBFE6999197D7DE994EACBAB912FAF918BF3EDE913450"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"E0CB3D1121FF8FED42D90A1C812EFA2F","Version":"2.2.13.3","Size":5963776,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"469EC158B4ED9D736A0D0F4EFD352A9DC307D3E07D564AA0EAC4CA18B2FB355B79203E00030870F5EBB015B85B98697F40293D5353220140DD7AE13F74724A0302C477E5E8B7CB3A6B2A2659FF3BE9D0E5E14F53AF82917D69EDA672C4624080D51FCF2D9E0C6DF2D778F58ACEE787578DE9BED82CA610CA84969212340AD52F89B84B8CB9533A01B3B3738254C5454EBE5F775A96062618879C9E889D7FCFE676EDCC1C42B8BEDA15C55007528CB39F799E34ABFFD48F4DBF113EA59D6E0AD6EBF82D9706376A7F0375A5B1A50835C25E60727D1A367660469569A679D3E6965D64ABE6E302EDB256E48D23417F3A55814F8776698262EE197AB870E70193DC"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2024-05-23","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"C6E3AC0EFDD54C09755DA7F1AC600ADE","Version":"2.2.15.2","Size":6553600,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"48126CCD74DFC07E5797DF0E355EE21AECA4699AEDEFFB39E6D65D8A160911983BDA71C54C44A7CBBCA485CB826E476B2A2711879AA88B5FE40CA437B755688E4921D580A1069D37FE8E7AC23A82DD503AC8601D1E541EB78352B1D00EDB6669A5AD7FE8A9F971D0CBDED292D60B1196AD8274EDC17051D4989AB610D3E8E3A0B3FC18E7D168F73A78473D17B9B046C096DF7B55D99F0542FEB35FF3439E21C40B58C37464C5EEB2963AEB6B80932DA9F897CF9C8CC85FF1EBDBBDC4556C430F1C2D21F9F894540B05C1D9033D94ECC92CD0B366C3951E4572CF7F94B64DAAD153CF4F5A96C1E64DB1DE63591FBF2163274D5CA22D7A743EBBCE07EAD3C4EC09"}}
 
 3)、请求卸载RTSP网页多引擎播放器：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
@@ -163,7 +165,8 @@ AutoLoop为1代表循环播放，0不循环
 分别返回：{"ret":0,"rid":42,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":42,"ID":2,"data":{"Ret":0}}
 
 3) 取播放引擎SDK的信息，包含版本号、对接及超时配置等信息
-请求：{"req":"Player_GetSDKInfo","rid":43,"para":[{"ID":1},{"ID":2}]}
+Engine 即使没有启动这个引擎播放，也可以获取指定引擎的版本
+请求：{"req":"Player_GetSDKInfo","rid":43,"para":[{"ID":1,"Engine":2},{"ID":2}]}
 分别返回：{"ret":0,"rid":43,"ID":1,"data":{"Ret":0,"Ver":"V6.1.6.45","Build":"20210302","GenCfg":{"SplitFile":0,"ResumeUpgrade":0,"ResumeTimeout":0},"OverTimeCfg":{"PreviewTime":5000,"VodTime":5000,"AlarmTime":5000,"ElseTime":5000},"TalkCfg":{"TalkMode":0}}}
 
 4) 取指定ID窗口当前播放引擎 0海康私有协议播放 1海康MP4本地文件播放 2开源LibVLC播放 3FFPlayer引擎播放 4大华SDK私有协议播放 使用哪个引擎由启动播放参数决定
@@ -521,7 +524,7 @@ Quality 截取质量 0代表原图，VLC及大华的取值0-5，海康的取值0
 分别返回：{"ret":0,"rid":82,"data":{"Ret":0,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}} 和 {"ret":0,"rid":82,"ID":2,"data":{"Ret":0,,"Img":[{"Size":0,"Width":0,"Height":0,"File":""}]}}
 
 43) 指定ID窗口录像到文件，不支持同时录制多个 大华SDK及海康MP4文件播放不支持
-Type为录像方式(VLC或FFPlayer播放时有效) 0:VLC 1:ffmpeg 指定1时在播放小程序子目录存放ffmpeg程序
+Type为录像方式(VLC或FFPlayer播放时有效) 0:VLC 1:ffmpeg 指定1时在播放小程序子目录存放ffmpeg程序，支持指定视频开始的时间录像
 File为录像目标文件不指定时自动生成 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用  Second为录制限时时间(秒)，0代表由前端指定停止
 Second为录制限时时间(秒)，0代表由前端指定停止
 Para为录像参数 使用VLC时默认为vcodec=h264 使用ffmpeg时默认为-vcodec libx264

@@ -27,6 +27,7 @@ Web中参数说明：
 	DataPath 代表文档查找和保存默认路径
 	WaterMark 打开或新建文件后自动加水印节点信息，内容和接口Office_InsertWaterMark一致
 	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
+	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -37,16 +38,16 @@ Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HT
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动微软Word程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Version":2,"Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
 自动识别当前浏览器并启动微软Excel程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"2","Open":"D:/Zorro/test.xls"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Version":1,"Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":3,"Hide":0,"PW":""},"Option":"2","Open":"D:/Zorro/test.xls"}}
 
 自动识别当前浏览器并启动微软PPT程序
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"3","Open":"D:/Zorro/test.ppt"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Version":0,"Title":"Office Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":1,"Hide":0,"PW":""},"Option":"3","Open":"D:/Zorro/test.ppt"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
+{"req":"Wrl_OfficeApplet","rid":5,"para":{"Type":"0","Version":2,"Title":"Office Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web": {"Edit":7,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Open":"D:/Zorro/test.doc"}}
 
 打开服务器文档，可将Open参数改为类似如下地址
 "Open":"http://local.zorrosoft.com/Files/template.doc"
@@ -112,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"0FE58404AD14FB47C293FFDAF34A1BC8","Version":"2.2.13.3","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B7A56A1892B6D326A31F6E292DDDF1E3C9549DD87523E31C804A1EF92FB90227098A2FE7D86834E60F4A5EBE9A187970678755C0C3436593ED38442CF22DA30D790139CA0E7D3535F22588B70AA92682B1A88DCF58C782BF49AE8FB623F2ACFE4EE3CA9904B00F894759E0D312419E13A54D1AC0563D7B1534A3894C07D02D3F3ACB3E61AD4DE25592D1206BE90C5E60DAA54CE74C141885B5183E30EB5AD388E7F064BA89B6DE3D4A3552ED06508FD186B270B06B20BFC9DB99BA49B645E42D88A6C0C1C40BBCD807C27C458FBE126825BA6E4005AED81637EEAA65F80974B018857243A461502633955F81A2E7F11A20D8D4C725A88A76FE573DB74822FAF0"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-05-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"84C0AFB08B52576C64F129DDBAC18594","Version":"2.2.15.2","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"03229F4B69B4456C6B6F29C6ED6D31B35F8E158DAE148DA329ADCC9ABCC5871EA3FFB52C11FC46AC1DF0AA5C919AC7EBE2F0649F7073A6D61A7502DBA735D0E9A1E72E48315AAEEDF25F883BB4C77EE8F268EC6DA99DE3F60B61E4B26A49BDB6AB1FED976568FDCB8D38F1D7492A1B97C0F905B8748D72E878934244294217095525A2D8296D5A5502DC77B4D3795AA0D2F35D7CE96F886253E78272B4CBD46D5F22B6F74784369C1F56A9BB439144BD94FD9DDA31A72275141199C8C77AE0ABCBEA7532915687D2F96FF834EFD21F7C32406A28ECD51B7B01372FBADC947B4DDE31F42B6E5827E85F59650011F5E2FAF347243BA4227FE66714B774FCDF0431"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-03-31","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"52CB7311A5A5503D33AE0FAE6A0DCE03","Version":"2.2.13.3","Size":4882432,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4D76E19CBDBDB797F599E1F812AF598F08579A7AD1E17291300C49D00E227BA8D14DBD9D8DB1D2E0FA7B909DD3667989418CC6146DA6B829E8B72C44142BE926F1E5ABD21676C3123E4F50C3E3B52D22FC960D71EB47E7C2C24577BF6335C574553C588325BA8B31EFB990E6DC3CD11CBDF7CABD2D5356A7B767B29F89482F0B89B2D1CC28F2820B0C1CE117FFBFC02DD72D2DFED24871029822EA157D02FEC4BF332985E074470939A486F6E5618305B377F55DF70245FE5583A92A184DFD251A0537B4008591044C23B49711110F3E76624A4FF491C4C05C2D04B58651015DA5A101ED30BAE011494BDEF7CA938570B5615D91124A9DFC9C8A128AAD704FA1"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-05-23","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"7CC2DFDD6DF189882AF833FE4EDCE383","Version":"2.2.15.2","Size":5603328,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"746CA828593578EAB048AB3343AA37F2482A56E2E1BFE14B9406082722865C33AA1D83E543D375EF2B67F00CEDFEE37CBFC0272D3625F9E44166A0A52AF3204E5254750872E1E2DDBC3AAFD4C5E40430CCA6D3E4E4C5179A11B33AC732333B81B073570C4E114FF30EDBB888E5AD1F47F03AAFF5C696FE71EE3FCE92034EBFAF904743C40326DB217BD3DE154443054090B7B4323EB3503F5E6BA84BA2E0B3BFEF215BDF456AD8E8664141CE04D7B30BC5C4D384BDF02562E104C2B0E6D68E87602EED9092FE0796CCD05416274374F4CA17F33DB05BEE8C6F1DBA75E7976F96B00CF30D443EC0D76F9063E8F4A99FC0AB87CF404CE617888EE516E8ACB5EBA3"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -150,8 +151,8 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会创建一个临时文件名保存
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Save","rid":4,"para":{}}
-{"req":"Office_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
+{"req":"Office_Save","rid":4,"para":{"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":"","Info":{}}} 其中FilePath为实际保存路径 Info为上传接口返回的数据包，务必用JSON来描述
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
@@ -160,21 +161,24 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc"}}
 {"req":"Office_SaveAs","rid":5,"para":{"Format":17,"NewFile":"D:/Zorro/test.pdf"}}
-{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":5,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
+{"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc","Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0","FilePath":"","Info":{}}} 其中FilePath为实际保存路径 Info为上传接口返回的数据包，务必用JSON来描述
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
 NewFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
+{"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/testExport.pdf","Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
 7）请求在当前光标位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
-Link为1则只是链接到文件(网络路径不支持1)
-Save是否插入后自动保存到文档
-ImgFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-Order设置图片和文字关系，适用于Word 5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
-Wrap图片文字环绕类型，适用于Word 具体参考定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdwraptype
+Link 为1则只是链接到文件(网络路径不支持1)
+Save 是否插入后自动保存到文档
+ImgFile 需要做UrlEncode编码，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+Order 设置图片和文字关系，适用于Word 5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
+Wrap 图片文字环绕类型，适用于Word 具体参考定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdwraptype
+PPT中可指定插入图片的位置及尺寸
+Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Height分别为图片的宽度和高度
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Link":"0","Save":"1","Order":"5"}}
@@ -324,14 +328,15 @@ Out保存对比结果文档
 
 35）网络文件操作，适用于Word、Excel、PPT软件
 Type 1上传文件 0下载文件
+Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
 Url 上传或下载的地址，需要做UrlEncode编码
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
-{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
-{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息
+{"req":"Office_NetFile","rid":35,"para":{"Type":0,"Asyn":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}
+{"req":"Office_NetFile","rid":35,"para":{"Type":1,"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息，务必用JSON格式来描述
 
 36）指定页码转换到图片,默认返回Base64编码数据，适用于Word软件
 Index为页码序号 从1开始编号，传0代表获取当前页
@@ -538,6 +543,106 @@ Index为序号 仅PPT支持Index
 {"req":"Office_DelHyperlink","rid":59,"para":{"Address":"http://www.zorrosoft.com/"}}
 {"req":"Office_DelHyperlink","rid":59,"para":{"Index":"1"}}
 返回：{"ret":0,"rid":59,"data":{"Ret":"0"}}
+
+60）请求获取当前文档域数量，适用于Word软件
+{"req":"Office_FieldCount","rid":60,"para":{}}
+返回：{"ret":0,"rid":60,"data":{"Ret":"0"}}
+
+61）请求判断当前域是否存在，适用于Word软件
+Type为域类型
+Code为域代码
+{"req":"Office_FieldIsExist","rid":61,"para":{"Type":"3","Code":"REF%20%20Caption%20"}}
+返回：{"ret":0,"rid":61,"data":{"Ret":"0"}}
+
+62）请求获取当前文档所有域，适用于Word软件
+{"req":"Office_AllField","rid":62,"para":{}}
+返回：{"ret":0,"rid":62,"data":{"Ret":[{"Index":1,"Type":1,"Data":"","Code":"","Result":"","Kind":1,"Locked":0,"ShowCodes":0}]}}
+
+63）请求指定序号的域信息，适用于Word软件
+Index为Field序号
+{"req":"Office_GetFieldInfo","rid":63,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":63,"data":{"Ret":{"Index":1,"Type":1,"Data":"","Code":"","Result":"","Kind":1,"Locked":0,"ShowCodes":0}}}
+
+64）请求替换指定域的内容，适用于Word软件
+Data 域数据 需要先做UrlEncode
+Code 域代码 需要先做UrlEncode
+Result 结果 需要先做UrlEncode
+Locked 是否锁定
+ShowCodes 是否显示代码
+举例:{"req":"Office_PutFieldInfo","rid":64,"para":{"Fields":[{"Index":1,"Code":"REF%20%20Caption%20","Locked":0,"ShowCodes":0}]}}
+返回：{"ret":0,"rid":64,"data":{"Ret":"0"}}
+
+65）在当前位置插入域，适用于Word软件
+Text 域文字 需要先做UrlEncode编码
+Type 域类型 定义参见 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdfieldtype
+PreserveFormatting 是否保持格式
+举例，插入页码：{"req":"Office_InsertField","rid":65,"para":{"Text":"SECTIONPAGES","Type":"-1","PreserveFormatting":1}}
+举例，插入书签Caption的引用：{"req":"Office_InsertField","rid":65,"para":{"Text":"REF%20%20Caption%20","Type":"3","PreserveFormatting":0}}
+返回：{"ret":0,"rid":65,"data":{"Ret":"0"}}
+Ret 返回0代表成功
+
+66）请求删除指定序号的域，适用于Word软件
+Index为序号
+{"req":"Office_DelField","rid":66,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":66,"data":{"Ret":"0"}}
+
+67）请求获取当前视图模式，适用于Word、Excel、PPT软件
+关于视图模式ViewType的定义，请分别搜索参考WdViewType、XlWindowView、PpViewType的定义
+{"req":"Office_GetViewType","rid":67,"para":{}}
+返回：{"ret":0,"rid":67,"data":{"Ret":"0","ViewType":"0"}}
+
+68）请求设置视图模式，适用于Word、Excel、PPT软件
+ViewType 视图模式
+{"req":"Office_SetViewType","rid":68,"para":{"ViewType":"1"}}
+返回：{"ret":0,"rid":68,"data":{"Ret":"0"}}
+
+69）请求高亮或取消高亮指定书签内容，适用于Word软件
+Index为书签序号 Name为书签名称 二选一使用
+Color 高亮颜色，取消高亮设置0，高亮默认7:wdYellow 详细定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdcolorindex
+{"req":"Office_HighLight","rid":69,"para":{"Name":"Caption","Color":7}}
+返回：{"ret":0,"rid":69,"data":{"Ret":"0"}}
+
+70) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+{"req":"Office_FloatWebInfo","rid":70,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"Office_FloatWebInfo","rid":70,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":70,"data":{"Ret":0}}
+
+71) 指定ID窗口叠加网页注入脚本运行
+Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取消叠加
+Init 初始化
+{"req":"Office_FloatWebInjectScript","rid":71,"para":{"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"}}
+返回：{"ret":0,"rid":71,"data":{"Ret":0}}
+
+80）请求开始播放幻灯片，适用于PPT软件
+Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始
+FullScreen 默认全屏播放，0窗口内播放
+{"req":"Office_BeginPlay","rid":80,"para":{"Slide":1,"FullScreen":1}}
+返回：{"ret":0,"rid":80,"data":{"Ret":"0"}}
+
+81）请求退出播放幻灯片，适用于PPT软件
+{"req":"Office_EndPlay","rid":81,"para":{}}
+返回：{"ret":0,"rid":81,"data":{"Ret":"0"}}
+
+82）请求幻灯片中插入多媒体，适用于PPT软件
+Link 为1则只是链接到文件(网络路径不支持1)
+Save 是否插入后自动保存到文档
+Slide 指定幻灯片序号，不设置时取当前的
+MediaFile 需要做UrlEncode编码，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+指定插入多媒体显示的位置及尺寸 Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Height须指定
+{"req":"Office_InsertMedia","rid":81,"para":{"Slide":1,"MediaFile":"d:/zorro/test.mp4","Width":300,"Height":300}}
+返回：{"ret":0,"rid":81,"data":{"Ret":"0"}}
+
+83）请求幻灯片中插入3D模型，适用于PPT 2016及新版软件
+Link 为1则只是链接到文件(网络路径不支持1)
+Save 是否插入后自动保存到文档
+Slide 指定幻灯片序号，不设置时取当前的
+ModelFile 需要做UrlEncode编码，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
+指定插入模型显示的位置及尺寸 Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Height须指定
+{"req":"Office_Insert3DModel","rid":83,"para":{"Slide":1,"ModelFile":"d:/zorro/test.glb","Width":300,"Height":300}}
+返回：{"ret":0,"rid":83,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为Word程序通知

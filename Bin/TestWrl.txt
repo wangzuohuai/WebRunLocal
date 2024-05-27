@@ -175,7 +175,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 4、PluginOK中间件升级：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件单机版升级包","Date":"2024-05-09","Desc":"1、中间件实现多线程下载和文件异步上传功能，解决高级版内嵌网页小程序启动偶尔卡死问题；2、PageHiPlayer的VLC引擎支持异步播放及连接超时设置，支持从当前画面开始；3、PageHiOffice增加支持高亮书签，支持当前位置插入书签，给前端提供域的相关操作接口，支持叠加透明网页窗口显示；4、PageHiOffice嵌入PPT窗口时，支持自动进入播放画面或预览状态，前端也可调用接口结束播放状态，另外增加支持插入多媒体和三维模型(仅微软Office支持)元素...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"01B872A1272B977C106C0DA9E06AA6C0","Version":"1.5.15.1","Size":13565952,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"B3A50DCD1386848BB922D13C2FCD09AF7B38FA700DC76EB92A81D28CDE4F6A466B4C74C50B945918888F9FCD3C0FF7CF53B57329EEE136B439EBAA156B8FEC622C383C2296A1F89B1C64ED1277EB3BE857E71A9B14BA21D073B890ABC7426D0FB2E091D07D4A44A052901A9905D52355A4513BED522D9D2F62D26DE6FE9782A9206B1EA25094F48B24868A0BA305E57937ED7B5FD1BD61AE3C2E9B876BC8E18572ACE7ECB2003B4F00AE972203412209B2F2EED2671B0109A52769C05C7FCBE03FF9D11D15E87FA3F08894F30D7BD6021A88046E9C610C18E8F3EA775E776C4351E9BA846D5842D777FB7350BD741EB0F6C3E6F1D43177807C4CC2C0747CFED9"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件单机版升级包","Date":"2024-05-25","Desc":"1、中间件WebSocket侦听及连接服务正式支持传输二进制数据；2、优化PageHiPlayer异步打开播放的兼容支持；3、解决PageHiPlayer多引擎播放可能指定引擎无效及视频缓存设置无效问题，优化FFPlay播放效果；4、PageHiOffice启动打开服务器文档时，支持Auth参数设置下载权限，处于保护状态的文档直接支持进行书签内容替换...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"A0A52572EA25D3C65DBA3EC39274C0D3","Version":"1.5.15.2","Size":13271040,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"BBF780E461876D1B2D87E5ECBAA46A327C4FC0D286FF7F9690BE126C723B196568B06D93E56A4AB5E41085C936569BBC3BB9F99ED4B5AD4DC45EF3B1E15A57222E1FC1C547F5C9858C0900314AF9D4B2A6235732C1F3C9F03D2C3E9988CA08CA3FB8DDDE1901872CE62051C630ACB99F6A58D7F95FADB50E176CF095BABF2711654284593D6EA6350966279D642EAC49CB6DF3BCD5F85C60906DC3073F698DEBE36B237AB8127918D34AFB4B54768A641B2B5645F4A842B0284560ABC25379F9D57E8F85D33E32C247BF56B1560C413C2CC6322F8D318E516AD50332EAA5786173CD8EA6E2767DF6AA5D2ED00493AFD5D99A8B99604D2858ADA69B026C65B893"}}
 
 2)、升级中间件授权请求：
 单机版中间件的授权文件，可以放到此协议中进行升级，也可以单独请求升级，如下指令：
@@ -186,7 +186,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 
 3)、导入SSL新证书到授权文件：
 {"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}
-说明：连接中间件主服务后可执行，把新的SSL证书放到单独的一个子目录，然后执行此命令，成功时返回SSL证书绑定的域名。单机版用此方法得到新证书的授权文件后，再用上面的2种方法之一更新终端授权。
+说明：在有新证书的电脑上启动浏览器，打开网页http://wrl.zorrosoft.com，点击连接中间件主服务，把新的SSL证书放到单独的一个子目录，然后执行此命令，成功时返回SSL证书绑定的域名。单机版用此方法得到新证书的授权文件后，再用上面的Wrl_UpdateAuth或Wrl_Update更新证书文件到终端，Wrl_UpdateAuth或Wrl_Update请求需要在原来证书还未过期时执行，如果已过期，只能手工下载授权文件替换后执行installwrl.bat完成更新。
 
 5、请求启动弹窗小程序(C++语言)服务，下面以IE控件(ActiveX)演示调用流程及范例：
 1)、打开测试网页，输入连接地址：
