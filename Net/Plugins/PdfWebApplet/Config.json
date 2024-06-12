@@ -4,5 +4,8 @@
   "FirstPage": 1,
   "Zoom": 100,
   "View": "Fit",
+   "ThreadSize" : 3,
+  "MaxThread" : 6,
+  "ThreadPrior" : 0,
   "PORT": 970
 }

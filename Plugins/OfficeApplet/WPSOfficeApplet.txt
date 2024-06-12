@@ -114,14 +114,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-05-30","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"24A003C43126F0B2BA0C8E7E66717F2C","Version":"2.2.15.2","Size":5668864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"95DA6B5010D6FFC1CC8BBC5C84886DCDE8E3A61856DD58FC48E4A58D2436AE399EDC27A9E793805E57E90335193EC6623645DA03BF121E836B7E0D1530B428AF9FA9F7DF5B338662180A3B6AB3321A31839B77EE527DE72E6B5871F158C542C65706298E7B08EEAFA2AAD2A15231EC3E9C73E11CC0E69702330C1F68AEEDE49FA993AF3DF54571AD32CE85EB7F99E4249181A6B190AFC48365FDC97743F0D9C9EA745DB658D9B4CD321680BD4DD7E31D7C6CB2EAD8A85D3470D06482D8727DB43C2B71E83E8C88AC8177E4579B378612147C5E4C3328B03532A14CA0B5B56969EF5449DA31DA04ED6A3DBB2F3E049100B950B4DBEA80CDC5E276995BC937F65F"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-06-12","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"8597B7247B6A533BD89150D79F32856B","Version":"2.2.15.3","Size":5701632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AF86AC3E75F68460090EC3FBCB0AD91A37E4F7B73C51F1BD366DE265B29CFF49A7D809FBEB6F55B59AB489DA12F1E1CFA065EEC86B6B1A577742A0579B0D3AD64174154E49270BEAB49F9D461CDFDE30543061D3893606AAEABD6399E2108924C448A612E26B5B94F60405E4D7CCF4087157C2930A7426D001283F06DDA4F8D16989082DDEAE8F01E4292F2566E87FE4AA1F0D5C10D6D60FC678A01C84E41E3604124F652BCC002B33C26A3795405358B7F279662A2B995EAE1A04954AA94539137B9B995C9E0AED0990E7F55F46E7EFBAFB87456B68B3724429C714C121082FF9C7F7053A2D188511B172D882E0E315D7397D767874AF0D719611EEF6D2F242"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-05-30","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"7EFE011320C5B302A323C7004BB7CB95","Version":"2.2.15.2","Size":5668864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"19CE8ED4BC2292AE3D82E30080B0674E72C80B5D5ABF9E48E5446781D1CE91029F31A7563664E7085831F8736CDEBB55FA84E8E9C0AE15C99EDCE2573ABCA8A658BDC5B06B33067DFBE2643CBDC1ECA177ACC2DE4C9802A3CD977371940A61AB33AD2C965ABDF44E13E7DEDB926C036B4A876F05EAC674A2D3960E2D93AA85F101EA33685D498F8B6400C7E3A6D9A85FC7946F0B946305C6D39B4B23124A765D033F3491EFFB381386176199C8AA357BB8F9F744F4392FFA00B7FB0995F6CB9DD89094A45CD555680B055E4503861DC2777EFC0B571D4A5330AEFF66AEB281D352A020060FC28A4AB6BF1C8E7872FAABAEC1FA06F7875B5FF5D2897EF71676B3"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-06-12","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"A4C2800BDA994FEC6C4F7E671363CA21","Version":"2.2.15.3","Size":5701632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"54FFDBF6D4F7FF74458DD9B37E44016F3DB08C6D92F61547395C03774C5377574EB1BBC309397BE2878EC7E61E4FAE476626004359667D288641742EA4972CADA1CE5B30CAC7C421B16EA250123F6B44F99CD26588C2910432211DFA43973267BE040F2E242658AF18CB87FCCE6687E0549CFA9341CD93FDD20B7F93598FA612A6E7F394DB15E7BFB95341E921316642125B4413331342512F5BC5E57528EAE66FD1DCE5C8D2A914BF404B21E5CFFB2733451A3CAABD5E2825E4361828571E9A092E7D4C14108EA0BEDB35AFD25DC5A9FC74BF0C3C4B298D7C22CFCA5F705AA13984A8A050667B54C601EC25890908EB512D4B1835E909983C94A975CBDCC270"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -179,7 +179,8 @@ ImgFile 支持相对路径，如非全路径，除非启动时指定了数据文
 Save是否插入后自动保存到文档
 Order设置图片和文字关系，适用于WPS文字 5代表图片悬浮于文字之上，如果不需要，设置-1或不传此参数
 Wrap图片文字环绕类型，适用于WPS文字 具体参考定义：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdwraptype
-PTT中可指定插入图片的位置及尺寸
+WPS文字指定Width、Height代表设置图片插入后显示的宽度和高度
+WPS表格、WPS演示中可指定插入图片的位置及尺寸
 Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Height分别为图片的宽度和高度
 {"req":"Office_InsertImg","rid":7,"para":{"ImgFile":"D:/Zorro/test.png","Link":"0","Save":"1","Order":"-1"}}
 或
@@ -340,13 +341,15 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"Office_NetFile","rid":35,"para":{"Type":1,"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0","Info":{}}} Info为上传到服务器返回的信息，务必用JSON格式来描述
 
-36）指定页码转换到图片,默认返回Base64编码数据，适用于WPS文字软件
-Index为页码序号 从1开始编号，传0代表获取当前页
+36）指定页码或范围转换到图片,默认返回Base64编码数据，适用于WPS文字、WPS表格、WPS演示软件
+Index为页码或幻灯片序号 从1开始编号，传0代表获取当前页 WPS文字及WPS演示有效
+Range为表格范围，如不指定，取当前选中表格 WPS表格有效
 File不指定扩展名时Type为图片类型 3默认为JPG 4为PNG 1为BMP 2为GIF
 File为本地文件保存路径,可包含扩展名，可用相对路径，如指定此参数，代表直接把转换结果图片保存到本地，Code返回本地文件全路径
-带公式的文档提取图片出现乱码或需要自动裁剪图片时，可指定参数Math为1解决
+带公式的文档提取图片出现乱码或需要自动裁剪图片时，可指定参数Math为1解决 Word有效
 举例1：{"req":"Office_ConvertImage","rid":36,"para":{"Index":1,"Type":3}}
-举例2：{"req":"Office_ConvertImage","rid":36,"para":{"Index":1,"Math":1,"File":"test.png"}}
+举例2：{"req":"Office_ConvertImage","rid":36,"para":{"Index":1,"Math":1,"File":"test1.png"}}
+举例3：{"req":"Office_ConvertImage","rid":36,"para":{"Range":"A1:D5","File":"test2.png"}}
 返回：{"ret":0,"rid":36,"data":{"Ret":"0","Code":""}} Code默认返回图片的Base64编码数据或图片文件路径
 
 37）获取当前打开文档及其它信息，适用于WPS文字、WPS表格、WPS演示软件
@@ -388,8 +391,18 @@ FontBold是否粗体 FontItalic是否斜体 FontName字体名称(需先UrlEncode
 
 42）设置上传下载地址，PageHi中的上传下载功能需要，适用于WPS文字、WPS表格、WPS演示软件
 PageHi中的上传下载功能需要在启动命令中Web节点的Edit掩码值加512打开
-Down文档下载地址 Upload文档服务器保存地址 
-{"req":"Office_PutNetUrl","rid":42,"para":{"Down":"http://local.zorrosoft.com/Files/template.doc","Upload":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+DownUrl文档下载地址 
+AsynDown 是否异步下载
+DownFileSize 下载文件大小
+DownMD5 下载文件MD5
+DownCookie 下载Cookie
+DownAuth 下载Auth
+UploadUrl文档服务器保存地址
+AsynUp是否异步上传
+UpCookie 上传Cookie
+UpAuth 上传Auth
+UpPara上传参数
+{"req":"Office_PutNetUrl","rid":42,"para":{"DownUrl":"http://local.zorrosoft.com/Files/template.doc","UploadUrl":"http://zorrosoft.com/wp-admin/admin-ajax.php","AsynDown":1,"AsynUp":0,"DownCookie":"","UpCookie":"","DownAuth":"","UpAuth":"","UpPara":{}}}
 返回：{"ret":0,"rid":42,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
@@ -624,6 +637,36 @@ Fit 适配方式 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdpagefit
 以上2个参数设置任意一个代表设置，不传参数代表获取
 {"req":"Office_PageZoom","rid":83,"para":{"Scall":"100"}}
 返回：{"ret":0,"rid":83,"data":{"Ret":"0","Scall":"100","Fit":"3"}}
+
+85）请求链接跳转，适用于WPS文字、WPS表格、WPS演示软件
+Name为超链接名称 PPT不支持Name
+Addr为超链接地址
+Index为序号 仅PPT支持Index
+{"req":"Office_HyperlinkFollow","rid":85,"para":{"Name":"Test"}}
+{"req":"Office_HyperlinkFollow","rid":85,"para":{"Address":"http://www.zorrosoft.com/"}}
+{"req":"Office_HyperlinkFollow","rid":85,"para":{"Index":"1"}}
+返回：{"ret":0,"rid":85,"data":{"Ret":"0"}}
+
+86）请求获取当前表单内容，适用于WPS表格软件
+{"req":"Office_GetCurCell","rid":86,"para":{}}
+返回：{"ret":0,"rid":86,"data":{"Ret":"0","Addr":"C1","Val":""}}
+
+87）请求设置当前表单内容，适用于WPS表格软件
+Formula 设置公式
+Formula 设置值
+{"req":"Office_SetCurCell","rid":87,"para":{"Formula":"A1=1","Val":"test1"}}
+返回：{"ret":0,"rid":87,"data":{"Ret":"0"}}
+
+88）请求获取表单内容，适用于WPS表格软件
+{"req":"Office_GetCellData","rid":88,"para":["A1","A2","B1","C3"]}
+返回：{"ret":0,"rid":88,"data":{"Ret":"0","Data":[]}}
+
+89）请求设置表单内容，适用于WPS表格软件
+Addr 表单地址
+Formula 设置公式
+Formula 设置值
+{"req":"Office_PutCellData","rid":89,"para":[{"Addr":"C1","Val":"test1","Formula":"A1=1"},{"Addr":"C1","Val":"test1"}]}
+返回：{"ret":0,"rid":89,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为WPS文字程序通知

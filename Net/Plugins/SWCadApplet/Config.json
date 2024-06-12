@@ -4,7 +4,7 @@
   "CloseExist" : 0,
   "EmbedWindow" : 0,
   "ThreadSize" : 3,
-  "MaxThread" : 8,
+  "MaxThread" : 6,
   "ThreadPrior" : 0,
   "FullPath" : 1
 }
