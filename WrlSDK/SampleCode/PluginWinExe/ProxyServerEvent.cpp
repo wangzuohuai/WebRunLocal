@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 /*@
 	文件名称：	ProxyServerEvent.cpp
-	文件描述：	实现代理服务事件通知处理
+	文件描述：	实现WebSocket服务事件通知处理
 	编写日期：	2018-10-25 22:00:00
 	程序作者：	汪佐怀
 */
@@ -89,28 +89,28 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 		}
 		case 0x00000004:
 		{
-			if ( pDispParams->cArgs != 3 )
+			if ( pDispParams->cArgs != 4 )
 				return DISP_E_BADPARAMCOUNT;
 			if ( pDispParams->cNamedArgs )
 				return DISP_E_NONAMEDARGS;
 
-			CComVariant varSID,varByte,varLen;
+			CComVariant varSID,varLen,varMoreFlag;
 			VariantInit(&varSID);
-			VariantInit(&varByte);
 			VariantInit(&varLen);
-			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[2]),lcid,0,VT_BSTR);
+			VariantInit(&varMoreFlag);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[3]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx(&varByte,&(pDispParams->rgvarg[1]),lcid,0,VT_PTR);
+			hRet = VariantChangeTypeEx(&varLen,&(pDispParams->rgvarg[1]),lcid,0,VT_UI4);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx(&varLen,&(pDispParams->rgvarg[0]),lcid,0,VT_UI4);
+			hRet = VariantChangeTypeEx(&varMoreFlag,&(pDispParams->rgvarg[0]),lcid,0,VT_BOOL);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = RecByte(varSID.bstrVal,varByte.pbVal,varLen.uiVal);
+			hRet = RecByte(varSID.bstrVal,pDispParams->rgvarg[2],varLen.ulVal,varMoreFlag.boolVal);
 			VariantClear(&varSID);
-			VariantClear(&varByte);
 			VariantClear(&varLen);
+			VariantClear(&varMoreFlag);
 			break;
 		}
 		case 0x00000005:
@@ -154,8 +154,8 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			hRet = VariantChangeTypeEx(&varPara,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			pDispParams->rgvarg[0].bstrVal = NULL;
 			pDispParams->rgvarg[0].vt = VT_BSTR;
+			pDispParams->rgvarg[0].bstrVal = NULL;
 			if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
 			{
 				/// 同步请求，必须用SendMessage
@@ -288,23 +288,33 @@ STDMETHODIMP CProxyServerEvent::RecTextEvent(BSTR bstrSID,BSTR bstrText)
 	return hRet;
 }
 
-STDMETHODIMP CProxyServerEvent::RecByte(BSTR bstrSID,BYTE* pContent,ULONG nLen)
+STDMETHODIMP CProxyServerEvent::RecByte(BSTR bstrSID,VARIANT varContent,ULONG nLen,VARIANT_BOOL bMoreFlag)
 {
 	HRESULT hRet(E_FAIL);
-	if(NULL == bstrSID)
+	if(NULL == bstrSID || !nLen)
 		return hRet;
-	if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
+	/// 获得二进制流数据
+	BYTE *buf = NULL;
+	SafeArrayAccessData(varContent.parray,(void **)&buf);
+	if(NULL != buf)
 	{
-		CString strKey;
-		strKey.Format(L"%ld_%s",nLen,(CString)bstrSID);
-		CRecData* pRecData = new CRecData();
-		if(NULL != pRecData)
-			pRecData->pbContent = pContent;
-		m_DataLock.Lock(L"RecByte");
-		m_CatchData[strKey] = pRecData;
-		m_DataLock.Unlock(L"RecByte");
-		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_BYTE,(WPARAM)bstrSID,(LPARAM)nLen);
+		if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
+		{
+			CString strKey;
+			strKey.Format(L"%ld_%s",nLen,(CString)bstrSID);
+			CRecData* pRecData = new CRecData();
+			if(NULL != pRecData)
+			{
+				pRecData->pbContent = buf;
+				pRecData->bMoreFlag = bMoreFlag;
+				m_DataLock.Lock(L"RecByte");
+				m_CatchData[strKey] = pRecData;
+				m_DataLock.Unlock(L"RecByte");
+			}
+			::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_BYTE,(WPARAM)bstrSID,nLen);
+		}
 	}
+	SafeArrayUnaccessData(varContent.parray);
 	return hRet;
 }
 

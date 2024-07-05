@@ -132,6 +132,9 @@ struct CRecData
 	CString	strReqName;
 	CString	strRecText;
 
+	/// 是否有更多数据
+	VARIANT_BOOL bMoreFlag;
+
 	// 接收的二进制内容
 	BYTE* pbContent;
 };
@@ -235,7 +238,7 @@ public:
 
 	STDMETHOD(RecMsgEvent)(BSTR bstrSID,ULONG nReqID,BSTR bstrReqName,BSTR bstrRecText);
 	STDMETHOD(RecTextEvent)(BSTR bstrSID,BSTR bstrText);
-	STDMETHOD(RecByte)(BSTR bstrSID,BYTE* pContent,ULONG nLen);
+	STDMETHOD(RecByte)(BSTR bstrSID,VARIANT varContent,ULONG nLen,VARIANT_BOOL bMoreFlag);
 
 	STDMETHOD(RecErrEvent)(ULONG nSocketID,ULONG nReqID,BSTR bstrErrInfo);
 	STDMETHOD(CloseEvent)(BSTR bstrSID,BSTR bstrReason);

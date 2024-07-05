@@ -106,14 +106,14 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 1)、请求安装ACAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-06-12","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"695558D6CDF214C84FBD7D9765A69446","Version":"2.2.15.3","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8F7E7A3AAA86A4856D6FB0D2B2014EB70930CE53E49B38512E181F7876F362CA99541E20D0E5923C3DDDAA3AC962A5671EDFDFA429BBE62C76F38B427B12429180715DD9C4A679BE485A9FBDA91701D363485B59C029BAF72779D94F48B1D47E8EC3BA045255753F51629144A0131A3FE1184D78687435F95EA1342104D5F4FAC643CA63A03F32EE3F62D92D9B77A2C4D3794360629F3CCBD16AFAB9B7EBDFFC83E38FE9AE4766EFEFB8388130D51BE028A45B3B7DBAB76B312C3B00B3F07515979935145AF560EAA782C6EC436C4024EE1D72FA6A01B0AF7CE30A8B93BC243136FC7F3A80161AFCD720CBDD22CC5B8B06A0E28A685BDF13705F1D1F572F3F73"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-07-05","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet.pid","MD5":"C6C359C147CF23EF65372A1D70413DA8","Version":"2.2.16.1","Size":4161536,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B7A6F31EFC665255D9D13B2774ACCC11DA0171C565293CCFEB2D6BACB80A40BA91CCA75FB93368DF4A792D7A68015325F29215D7A16AA4AE19F3B6B56CC44E5361E733BAB3F39EA096D37FBB4AEAE616A7186D1F3DF49236E5E169F3ED0BB9F7953D62DBC1B0013C6F2CD62D3C122EE2949D8C51DE8D98F33CBEBDB73D0C57A26516FD37BC950578A65287372FBA4B287BB8CB00435D9EDE7B351A5BA8C41E843FE57D881EEC3DB52F8BEE8033DEE2424B6B4B75888670442657D298B263CB602A9703E7D356E7FD071FFA5A3A505934FE6D82A4B874C2C18978FF953877C15DFBA2F1A50A003B9BED5C562851D1EFAF30E0118561828B19A42D55AB197F31C3"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级ACAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-06-12","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"D0237B7B98CEDA0475292101B3E66EF5","Version":"2.2.15.3","Size":4096000,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4C71956F6ABA4B00C0ABF9BAC2D9B320BB019D7DDE16357C394BCB36A362693035693C64AC02F4DACCB001E112D74D8BAB88A13FA633A663397BF904507D6965D05C49E1E4DD6956985C6F61FECF3F9F01922E56E883172D57C89E25DE4B79FFA3F1E7A5482EAA38BFEF885C24D0903BDDEB3A11C7D3AE08C29DC6E9F7E0D70348B7B225576EA833846BCB6373C244871CB8FBD8B19BF32BABF49F8C149E14DFA0F034C49617967A9CD144779E4ED1E554AD045FEECD1DC72BB552126FE6D89A4AB45A8E784059D7D19DA10C5250F538E2F64A8D276949A5410FCB08342D553C64D7E4ECF20BCA4B56A85AEF317C0B1EED15AC5AACB60BC5BF33DFD57AEE3E0F"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ACAD网页组件","PID":"ACadApplet","Date":"2024-07-05","Desc":"PluginOK之上跨浏览器的dwg、dxf等工程图纸在线编辑小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌AutoCAD等程序进行在线编辑、查看或审阅工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ACadApplet_Update.pid","MD5":"7D1715225C3960ED4EAA4C6E9AFC5EA1","Version":"2.2.16.1","Size":4161536,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9699D69A2238E3773487FA274994080E1D24F8C75674CA6476E9FA4E3B9ECC90E1D9E0F0AF287D1224E1F9E60AFA1D202B63934874A38103E9AE6A8C01B61A5B94C19A7554915CCC80029E26F5483D29C610678F551704F65B3360BF834BD8429BB148D001699FC13EB7F1B60FE011228FE85BD0B2EF3604FD812039CA2925E120590550D2018A78D96EF5FD2D1443B6116D950ABC362F1BD0E0084910D619A7EB6EF4AB4EC172B53972C086D6FACB53D1610EC85E32C7B1B54C0678492F3A7F44B6BB8B4990C4F7270A58D3EC464A7F0A3CCCB700C8B48A21430925BCD39739B1C3CEC8DA18D09B60927EA1382AB5CE8139CD24935D44C8E5EA27DDCEBD4DDF"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -124,29 +124,29 @@ eID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当
 4、ACAD网页组件转调用Autodesk的AutoCAD软件自动化接口、DWG TrueView或Design Review的OCX控件接口，先根据Wrl_ACADApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
-1)、请求获取当前打开文档信息 适用于autocad、DWG TrueView及Design Review软件
+1)、请求获取当前打开文档信息 适用于AutoCAD、DWG TrueView及Design Review软件
 {"req":"CAD_GetCurOpen","rid":1,"para":{}}
 返回：{"ret":0,"rid":1,"data":{"Ret":"0","File":"C:/CADDoc/test.dwg","Edit":0,"Option":0,"Hide":0}}
 
-2)、请求关闭当前打开的文档 适用于autocad、DWG TrueView及Design Review软件
+2)、请求关闭当前打开的文档 适用于AutoCAD、DWG TrueView及Design Review软件
 Save指定是否保存，不指定时根据程序配置判断是否自动保存
 {"req":"CAD_Close","rid":2,"para":{"Save":0}}
 返回: {"ret":0,"rid":2,"data":{"Ret":"0"}} Ret为0代表成功
 
-3)、请求打开文档 适用于autocad、DWG TrueView及Design Review软件
+3)、请求打开文档 适用于AutoCAD、DWG TrueView及Design Review软件
 Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 PW打开密码
 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 {"req":"CAD_Open","rid":3,"para":{"Open":"D:/Zorro/test.dwg","PW":"","Edit":0,"Hide":0}}
 返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
 
-4）请求保存，如是新建文档，会创建一个临时文件名保存，适用于autocad软件
+4）请求保存，如是新建文档，会创建一个临时文件名保存，适用于AutoCAD软件
 如果指定了CAD_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"CAD_Save","rid":4,"para":{}}
 {"req":"CAD_Save","rid":4,"para":{"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
-5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于autocad软件
+5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于AutoCAD软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 如果指定了CAD_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 {"req":"CAD_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.dxf"}}
@@ -155,7 +155,7 @@ Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 {"req":"CAD_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/upload.dwg","Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":5,"data":{"Ret":"0","FilePath":""}} 其中FilePath为实际保存路径
 
-6)、打开文档转换到其它格式文档，适用于autocad软件
+6)、打开文档转换到其它格式文档，适用于AutoCAD软件
 SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如操作当前已打开文档，不用设置
 DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先编码
 当选中某些图形元素时，支持转换为bmp、jpg、png、wmf等文件
@@ -163,16 +163,16 @@ DestFile转换目标路径，如有特殊字符或中文的需要用URLCode先�
 {"req":"CAD_ConvertTo","rid":6,"para":{"SrcFile":"D:/Zorro/test1.dwg","DestFile":"D:/Zorro/test1.pdf","PW":""}}
 返回: {"ret":0,"rid":6,"data":{"Ret":"0"}} Ret为0代表成功
 
-7）创建指定目录 适用于autocad、DWG TrueView及Design Review软件
+7）创建指定目录 适用于AutoCAD、DWG TrueView及Design Review软件
 Dir为子目录名称，可为全路径，需要确保有创建子目录权限，非全路径时，为启动指定数据文件路径DataPath的子目录，没指定DataPath时为中间件data的子目录
 {"req":"CAD_CreateDir","rid":7,"para":{"Dir":"/doc"}}
 返回：{"ret":0,"rid":7,"data":{"Ret":"0"}}
 
-8）切换全屏编辑状态 适用于autocad、DWG TrueView及Design Review软件
+8）切换全屏编辑状态 适用于AutoCAD、DWG TrueView及Design Review软件
 {"req":"CAD_SwitchFullScreen","rid":8,"para":{}}
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
 
-9）网络文件操作 适用于autocad、DWG TrueView及Design Review软件
+9）网络文件操作 适用于AutoCAD、DWG TrueView及Design Review软件
 Type 1上传文件 0下载文件
 Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
@@ -184,7 +184,7 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
 
-10)、打印文档，适用于autocad软件
+10)、打印文档，适用于AutoCAD软件
 SrcFile打开文档路径，如有特殊字符或中文的需要用URLCode先编码 PW打开密码，如操作当前已打开文档，不用设置
 Count 打印份数，不设置默认1
 {"req":"CAD_Print","rid":10,"para":{"SrcFile":"D:/Zorro/test1.dwg","PW":"","Count":1}}
@@ -195,8 +195,28 @@ Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
 Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
 Wait为等待多少秒自动消失 0代表不自动消失
 Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
-{"req":"CAD_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
-返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+{"req":"CAD_MsgBox","rid":11,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":11,"data":{"Ret":"0"}}
+
+12）请求在当前光标位置或指定位置插入图片 ImgFile为图片路径(支持网络路径)，有中文或特殊字符等需要UrlEncode编码，适用于AutoCAD软件
+ImgFile 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用，可以指定服务器可下载图片地址
+指定X、Y、Z插入坐标点位置，否则需要点选插入位置
+指定Width、Height代表设置图片插入后显示的宽度和高度
+Layer：指定插入的图层名称
+ScaleFactor：指定缩放因子，默认1
+RotationAngle：指定旋转角度，默认0
+Save 是否插入后自动保存
+{"req":"CAD_InsertImg","rid":12,"para":{"ImgFile":"D:/Zorro/test.png","Save":"1"}}
+或
+{"req":"CAD_InsertImg","rid":12,"para":{"ImgFile":"http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png","Save":"1"}}
+返回：{"ret":0,"rid":12,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
+
+13）请求查找图纸中指定的文字并替换，适用于AutoCAD软件
+Src 需要被替换的文字，有中文或特殊字符等需要UrlEncode编码
+New：替换文字内容，有中文或特殊字符等需要UrlEncode编码
+Block：是否支持替换块中文字，默认0
+{"req":"CAD_ReplaceText","rid":13,"para":{"Src":"OldText","New":"NewText","Block":"1"}}
+返回：{"ret":0,"rid":13,"data":{"Ret":"0"}}
 
 B、DWG TrueView专用功能请求：
 

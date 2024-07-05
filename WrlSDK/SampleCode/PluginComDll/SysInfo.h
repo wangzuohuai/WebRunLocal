@@ -25,7 +25,11 @@ class ATL_NO_VTABLE CSysInfo :
 #else
 	public IDispatchImpl<ISysInfo, &IID_ISysInfo, &LIBID_PluginComExeLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
 #endif
+#ifdef WRL_VRSION_STANDALONE
 	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_WrlBase, /* wMajor = */ 1>
+#else
+	public IDispatchImpl<IWrlConn, &__uuidof(IWrlConn), &LIBID_ZbaBase, /* wMajor = */ 1>
+#endif
 {
 protected:
 	/// WEB SOCKET连接对象
@@ -101,7 +105,7 @@ public:
 
 	STDMETHOD(RecJson)(ULONG nReqID,BSTR bstrReqName,BSTR bstrContent);
 
-	STDMETHOD(RecByte)(BYTE* pContent,ULONG nLen)
+	STDMETHOD(RecByte)(BYTE* pContent,ULONG nLen,VARIANT_BOOL bMoreFlag)
 	{
 		return S_FALSE;
 	}

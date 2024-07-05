@@ -139,7 +139,7 @@ public:
 
 	static CString GetErrInfo(DWORD dwErrCode, HINSTANCE hLib = NULL);
 
-	static BOOL WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen,BOOL bEndFlag = FALSE);
+	static DWORD WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen,BOOL bEndFlag = FALSE);
 	
 	static HANDLE WriteToFile2(const CString& strDataFile,LPCVOID lpBuffer,DWORD nlen,BOOL bEndFlag);
 
@@ -149,7 +149,7 @@ public:
 	static BOOL WriteLogToFile(const CString& strLogInfo,const CString &strModuleName = _T(""),\
 		USHORT eLogType = 1);
 
-	static BOOL WriteLogToFile2(const CString& strLogFile,const CString& strLogInfo,\
+	static DWORD WriteLogToFile2(const CString& strLogFile,const CString& strLogInfo,\
 		const CString &strModuleName = _T(""),USHORT eLogType = 1);
 
 	static CString GetModulePath(HMODULE hModule = NULL);

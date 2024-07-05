@@ -1421,11 +1421,11 @@ CString GetLogFile(USHORT nNodeID = 0)
 	return g_strLogFile;
 }
 
-BOOL CBaseFuncLib::WriteLogToFile2(const CString& strLogFile,\
+DWORD CBaseFuncLib::WriteLogToFile2(const CString& strLogFile,\
 		const CString& strLogInfo,const CString &strModuleName,USHORT eLogType)
 {
 	if(strLogFile.IsEmpty() || strLogInfo.IsEmpty())
-		return FALSE;
+		return -1;
 	g_WriteLogLock.Lock();
 	DWORD dwFileSize = 5*KILO_DIGEST_LENGTH*KILO_DIGEST_LENGTH;/// 5MB
 	if(GetFileSize(strLogFile) > dwFileSize)
@@ -1489,13 +1489,13 @@ BOOL CBaseFuncLib::WriteLogToFile2(const CString& strLogFile,\
 	if(NULL == szLog)
 	{
 		strLog.Empty();
-		return FALSE;
+		return -2;
 	}
-	BOOL bWriteFlag = WriteToFile(strLogFile,(BYTE *)szLog,nLen,TRUE);
+	DWORD nWriteFlag = WriteToFile(strLogFile,(BYTE *)szLog,nLen,TRUE);
 	delete []szLog;
 	szLog = NULL;
 	strLog.Empty();
-	return bWriteFlag;
+	return nWriteFlag;
 }
 
 BOOL CBaseFuncLib::WriteLogToFile(const CString& strLogInfo,
@@ -1585,15 +1585,19 @@ HANDLE CBaseFuncLib::WriteToFile2(const CString& strDataFile,LPCVOID lpBuffer,DW
 	return hFileOpen;
 }
 
-BOOL CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen,BOOL bEndFlag)
+DWORD CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen,BOOL bEndFlag)
 {
-	g_WriteLogLock.Lock();
+	BOOL bLockFlag = FALSE;
+	if(0 == g_strLogFile.CompareNoCase(g_strLogFile))
+		bLockFlag = TRUE;
+	if(bLockFlag)
+		g_WriteLogLock.Lock();
 	HANDLE hFileOpen = NULL;
 	hFileOpen = ::CreateFile(strDataFile,GENERIC_WRITE,FILE_SHARE_READ,\
 		NULL,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL);
 	if(hFileOpen == INVALID_HANDLE_VALUE)
 	{
-		::DWORD dwLastErr = ::GetLastError();
+		DWORD dwLastErr = ::GetLastError();
 		int nIndex = 5;
 		/// 不是拒绝访问
 		while(ERROR_ACCESS_DENIED != dwLastErr && ERROR_INVALID_ACCESS != dwLastErr
@@ -1607,7 +1611,7 @@ BOOL CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen
 		}
 		if(hFileOpen == INVALID_HANDLE_VALUE)
 		{
-			if(ERROR_ACCESS_DENIED == dwLastErr)
+			if(bLockFlag && ERROR_ACCESS_DENIED == dwLastErr)
 			{
 				/// 拒绝访问，写入临时目录
 				int nFind = strDataFile.ReverseFind(L'\\');
@@ -1640,8 +1644,9 @@ BOOL CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen
 					hFileOpen = NULL;
 				}
 			}
-			g_WriteLogLock.Unlock();
-			return FALSE;
+			if(bLockFlag)
+				g_WriteLogLock.Unlock();
+			return dwLastErr;
 		}
 	}
 	if(!bEndFlag)
@@ -1651,24 +1656,27 @@ BOOL CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nlen
 	}
 	else
 		::SetFilePointer(hFileOpen,NULL,NULL,FILE_END);
+	DWORD dwLastErr = ::GetLastError();
 	DWORD dwWriteLen = 0;
 	BOOL bWriteFlag = ::WriteFile(hFileOpen,pData,nlen,&dwWriteLen,NULL);
 	if(!bWriteFlag)
 	{
-		DWORD dwErrCode = ::GetLastError();
-		if(ERROR_DISK_FULL == dwErrCode)
+		dwLastErr = ::GetLastError();
+		if(ERROR_DISK_FULL == dwLastErr)
 		{
 			/// 磁盘空间不足，删除临时文件
 			int nFind = strDataFile.ReverseFind(L'\\');
 			DelDirFile(strDataFile.Left(nFind + 1),L"*.bak",FALSE,FALSE);
+			bWriteFlag = ::WriteFile(hFileOpen,pData,nlen,&dwWriteLen,NULL);
 		}
 	}
+	if(!bWriteFlag)
+		dwLastErr = ::GetLastError();
 	::CloseHandle(hFileOpen);
 	hFileOpen = NULL;
-	g_WriteLogLock.Unlock();
-	if(dwWriteLen)
-		return TRUE;
-	return FALSE;
+	if(bLockFlag)
+		g_WriteLogLock.Unlock();
+	return dwLastErr;
 }
 
 DWORD CBaseFuncLib::ReadAllData(const CString& FileName,BYTE **ppData)

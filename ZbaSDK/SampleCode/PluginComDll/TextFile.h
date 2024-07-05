@@ -134,7 +134,7 @@ public:
 
 	STDMETHOD(RecJson)(ULONG nReqID,BSTR bstrReqName,BSTR bstrContent);
 
-	STDMETHOD(RecByte)(BYTE* pContent,ULONG nLen)
+	STDMETHOD(RecByte)(BYTE* pContent,ULONG nLen,VARIANT_BOOL bMoreFlag)
 	{
 		return S_FALSE;
 	}

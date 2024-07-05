@@ -205,7 +205,8 @@ namespace PluginExeDemo
             /// <param name="bstrSID"></param>
             /// <param name="Content"></param>
             /// <param name="nLen"></param>
-            public void RecByteEvent(string bstrSID, Object Content, uint nLen)
+            /// <param name="bMoreFlag"></param>
+            public void RecByteEvent(string bstrSID, Object Content, uint nLen, bool bMoreFlag)
             {
                 m_Form.textBox2.AppendText("Receive binary stream:");
                 m_Form.textBox2.AppendText(Content.ToString());

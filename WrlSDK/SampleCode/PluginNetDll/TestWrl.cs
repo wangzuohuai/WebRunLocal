@@ -54,7 +54,7 @@ namespace PluginNetDll
             return "{\"ret\":0,\"data\":{\"Ret\":0,\"Code\":1}}";
         }
 
-        void IWrlConn.RecByte(ref byte pContent, uint nLen)
+        void IWrlConn.RecByte(ref byte pContent, uint nLen,bool bMoreFlag)
         {
             /// 收到二进制数据流，特殊用途
             WriteLog("PluginNetDll", "A binary data stream is received");
