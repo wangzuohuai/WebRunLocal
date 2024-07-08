@@ -35,7 +35,7 @@ v实际显示首先会基于Web或Url中指定的坐标和大小，再根据Ifra
 Option：11是启动金山文字 12是启动金山表格 13是启动金山演示 15是Adobe Acrobat的OCX控件打开pdf 16是启动WPS PDF程序打开pdf(不支持OLE嵌入)
 Version：0:OLE嵌入方式加载 1:完整加载(支持文档对比操作) 2:OLE嵌入方式加载(与0差别在于WPS专业版及微软Office高版本提前启动Office进程以支持多文档及加快启动性能) Option为5时Version自动默认为1 WPS非专业版不支持文档对比及导出OFD文件等操作
 Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
-此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 也可在Web中指定
+此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 如果使用字节流文件打开，这里不需要指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器并启动金山文字程序
@@ -145,7 +145,7 @@ A、常用功能请求：
 打开前如已有文档打开，会自动关闭上一个文档，避免同时打开多个文档
 Open打开文档(不指定时新建文档) 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
-Byte 指定打开的二进制文件流长度
+如果需要支持字节流文件打开，需要指定参数Byte，代表文件流的长度，此请求返回后前端继续发送字节流即可
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
 打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc","Edit":0}}
@@ -153,6 +153,7 @@ Byte 指定打开的二进制文件流长度
 
 4）请求保存，适用于WPS文字、WPS表格、WPS演示软件，如是新建文档，会创建一个临时文件名保存
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_Save","rid":4,"para":{}}
 {"req":"Office_Save","rid":4,"para":{"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":4,"data":{"Ret":"0","FilePath":"","Info":{}}} 其中FilePath为实际保存路径 Info为上传接口返回的数据包，务必用JSON来描述
@@ -161,6 +162,7 @@ Byte 指定打开的二进制文件流长度
 WPS文字支持另存为OFD文件(Format是25 个人版不支持)或者UOF文件(Format是103) NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
 当另存为ppt或pptx时，可指定参数EmbedFonts是否嵌入TrueType字体，默认嵌入
+如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc"}}
 {"req":"Office_SaveAs","rid":5,"para":{"Format":25,"NewFile":"D:/Zorro/test.ofd"}}
@@ -170,6 +172,7 @@ WPS文字支持另存为OFD文件(Format是25 个人版不支持)或者UOF文件
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于WPS文字、WPS表格软件
 NewFile支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/testExport.pdf","Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}

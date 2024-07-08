@@ -7,7 +7,7 @@
 
 2、IE控件小程序控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
-HTTP网页在线测试：http://local.zorrosoft.com/iefull.html  HTTPS网页在线测试：https://local.zorrosoft.com/ieframe.html
+HTTP网页在线测试：http://local.zorrosoft.com/iefull.html  HTTPS网页在线测试：https://local.zorrosoft.com/iepage.html
 如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
 前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
@@ -52,13 +52,13 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 注意：Open和Web如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":2,"Version":"0","Option":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
+{"req":"Wrl_IEPage","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":2,"Version":"0","Option":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Url": "http://local.zorrosoft.com/IEApplet.html","Open":"http://www.zorrosoft.com"}}
 
 自动识别当前浏览器指定位置和大小启动(指定共享Cookie，不需要Url)：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"Version":"0","Option":"0","Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","Web":"UID=zorro;Cur=2"}}
+{"req":"Wrl_IEPage","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":66,"Left":20,"Top":230,"Width":480,"Height":320,"Version":"0","Option":"0","Left":20,"Top":230,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","Web":"UID=zorro;Cur=2"}}
 
 自动识别当前浏览器指定位置自动适配网页大小启动：
-{"req":"Wrl_IEApplet","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"Version":"0","Option":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","Web":"UID=zorro;Cur=2"}}
+{"req":"Wrl_IEPage","rid":2,"para":{"Type":"0","Title":"IE Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"Version":"0","Option":"0","IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Open":"http://www.zorrosoft.com","Web":"UID=zorro;Cur=2"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/ieframe.html
@@ -98,7 +98,7 @@ ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
 {"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
 
 6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
-ID为Wrl_IEApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+ID为Wrl_IEPage启动小程序时返回的ID值，Alpha为透明度百分比，1-100
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
@@ -130,7 +130,7 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"IEApplet","Type":8}}
 
-4、IE控件小程序转调用ActiveX接口，先根据Wrl_IEApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、IE控件小程序转调用ActiveX接口，先根据Wrl_IEPage请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 1) 停止
 请求：{"req":"IE_Stop","rid":50,"para":{}}
