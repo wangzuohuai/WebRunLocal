@@ -36,51 +36,56 @@
             // 
             // IEBrowser
             // 
-            this.IEBrowser.Location = new System.Drawing.Point(12, 12);
-            this.IEBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.IEBrowser.Location = new System.Drawing.Point(16, 15);
+            this.IEBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IEBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.IEBrowser.Name = "IEBrowser";
-            this.IEBrowser.Size = new System.Drawing.Size(699, 604);
+            this.IEBrowser.Size = new System.Drawing.Size(932, 755);
             this.IEBrowser.TabIndex = 0;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(732, 12);
+            this.textBox1.Location = new System.Drawing.Point(976, 15);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(459, 258);
+            this.textBox1.Size = new System.Drawing.Size(611, 322);
             this.textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(732, 318);
+            this.textBox2.Location = new System.Drawing.Point(976, 398);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(459, 298);
+            this.textBox2.Size = new System.Drawing.Size(611, 372);
             this.textBox2.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(732, 281);
+            this.button1.Location = new System.Drawing.Point(976, 351);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 26);
+            this.button1.Size = new System.Drawing.Size(100, 32);
             this.button1.TabIndex = 3;
-            this.button1.Text = "发送内容";
+            this.button1.Text = "Send";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 628);
+            this.ClientSize = new System.Drawing.Size(1604, 785);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.IEBrowser);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
-            this.Text = "C#弹窗小程序范例";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "Pop-up Applet Sample(C#)";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_Closed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

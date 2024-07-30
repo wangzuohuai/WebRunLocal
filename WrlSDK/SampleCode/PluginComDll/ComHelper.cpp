@@ -56,5 +56,4 @@ void CComHelper::FreeAllHandle()
 	}
 	m_mapInstance.clear();
 	m_DataLock.Unlock(L"FreeAllHandle");
-	::CoFreeUnusedLibraries();
 }

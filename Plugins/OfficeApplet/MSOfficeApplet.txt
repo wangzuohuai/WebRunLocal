@@ -20,7 +20,7 @@ Url：加载小程序所在的网页实际地址，在网页中指定小程序�
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit 代表编辑权限(除只读1、512、1024都支持外，其它只有WORD才支持，4、8和1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Edit 代表编辑权限(除1、512、1024都支持外，其它只有WORD才支持，1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
 	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User 代表编辑文档的用户名称 
 	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-07-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"09DED4347C7C8017B675F2D85417A075","Version":"2.2.16.1","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"382ABC6C7BFC4D54C9FEB257FED8EC8D029283D967D7362DDC50980360EE0F59CDD0E9C37E64B5CB6686F72E07B24D7B117371FE8463AA65DD395652D10D8E5DAB6C88C3B6B131CBD991B3E973774D80BF0A41609525D22FD0E4C6253F4118BBE0E1F732B4307341B3FFDDAEAD5B7B135FD097DAEB4EFFB610F23419E2334A1783D120E282C804C12F9F5DF965FB180A28AD1880BFEAE3BF62F6127EB25CF8C488B89C85FEE806994861925C18DFEC973903DF6B2AD336117492547DB6415A896553FDDBADA0FDC6002C27EF9D29A63B8480344E0193A17FC349E6039673D483F507E164BA12A0F7F7CB747308B1E046BACC0F68720453F4E78A1E67CBB216B0"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-07-29","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"F21C20C5CF8AD9657BC29E4236A93D83","Version":"2.2.16.2","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7F0524280A3B610BCEE9BB389C145494D93A6E38FF831593C9DFB4058333DB18DFAC4CC43E5B364A124995D8E511635F05804E8AE0421EE6612A71D6BCE3A45AE07B91B4A8ACF16EE6B731584E7B00A70CC645FA7F4946D5EAA838F50E02FA72EDEC91340EAC248AD7F284ECFE4FB6DC8A2368297C249918BF2D354F447E68A257EF563B67FE0F17365C4DBFCE8C69DCBC144E30A34AD678FCC435DD5785EC24774CB5D06B3C7E6030B9132ADF5278FD3E671ACA0D04B7D1FC134C9607C38047CFB95867586409875F344A2B89A9690B4574D8BEF1F5B3607EFA120A4A2F1339F831A44AB8470740CB27A4A77EE525346999F5481901F1828B27A32CD698234A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-07-05","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"0144B6213CFC2114258E28960FEB1072","Version":"2.2.16.1","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6A3A7412AC46977B6C6CC5B508509958886A99D6E67886540339EDF9B6A1F843B7FBE3DA9EDC8EA28A512922C8C8F42E69A6FF9C1D3D517A23731F97FA7DC18298A91A969A2ADA613B19E45AFA477F40A20B2145D57935E75882A7436C4E147E5E3B170C83B302D7B1CA128152ECE141EE49EA49D6FE348C84ABE09336D4B9D5A53AE49ED0B3618860371BC3BF2A2C4156C42F053CB39AE24A4C42502722F2AD267BB3A577872B13B548629D1C87926CBC3DC8300AF514542FC36F6F363F32421AD7B492DD8A395EF81A785014FAA04A50601DAB4A9C5DF2D6C5494C2B1E5B5175B97BBD107DD07B083098D599B3CB056B8E2FCBAE1FC06219A2A0DD0E00EAC8"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-07-29","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"1BFAE0DBDFE515A4971B770A5A4DADA3","Version":"2.2.16.2","Size":5636096,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"69F042B42CBFD717FF2F677ABE4A3E9FC28E5DE17188CC65208B8D3D15046D4D6558402B43BA990BA60FB39B090F6ED51E77B02A749C30F2DA41FB9F6582ADD22559AEA7E944E8304DC419584B8DDFC4BDA293C45BEE2AB71BDA02A6AA8D79EFD32FC59E04824EE64D51DDD2AD84E30016EF732B6DBE8D0718316ABA5724EFFA9D8EC40650A607375D05F5F285A602540290968950136FF29B259BB8EB12158C1EB075C772A6DD1E07DAE11390C0AE412F1A8892507E895FC2B4B364C7C2C1CF00E15B5D536119E1B031648BDEC0DE2069966098FCC4D875D79740A6CE348E5522CC0A597770D8D13FBBCA407DE9CEA3C92FDD19B70D951AB9ECFE143D116ACE"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -633,6 +633,15 @@ Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取�
 Init 初始化
 {"req":"Office_FloatWebInjectScript","rid":71,"para":{"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"}}
 返回：{"ret":0,"rid":71,"data":{"Ret":0}}
+
+72) 请求控制修订显示内容，适用于Word软件
+Mode 修订的显示模式 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevisionsmode
+View 视图类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevisionsview
+Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevisionsmarkup
+以上参数可只选择设置一个，如果不设置，代表获取此参数值
+也可以直接设置Toggle为1 代表切换(显示或隐藏)包含批注和修订的文档中的所有修订
+{"req":"Office_RevisionsFilter","rid":72,"para":{"Mode":0,"Markup":2,"View":0}}
+返回：{"ret":0,"rid":72,"data":{"Ret":0}}
 
 80）请求开始播放幻灯片，适用于PPT软件
 Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始

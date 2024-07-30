@@ -1,3 +1,5 @@
 {
-  "PORT": 980
+  "PORT": 980,
+  "WMPOS": 1,
+  "WMCOLOR": 1
 }

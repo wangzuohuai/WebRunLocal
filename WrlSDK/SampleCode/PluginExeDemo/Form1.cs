@@ -260,6 +260,15 @@ namespace PluginExeDemo
                 m_Form.textBox2.AppendText(bstrReason);
                 m_Form.textBox2.AppendText("\r\n");
             }
+
+            /// <summary>
+            /// WS收到操作码，如收到文字、字节流等
+            /// </summary>
+            /// <param name="bstrSID"></param>
+            /// <param name="nOpCode"></param>
+            public void OpCodeEvent(string bstrSID, ushort nOpCode)
+            {
+            }
         }
     }
 }

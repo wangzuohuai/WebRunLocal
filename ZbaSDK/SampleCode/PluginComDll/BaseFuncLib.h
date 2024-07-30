@@ -24,9 +24,12 @@
 //////////////////////////////////////////////////////////////////////
 
 #pragma once
-
+#include <map>
 #include <atlcomtime.h>
 #include <atltypes.h>
+
+/// 长整型和字符串集合
+typedef std::map <ULONG_PTR,CString>	ULONGSTRING_MAP;
 
 /// 小程序自身配置文件
 #ifndef WRL_SELFCONFIG
@@ -65,6 +68,9 @@ OS_WINADV					=	1100000,
 
 #define CREATE_MYTHREAD(func,lpParam,dwID) (::CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)func,\
 	(LPVOID)lpParam,0,(dwID) ? &dwID:0))
+
+typedef DWORD ( __stdcall *lpGetModuleFileNameEx)(HANDLE hProcess,HMODULE hModule,
+  LPWSTR lpFilename,DWORD nSize);
 
 class CBaseFuncLib
 {
@@ -133,9 +139,13 @@ public:
 	static BOOL ProcRun(ULONG nPID);
 
 	static BOOL TerminateProc(DWORD dwPID);
+
+	static lpGetModuleFileNameEx GetMyModuleFileName(HINSTANCE &hPsModule);
 	
 	static DWORD FindProc(const CString& strExeFile,DWORD &dwPID,DWORD dwOtherID = 0,\
 		ULONG nGetFlag = 0,const CString& strFileName = L"");
+	
+	static void FindMapProc(const CString& strExeFile,ULONGSTRING_MAP &mapInfo);
 
 	static CString GetErrInfo(DWORD dwErrCode, HINSTANCE hLib = NULL);
 
@@ -228,11 +238,6 @@ public:
 	{
 		m_bLogFlag = bLogFlag;
 	}
-
-protected:
-	CThreadDataLock(const CThreadDataLock&);
-
-	CThreadDataLock& operator=(const CThreadDataLock&);
  
 	inline BOOL IsLock()
 	{
@@ -240,6 +245,11 @@ protected:
 			return FALSE;
 		return TRUE;
 	}
+
+protected:
+	CThreadDataLock(const CThreadDataLock&);
+
+	CThreadDataLock& operator=(const CThreadDataLock&);
  
 	/// 是否启用日志 
 	BOOL			m_bLogFlag;

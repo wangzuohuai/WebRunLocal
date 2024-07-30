@@ -220,6 +220,30 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			VariantClear(&varPort);
 			break;
 		}
+		case 0x00000009:
+		{
+			if ( pDispParams->cArgs != 2 )
+				return DISP_E_BADPARAMCOUNT;
+			if ( pDispParams->cNamedArgs )
+				return DISP_E_NONAMEDARGS;
+			CComVariant varSID,varOpCode;
+			VariantInit(&varSID);
+			VariantInit(&varOpCode);
+			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			hRet = VariantChangeTypeEx(&varOpCode,&(pDispParams->rgvarg[0]),lcid,0,VT_UI2);
+			if FAILED(hRet)
+				return DISP_E_BADVARTYPE;
+			if(NULL != m_hMsgWnd && ::IsWindow(m_hMsgWnd))
+			{
+				/// 通知收到WS操作码，比如收到文本、字节流等标记
+				::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_OPCODE,(WPARAM)varSID.bstrVal,(LPARAM)varOpCode.uiVal);
+			}
+			VariantClear(&varSID);
+			VariantClear(&varOpCode);
+			break;
+		}
 		default:
 			break;
 	}

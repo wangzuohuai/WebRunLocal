@@ -1,7 +1,7 @@
 {
   "COM": "vlc/axvlc.dll,PHVideoCom.dll,X64/PHVideoCom.dll,PHWebControl.dll,X64/PHWebControl.dll,VideoProxyPlayer.exe,X64/VideoProxyPlayer.exe",
   "Caching":5,
-  "AudioCache":0,
+  "AudioCache":100,
   "Link":0,
   "Stream":1,
   "AutoLoop":1,

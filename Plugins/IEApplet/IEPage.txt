@@ -42,8 +42,8 @@ Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并�
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 128防截屏
-Version 指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-Web：网页配置，实现Chrome等浏览器的网页和IE内核的网页共享Cookies以自动登录，指定时无需Url,另外设置小程序的显示位置和大小
-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
+Version：指定加载的IE版本，0不指定，比如9999是IE9标准模式 8888是IE8标准模式 8000是IE8兼容模式 7000是IE7 详细定义参考：https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/general-info/ee330730(v=vs.85)?redirectedfrom=MSDN#browser_emulation
+Web：网页配置，可实现Chrome等浏览器的网页和IE内核的网页共享Cookies以自动登录，指定Web时无需Url参数,需要设置小程序的显示位置和大小，对应参数Left、Top、Width、Height等
 Option：1指定启动64位版
 Open：为需要用IE内核打开的Url地址或本地网页地址
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
@@ -115,14 +115,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装IE控件小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2024-07-05","Desc":"PluginOK之上跨浏览器的IE内核网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage.pid","MD5":"A8D0A277FCF034A050E834DF6CC5F077","Version":"2.2.16.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"40AA583E1081A1F782B9756A4506A87A4B05C623873BC39E13A11471C297A69C39314287E9B5A52FF6643D392217A74E1942DCD7D3D2C08D50B5355A13F20B3A0C7ED306CFF10E933C8B5F814AD1E2C78CC65432839B664B17EE39703A919340D25B898C5632DA9115D3BD41FC232253548F0DA2E9DB51E1D88FC68C992D858ACA966F80A43B6C9C9C5EA5B82A7B6D4D85426F1C72FE71C1ADA08A298BE93BC668B7B6F429F7084A8D251DC12CDBD6AF24EAAA50CD525DF00C5473E3A6A6C5FE0D971202160453226F84DD2861C8D4571FD37440161E11B3FE3E64E9A75CBD410F450B79DD8A61EFFEA164619490E7B9CC1E660FD0C4F9823DD565B0A90335A6"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2024-07-29","Desc":"PluginOK之上跨浏览器的IE内核网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage.pid","MD5":"0920171AD79E6544B3FAFBC888720A75","Version":"2.2.16.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4613852B2A42677486FCFED5873083FBD6C87AD83E423D8454BE4F43E61E82A0FEE40838A8087F94354FF24B307157F63DA71D1C16B7DD9A0B697D8A1A1CFAB06FF57925A9134AEF3B62C8A4FD900BFDF68347349560BD059057FEFFB8868FB97422C6CA3283DAB54E27948CF05FF9F20B6C159D778B5F391E436EDCB85BF4CB46DA019B6D8D35BC7D6020E30012A0A9CFAC79F0FAF61503E6FF1F37C91738274E6310168A2B9AED1029BEE604C580F1307E31A4D7E265221359224536188F2A2D81FE9A9EE41C2957AF842AF03CDECDADF512C063DC4EFBE1C7AA36421561CD6C5916857E16B38EA9D0CDF31ECF2A9E2796D8B1BDB43F491836C4C5D5C92E5E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级IE内核内嵌小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2024-07-05","Desc":"PluginOK之上跨浏览器的IE内核网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage_Update.pid","MD5":"40CB155D6B53233D2DEAF568C472E126","Version":"2.2.16.1","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"11FC2244BFCE15EE46482FDD1AF499C4AC63C0A138B19E6BEB399832CE08DB6822074DE2FF0A83D206C87E7BD447D90AC0CCF1D404312D47A51E0E8BDBC739FB83AB38F793DE09BBD2D68DD93F8EF19CA173E800243B6B3D9121DB844B3B215F25A1AF620EB23008F931E0A837F86B288A026D937158A646AA3D28820A6E127262749C5771E63ABF9EDD89DE8491C32C092BD2E8FA59ADB24BD8939C52949CD4ECCD38BF157165AAFE5BD014EBAC7DDFFD806A1A21DB0B14599A5423A63C91596386EE3CD953B789E341DB40E0B769C9FF8C0C59BE7952167780F3AE437C312EB253C318DE2C8E2A6176829E2A1AC026959BC9505867067AB665FF3FCD31C66A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"IE控件小程序","PID":"IEApplet","Date":"2024-07-29","Desc":"PluginOK之上跨浏览器的IE内核网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/IEPage_Update.pid","MD5":"9CF225059CA3B72DB600B401A4988C2B","Version":"2.2.16.2","Size":753664,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3AA98C330599387BD7763D12A5745D90DBB04AD25307F58D8B8EE03186B27CAFA4414AAF1AF2F20F6A037C0DDABCD5BEB6F94085EC4E0CFA6B14586AB91EF7A413B19629FAAB480DEDCA29F99318D2F3DF80EBA8B19DFC0CDBD07242F486719A386DDAC1E2B1800F0BFF92B699A254AF6B68A13E9D9685277B83FE37D64E9755178DEDC4CCC534BE887CB1DA5F946322792B877279AED84A105D56F358D44B65DEAA03F7D99D1E2BF5B96029E0CF3B690AC357C4776B788972A46B40BF4F45B440AE7627BD669289DA208351A715A36E5A85D26A7D9E1CAE788AA08840BD0CC828633FBC1E85B1610C7E528477DDC1A9ED3F1B88F0C6A84F0E122BB046B5DFC0"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -159,8 +159,10 @@ Ret为调用ActiveX对应函数返回值，0代表正常
 Ret为调用ActiveX对应函数返回值，0代表正常
 
 6) 导航到指定网页
-Url为网页地址，需进行URLCode编码，如额外指定Type为0或具体的浏览器类型，代表用非IE浏览器新标签页来打开
-请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com"}}
+Url为网页地址，需进行URLEncode编码，如额外指定Type为0或具体的浏览器类型，代表用非IE浏览器新标签页来打开
+Cookies 导航时用的Cookies，需进行URLEncode编码
+Referer 导航时用的Referer，需进行URLEncode编码
+请求：{"req":"IE_Navigate","rid":55,"para":{"Url":"http://www.baidu.com","Cookies":"","Referer":""}}
 返回：{"ret":0,"rid":55,"data":{"Ret":"0"}}
 Ret为调用ActiveX对应函数返回值，0代表正常
 
@@ -186,9 +188,15 @@ Para函数参数
 Ret为调用返回值，0代表正常
 FuncRet调用函数返回内容，只支持字符型，非字符型先用BASE64编码
 
-10) 请求退出小程序
+10) 缩放网页，必须等文档加载完成后
+Scale缩放比例
+请求：{"req":"IE_Zoom","rid":59,"para":{"Scale":100}}
+返回：{"ret":0,"rid":59,"data":{"Ret":"0"}}
+Ret为调用返回值，0代表正常
+
+11) 请求退出小程序
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
-请求：{"req":"IE_Exit","rid":59,"para":{}}
+请求：{"req":"IE_Exit","rid":60,"para":{}}
 无返回
 
 5、事件通知：
