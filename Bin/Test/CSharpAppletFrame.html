@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html manifest="/websocket.appcache">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>当前页内嵌WPF窗口小程序测试(PluginOK)</title>
+
+    <link href="css/res.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'Files/favicon.ico' %}" type="image/x-icon">
+
+    <script src="PluginOK/base.js"></script> 
+    <script src="PluginOK/PluginOK.js"></script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onopen()"> 
+    showmessage('连接成功');
+	WrlVisibilityListener(true);
+	WrlScrollListener(true);
+	$('body').find('#btn_send').attr('disabled', false);
+</script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onclose(param1,param2,param3)"> 
+	WrlVisibilityListener(false);
+	WrlScrollListener(false);
+	nAppletRunID = 0;
+	nRequstAppletID = 0;
+    showmessage(param2);	
+	$('body').find('#btn_conn').attr('disabled', false);
+    $('body').find('#btn_close').attr('disabled', true);
+	$('body').find('#btn_send').attr('disabled', true);
+	$('body').find('#btn_fitpage').attr('disabled', true);
+</script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onmessage(param)">
+	DealRecMessage(param);
+</script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onerror(param)"> 
+    showmessage(param);		
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){  
+        $("#inp_url").attr("value",GetDefaultConn());
+    });  
+</script>
+</head>
+
+<body>
+    <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>  
+    <br />
+    <iframe name="AppletCSharp" id="AppletCSharp" src="CSharpApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no>
+    	<param ID="2" Play="http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4" />
+    	<param ID="3" Play="rtsp://wzh:test123456@192.168.1.8:554/h264/ch1/main/av_stream" Caching="300" />
+    </iframe>
+    <div class="container">
+		<div class="page-header">
+			<h2 style="margin-top:20px;margin-left:20px; text-align:center; ">WPF窗口小程序显示适配及还原</h2>
+		</div>
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-sm-6 col-md-5 col-lg-4">
+                <div>
+                    <input type="text" class="form-control" size="50" style="margin-bottom:3px;" id="inp_url" placeholder="连接" value="ws://localhost:80?sid=12345&flag=1" />
+                    <button type="button" id="btn_conn" class="btn btn-primary">连接</button>
+                    <button type="button" id="btn_close" class="btn btn-danger" disabled="disabled">断开</button>
+                    <button type="button" id="btn_clear" class="btn btn-danger">清空通讯记录</button>
+                    <button type="button" id="btn_fitpage" class="btn btn-danger" disabled="disabled">显示适配切换</button>
+               </div>
+                <br />
+                <div style="margin-bottom:20px;">
+                    <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:250px;" placeholder="请输入发送的内容">{"req":"Wrl_AppletStart","rid":8,"para":{"Type":"0","Title":"WPF内嵌小程序","NodeName":"AppletCSharp","PID":"AppletCSharp","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"ScrollTop":0,"Web": [],"Open":""}}</textarea>
+                    <button type="button" id="btn_send" class="btn btn-info btn-block">发送(Ctrl+Enter)</button>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-7 col-lg-8">
+                <div id="div_msgzone" class="panel panel-default">
+                    <div class="panel-heading">通讯记录</div>
+                    <div id="div_msg" class="panel-body" style="min-height:400px;width:500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

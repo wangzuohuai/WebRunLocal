@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-08-06","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"B408ACBFA9400D822043A72293392652","Version":"2.2.16.2","Size":5668864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A34E08C1B70C873A8C55E6B8A3E5BFA700148F823D0718B8005BB409D503DF0F8F08B34EFD85741AA3D917E977658A6F66F214AD4D91071370AEE08F7EC2622FB3642F29F484B507CCE788464CAE5D8F1394DE8BD57C91DE716C12A6BFAF2F53EFEC5D36B5D0A59F285E90F203B3DB7D8A407E36B12AFCE343683108672417FD585047CCFC35939F1F64C05EFB6BBC88A5792D58A8605806C731E52899D9E0E7054D52B1D1F59F35E24CACA2B6AE73C2DE7C11F328FAF183C93902428FA62973B63E99BE01F74B7052CFBFBBE5CF2D6AE3F04F4BEE45B3C43B1B662EF42F1589B0807CEFDD436C6D095D0FBFB05871B18A2FAC3CAB8B95BDEA3DAF3353B1486E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-08-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"EB7CA399D4EB19570071790412D0F630","Version":"2.2.16.3","Size":9764864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8A973830CECD8E32EA84925EDCD441C6956FC7F332A8D18F0AAA2055AAE60A1CF5A113532A0DB61A62FA4933C4B5CABD23BA00A8F67B45A34512B95E6C9FFC57E1ED43E9BDAAEE051B550A48B117EADA9C22F0DE5DD3EF458F576C395522A92A5AD636B1C53AFF50FFBFBF7012E10ECB7823FF504B716E41E1E55D3EC11D04462BF88DE3642503DB84C218DF5C5686BFD1CB48566D1931A9D1EFF6AF910095D5BA3A95B93D57AD561473DAC06BDB6FA84CE3667FFBAC453B6DCDB3FC778C654574528B38EA5BB9510E8D17F6FEF0225F8D03762F9B659B316F132ABAE62C14F49978439285D5441BC7CB6D27B51191360EF02B53541E3134DD693B85BE321776"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-08-06","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"358F86D8AF8FEF44B7A202D944EF5A88","Version":"2.2.16.2","Size":5668864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8D78107B85E953D64311CB77472506466E3C75C52422E941AB65BD4D3316D920BC0E50A17B6EEACF22DE3C4B7A731DFB2C67ACA5B11D5CA091E2F94AA1CDFDE72722A05FB829B7D2189F62314046FF5285153814DEFE1097C75200E083C57EE2112E00784BE4BAC2AD5B5F0364513148FCEC4CBFCB58E324544DE34AFB320737A3E350B80F7EF64F07A7FF39AD51D44B61764B2BA8475E28F957EB200DA8ABA1748F53A7441AB833ABB769C6BBD6622218F83703835873C48915A93BE253456E639A4D8364597384E32E20E6D3E990F2B8E5EC5377F39EA2839516E38BEBDFAAE489B60CC7B22013B41C68581751D55B64FA43B0A1E688E97AE1B996C188B0DC"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-08-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"BFCF708290155E4A3E434C86AA873C42","Version":"2.2.16.3","Size":9764864,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"22E0E029AF3C1F52A6CD5CE44015C3379536EADBFE257EB77890D357268BDE4F71D947C5D84EF20F05408233B0F0FDBFB59BBA4898CE56E262E5954A8387398AA9CE69D303C3A773FCDD2FD6BBE75402FC2914BE1A0847BD73D3EBF3C10CE62735CB5F98281C13360CFCEC03416D2F5C4920979C0094EDA5FF00B9BD6802489160C2978C4A49F417650A03EB33A7A38C3B4116441CD58FD956EAE0041A4DB89B3F8CE8B317C49D29DC3CD42F9683EB31848F4A68C90F175409F3F77620544D48012D572D759C5D5616AC33FC4033C52C05B3BAE7F776C0E9396D5C465CAF4EBF727D5E291A3008B9FE21EA07C65C63F6D18E1E1CDB97A3E13471B10968FFF5AB"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -144,6 +144,7 @@ A、常用功能请求：
 Open打开文档(不指定时新建文档) 如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 如果需要支持字节流文件打开，需要指定参数Byte，代表文件流的长度，此请求返回后前端继续发送字节流即可
+如果是打开Word文档，可指定NoRepair，默认0，指定1代表无修复警告对话框方式打开
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
 打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc","Edit":0}}
@@ -634,7 +635,7 @@ Init 初始化
 {"req":"Office_FloatWebInjectScript","rid":71,"para":{"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"}}
 返回：{"ret":0,"rid":71,"data":{"Ret":0}}
 
-72) 请求控制修订显示内容，适用于Word软件
+72) 请求控制修订显示内容，适用于Word软件，Markup及View需要Office 2013开始才支持
 Mode 修订的显示模式 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevisionsmode
 View 视图类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevisionsview
 Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevisionsmarkup
@@ -642,6 +643,33 @@ Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevi
 也可以直接设置Toggle为1 代表切换(显示或隐藏)包含批注和修订的文档中的所有修订
 {"req":"Office_RevisionsFilter","rid":72,"para":{"Mode":0,"Markup":2,"View":0}}
 返回：{"ret":0,"rid":72,"data":{"Ret":0}}
+
+73）请求获取本地文档信息，适用于Word、Excel、PPT软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+{"req":"Office_FileInfo","rid":73,"para":{"File":"C:/OfficeDoc/test.doc"}}
+返回：{"ret":0,"rid":73,"data":{"Ret":"0","Size":92095,"MD5":"B28B987EC70E1E7853F89A52CEDE68F0","Attribute":32,"CreateTime":"2020-10-07 13:07:20","LastWriteTime":"2020-07-14 10:09:43","Ver":"","CorpName":"","Desc":""}}
+如果是图片，还返回图片宽度和高度的值
+
+74）请求获取本地文档属性，适用于Word、Excel、PPT软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+74）请求获取本地文档属性，适用于WPS文字、WPS表格、WPS演示软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+Class 属性类型，1内建属性 2自定义属性 1+2获取内建及自定义属性
+{"req":"Office_GetDocProp","rid":74,"para":{"File":"C:/OfficeDoc/test.doc","Class":3}}
+返回：{"ret":0,"rid":74,"data":[]}
+
+75）请求操作本地文档属性，适用于Word、Excel、PPT软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+Props 需要操作的属性组，支持批量操作
+Name 属性名称
+Val 属性值 需要先做UrlEncode编码再传
+Class 属性类型，1内建属性 2自定义属性
+Type 属性类型 定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/office.msodocproperties
+LinkTo 是否连接到源
+Source 源 需要先做UrlEncode编码再传
+Opt 操作类型 1设置，没有时添加，内建属性不能添加 2删除，只能删除自定义属性，内建属性不能删除
+{"req":"Office_SetDocProp","rid":75,"para":{"File":"C:/OfficeDoc/test.doc","Props":[{"Class":1,"Type":4,"Name":"Title","Val":"test","Opt":1}]}}
+返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
 
 80）请求开始播放幻灯片，适用于PPT软件
 Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始

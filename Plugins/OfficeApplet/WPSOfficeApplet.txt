@@ -114,14 +114,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-08-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"BCE0760DCF807827DA847A440391C768","Version":"2.2.16.2","Size":5734400,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"651C7654D5D134D547E243F9C394DE85ACCA004A9590DA0FEA64E6AEA961442F04FBD86D50D2B2276D73692B77342D5777FBBA70A3B84C3FE7C53352389DA68697BA72E23245CBB59B0C25876296DC38B43784826A21397CDF42016346327FFA6CD373FE5BB5AE5BC932778B7C26B1B550B850AF1BD09AD254646DE5481C159C04668357003E0221997BD7F6E2C3726AA7E37129CF1A3CFB3713528A7FF340A3D61CA645952A0844AA01C4556C7E501C68CACB45F427F14241EE63DC91D760BC8115BDBFC3FF46F7FB09D27D08BF1DB74DB97CC1131F17A27DFDDD6C70DAD8F33E9BE9F8F5203AA4D2AE73260F2723BAE6A090A763B3AE73BABD4D3F1C1ECF4C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-08-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"DA0C0A35A7F63100112EE1F1482C9CFD","Version":"2.2.16.3","Size":5767168,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A02035BCB25A787C04445754CCDC11D7090F84E141E3D95F375D049E1CB49C2B7A3C4C458FC214C2741C629281A0603C2827B0C04C774DEEEE554D1628046391E7FB646F9A75B1EEE647D9E65669C98E993F7A362B72AE8CF950ABEC813F853F8398A3BB5DFF85D7034CA27A900C8BB9EFE711E9E89C062E98AE0317CDB09F05300519C3E2A4729AAC4A1DB3C0CCB19130ED6C76209590EC11DE2F29063EEF36CE0B9F9B74FDCA7A50034633B48303FCDAEB0C0AFA11CE9D00CB836C3A6AE2F39BD34EEDA4438C03E3080522A55C4401DE9797B95B73F81A85D66B340E99DA947957C2D61168F53143EDF9B6E38850C1081745A4F4B8C7CC12C310B180C422DB"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-08-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"E2000CEEFE241A8A8627A175115D319A","Version":"2.2.16.2","Size":5734400,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2BF303A817606301A14277602FBF830F2E84995FC28316433B164CC5E766A997BFED7DB21D9A275014B8E7092040ABBD7840EAA38F36B7EA103FDAB618B3FBE17C87449FB1189959D350EE33475823282E9F8C3D97358408C6167E6A9EC45F499C12FBF779CF4C2E4DECA635D5D7B33A6674FA616FAE625C6B38B29617FE1E1CDF8A6DDDD87AD05553DBA8E0308CAC9BAC637E403655A0322447D564CE97FB2CB629FDAB5022E357A58F1EA84B3BBA1CFC8BA97972EF3292C1306F2663E0E20E55F80F98DB7B0C817DE24574EA91000F816796BA384363C2DC8A6E2E33079FE4BC5600D4D40642AF5942DFFAF8B1CFBF45A2657BBB7785E5F61CC7BB6BBEA507"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-08-26","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"CA26E66061D82012073C1CB3B8CAE10F","Version":"2.2.16.3","Size":5767168,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"847E6EF19BF77EBAACDA46CC2BA9E8060F8E5A1B095A720BBEA2D5AB43BF8DF789D91890992271E5BD0AEAE0847620AB6405C6627E4E55D71F836C4CD802342AA42FD7295CD114F0B2DA0F388ABB498182C18BB1C31D2C93E0222273B1BE34A2A3C4ED40FE6C00B1BAA508F0E7CFEBCDD84951760B79CE60A58FDC9C19446DBEB71216018FC8031B1240EDE02E00EF82A5DEBF191B9B3DFC11C24B39028A93C68EF5E772C1D893B924E10EFA961C9DF52BE23497E0B1E45796490DAB04D486DF7A746D3EF1FA83229D10EDC780E67AC55E46424DEEC02422E6F78909B1FAF83CFC98EEE513D326A7C26D68B96A2823BA4C7053BB95EE40898901D0762B70C615"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -146,6 +146,7 @@ A、常用功能请求：
 Open打开文档(不指定时新建文档) 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 如果需要支持字节流文件打开，需要指定参数Byte，代表文件流的长度，此请求返回后前端继续发送字节流即可
+如果是打开文字文档，可指定NoRepair，默认0，指定1代表无修复警告对话框方式打开
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
 打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc","Edit":0}}
@@ -625,6 +626,31 @@ Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevi
 也可以直接设置Toggle为1 代表切换(显示或隐藏)包含批注和修订的文档中的所有修订
 {"req":"Office_RevisionsFilter","rid":72,"para":{"Mode":0,"Markup":2,"View":0}}
 返回：{"ret":0,"rid":72,"data":{"Ret":0}}
+
+73）请求获取本地文档信息，适用于WPS文字、WPS表格、WPS演示软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+{"req":"Office_FileInfo","rid":73,"para":{"File":"C:/OfficeDoc/test.doc"}}
+返回：{"ret":0,"rid":73,"data":{"Ret":"0","Size":92095,"MD5":"B28B987EC70E1E7853F89A52CEDE68F0","Attribute":32,"CreateTime":"2020-10-07 13:07:20","LastWriteTime":"2020-07-14 10:09:43","Ver":"","CorpName":"","Desc":""}}
+如果是图片，还返回图片宽度和高度的值
+
+74）请求获取本地文档属性，适用于WPS文字、WPS表格、WPS演示软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+Class 属性类型，1内建属性 2自定义属性 1+2获取内建及自定义属性
+{"req":"Office_GetDocProp","rid":74,"para":{"File":"C:/OfficeDoc/test.doc","Class":3}}
+返回：{"ret":0,"rid":74,"data":[]}
+
+75）请求操作本地文档属性，适用于WPS文字、WPS表格、WPS演示软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+Props 需要操作的属性组，支持批量操作
+Name 属性名称
+Val 属性值 需要先做UrlEncode编码再传
+Class 属性类型，1内建属性 2自定义属性
+Type 属性类型 定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/office.msodocproperties
+LinkTo 是否连接到源
+Source 源 需要先做UrlEncode编码再传
+Opt 操作类型 1设置，没有时添加，内建属性不能添加 2删除，只能删除自定义属性，内建属性不能删除
+{"req":"Office_SetDocProp","rid":75,"para":{"File":"C:/OfficeDoc/test.doc","Props":[{"Class":1,"Type":4,"Name":"Title","Val":"test","Opt":1}]}}
+返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
 
 80）请求开始播放幻灯片，适用于WPS演示软件
 Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始

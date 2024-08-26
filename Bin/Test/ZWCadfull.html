@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html manifest="/websocket.appcache">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>当前页内嵌ZWCAD小程序编辑审核DWG工程图</title>    
+    <script type="text/javascript">
+    </script>
+
+    <link href="css/res.css" rel="stylesheet"/>
+    <script src="PluginOK/base.js"></script> 
+    <script src="PluginOK/PluginOK.js"></script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onopen()"> 
+    showmessage('连接成功');
+	WrlVisibilityListener(true);
+	WrlScrollListener(true);
+	$('body').find('#btn_send').attr('disabled', false);
+</script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onclose(param1,param2,param3)"> 
+    showmessage(param2);
+	WrlVisibilityListener(false);
+	WrlScrollListener(false);
+	$('body').find('#btn_conn').attr('disabled', false);
+    $('body').find('#btn_close').attr('disabled', true);
+	$('body').find('#btn_send').attr('disabled', true);
+</script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onmessage(param)">
+	DealRecMessage(param);
+	showmessage(param, 'receive');
+</script>
+
+<script language ="javascript" type ="text/javascript" for="WrlWS" event="onerror(param)"> 
+    showmessage(param);		
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){  
+        $("#inp_url").attr("value",GetDefaultConn());
+    });  
+</script> 
+</head>
+<style>
+.CatiaCadApplet
+{
+margin: 0px 0px 0px 0px;
+width: 20px;
+height: 20px;
+border: 1px solid blue;
+}
+</style>
+<body>
+<div id="ZWApplet" class="ZWApplet"</div>
+<object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>       
+<div class="container">
+    <div class="page-header">
+        <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">PluginOK中间件在线体验</h2>
+        <a href=http://local.zorrosoft.com/Files/PluginOK.pdf>产品介绍</a>
+        <a href=http://local.zorrosoft.com/Files/PluginOK.zip>中间件安装包</a>
+        <a href=http://local.zorrosoft.com/Files/ZbaSDK.zip>中间件开发包(SDK)</a>
+        <br />
+        <br />
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            <div>
+                <input type="text" class="form-control" size="80" style="margin-bottom:3px;" id="inp_url" placeholder="连接" value="ws://wrl.zorrosoft.com:80?
+
+sid=123&flag=1" />
+                <button type="button" id="btn_conn" class="btn btn-primary">连接</button>
+				<span style="width:10px;">&nbsp;</span>
+                <button type="button" id="btn_close" class="btn btn-danger" disabled="disabled">断开</button>
+				<span style="width:10px;">&nbsp;</span>
+                <button type="button" id="btn_clear" class="btn btn-danger">清空通讯记录</button>
+            </div>
+            <br />
+            <div style="margin-bottom:20px;">
+                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_ZWApplet","rid":97,"para":{"Type":"0","Title":"ZWCAD Applet Full","Flag":72,"IframeX":0,"IframeY":0,"ScrollTop":0,"Option":0,"Web": {"DataPath":"c:/CadDoc"},"Open":"http://local.zorrosoft.com/Files/test.dwg"}}</textarea>
+                <button type="button" id="btn_send" class="btn btn-info btn-block">发送(Ctrl+Enter)</button>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-7 col-lg-8">
+            <div id="div_msgzone" class="panel panel-default">
+                <div class="panel-heading">通讯记录</div>
+                <div id="div_msg" class="panel-body" style="min-height:300px;"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

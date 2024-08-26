@@ -123,7 +123,7 @@ let rid = 10 		// 其它请求起始序号
 let runInfo = 1    	// 获取办公软件安装信息 一般只需要在启动时获取一次
 let RunFirst = 2  	// 办公网页组件启动实例1序号
 let RunSecond = 3   	// 办公网页组件启动实例2序号
-let version = ref('2.2.16.2')   //中间件版本信息
+let version = ref('2.2.16.3')   //中间件版本信息
 let ServerOpenFile = 'http://local.zorrosoft.com/Files/template.doc'
 let MyOpenDoc = ref('c:/OfficeDoc/test.docx')
 let MyOpenExcel = 'c:/OfficeDoc/test.xlsx'
@@ -1277,17 +1277,17 @@ function SendUpdateJson() {
     "rid":rid,
     "para":{
       "Name": "PageHiOffice—文档在线编辑组件升级包",
-			"Date": "2024-08-06",
-			"Desc": "1、优化中间件低网速情况下载文件稳定性和性能，WS侦听服务增加接收类型通知，系统监控服务恢复改进；2、优化中间件高级版在浏览器窗口拖拽改变大小时的处理过程，优化内嵌小程序强制隐藏及恢复显示过程；3、PageHiOffice增加修订内容显示控制接口，Word在完整嵌入模式下也支持只读、另存及打印权限控制，另存支持设置密码保护，解决解决微软OFFICE网页嵌入和桌面打开冲突问题，解决偶尔提示文档未找到和文件上传后临时文件未清理问题...",
+			"Date": "2024-08-26",
+			"Desc": "1、解决PageHiOffice微软Office网页组件完整嵌入模式点击右上角X关闭时导致整个浏览器退出问题，解决网页打开Office文档和桌面启动打开文档相互影响问题；2、PageHiOffice打开Word文档支持不显示恢复对话框方式，增加获取文件大小及哈希值等接口，增加获取和设置文档内建及自定义属性接口；3、PageHiOffice打开文档时如设置只读、禁止保存或禁止打印情况下，不能禁用本软件的COM加载项；4、PageHiOffice改进对微软Office 2007及2010版的兼容性，改进对Windows 7等系统运行后释放的稳定性，改进启动及切换文档打开体验...",
 			"DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
 			"Open": "http://local.zorrosoft.com/office3",
-			"MD5": "4623477DC912F8D0C9159D04AD6C5EBF",
-			"Version": "2.2.16.2",
-			"Size": 31064064,
+			"MD5": "8C18A69B05B51A034B803744FC21C789",
+			"Version": "2.2.16.3",
+			"Size": 35291136,
 			"HideIns": 0,
 			"Cookie": "",
 			"Auth": "",
-			"TK": "9DCC94C0379A3F9D73F4903E28C362F85412669FEA5BCA6019AFDC02051B5485A998B76888249F21190812C9F42AAF31DFDFAE777BF440E19DB55AEF34DE2C093FC9113B1C99D051CCE72F6764C246C5B13F8C450B846AE5F5465509A544BF28CC7732B42AA27948B02FBEE233E0AD4E670DB42E6AB67A63EC2BA2D8F079EAD103EE064A33579D964D06A938D5BC03876318E1083125039FF6D6563881DED534229BF52E0E1FF0F4CD577A0E3C3AF72A9E9B9B7081FCAC82F5D0EB401F6982DBCAB9231386D973E81A3FD046884780369D2B6A588CB860FEA2042F65F335DCD95FAC17A7919432182B1E6B8BC410FBAD0903EFA921C160BD91431C3CBDBB4E27"
+			"TK": "90EC5C48A3ADE2B0DD035BED141757140A58927B4D16660B2D060C728C3E9D8CF05626515CDB37406E89EA5F991CDDE6C2CAA70FE9A9E001E8740AFF2F55E2DE3F9FBA06A8609D2EFF5F1A4CD2E84155EB2EA80A9D3BF623EAEF86D8F9A35503EB39B69304A60A9F1F5C85B5626140FE28CBE5B08C168621C5FE42C8BB902EBBE5CF346650B5656A7DFDCAC50F1DA08941FFC0354A3AD286D70235C6AC5D56EE8AAB50CD06D70511F1769C67AAC78117E66291299B0232B608316DE46E295E990124BCD6D2E7EA21C75F531E49923AAD15B9F673FDD1C9EDFF2513D71D4B74E5EF464D0BDE0C6B6A446D4C49B32CFA65036E2B9DE7925525B89F74ABFE8C36C6"
     }
   }
   socket[0].sendObj(msg)

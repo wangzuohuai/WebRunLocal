@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-08-06","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"5CB0DBAE954F9288DFEF1BBF57EDC316","Version":"2.2.16.2","Size":5275648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2A8312A7F7E9A4D243251D96D64DA17CEC0AD32F9DA20C8B10584B329952526EA8459C4E4117CCE76AB65F73FD51D7E4EC44A24C4F9EAB66B6A934A41C433FA951EC42DE7B5E597FD587930AA83300DBA8453EF1B6ABF42A3DEE43B731132ADAD6FDA4679877DAA998E9899D3D2DBBE12AA798BC1CE4A70924F612EB8109B80CFD031C514147616FECA32BC981B29882C6210BAC24A525DD862F8838DD2A7FAED3A1AA7CBBF784E648F3AE2C3429039CE385DE3843084F1B805CB57E1489BB9E780A011977EB571418DE695FE03ADB6465CA81D0842C4CF6DF366B2B6C3A8F28D8092F9FA976BBBF5FE643C889E096AFA3B50384EE6BDF617EDD65AD0CE8AF28"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-08-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"239A6AA2910C4088FA910D21EA66C6BF","Version":"2.2.16.3","Size":5308416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"6571756A256E152676504A79158211B5B53794D470A615889D9CBE653373FECD53FCC403C1AE0CA6936051AB2D3AD948F59E97638FFB5548F1C773A308556C2A1805CEFA1D22F86D375C494DFE7149AC9B3456A891BA4E09B4E81288BB5E172125C0C2BDBECFB4BB0291782671A70C8D9FED32A66DB019FAC3397F2B101932830B6B9329A4FB29B9DE608BB1D3D0D0A6A0EFE61A108FFA61D9F6BE74088B3CA63916E41CD40C6410F6BB3400868B00C5CCF6E835EFC80B223C2771D133F6A1EA348F83B8685DBF7020C6497FD7E8D625FEBDD13C62D1829B76C00D2674F5FA97FB167947AB0D90F784E97CCE2A29BC5D9E1614F656F64812C20CB4ECE4E8A38E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-08-06","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"C6DEF76864EC7AD339849BC6DC33B155","Version":"2.2.16.2","Size":5275648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"59574F08104E6B37B18E8E2C6FF62182FAFA0717BC4F12A622044272C9F096DC92B0D95D3BE369F85553F68B2AA29F76FF5158B1F6681ABA56F457ECF18D3BFFE348F9C91E134AD067B050BC097C48E5FB1EE5F5AD5D3DA2E520A64B09C867146FE706E46714415559915914F9554E96A9DBD74788286ABA8DDAB9B3EBD3936394623A67B345D55601CBB824C38049B35E717A5CAEEF01E9A37C2167A93CB783056F7CAC257529D0DA4A98BBA648C62DFD67C91EBD111E5CBE06C831B0C5B1941506F05B1C51355B0C5CC64F7802C56F8CA8A15D1DB7E1CE04BB121755DD5FDBEE3113443C870A53CC2D37BF97651331CAF7F5C669A6C717FB1E4978664F7215"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-08-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"65A96EE32BCCF3875CEED63297543E9A","Version":"2.2.16.3","Size":5308416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"38867030F9EE6B3C3F743516CA44113DA199B24FCDF8114CA133F14C528796DD41CFFBC2EFD302CDEA984040798986B02668872D313DD783FB5AC41DD3ADEFA723FC8F420809F8CA4EFD99F43CE0B8B2FB0F7883D00E16ECE5BE53A22AD2519C5E7E17BE7240E818CBD96742079A6E5126CDD221D144C90018FECD84413D08C0260F1436A40A13A674490E64E1C6AFE1F1A7AED25C28A09D1728E542DDD7CF6F4B2ACB89ED1C77F6EB581B56B9F6056A8F5E0FB749BDBA274C1067D58B77FC6A835E654A76F9ED89B30CE291DC161452AC8EA16D0AD3DEA08E811C44350A98D92E54291A1FBB094583972674A6001362493B7CE83F1F7D2441461F2BFE43D826"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -145,6 +145,7 @@ A、常用功能请求：
 Open打开文档(不指定时新建文档) 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
 User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hide控制界面显示标记
 如果需要支持字节流文件打开，需要指定参数Byte，代表文件流的长度，此请求返回后前端继续发送字节流即可
+如果是打开文字文档，可指定NoRepair，默认0，指定1代表无修复警告对话框方式打开
 {"req":"Office_Open","rid":3,"para":{"Open":"D:/Zorro/test.doc","User":"test","Edit":0,"Hide":0}}
 打开服务器文档
 {"req":"Office_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/template.doc"}}
@@ -620,6 +621,33 @@ Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevi
 也可以直接设置Toggle为1 代表切换(显示或隐藏)包含批注和修订的文档中的所有修订
 {"req":"Office_RevisionsFilter","rid":72,"para":{"Mode":0,"Markup":2,"View":0}}
 返回：{"ret":0,"rid":72,"data":{"Ret":0}}
+
+73）请求获取本地文档信息，适用于永中文字、永中表格、永中简报软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+{"req":"Office_FileInfo","rid":73,"para":{"File":"C:/OfficeDoc/test.doc"}}
+返回：{"ret":0,"rid":73,"data":{"Ret":"0","Size":92095,"MD5":"B28B987EC70E1E7853F89A52CEDE68F0","Attribute":32,"CreateTime":"2020-10-07 13:07:20","LastWriteTime":"2020-07-14 10:09:43","Ver":"","CorpName":"","Desc":""}}
+如果是图片，还返回图片宽度和高度的值
+
+74）请求获取本地文档属性，适用于永中文字、永中表格、永中简报软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+74）请求获取本地文档属性，适用于WPS文字、WPS表格、WPS演示软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+Class 属性类型，1内建属性 2自定义属性 1+2获取内建及自定义属性
+{"req":"Office_GetDocProp","rid":74,"para":{"File":"C:/OfficeDoc/test.doc","Class":3}}
+返回：{"ret":0,"rid":74,"data":[]}
+
+75）请求操作本地文档属性，适用于永中文字、永中表格、永中简报软件
+File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
+Props 需要操作的属性组，支持批量操作
+Name 属性名称
+Val 属性值 需要先做UrlEncode编码再传
+Class 属性类型，1内建属性 2自定义属性
+Type 属性类型 定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/office.msodocproperties
+LinkTo 是否连接到源
+Source 源 需要先做UrlEncode编码再传
+Opt 操作类型 1设置，没有时添加，内建属性不能添加 2删除，只能删除自定义属性，内建属性不能删除
+{"req":"Office_SetDocProp","rid":75,"para":{"File":"C:/OfficeDoc/test.doc","Props":[{"Class":1,"Type":4,"Name":"Title","Val":"test","Opt":1}]}}
+返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
 
 80）请求开始播放幻灯片，适用于永中简报软件
 Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始
