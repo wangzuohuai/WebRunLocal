@@ -123,7 +123,7 @@ let rid = 10 		// 其它请求起始序号
 let runInfo = 1    	// 获取办公软件安装信息 一般只需要在启动时获取一次
 let RunFirst = 2  	// 办公网页组件启动实例1序号
 let RunSecond = 3   	// 办公网页组件启动实例2序号
-let version = ref('2.2.16.3')   //中间件版本信息
+let version = ref('2.2.16.5')   //中间件版本信息
 let ServerOpenFile = 'http://local.zorrosoft.com/Files/template.doc'
 let MyOpenDoc = ref('c:/OfficeDoc/test.docx')
 let MyOpenExcel = 'c:/OfficeDoc/test.xlsx'
@@ -1277,17 +1277,17 @@ function SendUpdateJson() {
     "rid":rid,
     "para":{
       "Name": "PageHiOffice—文档在线编辑组件升级包",
-			"Date": "2024-08-26",
-			"Desc": "1、解决PageHiOffice微软Office网页组件完整嵌入模式点击右上角X关闭时导致整个浏览器退出问题，解决网页打开Office文档和桌面启动打开文档相互影响问题；2、PageHiOffice打开Word文档支持不显示恢复对话框方式，增加获取文件大小及哈希值等接口，增加获取和设置文档内建及自定义属性接口；3、PageHiOffice打开文档时如设置只读、禁止保存或禁止打印情况下，不能禁用本软件的COM加载项；4、PageHiOffice改进对微软Office 2007及2010版的兼容性，改进对Windows 7等系统运行后释放的稳定性，改进启动及切换文档打开体验...",
+			"Date": "2024-09-09",
+			"Desc": "1、中间件高级版增加支持360AI浏览器，解决360安全浏览器最新版运行不正常问题，优化系统缩放比例大于150的运行兼容性2、优化高级版内嵌网页小程序在Windows 11以下系统中的切换全屏显示效果；3、PageHiOffice优化Ole及完整嵌入打开文档时的稳定性，支持打开大小为零的文件，解决打开只读、禁止另存或打印文档时可能提示COM加载项没有加载而关闭文档问题；4、PageHiOffice优化对WPS个人版的支持，优化程序关闭文档时的稳定性，解决打开文档时可能提示未找到相关窗口问题，打开服务器文档时增加输出更多日志用于排错...",
 			"DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
 			"Open": "http://local.zorrosoft.com/office3",
-			"MD5": "8C18A69B05B51A034B803744FC21C789",
-			"Version": "2.2.16.3",
-			"Size": 35291136,
+			"MD5": "070E3652B3F11C798CF10DAEC8BC7F7B",
+			"Version": "2.2.16.5",
+			"Size": 35323904,
 			"HideIns": 0,
 			"Cookie": "",
 			"Auth": "",
-			"TK": "90EC5C48A3ADE2B0DD035BED141757140A58927B4D16660B2D060C728C3E9D8CF05626515CDB37406E89EA5F991CDDE6C2CAA70FE9A9E001E8740AFF2F55E2DE3F9FBA06A8609D2EFF5F1A4CD2E84155EB2EA80A9D3BF623EAEF86D8F9A35503EB39B69304A60A9F1F5C85B5626140FE28CBE5B08C168621C5FE42C8BB902EBBE5CF346650B5656A7DFDCAC50F1DA08941FFC0354A3AD286D70235C6AC5D56EE8AAB50CD06D70511F1769C67AAC78117E66291299B0232B608316DE46E295E990124BCD6D2E7EA21C75F531E49923AAD15B9F673FDD1C9EDFF2513D71D4B74E5EF464D0BDE0C6B6A446D4C49B32CFA65036E2B9DE7925525B89F74ABFE8C36C6"
+			"TK": "38C0A66094BC2D99786ED0E714E26D9D3EA008911CA46BBA53EBC9DC3FB9E92EFB97C77697C96D06765F2FBC92BFF57B15866D290479152D9B7EC698E8CFF7224ECE65F9FCE90377B18942600A0E3DE9EC964A29060B0F957DDDFFD3A5D19A86F4AFB4B57160048740B1468854B03D14071644C054BBE5771A24A82F4958B13A2808C6E3CE786E3EAB9600463B357DA8677929E476663394FAC2C29A83EF72F2FE87449B655F03AF77533E1FB6E56C5245464CACBDE7654E0E6CBB201B6780BF797490F327A50629CC7815AD9002912B96E5BF2551CC430A950C4987D08B40CD7DBB6B44004E085DFD1C40F6EA9908A6694CC58BCDD17C421B9FAB750607C2D6"
     }
   }
   socket[0].sendObj(msg)

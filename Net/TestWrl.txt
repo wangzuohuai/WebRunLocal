@@ -18,11 +18,11 @@ Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当
 获取版本信息举例：
 {"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Config" : 1,"Router" : 0,"IP" : 1}}
 协议中的rid代表此请求序号(长整型)，请求返回的结果json中也会带这个参数，因为ws请求和返回是异步执行的，这样可以确保请求和结果的一一对应关系，下同
-返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"2.2.12.1","ValidDay":"2024-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
+返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"2.2.16.5","ValidDay":"2024-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
 
 对比是否有新版本举例：
-{"req":"Wrl_Version","rid":1,"para":{"Version" : "2.2.11.1"}}  给定新版本号，判断当前中间件版本是否需要升级，返回节点字段Update为1时需要升级，0不需要升级
-{"req":"Wrl_Version","rid":1,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Version" : "2.2.12.1"}}  指定PID的小程序新版本号，判断小程序是否需要升级，返回节点字段Update为1时需要升级，0不需要升级，2代表小程序还未安装
+{"req":"Wrl_Version","rid":1,"para":{"Version" : "2.2.16.1"}}  给定新版本号，判断当前中间件版本是否需要升级，返回节点字段Update为1时需要升级，0不需要升级
+{"req":"Wrl_Version","rid":1,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Version" : "2.2.16.1"}}  指定PID的小程序新版本号，判断小程序是否需要升级，返回节点字段Update为1时需要升级，0不需要升级，2代表小程序还未安装
 
 2)、指定浏览器打开指定Url：
 分别指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360急速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)和Url地址；
@@ -191,7 +191,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 4、PluginOK中间件升级请求：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet中间件网络版升级包","Date":"2024-08-26","Desc":"1、中间件高级版解决在释放已启动的小程序同时启动新的小程序可能失败问题；2、优化中间件从Url中解析文件名算法；3、解决PageHiOffice微软Office网页组件完整嵌入模式点击右上角X关闭时导致整个浏览器退出问题，解决网页打开Office文档和桌面启动打开文档相互影响问题；4、PageHiOffice打开Word文档支持不显示恢复对话框方式，增加获取文件大小及哈希值等接口，增加获取和设置文档内建及自定义属性接口；5、PageHiOffice打开文档时如设置只读、禁止保存或禁止打印情况下，不能禁用本软件的COM加载项；6、PageHiOffice改进对微软Office 2007及2010版的兼容性，改进运行后释放的稳定性，改进启动及切换文档打开体验，解决设置禁止另存后调用可能保存报错问题；7、PageHiPalyer解决禁用播放工具栏菜单失效问题，解决多引擎网页播放器使用FFPlay引擎播放时锁屏再解锁崩溃问题...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"403D8DCE7A441E8A00F7C18B6ABE9A2E","Version":"2.2.16.3","Size":14057472,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"8A019AFA6B2A364F85C9B0FF99D3AADE17247463F9D7F398A0D41825E4D9EE18824C9A3921F0FF8F14BB52604BFA4BB42593788AA9F1CC883493953270C8CACBC9DB076ACDF12170C21AF472F3098662E0F3EFE952F22C417BD1F5FD64B4F5C86081C1088381410AC81CBBBD8867D60FD383A77D90CCE5F122CC6A6E641DD1354481F7E21BE5E68AC07C05CACF17FA7399859AA61BBD40D834B6381E695575043268D59D48969205AC3C953224BED3CBDF5ACCF5C6F28838D3B4883A5C9E3602773B7CA84F6E4DD72A70267CFBB87720A4DA1ABAB90A568B50400E10CE242ACB8D343A2AA2845A0AF6D060FE8961A4044295C4C28B19046A2B766BCEB21645F1"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet中间件网络版升级包","Date":"2024-09-09","Desc":"1、中间件高级版增加支持360AI浏览器，解决360安全浏览器最新版运行不正常问题，优化系统缩放比例大于150的运行兼容性，解决系统服务中打开长文件时可能因为管道缓存长度不够失败问题；2、优化高级版内嵌网页小程序在Windows 11以下系统中的切换全屏显示效果，解决全屏时切换回来可能系统任务栏不正常显示问题，增强DirectUI或Direct3D绘制窗口的抓图效果；3、发布英文版适配支持Vivaldi、Brave浏览器类型，中文版不再支持这两种浏览器...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"B9D5D9BAB495E8BD75DE558063F95248","Version":"2.26.1.5","Size":14057472,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"A90CD07CEF730B5D85F4CE58E513CBF05C93947839E20C99C0D7AE3D44B52FEF64BCC31C7A0D2C09B9743A2CE45BD9130A4FB6E5934F0868C0C742805D20E46F372E125E84B1E926EF722DF23B719F98C94C4491D0664F7B47D0131FE33452C72AF00BB9B7DCAEFDC835B2D8ACFCB7BB5CFED08809A2A2ECD075E5D6101ECF39F0DAA2762118CDD520ACA7FDCAC00C54DD1DB12BE9B27A2F1E7312B6B3D3FE27035951680F6BBA66156FD7AB6BA9DBA22977158DF1C07546B27AD7A0044CDD99C4F718EE3AE846F35173873A6490F177808397E4D5D8CFC18FF4CB2B4C451E75A7A5BEABE64E420864E3C27805F68A4D6A0103F85C10BAAD8EEBF80A202E8F1A"}}
 
 2)、针对HTTPS网站，需要搭配SSL证书使用，而SSL证书是有期限的，需要定期导入SSL新证书：
 {"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}

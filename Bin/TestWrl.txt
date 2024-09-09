@@ -18,11 +18,11 @@ Mac为1时获取本机Mac地址信息，More取更多信息(当前登录用户、键盘和鼠标空闲时间、当
 获取版本信息举例：
 {"req":"Wrl_Version","rid":1,"para":{"Mac" : 1,"More" : 0,"Config" : 1,"Router" : 0,"IP" : 1}}
 协议中的rid代表此请求序号(长整型)，请求返回的结果json中也会带这个参数，通过比对此参数可以确保请求和结果的一一对应关系，本系统Web Socket通讯是异步的，下同
-返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"1.5.12.1","ValidDay":"2024-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
+返回：{"ret":0,"rid":1,"req":"Wrl_Version","data":{"Version":"1.5.16.3","ValidDay":"2024-12-31","AuthName":"成都佐罗软件","Type":8,"OS":"10.0.18363.2","Win64":1,"UniID":"C69C5505AD73EFDD7A6BA38D83665889","Time":8103544,"TickCount":17184796,"Adv":1,"RunPath":"D:/Zorro/WRL/","Mac":[{"Card":"802.11n USB Wireless LAN Card","Mac":"38:B84:9E:2F:38:6A"}],"Router":["90:6F:AB:8F:BB:58"],"Config":{"NoService":0,"Localhost":1,"Delay":1,"Monitor":60,"Mac":1,"UDisk":0,"Lang":"CHS"}}}
 
 对比是否有新版本举例：
-{"req":"Wrl_Version","rid":1,"para":{"Version" : "1.5.11.1"}}  给定新版本号，判断当前中间件版本是否需要升级，返回节点字段Update为1时需要升级，0不需要升级
-{"req":"Wrl_Version","rid":1,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Version" : "1.5.12.1"}}  指定PID的小程序新版本号，判断小程序是否需要升级，返回节点字段Update为1时需要升级，0不需要升级，2代表小程序还未安装
+{"req":"Wrl_Version","rid":1,"para":{"Version" : "1.5.16.1"}}  给定新版本号，判断当前中间件版本是否需要升级，返回节点字段Update为1时需要升级，0不需要升级
+{"req":"Wrl_Version","rid":1,"para":{"PID" : "F90B1CF0-8485-40ec-B4E8-B87598AAB35D","Version" : "1.5.16.3"}}  指定PID的小程序新版本号，判断小程序是否需要升级，返回节点字段Update为1时需要升级，0不需要升级，2代表小程序还未安装
 
 2)、指定浏览器打开指定Url：
 分别指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 32代表360急速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)和Url地址；
@@ -175,7 +175,7 @@ Monitor配置服务无响应超时时间，一旦超过服务会自动重启
 4、PluginOK中间件升级：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件单机版升级包","Date":"2024-08-26","Desc":"1、中间件高级版解决在释放已启动的小程序同时启动新的小程序可能失败问题；2、优化中间件从Url中解析文件名算法；3、解决PageHiOffice微软Office网页组件完整嵌入模式点击右上角X关闭时导致整个浏览器退出问题，解决网页打开Office文档和桌面启动打开文档相互影响问题；4、PageHiOffice打开Word文档支持不显示恢复对话框方式，增加获取文件大小及哈希值等接口，增加获取和设置文档内建及自定义属性接口；5、PageHiOffice打开文档时如设置只读、禁止保存或禁止打印情况下，不能禁用本软件的COM加载项；6、PageHiOffice改进对微软Office 2007及2010版的兼容性，改进运行后释放的稳定性，改进启动及切换文档打开体验，解决设置禁止另存后调用可能保存报错问题；7、PageHiPalyer解决禁用播放工具栏菜单失效问题，解决多引擎网页播放器使用FFPlay引擎播放时锁屏再解锁崩溃问题...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"568DF081500FDDBB78C564089C9745D4","Version":"1.5.16.3","Size":13172736,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"1392462072FF25CF88C15A6428C896005D7ED4F37983ED0D6FF62309F80722779DAC612C488A3E997465805DBCE0A398DBAEF8A3C34F1AE2907102F4D95C50D04F8C584904DCD5EADF3A65CF2A0CE93742D0E31AB4586FB56785365FC9B5BC18D1DC760F69CD8641DF7882FC52C26358EA6493041C4906BC70FFC760A0750943B46012CD7E00344734CA16CE92518C11ADAA3DA9E4C28B7F153D757D9582836F6A17B0BC7A3FADF206E69B391ABF96156D6A1B21ED5279912366224DE906C8071FCA3D6631DFD12986417B9964C038F7164CE2685C70FE0DC643BCD28044E8EFE7998A1FF8616361A09313045125C5F2220316C96E13ACA2FD6518F9C8A6809D"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件单机版升级包","Date":"2024-09-09","Desc":"1、中间件高级版增加支持360AI浏览器，解决360安全浏览器最新版运行不正常问题，优化系统缩放比例大于150的运行兼容性，解决系统服务中打开长文件时可能因为管道缓存长度不够失败问题；2、优化高级版内嵌网页小程序在Windows 11以下系统中的切换全屏显示效果，解决全屏时切换回来可能系统任务栏不正常显示问题，增强DirectUI或Direct3D绘制窗口的抓图效果；3、发布英文版适配支持Vivaldi、Brave浏览器类型，中文版不再支持这两种浏览器...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"EBD690CE78F1901C2B5DF719C499EDC7","Version":"1.5.16.5","Size":13172736,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"986D8BF42586466CFE92460B98052EA9326C0465C2120B4CB80821E6504FC77205DC0B76C27BE14FC259008AC21B1FA3AB0917C99394AE5C9F8766482EE538D871F05ACCD472D8AC92B02378F6EE82B70EE3405C6ABD04156D1E26F4FAAC0158705219534DFD27A257C1A8BC378E8C4B158517AD02D77BD789D55714C8692D1D0204ED869C07920FFDC2D6A877122CCF8550E780ADB1F1D107830E0B9F4B902338D5C531B23F9FB1833AEB8A862501DA6B6AB74826A3A68BFFE24C03CE866A321794767E16262DB7CA8F8FBF6B6EE1A7A521D74B63BADCE324DA841B7FD16D5CAE80DCD39968FB9453A365DD22226987267C1C9D175A8688B87FF0C154C7EAEA"}}
 
 2)、升级中间件授权请求：
 单机版中间件的授权文件，可以放到此协议中进行升级，也可以单独请求升级，如下指令：
