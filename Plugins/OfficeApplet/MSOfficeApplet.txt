@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-09-09","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"8C2BADD9F25A520BABD41441966D90E0","Version":"2.2.16.5","Size":9797632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"512B8559D45C74B1032CE31B427FCD306C2F934F016166CCFA4503FD8E0044132B6588D6F8F0CFF0B1BA54B2EC2D403257C38E97D5F3E2F77C94C3DDE6C55A4F9664AF901F3A046E1E2A5BAF39A87B11BD3993B3B2662FF1F9D465E69D44581FDD91ACAEE26039487E65A1483C56D86533CC15CA2DA1B461D8B46AFFB9FA6724D31E06F5A6E90EE64CDD929A53CF77118E977040C5A490896FB314F9FF3CF3566591DBF53702D266644D0ACA697D3AD93E623328CAEE4DD3A815F7A028CA8D76FA9056DC08781584A4921691622CD9DAA43C1EE76566126D827A2E6373EB41382370F70E2B3B8C636C185FA5BE02244D282B9724544E77E02589B93C5CF59686"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-09-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"C908EF91BED68E4C0084999017962CEA","Version":"2.2.16.6","Size":9863168,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"980F35FEE6F789E8EF4E267147277A332B0709C8C884F9CCBACE18C31E81E4414DBF8812BA8628C8FBBEF8DCC47F5CA6293226D4CDCCD33C2168B4CC25385148F8157B75C3A2676B4A14228EB3F81C4F2242355C4370A265FFB53349C3282BBBE8E71595A072EB0487F619347BDCE79ADEF4640866E9F78BE55B318FED02679305B97B59F394C59DC31AA8F8DBAF34B68B8762A52D8B0C917AEAFE27755DD72E345070790112E010597398688EAEE8C6CD297C2C15526688D300B3C9AED638F05EAA6D4F2D519DB25C2EE7F37E87FE20AA36D4A48B0789A556C201F7ABEAFA855FB153230A86547E16042F915A5742F777FE5F0D9BADFB6FCE7705BFF0EF640E"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-09-09","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"A89352728A61ED82EF7FAC0D9CCDCFD0","Version":"2.2.16.5","Size":9797632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0A9551641C31EB9C3F285A2651201F2538270A6034B264FB39DDA37ACD7ABBF746A905C0EF4B98A70E8EE27929F617ECBA94D47F24DD1DE783FCB9EA67F6DDE1CFA05140364313044962322C6B39C14BE5BA7903896270798789C24D12AD34FA2253EC727C7B05CD10C3A03DBCDAA1CFD02D6F30C804EDEF68890E04EAD332F9EA5298202F2563B125B5C2E201D12C7FB2D6580F731549E4729BC4A3627D81E29EB2373A37E8FE573BB58B60324214BB8211122B4C5E0A16165C24AD91AF4C8853820DFF88737C310C4027929D71652163BB7D198EEEE19B39480DA934D088234396B0800F9A2ADB7DF2AC31F6AEE99E3E308F672585BCA12652F76A5BD071E5"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-09-26","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"7B188110F74020D5795D3E56DA38BD47","Version":"2.2.16.6","Size":9863168,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"0C2E5BDE0444B03DBC9CD5923B3965866A57BD59358607EE254D413A0BF5445EB7DA1E18164882C2407458113DA14A9D40D57CBD44EF15B0E2724DE34A4C5AFB3F38BC29D7D3A6917D32AC84F4357C1AEC86EB44AC6EF6E3CF6DCE77B0E32DC86367FEBD965F26922BF41598792D496528E455C15DD8EB9063699037DC36EDD17C76139C9939F9C696FCE91CDA6A5E3A878B58777CEA457511F5FA0C4BBD519661D30BBE070DE8455BF2B14EB8B7561E97973E3BAC09D90A69C0078C79BD78CF557225477BDC51E084481BD53FB3B310CFBB11980A9847BE0FECD4D345AE598E21406C9F30097A266322F3FEB2044D43B951A486A4CBE8BCAFFEDA126D06A155"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -151,7 +151,7 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
 4）请求保存，适用于Word、Excel、PPT软件，如是新建文档，会创建一个临时文件名保存
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_Save","rid":4,"para":{}}
 {"req":"Office_Save","rid":4,"para":{"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
@@ -159,7 +159,7 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel、PPT软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 当另存为ppt或pptx时，可指定参数EmbedFonts是否嵌入TrueType字体，默认嵌入
 如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
@@ -170,7 +170,7 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于Word、Excel软件
 NewFile如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/testExport.pdf","Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
@@ -338,7 +338,7 @@ Type 1上传文件 0下载文件
 Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
-Url 上传或下载的地址，需要做UrlEncode编码
+Url 上传或下载的地址，需要做UrlEncode编码，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
 {"req":"Office_NetFile","rid":35,"para":{"Type":0,"Asyn":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}

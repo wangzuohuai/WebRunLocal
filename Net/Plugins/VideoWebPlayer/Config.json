@@ -8,6 +8,7 @@
   "ToolBar":1,
   "FillWnd":1,
   "Mute":0,
+  "Order":1,
   "SelfGPU":1,
   "FrameRate":1,
   "BlockFlag":7,

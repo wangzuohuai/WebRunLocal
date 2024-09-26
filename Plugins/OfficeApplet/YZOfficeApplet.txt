@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-09-09","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"4F2E498A0DDB5917FFB18D9A95706042","Version":"2.2.16.5","Size":5341184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"03144EEF7E495C7F5C8BC3E03670620772F50E5ADA5B33D17F2A542A297E4F28FB6F433BD00F0C686A237003ED37C5BC43B9087FA3D5D169CF9D6D69569FBBBAB96CE9BED840CCC8205FFF22875C08F90D39CC944BB4497F8E4074EEFE49BF592CE479DCF878F8364A5C79432B32442E27348C1F1B9F9E67509505E659203D4E06EEF8ECA64AB0A118237D6848858ABC464DC21E4AAB276FDD847AE1A11FDC25BF99686AA423E5E929BA2E7AE19242414732597CB4690FA13172ED00E590C88ADA047D333D33E411B1C6ACC69C6BFF9FCDD8484933F60642B2B769299F7B522B2B7F2C8EADEE9C5CCDD630D21820CD0A5F8D7CE400F36F9B9F2CA7B10045AD87"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-09-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"AC8A3428D58005C75D8522D2E8792A0A","Version":"2.2.16.6","Size":5373952,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"22CAD16CB520F830DF6DCF3CEA4B5F147312AD8C3DAD08B02FB33A7B9F7DD5070C4E6BD3FDF8E72BCED4D9265DD0DF4D12DE51E92ACD8FAFFC4DC0B3E39A5717131E57F6130F51E3E3654338F7B03B2DA2D7A3AD076FDA63417419948AB71452ACA22DC1AFB95F8CF09198CF15343F1A1984ABE675073306A3ADBDF46B77502EFD6CD128EDF089D0098FE6C5065BE5A6C5C0450E5A225B6A21D132AD69AF4B53093D08077853738F614D1F3499A7FBAAA6D51211269807535A9E0A6B3A88454BD529C5B999AA42B4BE0BD9A641C2E449D09B488150223EE041B53971C84BAA1A6973076577E34242779FEDCAB8DE410DC22844DCD18D268D101D97EF370F6595"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-09-09","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"83893E6975B2135D4A8BB5C3AD328184","Version":"2.2.16.5","Size":5341184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"74E02804280B2D058DCFA85C0D7633FF7E0DD2F2CC0E5932CAD8344C1A4CB4FBD44616A7E36351A7B1D1FC089AC317A165C18EE4B1A0800A998E2C27CD75AB051B1417722DFFB907FFB0111DF2F2DD3E0A3E600BB3C8679248EABC436A9B020CA99ADC4C26A73B56A8D9BCF2C7AB0F8004B419B46A593ED9F7FC181420062F14C36522924BD715626D038673A365F38DC61487E1F4F2CF1DCE70FDC492A023E6C99F000F6A8E8E6EEEA25FA9C8181C7AA940CDB0EAA1F4DAB178265563682B07BD5514386DF173C7BD88EA7F2E58AECEB15FC0A976F6DEAA8CEDDBB8F165AEE6C088FEB2F834CC0320C37EFB2340A9C27BF53CBF19562673D344B9ACC24A3CD6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2024-09-26","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"FFFD3DA344B51D7452ECBD92DFD3B363","Version":"2.2.16.6","Size":5373952,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4B11DF8CBCA1C0FE4216DB7D79958663844F375ED0F5A9DD7470DA3FA3C36F9D070A2948E45595363AD1E0DEBA106A2893E64FFB16B70475962C4491E6F4D028CE14E9BD121D36BD0770F98A8130F269E98716ECD9387EF6942C63C6C27DB02ACEBAED53CC412512E3EC4037C989BB721483C0F3414E74EC239D29123982A8C66F094BE95CF8A855EBADEC3DF26E091B06B6E42A5EBCAA32D7094F3CD11E2E6E9343314B66777C94E60DBD8F9AF219D4E420080B40CBF599734C15B59ACC38CB0B65D8477F89E3286965A2972F413873AF12D538BBD5104F2C2CDA0827AD2ED0C99C98B2C585437BB0CA48F38F7C860BD62B8A28553C9BFDF216FBEA276F053C"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -152,7 +152,7 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
 
 4）请求保存，适用于永中文字、永中表格、永中简报软件，如是新建文档，会创建一个临时文件名保存
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_Save","rid":4,"para":{}}
 {"req":"Office_Save","rid":4,"para":{"Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
@@ -160,7 +160,7 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 
 5）请求另保存 NewFile为另保存路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格、永中简报软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/test.xml"}}
 {"req":"Office_SaveAs","rid":5,"para":{"NewFile":"D:/Zorro/testSA.doc"}}
@@ -170,7 +170,7 @@ User 设置编辑用户名 Edit设置编辑权限，含义和启动时相同 Hid
 
 6）请求导出为PDF或XPS格式 NewFile为导出文档路径，有中文或特殊字符等需要UrlEncode编码，适用于永中文字、永中表格软件
 支持相对路径，如非全路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用
-如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器
+如果指定了Office_NetFile接口中的Url等参数，代表保存到本地的同时上传到服务器，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 如果调用打开时指定了Byte字节流参数，此请求返回后前端继续接收文件字节流即可
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/test1.pdf"}}
 {"req":"Office_Export","rid":6,"para":{"NewFile":"D:/Zorro/testExport.pdf","Asyn":0,"Agent":"","Cookie":"","Auth":"","Para":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
@@ -336,7 +336,7 @@ Type 1上传文件 0下载文件
 Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
 Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
 Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
-Url 上传或下载的地址，需要做UrlEncode编码
+Url 上传或下载的地址，需要做UrlEncode编码，在上传的时候，我们会在上传的Url地址里，增加类似“PHPostSize=10847&PHPostMD5=6D0FDA97DD6C5D087FE7166F49980BBC”的参数，分别代表上传数据包的大小和MD5哈希值
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
 {"req":"Office_NetFile","rid":35,"para":{"Type":0,"Asyn":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/OfficeDoc/test.docx","Url":"http://local.zorrosoft.com/Files/PHDefault.docx"}}

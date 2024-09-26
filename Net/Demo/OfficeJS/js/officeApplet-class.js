@@ -580,17 +580,17 @@ class officeApplet{
             "rid": officeApplet.rid,
             "para": {
                 "Name": "PageHiOffice—文档在线编辑组件升级包",
-                "Date": "2024-09-09",
-                "Desc": "1、中间件高级版增加支持360AI浏览器，解决360安全浏览器最新版运行不正常问题，优化系统缩放比例大于150的运行兼容性2、优化高级版内嵌网页小程序在Windows 11以下系统中的切换全屏显示效果；3、PageHiOffice优化Ole及完整嵌入打开文档时的稳定性，支持打开大小为零的文件，解决打开只读、禁止另存或打印文档时可能提示COM加载项没有加载而关闭文档问题；4、PageHiOffice优化对WPS个人版的支持，优化程序关闭文档时的稳定性，解决打开文档时可能提示未找到相关窗口问题，打开服务器文档时增加输出更多日志用于排错...",
+                "Date": "2024-09-26",
+                "Desc": "1、中间件水印版服务WS连接TK校验时有效期修改为不能超过30天，优化高级版内嵌小程序启动稳定性，改进非系统服务方式运行启动时要求管理员权限的时机；2、中间件解决下载0字节大小文件问题，优化下载时临时文件名生成算法，避免过长文件名导致错误，上传文件时请求地址增加PHPostSize和PHPostMD5两个参数，接收方可提前获取数据包大小和MD5哈希值；3、解决中间件服务进程异常崩溃后服务启动后加载内嵌小程序可能失败问题，异常重启后小程序编号不重新计数，解决内嵌小程序启动可能偶尔卡死问题，解决上一版引入的系统hosts文件内容丢失数据问题；4、PageHiOffice优化OLE及完整嵌入打开文档过程，优化在副屏幕中启动的显示效果，优化完整嵌入时对多个Word文档打开的支持，解决完整嵌入后拖动或放大缩小Office窗口显示错误等问题，优化对WPS个人版的兼容支持...",
                 "DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
                 "Open": "http://local.zorrosoft.com/officeJS",
-                "MD5": "070E3652B3F11C798CF10DAEC8BC7F7B",
-                "Version": "2.2.16.5",
-                "Size": 35323904,
+                "MD5": "53EEA11EFD74B96B26225A596493F947",
+                "Version": "2.2.16.6",
+                "Size": 35520512,
                 "HideIns": 0,
                 "Cookie": "",
                 "Auth": "",
-                "TK": "38C0A66094BC2D99786ED0E714E26D9D3EA008911CA46BBA53EBC9DC3FB9E92EFB97C77697C96D06765F2FBC92BFF57B15866D290479152D9B7EC698E8CFF7224ECE65F9FCE90377B18942600A0E3DE9EC964A29060B0F957DDDFFD3A5D19A86F4AFB4B57160048740B1468854B03D14071644C054BBE5771A24A82F4958B13A2808C6E3CE786E3EAB9600463B357DA8677929E476663394FAC2C29A83EF72F2FE87449B655F03AF77533E1FB6E56C5245464CACBDE7654E0E6CBB201B6780BF797490F327A50629CC7815AD9002912B96E5BF2551CC430A950C4987D08B40CD7DBB6B44004E085DFD1C40F6EA9908A6694CC58BCDD17C421B9FAB750607C2D6"
+                "TK": "2A53DD1C3C5B5B0922524D59FFB423945599684D35DA3D32C88717E5053C2C86390AC899337C6370B53DF23177624E73CB35CBDC76DD81D0068AA09B36931D094E74DE01EAF48E7717109C1FF9C930C7B2D498673B3B728B3964E35CE584E8887FDEDB5FA0E26710FEBC1B469E09FD8490C9A5D77EE639A827C22A900888C2FE02B647879998C0DAA0A38D037BB1B5C79DBF08E33F3F8D157D57AEA4258A52E1BE2575533E8D6511E0F965C3EF02F40EA444346021AAFE7C67EE785874FAC00E5DAB9CFB985E9AD9F9A42DA51BFA095FF3DAB33A4B9E323801704707ED02AEFC4C8824E66D004E488594A0C09C294BB5627ABA6F82D4F26AB7DA94F6A67C3C1C"
             }
         }
         this.ws.sendMessage(msg)
