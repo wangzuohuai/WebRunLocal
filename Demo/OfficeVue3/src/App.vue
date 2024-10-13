@@ -123,7 +123,7 @@ let rid = 10 		// 其它请求起始序号
 let runInfo = 1    	// 获取办公软件安装信息 一般只需要在启动时获取一次
 let RunFirst = 2  	// 办公网页组件启动实例1序号
 let RunSecond = 3   	// 办公网页组件启动实例2序号
-let version = ref('2.2.16.6')   //中间件版本信息
+let version = ref('2.2.16.7')   //中间件版本信息
 let ServerOpenFile = 'http://local.zorrosoft.com/Files/template.doc'
 let MyOpenDoc = ref('c:/OfficeDoc/test.docx')
 let MyOpenExcel = 'c:/OfficeDoc/test.xlsx'
@@ -1277,17 +1277,17 @@ function SendUpdateJson() {
     "rid":rid,
     "para":{
       "Name": "PageHiOffice—文档在线编辑组件升级包",
-			"Date": "2024-09-26",
-			"Desc": "1、中间件水印版服务WS连接TK校验时有效期修改为不能超过30天，优化高级版内嵌小程序启动稳定性，改进非系统服务方式运行启动时要求管理员权限的时机；2、中间件解决下载0字节大小文件问题，优化下载时临时文件名生成算法，避免过长文件名导致错误，上传文件时请求地址增加PHPostSize和PHPostMD5两个参数，接收方可提前获取数据包大小和MD5哈希值；3、解决中间件服务进程异常崩溃后服务启动后加载内嵌小程序可能失败问题，异常重启后小程序编号不重新计数，解决内嵌小程序启动可能偶尔卡死问题，解决上一版引入的系统hosts文件内容丢失数据问题；4、PageHiOffice优化OLE及完整嵌入打开文档过程，优化在副屏幕中启动的显示效果，优化完整嵌入时对多个Word文档打开的支持，解决完整嵌入后拖动或放大缩小Office窗口显示错误等问题，优化对WPS个人版的兼容支持...",
+			"Date": "2024-10-13",
+			"Desc": "1、优化中间件高级版启动内嵌网页小程序处理过程，解决个别情况启动失败问题，优化内嵌网页小程序的窗口激活及输入焦点处理，优化WS连接释放过程；2、优化PageHiOffice组件对微软Office及WPS各版本的兼容支持，解决网页嵌入和桌面同时打开后释放冲突问题，解决WPS嵌入后部分菜单功能无法使用问题；3、优化PageHiOffice组件优化其在副屏幕中兼容使用效果，解决文字模块执行Ctrl+S无保存通知问题，解决网页嵌入和桌面同时打开多次切换后嵌入窗口可能无法点击问题...",
 			"DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
 			"Open": "http://local.zorrosoft.com/office3",
-			"MD5": "53EEA11EFD74B96B26225A596493F947",
-			"Version": "2.2.16.6",
-			"Size": 35520512,
+			"MD5": "7E504835082FDD27865CC842285EF993",
+			"Version": "2.2.16.7",
+			"Size": 34734080,
 			"HideIns": 0,
 			"Cookie": "",
 			"Auth": "",
-			"TK": "2A53DD1C3C5B5B0922524D59FFB423945599684D35DA3D32C88717E5053C2C86390AC899337C6370B53DF23177624E73CB35CBDC76DD81D0068AA09B36931D094E74DE01EAF48E7717109C1FF9C930C7B2D498673B3B728B3964E35CE584E8887FDEDB5FA0E26710FEBC1B469E09FD8490C9A5D77EE639A827C22A900888C2FE02B647879998C0DAA0A38D037BB1B5C79DBF08E33F3F8D157D57AEA4258A52E1BE2575533E8D6511E0F965C3EF02F40EA444346021AAFE7C67EE785874FAC00E5DAB9CFB985E9AD9F9A42DA51BFA095FF3DAB33A4B9E323801704707ED02AEFC4C8824E66D004E488594A0C09C294BB5627ABA6F82D4F26AB7DA94F6A67C3C1C"
+			"TK": "0E26457912BDA0C1D894E6469FFF51C40AAEE43D1AEB7896D47F5278DBBD5B9041A0B6520A299862F0AD9CF0C2D410BA28C9FFC43D56EAA2AEF5448423B46D133F080E0407D20A9716DFCB3DE8DF47BB1DACC6173A7C3836C8BB6FA499D3BAD1ADCC64C0679E6398578EC80FA051296C775BE73BF90937D686E959D779A6CE4CD099FC50919AF18C4BAAB4E513D033349DD15D6C93E88FEC530920C86EEFAF424EB784BF6F1C31C427737B20982021BA34EA571F04F7C9B622A2A51C0B6476974E824E51F4B9274B26B232C06484E43E10F2160A04BEB447FF097F2281CA437D0F33D53710F9E9C1321616A67DEEA145AE75608A1D8C9CAA6E8014DB4AAC5754"
     }
   }
   socket[0].sendObj(msg)
