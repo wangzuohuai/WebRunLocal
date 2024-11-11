@@ -113,14 +113,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-10-13","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"CB6F0E752DDE2055E89C0AABBB3ACF79","Version":"2.2.16.7","Size":9895936,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9884A6D1ECDE6674BA2C5817A4356B2B636D7DC27E28F5EC37B52816C225C97992074603E71D740A29A83912D6654D87AA0D2F85CBEC3885DF630C433F9A5A6BD7719E05D3DCF10C64AEB6A221EA791E26173AB8E28A302DC3C39D29F4B242FA305955F315E2212EA344A9AC0019CCCADDBA29F621F6BA551C170D40E5A14970B16578C4C1D7CE9B3C18BD7A04D57C5D48CB7C864CAC732AFD4EA68E30EA0CE5BB4E05AD2AF8DD82058DCE2E8105D24D2367137C1F83BF01CF28E0E8B0AFC5E296C444D3737BB220812EE4A26C5A1E4480F5F40C2C69693FA0828AD47455EE0990DA4FF96C66C013A4229F96F99C89B86871CE8C60C8F8959A4584DC85107F21"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-11-11","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"C13568985A9A71166B20AE85C03E8604","Version":"2.2.16.8","Size":10059776,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A5AFE1F8D09BB076564D7AFD701F44CA8B16E80EE359F24FBBF5046B30F7D338895D4CFC55721B74829A8731E948DC804444ADBA16A2791F99BB60F5DEB61AE53040301CA7311904DA7B5CDA64E2717E9676E0923EB30AC9A35BB28E355C2EB3F847F3753B2233B62F3EF2D99C0D7ACB43AB439D6A84348C56B5F18D6AA935FF0AA3D01689386A6D624855B896E77D02F5984D004ABCFEC1377FD602D9880F33D55425B98836686979A66580037A1C185B886388F7E4922C41A1129C4B3749C0FC79717587DB54C97B434282A002934083F20E3D597F892617A977A5EC3F7B6F8E40FEFF21D623DEFFDB48108975183C42284CA7AABC8A7EBA0CD37A55598824"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-10-13","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"59258133FC3C69030DBDF4BBCF5A1238","Version":"2.2.16.7","Size":9895936,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B68BB9200B6EB3D042CE1FB3AB6FEF05E9D00055ECC8D9DAC1D510D1B553B5822FA56C3B33C0C707F3970E46E2C090E0669340E684212E2AEAC03665178F0D19FF922466E6C48D6B1F74CA5A50DE9E3C86F9FDCD262588E0E6EDC3E0500EE2F72F026862C70C8F3D97AFD97FDC31B8FDB8F46F94F721ACDE0159DE53EACC300BA3042755AB93DEA2CA2FCD29BA98754D38C2F817C5AB8434B1D88863E765E10E682C7C8BC12B26D913DF8F4D42293DE326E409F782E5659020A9F7D8FB848533DFADA4FEBBD98C105D26BCDBC42AACE0E47E8106C246EEB0BD9C8FA412565393C047949504DFD4503164A13C40A0BCF65056EC344497C7EFF1288CE3C6C835D6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2024-11-11","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"83C9C3CD3BF2C24844253A5CDA98E99C","Version":"2.2.16.8","Size":10059776,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"49284B7B93ED224B1019E1337D92077DDF9625A9F9A60F675140A3F87D33012F2693F36A3472096E41CA0EE30C78ADB104E0269602B0C2764959649E819E4D7660E99AE798C16B545B7A41C5F8F3E112B07B74B382D84A47BFC425FBC68E6EE90A4F695A18D6E700F59A832BF2C4E687351C1199491CD1C1D05F744EE90B5CCA216E81F1F128627310F0C696B908B6C8D362CDAEEC236136B67F07713C5339AB94D8EF5F57190726CA19F7FE3ACE3E48786E4C9377C3732D6397D919FBD437C6662B7285D9CC740B5FACF83740F066171DD13CEE098193CB84D228F8F8E4FF88B2EA043F5D2649E34A4437B873D36E21797810575F3A3615CAD5EB51BA2ACE32"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -192,12 +192,13 @@ Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Heig
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
 8）请求在当前光标位置批量插入文字，适用于Word软件
-Paragraph代表换行数量
 FontSize字体大小
 FontName字体名称
 Color字体颜色
-Alignment是对其方式 0左对齐 1居中 2右对齐
 Bold粗体大小
+以上参数也可以直接指定风格Style来确定
+Paragraph代表换行数量
+Alignment是对其方式 0左对齐 1居中 2右对齐
 {"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Alignment":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
 返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
@@ -671,6 +672,35 @@ Opt 操作类型 1设置，没有时添加，内建属性不能添加 2删除，
 {"req":"Office_SetDocProp","rid":75,"para":{"File":"C:/OfficeDoc/test.doc","Props":[{"Class":1,"Type":4,"Name":"Title","Val":"test","Opt":1}]}}
 返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
 
+76）获取文档样式数量，适用于Word软件
+Base 是否获取样式基本信息，默认0不获取，设置1获取，信息返回到Styles节点
+{"req":"Office_GetStyleCount","rid":76,"para":{"Base":0}}
+返回：{"ret":0,"rid":76,"data":{"Ret":"0","Count":0,"Styles":[]}}
+
+77）获取文档指定样式信息，适用于Word软件
+Type 内置样式类型，详细定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdbuiltinstyle
+Index 样式序号，支持自定义样式，序号从1开始
+Name 样式名称 根据类型、序号或名称，三选一使用，支持自定义样式名称，自定义样式只支持根据名称获取，取多个样式的话，名称用|间隔
+{"req":"Office_GetStyleInfo","rid":77,"para":{"Type":-1}}
+{"req":"Office_GetStyleInfo","rid":77,"para":{"Index":1}}
+{"req":"Office_GetStyleInfo","rid":77,"para":{"Name":"HTML 打字机|HTML 样本"}}
+返回：{"ret":0,"rid":77,"data":{"Ret":"0","Styles":[{"Type":2,"Name":"HTML 打字机","Desc":"%E5%AD%97%E4%BD%93%3A%20(%E9%BB%98%E8%AE%A4)%20Courier%20New,%2010%20%E7%A3%85%5Cr%20%20%20%20%E5%9F%BA%E4%BA%8E%3A%20%E9%BB%98%E8%AE%A4%E6%AE%B5%E8%90%BD%E5%AD%97%E4%BD%93","BuiltIn":1,"InUse":0,"Hidden":0,"Locked":0,"Visibility":0,"Linked":0,"AutoUpdate":0,"UnhideWhenUsed":0,"QuickStyle":0,"NoSpace":0,"FontInfo":{"Name":"Courier New","Size":10.000,"Spacing":0.000,"Bold":0,"Color":-16777216,"Italic":0,"Hidden":0,"SmallCaps":0,"AllCaps":0,"Position":0,"Scaling":100,"Emboss":0,"Shadow":0,"Outline":0,"Subscript":0,"Superscript":0,"StrikeThrough":0,"DoubleStrikeThrough":0,"Engrave":0,"BoldBi":0,"ItalicBi":0,"ColorIndex":0,"Underline":0,"Animation":0,"EmphasisMark":0,"DiacriticColor":-16777216,"UnderlineColor":-16777216,"ColorIndexBi":0,"Kerning":1.000,"SizeBi":10.000,"NameFarEast":"+中文正文","NameAscii":"Courier New","NameOther":"Courier New","NameBi":"Courier New","DisableCharacterSpaceGrid":0},"ParagraphFormat":{}},{"Type":2,"Name":"HTML 样本","Desc":"%E5%AD%97%E4%BD%93%3A%20(%E9%BB%98%E8%AE%A4)%20Courier%20New%5Cr%20%20%20%20%E5%9F%BA%E4%BA%8E%3A%20%E9%BB%98%E8%AE%A4%E6%AE%B5%E8%90%BD%E5%AD%97%E4%BD%93","BuiltIn":1,"InUse":0,"Hidden":0,"Locked":0,"Visibility":0,"Linked":0,"AutoUpdate":0,"UnhideWhenUsed":0,"QuickStyle":0,"NoSpace":0,"FontInfo":{"Name":"Courier New","Size":10.500,"Spacing":0.000,"Bold":0,"Color":-16777216,"Italic":0,"Hidden":0,"SmallCaps":0,"AllCaps":0,"Position":0,"Scaling":100,"Emboss":0,"Shadow":0,"Outline":0,"Subscript":0,"Superscript":0,"StrikeThrough":0,"DoubleStrikeThrough":0,"Engrave":0,"BoldBi":0,"ItalicBi":0,"ColorIndex":0,"Underline":0,"Animation":0,"EmphasisMark":0,"DiacriticColor":-16777216,"UnderlineColor":-16777216,"ColorIndexBi":0,"Kerning":1.000,"SizeBi":12.000,"NameFarEast":"+中文正文","NameAscii":"Courier New","NameOther":"Courier New","NameBi":"Courier New","DisableCharacterSpaceGrid":0},"ParagraphFormat":{}}]}}
+返回节点Styles中的Type定义，参考 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdstyletype
+
+78）设置文档样式信息，适用于Word软件
+Type 内置样式类型，详细定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdbuiltinstyle
+Index 样式序号，支持自定义样式，序号从1开始
+Name 样式名称 根据类型、序号或名称，三选一使用，支持自定义样式名称，自定义样式只支持根据名称设置，自定义样式名称如果还不存在的话自动添加,如果不存在，可以设置CopyName，代表从指定名称的样式中复制一个再设置某些参数
+Para 样式的参数
+{"req":"Office_SetStyleInfo","rid":78,"para":{"Name":"TestStyle","CreateType":2,"CopyName":"标题 1","Para":{"Hidden":0,"Locked":0,"Visibility":1,"AutoUpdate":0,"UnhideWhenUsed":1,"QuickStyle":1,"NoSpace":0,"FontInfo":{"Name":"Calibri Light","Size":10.500,"Spacing":0.000,"Bold":0,"Color":-16777216,"Italic":0,"Hidden":0,"SmallCaps":0,"AllCaps":0,"Position":0,"Scaling":100,"Emboss":0,"Shadow":0,"Outline":0,"Subscript":0,"Superscript":0,"StrikeThrough":0,"DoubleStrikeThrough":0,"Engrave":0,"BoldBi":0,"ItalicBi":0,"ColorIndex":0,"Underline":0,"Animation":0,"EmphasisMark":0,"DiacriticColor":-16777216,"UnderlineColor":-16777216,"ColorIndexBi":0,"Kerning":1.000,"SizeBi":10.500,"DisableCharacterSpaceGrid":0},"ParagraphFormat":{"WordWrap":-1,"KeepTogether":-1,"KeepWithNext":-1,"PageBreakBefore":0,"NoLineNumber":0,"Hyphenation":-1,"WidowControl":0,"FarEastLineBreakControl":-1,"HangingPunctuation":-1,"HalfWidthPunctuationOnTopOfLine":0,"AddSpaceBetweenFarEastAndAlpha":-1,"AddSpaceBetweenFarEastAndDigit":-1,"MirrorIndents":0,"AutoAdjustRightIndent":-1,"DisableLineHeightGrid":0,"SpaceBeforeAuto":0,"SpaceAfterAuto":0,"RightIndent":0.0,"LeftIndent":0.0,"FirstLineIndent":0.0,"LineSpacing":16.0,"SpaceBefore":12.0,"SpaceAfter":3.2,"CharacterUnitRightIndent":0.0,"LineUnitBefore,":0.0,"LineUnitAfter":0.0,"CharacterUnitLeftIndent":0.0,"CharacterUnitFirstLineIndent":0.0,"Alignment":3,"LineSpacingRule":5,"BaselineAlignment":4,"OutlineLevel":9,"ReadingOrder":1,"TextboxTightWrap":0}}}}
+返回：{"ret":0,"rid":78,"data":{"Ret":"0"}}
+
+79）删除文档自定义样式，适用于Word软件
+Index 样式序号，只支持自定义样式，序号从1开始，必须先调用Office_GetStyleCount并设置Base为1时获取到的ID才行
+Name 样式名称 只支持自定义样式名称，二选一使用，删除多个样式的话，名称用|间隔
+{"req":"Office_DelStyle","rid":79,"para":{"Name":"TestStyle"}}
+返回：{"ret":0,"rid":79,"data":{"Ret":"0"}}
+
 80）请求开始播放幻灯片，适用于PPT软件
 Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始
 FullScreen 默认全屏播放，0窗口内播放
@@ -735,6 +765,13 @@ Formula 设置公式
 Formula 设置值
 {"req":"Office_PutCellData","rid":89,"para":[{"Addr":"C1","Val":"test1","Formula":"A1=1"},{"Addr":"C1","Val":"test1"}]}
 返回：{"ret":0,"rid":89,"data":{"Ret":"0"}}
+
+90）设置文档选中内容的样式，适用于Word软件
+Type 内置样式类型，详细定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdbuiltinstyle
+Index 样式序号，支持自定义样式，序号从1开始
+Name 样式名称 根据类型、序号或名称，三选一使用，支持自定义样式名称，自定义样式只支持根据名称设置
+{"req":"Office_SetSelectStyle","rid":90,"para":{"Style":"TestStyle"}}
+返回：{"ret":0,"rid":90,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为Word程序通知

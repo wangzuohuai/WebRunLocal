@@ -114,14 +114,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-10-13","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"1AD57B8F17597F7FF9C701E9C39E16C1","Version":"2.2.16.7","Size":5832704,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"687EF8AB88E4E9808C4BB66E33A3B743B4245300288F6391EB6C5C9BA0C76CE9D5DDE5CD555D7013CB0E9F9A2C6F16E7FB71D614D682328800BA4896A4594DAD0083BD69FA12F85AFF2689F1339EC70821212658B5D9BBE129C9F593E3BCAE0D4E00174AB31E4CD0B277A2EE6B41CAFA28D45154135B69EFE12734FD158AB0F56AEDB48B37F2D3C0986B4746FEF9944A59A604EC70421FA40D8FE17DE628FB3488144BE363228CB7C4802193AC9083CA4DE7FC0D1BFCC02839646573C4A8693E82762211F0CA204EC7620C7A76682551B7C5710FCCED9528217ABF1B8EEAF996A7731E59E99394A709C8D7D170C255B7FE55C4C9B6FDFF336C22618E1D9146CB"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-11-11","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"A4F5FDABBAAA96C562F3132391F9EF5C","Version":"2.2.16.8","Size":5832704,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"3C13F68A43EB4BCC0C628B1EE887B3B75E55960F35AC4B0D1C45D1476D3B27B7DC1394A687D00DDAEC82CA69227C4DFEDC1F578610E969C5D48291E49AA9C67897320F727C8BDBA5C8CA69688B2349641CD905A09AA15C4AB6873CEAD49015B44B2F6D210BA3D6BB8E1A1BC74E24756BD355C9BEEC885668C41E61590C6BF43ECAC958A7AD7C55A5530BD77441F78312D96A928375356D5085365356BC4E5B61D98FE3E2980EADD89778E8059C4F6831126F2B36CEFC6575E96603B2AF91C3EEACEC9ADEBDB760FB2665B124A53F1961D69787C8DF05947A8454BCA655F9B4B5742F6CAC1197403BF269BE85DBE6880973FD15152BDF8B78C3CF726E45CA1B63"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-10-13","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"35AEC4C6D60E1575D50BCF43FF1FA8D8","Version":"2.2.16.7","Size":5832704,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"57AC8C4AE1EC23BA9F39E2E17E223343425262EB58DCE101E942B77915255261AFE80CFB84C256A0E22C1341E284D5F750184FF0321A6C31BA1479A4BD7353A262FCDFFA8918BBF18A61442009BB3CECB884AAB6AF69E2601AD0375D667BB593FA909521EA3CC27D34CD225C9BC068AF468B0461AAA42D7A657214F33183C55ACF4435422B2E5C2A2C88E7930A358B8FBF1C8C1A49628E38F5AFCA3B1660881CAF7A57D03386B6D3113A1F2C7EE19D25E3B1ED7DDDF5AB250EA496D38A37AE59380C155E041387EE2040D9AC29AB65B83C8C12BD1A917416D7B24B351C0D0AB4C104E32F0AE6E476942539710829D6786CC617EEC334A2B3B02CDD1179E88685"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2024-11-11","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"F15644A5AEBBF0BA36F4A692664E7546","Version":"2.2.16.8","Size":5832704,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8857F10356D023DF0FFB67071F0655A07B0620F295946E87BF93E6B63CF9EF5F339398BBA510DCE70ED02D6F3B47F2EAF113271E439EBC8F45A88FA788C1B42B76F4F081FE0FEA1E0A14E618408D53B82A1641C6C0D63BF15FFADA501703110E2AA4529311D65A24EBEB60E465841EFCFC5B0F3E8E5D40E4B2B41B4A1CE9AE0648C8A9606873E8812924511BE0E6A0033272574D7DF8FEA93686CB504686D8A6E2B158447B408CC48F29277D2BFCB3DAF38930C365272067025A8480C05B2BA3A523AC348023A9605DD8C4BED7720E3E12AE785488FDA39D857CB7273006C32AFBC8AE530186C3D7053138FFFD6049FE43277CA8E14FAF917CE35DA2A040EDB5"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -194,12 +194,13 @@ Left、Top、Width、Height，如没指定，Left及Top默认为0，Width及Heig
 返回：{"ret":0,"rid":7,"data":{"Ret":"0","Width":"1","Height":"1"}} Width和Height分别为插入图片的宽度和高度
 
 8）请求在当前光标位置批量插入文字，适用于WPS文字软件
-Paragraph代表换行数量
 FontSize字体大小
 FontName字体名称
 Color字体颜色
-Alignment是对其方式 0左对齐 1居中 2右对齐
 Bold粗体大小
+以上参数也可以直接指定风格Style来确定
+Paragraph代表换行数量
+Alignment是对其方式 0左对齐 1居中 2右对齐
 {"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Alignment":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 {"req":"Office_Insert","rid":8,"para":[{"Paragraph":1},{"FontSize":"16","FontName":"宋体","Color":"0","Bold":"8","Text":"详情请点击这里："},{"Paragraph":1},{"Address":"http://zorrosoft.com","Display":"佐罗软件官方网站"}]} 
 分别为换行、插入指定字体和颜色值的文字再换行，插入一个超链接
@@ -652,6 +653,35 @@ Opt 操作类型 1设置，没有时添加，内建属性不能添加 2删除，
 {"req":"Office_SetDocProp","rid":75,"para":{"File":"C:/OfficeDoc/test.doc","Props":[{"Class":1,"Type":4,"Name":"Title","Val":"test","Opt":1}]}}
 返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
 
+76）获取文档样式数量，适用于WPS文字软件
+Base 是否获取样式基本信息，默认0不获取，设置1获取，信息返回到Styles节点
+{"req":"Office_GetStyleCount","rid":76,"para":{"Base":0}}
+返回：{"ret":0,"rid":76,"data":{"Ret":"0","Count":0,"Styles":[]}}
+
+77）获取文档指定样式信息，适用于WPS文字软件
+Type 内置样式类型，详细定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdbuiltinstyle
+Index 样式序号，支持自定义样式，序号从1开始
+Name 样式名称 根据类型、序号或名称，三选一使用，支持自定义样式名称，自定义样式只支持根据名称获取，取多个样式的话，名称用|间隔
+{"req":"Office_GetStyleInfo","rid":77,"para":{"Type":-1}}
+{"req":"Office_GetStyleInfo","rid":77,"para":{"Index":1}}
+{"req":"Office_GetStyleInfo","rid":77,"para":{"Name":"HTML 打字机|HTML 样本"}}
+返回：{"ret":0,"rid":77,"data":{"Ret":"0","Styles":[{"Type":2,"Name":"HTML 打字机","Desc":"%E5%AD%97%E4%BD%93%3A%20(%E9%BB%98%E8%AE%A4)%20Courier%20New,%2010%20%E7%A3%85%5Cr%20%20%20%20%E5%9F%BA%E4%BA%8E%3A%20%E9%BB%98%E8%AE%A4%E6%AE%B5%E8%90%BD%E5%AD%97%E4%BD%93","BuiltIn":1,"InUse":0,"Hidden":0,"Locked":0,"Visibility":0,"Linked":0,"AutoUpdate":0,"UnhideWhenUsed":0,"QuickStyle":0,"NoSpace":0,"FontInfo":{"Name":"Courier New","Size":10.000,"Spacing":0.000,"Bold":0,"Color":-16777216,"Italic":0,"Hidden":0,"SmallCaps":0,"AllCaps":0,"Position":0,"Scaling":100,"Emboss":0,"Shadow":0,"Outline":0,"Subscript":0,"Superscript":0,"StrikeThrough":0,"DoubleStrikeThrough":0,"Engrave":0,"BoldBi":0,"ItalicBi":0,"ColorIndex":0,"Underline":0,"Animation":0,"EmphasisMark":0,"DiacriticColor":-16777216,"UnderlineColor":-16777216,"ColorIndexBi":0,"Kerning":1.000,"SizeBi":10.000,"NameFarEast":"+中文正文","NameAscii":"Courier New","NameOther":"Courier New","NameBi":"Courier New","DisableCharacterSpaceGrid":0},"ParagraphFormat":{}},{"Type":2,"Name":"HTML 样本","Desc":"%E5%AD%97%E4%BD%93%3A%20(%E9%BB%98%E8%AE%A4)%20Courier%20New%5Cr%20%20%20%20%E5%9F%BA%E4%BA%8E%3A%20%E9%BB%98%E8%AE%A4%E6%AE%B5%E8%90%BD%E5%AD%97%E4%BD%93","BuiltIn":1,"InUse":0,"Hidden":0,"Locked":0,"Visibility":0,"Linked":0,"AutoUpdate":0,"UnhideWhenUsed":0,"QuickStyle":0,"NoSpace":0,"FontInfo":{"Name":"Courier New","Size":10.500,"Spacing":0.000,"Bold":0,"Color":-16777216,"Italic":0,"Hidden":0,"SmallCaps":0,"AllCaps":0,"Position":0,"Scaling":100,"Emboss":0,"Shadow":0,"Outline":0,"Subscript":0,"Superscript":0,"StrikeThrough":0,"DoubleStrikeThrough":0,"Engrave":0,"BoldBi":0,"ItalicBi":0,"ColorIndex":0,"Underline":0,"Animation":0,"EmphasisMark":0,"DiacriticColor":-16777216,"UnderlineColor":-16777216,"ColorIndexBi":0,"Kerning":1.000,"SizeBi":12.000,"NameFarEast":"+中文正文","NameAscii":"Courier New","NameOther":"Courier New","NameBi":"Courier New","DisableCharacterSpaceGrid":0},"ParagraphFormat":{}}]}}
+返回节点Styles中的Type定义，参考 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdstyletype
+
+78）设置文档样式信息，适用于WPS文字软件
+Type 内置样式类型，详细定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdbuiltinstyle
+Index 样式序号，支持自定义样式，序号从1开始
+Name 样式名称 根据类型、序号或名称，三选一使用，支持自定义样式名称，自定义样式只支持根据名称设置，自定义样式名称如果还不存在的话自动添加,如果不存在，可以设置CopyName，代表从指定名称的样式中复制一个再设置某些参数
+Para 样式的参数
+{"req":"Office_SetStyleInfo","rid":78,"para":{"Name":"TestStyle","CreateType":2,"CopyName":"标题 1","Para":{"Hidden":0,"Locked":0,"Visibility":1,"AutoUpdate":0,"UnhideWhenUsed":1,"QuickStyle":1,"NoSpace":0,"FontInfo":{"Name":"Calibri Light","Size":10.500,"Spacing":0.000,"Bold":0,"Color":-16777216,"Italic":0,"Hidden":0,"SmallCaps":0,"AllCaps":0,"Position":0,"Scaling":100,"Emboss":0,"Shadow":0,"Outline":0,"Subscript":0,"Superscript":0,"StrikeThrough":0,"DoubleStrikeThrough":0,"Engrave":0,"BoldBi":0,"ItalicBi":0,"ColorIndex":0,"Underline":0,"Animation":0,"EmphasisMark":0,"DiacriticColor":-16777216,"UnderlineColor":-16777216,"ColorIndexBi":0,"Kerning":1.000,"SizeBi":10.500,"DisableCharacterSpaceGrid":0},"ParagraphFormat":{"WordWrap":-1,"KeepTogether":-1,"KeepWithNext":-1,"PageBreakBefore":0,"NoLineNumber":0,"Hyphenation":-1,"WidowControl":0,"FarEastLineBreakControl":-1,"HangingPunctuation":-1,"HalfWidthPunctuationOnTopOfLine":0,"AddSpaceBetweenFarEastAndAlpha":-1,"AddSpaceBetweenFarEastAndDigit":-1,"MirrorIndents":0,"AutoAdjustRightIndent":-1,"DisableLineHeightGrid":0,"SpaceBeforeAuto":0,"SpaceAfterAuto":0,"RightIndent":0.0,"LeftIndent":0.0,"FirstLineIndent":0.0,"LineSpacing":16.0,"SpaceBefore":12.0,"SpaceAfter":3.2,"CharacterUnitRightIndent":0.0,"LineUnitBefore,":0.0,"LineUnitAfter":0.0,"CharacterUnitLeftIndent":0.0,"CharacterUnitFirstLineIndent":0.0,"Alignment":3,"LineSpacingRule":5,"BaselineAlignment":4,"OutlineLevel":9,"ReadingOrder":1,"TextboxTightWrap":0}}}}
+返回：{"ret":0,"rid":78,"data":{"Ret":"0"}}
+
+79）删除文档自定义样式，适用于WPS文字软件
+Index 样式序号，只支持自定义样式，序号从1开始，必须先调用Office_GetStyleCount并设置Base为1时获取到的ID才行
+Name 样式名称 只支持自定义样式名称，二选一使用，删除多个样式的话，名称用|间隔
+{"req":"Office_DelStyle","rid":79,"para":{"Name":"TestStyle"}}
+返回：{"ret":0,"rid":79,"data":{"Ret":"0"}}
+
 80）请求开始播放幻灯片，适用于WPS演示软件
 Slide 指定开始的幻灯片序号，不设置时从头开始，-1为当前幻灯片开始
 FullScreen 默认全屏播放，0窗口内播放
@@ -707,6 +737,13 @@ Formula 设置公式
 Formula 设置值
 {"req":"Office_PutCellData","rid":89,"para":[{"Addr":"C1","Val":"test1","Formula":"A1=1"},{"Addr":"C1","Val":"test1"}]}
 返回：{"ret":0,"rid":89,"data":{"Ret":"0"}}
+
+90）设置文档选中内容的样式，适用于永WPS文字软件
+Type 内置样式类型，详细定义参考：https://learn.microsoft.com/zh-cn/office/vba/api/word.wdbuiltinstyle
+Index 样式序号，支持自定义样式，序号从1开始
+Name 样式名称 根据类型、序号或名称，三选一使用，支持自定义样式名称，自定义样式只支持根据名称设置
+{"req":"Office_SetSelectStyle","rid":90,"para":{"Style":"TestStyle"}}
+返回：{"ret":0,"rid":90,"data":{"Ret":"0"}}
 
 5、事件通知：
 A、以下为WPS文字程序通知
