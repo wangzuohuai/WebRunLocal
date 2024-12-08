@@ -20,6 +20,7 @@
   "DisableDBFull":0,
   "Avcodec":"any",
   "AudioOut":"any",
+  "Demux":"any",
   "SplitColor":"#FFFFFF",
   "BackColor":"#000000",
   "Status":{"Text":"准备播放中，请等待","Err":"播放时出现错误","Color":"#00FF7F","Opacity":255,"Size":16},
