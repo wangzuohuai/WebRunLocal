@@ -17,6 +17,8 @@ CADApplet.aidArr = [
     {aid: 0, rid: 7, ws1: null, ws2: null},
     {aid: 0, rid: 8, ws1: null, ws2: null},
     {aid: 0, rid: 9, ws1: null, ws2: null},
+    {aid: 0, rid: 10, ws1: null, ws2: null},
+    {aid: 0, rid: 11, ws1: null, ws2: null},
 ];
 /**
  * 让rid和aid和ws都映射起来
@@ -199,7 +201,33 @@ CADApplet.prototype.StartProEApplet = function (rid, left, top, width, height, O
             "BarW": 0,
             "BarH": 0,
             "ScrollTop": 0,
-            "Web": {"Edit": edit, "Hide": 0, "User": "test", "Cookie": "", "DataPath": "c:/CadDoc"},
+            "Web": { "Cookie": "", "DataPath": "c:/CadDoc"},
+            "Option": 1,
+            "Open": encodeURIComponent(OpenFile)
+        }
+    }
+    this.ws.sendMessage(msg)
+}
+
+CADApplet.prototype.StartUGApplet = function (rid, left, top, width, height, OpenFile, edit) {
+    //启动一个ProE网页组件，参数参考CADApplet-class.js中的startACAD Option设置1时代表启动Creo View看图 暂时不支持设置0
+    let msg = {
+        "req": "Wrl_UGApplet",
+        "rid": rid,
+        "para": {
+            "Type": "0",
+            "Title": "CAD网页组件",
+            "Flag": 578,
+            "Left": left,
+            "Top": top,
+            "Width": width,
+            "Height": height,
+            "IframeX": this.IframeX,
+            "IframeY": this.IframeY,
+            "BarW": 0,
+            "BarH": 0,
+            "ScrollTop": 0,
+            "Web": {"Cookie": "", "DataPath": "c:/CadDoc"},
             "Option": 1,
             "Open": encodeURIComponent(OpenFile)
         }
@@ -468,17 +496,17 @@ CADApplet.prototype.sendUpdateJson = function () {
         "rid": CADApplet.rid,
         "para": {
             "Name": "PageHiCAD-图纸在线编辑组件升级包",
-            "Date": "2024-11-20",
-            "Desc": "1、解决中间件高级版浏览器启动多窗口加载时后续启动可能失败问题，优化下载地址设置文件名对特殊字符的处理；2、解决PageHiCAD网页组件切换服务器文档打开可能内容未变化问题...",
+            "Date": "2025-01-03",
+            "Desc": "1、中间件高级版兼容支持豆包桌面版，兼容法文系统，解决安装后系统服务可能无法正常启动问题，解决多线程下载可能卡住问题；2、增加西门子CAD图纸JS等格式在线查看网页组件支持...",
             "DownAddr": "http://local.zorrosoft.com/Files/Update/CAD_Update.pid",
             "Open": "http://local.zorrosoft.com/CADJS",
-            "MD5": "232B63377149660D7C851C74FBD65F2F",
-            "Version": "2.2.16.10",
-            "Size": 24018944,
+            "MD5": "4818243AECBCCECD2DFB55111B19AA7B",
+            "Version": "2.2.16.11",
+            "Size": 25985024,
             "HideIns": 0,
             "Cookie": "",
             "Auth": "",
-            "TK": "8C8B3789496D3743CD4639D51065728A613CC44B4365ED16E73D82AB22D2230319C21CAD033F728E9C5CB69D227DD3ECAF067A947276D017F9174302C6E2FDA01E20A2975F74EFEC05DFEEA6919599F03F322344E0E899BDB3F7A9DC7B7395F07F0F2FF07A760F725386BD51F7D1509A39E0986A9B5751B673A19EE5C8F07BD8DD5EDE5B9CFE3668C4F61680D3623C02B361C14A095DB06C75B4C4FDFAFD2284CFD75C3E342B9C360261592380494231481DF24263A8FA502BAA1E3467455F2E991C21A63383C55397D04E4500630F2E297F6FDD4B7FA787C6330421A0222927CCCFFF25E87159B7B05B1273595FC659856F063EA6C5D7B67EDBDABF42BBC8F4"
+            "TK": "4896A8DE2C967BB9C80C6E1541A64AD0B92F7C0F6A1F97FF0C37613ACEB6539A4221AB15A250C1C392AD1CE2694B43AE68AE2CA529A8DF4AC6AA21186841957E36D4E3D716E15A67EBAD1FF2ADBEB4225B29AE4CEBB31580567C87568C25E3ACBF18606E08FFF2186400743CA48893AEEF80FC59BA807C381CDCDBD557F0B054CFE75FF0762AF5536A935C44C523EFCD084CA8A3B0BAAB2BFDAF18C4B37241FBBEC2DECC9225738B1B716AEBCA3A5C26C28BB70BD622E5388ACEE2CF7652BF6167BFB94D6EA5DBC52D87A7F1B61BC80F12E5396EABDBC9257D75A4362957D51FD637D0353C4B67B5105CE3E6BA4FF3C9332C523817CF814E2B4C7908497B56F2"
         }
     }
     this.ws.sendMessage(msg)

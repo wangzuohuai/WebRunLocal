@@ -36,6 +36,9 @@
                 启动Dwg看图组件
             </button>
         </div>
+        <div class="item">
+            <button onclick="startTabApplet(6)">标签启动JT2Go看图</button>
+        </div>
     </div>
     <div class="tool">
         <div class="item">
@@ -94,6 +97,10 @@
             <div class="close" onclick="closeTab(this,5)">x</div>
             ProE组件
         </div>
+        <div class="tab-item hide" onclick="change(this,6)">
+            <div class="close" onclick="closeTab(this,6)">x</div>
+            JT2Go组件
+        </div>
     </div>
     <div class="video-container">
         CAD网页组件显示区域
@@ -105,7 +112,7 @@
         </div>
         <div class="item">最新版本号</div>
         <div class="item">
-            <input name="version" value="2.2.16.10" size="small"></input>
+            <input name="version" value="2.2.16.11" size="small"></input>
         </div>
         <button onclick="checkUpdate()" class="button-primary">校验升级</button>
     </div>
@@ -145,6 +152,7 @@
     let myOpenSld = 'http://local.zorrosoft.com/Files/Test.sldprt'
     let myOpenCatia = 'http://local.zorrosoft.com/Files/Test.CATPart'
     let myOpenProE = 'http://local.zorrosoft.com/Files/Test.frm'
+    let myOpenJT = 'http://local.zorrosoft.com/Files/Test.jt'
     let saveAsDoc = 'C:/CadDoc/SaveAs.dwg'
     let exportDoc = 'C:/CadDoc/test.pdf'
     let printPathFile = 'C:/CadDoc/dwgprint.pdf'
@@ -211,21 +219,27 @@
 
         if(index==2)
         {
-            //默认支持启动在线编辑图纸 也可设置1调用eDrawings看图
+            //默认支持启动Soklidworks在线编辑图纸 也可设置1调用eDrawings看图
             applet.openType = 0
             applet.StartSolidworksApplet(rid, position.left, position.top, position.width, position.height, myOpenSld, edit)
         }
         else if(index==3)
         {
-            //支持启动在线编辑图纸
+            //支持启动CatiaCAD在线编辑图纸
             applet.openType = 0
             applet.StartCatiaApplet(rid, position.left, position.top, position.width, position.height, myOpenCatia, edit)
         }
         else if(index==4)
         {
-            //支持启动在线编辑图纸
+            //支持启动中望CAD在线编辑图纸
             applet.openType = 0
             applet.StartZWCadApplet(rid, position.left, position.top, position.width, position.height, myOpenDwg, edit)
+        }
+        else if(index==6)
+        {
+            //支持启动JT2Go在线查看图纸
+            applet.openType = 1
+            applet.StartUGApplet(rid, position.left, position.top, position.width, position.height, myOpenJT, edit)
         }
         else
         {
