@@ -29,7 +29,9 @@
 #include <atltypes.h>
 
 /// 长整型和字符串集合
-typedef std::map <ULONG_PTR,CString>	ULONGSTRING_MAP;
+typedef std::map <ULONG_PTR,CString>			ULONGSTRING_MAP;
+
+typedef std::map <CString,CComPtr<IDispatch>>	DISPATCH_MAP;
 
 /// 小程序自身配置文件
 #ifndef WRL_SELFCONFIG
@@ -127,7 +129,9 @@ public:
 	
 	static CString GetAppCfgPath();
 
-	static BOOL IsPathExist(const CString& strPath) throw();	
+	static USHORT IsPathExist(const CString& strPath) throw();	
+
+	static CString CBaseFuncLib::GetUrlFileName(const CString &strUrl);
 
 	static BOOL CreatePath(const CString& strLocalDir);
 
@@ -170,6 +174,8 @@ public:
 
 	static COleDateTime GetMsgTime(LONGLONG ulTotalSecond);
 
+	static BOOL IsSessionLocked();
+
 	static int Utf8ToUS2(LPCSTR pSrc, WCHAR** pDst);
 
 	static int US2ToUtf8(const CString& strSrc,char** pDst);
@@ -198,10 +204,10 @@ public:
 		LPWSTR szDesktopName = _T(""),BOOL bWaitFlag = FALSE);
 };
 
-class CThreadDataLock
+class CWrlThreadLock
 {
 public:
- 	CThreadDataLock() 
+ 	CWrlThreadLock() 
 		: m_bLogFlag(FALSE)
 	{
 		memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
@@ -218,7 +224,12 @@ public:
 		}
 	}
 
-	~CThreadDataLock()
+	~CWrlThreadLock()
+	{
+		Clear();
+	}
+
+	inline void Clear()
 	{
 		if(NULL != m_pSection)
 		{
@@ -227,12 +238,33 @@ public:
 			m_pSection = NULL;
 		}
 	}
+	inline BOOL IsInit()
+	{
+		if(NULL != m_pSection)
+			return TRUE;
+		return FALSE;
+	}
+
+	inline void Init()
+	{
+		if(NULL != m_pSection)
+			return;
+		m_pSection = new CRITICAL_SECTION();
+		if(NULL == m_pSection)
+			return;
+		SYSTEM_INFO sysInfo;
+		GetSystemInfo(&sysInfo);
+		if(sysInfo.dwNumberOfProcessors > 1)
+			InitializeCriticalSectionAndSpinCount(m_pSection,4000);
+		else
+			InitializeCriticalSection(m_pSection);
+	}
 
 	inline BOOL Lock(TCHAR* szFuncName = NULL);
 
 	BOOL TryLock(TCHAR* szFuncName = NULL);
 
-	inline void Unlock(TCHAR* szFuncName = NULL);
+	inline void UnLock(TCHAR* szFuncName = NULL);
 
 	inline void SetLog(BOOL bLogFlag)
 	{
@@ -247,9 +279,9 @@ public:
 	}
 
 protected:
-	CThreadDataLock(const CThreadDataLock&);
+	CWrlThreadLock(const CWrlThreadLock&);
 
-	CThreadDataLock& operator=(const CThreadDataLock&);
+	CWrlThreadLock& operator=(const CWrlThreadLock&);
  
 	/// 是否启用日志 
 	BOOL			m_bLogFlag;

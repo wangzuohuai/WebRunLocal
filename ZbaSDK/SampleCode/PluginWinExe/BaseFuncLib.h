@@ -24,9 +24,14 @@
 //////////////////////////////////////////////////////////////////////
 
 #pragma once
-
+#include <map>
 #include <atlcomtime.h>
 #include <atltypes.h>
+
+/// 长整型和字符串集合
+typedef std::map <ULONG_PTR,CString>			ULONGSTRING_MAP;
+
+typedef std::map <CString,CComPtr<IDispatch>>	DISPATCH_MAP;
 
 /// 小程序自身配置文件
 #ifndef WRL_SELFCONFIG
@@ -65,6 +70,9 @@ OS_WINADV					=	1100000,
 
 #define CREATE_MYTHREAD(func,lpParam,dwID) (::CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)func,\
 	(LPVOID)lpParam,0,(dwID) ? &dwID:0))
+
+typedef DWORD ( __stdcall *lpGetModuleFileNameEx)(HANDLE hProcess,HMODULE hModule,
+  LPWSTR lpFilename,DWORD nSize);
 
 class CBaseFuncLib
 {
@@ -121,7 +129,9 @@ public:
 	
 	static CString GetAppCfgPath();
 
-	static BOOL IsPathExist(const CString& strPath) throw();	
+	static USHORT IsPathExist(const CString& strPath) throw();	
+
+	static CString CBaseFuncLib::GetUrlFileName(const CString &strUrl);
 
 	static BOOL CreatePath(const CString& strLocalDir);
 
@@ -133,9 +143,13 @@ public:
 	static BOOL ProcRun(ULONG nPID);
 
 	static BOOL TerminateProc(DWORD dwPID);
+
+	static lpGetModuleFileNameEx GetMyModuleFileName(HINSTANCE &hPsModule);
 	
 	static DWORD FindProc(const CString& strExeFile,DWORD &dwPID,DWORD dwOtherID = 0,\
 		ULONG nGetFlag = 0,const CString& strFileName = L"");
+	
+	static void FindMapProc(const CString& strExeFile,ULONGSTRING_MAP &mapInfo);
 
 	static CString GetErrInfo(DWORD dwErrCode, HINSTANCE hLib = NULL);
 
@@ -159,6 +173,8 @@ public:
 	static ULONG GetFileSize(const CString &strFilePath);
 
 	static COleDateTime GetMsgTime(LONGLONG ulTotalSecond);
+
+	static BOOL IsSessionLocked();
 
 	static int Utf8ToUS2(LPCSTR pSrc, WCHAR** pDst);
 
@@ -188,10 +204,10 @@ public:
 		LPWSTR szDesktopName = _T(""),BOOL bWaitFlag = FALSE);
 };
 
-class CThreadDataLock
+class CWrlThreadLock
 {
 public:
- 	CThreadDataLock() 
+ 	CWrlThreadLock() 
 		: m_bLogFlag(FALSE)
 	{
 		memset(m_szPreName,0,MAX_PATH*sizeof(TCHAR));
@@ -208,7 +224,12 @@ public:
 		}
 	}
 
-	~CThreadDataLock()
+	~CWrlThreadLock()
+	{
+		Clear();
+	}
+
+	inline void Clear()
 	{
 		if(NULL != m_pSection)
 		{
@@ -217,22 +238,38 @@ public:
 			m_pSection = NULL;
 		}
 	}
+	inline BOOL IsInit()
+	{
+		if(NULL != m_pSection)
+			return TRUE;
+		return FALSE;
+	}
+
+	inline void Init()
+	{
+		if(NULL != m_pSection)
+			return;
+		m_pSection = new CRITICAL_SECTION();
+		if(NULL == m_pSection)
+			return;
+		SYSTEM_INFO sysInfo;
+		GetSystemInfo(&sysInfo);
+		if(sysInfo.dwNumberOfProcessors > 1)
+			InitializeCriticalSectionAndSpinCount(m_pSection,4000);
+		else
+			InitializeCriticalSection(m_pSection);
+	}
 
 	inline BOOL Lock(TCHAR* szFuncName = NULL);
 
 	BOOL TryLock(TCHAR* szFuncName = NULL);
 
-	inline void Unlock(TCHAR* szFuncName = NULL);
+	inline void UnLock(TCHAR* szFuncName = NULL);
 
 	inline void SetLog(BOOL bLogFlag)
 	{
 		m_bLogFlag = bLogFlag;
 	}
-
-protected:
-	CThreadDataLock(const CThreadDataLock&);
-
-	CThreadDataLock& operator=(const CThreadDataLock&);
  
 	inline BOOL IsLock()
 	{
@@ -240,6 +277,11 @@ protected:
 			return FALSE;
 		return TRUE;
 	}
+
+protected:
+	CWrlThreadLock(const CWrlThreadLock&);
+
+	CWrlThreadLock& operator=(const CWrlThreadLock&);
  
 	/// 是否启用日志 
 	BOOL			m_bLogFlag;

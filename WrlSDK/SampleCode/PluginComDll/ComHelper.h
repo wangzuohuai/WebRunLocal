@@ -6,7 +6,7 @@ class CComHelper
 {
 protected:
 
-	static CThreadDataLock	m_DataLock;
+	static CWrlThreadLock	m_DataLock;
 
 	static STRINGULONG_MAP	m_mapInstance;
 

@@ -1,4 +1,4 @@
-﻿PDF网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Adobe公司的ActiveX控件AcroPDF.dll实现文档阅读及编辑，需要安装Adobe Acrobat等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿PDF网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用Adobe的ActiveX控件或福昕OFD版式办公套件实现PDF文档阅读及编辑，需要安装Adobe Pdf Reader或福昕OFD版式办公套件等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
 
 1、牛插(PluginOK)中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -20,23 +20,22 @@ Url：加载小程序所在的网页实际地址，在网页中指定小程序�
 Flag：掩码标记 1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读打开 4禁止另存 8禁止打印 
+	Edit代表编辑权限 1只读打开
 	DataPath代表图纸默认本地保存路径
 	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
-Option：选项 0:Adobe单文档视图
-Version：版本1:PDF阅读 2:PDF编辑
+Option：默认0是Adobe PDF Reader 1:调用福昕OFD版式办公套件
 Open：为需要播放的多媒体路径，磁盘目录斜杠用/
 注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Version":"1","Option":"0","Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Option":"0","Option":"0","Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Version":"1","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"PDF网页小程序","NodeName":"PdfApplet","PID":"PdfWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/PluginOK.pdf"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/pdfframe.html
@@ -94,13 +93,13 @@ ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序�
 1)、请求安装PDF网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2024-12-19","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"BC1C965ED195E68AB9906B4ADC96AA2A","Version":"2.2.16.10","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4EC8044DAA2A02C4080B73E4B94513B40C487AE2E7639066B3F40FB9367361D6DBC9B536D0DD58782DC5B4B64B22540DE0B6E33D5FB19AD81A7E7BEC5879CF7D470ED0EFB7B48B004E2F610487096080A997AC77A02112E36A782240828587CAA3E9A4243BA08B327199F77A9EBB5D9AD299C67A90AB01A25F197378308A68A2BEF741C99E4126522CD0880D825C4C8CE162C65F63D39BACCAF7E0CF5973B0AD5486F58AF29F9F0D18EDC6C07A3342B684A3E0C59FA9D283ECD90D6541F1445A3B4D200D99B26F8D86CD77FA2D888E9E191F20600339381F502A1256BED4A5FCE9002704FA644A8B14A59E22A73151104034DBD01B5B98C5BDEA7B0F1D407979"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"CFEDBF328618C9B9913CB42B58E26B6D","Version":"2.2.17.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7DB793C04DAA4DCC078BE01627559FE80B849D051E7442841D7459C08FE2915771373663FFD1FA3CF2E4D38F8786445AA328F750C5A301674539F037E98A0D25FEF24914F313693EF19AD1B2384C443F85F52DA7BBD7D372513906768101AB822CAB82499EEF9376CAFD0B7075B1F909DD3F97A4E890B6D3727D31CC3A0B85658712D027E49322CD66779308F14E0DB74C8B3A0600B9CECFDFD49533067E7B8C09752F841B43E6039D55D20705781CA8F8324EC771BB9F4AC1FE10D1A8C93EBDB8A072986BECE263E7C5BC8CE56D24B5C631C98C7404AEBAEC8D555F18C28D308BC990E37DA221B2DFFC2C9A5A246C677BB281C797688EB9D642AFF31F657AD5"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级PDF网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2024-12-19","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"1EDFC11E590C91F7B1B55371EF1E12F1","Version":"2.2.16.10","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"44C3CDC2C5AFD5609918D618A6CAA5A120F315B7EB427587ED4BBB7DAD9B646757A2F857F3CA6F3506A9EB389A75E877960246CE9ED05C78B9B13ACF0311C6C6C2578B8D09642D2BE81600146B78DEC2E7DBF7E5172C2B26BC4E2461D7D4D70941B003732A8415CF472A1735E6E2164CE051447BF4D12AC9798FCF0E2AD31BC195078EE2D43B78B950C2EC560C8E47B4E96FAC6B8E5DD633BDDE932DA41E4BB77B8BE19B3456B6292EB8225D687648407D4C75CD277FB90A291A30F455C5AE7E769809E25AB3447F20CB9D933D1FC04F34D88004F7375559F5F15F5CD06B9F74FA65FB0BC9F0827486B80A0DB2E87E5DFF51CC1B4660A00787D873CBC4D10FCD"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"34D98169DE57EE068EBC4FA9FB343D70","Version":"2.2.17.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B719F938FB69C89C95EE58B2399F9C67302738774F36CAE4B34BB0A928FF34B940A33EBB1542547B4F486DA5159CC2F812A424EAE7CE42593DAB48687AEFAE064E1C0B0BCEB8C17362A4AF01052679AD1FBDD32D29B6D6C5D1B3D85393E641508191F1D7FD83FB186A9CB47017520DC32DE157BEC9DCD2385AF7DEB90062539717FB411B1198032B41F9241408EF239B9D375A0242A3479553B9B32F8DCD6DB395526343C077090559FA0BC2358ECD26511759282235866CCF1D68E0A77A5C1A66B1D5CCF063A91A64CD051D0EA00FDDB0097EAA21E0C17CB595EFEA9D0B4358E5F5E55CFA729102CB25F7493EAAAF700A1A2C7AEEE6CB38F11985BDE23F5236"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -108,132 +107,136 @@ ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序�
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"PdfWebApplet","Type":8}}
 
-4、PDF网页小程序转调用ActiveX接口，先根据Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+4、PDF网页小程序转调用Adobe的ActiveX或福昕OFD版式办公套件控件接口，先根据Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
-1) 指定PDF文件载入打开
+1) 指定PDF文件载入打开 支持Adobe ActiveX及福昕OFD版式办公套件
 File 本地文件路径，\斜杠替换为反斜杠/，有特殊支付或中文等先做UrlEncode编码，
 请求：{"req":"PDF_LoadFile","rid":50,"para":{"File":"d:/Zorro/PluginOK.pdf"}}
 返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
 ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
 
-2) 设置打开源 功能等同于PDF_LoadFile
+2) 设置打开源,一般用于打开服务器文档 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_SetSrc","rid":51,"para":{"Src":"http://zorrosoft.com/Files/PluginOK.pdf"}}
 返回：{"ret":0,"rid":51,"data":{"Ret":"0"}}
 Ret为调用ActiveX对应函数返回值，0代表正常
 
-3) 获取打开源
+3) 获取打开源 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GetSrc","rid":52,"para":{}}
 返回：{"ret":0,"rid":52,"data":{"Ret":"0","Src":"http://zorrosoft.com/Files/PluginOK.pdf"}}
 
-4) 获取版本信息
+4) 获取版本信息 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GetVersion","rid":53,"para":{}}
 返回：{"ret":0,"rid":53,"data":{"Ret":"0","Version":""}}
 
-5) 设置是否显示工具条
+5) 设置是否显示工具条 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_SetShowToolbar","rid":54,"para":{"Toolbar":1}}
 返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
 
-6) 获取是否显示工具条
+6) 获取是否显示工具条 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GetShowToolbar","rid":55,"para":{}}
 返回：{"ret":0,"rid":55,"data":{"Toolbar":1}}
 
-7) 设置是否显示滚动条
+7) 设置是否显示滚动条 仅Adobe ActiveX支持
 请求：{"req":"PDF_SetShowScrollbar","rid":56,"para":{"Scrollbar":1}}
 返回：{"ret":0,"rid":56,"data":{"Ret":"0"}}
 
-8) 获取是否显示滚动条
+8) 获取是否显示滚动条 仅Adobe ActiveX支持
 请求：{"req":"PDF_GetShowScrollbar","rid":57,"para":{}}
 返回：{"ret":0,"rid":57,"data":{"Scrollbar":1}}
 
-9) 设置缩放百分比
+9) 设置缩放百分比 支持Adobe ActiveX及福昕OFD版式办公套件
 Percent 百分比
-Left 横向滚动数量 可选 根据指定的数量水平和垂直滚动页面视图
-Top 纵向滚动数量 可选
+Left 横向滚动数量 可选 根据指定的数量水平和垂直滚动页面视图 仅Adobe ActiveX支持
+Top 纵向滚动数量 可选 仅Adobe ActiveX支持
 请求：{"req":"PDF_SetZoom","rid":58,"para":{"Percent":100,"Left":0,"Top":0}}
 返回：{"ret":0,"rid":58,"data":{"Ret":"0"}}
 
-10) 获取缩放百分比
+10) 获取缩放百分比 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GetZoom","rid":59,"para":{}}
 返回：{"ret":0,"rid":59,"data":{"Percent":100}}
 
-11) 设置页面模式
-请求：{"req":"PDF_SetPageMode","rid":60,"para":{"PageMode":"None"}}
-请求：{"req":"PDF_SetPageMode","rid":60,"para":{"PageMode":"thumbs"}}
-请求：{"req":"PDF_SetPageMode","rid":60,"para":{"PageMode":"Bookmarks"}}
+11) 设置页面模式 支持Adobe ActiveX及福昕OFD版式办公套件
+ 对应福昕OFD版式办公套件中的setDisPlayMode Mode为数字
+请求：{"req":"PDF_SetPageMode","rid":60,"para":{"Mode":"None"}}
+请求：{"req":"PDF_SetPageMode","rid":60,"para":{"Mode":"thumbs"}}
+请求：{"req":"PDF_SetPageMode","rid":60,"para":{"Mode":"Bookmarks"}}
 返回：{"ret":0,"rid":60,"data":{"Ret":"0"}}
 
-12) 设置布局模式
-请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"SinglePage"}}
-请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"onecolumn"}}
-请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"twocolumnleft"}}
-请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"twocolumnright"}}
-请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"LayoutMode":"dontcare"}}
+12) 设置布局模式 支持Adobe ActiveX及福昕OFD版式办公套件
+对应福昕OFD版式办公套件中的setZoomMode Mode为数字
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"Mode":"SinglePage"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"Mode":"onecolumn"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"Mode":"twocolumnleft"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"Mode":"twocolumnright"}}
+请求：{"req":"PDF_SetLayoutMode","rid":61,"para":{"Mode":"dontcare"}}
 返回：{"ret":0,"rid":61,"data":{"Ret":"0"}}
 
-13) 设置视图模式
-ViewMode 视图模式: "Fit": fits the entire page within the window both vertically and horizontally. "FitH": fits the entire width of the page within the window. "FitV": fits the entire height of the page within the window. "FitB": fits the bounding box within the window both vertically and horizontally. "FitBH": fits the entire width of the bounding box within the window. "FitBV": fits the entire height of the bounding box within the window
+13) 设置视图模式 支持Adobe ActiveX及福昕OFD版式办公套件
+对应福昕OFD版式办公套件中的setReadMode Mode为数字
+Mode 视图模式: "Fit": fits the entire page within the window both vertically and horizontally. "FitH": fits the entire width of the page within the window. "FitV": fits the entire height of the page within the window. "FitB": fits the bounding box within the window both vertically and horizontally. "FitBH": fits the entire width of the bounding box within the window. "FitBV": fits the entire height of the bounding box within the window
 Offset 可选参数 根据视图模式，页面要么滚动到右边，要么按偏移量指定的数量进行滚动
-请求：{"req":"PDF_SetViewMode","rid":62,"para":{"ViewMode":"Fit","Offset":0}}
+请求：{"req":"PDF_SetViewMode","rid":62,"para":{"Mode":"Fit","Offset":0}}
 返回：{"ret":0,"rid":62,"data":{"Ret":"0"}}
 
-14) 设置视图区域
+14) 设置视图区域 仅Adobe ActiveX支持
 Left Top分别为起始横坐标和纵坐标
 Width Height分别为宽度和高度
 请求：{"req":"PDF_SetViewRect","rid":63,"para":{"Left":0,"Top":0,"Width":300,"Height":300}}
 返回：{"ret":0,"rid":63,"data":{"Ret":"0"}}
 
-15) 将页面视图更改为指定字符串中的指定目标
+15) 将页面视图更改为指定字符串中的指定目标 仅Adobe ActiveX支持
 请求：{"req":"PDF_SetNamedDest","rid":64,"para":{"NamedDest":""}}
 返回：{"ret":0,"rid":64,"data":{"Ret":"0"}}
 
-16) 执行命令
+16) 执行命令 仅Adobe ActiveX支持
 请求：{"req":"PDF_ExecCommand","rid":65,"para":{"Command":""}}
 返回：{"ret":0,"rid":65,"data":{"Ret":"0"}}
 
-17) 跳转到首页
+17) 跳转到首页 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GotoFirstPage","rid":66,"para":{}}
 返回：{"ret":0,"rid":66,"data":{"Ret":"0"}}
 
-18) 跳转到末页
+18) 跳转到末页 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GotoLastPage","rid":67,"para":{}}
 返回：{"ret":0,"rid":67,"data":{"Ret":"0"}}
 
-19) 跳转到下一页
+19) 跳转到下一页 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GotoNextPage","rid":68,"para":{}}
 返回：{"ret":0,"rid":68,"data":{"Ret":"0"}}
 
-20) 跳转到上一页
+20) 跳转到上一页 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_GotoPrePage","rid":69,"para":{}}
 返回：{"ret":0,"rid":69,"data":{"Ret":"0"}}
 
-21) 设置当前页
+21) 设置当前页 支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_SetCurPage","rid":70,"para":{"Page":1}}
 返回：{"ret":0,"rid":70,"data":{"Ret":"0"}}
 
-22) 如果下一个视图存在，则转到视图堆栈的下一个视图。下一个视图可能在另一个文档中
+22) 如果下一个视图存在，则转到视图堆栈的下一个视图。下一个视图可能在另一个文档中 仅Adobe ActiveX支持
 请求：{"req":"PDF_GotoForwardStack","rid":71,"para":{}}
 返回：{"ret":0,"rid":71,"data":{"Ret":"0"}}
 
-23) 如果前面的视图存在，则转到视图堆栈上的先前视图。前面的视图可能在不同的文档中
+23) 如果前面的视图存在，则转到视图堆栈上的先前视图。前面的视图可能在不同的文档中 仅Adobe ActiveX支持
 请求：{"req":"PDF_GotoBackwardStack","rid":72,"para":{}}
-返回：{"ret":0,"rid":73,"data":{"Ret":"0"}}
+返回：{"ret":0,"rid":72,"data":{"Ret":"0"}}
 
-24) 突出显示当前页面中指定的边界矩形中的文本选择
-a b c d 指定参数
+24) 突出显示当前页面中指定的边界矩形中的文本选择 支持Adobe ActiveX及福昕OFD版式办公套件
+a b c d 指定参数 福昕OFD版式办公套件对应调用setFormHighlightColor
 请求：{"req":"PDF_SetCurHighlight","rid":73,"para":{"a":0,"b":0,"c":100,"d":100}}
 返回：{"ret":0,"rid":73,"data":{"Ret":"0"}}
 
 25) 根据用户对话框中选择的选项打印文档。这些选项包括嵌入式打印(在给定页面上的一个边界矩形内打印)，以及对指定的打印机进行交互式打印。
 WithDialog 1弹出打印对话框 0不弹
+支持Adobe ActiveX及福昕OFD版式办公套件
 请求：{"req":"PDF_Print","rid":74,"para":{"WithDialog":0}}
 返回：{"ret":0,"rid":74,"data":{"Ret":"0"}}
 
 26) 在不显示用户对话框的情况下打印整个文档，如果需要，页面会缩小，以适应打印机中页面的可想象区域。使用默认的打印机、页面设置和作业设置。
-ShrinkToFit 可选参数 1自动适应缩放 0不自动适应
+ShrinkToFit 可选参数 1自动适应缩放 0不自动适应 仅Adobe ActiveX支持
 请求：{"req":"PDF_PrintAll","rid":75,"para":{"ShrinkToFit":0}}
 返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
 
-27) 调用打印指定页 不显示用户对话框。使用默认的打印机、页面设置和作业设置
+27) 调用打印指定页 不显示用户对话框。使用默认的打印机、页面设置和作业设置 仅Adobe ActiveX支持
 From 1 起始页
 To 2 结束页
 ShrinkToFit 可选参数 1自动适应缩放 0不自动适应
@@ -247,7 +250,36 @@ ShrinkToFit 可选参数 1自动适应缩放 0不自动适应
 
 5、PDF网页小程序接收的通知：
 这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
-A、ActiveX事件：
+A、ActiveX事件，福昕OFD版式办公套件支持：
+1) PDF_OnOpenFile 打开文件结果通知
+{"event":"PDF_OnOpenFile","data":{"ErrorCode":0}} ErrorCode为0代表正常
+
+2) PDF_OnPagenumchaged 页码变化通知
+{"event":"PDF_OnPagenumchaged","data":{"Index":0}} Index页码
+
+3) PDF_OnPageScaleChange 页面缩放通知
+{"event":"PDF_OnPageScaleChange","data":{"Scale":0}} Scale缩放比例
+
+4) PDF_OnPrintStatus 打印状态通知
+{"event":"PDF_OnPrintStatus","data":{"Status":0}} Status 打印状态
+
+5) PDF_OnSaveFile 保存文件通知
+{"event":"PDF_OnSaveFile","data":{"Error":0}} Error 错误码为0正常
+
+6) PDF_OnSignFile 签章通知
+{"event":"PDF_OnSignFile","data":{"Error":0}} Error 错误码为0正常
+
+7) PDF_OnToolbarClick 工具栏点击通知
+{"event":"PDF_OnToolbarClick","data":{"Name":""}} Name 名称
+
+8) PDF_OnPrintSetting 打印设置通知
+{"event":"PDF_OnPrintSetting","data":{"Status":""}} Status 状态
+
+9) PDF_OnOpenfilePath 打开文件通知
+{"event":"PDF_OnOpenfilePath","data":{"Path":""}} Path 文件全路径
+
+10) PDF_OnPDFtoOFD PDF转OFD通知
+{"event":"PDF_OnPDFtoOFD","data":{"Path":""}} Path 文件全路径
 
 B、PluginOK支持的事件通知：
 

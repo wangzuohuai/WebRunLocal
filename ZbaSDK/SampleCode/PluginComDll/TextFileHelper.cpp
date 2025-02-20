@@ -249,20 +249,19 @@ void CTextFileBase::Close()
 #endif
 }
 
-BOOL IsPathExist(const CString& strPath)
+USHORT IsPathExist(const CString& strPath)
 {
-	BOOL bRet = FALSE;
+	USHORT nRet = 0;
 	if(strPath.IsEmpty())
-		return bRet;
+		return nRet;
 	WIN32_FIND_DATA	data;
 	BOOL bFindDir = FALSE;
-
 	CString strFind(strPath);
-	if (0 == strPath.Right(1).CompareNoCase( _T("\\")))
+	if (0 == strPath.Right(1).CompareNoCase(L"\\"))
 	{
 		/// 查找目录
 		bFindDir = TRUE;
-		strFind+=_T("*.*");
+		strFind += L"*.*";
 	}		
 	HANDLE hFindFile = ::FindFirstFile(strFind,&data);
 	if(INVALID_HANDLE_VALUE != hFindFile)
@@ -272,9 +271,8 @@ BOOL IsPathExist(const CString& strPath)
 			while(INVALID_HANDLE_VALUE != hFindFile)
 			{
 				if ((data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) == FILE_ATTRIBUTE_DIRECTORY )
-				{
-					
-					bRet = TRUE;
+				{				
+					nRet = 1;
 					break;
 				}
 				if (!FindNextFile(hFindFile,&data))
@@ -282,13 +280,25 @@ BOOL IsPathExist(const CString& strPath)
 			}
 		}
 		else
-			bRet = TRUE;
+		{
+			nRet = 1;
+			if(!data.nFileSizeHigh && !data.nFileSizeLow)
+				nRet = 2;
+		}
 		::FindClose(hFindFile);
 		hFindFile = NULL;
 	}
 	else
-		bRet=FALSE;
-	return bRet;
+	{
+		DWORD dwErrCode = ::GetLastError();
+		if(dwErrCode)
+		{
+			/// 目前不支持长路径260 https://learn.microsoft.com/zh-cn/windows/win32/fileio/maximum-file-path-limitation?tabs=registry
+			if(ERROR_FILE_NOT_FOUND != dwErrCode && ERROR_PATH_NOT_FOUND != dwErrCode)
+				nRet = 3;
+		}
+	}
+	return nRet;
 }
 
 BOOL CreatePath(const CString& strLocalDir)
@@ -296,14 +306,14 @@ BOOL CreatePath(const CString& strLocalDir)
 	BOOL bCreateFlag = FALSE;
 	CString strWorkDir,strPath=strLocalDir;
 	int index = -2;
-	index = strPath.Find(_T('\\'));
+	index = strPath.Find(L'\\');
 	if(index == -1)
 		return FALSE;
 	strWorkDir = strPath.Left(index);
 	strPath.Delete(0,index+1);
 	while(strPath.GetLength())
 	{
-		index=strPath.Find(_T('\\'));
+		index = strPath.Find(L'\\');
 		if(index == -1)
 		{
 			bCreateFlag = ::CreateDirectory(strLocalDir,NULL);
@@ -311,10 +321,10 @@ BOOL CreatePath(const CString& strLocalDir)
 			strPath.Empty();
 			break;
 		}
-		strWorkDir+=_T("\\");
-		strWorkDir+=strPath.Left(index);
-		strPath.Delete(0,index+1);
-		if(!IsPathExist(strWorkDir+_T("\\")))
+		strWorkDir += L"\\";
+		strWorkDir += strPath.Left(index);
+		strPath.Delete(0,index + 1);
+		if(!IsPathExist(strWorkDir + L"\\"))
 			bCreateFlag = ::CreateDirectory(strWorkDir,NULL);
 	}
 	if(!bCreateFlag)
@@ -329,7 +339,7 @@ BOOL CreatePath(const CString& strLocalDir)
 CTextFileWrite::CTextFileWrite(const FILENAMECHAR* filename, TEXTENCODING encoding)
 {
 	CString strFilPath(filename);
-	int iFind = strFilPath.ReverseFind(_T('\\'));
+	int iFind = strFilPath.ReverseFind(L'\\');
 	if(-1 != iFind)
 	{
 		/// 创建目录
@@ -339,19 +349,11 @@ CTextFileWrite::CTextFileWrite(const FILENAMECHAR* filename, TEXTENCODING encodi
 #if PEK_TX_TECHLEVEL == 0
 	m_file.open(filename, ios::binary | ios::out );
 #elif PEK_TX_TECHLEVEL == 1
-
-	m_hFile = ::CreateFile(	filename, 
-							GENERIC_WRITE,
-							0,
-							NULL,
-							CREATE_ALWAYS, 
-							FILE_ATTRIBUTE_NORMAL,
-							NULL);
-
+	m_hFile = ::CreateFile(filename,GENERIC_WRITE,0,
+		NULL,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL);
 #else
 	m_file = new CFile;
 	m_file->Open(filename, CFile::modeCreate | CFile::modeWrite);
-
 	m_closeAndDeleteFile = true;
 #endif
 	m_buffpos = -1;
@@ -365,15 +367,11 @@ CTextFileWrite::CTextFileWrite(const FILENAMECHAR* filename, TEXTENCODING encodi
 CTextFileWrite::CTextFileWrite(CFile* file, TEXTENCODING encoding)
 {
 	ATLASSERT(file);
-
 	m_file = file;
 	m_closeAndDeleteFile = false;
-
 	m_encoding = encoding;
-
 	m_buffpos = -1;
 	m_buffsize = 0;
-
 	WriteBOM();
 }
 #endif
@@ -409,7 +407,6 @@ void CTextFileWrite::WriteByte(const unsigned char byte)
 	//Instead of writing, save data in buffer and write when buffer is full
 	if(m_buffpos+1 >= BUFFSIZE)
 		Flush();
-
 	m_buffpos++;
 	m_buf[m_buffpos] = byte;
 }
@@ -457,7 +454,6 @@ void CTextFileWrite::WriteWchar(const wchar_t ch)
 	{
 		//http://www.cl.cam.ac.uk/~mgk25/unicode.html#examples
 		//http://www.ietf.org/rfc/rfc3629.txt
-
 		//Just a single byte?
 		if(ch <= 0x7F)
 		{
@@ -497,8 +493,7 @@ void CTextFileWrite::WriteWchar(const wchar_t ch)
 			WriteByte( (unsigned char) (0xA0 | ( (ch>>12)&0xA0 ) ));
 			WriteByte( (unsigned char) (0xA0 | ( (ch>>6)&0xA0 ) ));
 			WriteByte( (unsigned char) (0xA0 | ( ch&0xA0 )		));
-		}
-		
+		}		
 		//Five bytes bytes?
 		else if(ch <= 0x7FFFFFFF)
 		{

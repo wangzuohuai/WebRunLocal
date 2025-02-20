@@ -29,7 +29,7 @@
 
 ///////////////////////// 公司、产品及注册表定义 /////////////////////////
 
-/// 定义产品名称
+/// 定义产品名称、单机版
 #ifdef WRL_VRSION_STANDALONE
 #ifdef WRL_VRSION_OVERSEAS
 #define WRL_APPLICATION_NAME		L"PageHi"
@@ -38,7 +38,7 @@
 #endif
 #endif
 
-/// 浏览器小程序，网络版，收中间件和小程序的钱
+/// 网络版
 #ifdef WRL_VRSION_NET
 #ifdef WRL_VRSION_OVERSEAS
 #define WRL_APPLICATION_NAME		L"PageHi"
@@ -188,6 +188,9 @@
 
 #define	WRL_WINACAD				L"acad.exe"
 #define	WRL_WINSWCAD			L"sldworks.exe"
+#define	WRL_CATIACAD			L"cnext.exe"
+#define	WRL_PROECAD				L"proe.exe"
+#define	WRL_ZWCAD				L"zwcad.exe"
 
 /// 浏览器这里都用小写，以下国外浏览器
 #define WRL_IE					L"iexplore.exe"
@@ -198,21 +201,31 @@
 #define WRL_OPERA				L"opera.exe"
 #define WRL_VIVALDI				L"vivaldi.exe"
 #define WRL_BRAVE				L"brave.exe"
+#define WRL_YNADEX				L"browser.exe"
 
 /// 国产浏览器
 #define WRL_360CHROME			L"360chrome.exe"
 #define WRL_360CHROMEX			L"360chromex.exe"
 #define WRL_360SE				L"360se.exe"
+#define WRL_360AI				L"360aibrowser.exe"
 #define WRL_360GAME				L"360gt.exe"
 #define WRL_360ENTSE			L"360ent.exe"
+#define WRL_CMSBROWSER			L"cmsbrowser.exe"
 #define WRL_QQ					L"qqbrowser.exe"
 #define WRL_WECHATEXE			L"wechat.exe"
 #define WRL_WECHATAPP			L"wechatappex.exe"
 #define WRL_HUAWEI				L"huaweibrowser.exe"
+#define WRL_DOUBAO				L"doubao.exe"
 #define WRL_SOGOU				L"sogouexplorer.exe"
 #define WRL_GTJA				L"gtjabrowser.exe"
 #define WRL_QIANXIN				L"qaxbrowser.exe"
 #define WRL_HAITAI				L"htbrowser.exe"
+#define WRL_LENOVO				L"slbrowser.exe"
+#define WRL_LIEBAO				L"liebao.exe"
+#define WRL_MAXTHON				L"maxthon.exe"
+#define WRL_QUARK				L"quark.exe"
+#define WRL_DOUBLECORE			L"chromecore.exe"
+#define WRL_GTJA				L"gtjabrowser.exe"
 
 /// IE小程序
 #define WRL_IEAPPLET			L"IEApplet.exe"
@@ -245,6 +258,12 @@
 #define WRL_VIDEO_PROXYPLAYER	L"PHVideoProxyPlayer.exe"
 #endif
 #endif
+/// 原生播放控件测试程序
+#define WRL_VIDEO_NATIVEOCXTEST	L"VideoPlayerTest.exe"
+
+#define	WRL_PID_FILEAPPLET		L"199BB8A7-9DD5-41F5-AE9D-2AA94300B0B3"	/// 文件操作小程序
+#define	WRL_PID_NETFILEPID		L"762C3400-B3E5-4F00-8AA7-18E00F13E414"	/// 网络文件操作
+#define	WRL_PID_LOCALFILEPID	L"D325C871-AB46-479B-B20E-1D861D26CA89"	/// 本地文件操作
 
 ///////////////////////////// 其它定义 ////////////////////////////////////
 

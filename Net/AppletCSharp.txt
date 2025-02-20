@@ -1,0 +1,95 @@
+﻿WPF内嵌网页小程序：基于跨浏览器的小程序系统-PluginOK(牛插)中间件( https://github.com/wangzuohuai/WebRunLocal )网络版开发。最低可用在Chrome 41、Firefox 52、Edge 80(Chromium内核)、360极速/安全、IE 8、Oprea 36、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、牛插(PluginOK)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装。
+
+2、WPF内嵌网页小程序控制相关接口：
+说明：以下功能连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是80，请指定端口进行连接。
+在线测试网页：http://zorrosoft.com/CSharpAppletFrame.html
+
+1)、请求启动WPF内嵌网页小程序：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词
+Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
+Web中参数可自己定义，在小程序中解析使用
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Open：为需要打开的文档路径或网站地址，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
+此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 如果使用字节流文件打开，这里不需要指定
+注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器指定位置和大小启动：
+{"req":"Wrl_AppletStart","rid":8,"para":{"Type":"0","Title":"WPF内嵌小程序","NodeName":"AppletCSharp","PID":"AppletCSharp","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"ScrollTop":0,"Web": [],"Open":""}}
+
+自动识别当前浏览器自动适配网页大小启动：
+{"req":"Wrl_AppletStart","rid":8,"para":{"Type":"0","Title":"WPF内嵌小程序","NodeName":"AppletCSharp","PID":"AppletCSharp","Flag":72,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"ScrollTop":0,"Web": [],"Open":""}}
+
+启动后会收到两个JSON数据包
+A、{"ret":0,"rid":1,"data":{"ID":2}}
+返回ID为当前小程序运行ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+B、{"event":"Wrl_Listen","aid":2,"data":{"SID":"123","PID":"AppletCSharp","Port":880}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Flash。
+
+2)、请求控制WPF内嵌网页小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏
+ID为Wrl_AppletStart启动小程序时返回的ID值，Code代表控制类型掩码：1关闭 2全屏显示 4隐藏小程序 8还原显示小程序 16自动适配网页高度和宽度显示切换
+其中2全屏显示，可直接通过热键切换Ctrl+F11
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动网页中WPF内嵌网页小程序：
+当前端截取到网页滚动时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变网页中WPF内嵌网页小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为Wrl_AppletStart启动小程序时返回的ID值，Width和Height分别为新的宽度和高度
+X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或，同时修改小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为启动小程序时返回的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求缩放网页中WPF内嵌网页小程序，用于浏览器网页按比例缩放时响应：
+ID为Wrl_AppletStart启动小程序时返回的ID值，Scall为缩放百分比
+{"req":"Wrl_AppletScale","rid":7,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装WPF内嵌网页小程序
+请在输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"C#内嵌网页小程序","PID":"AppletCSharp","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的C#内嵌网页小程序，演示在WPF等C#工程中实现内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/AppletCSharp.pid","MD5":"5AEEB5E68911680E914BE3391B38BE57","Version":"2.2.17.1","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"76228AEA9CD932068AE1E091E683E65E173A69C76074C20662C4C7F5B09A9745A7874CB9E5FC46659E3C0757E2AE6805D036301C284316A068B4C0A81E0F839D170BD2AF232DF39B86E2A9134BFBC6A8715E8B67E8DA25850C44313B32BD0B2C42FBEB40235E7949C030A974D8C5DB9C68920195087A899FEABEF3C5FF84F6561A292A22FA886BF85AF1AAAD65342DDC4797F08FF96AC5754C520E7F850C78B5C3055C94B4922DCD10F5D50D884556EFE6EEA3E4C90A21313F08447A29A828EBA7B9BEC08980ED140A69C47CBDB37A4AC3CB756A3D26065641BAED638BDAA89BDA44B9830300BC20A397D469EE62DC074799E5BE35E0EB77D84198F01F247CB4"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+
+2)、请求升级小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"C#内嵌网页小程序","PID":"AppletCSharp","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的C#内嵌网页小程序，演示在WPF等C#工程中实现内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌使用","DownAddr":"http://local.zorrosoft.com/Files/Net/AppletCSharp_Update.pid","MD5":"6E9F85EB4FDD466F7AFAE54A12018E6F","Version":"2.2.17.1","Size":851968,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4FC88B572B51949D65BBA6C5A770E4992DF2496236A316FBB20DABAAE45350BFB5CB6AD1CC9129F1200351DAA1E3FA3106F3D94C712CF5C2B89584FBFC7B5996E2D02C27CAD00FE8D5543B6282571729608EC8D5B53C461594F3CD6CD02EE1FCC1869DD02B3B80D4D601835C0DCDC3ED68053550BF8449890F77F6F04780DA12E16ADC6A7A658CF376501C64FA22C7C73133ECD13C680EA7885BA92775DCBCF98EF3DE44656CB2FCEB19D8BCA7CEE35288FCCC89E99DF321E674EE959B06C187BA844847E2CB7EFA9F52303A87FD040559CD8F86734182D1278871F361B543C0BE1E18705FCBF92797E432C0B9741F5766DBD96D5529AECCFCF67166F0FD8951"}}
+
+3)、请求卸载WPF内嵌网页小程序：
+
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"AppletCSharp","Type":8}}
+
+4、Flash Player小程序转调用ActiveX接口，先根据Wrl_AppletStart请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+/// 自己定义
+
+5、WPF内嵌网页小程序接收的通知：
+这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“PluginOK开发者手册.doc”。
+如还有疑问，请加QQ群：23126938联系客服 或微信客服：ZorroSoft

@@ -1,0 +1,321 @@
+﻿OCX嵌入网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用指定的OCX控件(以Adobe PDF Reader及VLC播放控件为例)实现将OCX窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+
+2、OCX嵌入网页小程序控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://local.zorrosoft.com/Ocxfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/Ocxframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
+前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
+A、标记小程序的显示位置和大小
+.OcxWebApplet {
+            margin: 20px 0 0 20px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+        }
+或者
+.OcxWebApplet {
+            width: 480px;
+            height: 320px;
+            top: 20px;
+            left: 20px;
+            border: 1px solid blue;
+        }
+如果在网页Header区没有标记小程序初始显示位置和大小，请在启动小程序的JSON参数里，添加以下参数：
+"Left":20,"Top":20,"Width":480,"Height":320
+
+B、网页中嵌入元素
+支持IFrame的：
+<iframe name="OcxWebApplet" id="OcxWebApplet" src="OcxWebApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no></iframe>
+或者直接用
+<div id="OcxWebApplet" class="OcxWebApplet"</div>
+
+另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
+
+1)、请求启动OCX嵌入网页小程序实现网页中局部加载xt、step等文档进行操作：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
+Title：网页标题中的关键词
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
+	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：可选参数，根据自己需要来配置
+Open：为需要打开的文档路径获可下载的HTTP协议地址，磁盘目录斜杠用/
+注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器指定位置和大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"OCX嵌入网页小程序","NodeName":"OcxWebApplet","PID":"OcxWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Option":"0","Option":"0","Web":{"DataPath":"c:/OcxDoc","ClassID":"{CA8A9780-280D-11CF-A24D-444553540000}"}}}
+
+自动识别当前浏览器自动适配网页大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"OCX嵌入网页小程序","NodeName":"OcxWebApplet","PID":"OcxWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/OcxDoc","ClassID":"{CA8A9780-280D-11CF-A24D-444553540000}"}}}
+
+启动VLC播放控件播放
+{"req":"Wrl_AppletStart","rid":99,"para":{"Type":"0","Title":"ActiveX网页小程序","NodeName":"OcxWebApplet","PID":"OcxWebApplet","Flag":4168,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Zoom":100,"ScrollTop":0,"Web": {"ClassID":"{9BE31822-FDAD-461B-AD51-BE1D1C159921}"},"Open":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4"}}
+
+当前页指定位置自动适配网页加载测试
+http://local.zorrosoft.com/Ocxframe.html
+
+启动后会前后收到三个JSON数据包
+A、{"ret":0,"rid":8,"data":{"ID":7}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"OcxWebApplet","port":3000}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
+代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"OcxWebApplet","Port":3000}}
+
+2)、请求控制OCX嵌入网页小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1正常关闭 128强制迅速关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动OCX嵌入网页小程序：
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变OCX嵌入网页小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或同时设置小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装OCX嵌入网页小程序
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet.pid","MD5":"92F0A4A4D4AF728C822C255AADB47B4F","Version":"2.2.17.1","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"14980E8A59DBBAAA013F6A39AC0122C141D793194ECC15EC252F0385D1881D3CBC8D1F15C8D3ABD0A2C8666B7F37DDA6B251E04C13533B2A0DBE20C1768429D90A0D2B143A485E8FDC57BBE76DFB9914D2CAF401DB2A7ACBB3874354BF3B9D4B4C276680A7C118ABCA3480CBD7FC4009C4985809A5C9544DDAB52877168DE77EA8B478729EB68E86D76B3DCD15C143151CD16A058FAF84079E60C75785A90D305E48E9DA9036C58621FE7539558000702FAC04C94631910C2AA0D97585900772E013C4AAE56848D63ED4249EB4AC432949AE7910DA6916F31EBA4798ED92DF23AB5CA6192CAB84F843792662F117B10B1C383B93EDD91CEFB4B9FD63489CBB95"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
+
+2)、请求升级OCX嵌入网页小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet_Update.pid","MD5":"FDAEAFCEFA6CFADD3DD0C38146EB71A3","Version":"2.2.17.1","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"692728F2E618B63711F7839D799F2730640C7DDB2BE15EC75E581ECB78A46E1FA4DA5844DB49D2F2AF6956C8D3E1CDE350B2476D37292A08BD005EC07C6F0B9E59BBF7877C80FB69BF6C4F1005512FD4E8C8684563C25AC8760F112BFD94D9C6B7E566EB60D0867FE9D7C4258019E8481082DCCE7B97FE9CC0C1E8EF88F26780A1FBE92D05CA6E26163CCAFF9DB76537676AEB74ECC33237E95E4B23D6403C67D4E17D11AD3354A1F0214146EA877A5E3B6724E88C369682B18E783D8A94CF8AE441252A8516428177FCC562C925FE505EAD347B345B9851D6412B09EEB4DE3732EC884422AB0807F2D3C306DCE20EEFCFD6A8664E822E28B0A5CA60A8F9D227"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+3)、请求卸载OCX嵌入网页小程序：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"OcxWebApplet","Type":8}}
+
+/// 以下是测试用的OCX控件ClassID:
+Pdf Reader:{CA8A9780-280D-11CF-A24D-444553540000}
+VLC Player:{9BE31822-FDAD-461B-AD51-BE1D1C159921}
+IE WebBrowser:{8856F961-340A-11D0-A96B-00C04FD705A2}
+Flash Player:{3A2B370C-BA0A-11D1-B137-0000F8753F5D}
+Dwg Viewer:{4E871D32-203E-4777-B42A-451FC1B2FC90}
+EDrawing Viewer:{22945A69-1191-4DCF-9E6F-409BDE94D101}
+SolidWorks Composer Player:{410B702D-FCFC-46B7-A954-E876C84AE4C0}
+PTC Creo View:{F07443A6-02CF-4215-9413-55EE10D509CC}
+福昕OFD版式办公套件OCX:{9A9F603B-51A8-4630-AE99-4BBF01675575}
+汉王手写签批OCX:{E8F5278C-0C72-4561-8F7E-CCBC3E48C2E3}
+4、OCX嵌入网页小程序转调用指定OCX控件接口，先根据Wrl_AppletStart指定OcxWebApplet启动小程序后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+
+1)、请求退出小程序
+正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
+{"req":"OCX_Exit","rid":1,"para":{}}
+无返回
+
+2)、请求获取属性值
+Name 指定属性名称 如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取VLC播放列表的数量名称用playlist.itemCount 下同
+{"req":"OCX_GetProperty","rid":2,"para":{"Name":"src"}}
+{"req":"OCX_GetProperty","rid":2,"para":{"Name":"volume"}}
+{"req":"OCX_GetProperty","rid":2,"para":{"Name":"Toolbar"}}
+{"req":"OCX_GetProperty","rid":2,"para":{"Name":"playlist.itemCount"}}
+{"req":"OCX_GetProperty","rid":2,"para":{"Name":"input.rate"}}
+{"req":"OCX_PutProperty","rid":2,"para":{"Name":"video.logo.opacity"}}
+返回: {"ret":0,"rid":2,"data":{"Ret":0,"Val":""}}
+如果返回的是自动化接口，Val的值类似这样的：playlist={CatchDispatch}，需要继续调用这个自动化接口的属性或方法时，接下来的请求里指定参数{CatchDispatch}，否则默认调用控件主接口的，下同
+
+3)、请求设置属性
+Name 指定属性名称 如遇到设置子接口的，名称增加子接口的名称，支持多级
+Val 指定属性值，字符串用""包含，字符串中包含\或"等字符时，需要加转义符\，数值型不用""，BOOL类型设置真时数值是-1
+当需要释放缓存的自动化接口时，Name可以指定为类似这样的playlist={CatchDispatch},Val设置为0或空
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"src","Val":"d:/zorro/test.pdf"}}
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"Toolbar","Val":-1}}
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"Visible","Val":-1}}
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"volume","Val":0}}
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"input.rate","Val":2}}
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"video.logo.opacity","Val":50}}
+{"req":"OCX_PutProperty","rid":3,"para":{"Name":"playlist={CatchDispatch}","Val"0}}
+返回: {"ret":0,"rid":3,"data":{"Ret":0}}
+
+4)、请求无传入参数方法
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.play 下同
+DID 也可以指定方法序号
+{"req":"OCX_Invoke0","rid":4,"para":{"Name":"gotoFirstPage"}}
+{"req":"OCX_Invoke0","rid":4,"para":{"Name":"gotoNextPage"}}
+{"req":"OCX_Invoke0","rid":4,"para":{"Name":"playlist.play"}}
+返回: {"ret":0,"rid":4,"data":{"Ret":0,"Val":""}}
+
+5)、请求只传入1个参数方法
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.add 下同
+DID 也可以指定方法序号
+Para1 对应参数值 ，字符串用""包含，字符串中包含\或"等字符时，需要加转义符\，数值型不用"";参数如果需要再次调用自动化接口获取的值，可以这样传参{DispatchPara}=playlist.itemCount 下同
+{"req":"OCX_Invoke1","rid":5,"para":{"Name":"LoadFile","Para1":"d:/zorro/test.pdf"}}
+{"req":"OCX_Invoke1","rid":5,"para":{"Name":"setShowToolbar","Para1":0}}
+{"req":"OCX_Invoke1","rid":5,"para":{"Name":"video.logo.file","Para1":"D:\\Zorro\\test.png"}}
+{"req":"OCX_Invoke1","rid":5,"para":{"Name":"playlist.add","Para1":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4"}}
+返回: {"ret":0,"rid":5,"data":{"Ret":0,"Val":""}}
+
+6)、请求只传入2个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1和Para2分别对应参数1和2数值 如果需要传缓存的自动化接口，可以这样传参{CatchDispatch}=playlist
+{"req":"OCX_Invoke2","rid":5,"para":{"Name":"printPages","Para1":1,"Para2":2}}
+返回: {"ret":0,"rid":5,"data":{"Ret":0,"Val":""}}
+
+7)、请求只传入3个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3分别对应参数1、2和3的数值
+{"req":"OCX_Invoke3","rid":6,"para":{"Name":"printPagesFit","Para1":"1","Para2":"2","Para3":"0"}}
+返回: {"ret":0,"rid":6,"data":{"Ret":0,"Val":""}}
+
+8)、请求只传入4个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4分别对应参数1、2、3和4的数值
+{"req":"OCX_Invoke4","rid":7,"para":{"Name":"setCurrentHighlight","Para1":255,"Para2":0,"Para3":255,"Para4":0}}
+返回: {"ret":0,"rid":7,"data":{"Ret":0,"Val":""}}
+
+9)、请求只传入5个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5分别对应参数1、2、3、4和5的数值
+{"req":"OCX_Invoke5","rid":8,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":""}}
+返回: {"ret":0,"rid":8,"data":{"Ret":0,"Val":""}}
+
+10)、请求只传入6个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6分别对应参数1、2、3、4、5和6的数值
+{"req":"OCX_Invoke6","rid":9,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":""}}
+返回: {"ret":0,"rid":9,"data":{"Ret":0,"Val":""}}
+
+11)、请求只传入7个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7分别对应参数1、2、3、4、5、6和7的数值
+{"req":"OCX_Invoke7","rid":10,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":""}}
+返回: {"ret":0,"rid":10,"data":{"Ret":0,"Val":""}}
+
+12)、请求只传入8个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8分别对应参数1、2、3、4、5、6、7、8的数值
+{"req":"OCX_Invoke8","rid":12,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":""}}
+返回: {"ret":0,"rid":12,"data":{"Ret":0,"Val":""}}
+
+13)、请求只传入9个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9分别对应参数1、2、3、4、5、6、7、8、9的数值
+{"req":"OCX_Invoke9","rid":13,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":""}}
+返回: {"ret":0,"rid":13,"data":{"Ret":0,"Val":""}}
+
+14)、请求只传入10个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10分别对应参数1、2、3、4、5、6、7、8、9、10的数值
+{"req":"OCX_InvokeA","rid":14,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":""}}
+返回: {"ret":0,"rid":14,"data":{"Ret":0,"Val":""}}
+
+15)、请求只传入11个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11分别对应参数1、2、3、4、5、6、7、8、9、10、11的数值
+{"req":"OCX_InvokeB","rid":15,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":""}}
+返回: {"ret":0,"rid":15,"data":{"Ret":0,"Val":""}}
+
+16)、请求只传入12个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12分别对应参数1、2、3、4、5、6、7、8、9、10、11、12的数值
+{"req":"OCX_InvokeC","rid":16,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":""}}
+返回: {"ret":0,"rid":16,"data":{"Ret":0,"Val":""}}
+
+17)、请求只传入13个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13的数值
+{"req":"OCX_InvokeD","rid":17,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":""}}
+返回: {"ret":0,"rid":17,"data":{"Ret":0,"Val":""}}
+
+18)、请求只传入14个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14的数值
+{"req":"OCX_InvokeE","rid":18,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":""}}
+返回: {"ret":0,"rid":18,"data":{"Ret":0,"Val":""}}
+
+19)、请求只传入15个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15的数值
+{"req":"OCX_InvokeF","rid":19,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":""}}
+返回: {"ret":0,"rid":19,"data":{"Ret":0,"Val":""}}
+
+20)、请求只传入16个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15、Para16分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15、16的数值
+{"req":"OCX_InvokeG","rid":20,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":"","Para16":""}}
+返回: {"ret":0,"rid":20,"data":{"Ret":0,"Val":""}}
+
+5、事件通知：
+A、OCX控件的事件通知：
+1) OnError回调结果通知
+{"event":"OnError","data":{}}
+
+2) OCX_OnMessage回调结果通知
+{"event":"OCX_OnMessage","data":{}}
+
+B、PluginOK支持的事件通知：
+
+1) 小程序是否响应了热键全屏
+{"event":"OCX_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“开发者手册.pdf”及“中间件安全解决方案.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

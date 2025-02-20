@@ -1,0 +1,249 @@
+﻿汉王OCX网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用汉王手写签批等控件实现将OCX窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+
+2、汉王OCX网页小程序控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://local.zorrosoft.com/HWOcxfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/HWOcxframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
+前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
+A、标记小程序的显示位置和大小
+.HWOcxApplet {
+            margin: 20px 0 0 20px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+        }
+或者
+.HWOcxApplet {
+            width: 480px;
+            height: 320px;
+            top: 20px;
+            left: 20px;
+            border: 1px solid blue;
+        }
+如果在网页Header区没有标记小程序初始显示位置和大小，请在启动小程序的JSON参数里，添加以下参数：
+"Left":20,"Top":20,"Width":480,"Height":320
+
+B、网页中嵌入元素
+支持IFrame的：
+<iframe name="HWOcxApplet" id="HWOcxApplet" src="HWOcxApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no></iframe>
+或者直接用
+<div id="HWOcxApplet" class="HWOcxApplet"</div>
+
+另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
+
+1)、请求启动汉王OCX网页小程序实现网页中局部加载xt、step等文档进行操作：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
+	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：可选参数，根据自己需要来配置，比如签批控件可能有多个版本，通过此参数的配置来分别加载不同版本的控件
+Open：为为需要打开的文档路径获可下载的HTTP协议地址，磁盘目录斜杠用/
+注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器指定位置和大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"汉王OCX网页小程序","NodeName":"HWOcxApplet","PID":"HWOcxApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Option":"0","Option":"0","Web":{"DataPath":"c:/HWDoc"}}}
+
+自动识别当前浏览器自动适配网页大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"汉王OCX网页小程序","NodeName":"HWOcxApplet","PID":"HWOcxApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/HWDoc"}}}
+
+当前页指定位置自动适配网页加载测试
+http://local.zorrosoft.com/HWOcxframe.html
+
+启动后会前后收到三个JSON数据包
+A、{"ret":0,"rid":8,"data":{"ID":7}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"HWOcxApplet","port":977}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
+代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"HWOcxApplet","Port":977}}
+
+2)、请求控制汉王OCX网页小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1正常关闭 128强制迅速关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动汉王OCX网页小程序：
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回JSON中的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变汉王OCX网页小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或同时设置小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为Wrl_AppletStart指定HWOcxApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装汉王OCX网页小程序
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"汉王OCX网页小程序","PID":"HWOcxApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的汉王OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌汉王手写签批等OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/HWOcxApplet.pid","MD5":"5CC4F4F4F691D759B3973E4AF05AB2DE","Version":"2.2.17.1","Size":2260992,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B46D391F5173E770E4DFAD61567C4F243DFEB006944CA9454E2AD700711FE1A3E13D2316213A6A96C3BBEB57F1614F5E4E627C275E0D92D8F4B2112EAE854D4DFCA2D4807D95CD3B6F810A34B38B7BBE9BC55399AF0379E1D361BD5F2B3D511642AB98AB5C6AA0B658CF094D150DB71BC41E74880031F11CBC2C0424454ED3F98437AD4C6027ACE6FDAC259E5F05E6319F804042B0129594AE6BF5468BE8E3680BB9305E00456B156D10708A0F304E5A6B6E2DD2690C9DC0FA03D7C8734DF17900E42FF83B7C2D530399037D57EE7200E1B9EC1889AF07C2E79CCC41CF8FD08F5627F9BF2DE2E9239916A942B8848E4363C8B749B5E07F3D9BAB9EACDCE532B9"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
+
+2)、请求升级汉王OCX网页小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"汉王OCX网页小程序","PID":"HWOcxApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的汉王OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌汉王手写签批等OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/HWOcxApplet_Update.pid","MD5":"5D950AFF26B7257FB53B4BC6B20CA3FD","Version":"2.2.17.1","Size":2260992,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"20F9AAE8EC23F2727151F51CBA867E4C0C17AA977A74381F5F69D011A529BECF277F4398D7057E74C520D88F2CB724915A43242FEF845F6B18ACF099C3697500FF738617C54FF51F57B1127487961FFF5E7C7E8B0B4C39F195744E97DDBFC81D70BEFB5602A1F94FCC2090A1E6A0C606EFC3907571B17FDBA126923CDA06BCF184D7CDF9A44C16D4107FF4F13B36BB637509AAE0F7716461AABA525FA4E8FB4CCDA4E2F1C06E520F60E6C9B04214FC7A172EC92B853060A9A9FC17B0A62ED01A1BB09F7B90B343E3A407011CD00863AFFA3778703B850940B29BA2A6B9986B63F437B5BDBEECA8A626A208ADAF18FBA3AF84C6F3F6167FEE4672D7B9187609DA"}}
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+3)、请求卸载汉王OCX网页小程序：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"HWOcxApplet","Type":8}}
+
+4、汉王OCX网页小程序转调用汉王手写签批等控件接口，先根据Wrl_AppletStart指定HWOcxApplet启动小程序后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+
+1)、请求退出小程序 适用于汉王手写签批控件
+正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
+{"req":"HWOCX_Exit","rid":1,"para":{}}
+无返回
+
+2)、请求保存文件 适用于汉王手写签批控件
+{"req":"HWOCX_SaveFile","rid":2,"para":{}}
+返回: {"ret":0,"rid":2,"data":{"Ret":"0"}}
+返回值说明：
+HW_eOk                0           成功
+HW_eDeviceNotFound   -1           未找到对应的汉王手写设备
+HW_eFailedLoadModule -2           手写模块加载失败
+HW_eFailedInitModule -3           手写模块初始化失败
+HW_eWrongImageFormat -4           不支持的图片格式
+HW_eNoSignData       -5           没有签名数据
+HW_eInvalidInput     -6          无效输入参数
+
+3)、请求设置签名图像的保存文件路径 适用于汉王手写签批控件
+FilePath 文件路径，如有特殊字符或中文的需要用URLCode先编码 支持图像格式为bmp，jpg，png，gif
+{"req":"HWOCX_SetFilePath","rid":3,"para":{"FilePath":"d:/Zorro/test.jpg"}}
+返回: {"ret":0,"rid":3,"data":{"Ret":"0"}}
+
+4)、请求清理笔迹 适用于汉王手写签批控件
+{"req":"HWOCX_ClearPenSign","rid":4,"para":{}}
+返回: {"ret":0,"rid":4,"data":{"Ret":"0"}}
+
+5)、请求设置背景色 适用于汉王手写签批控件
+BkColor 背景色
+{"req":"HWOCX_SetBkColor","rid":5,"para":{"BkColor":0}}
+返回: {"ret":0,"rid":5,"data":{"Ret":"0"}}
+
+6)、请求获取签字区域图像的base64流 适用于汉王手写签批控件
+Flag 图像类型，默认1 0:bmp 1:jpg 2:png 3:gif
+{"req":"HWOCX_GetBase64Stream","rid":6,"para":{"Flag":1}}
+返回: {"ret":0,"rid":6,"data":{"Ret":""}}
+
+7)、请求控件边框宽度和颜色 适用于汉王手写签批控件
+LineWidth 边框宽度，0代表无边框
+Color 颜色
+{"req":"HWOCX_SetCtlFrame","rid":7,"para":{"LineWidth":0,"Color":0}}
+返回: {"ret":0,"rid":7,"data":{"Ret":"0"}}
+
+8)、请求控件显示器模式切换（镜像&扩展）仅适用于汉王手写液晶屏 适用于汉王手写签批控件
+Mode 模式 mode：0:汉王签批控件切换到扩展屏显示 1:汉王签批控件在主显示器显示
+CtlApp 保留，取值为0
+{"req":"HWOCX_SwitchMonitor","rid":8,"para":{"Mode":0,"CtlApp":0}}
+返回: {"ret":0,"rid":8,"data":{"Ret":"0"}}
+
+9)、请求控件手写区域添加背景图片 适用于汉王手写签批控件
+Image 背景图片路径
+{"req":"HWOCX_LoadImage","rid":9,"para":{"Image":"d:/Zorro/test.jpg"}}
+返回: {"ret":0,"rid":9,"data":{"Ret":""}}
+
+10)、请求笔的模式 适用于汉王手写签批控件
+Mode 模式 0:毛笔（默认） 1:钢笔
+{"req":"HWOCX_SetPenMode","rid":10,"para":{"Mode":0}}
+返回: {"ret":0,"rid":10,"data":{"Ret":""}}
+
+11)、请求笔的宽度 适用于汉王手写签批控件
+PenWidth 宽度 提供1-5个级别的设置，默认为3级 
+{"req":"HWOCX_SetPenWidth","rid":11,"para":{"PenWidth":3}}
+返回: {"ret":0,"rid":11,"data":{"Ret":""}}
+
+12)、请求笔的颜色 适用于汉王手写签批控件
+Color 颜色
+{"req":"HWOCX_SetPenColor","rid":12,"para":{"Color":0}}
+返回: {"ret":0,"rid":12,"data":{"Ret":""}}
+
+13)、请求设置传递与控件通信的窗口句柄值 适用于汉王手写签批控件
+WndHandle 窗口句柄
+HW_SIGN_COMPELETE    0x7ffe
+HW_SIGN_CLEAR       0x7ffd
+当用户点击签名板上的取消、确定按钮时，控件会往以下窗口句柄发送签名取消或完成的消息（调用HWSetExtWndHandle接口传进来的窗口句柄）。用户可在程序中响应对应的消息即可
+{"req":"HWOCX_SetExtWndHandle","rid":13,"para":{"WndHandle":0}}
+返回: {"ret":0,"rid":13,"data":{"Ret":""}}
+
+14)、请求是否需要保存 适用于汉王手写签批控件
+{"req":"HWOCX_IsNeedSave","rid":14,"para":{}}
+返回: {"ret":0,"rid":14,"data":{"Ret":""}}
+
+15)、请求控件手写区域添加背景图片 适用于汉王手写签批控件
+Base64Stream 图片BASE64编码
+{"req":"HWOCX_LoadBase64Stream","rid":15,"para":{"Base64Stream":""}}
+返回: {"ret":0,"rid":15,"data":{"Ret":""}}
+
+16)、请求手写模块初始化 适用于汉王手写签批控件
+程序启动时会自动调用一次，所以一般不需要单独调用，只有在启动本程序后再插入设备时才调用
+{"req":"HWOCX_Initialize","rid":16,"para":{}}
+返回: {"ret":0,"rid":16,"data":{"Ret":""}}
+
+17)、请求手写模块卸载 适用于汉王手写签批控件
+程序退出时会自动调用一次，所以一般不需要单独调用，除非需要强制卸载
+{"req":"HWOCX_Finalize","rid":17,"para":{}}
+返回: {"ret":0,"rid":17,"data":{"Ret":""}}
+
+5、事件通知：
+A、汉王OCX控件的事件通知：
+1) HWOCX_PenModeChange回调结果通知
+{"event":"HWOCX_PenModeChange","data":{"Flag":""}}
+
+2) HWOCX_PenWidthChange回调结果通知
+{"event":"HWOCX_PenWidthChange","data":{"PenWidth":""}}
+
+B、PluginOK支持的事件通知：
+
+1) 小程序是否响应了热键全屏
+{"event":"HWOCX_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“开发者手册.pdf”及“中间件安全解决方案.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

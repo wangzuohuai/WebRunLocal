@@ -89,8 +89,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,2,16,1
- PRODUCTVERSION 2,2,16
+ FILEVERSION 2,2,17,1
+ PRODUCTVERSION 2,2,17
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -106,10 +106,10 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "FileDescription", "Pop-up applet demo(C++)"
-            VALUE "FileVersion", "2,2,16,1"
+            VALUE "FileVersion", "2,2,17,1"
             VALUE "InternalName", "PluginWinExe"
             VALUE "OriginalFilename", "PluginWinExe.exe"
-            VALUE "ProductVersion", "2,2,16"
+            VALUE "ProductVersion", "2,2,17"
         END
     END
     BLOCK "VarFileInfo"

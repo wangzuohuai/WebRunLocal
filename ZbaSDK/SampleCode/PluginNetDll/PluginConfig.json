@@ -1,18 +1,25 @@
 {
-  "Type": 2,
+  "Type": 1,
   "OS": 1,
   "Control": 0,
   "Http": 1,
+  "Asm": 1,
   "OSMinVer": "5.0",
-  "Version": "2.2.16.2",
-  "Name": "弹窗小程序范例(C#语言)",
+  "Version": "2.2.17.1",
+  "Name": "DLL小程序范例(C#语言)",
   "Corp": "ZorroSoft",
   "Icon": "",
-  "Date": "2024.07.22",
-  "Desc": "弹窗小程序范例(C#语言)-演示脚本请求打开指定网站",
+  "Date": "2025.02.18",
+  "Desc": "无窗口小程序范例(C#语言)",
   "Home": "http://zorrosoft.com/WRL",
   "Down": "http://zorrosoft.com/WRL",
-  "Module": "PluginExeDemo.exe",
-  "PID": "PluginExeDemo",
+  "Module": "PluginNetDll.dll",
+  "PID": "D10495F4-DF0F-44FA-8647-91275347214A",
+  "Objects": [
+    {
+      "ProgID": "FCADA8A7-D975-42c6-B5D3-FA40F6FE1286",
+      "ClassID": "5DDA3CFF-6AD1-4836-B378-628B43748626"
+    }
+  ],
   "Updates": []
 }

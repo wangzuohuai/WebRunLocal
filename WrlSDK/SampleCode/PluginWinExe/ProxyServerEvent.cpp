@@ -50,7 +50,7 @@ STDMETHODIMP CProxyServerEvent::Invoke( DISPID dispIdMember,REFIID riid,LCID lci
 			hRet = VariantChangeTypeEx(&varSID,&(pDispParams->rgvarg[3]),lcid,0,VT_BSTR);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
-			hRet = VariantChangeTypeEx(&varReqID,&(pDispParams->rgvarg[2]),lcid,0,VT_I4);
+			hRet = VariantChangeTypeEx(&varReqID,&(pDispParams->rgvarg[2]),lcid,0,VT_UI4);
 			if FAILED(hRet)
 				return DISP_E_BADVARTYPE;
 			hRet = VariantChangeTypeEx(&varReqName,&(pDispParams->rgvarg[1]),lcid,0,VT_BSTR);
@@ -294,7 +294,7 @@ STDMETHODIMP CProxyServerEvent::RecMsgEvent(BSTR bstrSID,ULONG nReqID,\
 		}
 		m_DataLock.Lock(L"RecMsgEvent");
 		m_CatchData[strKey] = pRecData;
-		m_DataLock.Unlock(L"RecMsgEvent");
+		m_DataLock.UnLock(L"RecMsgEvent");
 		::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_RECMESSAGE,(WPARAM)bstrSID,(LPARAM)nReqID);
 	}
 	return hRet;
@@ -333,7 +333,7 @@ STDMETHODIMP CProxyServerEvent::RecByte(BSTR bstrSID,VARIANT varContent,ULONG nL
 				pRecData->bMoreFlag = bMoreFlag;
 				m_DataLock.Lock(L"RecByte");
 				m_CatchData[strKey] = pRecData;
-				m_DataLock.Unlock(L"RecByte");
+				m_DataLock.UnLock(L"RecByte");
 			}
 			::SendMessage(m_hMsgWnd,WM_PROXYSEREREVENT_BYTE,(WPARAM)bstrSID,nLen);
 		}

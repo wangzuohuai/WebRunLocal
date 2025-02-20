@@ -1,7 +1,11 @@
 function officeApplet(ws = null, aid = 0) {
     this.ws = ws
     this.aid = aid
-    this.openType = 1  // 加载类型 1启动微软Word 2启动微软Excel 3启动微软PPT 11启动金山文字 12启动金山表格 13启动金山演示 可通过请求Wrl_OfficeInfo获得需要设置的值
+    // 加载类型 可先通过请求Wrl_OfficeInfo获得当前需要设置的值
+    // 1启动微软Word 2启动微软Excel 3启动微软PPT 5启动Adobe Pdf Reader或福昕OFD版式办公套件 8启动福昕OFD版式办公套件的OCX控件打开ofd
+    // 11启动金山文字 12启动金山表格 13启动金山演示 15启动Adobe Pdf Reader或福昕OFD版式办公套件 16启动WPS PDF程序打开pdf(不支持OLE嵌入方式，必须用WPS专业版)   18启动福昕OFD版式办公套件的OCX控件打开ofd
+    // 21启动永中文字 22启动永中表格 23启动永中简报 25启动Adobe Pdf Reader或福昕OFD版式办公套件  28启动福昕OFD版式办公套件的OCX控件打开ofd
+    this.openType = 1  
     this.IframeX = -10 //根据情况自己修改把
     this.IframeY = 0  //根据情况自己修改把
 }
@@ -75,14 +79,14 @@ officeApplet.prototype.setWebsocket = function (aid, type = 1) {
  * @param ServerOpenFile
  */
 officeApplet.prototype.startFirst = function (rid, left, top, width, height, ServerOpenFile, edit,version=2) {
-    //启动第一个办公网页组件，参数参考officeApplet-class.js中的startFirst
+    //启动第一个办公网页组件，参数说明请参考officeApplet-class.js中的startFirst
     let msg = {
         "req": "Wrl_OfficeApplet",
         "rid": rid,
         "para": {
             "Type": "0",
             "Title": "办公网页组件(Word)",
-            "Version": version,//0使用OLE嵌入 1完整嵌入 2使用OLE嵌入，尽可能支持多文档操作
+            "Version": version,//0使用OLE嵌入不先启动OLE Server 1是完整嵌入(有文件菜单和文档对比等更多功能可用) 2使用OLE嵌入，预先启动OLE Server，加快启动速度 尽可能支持多文档操作
             "Flag": 578,
             "Left": left,
             "Top": top,
@@ -102,14 +106,14 @@ officeApplet.prototype.startFirst = function (rid, left, top, width, height, Ser
 }
 
 officeApplet.prototype.startSecond = function (rid, left, top, width, height, ServerOpenFile, edit) {
-    //启动第二个办公网页组件，参数参考officeApplet-class.js中的startFirst
+    //启动第二个办公网页组件，参数说明请参考officeApplet-class.js中的startFirst
     let msg = {
         "req": "Wrl_OfficeApplet",
         "rid": rid,
         "para": {
             "Type": "0",
             "Title": "办公网页组件(Excel)",
-            "Version": 0,
+            "Version": 2,
             "Flag": 578,
             "Left": left,
             "Top": top,
@@ -565,17 +569,17 @@ officeApplet.prototype.sendUpdateJson = function () {
         "rid": officeApplet.rid,
         "para": {
             "Name": "PageHiOffice—文档在线编辑组件升级包",
-            "Date": "2025-01-03",
-            "Desc": "1、中间件高级版兼容支持豆包桌面版，兼容法文系统，解决安装后系统服务可能无法正常启动问题，解决多线程下载可能卡住问题；2、增加关闭是否自动保存配置接口...",
+            "Date": "2025-02-20",
+            "Desc": "1、中间件高级版增加支持在夸克、遨游、猎豹及双核浏览器中的使用； 2、增强识别当前网页窗口信息接口，增强内嵌小程序启动参数可避免其加载到其它网页；3、优化高级版小程序在服务器版系统中的运行体验；4、Office网页组件增加其控件或VBA接口的全面调用方式，不再局限于单独封装的接口；5、PageHiOffice网页组件增加OFD文档打开支持，解决在Win7等低版本系统直接关闭浏览器时可能弹崩溃问题，解决启动多个实例时设置的编辑权限不一样可能相互影响问题...",
             "DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
             "Open": "http://local.zorrosoft.com/officeJS",
-            "MD5": "707255A6FC236286B77CDAB63AA7E928",
-            "Version": "2.2.16.11",
-            "Size": 35913728,
+            "MD5": "BF2E94FFEE99430864C54C61C152F60D",
+            "Version": "2.2.17.1",
+            "Size": 36667392,
             "HideIns": 0,
             "Cookie": "",
             "Auth": "",
-            "TK": "0A5EF1944C3E7A7A489501E383EA8C235CE5F1662D6C81E4C24D9DAEA822F88220A23F610E2FDD6811E9DA10C86FD3DB599946AF58BB9EEA6CFCDBE475D7F0475FBAC44B41FE482E99080A0FA9F17842800ACC8D9B53D157BEFD9C7C7799EDBEC623D879384665B8AB19A826955C81CEF59B90C78757DCFCECC6FB8CAFE3A944F7977423E1DFC66D214ED304802B523DF4F4C4C0E52D31297AF244110A087C37ACA7C139922855950B71450640DE906549DA2684B7085F14EA259CAF0F13F6B8B1471F5CF0506A527CDA7C90A2E47818D39ECFD9AD0877B519C54E82765FFEE09832BB3A9F084030897DC443113BB60255E32EBF0B408B3FCAA5889BC1796D97"
+            "TK": "7E91C6041EBEC3C9C8A45B9D0BC1267211592329F64EF35C1FEF300E083377A3D1427817032667CBA9F6366CDF04B71C2BDEA146DCAB3382E02EEF2C5270DA1F45646D826759ACD056511A71DD2B389C57C8E3B2A9DBE89F84D3840190E5B6B14428B5840A140AD72FAECB2EACA8F93105C07919DF6565E84A885047DFC82B04CE4DE19D614CDC115CD9D3749DDE35AE3FF0F64216DDC950D0F09330A81D2F9B8B95524B201C039DE61DC41CB8A1095EC61CDD71CC0E8245EC4F1EC2EBA7E4A53C8FF87E88967F51902AACE3224CA9F7EB357FD884D0E2B0F1FD8A2FE0EA14AACAC4576D63F0C1937BF66BB49FF0A69F4AA6F62A0A14AFE4943874AF6865F814"
         }
     }
     this.ws.sendMessage(msg)

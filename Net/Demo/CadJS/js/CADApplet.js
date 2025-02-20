@@ -80,7 +80,7 @@ CADApplet.prototype.setWebsocket = function (aid, type = 1) {
  * @param OpenFile
  */
 CADApplet.prototype.startACAD = function (rid, left, top, width, height, OpenFile, edit) {
-    //启动一个AutoCAD网页组件，参数参考CADApplet-class.js中的startACAD
+    // 启动一个AutoCAD网页组件，参数说明参考CADApplet-class.js中的startACAD
     let msg = {
         "req": "Wrl_ACADApplet",
         "rid": rid,
@@ -106,7 +106,7 @@ CADApplet.prototype.startACAD = function (rid, left, top, width, height, OpenFil
 }
 
 CADApplet.prototype.StartDwgView = function (rid, left, top, width, height, OpenDwg) {
-    //启动第二个CAD网页组件，参数参考CADApplet-class.js中的startACAD
+    // 启动第二个CAD网页组件，参数说明参考CADApplet-class.js中的startACAD
     let msg = {
         "req": "Wrl_ACADApplet",
         "rid": rid,
@@ -132,7 +132,7 @@ CADApplet.prototype.StartDwgView = function (rid, left, top, width, height, Open
 }
 
 CADApplet.prototype.StartSolidworksApplet = function (rid, left, top, width, height, OpenFile, edit) {
-    //启动一个Solidwork网页组件，参数参考CADApplet-class.js中的startACAD Option设置1时代表启动eDrawings看图
+    // 启动一个Solidwork网页组件，参数说明参考CADApplet-class.js中的startACAD，不同点是req名称及Open打开图纸的扩展名 Option设置0时代表启动Solidworks软件2014及以上版本 设置1时代表启动eDrawings看图 设置2时代表启动Composer Player
     let msg = {
         "req": "Wrl_SWCadApplet",
         "rid": rid,
@@ -158,7 +158,7 @@ CADApplet.prototype.StartSolidworksApplet = function (rid, left, top, width, hei
 }
 
 CADApplet.prototype.StartCatiaApplet = function (rid, left, top, width, height, OpenFile, edit) {
-    //启动一个StartCatiaApplet网页组件，参数参考CADApplet-class.js中的startACAD
+    // 启动一个CATIA网页组件，参数说明参考startACAD，不同点是req名称及Open打开图纸的扩展名 Option设置0时代表启动Catia P3 V5R21软件
     let msg = {
         "req": "Wrl_CatiaApplet",
         "rid": rid,
@@ -184,7 +184,7 @@ CADApplet.prototype.StartCatiaApplet = function (rid, left, top, width, height, 
 }
 
 CADApplet.prototype.StartProEApplet = function (rid, left, top, width, height, OpenFile, edit) {
-    //启动一个ProE网页组件，参数参考CADApplet-class.js中的startACAD Option设置1时代表启动Creo View看图 暂时不支持设置0
+    // 启动一个ProE网页组件，参数说明参考CADApplet-class.js中的startACAD，不同点是req名称及Open打开图纸的扩展名 Option设置1时代表启动Creo View看图 暂时不支持设置0启动ProE实现在线编辑
     let msg = {
         "req": "Wrl_ProEApplet",
         "rid": rid,
@@ -210,7 +210,7 @@ CADApplet.prototype.StartProEApplet = function (rid, left, top, width, height, O
 }
 
 CADApplet.prototype.StartUGApplet = function (rid, left, top, width, height, OpenFile, edit) {
-    //启动一个ProE网页组件，参数参考CADApplet-class.js中的startACAD Option设置1时代表启动Creo View看图 暂时不支持设置0
+    // 启动一个UG网页组件，参数说明参考CADApplet-class.js中的startACAD，不同点是req名称及Open打开图纸的扩展名 Option设置1时代表启动西门子的JT2GO 桌面程序或OCX控件看图 暂时不支持设置0启动UG软件
     let msg = {
         "req": "Wrl_UGApplet",
         "rid": rid,
@@ -236,7 +236,7 @@ CADApplet.prototype.StartUGApplet = function (rid, left, top, width, height, Ope
 }
 
 CADApplet.prototype.StartZWCadApplet = function (rid, left, top, width, height, OpenFile, edit) {
-    //启动一个中望CAD网页组件，参数参考CADApplet-class.js中的startACAD
+    // 启动一个中望CAD网页组件，参数说明参考CADApplet-class.js中的startACAD，不同点是req名称及Open打开图纸的扩展名 Option设置0时代表启动中望CAD 2017及以上版本，暂时不支持3D软件
     let msg = {
         "req": "Wrl_ZWApplet",
         "rid": rid,
@@ -274,7 +274,7 @@ CADApplet.prototype.saveFile = function () {
 
 CADApplet.prototype.saveAsFile = function () {
     CADApplet.rid++ // 增加请求序号
-    /// 先设置保存位置再另存
+    // 先设置保存位置再另存
     let msg = {
         "req": "Wrl_SelectFile",
         "rid": CADApplet.rid,
@@ -290,7 +290,7 @@ CADApplet.prototype.saveAsFile = function () {
 CADApplet.prototype.ExportFile = function () {
     // 请求导出文档
     CADApplet.rid++ // 增加请求序号
-    /// 先设置导出位置
+    // 先设置导出位置
     let msg = {
         "req": "Wrl_SelectFile",
         "rid": CADApplet.rid,
@@ -340,7 +340,7 @@ CADApplet.prototype.closeApplet = function () {
 }
 
 CADApplet.prototype.checkUpdate = function (version) {
-    //校验中间件版本是不是需要升级,如果额外指定PID参数，代表校验PID代表的网页组件，Wrl_Version功能多
+    // 校验中间件版本是不是需要升级,如果额外指定PID参数，代表校验PID代表的网页组件，Wrl_Version功能多
     CADApplet.rid++ // 增加请求序号
     let msg = {
         "req": "Wrl_Version",
@@ -496,17 +496,17 @@ CADApplet.prototype.sendUpdateJson = function () {
         "rid": CADApplet.rid,
         "para": {
             "Name": "PageHiCAD-图纸在线编辑组件升级包",
-            "Date": "2025-01-03",
-            "Desc": "1、中间件高级版兼容支持豆包桌面版，兼容法文系统，解决安装后系统服务可能无法正常启动问题，解决多线程下载可能卡住问题；2、增加西门子CAD图纸JS等格式在线查看网页组件支持...",
+            "Date": "2025-02-20",
+            "Desc": "1、中间件高级版增加支持在夸克、遨游、猎豹及双核浏览器中的使用； 2、增强识别当前网页窗口信息接口，增强内嵌小程序启动参数可避免其加载到其它网页；3、优化高级版小程序在服务器版系统中的运行体验；4、CAD网页组件增加其控件或VBA接口的全面调用方式，不再局限于单独封装的接口；5、CAD网页组件ACAD增加支持2025版，中望CAD增加支持2017年开始的所有版本，Solidworks网页组件优化对EDrawing的支持，并新增Composer Player控件播放支持...",
             "DownAddr": "http://local.zorrosoft.com/Files/Update/CAD_Update.pid",
             "Open": "http://local.zorrosoft.com/CADJS",
-            "MD5": "4818243AECBCCECD2DFB55111B19AA7B",
-            "Version": "2.2.16.11",
-            "Size": 25985024,
+            "MD5": "12624902683B9FC8B059678C6903C07B",
+            "Version": "2.2.17.1",
+            "Size": 27492352,
             "HideIns": 0,
             "Cookie": "",
             "Auth": "",
-            "TK": "4896A8DE2C967BB9C80C6E1541A64AD0B92F7C0F6A1F97FF0C37613ACEB6539A4221AB15A250C1C392AD1CE2694B43AE68AE2CA529A8DF4AC6AA21186841957E36D4E3D716E15A67EBAD1FF2ADBEB4225B29AE4CEBB31580567C87568C25E3ACBF18606E08FFF2186400743CA48893AEEF80FC59BA807C381CDCDBD557F0B054CFE75FF0762AF5536A935C44C523EFCD084CA8A3B0BAAB2BFDAF18C4B37241FBBEC2DECC9225738B1B716AEBCA3A5C26C28BB70BD622E5388ACEE2CF7652BF6167BFB94D6EA5DBC52D87A7F1B61BC80F12E5396EABDBC9257D75A4362957D51FD637D0353C4B67B5105CE3E6BA4FF3C9332C523817CF814E2B4C7908497B56F2"
+            "TK": "8D7E8921E6E5AFB60373F5A6A951607B6BFEDC942C180807625277669863347CBE6AE950BBE54AEAB1FF7FD2AB5A2A9ABB0C4225DFD08318E4F21D11337791BC579F90AAAE3F384D245C57EF5C347AB6A05B74DBEB3DB8CE382A3DEB1DD27EF8B32EEE3E6A7FDB3D19F7917F9D3FF5664B9066BBBF49B0702AA8DB5581FBDF63D20DE5718ABC3D5FA5B5319EE34CAF1DE305C688991A3F225BFD93E6EE6F028076E6DD17F815244E36E1A39F5FAD47B6419CDC3CF77B1FBE9048E4A78678B389504AD137199EFF9E74656492460AA8B160C6053E06585E939A8397452392244EDDDFC655B74C78374010F83DB01DC60F79E000670010EB8CCCD2710890276CE4"
         }
     }
     this.ws.sendMessage(msg)

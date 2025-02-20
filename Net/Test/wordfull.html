@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>当前网页内嵌Office小程序编辑审核Word文档</title>    
+    <title>当前页内嵌Office小程序编辑审核Word文档</title>    
     <script type="text/javascript">
     </script>
 
@@ -55,7 +55,7 @@ border: 1px solid blue;
 <object ID="WrlWS" CLASSID="CLSID:21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A" width="0" height="0"></object>       
 <div class="container">
     <div class="page-header">
-        <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">牛插(PluginOK)中间件在线体验</h2>
+        <h2 style="margin-top:20px;margin-left:20px; text-align:center; ">PluginOK中间件在线体验</h2>
         <a href=http://local.zorrosoft.com/Files/PluginOK.pdf>产品介绍</a>
         <a href=http://local.zorrosoft.com/Files/PluginOK.zip>中间件安装包</a>
         <a href=http://local.zorrosoft.com/Files/ZbaSDK.zip>中间件开发包(SDK)</a>
@@ -65,7 +65,7 @@ border: 1px solid blue;
     <div class="row" style="margin-bottom:20px;">
         <div class="col-sm-6 col-md-5 col-lg-4">
             <div>
-                <input type="text" class="form-control" size="80" style="margin-bottom:3px;" id="inp_url" placeholder="连接" value="ws://wrl.zorrosoft.com:80?
+                <input type="text" class="form-control" size="80" style="margin-bottom:3px;" id="inp_url" placeholder="连接" value="ws://localhost:83?
 
 sid=123&flag=1" />
                 <button type="button" id="btn_conn" class="btn btn-primary">连接</button>
@@ -76,7 +76,7 @@ sid=123&flag=1" />
             </div>
             <br />
             <div style="margin-bottom:20px;">
-                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_OfficeApplet","rid":97,"para":{"Type":"0","Title":"Office Applet Full","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"ScrollTop":0,"Web": {"Edit":2,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Version":"1","Open":"D:/Zorro/test.doc"}}</textarea>
+                <textarea id="inp_send" class="form-control" style="margin-bottom:3px;min-width:350px;min-height:200px;" placeholder="请输入发送的内容">{"req":"Wrl_OfficeApplet","rid":97,"para":{"Type":"0","Title":"Office Applet Full","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"ScrollTop":0,"Web": {"Edit":2,"Hide":0,"User":"test","PW":"","DataPath":"c:/OfficeDoc"},"Option":"1","Version":"1","Open":"D:/Zorro/test.docx"}}</textarea>
                 <button type="button" id="btn_send" class="btn btn-info btn-block">发送(Ctrl+Enter)</button>
             </div>
         </div>

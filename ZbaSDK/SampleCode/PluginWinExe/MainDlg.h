@@ -10,10 +10,10 @@
 #define WM_APP_OPENURL			WM_USER + 500
 #define WRL_BROWSER_CHECKTIMER	9
 
-typedef std::map	<ATL::CString,ATL::CString>		CSTRING_MAP;
-typedef std::map	<ATL::CString,ULONG_PTR>		STRINGULONG_MAP;
+typedef std::map	<CString,CString>		CSTRING_MAP;
+typedef std::map	<CString,ULONG_PTR>		STRINGULONG_MAP;
 
-int Us2ToChar(const ATL::CString& strSrc, char** pDst,int nCodePage = CP_ACP);
+int Us2ToChar(const CString& strSrc, char** pDst,int nCodePage = CP_ACP);
 
 class CMainDlg : public CAxDialogImpl<CMainDlg>,public IDispEventImpl<IDC_WEB_BROWSER,CMainDlg>
 {

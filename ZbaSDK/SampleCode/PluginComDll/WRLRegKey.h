@@ -41,6 +41,9 @@
 /// 定义产品在注册表中的配置文件
 #define PRODUCT_COMMAN_CONFIGFILE	L"CfgFile"
 
+/// 定义程序关闭的HOOK值
+#define PRODUCT_APPLET_HOOKCLOSE	L"HookClose"
+
 class CWrlRegKey : public CRegKey
 {
 public:

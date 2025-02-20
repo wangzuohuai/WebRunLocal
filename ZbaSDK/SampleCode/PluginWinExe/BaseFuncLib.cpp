@@ -18,6 +18,11 @@
 
 #define NORMAL_SIZE				8192
 
+#ifndef MAX_PATH_NEW
+/// 长路径，系统默认260
+#define MAX_PATH_NEW			1024
+#endif
+
 #ifndef WRL_PSAPIDLL
 #define WRL_PSAPIDLL			L"Psapi.dll"
 #endif
@@ -34,21 +39,24 @@ extern CString g_strLang;
 
 typedef ULONGLONG ( __stdcall *lpGetTickCount64)(VOID);
 
-typedef DWORD ( __stdcall *lpGetModuleFileNameEx)(HANDLE hProcess,HMODULE hModule,
-  LPWSTR lpFilename,DWORD nSize);
-
 typedef DWORD ( __stdcall *lpGetProcessImageFileName)(HANDLE hProcess,\
 	LPWSTR lpFilename,DWORD nSize);
+
+typedef void (__stdcall * LPWTSFreeMemory)(PVOID pMemory);
 
 typedef BOOL (WINAPI *LPWTSSendMessage)(
 	IN HANDLE hServer,IN DWORD SessionId,LPWSTR pTitle,
 	IN DWORD TitleLength,LPWSTR pMessage,IN DWORD MessageLength,
 	IN DWORD Style,IN DWORD Timeout,DWORD *pResponse,IN BOOL bWait);
 
+typedef BOOL(__stdcall * LPWTSQuerySessionInformation)(HANDLE hServer, DWORD SessionId, WTS_INFO_CLASS WTSInfoClass, LPTSTR* ppBuffer, DWORD* pBytesReturned);
+
 /// 全局模块句柄
 HINSTANCE		g_hInstance = NULL;
 
-static CThreadDataLock	g_WriteLogLock;
+HMODULE			g_hWtsLib = NULL;
+
+static CWrlThreadLock	g_WriteLogLock;
 
 /// 日志文件
 CString	g_strLogFile = L"";
@@ -99,6 +107,38 @@ CString GetFileInfo(const CString& strPathFile,const CString& strNode)
 	}
 	delete []InfoBuf;
 	InfoBuf = NULL;
+	return strVersion;
+}
+
+CString GetFileVer(const CString& strPathFile)
+{
+	DWORD dummy = 0;
+	CString strVersion;
+    // 获取文件版本信息所需的缓冲区大小
+    DWORD versionInfoSize = GetFileVersionInfoSize(strPathFile,&dummy);
+    if(!versionInfoSize)
+        return strVersion;
+    // 分配缓冲区来存储版本信息
+    std::vector<BYTE> versionInfo(versionInfoSize);
+    if(!GetFileVersionInfo(strPathFile,0,versionInfoSize,versionInfo.data()))
+       return strVersion;
+    UINT translationSize = 0;
+    VS_FIXEDFILEINFO* fixedInfo = NULL;
+    UINT fixedInfoSize = sizeof(VS_FIXEDFILEINFO);
+
+    // 获取翻译信息
+    LPVOID translation = NULL;
+    if(!VerQueryValueW(versionInfo.data(),L"\\VarFileInfo\\Translation",&translation,&translationSize))
+        return strVersion;
+    // 构建翻译字符串
+    std::wstring translationString;
+    translationString.resize(8);
+    swprintf_s(&translationString[0],9,L"%04x%04x",LOWORD(*(DWORD*)translation),HIWORD(*(DWORD*)translation));
+    // 获取固定文件信息
+    if(!VerQueryValueW(versionInfo.data(),L"\\",(LPVOID*)&fixedInfo,&fixedInfoSize))
+         return strVersion;
+	strVersion.Format(L"%d.%d.%d.%d",HIWORD(fixedInfo->dwFileVersionMS),\
+		LOWORD(fixedInfo->dwFileVersionMS),HIWORD(fixedInfo->dwFileVersionLS),LOWORD(fixedInfo->dwFileVersionLS));
 	return strVersion;
 }
 
@@ -770,9 +810,51 @@ COleDateTime CBaseFuncLib::GetMsgTime(LONGLONG ulTotalSecond)
 	return (MsgTime + spanTime);
 }
 
+BOOL CBaseFuncLib::IsSessionLocked()
+{
+    LONG dwFlags = 0;
+    BOOL bRet = FALSE;
+    WTSINFOEXW * pInfo = NULL;
+    LPTSTR ppBuffer = NULL;
+    DWORD dwBytesReturned = 0;
+    LPWTSFreeMemory pWTSFreeMemory = NULL;
+    WTS_INFO_CLASS wtsic = WTSSessionInfoEx;
+    LPWTSQuerySessionInformation pWTSQuerySessionInformation = NULL;
+	if(NULL == g_hWtsLib)
+		g_hWtsLib = LoadLibrary(L"wtsapi32.dll");
+	if(NULL == g_hWtsLib)
+        return FALSE;
+    pWTSQuerySessionInformation = (LPWTSQuerySessionInformation)GetProcAddress(g_hWtsLib,"WTSQuerySessionInformationW");
+    if(NULL != pWTSQuerySessionInformation)
+    {
+        pWTSFreeMemory = (LPWTSFreeMemory)GetProcAddress(g_hWtsLib,"WTSFreeMemory");
+        if(pWTSFreeMemory != NULL)
+        {
+            DWORD dwSessionID = WTSGetActiveConsoleSessionId();
+            if(pWTSQuerySessionInformation(WTS_CURRENT_SERVER_HANDLE,dwSessionID,wtsic,&ppBuffer,&dwBytesReturned))
+            {
+                if(dwBytesReturned > 0)
+                {
+                    pInfo = (WTSINFOEXW*)ppBuffer;
+                    if(pInfo->Level == 1)
+                    {
+                        dwFlags = pInfo->Data.WTSInfoExLevel1.SessionFlags;
+                    }
+                    if(dwFlags == WTS_SESSIONSTATE_LOCK)
+                        bRet = TRUE;
+                }
+                pWTSFreeMemory(ppBuffer);
+                ppBuffer = NULL;
+            }
+        }
+    }
+    return bRet;
+}
+
 BOOL CBaseFuncLib::FindProName(DWORD dwPID,CString& strFileName)
 {
 	BOOL bFindFlag = FALSE;
+	/// 在Windows 10 2019年版本中可能存在问题，调用耗费200毫秒之多，CPU飙升
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
 	ATLASSERT(hSnapshot);
 
@@ -831,11 +913,11 @@ CString CBaseFuncLib::GetTmpPath(const CString& strChildDir)
 	return strTempPath;
 }
 
-BOOL CBaseFuncLib::IsPathExist(const CString& strPath)
+USHORT CBaseFuncLib::IsPathExist(const CString& strPath)
 {
-	BOOL bRet = FALSE;
+	USHORT nRet = 0;
 	if(strPath.IsEmpty())
-		return bRet;
+		return nRet;
 	BOOL bFindDir = FALSE;
 	CString strFind(strPath);
 	if(0 == strPath.Right(1).CompareNoCase(L"\\"))
@@ -854,7 +936,7 @@ BOOL CBaseFuncLib::IsPathExist(const CString& strPath)
 			{
 				if((data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) == FILE_ATTRIBUTE_DIRECTORY)
 				{				
-					bRet = TRUE;
+					nRet = 1;
 					break;
 				}
 				if(!FindNextFile(hFindFile,&data))
@@ -863,25 +945,9 @@ BOOL CBaseFuncLib::IsPathExist(const CString& strPath)
 		}
 		else
 		{
-			bRet = TRUE;
-			if(!GetFileSize(strFind))
-			{
-				/// 0大小文件
-				::SetFileAttributes(strFind,FILE_ATTRIBUTE_NORMAL);
-				int nFind = strFind.ReverseFind(L'\\');
-				if(-1 != nFind)
-				{
-					CString strFileName(strFind.Right(strFind.GetLength() - nFind - 1));
-					if(-1 != strFileName.Find(L'.'))
-					{
-						if(IsPathExist(strFind + L".err"))
-							::DeleteFile(strFind + L".err");
-						/// 改名
-						::MoveFile(strFind,strFind + L".err");
-					}
-				}
-				bRet = FALSE;
-			}
+			nRet = 1;
+			if(!data.nFileSizeHigh && !data.nFileSizeLow)
+				nRet = 2;
 		}
 		::FindClose(hFindFile);
 		hFindFile = NULL;
@@ -889,12 +955,46 @@ BOOL CBaseFuncLib::IsPathExist(const CString& strPath)
 	else
 	{
 		DWORD dwErrCode = ::GetLastError();
-		if(ERROR_FILE_NOT_FOUND == dwErrCode || ERROR_PATH_NOT_FOUND == dwErrCode)
-			bRet = FALSE;/// 超过260长度会报错
-		else
-			bRet = TRUE;
+		if(dwErrCode)
+		{
+			/// 目前不支持长路径260 https://learn.microsoft.com/zh-cn/windows/win32/fileio/maximum-file-path-limitation?tabs=registry
+			if(ERROR_FILE_NOT_FOUND != dwErrCode && ERROR_PATH_NOT_FOUND != dwErrCode)
+			{
+				CBaseFuncLib::WriteLastLogToFile(dwErrCode,strFind);
+				nRet = 3;
+			}
+		}
 	}
-	return bRet;
+	return nRet;
+}
+
+CString CBaseFuncLib::GetUrlFileName(const CString &strUrl)
+{
+	CString strNameFile;
+	int nFind = strUrl.ReverseFind(L'/');
+	ATLASSERT(-1 != nFind);
+	if(-1 == nFind)
+	{
+		nFind = strUrl.ReverseFind(L'\\');
+		if(-1 != nFind)
+			strNameFile = strUrl.Right(strUrl.GetLength() - nFind -1);
+		else
+			strNameFile = strUrl;
+		return strNameFile;
+	}
+	strNameFile = strUrl.Right(strUrl.GetLength() - nFind -1);
+	nFind = strNameFile.Find(L'.');
+	int nNewFind = strNameFile.Find(L"?");
+	if(nNewFind > nFind && -1 != nFind)
+		strNameFile = strNameFile.Left(nNewFind);
+	else
+		strNameFile.Delete(0,nNewFind + 1);
+	nFind = strNameFile.ReverseFind(L'=');
+	if(-1 != nFind && (strNameFile.GetLength() - nFind) > 4)
+		strNameFile.Delete(0,nFind + 1);
+	strNameFile.Replace(L"/",L"");
+	strNameFile.Replace(L"\\",L"");
+	return strNameFile;
 }
 
 CString CBaseFuncLib::GetSpecialFolderPath(long lFoldID,BOOL bWriteLog)
@@ -1002,69 +1102,52 @@ BOOL CALLBACK EnumWindowsCallback(HWND hWnd, LPARAM lParam)
 	handle_data& data = *(handle_data*)lParam;
 	if(data.hExistWnd == hWnd)
 		return TRUE;
+	CString strName;
 	if(data.nPID)
 	{
 		DWORD nRet = GetWindowThreadProcessId(hWnd,&nPID);
 		if(data.nPID != nPID)
 			return TRUE;
+		TCHAR tcName[MAX_PATH];
+		::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
+		GetClassName(hWnd,tcName,MAX_PATH);
+		strName = tcName;
+		if(-1 != strName.Find(L"CSpNotify Notify") || -1 != strName.Find(L"SoPY_Status")
+			|| -1 != strName.Find(L"IME") || -1 != strName.Find(L"HardwareMonitorWindow"))
+			return TRUE;/// 特殊处理
 		if(1 == (1 & data.nFlag))
 		{
-			/// Firefox浏览器特殊处理
-			TCHAR tcName[MAX_PATH];
-			::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
-			GetClassName(hWnd,tcName,MAX_PATH);
-			CString strName(tcName);
 			if(0 != strName.CompareNoCase(L"MozillaWindowClass"))
-				return TRUE;
+				return TRUE;/// Firefox浏览器特殊处理
 		}
 		if(4 == (4 & data.nFlag))
 		{
-			/// 特殊处理
-			TCHAR tcName[MAX_PATH];
-			::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
-			GetClassName(hWnd,tcName,MAX_PATH);
-			CString strName(tcName);
 			if(0 == strName.CompareNoCase(L"ClipBoardWindow")
 				|| 0 == strName.CompareNoCase(L"SunAwtToolkit")
 				|| -1 != strName.Find(L"_Status"))
-				return TRUE;
+				return TRUE;/// 特殊处理
 		}
 		if(8 == (8 & data.nFlag))
 		{
-			/// 微软Office中的Word特殊处理
-			TCHAR tcName[MAX_PATH];
-			::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
-			::GetClassName(hWnd,tcName,MAX_PATH);
-			CString strName(tcName);
 			if(0 != strName.CompareNoCase(L"OpusApp"))
-				return TRUE;
+				return TRUE;/// 微软Office中的Word特殊处理
 			//::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
 			//::GetWindowText(hWnd,tcName,MAX_PATH);
 			//CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" FindName",tcName);
 		}
 		if(16 == (16 & data.nFlag))
 		{
-			/// 微软Office中的Excel及PPT特殊处理
-			TCHAR tcName[MAX_PATH];
-			::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
-			::GetClassName(hWnd,tcName,MAX_PATH);
-			CString strName(tcName);
 			if(0 != strName.CompareNoCase(L"XLMAIN") && -1 == strName.Find(L"FrameClass"))
-				return TRUE;
+				return TRUE;/// 微软Office中的Excel及PPT特殊处理
 			//::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
 			//::GetWindowText(hWnd,tcName,MAX_PATH);
 			//CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" FindName",tcName);
 		}
 		if(512 == (512 & data.nFlag))
 		{
-			/// 命令行窗口句柄
-			TCHAR tcName[MAX_PATH];
-			::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
-			::GetClassName(hWnd,tcName,MAX_PATH);
-			CString strName(tcName);
 			if(0 != strName.CompareNoCase(L"CASCADIA_HOSTING_WINDOW_CLASS")
 				&& 0 != strName.CompareNoCase(L"ConsoleWindowClass"))
-				return TRUE;
+				return TRUE;/// 命令行窗口句柄
 			//::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
 			//::GetWindowText(hWnd,tcName,MAX_PATH);
 			//CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" FindName",tcName);
@@ -1080,12 +1163,13 @@ BOOL CALLBACK EnumWindowsCallback(HWND hWnd, LPARAM lParam)
 		}
 	}
 	if(!IsMainWindow(hWnd,data.nFlag))
+	{
+#ifdef _DEBUG
+		CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" NotMainClassWnd",strName);
+#endif
 		return TRUE;
+	}
 	data.hWnd = hWnd;
-	//TCHAR tcName[MAX_PATH];
-	//::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
-	//::GetClassName(hWnd,tcName,MAX_PATH);
-	//CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" GetClassWnd",tcName);
 	if(128 == (128 & data.nFlag))
 	{
 		/// 需要显示到副屏，查询副屏幕的窗口
@@ -1094,7 +1178,13 @@ BOOL CALLBACK EnumWindowsCallback(HWND hWnd, LPARAM lParam)
 			return FALSE;
 		return TRUE;
 	}
-	//CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" OK");
+#ifdef _DEBUG
+	TCHAR tcName[MAX_PATH];
+	::memset(tcName,0,MAX_PATH*sizeof(TCHAR));
+	::GetWindowText(hWnd,tcName,MAX_PATH);
+	CBaseFuncLib::WriteLogToFile(strName + L" WndClass",CString(tcName) + L" WndowText");
+	CBaseFuncLib::WriteLogToFile(CBaseFuncLib::NumToStr((ULONG)hWnd) + L" FindMainWnd");
+#endif
 	return FALSE;
 }
 
@@ -1114,45 +1204,41 @@ HWND FindMainWindow(unsigned long nPID,USHORT nFlag,HDESK hDesk,HWND hExistWnd)
 	return data.hWnd;
 }
 
-DWORD CBaseFuncLib::FindProc(const CString& strExeFile,DWORD &dwPID,\
-	DWORD dwOtherID,ULONG nGetFlag,const CString& strFileName)
+lpGetModuleFileNameEx CBaseFuncLib::GetMyModuleFileName(HINSTANCE &hPsModule)
 {
-	dwPID = 0;
-	DWORD dwThread = 0;
-	if(strExeFile.IsEmpty())
-		return dwThread;
-	lpGetModuleFileNameEx pGetModuleFileNameEx = NULL;
-	HINSTANCE hPsModule = ::LoadLibrary(WRL_PSAPIDLL);
-	pGetModuleFileNameEx = (lpGetModuleFileNameEx)GetProcAddress(hPsModule,"GetModuleFileNameExW");
+	if(NULL == hPsModule)
+		hPsModule = ::LoadLibrary(WRL_PSAPIDLL);
+	if(NULL == hPsModule)
+		return NULL;
+	/// WIN 2000不支持
+	lpGetModuleFileNameEx pGetModuleFileNameEx = (lpGetModuleFileNameEx)GetProcAddress(hPsModule,"GetModuleFileNameExW");
 	if(NULL == pGetModuleFileNameEx)
 	{
 		HINSTANCE hModule = ::GetModuleHandle(WRL_SYKERNELDLL);
 		if(NULL == hModule)
-			hModule = ::LoadLibrary(WRL_SYKERNELDLL);
-		pGetModuleFileNameEx = (lpGetModuleFileNameEx)GetProcAddress(hModule,"GetModuleFileNameExW");
-		hModule = NULL;
-	}
-	if(NULL == pGetModuleFileNameEx)
-	{
-		if(NULL != hPsModule)
 		{
-			::FreeLibrary(hPsModule);
-			hPsModule = NULL;
+			hModule = ::LoadLibrary(WRL_SYKERNELDLL);
+			hPsModule = hModule;
 		}
-		return dwThread;
+		if(NULL != hModule)
+		{
+			pGetModuleFileNameEx = (lpGetModuleFileNameEx)GetProcAddress(hModule,"GetModuleFileNameExW");
+			hModule = NULL;
+		}
 	}
+	return pGetModuleFileNameEx;
+}
+
+void CBaseFuncLib::FindMapProc(const CString& strExeFile,ULONGSTRING_MAP &mapInfo)
+{
+	if(strExeFile.IsEmpty())
+		return;
 	HANDLE hSnapshot = NULL;
+	/// 在Windows 10 2019年版本中可能存在问题，调用耗费200毫秒之多，CPU飙升
 	hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
 	ATLASSERT(hSnapshot);
 	if(NULL == hSnapshot)
-	{
-		if(NULL != hPsModule)
-		{
-			::FreeLibrary(hPsModule);
-			hPsModule = NULL;
-		}
-		return dwThread;
-	}
+		return;
 	CString strExePath,strExeName;
 	int nFind = strExeFile.ReverseFind(L'\\');
 	if(-1 != nFind)
@@ -1167,7 +1253,97 @@ DWORD CBaseFuncLib::FindProc(const CString& strExeFile,DWORD &dwPID,\
 	pe.dwSize = sizeof(pe);
 	BOOL fok = Process32First(hSnapshot, &pe);
 
+	BOOL bGetFlag = FALSE;
 	LONGNUMBER_MAP mapApp;
+	HINSTANCE hPsModule = NULL;
+	lpGetModuleFileNameEx pGetModuleFileNameEx = NULL;
+	for(;fok ;fok = Process32Next(hSnapshot,&pe))
+	{
+		if(0 == strExeName.CompareNoCase(pe.szExeFile))
+		{
+			/// 可能存在多个执行文件名称是一样的，需要加程序路径来区分
+			if(strExePath.GetLength())
+			{
+				/// 判断具体的运行路径
+				HMODULE hProcess = (HMODULE)OpenProcess(PROCESS_QUERY_INFORMATION|PROCESS_VM_READ,FALSE,pe.th32ProcessID);
+				if(NULL != hProcess)
+				{
+					DWORD dwRet = 0;
+					TCHAR szPath[MAX_PATH];
+					memset(szPath,0,MAX_PATH*sizeof(TCHAR));
+					/// WIN 2000不支持
+					if(!bGetFlag && NULL == pGetModuleFileNameEx)
+					{
+						pGetModuleFileNameEx = GetMyModuleFileName(hPsModule);
+						bGetFlag = TRUE;
+					}
+					if(NULL != pGetModuleFileNameEx)
+					{
+						dwRet = pGetModuleFileNameEx(hProcess,NULL,szPath,MAX_PATH_NEW);
+						if(dwRet)
+						{
+							if(0 == strExeFile.CompareNoCase(szPath))
+							{
+								/// 必须是同路径
+								mapInfo[pe.th32ProcessID] = pe.szExeFile;
+							}
+						}
+					}
+					::CloseHandle(hProcess);
+					hProcess = NULL;
+				}
+				else
+				{
+					//WriteLastLogToFile(::GetLastError(),L"FindProcOpenProcess");
+				}
+			}
+			else
+			{
+				mapInfo[pe.th32ProcessID] = pe.szExeFile;
+			}
+		}
+	}
+	CloseHandle(hSnapshot);
+	hSnapshot = NULL;
+	if(NULL != hPsModule)
+	{
+		::FreeLibrary(hPsModule);
+		hPsModule = NULL;
+	}
+	mapApp.clear();
+}
+
+DWORD CBaseFuncLib::FindProc(const CString& strExeFile,DWORD &dwPID,\
+	DWORD dwOtherID,ULONG nGetFlag,const CString& strFileName)
+{
+	dwPID = 0;
+	DWORD dwThread = 0;
+	if(strExeFile.IsEmpty())
+		return dwThread;
+	HANDLE hSnapshot = NULL;
+	/// 在Windows 10 2019年版本中可能存在问题，调用耗费200毫秒之多，CPU飙升
+	hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
+	ATLASSERT(hSnapshot);
+	if(NULL == hSnapshot)
+		return dwThread;
+	CString strExePath,strExeName;
+	int nFind = strExeFile.ReverseFind(L'\\');
+	if(-1 != nFind)
+	{
+		strExePath = strExeFile.Left(nFind+1);
+		strExeName = strExeFile.Right(strExeFile.GetLength()-nFind-1);
+	}
+	else
+		strExeName = strExeFile;
+
+	PROCESSENTRY32  pe = {0};
+	pe.dwSize = sizeof(pe);
+	BOOL fok = Process32First(hSnapshot, &pe);
+
+	BOOL bGetFlag = FALSE;
+	LONGNUMBER_MAP mapApp;
+	HINSTANCE hPsModule = NULL;
+	lpGetModuleFileNameEx pGetModuleFileNameEx = NULL;
 	for(;fok ;fok = Process32Next(hSnapshot,&pe))
 	{
 		if(0 == strExeName.CompareNoCase(pe.szExeFile) && dwOtherID != pe.th32ProcessID)
@@ -1233,10 +1409,10 @@ DWORD CBaseFuncLib::FindProc(const CString& strExeFile,DWORD &dwPID,\
 					}
 				}
 			}
-			/// 可能存在多个执行文件一样的
+			/// 可能存在多个执行文件名称是一样的，需要加程序路径来区分
 			if(strExePath.GetLength())
 			{
-				/// 判断路径
+				/// 判断具体的运行路径
 				HMODULE hProcess = (HMODULE)OpenProcess(PROCESS_QUERY_INFORMATION|PROCESS_VM_READ,FALSE,pe.th32ProcessID);
 				if(NULL != hProcess)
 				{
@@ -1244,13 +1420,21 @@ DWORD CBaseFuncLib::FindProc(const CString& strExeFile,DWORD &dwPID,\
 					TCHAR szPath[MAX_PATH];
 					memset(szPath,0,MAX_PATH*sizeof(TCHAR));
 					/// WIN 2000不支持
-					dwRet = pGetModuleFileNameEx(hProcess, NULL, szPath, MAX_PATH);
-					if(dwRet)
+					if(!bGetFlag && NULL == pGetModuleFileNameEx)
 					{
-						if(0 == strExeFile.CompareNoCase(szPath))
+						pGetModuleFileNameEx = GetMyModuleFileName(hPsModule);
+						bGetFlag = TRUE;
+					}
+					if(NULL != pGetModuleFileNameEx)
+					{
+						dwRet = pGetModuleFileNameEx(hProcess,NULL,szPath,MAX_PATH_NEW);
+						if(dwRet)
 						{
-							/// 必须是同路径
-							mapApp[pe.th32ProcessID] = pe.cntThreads;
+							if(0 == strExeFile.CompareNoCase(szPath))
+							{
+								/// 必须是同路径
+								mapApp[pe.th32ProcessID] = pe.cntThreads;
+							}
 						}
 					}
 					::CloseHandle(hProcess);
@@ -1266,7 +1450,7 @@ DWORD CBaseFuncLib::FindProc(const CString& strExeFile,DWORD &dwPID,\
 				mapApp[pe.th32ProcessID] = pe.cntThreads;
 			}
 		}
-	}	
+	}
 	CloseHandle(hSnapshot);
 	hSnapshot = NULL;
 	if(NULL != hPsModule)
@@ -1468,7 +1652,7 @@ DWORD CBaseFuncLib::WriteLogToFile2(const CString& strLogFile,\
 		}
 		::MoveFile(strLogFile,strMoreLog);/// 备份日志输出
 	}
-	g_WriteLogLock.Unlock();
+	g_WriteLogLock.UnLock();
 
 	CString strModule(strModuleName);
 	if(strModule.IsEmpty())
@@ -1645,7 +1829,7 @@ DWORD CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nle
 				}
 			}
 			if(bLockFlag)
-				g_WriteLogLock.Unlock();
+				g_WriteLogLock.UnLock();
 			return dwLastErr;
 		}
 	}
@@ -1675,7 +1859,7 @@ DWORD CBaseFuncLib::WriteToFile(const CString& strDataFile,BYTE *pData,DWORD nle
 	::CloseHandle(hFileOpen);
 	hFileOpen = NULL;
 	if(bLockFlag)
-		g_WriteLogLock.Unlock();
+		g_WriteLogLock.UnLock();
 	return dwLastErr;
 }
 
@@ -1709,7 +1893,7 @@ DWORD CBaseFuncLib::ReadAllData(const CString& FileName,BYTE **ppData)
 			return m;
 		}
 	}
-	int len = ::GetFileSize(hFileOpen,NULL);
+	DWORD len = ::GetFileSize(hFileOpen,NULL);
 	len++;
 	*ppData = new BYTE[len];
 	ATLASSERT(*ppData);
@@ -2155,11 +2339,13 @@ DWORD CBaseFuncLib::RunExe(LPWSTR szAppPath,WORD wShowFlag,\
 	return stProcessInfo.dwProcessId;
 }
 
-///////////////////////////////////		CThreadDataLock	//////////////////////////////////////////////////
-inline BOOL CThreadDataLock::Lock(TCHAR* szFuncName)
+///////////////////////////////////		CWrlThreadLock	//////////////////////////////////////////////////
+inline BOOL CWrlThreadLock::Lock(TCHAR* szFuncName)
 {
 	BOOL bLockFlag = FALSE;
-	if(NULL == m_pSection)
+	if(!IsInit())
+		Init();
+	if(!IsInit())
 		return bLockFlag;
 	if(IsLock())
 	{
@@ -2207,10 +2393,12 @@ inline BOOL CThreadDataLock::Lock(TCHAR* szFuncName)
 	return bLockFlag;
 }
 
-BOOL CThreadDataLock::TryLock(TCHAR* szFuncName)
+BOOL CWrlThreadLock::TryLock(TCHAR* szFuncName)
 {
 	BOOL bLockFlag = FALSE;
-	if(NULL == m_pSection)
+	if(!IsInit())
+		Init();
+	if(!IsInit())
 		return bLockFlag;
 	bLockFlag = ::TryEnterCriticalSection(m_pSection);
 	if(bLockFlag && m_bLogFlag && NULL != szFuncName)
@@ -2231,9 +2419,9 @@ BOOL CThreadDataLock::TryLock(TCHAR* szFuncName)
 	return bLockFlag;
 }
 
-inline void CThreadDataLock::Unlock(TCHAR* szFuncName)
+inline void CWrlThreadLock::UnLock(TCHAR* szFuncName)
 {
-	if(NULL == m_pSection)
+	if(!IsInit())
 		return;
 	if(IsLock())
 	{
@@ -2241,7 +2429,7 @@ inline void CThreadDataLock::Unlock(TCHAR* szFuncName)
 		{
 			CString strLockInfo;
 			if(0 == g_strLang.CompareNoCase(L"ENG"))
-				strLockInfo.Format(L"%s Unlock->",CString(szFuncName));
+				strLockInfo.Format(L"%s UnLock->",CString(szFuncName));
 			else
 				strLockInfo.Format(L"%s 解锁->",CString(szFuncName));
 			CBaseFuncLib::WriteLogToFile(strLockInfo);

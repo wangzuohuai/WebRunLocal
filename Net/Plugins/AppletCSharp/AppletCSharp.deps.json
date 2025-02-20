@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "AppletCSharp/2.2.16": {
+      "AppletCSharp/2.2.17": {
         "dependencies": {
           "Interop.ZbaEngine": "2.0.0.0",
           "Interop.ZbaApplet": "2.0.0.0",
@@ -43,7 +43,7 @@
     }
   },
   "libraries": {
-    "AppletCSharp/2.2.16": {
+    "AppletCSharp/2.2.17": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

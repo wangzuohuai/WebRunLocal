@@ -1,5 +1,4 @@
 #pragma once
-#include <map>
 #include "BaseFuncLib.h"
 
 ///通知小程序关闭
@@ -64,6 +63,10 @@
 /// 设置嵌入的第三方进程窗口
 #ifndef WM_APPLET_OTHERWND
 #define WM_APPLET_OTHERWND				WM_USER + 3022
+#endif
+
+#ifndef WM_APPLET_QUIT
+#define WM_APPLET_QUIT					WM_USER + 3023
 #endif
 
 /// 通知保存文件
@@ -154,7 +157,7 @@ protected:
 	/// 消息窗口
 	HWND			m_hMsgWnd;
 
-	CThreadDataLock	m_DataLock;
+	CWrlThreadLock	m_DataLock;
 
 	RECDATA_MAP		m_CatchData;
 
@@ -169,7 +172,7 @@ protected:
 			it++;
 		}
 		m_CatchData.clear();
-		m_DataLock.Unlock(L"FreeAll");
+		m_DataLock.UnLock(L"FreeAll");
 	}
 
 public:
@@ -206,7 +209,7 @@ public:
 			if(bRemove)
 				m_CatchData.erase(it);
 		}
-		m_DataLock.Unlock(L"GetCatchData");
+		m_DataLock.UnLock(L"GetCatchData");
 		return pRecData;
 	}
 

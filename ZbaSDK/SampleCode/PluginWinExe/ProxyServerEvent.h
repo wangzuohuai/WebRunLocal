@@ -1,5 +1,4 @@
 #pragma once
-#include <map>
 #include "BaseFuncLib.h"
 
 ///通知小程序关闭
@@ -66,6 +65,10 @@
 #define WM_APPLET_OTHERWND				WM_USER + 3022
 #endif
 
+#ifndef WM_APPLET_QUIT
+#define WM_APPLET_QUIT					WM_USER + 3023
+#endif
+
 /// 通知保存文件
 #ifndef WM_APPLET_SAVEFILE
 #define WM_APPLET_SAVEFILE				WM_USER + 3050
@@ -113,6 +116,8 @@
 #define WM_PROXYSEREREVENT_HTTPPORT		WM_USER + 2007
 /// WS收到错误通知
 #define WM_PROXYSEREREVENT_RECERR		WM_USER + 2008
+/// WS收到操作码
+#define WM_PROXYSEREREVENT_OPCODE		WM_USER + 2009
 
 #ifndef NEED_FINAL_CONSTRUCT
 #define NEED_FINAL_CONSTRUCT
@@ -152,7 +157,7 @@ protected:
 	/// 消息窗口
 	HWND			m_hMsgWnd;
 
-	CThreadDataLock	m_DataLock;
+	CWrlThreadLock	m_DataLock;
 
 	RECDATA_MAP		m_CatchData;
 
@@ -167,7 +172,7 @@ protected:
 			it++;
 		}
 		m_CatchData.clear();
-		m_DataLock.Unlock(L"FreeAll");
+		m_DataLock.UnLock(L"FreeAll");
 	}
 
 public:
@@ -204,7 +209,7 @@ public:
 			if(bRemove)
 				m_CatchData.erase(it);
 		}
-		m_DataLock.Unlock(L"GetCatchData");
+		m_DataLock.UnLock(L"GetCatchData");
 		return pRecData;
 	}
 

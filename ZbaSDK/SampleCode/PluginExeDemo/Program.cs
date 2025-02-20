@@ -15,7 +15,7 @@ namespace PluginExeDemo
         {
             if (args.Length <= 0)
             {
-                MessageBox.Show("请输入启动参数");
+                MessageBox.Show("Please enter the startup parameters");
                 Application.Exit();
                 return;
             }

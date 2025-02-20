@@ -65,7 +65,7 @@
 			var win = 1 		// 当前操作的窗口ID
 			var rid = 10 		// 起始请求序号
 			var recordid = 0 	// 录像返回ID
-			var CheckVer = '2.2.16.11' // 指定的校验版本，也就是最新需要升级的版本
+			var CheckVer = '2.2.17.1' // 指定的校验版本，也就是最新需要升级的版本
 			
 			var socketClient = {
 				3000: null,
@@ -124,7 +124,8 @@
 
 			// 启动第一个网页播放器配置，以下为启动参数说明
 			// 1)、请求启动VLC网页播放器：
-			// Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+			// Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
+            // Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，前端可通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
 			// Title：网页标题中的关键词
 			// Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
 			// Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
@@ -567,17 +568,17 @@
 					"rid":rid,
 					"para":{
 						"Name":"PageHiPlayer—RTSP低延迟网页播放器升级包",
-						"Date":"2025-01-03",
-						"Desc":"中间件高级版兼容支持豆包桌面版，兼容法文系统，解决安装后系统服务可能无法正常启动问题，解决多线程下载可能卡住问题...",
+						"Date":"2025-02-19",
+						"Desc":"1、中间件高级版增加支持在夸克、遨游、猎豹及双核浏览器中的使用； 2、增强识别当前网页窗口信息接口，增强内嵌小程序启动参数可避免其加载到其它网页；3、优化高级版小程序在服务器版系统中的运行体验；4、PageHiPlayer中的VLC引擎全面支持4.0版，播放窗口按大写的C可直接清除当前播放内容，解决在Win7等低版本系统关闭播放时可能弹崩溃问题...",
 						"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
 						"Open":"http://local.zorrosoft.com/VlcJS",
-						"MD5":"532C3220AC03DDD7E3A16BF0D1CCF242",
-						"Version":"2.2.16.11",
-						"Size":43515904,
+						"MD5":"450A0EE26DA07191E8AFE8ABAC6E901E",
+						"Version":"2.2.17.1",
+						"Size":44302336,
 						"HideIns":0,
 						"Cookie":"",
 						"Auth":"",
-						"TK":"52854C99916233110691EE695F052AAE85C061CAE7717CAB5604C003A96F13716D268738E130FD0DFE98872EF1FADC1B3B86F7FE2943D7AAC5828C8A698E08E40F233F5E786E7CFE398E58CE640740DBF5A01847FF45C4D4F62D7BF7531AB7EAEF2EEA59EEC92B5B842E0C16C0C88065B80A7D0445BDA88DCE4CC61383FC0B71769577CBB8D984DAF26B2053380B7909C875822D0097EBE6B2AB1DF7C9A04DA5F88F2DE4DB2373E9802479DCC1EAE47A9E3B9CCAAD7059881E001102DAB42AF39F7775456EA8C0939FB05E7E14866203A9035402E7A2604F827A77550679DD336D79D8C0F6468BD5E2BDEBA0286C88B31314AB9995441555A7D944117B7C487F"
+						"TK":"9F7454773430600E0132014779EAF27F1A7AA532E57AD99570AFE4CE7357BCFD3B5EE9F7DEDEA525E35B613FBFAE8CC22D3DBF60578A21518B1478B973702F35197B88163FC4608A147210CF796516A5F9052584FB18AA8A107D10AD0A5DB9712B80514C889687AB819160A5EC1EA787FE229322B32702B80785A4918B2924A25715F97C50526941DA024F233479266AA41B131E70198257B0BE2BA5446DF318A5A3F7D7C8A1D741731BD5422F1E67C45209F5C091A5C5762156778BD21777C2299B425C242B275DAECF20FB67CBEA80C3341BB0E2C506C0070023BDF3077EE7710FD07F53470FE49A8A7BF075E98984FECC9B526DDE5F0BE2C5673C9014BDBE"
 					}
 				}
 				socketClient[3000].sendObj(msg)

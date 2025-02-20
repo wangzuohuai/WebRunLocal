@@ -1,0 +1,243 @@
+﻿UGCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用西门子的JT2GO 桌面程序或OCX控件实现可程序化驱动的jt等三维工程图在线查看、编辑等，可将桌面程序或OCX控件窗口内嵌到网页指定区域运行并操作使用。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、PluginOK中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3）、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+
+2、UG网页组件控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+前端集成采用普通JS脚本时，请主要参考：https://gitee.com/zorrosoft/pluginOK/tree/master/Demo/CadJS，需要嵌入用到的JS脚本程序是完全开源的，如果只是简单测试启动，可以参考以下网页：
+HTTP网页在线测试：http://local.zorrosoft.com/UGCadfull.html  HTTPS网页在线测试：https://local.zorrosoft.com/UGCadframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
+前端集成可参考以上测试网页进行，HTML网页中需要嵌入以下类似代码；
+A、标记小程序的显示位置和大小
+.UGApplet {
+            margin: 20px 0 0 20px;
+            width: 480px;
+            height: 320px;
+            border: 1px solid blue;
+        }
+或者
+.UGApplet {
+            width: 480px;
+            height: 320px;
+            top: 20px;
+            left: 20px;
+            border: 1px solid blue;
+        }
+如果在网页Header区没有标记小程序初始显示位置和大小，请在启动小程序的JSON参数里，添加以下参数：
+"Left":20,"Top":20,"Width":480,"Height":320
+
+B、网页中嵌入元素
+支持IFrame的：
+<iframe name="UGApplet" id="UGApplet" src="UGCadApplet3.html" frameborder="0" align="left" width="550" height="540" scrolling="no></iframe>
+或者直接用
+<div id="UGApplet" class="UGApplet"</div>
+
+另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
+
+1)、请求启动UG网页组件实现网页中局部加载xt、step等文档进行操作：
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	Edit代表编辑权限 1只读打开 4禁止另存 8禁止打印 
+	User 代表编辑图纸的用户名称 
+	PW代表打开图纸需要的密码 
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
+	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：0:启动UG实现在线编辑(暂未实现) 1:启动JT2G0 ActiveX控件(老版本)在线查看 2:启动JT2G0桌面程序(支持最新版)查看 可提前通过接口Wrl_CADInfo获取当前电脑是否已经安装相关软件 
+Open：为需要打开的文档路径，磁盘目录斜杠用/
+注意：Open、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器并启动Solidworks程序在线编辑xt、step等文档
+{"req":"Wrl_UGApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"0","Open":"D:/Zorro/test.jt"}}
+
+自动识别当前浏览器并启动eDrawings程序在线查看或转换xt、step文档
+{"req":"Wrl_UGApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"1","Open":"D:/Zorro/test.jt"}}
+
+自动识别当前浏览器指定位置自动适配网页区启动(推荐方式启动)：
+{"req":"Wrl_UGApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"BarW":0,"BarH":0,"ScrollTop":0,"Web":{"DataPath":"c:/CadDoc"},"Option":"0","Open":"D:/Zorro/test.jt"}}
+
+自动识别当前浏览器并启动eDrawings程序在线查看服务器文档
+{"req":"Wrl_UGApplet","rid":6,"para":{"Type":"0","Title":"Solidworks Applet Full","Flag":72,"IframeX":0,"IframeY":0,"ScrollTop":0,"Web": {"DataPath":"c:/CadDoc"},"Open":"http://local.zorrosoft.com/Files/Test.jt","Option":1}}
+
+当前页指定位置自动适配网页加载测试
+http://local.zorrosoft.com/UGCadframe.html
+
+启动后会前后收到三个JSON数据包
+A、{"ret":0,"rid":8,"data":{"ID":7}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":7,"rid":8,"data":{"SID":"123","PID":"UGApplet","port":1030}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如对图纸进行缩放。
+代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":7,"rid":8,"data":{"SID":"123","PID":"UGApplet","Port":1030}}
+
+关于接口Wrl_CADInfo的说明：
+请求：{"req":"Wrl_CADInfo","rid":1,"para":{}}，返回信息举例：
+{"ret":0,"rid":1,"req":"Wrl_CADInfo","data":{"Info":[{"Type":11,"Option":1,"X64":1,"Ver":"32.1.0.0076","Path":"C:/Program Files/Common Files/eDrawings2024/EModelViewer.exe"},{"Type":51,"Option":1,"X64":0,"Ver":"10.1.5.15282","Path":"F:/Soft/JT2Go/Program/VisJT2GoOCX.ocx"},{"Type":51,"Option":1,"X64":1,"Ver":"15.2.0.24313","Path":"F:/Soft/JT2Go/Products/JT2Go/VisView_NG.exe"}]}}
+Type等于51的代表UG小程序的相关安装信息
+
+2)、请求控制UG网页组件：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1正常关闭 128强制迅速关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动UG网页组件：
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回JSON中的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变UG网页组件显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度，X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或同时设置小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为Wrl_UGApplet启动小程序时返回的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装UG网页组件
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"UG(NX) CAD内嵌网页小程序","PID":"UGApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的西门子UG(NX) CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌UG(NX) CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/UGApplet.pid","MD5":"CBC25E0C2B1EF8B048EAB0F17D033CA0","Version":"2.2.17.1","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"64F4AC390C962F5DBF9B2BE04480E302441C9813FB04C860A5FA67A15BC92CDAB4CE0192C69DD63EFD351091CBC5763031202DAB339B884F78128ADC986001B4A4CEEDE8F1442CDCD628E7FBBAAEBD711543F6B736F29B455EDEEC62DF81EEDEEFC4434261E8E0113ED86F8676C0F167BCCCF42E4C41D36AA9F6AEDB454F8CFD3339C8A7285A8A69851E43445FA4C8C5EFEE17F6511576197A78466ED6E1EB7A6D82C2E23E44E7647B1FA0692FA117C8867BD2245FF45F3BAB44B31C5421C0D31CD92733DE1FB66A9E4DBA568B451A684FFA45EA981B01BC9CA5EF7C6EBBECD1C16D8459BC22B9E968346241F588D7E1E457BE74805510E2E7DEDC932E984EC9"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
+
+2)、请求升级UG网页组件：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"UG(NX) CAD内嵌网页小程序","PID":"UGApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的西门子UG(NX) CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌UG(NX) CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/UGApplet_Update.pid","MD5":"FA27CD2D99E85420D60F5F5BAE854933","Version":"2.2.17.1","Size":2195456,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2E68C1C7DFCD42B31AA1A1FE05942FA6E27FAE574E9A9612743BB2680B345C93936999F602DC08E1B8783E5F9E1742D59B13C00FD9EDDDB688BA83880E7A41A535ED788CC7F00F8FC91BE3A33F9304C8ADDB12CA7718DCA9122BB733A99A816625D5CD53DFB676835857B7233DC31817DB55DAF7CA256F23F0A347F83B86503E344EBA07E8DBB814EA7D10E5E3490A7DEF8D843D33093BE8ACD5817CDF2558AF9445366F2293EF3B180D6AD606D449F1E1E848A5287E984BCB2CB6FCEF3747ECE97D6D3B8948F99B0EB0C357C003AF547CC58894D00D7E9A70EE77EFA7E7DA6ABD795B93E41064CAADA64BF0892B15504E235FF320606CFAD66B885FE91496D9"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+3)、请求卸载UG网页组件：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"UGApplet","Type":8}}
+
+4、UG网页组件转调用JT2Go控件接口，先根据Wrl_UGApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+
+1)、请求退出小程序 适用于JT2Go控件
+正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
+{"req":"CAD_Exit","rid":1,"para":{}}
+无返回
+
+2)、请求关闭当前打开的文档 适用于JT2Go控件
+{"req":"CAD_Close","rid":2,"para":{}}
+返回: {"ret":0,"rid":2,"data":{"Ret":"0"}} Ret为0代表成功
+
+3)、请求打开文档 适用于JT2Go控件
+Open打开文档路径，如有特殊字符或中文的需要用URLCode先编码
+{"req":"CAD_Open","rid":3,"para":{"Open":"D:/Zorro/Test.jt"}}
+{"req":"CAD_Open","rid":3,"para":{"Open":"http://local.zorrosoft.com/Files/test.jt"}}
+返回: {"ret":0,"rid":3,"data":{"Ret":"0"}} Ret为0代表成功
+
+6）网络文件操作 适用于JT2Go控件
+Type 1上传文件 0下载文件
+Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
+Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
+Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
+Url 上传或下载的地址，需要做UrlEncode编码
+Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
+Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
+{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/CadDoc/test.jt","Url":"http://local.zorrosoft.com/Files/test.jt"}}
+{"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+
+8）请求在嵌入窗口区域内弹出一个消息对话框
+Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
+Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
+Wait为等待多少秒自动消失 0代表不自动消失
+Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
+{"req":"CAD_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+
+B、JT2GO OCX控件专用接口，桌面程序版不支持：
+101)、请求开始自动化
+{"req":"CADVIEW_StartAutomation","rid":101,"para":{}}
+返回: {"ret":0,"rid":101,"data":{"Ret":"0"}}
+
+102)、请求停止自动化
+{"req":"CADVIEW_StopAutomation","rid":102,"para":{}}
+返回: {"ret":0,"rid":102,"data":{"Ret":"0"}}
+
+103)、请求获取背景类型
+{"req":"CADVIEW_GetBackgroundType","rid":103,"para":{}}
+返回: {"ret":0,"rid":103,"data":{"Ret":"0","BackgroundType":"0"}}
+
+104)、请求设置背景类型
+{"req":"CADVIEW_SetBackgroundType","rid":104,"para":{"BackgroundType":"0"}}
+返回: {"ret":0,"rid":104,"data":{"Ret":"0"}}
+
+105)、请求设置控件许可
+{"req":"CADVIEW_SetUserLicenseKey","rid":105,"para":{"LicenseKey":""}}
+返回: {"ret":0,"rid":105,"data":{"Ret":"0"}}
+
+106)、请求获取相机位置
+{"req":"CADVIEW_GetCameraPosition","rid":106,"para":{}}
+返回: {"ret":0,"rid":106,"data":{"Ret":"0","CameraPosition":""}}
+
+107)、请求设置相机位置
+{"req":"CADVIEW_SetCameraPosition","rid":107,"para":{"CameraPosition":""}}
+返回: {"ret":0,"rid":107,"data":{"Ret":"0"}}
+
+108)、请求获取图像
+xSize和ySize分别是需要获取的宽度和高度，默认0代表整个显示区
+{"req":"CADVIEW_GetBitmapImage","rid":108,"para":{"xSize":0,"ySize":0}}
+返回: {"ret":0,"rid":108,"data":{"Ret":"0","Image":""}}
+
+109)、请求获取可见状态
+Index 序号，默认1
+{"req":"CADVIEW_GetVisibilityState","rid":109,"para":{"Index":1}}
+返回: {"ret":0,"rid":109,"data":{"Ret":"0","VisibilityState":0}}
+
+110)、请求显示关于
+{"req":"CADVIEW_AboutBox","rid":110,"para":{}}
+返回: {"ret":0,"rid":110,"data":{"Ret":"0"}}
+
+5、事件通知：
+A、
+
+B、PluginOK支持的事件通知：
+
+1) 小程序是否响应了热键全屏
+{"event":"CAD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“开发者手册.pdf”及“中间件安全解决方案.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

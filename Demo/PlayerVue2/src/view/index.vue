@@ -234,7 +234,7 @@
 					x: 0,
 					y: 0
 				},
-				version: '2.2.16.11' //版本信息
+				version: '2.2.17.1' //版本信息
 			}
 		},
 
@@ -457,7 +457,38 @@
 					this.openWebsocket(83,0)
 					//this.openWebsocket(83,1) 支持安全校验机制
 				}
-
+				// Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
+            	// Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，前端可通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
+				// Title：网页标题中的关键词
+				// Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
+				// Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+				// Web：播放配置(新增方式)，可代替Url使用，Flag值+64使用此配置，此命令中必须指定Left、Top、Width、Height的值
+				// Version播放小程序版本，0在播放小程序中播放，1在独立进程中播放
+				// ShowType 播放窗口分屏类型，默认1只显示一个播放窗口，支持1到31的数值，多达31种分屏，注意此值不代表分屏个数
+				// IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+				// BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+				// 小程序实际显示首先会基于Web或Url网页中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+				// Option：播放参数，多个参数中间用空格区分
+				// PlayEngine=2 指定用LibVLC引擎播放 默认0是采用海康SDK私有协议播放 1是采用海康MP4本地文件引擎播放 3是采用FFPlayer引擎播放 4是采用大华SDK私有协议播放
+				// AutoLoop=1 指定是否循环播放，1循环
+				// Caching=6 海康私有协议播放引擎比如设置6代表最大缓存6帧，其它播放引擎设置6代表600毫秒延迟
+				// Server 指定海康或大华SDK私有协议播放服务器地址、登录用户名、密码及端口信息
+				// Channel=1 私有协议播放时的通道ID，直接连摄像头播放时无需指定，默认通道序号是1 硬盘录像机可指定大于32的通道数值
+				// Stream=1 指定流类型 0是主码流，1是子码流 仅对PlayEngine=0有效
+				// Link=1 指定连接类型 0是TCP方式 1是UDP方式 PlayEngine=1时无效
+				// Mute=1 指定是否静音播放 1是静音
+				// FrameCache=20 指定是否按帧播放 0否，大于0代表按帧播放时最大缓存帧数量 仅对PlayEngine=2有效
+				// AudioColumn=1 指定是否通知音柱信息 1推送  仅对PlayEngine=2有效
+				// ToolBar=1 指定是否显示播放工具栏 1是显示
+				// InSidePlay=1 指定内置播放，默认1，VLC、海康私有及MP4文件播放指定0时支持框选放大局部视频画面
+				// LogFlag=1 指定VLC错误日志输出，默认1
+				// ClockSync=-1 指定音频是否与视频同步，默认-1播放引擎默认值
+				// Transform=none 指定VLC播放画面是否旋转，除默认none不旋转之外，设置支持90、180、270、hflip、vflip、transpose、antitranspose
+				// Avcodec=any 指定硬件加速类型，none不用硬件加速，可指定dxva2、d3d11va、any，any时让播放引擎自己选合适的
+				// Transform=none 指定VLC播放画面是否旋转，除默认none不旋转之外，设置支持90、180、270、hflip、vflip、transpose、antitranspose
+				// AudioOut=any 指定音频输出模块名称 可指定any、mmdevice、directsound、waveout、amem、afile、NDI、adummy、none等值，默认用any
+				// Open ：启动后第一个窗口自动播放的流地址或本地多媒体文件路径，斜杠\替换成/再传，也可以在Web中指定，如Open中的密码包含+等一些特殊字符，需要改到Web中指定
+				// 注意：Open、Url、Web中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递 如非本地全路径，默认使用中间件程序Data子目录作为根目录使用
 				let msg = {
 					"req": "Wrl_VideoWebPlayer",
 					"rid": this.run1,
@@ -1404,17 +1435,17 @@
 					"rid":this.rid,
 					"para":{
 						"Name":"PageHiPlayer—RTSP多引擎低延迟网页播放器升级包",
-	  					"Date":"2025-01-03",
-						"Desc":"中间件高级版兼容支持豆包桌面版，兼容法文系统，解决安装后系统服务可能无法正常启动问题，解决多线程下载可能卡住问题...",
+	  					"Date":"2025-02-19",
+						"Desc":"1、中间件高级版增加支持在夸克、遨游、猎豹及双核浏览器中的使用； 2、增强识别当前网页窗口信息接口，增强内嵌小程序启动参数可避免其加载到其它网页；3、优化高级版小程序在服务器版系统中的运行体验；4、PageHiPlayer中的VLC引擎全面支持4.0版，播放窗口按大写的C可直接清除当前播放内容，解决在Win7等低版本系统关闭播放时可能弹崩溃问题...",
 						"DownAddr":"http://local.zorrosoft.com/Files/Update/RTSP_Update.pid",
 						"Open":"http://local.zorrosoft.com/Player",
-						"MD5":"532C3220AC03DDD7E3A16BF0D1CCF242",
-						"Version":"2.2.16.11",
-						"Size":43515904,
+						"MD5":"450A0EE26DA07191E8AFE8ABAC6E901E",
+						"Version":"2.2.17.1",
+						"Size":44302336,
 						"HideIns":0,
 						"Cookie":"",
 						"Auth":"",
-						"TK":"52854C99916233110691EE695F052AAE85C061CAE7717CAB5604C003A96F13716D268738E130FD0DFE98872EF1FADC1B3B86F7FE2943D7AAC5828C8A698E08E40F233F5E786E7CFE398E58CE640740DBF5A01847FF45C4D4F62D7BF7531AB7EAEF2EEA59EEC92B5B842E0C16C0C88065B80A7D0445BDA88DCE4CC61383FC0B71769577CBB8D984DAF26B2053380B7909C875822D0097EBE6B2AB1DF7C9A04DA5F88F2DE4DB2373E9802479DCC1EAE47A9E3B9CCAAD7059881E001102DAB42AF39F7775456EA8C0939FB05E7E14866203A9035402E7A2604F827A77550679DD336D79D8C0F6468BD5E2BDEBA0286C88B31314AB9995441555A7D944117B7C487F"
+						"TK":"9F7454773430600E0132014779EAF27F1A7AA532E57AD99570AFE4CE7357BCFD3B5EE9F7DEDEA525E35B613FBFAE8CC22D3DBF60578A21518B1478B973702F35197B88163FC4608A147210CF796516A5F9052584FB18AA8A107D10AD0A5DB9712B80514C889687AB819160A5EC1EA787FE229322B32702B80785A4918B2924A25715F97C50526941DA024F233479266AA41B131E70198257B0BE2BA5446DF318A5A3F7D7C8A1D741731BD5422F1E67C45209F5C091A5C5762156778BD21777C2299B425C242B275DAECF20FB67CBEA80C3341BB0E2C506C0070023BDF3077EE7710FD07F53470FE49A8A7BF075E98984FECC9B526DDE5F0BE2C5673C9014BDBE"
 					}
 				}
 				this.socket[0].sendObj(msg)

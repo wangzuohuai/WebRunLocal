@@ -6,7 +6,7 @@ extern HINSTANCE g_hInstance;
 
 STRINGULONG_MAP CComHelper::m_mapInstance;
 
-CThreadDataLock		CComHelper::m_DataLock;
+CWrlThreadLock		CComHelper::m_DataLock;
 
 HINSTANCE CComHelper::GetComHandle(const CString& strModelName)
 {
@@ -15,7 +15,7 @@ HINSTANCE CComHelper::GetComHandle(const CString& strModelName)
 	STRINGULONG_MAP::iterator it = m_mapInstance.find(strModelName);
 	if(it != m_mapInstance.end())
 		hHandle = (HINSTANCE )it->second;
-	m_DataLock.Unlock(L"GetComHandle");
+	m_DataLock.UnLock(L"GetComHandle");
 	return hHandle;
 }
 
@@ -23,7 +23,7 @@ void CComHelper::SetMap(const CString& strModelName,HINSTANCE& hModule)
 {
 	m_DataLock.Lock(L"SetMap");
 	m_mapInstance[strModelName] = (ULONG_PTR)hModule;
-	m_DataLock.Unlock(L"SetMap");
+	m_DataLock.UnLock(L"SetMap");
 }
 
 void CComHelper::FreeHandle(const CString& strModelName)
@@ -35,7 +35,7 @@ void CComHelper::FreeHandle(const CString& strModelName)
 		::FreeLibrary(hHandle);
 		hHandle = NULL;
 	}
-	m_DataLock.Unlock(L"FreeHandle");
+	m_DataLock.UnLock(L"FreeHandle");
 }
 
 void CComHelper::FreeAllHandle()
@@ -55,5 +55,5 @@ void CComHelper::FreeAllHandle()
 		it++;
 	}
 	m_mapInstance.clear();
-	m_DataLock.Unlock(L"FreeAllHandle");
+	m_DataLock.UnLock(L"FreeAllHandle");
 }

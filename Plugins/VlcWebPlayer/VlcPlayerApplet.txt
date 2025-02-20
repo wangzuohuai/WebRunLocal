@@ -1,4 +1,4 @@
-﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序2.2.8及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、Vivaldi、Brave、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本，VLC播放程序版权归相关公司所有。
+﻿VLC网页播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用ActiveX控件VlcOcx.dll(需安装VLC media player或搭配绿色版VLC桌面程序2.2.8及以上版本)可实现在网页中内嵌播放多路RTSP实时视频流。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE、Opera、Electron、QQ等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本，VLC播放程序版权归相关公司所有。
 
 本程序具有如下优点：
 1、全市场可实现较低延迟(300毫秒)的首选播放方案，主流版本浏览器都支持；2、支持多路同时播放、支持下一帧、支持回放和抓图、高清视频或大屏播放性能好；3、底层播放采用VLC这个开放源代码方案，后续服务有保障，播放格式兼容好，支持H.264和H.265；4、VLC网页播放器额外付费后可获得源代码进行定制开发；5、支持海康、大华等主流的摄像头，只要能提供标准的RTSP流，都可以播放。
@@ -10,7 +10,7 @@
 
 2、VLC网页播放器控制相关接口：
 说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
-前端集成采用普通JS脚本时，请主要参考：https://gitcode.net/zorrosoft/pluginok/-/tree/master/Demo/VlcJS，需要嵌入用到的JS脚本程序是完全开源的，如果是VUE2的框架，请参考https://gitcode.net/zorrosoft/pluginok/-/tree/master/Demo/VlcVue2，VUE3框架的请参考https://gitcode.net/zorrosoft/pluginok/-/tree/master/Demo/VlcVue3。如果只是简单测试启动，可以参考
+前端集成采用普通JS脚本时，请主要参考：https://gitee.com/zorrosoft/pluginOK/tree/master/Demo/VlcJS，需要嵌入用到的JS脚本程序是完全开源的，如果是VUE2的框架，请参考https://gitee.com/zorrosoft/pluginOK/tree/master/Demo/VlcVue2，VUE3框架的请参考https://gitee.com/zorrosoft/pluginOK/tree/master/Demo/VlcVue3。如果只是简单测试启动，可以参考以下网页：
 HTTP网页在线充满网页区测试：http://zorrosoft.com/vlcfull.html  HTTPS网页在线局部加载测试：https://zorrosoft.com/vlcframe.html
 如还需兼容IE浏览器使用， 单机版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
 的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
@@ -110,13 +110,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装VLC网页播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2024-12-05","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"0F906064122F17C206E83670FBECCB70","Version":"2.2.16.9","Size":8683520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"995CB55AA5F171ADB9B06EDCC1A4E6F3E949DDB71839D0BD626F4087230D06F6EAC2D87553E1F81767E336C2564EE8B2749FCCAEB9427F042A402E8F960B0201F0749FEB60DE5A813CCC7E9DDA2DF89F078E2B42A45A7A4CFB4406FDBF5FF24AE1F9B9A904E5DDA180CE874780A5F11BAB7EC4BDF721E02ABFA07C408051C12E9376D9C8E04099591A6F52888795F9D2B1AE558C13967CD9BE61AE6D3B25BDE8054EF385D355AE7279B49122C20B5BE15CC299B8DD0F57AD7186EBF5F4D18A43A74F3A29C94C190C6C63F06D1D73B526D52FDC8E7F823E3B4D0681834F310C633162739DDCC6AC39A8191B97E7721EDD6ABE37D3BCB8BD64F87CF30CEA4EC6F1"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer.pid","MD5":"0907ECBC08E913D75B60BBFD97750C00","Version":"2.2.17.1","Size":8683520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AE96F01AB09DD2D4EBB9169792FA6B4A6E94E21B512F08D47A059115CDE7D0C821A58099C849A704EB43C8968A569CBF12EAA00605314EF5E44EABB4B5367B9CA7A3B2CD7681C3F6F2FBEE658309DAB742C24FB6950D9E1D9B594203D533F29D47E5334C80C3CA5BA4C283473B95072EB96EF795819E22C442346B58E15FDFF9566A477E2D341380959E0AD67E423A27242F1E0DE10B551871216F2128E7DA017353641E2B0BCE38A427A254C3C919FD39E246C9490A002C674726C5D3A2184D113E1F2EB0858C47E33DE0DE04C945CE18BA2DD545E055D80877F92489C234605EDB9F940A4576862BBF55C2D084931A627C5315A7E8E2BD8E7B5F25DBFCF9AE"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级VLC网页播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2024-12-05","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"5F3CE36C36527B45725B070DFB764236","Version":"2.2.16.9","Size":8683520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8DE0D10512822A7ED4927B054A2CF3D0CBF3A46096699FB2517C7068EA5119F7612529F25CDF3B4DF99579174FDE5730335ED1C48DD1E6D4F6D6E4A0A2271FC02A79F09CABEC46E830D23F4AC5C19D44E82B5BE00BC9D65326751B3CC4C3CCE19F1B36E31CFA711F6D451AA16EDBC5B22A4114C0DAD09E179EB040E62F2E773AF2FE1EF42C928CCD47FB62189E28F676953378264ACDFB8507FCE5DC8A547D77222582B1395F85774E3793DE5AE1421AB1D2F9E3737D3A3BE711E883822421B32F9ACFB9C6B1280DF7B5055E59AD73CAE52716DC0078443943BDCC726EA570724D85E5B2AFFA8F12B3BCB12EF4397EA5C8D2B7C7BDF8E4D37899DB71B0EE3F76"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"VLC网页播放器","PID":"90FC7E0E-0D2F-4C38-9875-B06407CE4556","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的VLC内嵌网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中直接内嵌使用，可播放多路海康及大华等设备的实时视频","DownAddr":"http://local.zorrosoft.com/Files/Net/VlcWebPlayer_Update.pid","MD5":"5F5274B1D8618790C4EC70C0D9557CBD","Version":"2.2.17.1","Size":8683520,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"24C23C537D5D3ACC4DCF957546E0CE3F725A38D658182C02791AB4B2EA31A21C03E77F2E9FB525560CB48F7999B5587183AC10720FB72FD8A4AC3D786A710E96CCD910DD30EB9BD5C5E131D1CA572906F239120266411F0B47594280AFF07308DB97C244C5C84E1532339E77C9CAF7B1542AD471A7B2DEE5C41CD5D6CEB0DA6C50E06F8085040D93F6B6CF91E564D9ED88432E65E87B8C2938B4169D62F759E259E8CFABA8712C02985BFC4FF3A08CB369C45AF5DCA27E709A6F1D26E3E4997E95C658B6BD92380BD588DE5B35A28D769F448B4295F9A90896B61C8089F06A6ADA662B51375B3026DC5488F749547F9BB3310AA3A33AADBF4952F9CE5BAA8019"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

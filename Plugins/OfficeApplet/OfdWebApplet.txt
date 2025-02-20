@@ -1,0 +1,408 @@
+﻿OFD网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用福昕OFD版式办公套件或数科OFD阅读器实现ofd文档在线查看，需要安装福昕OFD版式办公套件或数科OFD阅读器等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+
+1、牛插(PluginOK)中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
+
+2、OFD网页小程序控制相关接口：
+说明：以下功能请通过Web Socket连接PluginOK主服务(ws://localhost:83?sid=12345&flag=1)后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+HTTP网页在线测试：http://local.zorrosoft.com/ofdfull.html       HTTPS网页在线测试：https://local.zorrosoft.com/ofdframe.html
+如还需兼容IE浏览器使用，网络版测试网页中 <object ID="WrlWS" CLASSID="CLSID:C0971B90-4513-4E2D-A0B6-15B915FE748A" width="0" height="0"></object>
+的CLSID需要替换为：21ADE2E6-B4DD-4F3E-8BD5-9DDAD1785F3A
+前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
+
+1)、请求启动OFD网页小程序：
+Type：为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Title：网页标题中的关键词，用于识别指定的嵌入网页
+Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
+Flag：掩码标记 1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
+Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
+Web中参数说明：
+	Edit代表编辑权限 1只读打开
+	DataPath代表图纸默认本地保存路径
+	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
+	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
+IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
+BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
+小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
+Option：默认0是数科OFD阅读器 1:启动福昕OFD版式办公套件
+Open：为需要打开的ofd文档路径，磁盘目录斜杠用/ 可以是服务器的url路径
+注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
+举例：
+自动识别当前浏览器指定位置和大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"OFD网页小程序","NodeName":"OfdWebApplet","PID":"OfdWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Option":"0","Option":"0","Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/test.ofd"}}
+
+自动识别当前浏览器自动适配网页大小启动：
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"OFD网页小程序","NodeName":"OfdWebApplet","PID":"OfdWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/OfficeDoc"},"Open":"http://zorrosoft.com/Files/test.ofd"}}
+
+当前页指定位置自动适配网页加载测试
+http://local.zorrosoft.com/ofdframe.html
+
+启动后会先后收到三个JSON数据包
+A、{"ret":0,"rid":2,"data":{"ID":2}}
+代表小程序WS侦听服务就绪
+B、{"event":"Wrl_Listen","aid":2,"rid":2,"data":{"SID":"123","PID":"OfdWebApplet","port":973}}
+返回的侦听端口，可再建立一个Web Socket连接后，调用小程序中的相关功能，比如新播放一个Flash。
+代表小程序创建成功，返回ID为当前小程序运行实例ID，通过此ID，可执行Wrl_AppletControl、Wrl_AppletScroll、Wrl_AppletResize等命令。
+C、{"event":"Wrl_AppletOK","aid":2,"rid":2,"data":{"SID":"123","PID":"OfdWebApplet","Port":973}}
+
+2)、请求控制OFD网页小程序：
+当前端不再需要小程序时可指定关闭，或者显示/隐藏及全屏显示等
+ID为Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，Code代表控制类型掩码：1正常关闭 128强制迅速关闭 2全屏显示 4自动隐藏 8还原显示 16自动适配网页高度和宽度显示模式切换 32强制隐藏。其中全屏显示2，可直接通过热键ESC或取消,4和32隐藏后可通过8恢复显示
+{"req":"Wrl_AppletControl","rid":2,"para":{"ID":"1","Code":4}}
+
+3)、请求滚动网页中OFD网页小程序：
+当前端截取到网页滚动通知时，需要调用此接口实现小程序和网页的滚动联动
+ID为启动小程序时返回JSON中的ID值
+Code为滚动方向1是水平直，2是垂直，3是同时
+Left为横向滚动条位置，Top为纵向滚动条位置
+{"req":"Wrl_AppletScroll","rid":3,"para":{"ID":"1","Code":2,"Left":0,"Top":100}}
+
+4)、请求改变网页中OFD网页小程序显示位置或大小：
+当前端网页显示区域缩放时，可动态修改小程序的显示位置或大小
+ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，Width和Height分别为新的宽度和高度
+X和Y分别为新的显示位置，不指定时保持不变，指定时原设置的IframeX和IframeY失效
+{"req":"Wrl_AppletResize","rid":4,"para":{"ID":1,"Width":500,"Height":600}}
+或，同时修改小程序显示起始坐标
+{"req":"Wrl_AppletResize","rid":5,"para":{"ID":1,"Width":500,"Height":600,"X":20,"Y":20}}
+
+5)、请求设置网页预留右侧宽度和底部高度，滚动条信息、垂直滚动及水平滚动位置：
+当小程序显示区域超过当前网页时，需去除滚动条的显示影响
+ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，BarW为预留右侧宽度 BarH为预留底部高度
+Code 1代表有水平滚动条，2代表有垂直滚动条，3代表都有
+ScrollTop垂直滚动条位置 ScrollTop水平滚动条位置
+{"req":"Wrl_ScrollBar","rid":6,"para":{"ID":"1","Code":2,"BarW":0,"BarH":0,"ScrollTop":0,"ScrollLeft":0}}
+
+6)、请求对小程序窗口做Alpha透明处理，便于前端临时显示覆盖到小程序窗口的菜单等：
+ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，Alpha为透明度百分比，1-100
+{"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
+
+7)、请求对小程序窗口内容进行截图：
+ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，
+File为指定截图文件保存路径或扩展名
+Base64指定为1时代表返回BASE64编码的图像内容
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+
+8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
+ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
+{"req":"Wrl_AppletScale","rid":11,"para":{"ID":1,"Scale":120}}
+
+3、小程序安装、升级、卸载
+1)、请求安装OFD网页小程序
+请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"OFD网页小程序","PID":"OfdWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的OFD内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌数科等OFD阅读器","DownAddr":"http://local.zorrosoft.com/Files/Net/OfdWebApplet.pid","MD5":"5C8EF852828A872659E306E957D48C54","Version":"2.2.17.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A5CE55BDBA6461E494537F579B1E1699190B37A855DEA9E63DDB88B789B4C8E170455C7640B0F8B70840B8AF70EFAB1CBF827CC6150C7D876EC7E3DE0C0ADD0AABC4261C86438D9BAF361CA2B0B0EB179F7D226F08C14A70BC8A574D42868B8E6E9FE231DA6D28B86D583219B793F37F45CEC8CEE8A2B3C5E87DAF8EF05B652E9281ED15351345C5B8A28078061A29C2E95E30FB1C9F2FE4D8816F6009A4EF7AF12BF83BAD063201A71C812CF44B57B9088635B9638A5D64BFF903935B810E741F4468744802BDD7A3C96F1B8C0F4A6C1EAE7284E6BEBF56F7400137F83EE1FD5681A7BF0DD288A2008B9C1A5DD9BD2708C54478F0BE6E883B79536D1DF7F3DC"}}
+
+启动安装后，会不断收到安装进度直到安装结束。
+
+2)、请求升级OFD网页小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"OFD网页小程序","PID":"OfdWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的OFD内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌数科等OFD阅读器","DownAddr":"http://local.zorrosoft.com/Files/Net/OfdWebApplet_Update.pid","MD5":"74A82951DB2A24261E4BB0E25A9C5CA2","Version":"2.2.17.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B4479804E476581A3746C01D3E93F96AD69319B6D82190A2539461E63C871C3A9A065B9CA7B7D4CE4B0F82BD2BD1A852D295D778B3AE555EA12CE782AD21FC012237E417B1A302C4F26AEB2AF8AFAD813FECEE0ECB5685443DCDAB4E67677A5E4E52BA9A1A4F695B34EA279FD364AA5F486FB5F506A43A761DADFC62975F27FBA5E82251CA5DA1A35CC467EC436EB9E95F6A0C3BB828DEE82D71D50B310BB16F0CFE46AB8BEF600BD8168ED54E10D3BF30CE74E62D09A005D8F574CD7DF27DF478AE9C2745511A19BEE1C59499E9827B488608DFF83E826D3FCDD53CA289075E0C73B35648E432169E533ACF4BC7FF043FFABFE22F8D7E5DEC3FBE3C8A2D8ED7"}}
+
+以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
+
+3)、请求卸载OFD网页小程序：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+{"req":"Plugin_Remove","rid":3,"para":{"PID":"OfdWebApplet","Type":8}}
+
+4、OFD网页小程序转调用福昕OFD版式办公套件或数科OFD阅读器程序，先根据通过Wrl_AppletStart指定OfdWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
+A、常用功能请求：
+1) 指定ofd文件载入打开 福昕OFD版式办公套件和数科OFD阅读器支持
+File 本地文件路径，\斜杠替换为反斜杠/，有特殊支付或中文等先做UrlEncode编码，
+请求1：{"req":"OFD_LoadFile","rid":50,"para":{"File":"d:/Zorro/test.ofd"}}
+请求2：{"req":"OFD_LoadFile","rid":50,"para":{"File":"http://www.zorrosoft.com/Files/test.ofd"}}
+返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}
+ret为请求返回值，0正常，非零不正常，不正常时请取和ret同级的错误描述err,下同
+
+2) 获取版本信息 福昕OFD版式办公套件和数科OFD阅读器支持
+请求：{"req":"OFD_GetVersion","rid":51,"para":{}}
+返回：{"ret":0,"rid":51,"data":{"Ret":"0","Version":""}}
+
+3) 设置打开源 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetSrc","rid":52,"para":{"Src":""}}
+返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+
+4) 获取打开源 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetSrc","rid":53,"para":{}}
+返回：{"ret":0,"rid":53,"data":{"Ret":"0","Src":""}}
+
+5) 设置是否显示工具栏 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetShowToolbar","rid":54,"para":{"Toolbar":1}}
+返回：{"ret":0,"rid":54,"data":{"Ret":"0"}}
+
+6) 获取是否显示工具栏 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetShowToolbar","rid":55,"para":{}}
+返回：{"ret":0,"rid":55,"data":{"Ret":"0","Toolbar":1}}
+
+7) 设置是否显示右键菜单 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetContextMenu","rid":56,"para":{"ContextMenu":1}}
+返回：{"ret":0,"rid":56,"data":{"Ret":"0"}}
+
+8) 获取是否显示右键菜单 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetShowContextMenu","rid":57,"para":{}}
+返回：{"ret":0,"rid":57,"data":{"Ret":"0","ContextMenu":1}}
+
+9) 设置是否显示视图右键菜单 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_ShowViewContextMenu","rid":58,"para":{"ViewContextMenu":1}}
+返回：{"ret":0,"rid":58,"data":{"Ret":"0"}}
+
+10) 设置是否只读 仅福昕OFD版式办公套件支持
+ReadOnly 只读标记
+请求：{"req":"OFD_SetReadOnly","rid":59,"para":{"ReadOnly":0}}
+返回：{"ret":0,"rid":59,"data":{"Ret":"0"}}
+
+11) 滚动页面 仅福昕OFD版式办公套件支持
+ScrollUp 是否向上滚动
+请求：{"req":"OFD_ScrollPage","rid":60,"para":{"ScrollUp":0}}
+返回：{"ret":0,"rid":60,"data":{"Ret":"0"}}
+
+12) 获取缩放比例 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetZoomRadio","rid":61,"para":{}}
+返回：{"ret":0,"rid":61,"data":{"Ret":"0","ZoomRadio":""}}
+
+13) 设置缩放比例 仅福昕OFD版式办公套件支持
+ZoomRadio 缩放比例
+请求：{"req":"OFD_SetZoomRadio","rid":62,"para":{"ZoomRadio":""}}
+返回：{"ret":0,"rid":62,"data":{"Ret":"0"}}
+
+14) 设置显示模式 仅福昕OFD版式办公套件支持
+DisPlayMode 显示模式
+请求：{"req":"OFD_SetDisPlayMode","rid":63,"para":{"DisPlayMode":0}}
+返回：{"ret":0,"rid":63,"data":{"Ret":"0"}}
+
+15) 设置缩放模式 仅福昕OFD版式办公套件支持
+ZoomMode 缩放模式
+请求：{"req":"OFD_SetZoomMode","rid":64,"para":{"ZoomMode":0}}
+返回：{"ret":0,"rid":64,"data":{"Ret":"0"}}
+
+16) 设置阅读模式 仅福昕OFD版式办公套件支持
+ReadMode 阅读模式
+请求：{"req":"OFD_SetReadMode","rid":65,"para":{"ReadMode":0}}
+返回：{"ret":0,"rid":65,"data":{"Ret":"0"}}
+
+17) 跳转到首页 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GotoFirstPage","rid":66,"para":{}}
+返回：{"ret":0,"rid":66,"data":{"Ret":"0"}}
+
+18) 跳转到尾页 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GotoLastPage","rid":67,"para":{}}
+返回：{"ret":0,"rid":67,"data":{"Ret":"0"}}
+
+19) 跳转到下一页 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GotoNextPage","rid":68,"para":{}}
+返回：{"ret":0,"rid":68,"data":{"Ret":"0"}}
+
+20) 跳转到上一页 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GotoPrePage","rid":69,"para":{}}
+返回：{"ret":0,"rid":69,"data":{"Ret":"0"}}
+
+21) 设置当前页 仅福昕OFD版式办公套件支持
+Page 指定页码序号
+请求：{"req":"OFD_SetCurPage","rid":70,"para":{"Page":1}}
+返回：{"ret":0,"rid":70,"data":{"Ret":"0"}}
+
+22) 获取当前页序号 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetCurPage","rid":71,"para":{}}
+返回：{"ret":0,"rid":71,"data":{"Ret":"0","Page":1}}
+
+23) 获取总页面数 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetPageCount","rid":72,"para":{}}
+返回：{"ret":0,"rid":72,"data":{"Ret":"0","PageCount":7}}
+
+24) 获取签章数量 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetCountSigns","rid":73,"para":{}}
+返回：{"ret":0,"rid":73,"data":{"Ret":"0","CountSigns":1}}
+
+25) 校验签章 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_VerifySignature","rid":74,"para":{"Flag":1,"Index":1}}
+返回：{"ret":0,"rid":74,"data":{"Ret":"0","Signature":1}}
+
+26) 隐藏面板 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_HidePanels","rid":75,"para":{"ReadMode":1}}
+返回：{"ret":0,"rid":75,"data":{"Ret":"0"}}
+
+27) 设置高亮文字颜色等信息 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetCurHighlight","rid":76,"para":{"Alpha":0,"R":0,"G":0,"B":0}}
+返回：{"ret":0,"rid":76,"data":{"Ret":"0"}}
+
+28) 请求打印 仅福昕OFD版式办公套件支持
+Quiet 1是不显示打印对话框 Gray 1是灰度打印 
+Title设置打印标题 需要先做UrlEncode
+请求：{"req":"OFD_Print","rid":77,"para":{"Quiet":0,"Gray":0,"Title":""}}
+返回：{"ret":0,"rid":77,"data":{"Ret":"0"}}
+
+29) 设置打印比例模式 仅福昕OFD版式办公套件支持
+ScaleMode 比例模式
+请求：{"req":"OFD_SetPrintScale","rid":78,"para":{"ScaleMode":0}}
+返回：{"ret":0,"rid":78,"data":{"Ret":"0"}}
+
+30) 设置进度 仅福昕OFD版式办公套件支持
+Offset 偏移
+请求：{"req":"OFD_SetProgress","rid":79,"para":{"Offset":10,"Sum":1}}
+返回：{"ret":0,"rid":79,"data":{"Ret":"0"}}
+
+31) 保存文件 仅福昕OFD版式办公套件支持
+FormDataSave 是否保存FormData Url保存地址
+请求：{"req":"OFD_SaveFile","rid":80,"para":{"FormDataSave":1,"Url":""}}
+返回：{"ret":0,"rid":80,"data":{"Ret":"0"}}
+
+32) 获取用户名 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_GetUserName","rid":81,"para":{}}
+返回：{"ret":0,"rid":81,"data":{"Ret":"0","UserName":"test"}}
+
+33) 设置用户名 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetUserName","rid":82,"para":{"UserName":"test"}}
+返回：{"ret":0,"rid":82,"data":{"Ret":"0"}}
+
+34) 设置用户ID 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetUserID","rid":83,"para":{"UserID":"testid"}}
+返回：{"ret":0,"rid":83,"data":{"Ret":"0"}}
+
+35) 设置用户信息 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetUserInfo","rid":84,"para":{"UserInfo":""}}
+返回：{"ret":0,"rid":84,"data":{"Ret":"0"}}
+
+36) 设置节点ID 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetNodeID","rid":85,"para":{"NodeID":""}}
+返回：{"ret":0,"rid":85,"data":{"Ret":"0"}}
+
+37) 设置Composite可见性 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetCompositeVisible","rid":86,"para":{"Name":"","CompositeVisible":1}}
+返回：{"ret":0,"rid":86,"data":{"Ret":"0"}}
+
+38) 设置签章名称 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetSealName","rid":87,"para":{"SealName":""}}
+返回：{"ret":0,"rid":87,"data":{"Ret":"0"}}
+
+39) 设置签章ID 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetSealID","rid":88,"para":{"SealID":""}}
+返回：{"ret":0,"rid":88,"data":{"Ret":"0"}}
+
+40) 设置签章方法 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_SetSealSignMethod","rid":89,"para":{"SignMethod":""}}
+返回：{"ret":0,"rid":89,"data":{"Ret":"0"}}
+
+41) 请求签章 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_Sign","rid":90,"para":{}}
+返回：{"ret":0,"rid":90,"data":{"Ret":"0"}}
+
+42) 请求验证所有签章 仅福昕OFD版式办公套件支持
+Online 是否在线验证
+请求：{"req":"OFD_VerifyAll","rid":91,"para":{"Online":1}}
+返回：{"ret":0,"rid":91,"data":{"Ret":"0"}}
+
+43) 获取是否已签章 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_IsSignVerify","rid":92,"para":{}}
+返回：{"ret":0,"rid":92,"data":{"Ret":"0","IsSign":1}}
+
+44) 设置打印信息 仅福昕OFD版式办公套件支持
+Copies 打印份数
+请求：{"req":"OFD_SetPrintInfo","rid":93,"para":{"Copies":1}}
+返回：{"ret":0,"rid":93,"data":{"Ret":"0"}}
+
+45) 请求打印设置 仅福昕OFD版式办公套件支持
+Copies 打印份数
+请求：{"req":"OFD_PrintSetting","rid":94,"para":{}}
+返回：{"ret":0,"rid":94,"data":{"Ret":"0"}}
+
+46) 获取是否静默打印 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_IsQuietPrinting","rid":95,"para":{}}
+返回：{"ret":0,"rid":95,"data":{"Ret":"0","QuietPrinting":0}}
+
+47) 获取是否正在签章 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_IsSigning","rid":96,"para":{}}
+返回：{"ret":0,"rid":96,"data":{"Ret":"0","IsSigning":0}}
+
+48) 请求保存为PDF 仅福昕OFD版式办公套件支持
+FileName PDF文件名
+请求：{"req":"OFD_SaveToPdf","rid":97,"para":{"FileName":""}}
+返回：{"ret":0,"rid":97,"data":{"Ret":"0"}}
+
+49) 请求PDFz转OFD 仅福昕OFD版式办公套件支持
+FormDataSave 是否保存FormData
+UploadPath 上传路径
+DownloadPath 下载路径
+请求：{"req":"OFD_PdfToOfd","rid":98,"para":{"FormDataSave":"","UploadPath":"","DownloadPath":""}}
+返回：{"ret":0,"rid":98,"data":{"Ret":"0"}}
+
+50) 请求保存为图片 仅福昕OFD版式办公套件支持
+PageIndex 页码序号，不指定时保存所有页
+DPI 分辨率
+FilePath 图片保存路径  需要先做UrlEncode
+请求：{"req":"OFD_SaveImage","rid":99,"para":{"PageIndex":1,"DPI":720,"FilePath":""}}
+返回：{"ret":0,"rid":99,"data":{"Ret":"0"}}
+
+51) 请求保存图片并上传 仅福昕OFD版式办公套件支持
+PageIndex 页码序号
+DPI 分辨率
+ImgType 图片类型
+Url 上传地址
+请求：{"req":"OFD_SaveImage2","rid":100,"para":{"PageIndex":1,"DPI":720,"ImgType":"","Url":""}}
+返回：{"ret":0,"rid":100,"data":{"Ret":"0"}}
+
+52) 请求指定页面图片 仅福昕OFD版式办公套件支持
+PageIndex 页码序号
+DPI 分辨率
+请求：{"req":"OFD_GetPageBitmap","rid":101,"para":{"PageIndex":1,"DPI":720}}
+返回：{"ret":0,"rid":101,"data":{"Ret":"0","Bitmap":""}}
+
+53) 请求导出文字 仅福昕OFD版式办公套件支持
+请求：{"req":"OFD_ExportText","rid":102,"para":{}}
+返回：{"ret":0,"rid":102,"data":{"Ret":"0","Text":""}}
+
+54) 请求选中指定关键词 仅福昕OFD版式办公套件支持
+Param关键词 需要先做UrlEncode
+请求：{"req":"OFD_SelectKeyword","rid":103,"para":{"Text":"Param"}}
+返回：{"ret":0,"rid":103,"data":{"Ret":"0"}}
+
+70) 请求退出小程序 福昕OFD版式办公套件和数科OFD阅读器支持
+未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
+请求：{"req":"OFD_Exit","rid":80,"para":{}}
+无返回
+
+5、PDF网页小程序接收的通知：
+这些通知必须通过WebSocket连接到此小程序侦听的端口才能接收到。
+A、ActiveX事件，福昕OFD版式办公套件支持：
+1) OFD_OnOpenFile 打开文件结果通知
+{"event":"OFD_OnOpenFile","data":{"ErrorCode":0}} ErrorCode为0代表正常
+
+2) OFD_OnPagenumchaged 页码变化通知
+{"event":"OFD_OnPagenumchaged","data":{"Index":0}} Index页码
+
+3) OFD_OnPageScaleChange 页面缩放通知
+{"event":"OFD_OnPageScaleChange","data":{"Scale":0}} Scale缩放比例
+
+4) OFD_OnPrintStatus 打印状态通知
+{"event":"OFD_OnPrintStatus","data":{"Status":0}} Status 打印状态
+
+5) OFD_OnSaveFile 保存文件通知
+{"event":"OFD_OnSaveFile","data":{"Error":0}} Error 错误码为0正常
+
+6) OFD_OnSignFile 签章通知
+{"event":"OFD_OnSignFile","data":{"Error":0}} Error 错误码为0正常
+
+7) OFD_OnToolbarClick 工具栏点击通知
+{"event":"OFD_OnToolbarClick","data":{"Name":""}} Name 名称
+
+8) OFD_OnPrintSetting 打印设置通知
+{"event":"OFD_OnPrintSetting","data":{"Status":""}} Status 状态
+
+9) OFD_OnOpenfilePath 打开文件通知
+{"event":"OFD_OnOpenfilePath","data":{"Path":""}} Path 文件全路径
+
+10) OFD_OnPDFtoOFD PDF转OFD通知
+{"event":"OFD_OnPDFtoOFD","data":{"Path":""}} Path 文件全路径
+
+B、PluginOK支持的事件通知：
+
+1) OFD_FullScreen 小程序是否响应了热键全屏
+{"event":"OFD_FullScreen","data":{"FullScreen":0}} FullScreen为当前是否全屏标记
+
+2) Wrl_AppletExit 小程序退出通知
+{"event":"Wrl_AppletExit","data":{"ID":1}}
+
+6、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt和SDK包中的“PluginOK开发者手册.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938
