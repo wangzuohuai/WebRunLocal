@@ -226,6 +226,134 @@ Index 序号，默认1
 {"req":"CADVIEW_AboutBox","rid":110,"para":{}}
 返回: {"ret":0,"rid":110,"data":{"Ret":"0"}}
 
+以下是未单独封装VBA接口功能的通用请求方法
+181)、请求设置属性
+Name 指定属性名称 如遇到设置子接口的，名称增加子接口的名称，支持多级
+{"req":"CADVIEW_PutProperty","rid":181,"para":{"Name":"Visible","Val":"-1"}}
+{"req":"CADVIEW_PutProperty","rid":181,"para":{"Name":"ActiveDocument.Saved","Val":"-1"}}
+返回: {"ret":0,"rid":181,"data":{"Ret":0}}
+
+182)、请求无传入参数方法
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.play 下同
+DID 也可以指定方法序号
+{"req":"CADVIEW_Invoke0","rid":182,"para":{"Name":"ScreenRefresh"}}
+{"req":"CADVIEW_Invoke0","rid":182,"para":{"Name":"ActiveDocument.PrintPreview"}}
+返回: {"ret":0,"rid":182,"data":{"Ret":0,"Val":""}}
+
+183)、请求只传入1个参数方法
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.add 下同
+DID 也可以指定方法序号
+Para1 对应参数值
+{"req":"CADVIEW_Invoke1","rid":183,"para":{"Name":"CleanString","Para1":"Test"}}
+{"req":"CADVIEW_Invoke1","rid":183,"para":{"Name":"ActiveDocument.SetCompatibilityMode","Para1":"15"}}
+返回: {"ret":0,"rid":183,"data":{"Ret":0,"Val":""}}
+
+184)、请求只传入2个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1和Para2分别对应参数1和2数值，如果可缺省的值可以不传，比如只传Para1，下同
+{"req":"CADVIEW_Invoke2","rid":184,"para":{"Name":"KeyString","Para1":"","Para2":""}}
+{"req":"CADVIEW_Invoke2","rid":184,"para":{"Name":"ActiveDocument.Range","Para1":"1","Para2":"5"}}
+返回: {"ret":0,"rid":184,"data":{"Ret":0,"Val":""}}
+
+185)、请求只传入3个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3分别对应参数1、2和3的数值
+{"req":"CADVIEW_Invoke3","rid":185,"para":{"Name":"","Para1":"","Para2":"","Para3":""}}
+返回: {"ret":0,"rid":185,"data":{"Ret":0,"Val":""}}
+
+186)、请求只传入4个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4分别对应参数1、2、3和4的数值
+{"req":"CADVIEW_Invoke4","rid":186,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":""}}
+返回: {"ret":0,"rid":186,"data":{"Ret":0,"Val":""}}
+
+187)、请求只传入5个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5分别对应参数1、2、3、4和5的数值
+{"req":"CADVIEW_Invoke5","rid":187,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":""}}
+返回: {"ret":0,"rid":187,"data":{"Ret":0,"Val":""}}
+
+188)、请求只传入6个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6分别对应参数1、2、3、4、5和6的数值
+{"req":"CADVIEW_Invoke6","rid":188,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":""}}
+返回: {"ret":0,"rid":188,"data":{"Ret":0,"Val":""}}
+
+189)、请求只传入7个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7分别对应参数1、2、3、4、5、6和7的数值
+{"req":"CADVIEW_Invoke7","rid":189,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":""}}
+返回: {"ret":0,"rid":189,"data":{"Ret":0,"Val":""}}
+
+190)、请求只传入8个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8分别对应参数1、2、3、4、5、6、7、8的数值
+{"req":"CADVIEW_Invoke8","rid":190,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":""}}
+返回: {"ret":0,"rid":190,"data":{"Ret":0,"Val":""}}
+
+191)、请求只传入9个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9分别对应参数1、2、3、4、5、6、7、8、9的数值
+{"req":"CADVIEW_Invoke9","rid":191,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":""}}
+返回: {"ret":0,"rid":191,"data":{"Ret":0,"Val":""}}
+
+192)、请求只传入10个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10分别对应参数1、2、3、4、5、6、7、8、9、10的数值
+{"req":"CADVIEW_InvokeA","rid":192,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":""}}
+返回: {"ret":0,"rid":192,"data":{"Ret":0,"Val":""}}
+
+193)、请求只传入11个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11分别对应参数1、2、3、4、5、6、7、8、9、10、11的数值
+{"req":"CADVIEW_InvokeB","rid":193,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":""}}
+返回: {"ret":0,"rid":193,"data":{"Ret":0,"Val":""}}
+
+194)、请求只传入12个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12分别对应参数1、2、3、4、5、6、7、8、9、10、11、12的数值
+{"req":"CADVIEW_InvokeC","rid":194,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":""}}
+返回: {"ret":0,"rid":194,"data":{"Ret":0,"Val":""}}
+
+195)、请求只传入13个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13的数值
+{"req":"CADVIEW_InvokeD","rid":195,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":""}}
+返回: {"ret":0,"rid":195,"data":{"Ret":0,"Val":""}}
+
+196)、请求只传入14个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14的数值
+{"req":"CADVIEW_InvokeE","rid":196,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":""}}
+返回: {"ret":0,"rid":196,"data":{"Ret":0,"Val":""}}
+
+197)、请求只传入15个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15的数值
+{"req":"CADVIEW_InvokeF","rid":197,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":""}}
+返回: {"ret":0,"rid":197,"data":{"Ret":0,"Val":""}}
+
+198)、请求只传入16个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15、Para16分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15、16的数值
+{"req":"CADVIEW_InvokeG","rid":198,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":"","Para16":""}}
+返回: {"ret":0,"rid":198,"data":{"Ret":0,"Val":""}}
+
 5、事件通知：
 A、
 
