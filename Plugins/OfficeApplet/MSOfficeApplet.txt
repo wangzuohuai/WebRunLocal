@@ -1,4 +1,5 @@
-﻿微软Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿微软Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用微软Office的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将Word、Excel、PowerPoint软件窗口内嵌到网页指定区域运行并操控。
+可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、IE 8、Opera、Yandex、Electron、360极速/安全、豆包、夸克、QQ、搜狗、遨游、华为、联想、猎豹、齐安信、红莲花、双核等浏览器低版本，也兼容运行于这些浏览器的最新版本。
 支持微软Office 2007及以上版本的桌面安装版、建议使用官方发布的Office 2013及以上专业版或专业增强版，如使用家庭、个人或教育等版本，可能需要自行安装VBA支持。
 
 1、PluginOK中间件的安装：
@@ -15,7 +16,7 @@ HTTP网页在线测试：http://local.zorrosoft.com/wordfull.html  HTTPS网页�
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
 1)、请求启动微软Office网页组件实现网页中局部加载doc/xls/ppt等文档显示：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
 Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
@@ -35,7 +36,7 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：1是启动微软Word 为2启动微软Excel 为3启动微软PPT 5是Adobe Pdf Reader或福昕OFD版式办公套件的OCX控件打开pdf 8是福昕OFD版式办公套件的OCX控件打开ofd
 Version：0:OLE嵌入方式加载 1:完整加载(支持文档对比操作) 2:OLE嵌入方式加载(与0差别在于WPS专业版及微软Office高版本提前启动Office进程以支持多文档及加快启动性能) Option为5时Version自动默认为1
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
+Open：为需要打开的文档路径，磁盘目录斜杠用/或\\ 支持服务器HTTP协议的文件下载路径(请可设置Auth或Cookies等确保无需登录可下载)，下载地址中如包含文件名，尽量把文件名放到Url地址中最后一个参数；如果没有包含文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 如果使用字节流文件打开，这里不需要指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -115,14 +116,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"36BBA671C5F1C6F5A6067F11848E9D80","Version":"2.2.17.1","Size":10059776,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B7AD572B82DA618CA6E9D24BB9B3097D990E02C7E21E4A283FEC6853DA9A31A50BB5E38D73F73AFE67925966CA934679D9AF3DCF8845607962C5B19B46825578992954634CB136C1013D626A359BB86503AF7850D30405D17829C5BA81C4B3482139C32EA8745B9BD701F783583712C497A5FDBE4760D0E15CB2B299A696F5AA0DA8F1314EED73DD1BD262E8117179DD7F5D55D5E270F4067EB39EE53FD5A8334CA6D8FFC5CEC2B955108BEC9727E691B68BB014AF6D88A45B987C4B0A8CBA3BC7685FA3B929BD459F3330CFD57CD80EBB82CF52DC2EDEAC487847D7CEF5845065EEA9108C84ED43AFB1F7C9BA207F8AA2CAEA7FEB3B4F1E1AB0B6C230904017"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-03-08","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"3B85A6D96BCC388404DDC4DA7CE27D34","Version":"2.2.17.2","Size":9437184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8B0A050DC9A7ABE131D56E4A1300E4A8F6240D9C93D2DE317EEEAFED987898B3A73445B9F5BA34C47204DF38672C42BAB13CF0DB258E3DC58635120D8029CD33D0E33C287EFE957AF8E67E216610510145C486F10F7C99E5BEC9168212D721383E5D6DAA31E8CC309FE1C9019E62A4CD9234E8336993B098BEBDA39AD43B1DCEF95F259AFCDB7F01C357E7EFCC909E490163C1CED583310C1A6DD2A6A04E1ACE3A622EA648A77CA5B0BC9473F713F77066B04161150FA5610B75B020FF8C3978BF6FAB8A03BB3DDE64A9A774809EECC809FC6CB000874969AF7EA62E7B2D42745FCC5774453CD8C481FE686745C33713AB913018048AAED0CF07104F351215DB"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"67E4FAB0CFCE80949E39221DE2CCB18E","Version":"2.2.17.1","Size":10059776,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7A89AB784E904F1457427AD1FC893528329D01200676229741328321BE1CA948236205E5C60E0DEB855B9D9BC5B3898B4F36BEF9A7B272185DF3D9F181ED0E4E3F6B20B657FD75882ACA52E0C8C5CFD9393036586831AEB0E35C8C2FFD8F3102369F889DA655B58EE3FFA60AD04CA772D6E03C783DB78ED1D8709C469010EA6B7FEDC47AF100EAC1CD361CA43AFF71009EB88B40EFE1E8A03095D35D8F83FA1AE86F76187F131528EDDCFC8D49A484E72EA582280501DEDD689CC519DC19BDF70C71772420248E9CE60D27A43324E46070F4B27BD4D26B5E963A3E8163C3FC0225E6661450B1BE64683C50B048AC5D5E37E54568AEF543096AA61D726E95C583"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-03-08","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"2F9FD1D521B3EDD0B12BE5797DFEB050","Version":"2.2.17.2","Size":9437184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2F790B1C107EB07847793669640590A76D8BAAD58DAB5036804250D5418974FD6303B1716549A8509DEFE9290CDDE51045BEB72134B66AAB812EC438EAC53D3B224BEF00896C55B448320C49D932B962F48A61542CEC7DA76A31AD851000FB4DB1876596940AA1738E4A24645EC2DFB808CD656A7DDB32F10E16C0B2BC3AB9CECD583B12DBFB1E8B42B56F95705476373B1A85C8DB8D7948F05BF1B72206919E38A9A31A371BE1AF7A9F54EB7E246CD8C00AEC17B04186203A7BED957872D0BD1A0CD5AB03E57A451C579BBBE8E78B86E296531F9C9EAC1AB7F725FE149CCF99668C6E70755CCED5E07CF30BD821B1A13F71AB49AAE87AC111927DE33DA78B33"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

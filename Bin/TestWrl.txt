@@ -181,11 +181,14 @@ PathType是目录类型，参考定义说明：https://learn.microsoft.com/zh-cn/windows/win3
 检查VLC播放控件是否存在，指定ClassID或PropID 默认取32位的版本，指定Option为1优先取64位的版本
 {"req":"Wrl_CheckExistInfo","rid":26,"para":{"ClassID":"{9BE31822-FDAD-461B-AD51-BE1D1C159921}"}}
 返回：{"ret":0,"rid":26,"req":"Wrl_CheckExistInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"3.0.3","Path":"D:/2.2.17/vlc3/axvlc.dll"}]}}
+获取本地文件默认打开程序信息
+{"req":"Wrl_CheckExistInfo","rid":26,"para":{"File":"d:/zorro/test.pdf"}}
+{"ret":0,"rid":26,"req":"Wrl_CheckExistInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"24.5.20421.0","Path":"C:/Program Files/Adobe/Acrobat DC/Acrobat/Acrobat.exe"}]}}
 
 4、PluginOK中间件升级：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件单机版升级包","Date":"2025-02-18","Desc":"1、中间件高级版增加支持在夸克、遨游、猎豹及双核浏览器中的使用； 2、增强识别当前网页窗口信息接口，增强内嵌小程序启动参数可避免其加载到其它网页；3、优化高级版小程序在服务器版系统中的运行体验；4、Office及CAD网页组件增加其控件或VBA接口的全面调用方式，不再局限于单独封装的接口；5、新发布指定路径具有主窗口属性的桌面程序内嵌运行到浏览器网页的通用小程序；6、新发布指定ClassID或ProcID且带交互界面的COM组件及ActiveX控件直接内嵌到网页中运行的通用小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"8BD781284CE6781AF47874D92E11B41F","Version":"1.5.17.1","Size":13631488,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"7A7AB52E0C88D800BE41FD71CCE579BA23DCBB62CFDBFBA3F6ED76EEFC5BE0EEAF6CBB3A3251716399E850AECBE588038E5CAADAF60A938FA272308CB64BBC4C57D1F6C6B41FA915B99D051741EF548CBE2FDCA8ADC25AA728AE0B65A81738969D69CA3557E18E38D1BF444AB719AB3F0DA84988AA5A878B37E7EC73528E5DF0F43E3EEA15B3FE6CE842061D51017982957EA880A1499C0C11925BEFFC9B218285F3C600B8D2D7BBDC861870C5EE0AD7B900E00EC767371BF928B0C85525DD1865D122B55368B9821510DD8EA7B7E402B54607CD9D73283A6F5C85D8C022491BE64C831A03F911F5E675EDE3BE74FE899AF9D39CFF30217F6B2FEBB15553168D"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"PluginOK中间件单机版升级包","Date":"2025-03-07","Desc":"1、优化对Windows Server 2022及2025系统的兼容性，优化对Firfox浏览器的兼容性；2、解决官方实现的内嵌网页小程序在一些特定错误下退出导致浏览器界面无法操作问题；3、优化PageHiOffice网页组件关闭释放及切换文档打开稳定性，解决可能报打开错误问题，解决快速重启组件可能提示插件未加载问题，Excel及PPT增加保存通知...","DownAddr":"http://local.zorrosoft.com/Files/Update/Wrl_Update.pid","MD5":"895498F8752D534A121F8858BEF10871","Version":"1.5.17.2","Size":13434880,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"5628B66AA150E2A16C496FF552E4E859D6D83CAC2BC6079FE9FB93FC2B30BB69175ED6E9B457A839988CCE43DE25F8DFB17EC54CF2B8C5D0FDCFBB317981A13F5FF73FCE998358E94DBCADF0A8B38F7C188EE4A66422468A58D267B840C58455E004FE0E530659FA0B1AC944BDACB4ED6B5B0E0C84EDBBDA954F2124810492D20B6FEDD4A26B5B3D6DE99C1951901FAD0790D6E2999CEDBB6B439D39641BE7ED151703F8C8E0EFA325902E42244D739ED52B7C377DB146EEEC368AF6AF8DA4158763DC7EC1B42E5EA3A0E595B85613DEF1160ABFBEF72282ED250B9CDDC36C7DA1DC03CF91E6103E2D056C13AFA53BDE18734B360DE01DA7542D57687653F459"}}
 
 2)、升级中间件授权请求：
 单机版中间件的授权文件，可以放到此协议中进行升级，也可以单独请求升级，如下指令：

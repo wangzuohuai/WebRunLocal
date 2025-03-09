@@ -1,4 +1,5 @@
-﻿CatiaCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Catia软件自动化接口实现可程序化驱动的三维工程图在线查看、编辑等，可将Catia软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿CatiaCAD网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用达索公司的Catia软件自动化接口实现可程序化驱动的三维工程图在线查看、编辑等，可将Catia软件窗口内嵌到网页指定区域运行并操控。
+可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、IE 8、Opera、Yandex、Electron、360极速/安全、豆包、夸克、QQ、搜狗、遨游、华为、联想、猎豹、齐安信、红莲花、双核等浏览器低版本，也兼容运行于这些浏览器的最新版本。
 
 1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
@@ -39,7 +40,8 @@ B、网页中嵌入元素
 另外需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
 1)、请求启动CatiaCAD网页组件实现网页中局部加载CATPart等文档进行操作：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
+Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
@@ -122,14 +124,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装CatiaCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"B29023184AFD20B283E6086A4341A475","Version":"2.2.17.1","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"A964281B25A15E20CFB415818D5B650444839B54164916F62F2EAAAF52B1F5F6907D7E37C0F777196B32F539BBCE0E3FF1C63FE152E8D5EB50C8E39196091AA96E4C26EBD2023CE2F74D384DC94456C1E1D75A1BD9E52DB064D5D2B3599D7CD07270A9037E7963822A2FD741AD3FC5030CD6329CE91EE50F9168DF05F93D513EDD61E8E7A2742F807328A2CDDC89DF5C1DB63B1680247D947FB716BFD5616E29CA0ED743C1E2867E9F5D041D496565E1A64BBACD84E15BC96554FEC80C8941A466511E7B088E4EC1B12E0C5A9E7369221378E3F2C6E334C50E55BED5DE8177C73A017963C46D4D21DF4257FB670C2B9F73AE6F83B1B949A30A0519F16A843CD2"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"DC1BBEBC55C1A25D3F9B059FFC2EF386","Version":"2.2.17.2","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4D14A294793264E28BBC2F5771CA17B51B5699B65C554B3C7C166BBE987BBB26823FAC3BEB4A04589E70623FFC62D3BBB1AD5ED0739BAB65829060D28204190747033D4B9EC268A6AFB40ADA0F8CF907C675064EA504864B48E815B125B6D9C7FA3A3E5C9D12341AF9D306630B7DC62C49A143D96ADC82D200896250F5ECD9AF3512C5344EFCC4A40DA929FF2AD0700E1F4CBC04EB827EA0007C689635E980B776EA43F5ADA689EA7B8CFD5F10E47DB292CA478D8FBE7D1B6D9FF6E1C442C9A4D484EC83C5A53729A3457F6A35B8F283A265E6E4121B54FBE828CB34F1EE5599CCB5A38692D4964BB0E4684D68E149CA8504BED1E8C6CE6265A82845712C03B9"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级CatiaCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"B7057F14C3B9DC34863CCFD1ED7669CB","Version":"2.2.17.1","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1CB13C918731A737869EC82A5CA8CF2C4CB2CFE5431E45BFC506902059E1795ABF87F0FE9DB21B48E6869C6902CE6D19DC1F3FBFC028F4F367CE47AF0C988EE20A6FBFEEE41FEE68C1C747BE75327395E3604DDCC667819D6330BD0907B9747FCBFFF0922FC2C746E198930B02D2CD295E61348223639918B91296BD6E05DB3CAB841EE9E1FE4E81F5BBF2D3FB711A675015B75BC71732A537442DAE35B873E89FE4BC5E9C56B656F73B2412B237F2D6B8413BBA5E35B8468343D981713DB1EAAE74E6D18E5BCFF97EFD73C8F739E40A286F74F003C273585A9E1EA9CFBC4FC617CC6B70F19009B291995297070A5C8FA8A691674B028370A48D7CFFB0F46EA4"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"A269252FB12E57E436782EF36B76C68F","Version":"2.2.17.2","Size":2228224,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B2B5D2D67720D8B995201C923BF63874E6A2778EAD1C1742C0700EC166C38C8401FD2D95C4E1FE24DE8268802AD15BA05C182D08F780D751A522ECE5D91C5B20A45CAEE63CFD1E2EBBC8F65FFB9C4564773BA9CCEB4FAB492DF194D69A5D5D710966D31977E8442C600B877C2BD021006B2C41C63CC07AFA43D9B1405207138FB838CD9C984366E7366754A5D72E4D254DA593A52FAD99C894C53AEBBEF9DA169FDA747FB1B2A87F12EDC7112E86F7D4E507A1198AF18E80915FB57D7DD7C9223839ECC1C7C49F23B0CDE9C2B570375B1B9A7F4599861709A264C7A41ED418D4E020627790C6E58FAFF69B4A8F11D5BAE29CB7AF67A82433341740DA7B7496D8"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

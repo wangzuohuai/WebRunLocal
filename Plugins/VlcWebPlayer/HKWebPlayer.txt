@@ -1,4 +1,6 @@
-﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2.8及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本3.0.21，VLC、海康及大华SDK等播放引擎版权归相关公司所。
+﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序)实现播放。
+可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、IE 8、Opera、Yandex、Electron、360极速/安全、豆包、夸克、QQ、搜狗、遨游、华为、联想、猎豹、齐安信、红莲花、双核等浏览器低版本，也兼容运行于这些浏览器的最新版本。
+建议在Windows 10及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本3.0.21或4.0，VLC、海康及大华SDK等播放引擎版权归相关公司所有。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
@@ -23,7 +25,7 @@ HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
 
 文件播放支持私有、PS、TS、3GP、AVI等封装的录像文件格式，支持的视频编码格式包括私有H.264编码、标准H.264、mpeg2、mpeg4、mjpeg、H.265、SVAC、Smart264、Smart265等，音频格式包括G.711、G.722、G.726、MPEG、AAC、PCM等。
 
-1、牛插(PluginOK)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
@@ -39,7 +41,8 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 播放窗口选中状态时双击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的Player_FullScreen通知。
 
 1)、请求启动RTSP网页多引擎播放器：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
+Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
@@ -139,13 +142,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"2544E9927409CECA5B2B1A65210E0433","Version":"2.2.17.1","Size":6389760,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7A51F1A9442C886B9FA75FD83A72DE5F7C6B283F10E1C670D912EFDBEA3783C4FE6A17BB915B2434410C3558355E05BF918B757A9162C6142781BEC6051A5E33395F39B6F15F70BD77DAD3302555E6DC20514D9BB8B50BB28D9164D14B8CBD501C18A6A2E4AD8C7645088D2F15BD0B222242188FCFC152C7827CBE4B1AD406E6424176A0BE7AFA3E75858838DE43CFE3AFB4FD67AF9BD0CFC0558FEBAA69B8E484A3919E13C9822D6103AFFD5B85959EB9A68BE79E1240E7F74766B5B0EB3EF83B727E30AD4C208500CB9E8DAFF3E60B83803F5F1D463E937881449CFE29CD8C77FBE5A1A464CB1E2FCEC1BE78E44AB5C8BE575DC558D2755FF2ABACEB4263CF"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"FAAC52330BFCC85643B7EBF58B7BE961","Version":"2.2.17.2","Size":5734400,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"02A86780665AED0267271486DAF4E16F143035B178C2C23470F7D14E9F159009C8351F35207AB6B0F720BE4F9435690E53E39599AE2B55A944920CF44429F39C359F6255707295CDC7926AD51D41633AC4166333FBFDCE1EFEC6ACAE3D048744A7E49E324B64E8826393599E787DAD902AC43B9641FFF3727A03CAEBCB827DA5E1F493A9F2A7AE26643A7DA69F0EFF902D0EFACDEC952A999F433901FBD08C8F8694DF8F419004DECE99725642ED6C90E0340F934CE1F17239302D3A862A1F2A57DA5CE1173C300CAB7D7A78F0A6A44DF6545BDAF03EBB3B9B82D604C51C7D12B2472C7220384C2CECFE56A84FA4C4FEEEDE99962A3A6B23679504DAB031EE4A"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"3C44C071D95F3F3AFCA06E38BB8F9536","Version":"2.2.17.1","Size":6389760,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"46B02BC29A2569E67C7850EC5BC392BCCC96D0A9CFDDF71BB2FA4B7D97F2E9F4C587A3F4EDF77A1463BC4543F092FCF39582EE7E6C1B635D27092A78C5C9522D5E7EF9E0CAEA4C23AD61FDEBDE9A23C67EE6E65F913DD7C875CBE4A12980A873FC0965908799D9D3409C4D298D7B900F30185E05EAF55387203FDB4770825178343F659BF305B6C13274611C07BB7FE7D62574C0E19B8168171DED0748A302F36F58C1831614474FBEB77CD7D493533583A691207CF956E62CBBCDF9DF7880D3F0D557E1B61C1529A6A9EF612839B261B075F0A8F44B121EC05981D0A44CC589DEBCF371B8D765B95867A384F08555C17A2EA03DDCF7304C6A5224948ECF2F9C"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"CA97FEFC02891EB48837C4F092C126F1","Version":"2.2.17.2","Size":5734400,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9BE3AF565A8A0791BCAF8BF4410BEE1154159CCD6D78EDD026BD71EEFAC496CA3D90D007952619A16D8389AC7069D0D7F9526498116A4C774C1F9CE5B7AAC028C22BDE4222ACC286A861049C7FC98FF9C0EDB9FFD9BE17E6AF47446AC35B3352A11B4D9EAC3893020F7ADE2BC859876DE80EEC56B3A255BE176C33BC87C388DB650D6E8F206A46FDAA82C106FC210AB2D413E6E77E249BDD1320951108A478343D1E1A5E8B9C1F6AA09B13ADFB62CAA53A7108A345A27547DA82A4C7F07FE9AFA01E7610034EF6AAF33F567CF2154925BBFD7C6A030842EC2A23A5DF78C6DB9578D2729E6087CD6F3D237C27CDFF29DB81909C149898CFC82BE6E6D02BD7DFC1"}}
 
 3)、请求卸载RTSP网页多引擎播放器：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。

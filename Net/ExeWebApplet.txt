@@ -1,6 +1,7 @@
-﻿EXE网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用桌面WIN32的EXE程序实现内嵌网页运行，需安装或部署对应的桌面WIN32等软件。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿EXE网页小程序：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用桌面WIN32的EXE程序实现内嵌网页运行，需安装或部署对应的桌面WIN32等软件，安装后确保可以正常启动显示主窗口，没有需要授权或弹窗要求登录等过程。
+可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、IE 8、Opera、Yandex、Electron、360极速/安全、豆包、夸克、QQ、搜狗、遨游、华为、联想、猎豹、齐安信、红莲花、双核等浏览器低版本，也兼容运行于这些浏览器的最新版本。
 
-1、牛插(PluginOK)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
@@ -20,10 +21,15 @@ Url：加载小程序所在的网页实际地址，在网页中指定小程序�
 Flag：掩码标记 1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit代表编辑权限 1只读打开
-	DataPath代表图纸默认本地保存路径
+	Edit 代表编辑权限 1只读打开
+	Flag 代表选项掩码值 1代表直接嵌入已打开的指定程序 2是不用下载打开 4是不用核对打开文档文件名在主窗口显示
+	DataPath 代表如果文档下载时默认的本地保存路径
+	ExeName 代表启动和实际运行的exe文件名不一致时设置实际运行程序名
 	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
+	MD5 当打开的文档需要下载时，完整文档的MD5值
+	FileSize 当打开的文档需要下载时文件长度
+
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 小程序实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -32,10 +38,10 @@ Open：为exe程序需要打开的文件或服务器地址，磁盘目录斜杠�
 注意：Open、Web和Url如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
 自动识别当前浏览器指定位置和大小启动：
-{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"EXE网页小程序","NodeName":"ExeWebApplet","PID":"ExeWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Option":"0","Option":"0","Web":{"DataPath":"c:/ExeDoc"},"Open":"http://zorrosoft.com/Files/test.pdf"}}
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"EXE网页小程序","NodeName":"ExeWebApplet","PID":"ExeWebApplet","Flag":66,"Left":20,"Top":20,"Width":480,"Height":320,"IframeX":0,"IframeY":210,"BarW":0,"BarH":0,"Option":"0","Option":"0","Web":{"DataPath":"c:/ExeDoc","ExeName":"","ExePath":"","PathType":""},"Open":"http://zorrosoft.com/Files/test.pdf"}}
 
 自动识别当前浏览器自动适配网页大小启动：
-{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"EXE网页小程序","NodeName":"ExeWebApplet","PID":"ExeWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/ExeDoc"},"Open":"http://zorrosoft.com/Files/test.pdf"}}
+{"req":"Wrl_AppletStart","rid":2,"para":{"Type":"0","Title":"EXE网页小程序","NodeName":"ExeWebApplet","PID":"ExeWebApplet","Flag":72,"Left":0,"Top":0,"Width":0,"Height":0,"IframeX":0,"IframeY":0,"Option":"0","Option":"0","Zoom":100,"ScrollTop":0,"Web":{"DataPath":"c:/ExeDoc","ExeName":"","ExePath":"","PathType":""},"Open":"http://zorrosoft.com/Files/test.pdf"}}
 
 当前页指定位置自动适配网页加载测试
 http://local.zorrosoft.com/exeframe.html
@@ -93,13 +99,13 @@ ID为通过Wrl_AppletStart指定ExeWebApplet启动小程序时返回JSON中的ID
 1)、请求安装EXE网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"Exe网页小程序","PID":"ExeWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的Exe内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌各种桌面程序","DownAddr":"http://local.zorrosoft.com/Files/Net/ExeWebApplet.pid","MD5":"169203DC4F52C57DF53A7C0D510581B5","Version":"2.2.17.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9E416F4DA435DCA4B1D8A2DF8501EAD7995DDE87D190B9FC033BCDB1AEFDE98DDBEF74508210CF457EBB2A0A1CC1D5E46C551AFFDF368E99A4C99F53E30AA94D0A3936E0DDC3EB78A9C4BF70055E189E8ED64F098ECCA122B78547D57F6294BB4EF48F1FAC7172DF5325421A4AAC5F3729AFFE8BE4F144ADAC97B93181B39F369994F85CCCE9C2EC151796FC073B961EB73D693753CDF9D50C0FBB5A8871FCF1B4B2AED7E938CEFA16133F3C1DAE30EBC2DEF70348AACA34D4CB89DBE9A983B68DD478E52429D414C5FD4EFA95BFECA16CA058804C974FE5E69A8496BA3F354D41871EB74289EC5E54535828375FF2C612117C4D0CB22D5BCAD5F0ED1888A4C2"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"Exe网页小程序","PID":"ExeWebApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的Exe内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌各种桌面程序","DownAddr":"http://local.zorrosoft.com/Files/Net/ExeWebApplet.pid","MD5":"5500F478397A8520B301FB601ECA3CD5","Version":"2.2.17.2","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5BC3ECE72BAA74E13F3AF1FFC9CA3F471BFE9F9BC6C646BD68DCF3A34176788C1B318EE4E2FE4DBEF48F234A15D973804324B6D83B51B7CAF1ABD253F30836B3CB82D397F55AAC7B288A9B7FD9694FAC383D9BA751D820B73A6D604D71B1380AB01CFAE4F3C9E51E8015A36B6D7652843DECDAF8AB894A996300854D885AA334EBE6305BB4DD776FCEF6D7400B4E37F5295277046D655A7F3E2A748EC6EE6E73271478478B23C5398186DDC7403EE9F85F3647BC10C63F2A44FABDE3BFE3B681D9FC66136C1F168CD36113E7BFF16637A8EFFAC03EBAA5E3EF9F65AF03C4751DB9E7A1A4A41AA52A60B79C014193A79B731AEA38B94C4C36D39C2815239A2498"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级EXE网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"Exe网页小程序","PID":"ExeWebApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的Exe内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌各种桌面程序","DownAddr":"http://local.zorrosoft.com/Files/Net/ExeWebApplet_Update.pid","MD5":"2964C8C88EC7F7648D903CCB178899E4","Version":"2.2.17.1","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"49EFDF3297AA098621879FF377D528F55F19E8E33B913A213E2C224A81F92A4E6E1DF4C0485761D4B4D5DE0D5CF855EB031089B3898CD0A65779C9D1843780DB15247660CAD1F8712642EBDCD1538180E24F692EFA76D5EAF9EFEB07D308A210163F917D1E95F3177FD0334A9D58F0F55F9B426BC6B415F7E01EFE726D58992A528D672B5BD1DE1E7096DA3E2D89D0306F9B1188912A44F54EE856F0948D00F65B48B9C269CDD9903CDB6C23BF467B9F080D2A25ACFF539B5224626A124841FEC95DA22EAA27D06FAC7D836BC3A264388E8D87EDAF9642C6BD197431659A01EE53373B6C9BA7B5AFCCAB9C62A896066AF1D22FFFEB9E677C13058760F26EC0BB"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"Exe网页小程序","PID":"ExeWebApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的Exe内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌各种桌面程序","DownAddr":"http://local.zorrosoft.com/Files/Net/ExeWebApplet_Update.pid","MD5":"81BA734BFFE99706FBFC8445E475D6F8","Version":"2.2.17.2","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B9B4D1CA2B02E7EB6B67ABC5D789C66F2419A69B7CBE3B3899E759C32BEDF1D9674761BC03F3BFC5B2A5F2F0D0A6C3C266EC836EFFDA2B8480A86FC15E2425BD27F5A69D671F1DD35E78AE6D8525DAB63929F9CB28EE2437C566FB102FF2DBB9E4E62E80C3909E100C9E3804927745124A43355ABA6469104F67B8A462937CD941E82EF22C1B8A58CB3330A30701852B2BE1C7AFC4B094F7AD8392A9A0E13996F6EEC7F2AFAE49133567FB4A3962A70775139341D0A8BAF141A6BCE9EA72609C87E850DA29DB39864606F82FD5706BD2743E738B51CAA4819BE5B8720B8BFA741607905BF2781F52C754D95EF610755F9339926F183D2E67A124DAB6F84CD8A1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -110,7 +116,8 @@ ID为通过Wrl_AppletStart指定ExeWebApplet启动小程序时返回JSON中的ID
 4、EXE网页小程序转调用指定的EXE程序打开文档，先根据通过Wrl_AppletStart指定ExeWebApplet请求启动后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 1) 指定文件载入打开
-File 本地文件路径，\斜杠替换为反斜杠/，有特殊支付或中文等先做UrlEncode编码，
+File 本地文件路径或网络路径，\斜杠替换为反斜杠/，有特殊支付或中文等先做UrlEncode编码
+其它参数参考启动时Web子节点设置
 请求1：{"req":"EXE_LoadFile","rid":50,"para":{"File":"d:/Zorro/test.pdf"}}
 请求2：{"req":"EXE_LoadFile","rid":50,"para":{"File":"http://www.zorrosoft.com/Files/test.pdf"}}
 返回：{"ret":0,"rid":50,"data":{"Ret":"0"}}

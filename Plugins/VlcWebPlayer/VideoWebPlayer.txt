@@ -1,4 +1,6 @@
-﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序2.2.8及以上版本)实现播放。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本，建议在Windows 7及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本最新版本，VLC、海康及大华SDK等播放引擎版权归相关公司所。
+﻿RTSP网页多引擎播放器(支持多路)：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层可调用海康及大华的设备网络SDK(海康SDK下载：https://open.hikvision.com/download/5cda567cf47ae80dd41a54b3?type=10 大华SDK下载：https://support.dahuatech.com/tools/sdkExploit )和开源LibVLC支持库(需安装VLC media player或搭配绿色版VLC桌面程序)实现播放。
+可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、IE 8、Opera、Yandex、Electron、360极速/安全、豆包、夸克、QQ、搜狗、遨游、华为、联想、猎豹、齐安信、红莲花、双核等浏览器低版本，也兼容运行于这些浏览器的最新版本。
+建议在Windows 10及以上版本使用，XP下VLC建议用2.2.8版，XP以上系统建议使用最新版本3.0.21或4.0，VLC、海康及大华SDK等播放引擎版权归相关公司所有。
 
 本小程序具有如下优点：
 1)、全市场可实现较低延迟(200毫秒左右)的首选播放方案，主流版本的浏览器都支持；
@@ -23,7 +25,7 @@ HDVR(混合型 DVR)：DS-9000、DS-8000-ST、DS-7600H-ST/-S 系列等
 
 文件播放支持私有、PS、TS、3GP、AVI等封装的录像文件格式，支持的视频编码格式包括私有H.264编码、标准H.264、mpeg2、mpeg4、mjpeg、H.265、SVAC、Smart264、Smart265等，音频格式包括G.711、G.722、G.726、MPEG、AAC、PCM等。
 
-1、牛插(PluginOK)中间件的安装：
+1、PluginOK中间件的安装：
 1)、如果是exe的安装程序，请直接运行安装；
 2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
 3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况。
@@ -39,7 +41,8 @@ HTTP网页在线测试：http://local.zorrosoft.com/HKFrame.html       HTTPS网�
 播放窗口选中状态时双击或按字母F即可全屏显示，全屏显示状态通过ESC、Windows按键、ESC或字母F取消，全屏切换会发送JSON包的Player_FullScreen通知。
 
 1)、请求启动RTSP网页多引擎播放器：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
+Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
 Title：网页标题中的关键词
 Url：加载小程序所在的网页实际地址，在网页中指定小程序的显示位置和大小，分屏多窗口播放地址和选项等，不建议使用了，建议改用Web参数
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2小程序显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
@@ -139,13 +142,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"9AA97FE4D8842C2FBB1614C15A769FBD","Version":"2.2.17.1","Size":6389760,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"34BA9B91D147301B7D5F8D60CE683C6E5416854D3110F7E46ACA18037FF50EA1BBB99381C5FF9A667D7926B4903AAD40B2639B854D9B11F4F12BDD220A3BE6E572F08A4B33255C85FF1A42CD235D1FF00EF59927D7460E7732C3E7AB4876C4C41EAB0D6DCE38367802B14E0E21688FD09311866862FF7CF6305AE8FA8861F017AB4EBE0232CC744EACFF160EDC280F6FF01846F795908E153D60C9E04469E3E8843C5AC803A4DFBED3F59DA89B4EE6DCACA2575BB336A84D54F8483CC55BA2CAFEE172D05DC2DD9E11A305556AD3989FA83D03B9CEF22217BF8CFDBB43C1BAF569C2B8D5AF2355811F3EB628B9C1F09A87E1E086D5F341DF6E1F64841801DBDB"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer.pid","MD5":"B87A8B0A75EAFF4C0AE3548574C3E7BD","Version":"2.2.17.2","Size":5734400,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B2F2E7DE934A65311B32BE4E7330029F2675CFD4C30EDC5C82F07FD694498CE12699B61E2B568424A073C7E37AAF2D631116BF5D84B2213AF8AE99266B8BDD0F38DE0C09D673839B40A724A7FE9F7003E2C7AF0E7E3B3D97A5D21CCC1E0E304E4A37470A1EA39E266EC6FB4B6A98742435DED16C71BAA1CD10F6FC772253682226F22282F52BB63ECBB224DAEBB160110151D2449770972690C3C72442DCB32C4985282E403A979C390247BEAF8F65F9EF6EFC40F11E53640793623842C065904F00F25175FE3AC1B687BACBC931454383D193430390156D9F25166B2ECCE33156A61086A67039C326B45FE4187D6E9AC02CC6716F97E907DBF5C04E4B8A9526"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"A3B60F16FD8EC62FC36DD1C669340CD3","Version":"2.2.17.1","Size":6389760,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"452F27703692349A1CBF6214AFF030BDFB15E5C37A6C78FB61E17307A1CD380BCC95569364ADBB99BDA52596AE5EE4FB5E64040FE16EDAAF271EF3C0694F0AE3CA2613FE6A671CE0C55304B8917DE03E3F6F2C07F5DDC2FA6800F9CC419F1D996DB168A1EA072AD327A110C6DF2230DEEACB5C11FBB9BF1276ED6448546B68C93FF0CDC690C0218BBFBFF7030A20A7F47D9F3F417A2FE19883038F81891229301C25080DDF52CD5D9EF67AC179055EA06577C198FEB5D39A0B09D66D0CF8988F1AC05DA5D7A0FBFB30161F6092F0A26E76FD585F376DC08E228D9C438641480A3AA35810DCF58471E835BE91D372DB7DDB9D0B37295FB84464C2D1B3252B1114"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"RTSP网页多引擎播放器","PID":"VideoWebPlayer","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的RTSP网页多引擎播放器，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/VideoWebPlayer_Update.pid","MD5":"1475BEE65A4876336D1E99527DF47CAB","Version":"2.2.17.2","Size":5734400,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"39FC7A32681E0CF45565349177F28921DBF326CF07F4328AD81941830F66AF65D649983676092950E4A595AC2F6268F885506C3E5A96D72A5E5DB077364B70C88CBE5F3C53D461CF44680A04D0A77FBA10031188E9C1B3A7085CBB95FE48E457F23A108FA30D53D1E80B7CFBF524D24C46A5A523B10952C8A2DC779C376B79FC55C245D0B0A7CEBB7EF0A5B1F306852BD93A6E6ADF5B09A24DFE33283AD30848EF88C9B1216B10538953649E033EC74BB2BB067C237DBEDB7B0596DA17623B8B612AE4CFDC2440E8126DE371DD65591D309BC45DC2D9E2F52B135B2F0141600AD49D9A2FDE5052ADD229C84D63C1B76C18D36D90A62A570853D973EE4E0D9FC5"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 

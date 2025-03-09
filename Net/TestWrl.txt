@@ -181,6 +181,9 @@ PathType是目录类型，参考定义说明：https://learn.microsoft.com/zh-cn/windows/win3
 检查VLC播放控件是否存在，指定ClassID或PropID 默认取32位的版本，指定Option为1优先取64位的版本
 {"req":"Wrl_CheckExistInfo","rid":26,"para":{"ClassID":"{9BE31822-FDAD-461B-AD51-BE1D1C159921}"}}
 返回：{"ret":0,"rid":26,"req":"Wrl_CheckExistInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"3.0.3","Path":"D:/2.2.17/vlc3/axvlc.dll"}]}}
+获取本地文件默认打开程序信息
+{"req":"Wrl_CheckExistInfo","rid":26,"para":{"File":"d:/zorro/test.pdf"}}
+{"ret":0,"rid":26,"req":"Wrl_CheckExistInfo","data":{"Info":[{"Type":1,"X64":1,"Ver":"24.5.20421.0","Path":"C:/Program Files/Adobe/Acrobat DC/Acrobat/Acrobat.exe"}]}}
 
 21)、移除本机中间件授权并卸载程序：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
@@ -188,27 +191,20 @@ PathType是目录类型，参考定义说明：https://learn.microsoft.com/zh-cn/windows/win3
 {"req":"Wrl_RemoveAuth","rid":30,"para":{}}
 说明：连接主服务后可执行；
 
-21)、前端请求显卡配置信息：
-举例：
-{"req":"Wrl_GetVideoCard","rid":30,"para":{}}
-返回举例：{"ret":0,"rid":30,"data":[{"HAL":1,"DID":8081,"Desc":"NVIDIA GeForce GTX 1650","VID":"4318","Revision":"161"},{"HAL":0,"DID":16027,"Desc":"Intel(R) UHD Graphics 630","VID":"32902","Revision":"0"}]}
-返回中HAL为1的代表支持硬件抽象层的独立显卡
-说明：连接主服务后可执行；
-
-2)、刷新中间件授权请求：
+22)、刷新中间件授权请求：
 如服务器上对应授权已更新，前端可请求强制获取。
 举例：
-{"req":"Wrl_UpdateAuth","rid":2,"para":{}}
+{"req":"Wrl_UpdateAuth","rid":32,"para":{}}
 说明：连接主服务后可执行。
 
-3)、导入SSL新证书到授权文件：
-{"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}
+23)、导入SSL新证书到授权文件：
+{"req":"Wrl_UpdateSslCert","rid":33,"para":{"Path" : "G:/SSL"}}
 说明：在授权服务器上启动浏览器打开网页http://local.zorrosoft.com，WS连接地址修改为类似这样的：ws://*.*.*.*:800?sid=438140&flag=1，其中*.*.*.*:800是你的授权服务器启动侦听后的IP和端口，然后点击连接成功就可以执行Wrl_UpdateSslCert请求了，记得把新的SSL证书放到单独的一个子目录，命令中Path为证书目录，然后执行此命令，成功时返回SSL证书绑定的域名，再到授权服务器程序目录，找到更新后的授权文件，替换到终端所用的软件包里，给新电脑部署使用，已经部署的电脑，只要能访问授权服务器，会自动更新证书。
 
 4、PluginOK中间件升级请求：
 1)、升级中间件程序请求：
 
-{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet中间件网络版升级包","Date":"2025-02-18","Desc":"1、中间件高级版增加支持在夸克、遨游、猎豹及双核浏览器中的使用； 2、增强识别当前网页窗口信息接口，增强内嵌小程序启动参数可避免其加载到其它网页；3、优化高级版小程序在服务器版系统中的运行体验；4、Office及CAD网页组件增加其控件或VBA接口的全面调用方式，不再局限于单独封装的接口；5、新发布指定路径具有主窗口属性的桌面程序内嵌运行到浏览器网页的通用小程序；6、新发布指定ClassID或ProcID且带交互界面的COM组件及ActiveX控件直接内嵌到网页中运行的通用小程序...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"03F7D58AFF7B6DEB190C09EDD75468E0","Version":"2.2.17.1","Size":14516224,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"B24042E572773861607DD58F8088C6B77B369B2525B09CE14E33834EE7ECF3AA3F7771792E8080069569D4FEE21787C3C3DA60F2E591D09B73F3C6C3B53AF5F0657854C23529C792C9D657A6007309EB3ED9DC4E5C3910C5014B2066083B1C32B712199EC2FA24EF52F2730537BD4B0F3D09E2E7F3E6749920259F378670EEF2D7D846CA9F00E1493DDD1FDFC7D00D9EE563F623241C61B7371E95C4EA1CC12A18C381AEBB8D83E77E79C567D37F63093C4F909230FBC9BF5D9BE78CB3AC6B0F0C82108B752FF5A0D5C0DCA0914534C5E9A09CF0BCD10A43A403EE895589A132EB2A48D9C5D869483DD2EA1BC44867F21BA96923B178E1D6F904F20F6A297F77"}}
+{"req":"Wrl_Update","rid":1,"para":{"Name":"BrowserApplet中间件网络版升级包","Date":"2025-03-07","Desc":"1、优化对Windows Server 2022及2025系统的兼容性，优化对Firfox浏览器的兼容性；2、解决官方实现的内嵌网页小程序在一些特定错误下退出导致浏览器界面无法操作问题；3、优化PageHiOffice网页组件关闭释放及切换文档打开稳定性，解决可能报打开错误问题，解决快速重启组件可能提示插件未加载问题，Excel及PPT增加保存通知...","DownAddr":"http://local.zorrosoft.com/Files/Update/Zba_Update.pid","MD5":"0A2C5BD2A428EEB33F0DA179FFAD0158","Version":"2.2.17.2","Size":14417920,"HideIns":0,"Cookie":"","Auth":"","Open":"","TK":"6947838E2FF203673F57E692CD25C794CB9A4D270C45D47B4A7E634F118A0097F38401703472188241AE56535886A122774AA5EA7C586073E6282431DB0481201C73FF583207581E9DEC23BCE700EE7A78BE2733F4A5BF944B933F2CD52042CE346A8DE760EB7DF2E36278D4D7D9D3ED102456FD2A06DE0199EB09D69501425FC13E662B645DCC66AF2A58DE1B030E68360CDF3971ECBE4F6AEDFD92CAD66E7BDBF9B2785B2593751400197825C0651191D65604D8CF9BF0F525E52A2CD565CC62BA5FA49765A9D8C14C4BC59CF75C4DFBF022239FF6E8EB26ABE6BCD9DE978AD95F04E989EF0EF81D6BE64EBBEAF79007E0037843EF2D4F6520CC1AA35B9B1A"}}
 
 2)、针对HTTPS网站，需要搭配SSL证书使用，而SSL证书是有期限的，需要定期导入SSL新证书：
 {"req":"Wrl_UpdateSslCert","rid":3,"para":{"Path" : "G:/SSL"}}

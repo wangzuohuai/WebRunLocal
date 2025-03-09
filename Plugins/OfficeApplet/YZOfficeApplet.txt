@@ -1,4 +1,5 @@
-﻿永中Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用永中Office(要求专业版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将永中文字、永中表格、永中简报软件窗口内嵌到网页指定区域运行并操控。最低可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、360极速/安全、IE 8、Opera、Electron、QQ、搜狗等浏览器，也兼容运行于这些浏览器的最新版本。
+﻿永中Office网页组件：基于跨浏览器的原生小程序系统-PluginOK中间件( https://github.com/wangzuohuai/WebRunLocal )网络高级版开发，底层调用永中Office(要求专业版)的VBA接口实现可程序化驱动的网页在线编辑办公控件，可分别将永中文字、永中表格、永中简报软件窗口内嵌到网页指定区域运行并操控。
+可用在Chrome 41、Firefox 50、Edge 80(Chromium内核)、IE 8、Opera、Yandex、Electron、360极速/安全、豆包、夸克、QQ、搜狗、遨游、华为、联想、猎豹、齐安信、红莲花、双核等浏览器低版本，也兼容运行于这些浏览器的最新版本。
 支持永中Office2019及以上的企业版，建议使用2024最新版，不支持个人版。
 
 1、PluginOK中间件的安装：
@@ -15,7 +16,7 @@ HTTP在线测试网页：http://local.zorrosoft.com/wordfull.html        HTTPS�
 前端集成可参考以上测试网页进行，需要嵌入用到的JS脚本，脚本程序是完全开源的。
 
 1)、请求启动永中Office网页组件实现网页中局部加载doc/xls/ppt等文档显示：
-Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(2代表Chrome 4代表Firefox 8代表Opera 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360企业安全浏览器 50代表QQ浏览器 60代表搜狗浏览器)
+Type为浏览器类型，传0自动判断(前提是当前浏览器已启动并显示在最前端，Flag指定当前页加载时必须是0) 可强制指定浏览器类型Type(1代表IE 2代表Chrome 4代表Firefox 5代表Brave(英文版) 8代表Opera 9代表Vivaldi(英文版) 10代表Yandex 16代表Edge(Chromium内核) 20代表Electron 32代表360极速浏览器 33代表360安全浏览器 34代表360极速浏览器 35代表360企业安全浏览器 36代表360游戏浏览器 37代表360AI浏览器 40代表联想浏览器 45代表双核浏览器 50代表QQ浏览器 51代表微信网页 55代表齐安信浏览器 57代表红莲花浏览器 60代表搜狗浏览器 61代表夸克 62代表遨游浏览器 63代表猎豹浏览器 66代表豆包 70代表华为浏览器)
 Type需要指定浏览器类型时，可先通过TestWrl.txt文档中的接口Wrl_BrowserInfo获取到当前浏览器的类型Type、浏览器主窗口句柄BrowserWnd、浏览器绘制窗口句柄DrawWnd及当前网页标题Title，通过判断Title是否为当前网页需要内嵌决定是否继续启动，如果继续启动，把获取到的参数Type、BrowserWnd、DrawWnd设置到当前请求参数里，可以加快启动速度
 Title：网页标题中的关键词
 Url：加载网页组件所在的网页实际地址，在网页中指定小程序的显示位置和大小，不建议使用了，建议改用Web参数
@@ -35,7 +36,7 @@ BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动
 网页组件实际显示首先会基于Web或Url中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
 Option：21是启动永中文字 22是启动永中表格 23是启动永中简报  25是Adobe Pdf Reader或福昕OFD版式办公套件的OCX控件打开pdf  28是福昕OFD版式办公套件的OCX控件打开ofd
 Version：0:OLE嵌入方式加载 1:完整加载(支持文档对比操作) 2:OLE嵌入方式加载(与0差别在于永中专业版及微软Office高版本提前启动Office进程以支持多文档及加快启动性能) Option为5时Version自动默认为1
-Open：为需要打开的文档路径，磁盘目录斜杠用/ 支持服务器HTTP协议的文件下载路径(请确保无需登录即可下载)，下载地址中如果没有包含文件名，请在Content-Disposition中指定filename
+Open：为需要打开的文档路径，磁盘目录斜杠用/或\\ 支持服务器HTTP协议的文件下载路径(请可设置Auth或Cookies等确保无需登录可下载)，下载地址中如包含文件名，尽量把文件名放到Url地址中最后一个参数；如果没有包含文件名，请在Content-Disposition中指定filename
 此参数如非全路径，包括服务器路径，除非启动时指定了数据文件目录DataPath，否则默认使用中间件程序Data子目录作为根目录使用 如果使用字节流文件打开，这里不需要指定
 注意：Open、Url中如果有特殊字符= & 双引号或中文等，需要用URL编码处理后传递
 举例：
@@ -115,14 +116,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装永中Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"68DC01DA476213C768356B8524B168C1","Version":"2.2.17.1","Size":5439488,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7D58B70E32FCA9CFCEF2E2439869242605B7E155DF3EA174A5F419EDB6D0309C07595F60F48795697A8A6658963FD63062FCE6D491605F9684CB0CF703FA8102F61E1B2657FD9476878DF2CB0186E1C808DF5FEE834E13FFAD6FF0AD19ABACEF482F9FFA0BDCEFEDA4ED57A30638FBA8F161D2B69B62211F5C392A4467706377E6BE4CF25A84F22250EA930ACDB3BA8DFD5B02CB47A9370ACA461060E20E2A6068932A89360E09143BFFFB43664AA071D4A891B5CC0298DF28ABA36F7B0E5593C599EF78D7E0AAD075A51CEC3720AA2AE972DF62499AA505A39D912DF504D8BE2FC98BCF006469C46A06C7575E8E33AF16629157E4987746E1113F1ED2495510"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet.pid","MD5":"94F8FE76B40A78B83DE23E1B982D3B0C","Version":"2.2.17.2","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"82D6CD7001C5DC8A41F2284DDB177C2C01AFCDA12A797F834C87ACEA1FFCF453E234F8177A7353727F57F5B267638AD8A739AF186D901449423C53E11C0F7AC8A877011FB0F99B53992431956DB72F82C34304A042E41CF4EC8E709FE3D12E17C1250E0454F9175DEC96AF85D46B8A7ED8773B623D0D2FD45A8A2388A5B879A75E3A29CD7033C18F224A8D8ABFE326895908FF1C9448763097804ED5FCF01B2F5B23DDB84D584D1B892CDF3C11FE43AAD5D640D9DDC40D196B6340B30A7E8BDF29734BABB577DA7A49CF5430C9BAAEEBF64D447811D7655F1085BA495B0B7C4B1BDCF902F30C9A9318E2E75EE8E98A9CC9B4AA21618AF551A9810339AB97304D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级永中Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2025-02-18","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"14F444FF02958B737EA192193117CD2C","Version":"2.2.17.1","Size":5439488,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"61EA59F99C6355921658AD19AB05A77FCB9C4BFE9CB94E111CD98984D17BB285A6C7A0D7F7CF40F3B98774EAB2E1D4118AA6BF8B9E4117E2769CA2E676CC442834875159410AAB99714EB8522BEAB193A531100A385F1C2E40624E8E521702ED308DEC4AFD6B76B777FC07DFEA266D63385060086955944649F75DE75245B86A29C8A41D20F2ACD0CEAA4040E38D5564B389CC1502BF76682B6589897F27C175B014226BCD44CE7AF8E0135B3244431BCEBD6FD125C44553512BF7C349C21C9D90E0744E8FEBE8B770BB7F7645D5C03325DB37DDBFE6E1CDCBA92A7E23D939F67BD38059EB6889EEB09EDF594B97DA31B60C31E20F05FEE5883EC6F29BDFA4DE"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"永中Office网页组件","PID":"YZOfficeApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的永中Office内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/YZOfficeApplet_Update.pid","MD5":"704A0E29EB6B1D65AF020F690E508221","Version":"2.2.17.2","Size":4784128,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4F96A0904F9C6127C341950C9BBB1E22E5BA7B822EAF1B77D6E1259D5A1EF990B8E7F5983F409351A6CD307D96752DA5A4C6D0E134FFE4179AC339B9BC802D65264FE8E49B51D55AC7CF462E9A7D4F723AC2748977D9AFC5DF302ECB43EBD0057EF3FE2756543B0394490FACA96F766386D1C284CA29F93AB1FCFA7DCCAC8B7C76ADA5C77C8AFC2CCA5D3A4706E8DDD9481EBDDC4728FCB698A33DE48A450F235FC3A7067C564C5CAAFBB3F623041A3C8033BAE62E887B5AC9B5E41FDBCFBB08A39F2DDF48C34B3453DA351F98C800D5DD06CC01CE25D7FC5FDDD1D5E9BC1AEC6AD1055F3E5D69F06655DB74C67ADCACA382AF62980369507208DE143030CB08"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
