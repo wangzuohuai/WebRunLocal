@@ -7,5 +7,6 @@
   "ThreadSize" : 3,
   "MaxThread" : 6,
   "ThreadPrior" : 0,
+  "InitTop" : 1,
   "FullPath" : 1
 }

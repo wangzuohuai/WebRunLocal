@@ -116,14 +116,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-03-10","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"BC42FD3EC36FC94CC4E34D869A71AF24","Version":"2.2.17.2","Size":5242880,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4E3A2DCF7FDF834CD1491833CF2DBB43B12A8D4D840DC8A42B6F219A56A3B0280C62E652EA34D157716AB6431AA57A77439277F8907739526C8ACA55322516AFDF80EE1006EA694A01346F9B87FB9F880B441B3BC3CE182679B4A04139618D04D61B2F3B0C7AA54553B97CF0109FD5402A0A6AABD67A5E1D5D8959593F47F1DCECFACC2395CF32397E5CE1E97959CA1AEB11111FADC4235CC34F1F1B856FBFA13E825F9E9DB3D6BC7EBA1D1E9080D9E4A057901E26095BCFA8BC557A2998CF98E2A7ED5CC57729DEF7B995C1E0709C3C2624E3FC2AE641EF11F796A319E5DC8A12B098CF7D8AF06AB6278470CB41A2B0664D7D7F8725CD89E95D0D2922E838EF"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-04-08","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"1E57960CBD6D86308B462BD209CC1A3C","Version":"2.2.17.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1E6C2F8858A88918CE6933FF8C92CDBECF064EBCA51F53623FD4F7EACA2F29EBF8FE962CDE8BABAFA94D56397E33D5C3083F925BDDD18A0D4C007FAB12A769068E584C4FB0C7ACB950640D2D54DC89B1FC7D8BA31B06CA10BC87B25A589126E7997B51CBE0ED314E4459A148C345F472D495A86FC078329B432935D0E0167C43BF7B9D9C2E279574E8610E4DFC17C5B1149F993A4E956AB1B2AE6D9E1A1B7CA73EEF025AA5732EDD0E019A93A9F18B2AC948561F37CE2195176D7D752CA81FDE13A5F9E3A7BD688C575BC9CC29B10306C6AEAB84427130F5CEE654C5BA557511ED478A18863BFD2F13B4DFEC642CB15EE76555FB24D0E312E7275817E118CB8D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-03-10","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"4769F6738DDF3BCED87D4DF4D01D617C","Version":"2.2.17.2","Size":5242880,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"207253932A2FCC8BB8A9A42B4E34017FC1DD0633B33F26710245E21C10A7860E0D4A8C8BAA486159C2B581938AFC1D341BAB67BB00942EDAFE40F66E910CFB0550BE11D780CD5AC4E247BCDAB9B2014ABDF7EDB1DB2CD958FDFA8C9B42B5C32C855B1B9EC4B9857679969BCD441096D2741C518941F2292B11CC646714B96504967F5D8904651CB321BE8896CE5FD691AC4CB159EBA774B99E92999457EB282959A8359A3E676EB2A9B58A4C1912B2C0DEEA8978BBA9CC74550E46B698BEE74AE187D95E23A4243156D89B476E2623409DA0B06F31B286B314059D4A3C59E7D95110FA9C8026862FE614C0037F10FE79B90E1987A7524505D4DA0CFED6168B16"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-04-08","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"215A798B18BE0E71F2F798154227980D","Version":"2.2.17.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"676CC2A29D59623DCF7921BDE58D68D22481498B81BC9773C9E1C33BB0570A79E4E3D4444D7A7A4C0B57590F122E30D36265668446E30A114534E63F9375E3AE2833BC1B08D3CFA6D73C05CB8BEE9ED81BC62D18F154673019C967F003878203AD82A4ABCB4A071B3457AF8F8994E7930FEB761091122C2180CBDC40016379F5552BEF48F6514C1B2E2F70B7FE854D801C05EB883F2444B9B709B2716000993DBBC9BB88ADEF01D1CD0C40FA1F8608AD7CB6A293EF719867A180495254BA1AE837B6FB540D34307E544D9DC95C454FA881BA588FE667336478AD2473B072B4DCC5651B3FDCF7EB5CBED60A638885F5DCBC9EEC13D3F7C56487C476E3E1BBE32A"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -137,9 +137,11 @@ A、常用功能请求：
 
 1）获取文档是否修改了需要保存，适用于WPS文字、WPS表格、WPS演示软件
 {"req":"Office_IsSaved","rid":1,"para":{}}
-返回：{"ret":0,"rid":1,"data":{"Ret":"0","Saved":0}}
+返回：{"ret":0,"rid":1,"data":{"Ret":"0","IsSaved":0}}
+IsSaved为真，代表已经保存过，没有修改，无需再调用保存
 
 2）设置文档是否需要保存标记，适用于WPS文字、WPS表格、WPS演示软件
+Saved设置为真，可避免退出时提示保存
 {"req":"Office_PutSaved","rid":2,"para":{"Saved":"1"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 
@@ -263,27 +265,32 @@ Text为添加批注的文字描述
 
 21）请求判断当前书签是否存在，适用于WPS文字软件
 Name为书签名称
+Encode 默认0,1代表书签名使用了UrlEncode编码
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
 22）请求获取当前文档所有书签，适用于WPS文字软件
-{"req":"Office_AllMark","rid":22,"para":{}}
+Encode 默认0,1代表书签名及内容使用了UrlEncode编码
+{"req":"Office_AllMark","rid":22,"para":{"Encode":0}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
 23）请求指定序号的书签名称或指定名称的文字内容，适用于WPS文字软件
 Index为书签序号 Name为书签名称
 Detail为1获取详情，默认是设置0只返回书签名称
+Encode 默认0,1代表书签名及内容使用了UrlEncode编码
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1","Detail":"1"}}
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
 24）请求替换指定书签名称的内容，适用于WPS文字软件
 Name为书签名称，Text书签内容，如内容中插入^p可实现换行
+Encode 默认0,1代表书签名及内容使用了UrlEncode编码
 {"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
 25）光标跳转到指定名称的书签，适用于WPS文字软件
 Name为书签名称 NoSelect为1代表去掉书签选中状态
+Encode 默认0,1代表书签名使用了UrlEncode编码
 {"req":"Office_GotoMark","rid":25,"para":{"Name":"Caption","NoSelect":1}}
 返回：{"ret":0,"rid":25,"data":{"Ret":"0"}}
 
@@ -363,10 +370,11 @@ File为本地文件保存路径,可包含扩展名，可用相对路径，如指
 
 37）获取当前打开文档及其它信息，适用于WPS文字、WPS表格、WPS演示软件
 File:本地文档路径 User:当前编辑用户名 
-ProtType ProtStatus分别为当前文档保护类型和状态
+ProtType ProtStatus分别为当前文档保护类型(0只读 1只能修订 2只能批注 3填写窗体)和状态(0未保护 1文档自身保护 2网页组件临时加的保护)
 Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
+LastWriteTime:文档最后修改时间
 {"req":"Office_GetCurOpen","rid":37,"para":{}}
-返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","ProtType":0,"ProtStatus":0,"Edit":0,"Option":0,"Hide":0}}
+返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","ProtType":0,"ProtStatus":0,"Edit":0,"Option":0,"Hide":0,"LastWriteTime":0}}
 
 38）设置或取消文档保护，已经处于保护状态时再次调用取消保护，反之亦然，适用于WPS文字软件
 Type保护类型 0只读 1只能修订 2只能批注 3填写窗体
@@ -435,8 +443,8 @@ Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域�
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
 
 45）插入书签，适用于WPS文字软件
-Name 书签名称，书签位置就是当前光标位置
-Content 插入书签内容
+Name 书签名称，书签位置就是当前光标位置，必须做UrlEncode编码
+Content 插入书签内容，必须做UrlEncode编码
 Hidden 是否隐藏书签
 Sort 排序类型 0默认按名称 1按位置
 {"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Hidden":0,"Sort":0}}
@@ -445,6 +453,7 @@ Ret 返回0代表成功
 
 46）请求删除指定书签，适用于WPS文字软件
 Name为书签名称
+Encode 默认0,1代表书签名使用了UrlEncode编码
 DelContent 是否同时删除书签内容，默认0不删除
 {"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
 返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
@@ -628,7 +637,7 @@ Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevi
 以上参数可只选择设置一个，如果不设置，代表获取此参数值
 也可以直接设置Toggle为1 代表切换(显示或隐藏)包含批注和修订的文档中的所有修订
 {"req":"Office_RevisionsFilter","rid":72,"para":{"Mode":0,"Markup":2,"View":0}}
-返回：{"ret":0,"rid":72,"data":{"Ret":0}}
+返回：{"ret":0,"rid":72,"data":{"Ret":0,"Mode":0,"Markup":2,"View":0}}
 
 73）请求获取本地文档信息，适用于WPS文字、WPS表格、WPS演示软件
 File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
@@ -755,11 +764,23 @@ Name 样式名称 根据类型、序号或名称，三选一使用，支持自�
 {"req":"Office_SetAutoSave","rid":92,"para":{"AutoSave":1}}
 返回：{"ret":0,"rid":92,"data":{"Ret":"0","AutoSave":1}}
 
+93）请求插入表格中的图表，适用于WPS文字软件
+File指定Excel表单文件路径，需要做UrlEncode编码， 支持服务器路径的下载地址
+SheetName 表单名称，默认Sheet1
+Index，图表序号，默认1，不设置代表所有
+{"req":"Office_InsertChart","rid":93,"para":{"File":"d:/Zorro/Chart.xlsx","Index":1}}
+{"req":"Office_InsertChart","rid":93,"para":{"File":"http://local.zorrosoft.com/Files/Chart.xlsx","SheetName":"Dashboard","Index":1}}
+返回：{"ret":0,"rid":93,"data":{"Ret":"0"}}
+
 以下是未单独封装VBA接口功能的通用请求方法
 100)、请求获取属性值
 Name 指定属性名称 Application默认作为顶级存在，如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取当前文档的名称用ActiveDocument.Name 下同
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Version"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Name"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Text"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Start"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.End"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Information","Para1":"2"}}
 返回: {"ret":0,"rid":100,"data":{"Ret":0,"Val":""}}
 
 101)、请求设置属性

@@ -116,14 +116,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-03-10","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"7FD109A85A874CE29BCB5CA0CA4CE5BA","Version":"2.2.17.2","Size":9437184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2245C126CAC46AEE0C0148C4C853112B26607FE5CDBF3DC1FDA4BB4EF36CECEBC8781A8B1857582C63FFF37E8AF25775FE768BA3B0712D0F77CE24A22C3A89F4494279F633B1966CA66A29068E09807DF5A5C6E0CB5A6FC2A6A26FB2F385DC4D6343F88CF761743179175337C4AB33CD9DE8F9CC0598BF3FB8F41E7CBB4B86452F1A056E21AC3AEE9F7EF2897DF4A5FA855485859D91884C2FECE574BE8C98FB36E97C27BC90ED28CA5091B81FC7436646ACECD7E9F6344E98F0A4D39CB6E52A90E782A01637E21FB7851A4D212184D3DEF1482624EBD72D58F39F94B96BC103D08B3C047A46E48679C943BB014FDC19335C3FE4B07F9B7E2569F50CE61A8C81"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-04-08","Desc":"PluginO之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"B488E59140FD1601E6E156B01AD3E1AD","Version":"2.2.17.3","Size":9502720,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7DDCAB3477F87C96F223A2393B2114975B8A3FB85A4EA85428CBE5184D7EA6C2E68FE462BB96E04B547C02258A42E67F5B4447C93142D9402C0E323AF7CED4132EF5461D358EA3436C0CB3BADD9B12C695D2D4643A3A2DE97835BB86F01D22DB4620732523FE82E7C3318947AF7BDC1524163A3D8A776609DC58277BF767DE3D77E203B9514BEC694A39625B53D1F1917202FC3C4CB7D29762DB879F8DE03A91802A4478379D42ACBBA2C5DD9C3294A7B862263BF2E3F0019A6010B3314BE65264174D707D272CCC6099D4B8C373C7804B9E5F84F81FA6E39D2CD651ED54F4ECFD0230DDC317F8D978013B484F15AC096948F2398FB2A025F23042918FBB7278"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-03-10","Desc":"PluginOK之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"793B6E4ABB6DF8C33E51ADFA12000B62","Version":"2.2.17.2","Size":9437184,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8D34633F7F4676EF9CFB607468A4CF23CCFBE881946EA89BC2FACA60B4198D978A2CD11F18BE445AB49AE9D72188EE18CAD553A9C1720F1B2953F4733F9B5798A1A428607230B575279D08393840AD051719702613C8A2F1F63DBBB0796CC75EF7F8DCD2A402B3BFC9FBA5B178215D379E40E8363BC822B0A65858F62627C089F804F721DDA5DD050D2C5BF32F2F7CCECBC0B43A8D4C96AEFE6E29A780B59E21C5653F09AC7F4683A563C28D76707D0331AC34EA3782AF8FD148CD9060C36C8BDD9EB672FABF111F1961130550DEC301EBBCD84FA5BBE75C62D9570DA02D24D6AA181DAEBE252A79717EA9AE63D0BD4AE29C58C959EE4CE44B625AAA1268998B"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-04-08","Desc":"PluginO之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"F8CCDF5ED5D1316BB5D8BF3E3796A37E","Version":"2.2.17.3","Size":9502720,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5AC43D8D11DE66E5B58A5D74A7610A5365667218CDD610BF2F5D779353B2FDC63F0D5628D34DD9EA54BCE862919A24A837CD69109D98318BC282B4864D1C474947A040D02A03BB591AA2C553BB846BE469B5EFBBFE20A61525F319FD8E02D7F5B4E5D242D944D3625C9E602998723C6F443B07EC29E4FFC6B900870489880CA555B81A603D4A31C951BBC52172971D1466099E57369EC9A9A10331F0A955148B8AD2626FA48D9B72A40E8903B8F2525FB37DA73408F42DFA16286F268C0C11FCD74CE1F141A9AB6E403A9F51A321004182E5AC9C01557AFDAAD2A330690C522F8A540A97160AC3941DE2D9984008947E83B78597ED5E589748C2938DEB44CE9D"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -136,9 +136,11 @@ A、常用功能请求：
 
 1）获取文档是否修改了需要保存，适用于Word、Excel、PPT软件
 {"req":"Office_IsSaved","rid":1,"para":{}}
-返回：{"ret":0,"rid":1,"data":{"Ret":"0","Saved":0}}
+返回：{"ret":0,"rid":1,"data":{"Ret":"0","IsSaved":0}}
+IsSaved为真，代表已经保存过，没有修改，无需再调用保存
 
-2）设置文档是否需要保存标记，适用于Word、Excel、PPT软件
+2）设置文档是否已经保存标记，适用于Word、Excel、PPT软件
+Saved设置为真，可避免退出时提示保存
 {"req":"Office_PutSaved","rid":2,"para":{"Saved":"1"}}
 返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
 
@@ -262,27 +264,32 @@ Text为添加批注的文字描述
 
 21）请求判断当前书签是否存在，适用于Word软件
 Name为书签名称
+Encode 默认0,1代表书签名使用了UrlEncode编码
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
 22）请求获取当前文档所有书签，适用于Word软件
-{"req":"Office_AllMark","rid":22,"para":{}}
+Encode 默认0,1代表书签名及内容使用了UrlEncode编码
+{"req":"Office_AllMark","rid":22,"para":{"Encode":0}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
 23）请求指定序号的书签名称或指定名称的文字内容，适用于Word软件
 Index为书签序号 Name为书签名称
 Detail为1获取详情，默认是设置0只返回书签名称
+Encode 默认0,1代表书签名及内容使用了UrlEncode编码
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Index":"1","Detail":"1"}}
 {"req":"Office_GetMarkInfo","rid":23,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":23,"data":{"Ret":"0"}}
 
 24）请求替换指定书签名称的内容，适用于Word软件
 Name为书签名称，Text书签内容，如内容中插入^p可实现换行
+Encode 默认0,1代表书签名及内容使用了UrlEncode编码
 Word:{"req":"Office_PutMarkText","rid":24,"para":{"Marks":[{"Name":"Caption","Text":"公文标题"},{"Name":"Content","Text":"公文内容"},{"Name":"Description","Text":"公文说明或描叙"},{"Name":"Sec","Text":"公文密级"},{"Name":"Subject","Text":"公文主题词"}]}}
 返回：{"ret":0,"rid":24,"data":{"Ret":"0"}}
 
 25）光标跳转到指定名称的书签，适用于Word软件
 Name为书签名称 NoSelect为1代表去掉书签选中状态
+Encode 默认0,1代表书签名使用了UrlEncode编码
 {"req":"Office_GotoMark","rid":25,"para":{"Name":"Caption","NoSelect":1}}
 返回：{"ret":0,"rid":25,"data":{"Ret":"0"}}
 
@@ -362,10 +369,11 @@ File为本地文件保存路径,可包含扩展名，可用相对路径，如指
 
 37）获取当前打开文档及其它信息，适用于Word、Excel、PPT软件
 File:本地文档路径 User:当前编辑用户名 
-ProtType ProtStatus分别为当前文档保护类型和状态
+ProtType ProtStatus分别为当前文档保护类型(0只读 1只能修订 2只能批注 3填写窗体)和状态(0未保护 1文档自身保护 2网页组件临时加的保护)
 Edit:编辑权限 Option:使用的选项 Hide:界面隐藏类型
+LastWriteTime:文档最后修改时间
 {"req":"Office_GetCurOpen","rid":37,"para":{}}
-返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","ProtType":0,"ProtStatus":0,"Edit":0,"Option":0,"Hide":0}}
+返回：{"ret":0,"rid":37,"data":{"Ret":"0","File":"C:/OfficeDoc/test.docx","User":"test","ProtType":0,"ProtStatus":0,"Edit":0,"Option":0,"Hide":0,"LastWriteTime":0}}
 
 38）设置或取消文档保护，已经处于保护状态时再次调用取消保护，反之亦然，适用于Word软件
 Type保护类型 0只读 1只能修订 2只能批注 3填写窗体
@@ -436,8 +444,8 @@ Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域�
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
 
 45）插入书签，适用于Word软件
-Name 书签名称，书签位置就是当前光标位置
-Content 插入书签内容
+Name 书签名称，书签位置就是当前光标位置，必须做UrlEncode编码
+Content 插入书签内容，必须做UrlEncode编码
 Hidden 是否隐藏书签
 Sort 排序类型 0默认按名称 1按位置
 {"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Hidden":0,"Sort":0}}
@@ -446,6 +454,7 @@ Ret 返回0代表成功
 
 46）请求删除指定书签，适用于Word软件
 Name为书签名称
+Encode 默认0,1代表书签名使用了UrlEncode编码
 DelContent 是否同时删除书签内容，默认0不删除
 {"req":"Office_DelMark","rid":46,"para":{"Name":"Test","DelContent":0}}
 返回：{"ret":0,"rid":46,"data":{"Ret":"0"}}
@@ -646,7 +655,7 @@ Markup 标记类型 https://learn.microsoft.com/zh-cn/office/vba/api/word.wdrevi
 以上参数可只选择设置一个，如果不设置，代表获取此参数值
 也可以直接设置Toggle为1 代表切换(显示或隐藏)包含批注和修订的文档中的所有修订
 {"req":"Office_RevisionsFilter","rid":72,"para":{"Mode":0,"Markup":2,"View":0}}
-返回：{"ret":0,"rid":72,"data":{"Ret":0}}
+返回：{"ret":0,"rid":72,"data":{"Ret":0,"Mode":0,"Markup":2,"View":0}}
 
 73）请求获取本地文档信息，适用于Word、Excel、PPT软件
 File 本地文件全路径，如果不指定路径，取指定或默认路径的文档，需要先做UrlEncode编码再传，如果不传此参数，代表获取当前打开文档
@@ -784,11 +793,23 @@ Name 样式名称 根据类型、序号或名称，三选一使用，支持自�
 {"req":"Office_SetAutoSave","rid":92,"para":{"AutoSave":1}}
 返回：{"ret":0,"rid":92,"data":{"Ret":"0","AutoSave":1}}
 
+93）请求插入表格中的图表，适用于Word软件
+File指定Excel表单文件路径，需要做UrlEncode编码， 支持服务器路径的下载地址
+SheetName 表单名称，默认Sheet1
+Index，图表序号，默认1，不设置代表所有
+{"req":"Office_InsertChart","rid":93,"para":{"File":"d:/Zorro/Chart.xlsx","Index":1}}
+{"req":"Office_InsertChart","rid":93,"para":{"File":"http://local.zorrosoft.com/Files/Chart.xlsx","SheetName":"Dashboard","Index":1}}
+返回：{"ret":0,"rid":93,"data":{"Ret":"0"}}
+
 以下是未单独封装VBA接口功能的通用请求方法
 100)、请求获取属性值
 Name 指定属性名称 Application默认作为顶级存在，如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取当前文档的名称用ActiveDocument.Name 下同
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Version"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Name"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Text"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Start"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.End"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Information","Para1":"2"}}
 返回: {"ret":0,"rid":100,"data":{"Ret":0,"Val":""}}
 
 101)、请求设置属性

@@ -45,9 +45,11 @@ Title：网页标题中的关键词
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2网页组件显示窗口边框 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	DataPath代表图纸默认本地保存路径
+	DataPath 代表图纸默认本地保存路径
 	Cookie 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Cookie来获得下载权限
 	Auth 当Open打开的文档是服务器上的Url地址时，网络请求Url设置Auth来获得下载权限
+	ClassID 需要加载的ActiveX控件ClassID 如VLC播放控件9BE31822-FDAD-461B-AD51-BE1D1C159921
+	ProgID 需要加载的ActiveX控件ProgID 如VLC播放控件VideoLAN.VLCPlugin
 IframeX和IframeY分别为iframe嵌套的横竖偏移修正坐标
 BarW和BarH分别是网页右侧和底部预留区域，ScrollTop为顶部滚动预留高度
 网页组件实际显示首先会基于Url或Web中指定的坐标和大小，再根据IframeX、IframeY、BarW、BarH设定的值做修正
@@ -119,14 +121,14 @@ ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，
 1)、请求安装OCX嵌入网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet.pid","MD5":"69F2335273263FC4A6F2416BAF6A5479","Version":"2.2.17.2","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5BE0E3B6B416341C227CE48B332874354ED27A3AC0AC7E913D5FA65D4FF4C081F2A346B10A61E9E502AE086F239D0122C0EE9C25BFB787482B374ABDAA808A95412781FF75EBBF17A3E941E08E3E1194C8333175362E21FB8E5646F9411DB3802EDBEE41A32C37DE367A4217C27BBE21C3BF71FBEA9B029D6D53B714ECD9177885A45B61CC1527E3B7296AB6CC6F91BE11DE290D0F18F938DDC3D1A19BBBD8DE6732E2B15BF168F1260A71B83034BF8B433A276482092693019C638FEAA38AC0E0872212A6AE004EC27D54FC560AF3137C04656B60E07DFD49338B17F1F52B6F264DF40001D2851EAF395262773CF25CBB6514422DC579401D173F0AF3A2CF20"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet.pid","MD5":"A7BB6AC2E0044DE85FD233133373D106","Version":"2.2.17.3","Size":2785280,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"87B955F4C1B55AE0B4305551BB41EB95B272E18D4EF4F2FBC45482175B0CA44C4C94C5198BDF5B6CB56025CC4AD2DE5371D58226F50D3F62802D40F5DD732825283077AC1EDCCE22F73595796BE7704FE1F0176FB1ADFA95C929562FCEB6C669997719F0577AABDBD8DAE59CFFCC237D1F0ADE7D8AAD85612B20FB005DD8C46E13BC281A91FD617975C2A3A41CC39A0477E84AE7E0997C019BD402FC9395AB17A158DCC988B19E7756C55A84571A55CD4EAB2AF02F3C792DE27FE9A8256646B894CDF54254D9621F5A767140FBF8D0EF32055B14FF874AA46699138F627E144F8EE5FE8239778C675195B2E284A17733F45F7882B4FC2D02C4DC5B571EA48CA9"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级OCX嵌入网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet_Update.pid","MD5":"1543DA784612008E73762CC8D4D22CF1","Version":"2.2.17.2","Size":2129920,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"444563239E7B08D29A83CBC127BE1BF349EC88BE0BB87DFD28FF017051CE0BA521873C4F9413EF00AA5B4E345C9E2D75EB7B30BB6B4845C4EBE8ED6947FA6A26022CACCF4374BB0CDB9E7DE35D44C4C36ED6EB30CAEDE3535BD21BB801381CBB4B9E5A52978CC219BB639903EFD0308715F65C1A172155536179A0DE4D5194A25EAF1066D4E40A5379F08F8D960E2EE679E25BCABA886DB51248B57DB184792402808751BF3C67176A395AA9DD234E43EE4018B5B779995FE8954EC492FFE8E452A189891E1E890D0116F08A510A3847F15D4EBA4F05DC7F3BBFEE48CB09F861BB341CD2B2E03F5C1A94F2ECF4BA62D8BAE3C5B3F94C1E9D46B0DCD7B8ACB172"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet_Update.pid","MD5":"37A318AEBC13A0BBEC1F303DBB860FC7","Version":"2.2.17.3","Size":2785280,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"88D78AF71CD3AB6A3FDE9C487CFE7EC30C7A06DB1BB141D99E606050E075E8E5185B3DA71FA840621A934352103C04C5385CD0C3899B484330149C957A63A67C28EA2BFC5FE713F0B393B0602C08985C041B193C0C75CF529089D16EF278B30A7221EBC929D14096992A40AF6C65D2E201B53158B910ADA4D7AF2E87FFCFEE603A3D41734C4CF47C35888278CA8C96B8DA661001AFE989715960B3497F7AE86BCEAD092F59A370C4C80B162BB7F5633C1C74C5D021EC7A67542193845E4E06A67AE7274208B8A27CD9DA87331ACC17369E756700B4D10D8C97867C69BB14426671C997643C7B0FE22BBD2D28DDAF16E093375E7D48C4F2748AEA3B7CEB54BBB1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -134,17 +136,24 @@ ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.doc”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
 {"req":"Plugin_Remove","rid":3,"para":{"PID":"OcxWebApplet","Type":8}}
 
-/// 以下是测试用的OCX控件ClassID:
+/// 以下是可测试用的OCX控件ClassID，需要提前安装好相应的控件:
+NTKO WebOffice控件:{A39F1330-3322-4A1D-9BF0-0BA2BB90E970}
+金格iWebOffice2015智能文档中间件:{D89F482C-5045-4DB5-8C53-D2C9EE71D025}
+officectrl WebOffice控件:{FF09E4FA-BFAA-486E-ACB4-86EB0AE875D5}
+DSOFramer WebOffice控件:{00460182-9E5E-11D5-B7C8-B8269041DD57}
+点聚WebOffice控件:{E77E049B-23FC-4DB8-B756-60529A35FAD5}
+福昕OFD版式办公套件OCX:{9A9F603B-51A8-4630-AE99-4BBF01675575}
 Pdf Reader:{CA8A9780-280D-11CF-A24D-444553540000}
 VLC Player:{9BE31822-FDAD-461B-AD51-BE1D1C159921}
 IE WebBrowser:{8856F961-340A-11D0-A96B-00C04FD705A2}
-Flash Player:{3A2B370C-BA0A-11D1-B137-0000F8753F5D}
-Dwg Viewer:{4E871D32-203E-4777-B42A-451FC1B2FC90}
+Flash Player:{D27CDB6E-AE6D-11cf-96B8-444553540000}
+DWG TureView:{4E871D32-203E-4777-B42A-451FC1B2FC90}
+Autodesk Design Review:{A662DA7E-CCB7-4743-B71A-D817F6D575DF}
 EDrawing Viewer:{22945A69-1191-4DCF-9E6F-409BDE94D101}
 SolidWorks Composer Player:{410B702D-FCFC-46B7-A954-E876C84AE4C0}
 PTC Creo View:{F07443A6-02CF-4215-9413-55EE10D509CC}
-福昕OFD版式办公套件OCX:{9A9F603B-51A8-4630-AE99-4BBF01675575}
 汉王手写签批OCX:{E8F5278C-0C72-4561-8F7E-CCBC3E48C2E3}
+
 4、OCX嵌入网页小程序转调用指定OCX控件接口，先根据Wrl_AppletStart指定OcxWebApplet启动小程序后返回的端口号，新建立一个WebSocket连接后可执行如下指令：
 A、常用功能请求：
 
@@ -153,153 +162,195 @@ A、常用功能请求：
 {"req":"OCX_Exit","rid":1,"para":{}}
 无返回
 
-2)、请求获取属性值
+2) 指定本地或服务器文件载入打开
+File 本地文件路径或网络路径，\斜杠替换为反斜杠/，有特殊支付或中文等先做UrlEncode编码
+其它参数参考启动时Web子节点设置
+请求1：{"req":"OCX_Open","rid":2,"para":{"Open":"d:/Zorro/test.pdf"}}
+请求2：{"req":"OCX_Open","rid":2,"para":{"Open":"http://www.zorrosoft.com/Files/test.pdf"}}
+返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
+ret为请求返回值
+
+3）请求在嵌入窗口区域内弹出一个消息对话框
+Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
+Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
+Wait为等待多少秒自动消失 0代表不自动消失
+Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
+{"req":"OCX_MsgBox","rid":3,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
+
+4）网络文件操作
+Type 1上传文件 0下载文件
+Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
+Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
+Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
+Url 上传或下载的地址，需要做UrlEncode编码
+Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
+Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
+{"req":"OCX_NetFile","rid":4,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/PdfDoc/test.pdf","Url":"http://local.zorrosoft.com/Files/test.pdf"}}
+{"req":"OCX_NetFile","rid":4,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://www.zorrosoft.com"}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0"}}
+
+5）切换全屏编辑状态
+{"req":"OCX_SwitchFullScreen","rid":5,"para":{}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
+
+6）请求设置WebSocket连接对象到OCX控件中
+需要OCX中实现名称为Name的方法，二个参数：第一个IDispatch* 第二个BSTR类型，WS连接唯一标识
+Flag开关，1代表设置，0代表释放
+第一个参数代表的WebSocket连接对象，可以调用以下两个函数分别实现发送字符串或字节流
+[id(31)] HRESULT AsynSendText([in] BSTR bstrSID,[in] BSTR bstrContent,[out, retval] ULONG* pVal);
+[id(32)] HRESULT AsynSendByte([in] BSTR bstrSID,[in] BYTE* pContent,[in] ULONG nLength,[out, retval] ULONG* pVal);
+{"req":"OCX_SetWSConn","rid":6,"para":{"Name":"WebSocket","Flag":1}}
+返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
+
+以下是未单独封装OCX控件接口功能的通用请求方法
+11)、请求获取属性值
 Name 指定属性名称 如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取VLC播放列表的数量名称用playlist.itemCount 下同
-{"req":"OCX_GetProperty","rid":2,"para":{"Name":"src"}}
-{"req":"OCX_GetProperty","rid":2,"para":{"Name":"volume"}}
-{"req":"OCX_GetProperty","rid":2,"para":{"Name":"Toolbar"}}
-{"req":"OCX_GetProperty","rid":2,"para":{"Name":"playlist.itemCount"}}
-{"req":"OCX_GetProperty","rid":2,"para":{"Name":"input.rate"}}
-{"req":"OCX_PutProperty","rid":2,"para":{"Name":"video.logo.opacity"}}
-返回: {"ret":0,"rid":2,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_GetProperty","rid":11,"para":{"Name":"src"}}
+{"req":"OCX_GetProperty","rid":11,"para":{"Name":"volume"}}
+{"req":"OCX_GetProperty","rid":11,"para":{"Name":"Toolbar"}}
+{"req":"OCX_GetProperty","rid":11,"para":{"Name":"playlist.itemCount"}}
+{"req":"OCX_GetProperty","rid":11,"para":{"Name":"input.rate"}}
+{"req":"OCX_PutProperty","rid":11,"para":{"Name":"video.logo.opacity"}}
+返回: {"ret":0,"rid":11,"data":{"Ret":0,"Val":""}}
 如果返回的是自动化接口，Val的值类似这样的：playlist={CatchDispatch}，需要继续调用这个自动化接口的属性或方法时，接下来的请求里指定参数{CatchDispatch}，否则默认调用控件主接口的，下同
 
-3)、请求设置属性
+12)、请求设置属性
 Name 指定属性名称 如遇到设置子接口的，名称增加子接口的名称，支持多级
 Val 指定属性值，字符串用""包含，字符串中包含\或"等字符时，需要加转义符\，数值型不用""，BOOL类型设置真时数值是-1
 当需要释放缓存的自动化接口时，Name可以指定为类似这样的playlist={CatchDispatch},Val设置为0或空
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"src","Val":"d:/zorro/test.pdf"}}
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"Toolbar","Val":-1}}
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"Visible","Val":-1}}
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"volume","Val":0}}
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"input.rate","Val":2}}
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"video.logo.opacity","Val":50}}
-{"req":"OCX_PutProperty","rid":3,"para":{"Name":"playlist={CatchDispatch}","Val"0}}
-返回: {"ret":0,"rid":3,"data":{"Ret":0}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"src","Val":"d:/zorro/test.pdf"}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"Toolbar","Val":-1}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"Visible","Val":-1}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"volume","Val":0}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"input.rate","Val":2}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"video.logo.opacity","Val":50}}
+{"req":"OCX_PutProperty","rid":12,"para":{"Name":"playlist={CatchDispatch}","Val"0}}
+返回: {"ret":0,"rid":12,"data":{"Ret":0}}
 
-4)、请求无传入参数方法
+13)、请求无传入参数方法
 Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.play 下同
 DID 也可以指定方法序号
-{"req":"OCX_Invoke0","rid":4,"para":{"Name":"gotoFirstPage"}}
-{"req":"OCX_Invoke0","rid":4,"para":{"Name":"gotoNextPage"}}
-{"req":"OCX_Invoke0","rid":4,"para":{"Name":"playlist.play"}}
-返回: {"ret":0,"rid":4,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke0","rid":13,"para":{"Name":"gotoFirstPage"}}
+{"req":"OCX_Invoke0","rid":13,"para":{"Name":"gotoNextPage"}}
+{"req":"OCX_Invoke0","rid":13,"para":{"Name":"playlist.play"}}
+返回: {"ret":0,"rid":13,"data":{"Ret":0,"Val":""}}
 
-5)、请求只传入1个参数方法
+14)、请求只传入1个参数方法
 Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.add 下同
 DID 也可以指定方法序号
 Para1 对应参数值 ，字符串用""包含，字符串中包含\或"等字符时，需要加转义符\，数值型不用"";参数如果需要再次调用自动化接口获取的值，可以这样传参{DispatchPara}=playlist.itemCount 下同
-{"req":"OCX_Invoke1","rid":5,"para":{"Name":"LoadFile","Para1":"d:/zorro/test.pdf"}}
-{"req":"OCX_Invoke1","rid":5,"para":{"Name":"setShowToolbar","Para1":0}}
-{"req":"OCX_Invoke1","rid":5,"para":{"Name":"video.logo.file","Para1":"D:\\Zorro\\test.png"}}
-{"req":"OCX_Invoke1","rid":5,"para":{"Name":"playlist.add","Para1":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4"}}
-返回: {"ret":0,"rid":5,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke1","rid":14,"para":{"Name":"LoadFile","Para1":"d:/zorro/test.pdf"}}
+{"req":"OCX_Invoke1","rid":14,"para":{"Name":"setShowToolbar","Para1":0}}
+{"req":"OCX_Invoke1","rid":14,"para":{"Name":"video.logo.file","Para1":"D:\\Zorro\\test.png"}}
+{"req":"OCX_Invoke1","rid":14,"para":{"Name":"playlist.add","Para1":"http://www.zorrosoft.com/Files/PluginOKBrowserApplet.mp4"}}
+返回: {"ret":0,"rid":14,"data":{"Ret":0,"Val":""}}
 
-6)、请求只传入2个参数方法
+15)、请求只传入2个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1和Para2分别对应参数1和2数值 如果需要传缓存的自动化接口，可以这样传参{CatchDispatch}=playlist
-{"req":"OCX_Invoke2","rid":5,"para":{"Name":"printPages","Para1":1,"Para2":2}}
-返回: {"ret":0,"rid":5,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke2","rid":15,"para":{"Name":"printPages","Para1":1,"Para2":2}}
+返回: {"ret":0,"rid":15,"data":{"Ret":0,"Val":""}}
 
-7)、请求只传入3个参数方法
+16)、请求只传入3个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3分别对应参数1、2和3的数值
-{"req":"OCX_Invoke3","rid":6,"para":{"Name":"printPagesFit","Para1":"1","Para2":"2","Para3":"0"}}
-返回: {"ret":0,"rid":6,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke3","rid":16,"para":{"Name":"printPagesFit","Para1":"1","Para2":"2","Para3":"0"}}
+返回: {"ret":0,"rid":16,"data":{"Ret":0,"Val":""}}
 
-8)、请求只传入4个参数方法
+17)、请求只传入4个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4分别对应参数1、2、3和4的数值
-{"req":"OCX_Invoke4","rid":7,"para":{"Name":"setCurrentHighlight","Para1":255,"Para2":0,"Para3":255,"Para4":0}}
-返回: {"ret":0,"rid":7,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke4","rid":17,"para":{"Name":"setCurrentHighlight","Para1":255,"Para2":0,"Para3":255,"Para4":0}}
+返回: {"ret":0,"rid":17,"data":{"Ret":0,"Val":""}}
 
-9)、请求只传入5个参数方法
+18)、请求只传入5个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5分别对应参数1、2、3、4和5的数值
 福昕OFD版式办公套件OCX 调用打开文档
-{"req":"OCX_Invoke5","rid":8,"para":{"Name":"openFile","Para1":"d:/zorro/test.pdf","Para2":"0","Para3":"","Para4":"","Para5":""}}
-返回: {"ret":0,"rid":8,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke5","rid":18,"para":{"Name":"openFile","Para1":"d:/zorro/test.pdf","Para2":"0","Para3":"","Para4":"","Para5":""}}
+返回: {"ret":0,"rid":18,"data":{"Ret":0,"Val":""}}
 
-10)、请求只传入6个参数方法
+19)、请求只传入6个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6分别对应参数1、2、3、4、5和6的数值
-{"req":"OCX_Invoke6","rid":9,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":""}}
-返回: {"ret":0,"rid":9,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke6","rid":19,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":""}}
+返回: {"ret":0,"rid":19,"data":{"Ret":0,"Val":""}}
 
-11)、请求只传入7个参数方法
+20)、请求只传入7个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7分别对应参数1、2、3、4、5、6和7的数值
-{"req":"OCX_Invoke7","rid":10,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":""}}
-返回: {"ret":0,"rid":10,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke7","rid":20,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":""}}
+返回: {"ret":0,"rid":20,"data":{"Ret":0,"Val":""}}
 
-12)、请求只传入8个参数方法
+21)、请求只传入8个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8分别对应参数1、2、3、4、5、6、7、8的数值
-{"req":"OCX_Invoke8","rid":12,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":""}}
-返回: {"ret":0,"rid":12,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke8","rid":21,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":""}}
+返回: {"ret":0,"rid":21,"data":{"Ret":0,"Val":""}}
 
-13)、请求只传入9个参数方法
+22)、请求只传入9个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9分别对应参数1、2、3、4、5、6、7、8、9的数值
-{"req":"OCX_Invoke9","rid":13,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":""}}
-返回: {"ret":0,"rid":13,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_Invoke9","rid":22,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":""}}
+返回: {"ret":0,"rid":22,"data":{"Ret":0,"Val":""}}
 
-14)、请求只传入10个参数方法
+23)、请求只传入10个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10分别对应参数1、2、3、4、5、6、7、8、9、10的数值
-{"req":"OCX_InvokeA","rid":14,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":""}}
-返回: {"ret":0,"rid":14,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeA","rid":23,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":""}}
+返回: {"ret":0,"rid":23,"data":{"Ret":0,"Val":""}}
 
-15)、请求只传入11个参数方法
+24)、请求只传入11个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11分别对应参数1、2、3、4、5、6、7、8、9、10、11的数值
-{"req":"OCX_InvokeB","rid":15,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":""}}
-返回: {"ret":0,"rid":15,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeB","rid":24,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":""}}
+返回: {"ret":0,"rid":24,"data":{"Ret":0,"Val":""}}
 
-16)、请求只传入12个参数方法
+25)、请求只传入12个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12分别对应参数1、2、3、4、5、6、7、8、9、10、11、12的数值
-{"req":"OCX_InvokeC","rid":16,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":""}}
-返回: {"ret":0,"rid":16,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeC","rid":25,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":""}}
+返回: {"ret":0,"rid":25,"data":{"Ret":0,"Val":""}}
 
-17)、请求只传入13个参数方法
+26)、请求只传入13个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13的数值
-{"req":"OCX_InvokeD","rid":17,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":""}}
-返回: {"ret":0,"rid":17,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeD","rid":26,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":""}}
+返回: {"ret":0,"rid":26,"data":{"Ret":0,"Val":""}}
 
-18)、请求只传入14个参数方法
+27)、请求只传入14个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14的数值
-{"req":"OCX_InvokeE","rid":18,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":""}}
-返回: {"ret":0,"rid":18,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeE","rid":27,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":""}}
+返回: {"ret":0,"rid":27,"data":{"Ret":0,"Val":""}}
 
-19)、请求只传入15个参数方法
+28)、请求只传入15个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15的数值
-{"req":"OCX_InvokeF","rid":19,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":""}}
-返回: {"ret":0,"rid":19,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeF","rid":28,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":""}}
+返回: {"ret":0,"rid":28,"data":{"Ret":0,"Val":""}}
 
-20)、请求只传入16个参数方法
+29)、请求只传入16个参数方法
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15、Para16分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15、16的数值
-{"req":"OCX_InvokeG","rid":20,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":"","Para16":""}}
-返回: {"ret":0,"rid":20,"data":{"Ret":0,"Val":""}}
+{"req":"OCX_InvokeG","rid":29,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":"","Para16":""}}
+返回: {"ret":0,"rid":29,"data":{"Ret":0,"Val":""}}
 
 5、事件通知：
 A、OCX控件的事件通知：

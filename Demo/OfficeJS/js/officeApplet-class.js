@@ -142,7 +142,7 @@ class officeApplet{
                 "BarH": 0,
                 "ScrollTop": 0,
                 "Web": {"Edit": edit,  "User": "zorro", "Cookie": ""},
-                "Open": ServerOpenFile,
+                "Open": encodeURIComponent(ServerOpenFile),
                 "Option": this.openType
             }
         }
@@ -211,7 +211,8 @@ class officeApplet{
         let msg = {
             "req": "Office_Save",
             "rid": officeApplet.rid,
-            "para": {}
+            // 如果需要上传服务器保存，这里需要设置上传服务器Url地址及Auth权限等参数，Para中设置后台需要的自定义参数
+            "para": {"Auth": "","Cookie": "","Para": {"DocID": 1},"Url": "http://www.yuanofficer.com/upload.php"}
         }
         this.ws.sendMessage(msg)
     }
@@ -585,17 +586,17 @@ class officeApplet{
             "rid": officeApplet.rid,
             "para": {
                 "Name": "PageHiOffice—文档在线编辑组件升级包",
-                "Date": "2025-03-11",
-                "Desc": "1、优化对Windows Server 2022及2025系统的兼容性，优化对Firfox浏览器的兼容性；2、解决官方实现的内嵌网页小程序在一些特定错误下退出导致浏览器界面无法操作问题；3、优化PageHiOffice网页组件关闭释放及切换文档打开稳定性，解决可能报打开错误问题，解决快速重启组件可能提示插件未加载问题，Excel及PPT增加预保存通知；4、优化多线程下载稳定性....",
+                "Date": "2025-04-08",
+                "Desc": "1、升级Sqlite数据库引擎到最新版本，解决底层库在断开WS连接时可能导致程序的偶发崩溃问题；2、优化PageHiOffice网页组件调用自动化接口通用方式，支持动态属性及方法调用；3、PageHiOffice网页组件文字模块支持插入图表功能并优化保存通知，解决微软Office的OLE嵌入方式多实例打开或同时桌面版启动打开时的界面操作问题；4、PageHiOffice网页组件解决保存时可能提示加载项错误问题，解决启动时设置修订修改文件保存标记状态问题...",
                 "DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
                 "Open": "http://local.zorrosoft.com/officeJS",
-                "MD5": "8682BABAD04519D76B2E8A73910D8FC8",
-                "Version": "2.2.17.2",
-                "Size": 35553280,
+                "MD5": "F72127F270828F54FC55F43CB05C0147",
+                "Version": "2.2.17.3",
+                "Size": 36601856,
                 "HideIns": 0,
                 "Cookie": "",
                 "Auth": "",
-                "TK": "8887246C847F7D673EB1562FCDE0FE136344D66B839D862439A5DAE7623E4B8760CB144264FAAAECC9025323AFBCE59CCDC21991BD2A6142D73F6EC129374E330D06C8797B14ED940403D45637F1DE05BB33FB38CF42749EA371DD8374AAFA640B9C1774647CEE36A5620AAAA6DF1BD2F69B0E72BD684FFC361AD978D410EB8B35F6954CB564564F22AC6190ED19A413CBF0B4BEDACE756FD324C51CEE865871C3FAE978910FD015E73735F40756633892C11DC1E14AEE330C3CFF6106569D4855ED3930353E8FF8BE19E3DE2209215E8FBA1CE401A18CDE6C8FE40E518DC49D7258659FA7A38202710360B417AD50734C3850A41F1C1150ECB07543680595F5"
+                "TK": "5C4288BFFAE43AE599D83AD8E2F91FA6C83428F219EBE4FA31F59512BF6A86C439FBFFC6890F254B4EB26ED354C89946778E9D9957CE5C977C22BBF108B274F93E9ACDD034D38FF26966D4ABDD537DCC40C443AB19138684EC963E639880119714E06075E00CE55CD092A10E5FF4A7AF41E2243F69D8FDEBB08E7CE882D57878AE3B2682EBFB7C0BD38346576C0867C32165EF4665A4258FFB75C061BA3DD4978687F2097700DC85BD111F8BEE9E98A2E991EDB9E7C5496A8859683DE89DA55A5584A55F51C2EDE29522421E41479F960B3FDD7381CA5F825102126246BB4052E135BCF7A1819A005446F3B24C2A1C83D4BD644F7534925765D02B73F59A7BCA"
             }
         }
         this.ws.sendMessage(msg)
