@@ -81,10 +81,11 @@ ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
-ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，
-File为指定截图文件保存路径或扩展名
-Base64指定为1时代表返回BASE64编码的图像内容
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+ID:启动小程序时返回JSON中的aid实例值
+File:指定截图文件保存路径或扩展名
+Base64:指定为1时代表返回BASE64编码的图像内容
+Flag:如嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可额外指定为1看效果，此外如果需要多次或框选抓图，可叠加2或4单独启动抓图工具来实现
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"Flag":2,"File":".jpg"}}
 
 8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
@@ -94,13 +95,13 @@ ID为通过Wrl_AppletStart指定OfdWebApplet启动小程序时返回JSON中的ID
 1)、请求安装OFD网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"OFD网页小程序","PID":"OfdWebApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的OFD内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌数科等OFD阅读器","DownAddr":"http://local.zorrosoft.com/Files/Net/OfdWebApplet.pid","MD5":"AF64FD44D3C5C35D8B6A8C90E5417EF5","Version":"2.2.17.2","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"67181553C591F3764DBDAE27AA6BC2380F48E999B7AC3481A92A31847BDE69896B7EF52B9DBD296338BC76D02CBC127965F116B58BCDA72CCC678A1901159620D447C1D410CD1CFFB863EFC47379D46A8DC67F9D5A1FA28218AE53A068256D6B7E943CF56B871AD2AF0865F444A9ED9771DE7714A30596238464E694493879B810183C5513ED162940B939970FB58D23C524DBFA2570D87179F9CA45B942C3C7C69AEDAC2DD61B5CA31EAD5C48E2F7D6126F55A9A4F8E5ECACFDE6362F055702A34FDFA606B4FB8596709891CF537CAC132815B578A79569DD40746217454D332291AEB6B768E3395D31B114C71601AA3F6EF38CACF4298B8EC955FF98D3FD6D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"OFD网页小程序","PID":"OfdWebApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的OFD内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌数科等OFD阅读器","DownAddr":"http://local.zorrosoft.com/Files/Net/OfdWebApplet.pid","MD5":"57799941CEC1F69B4BFEAD5F64084DA2","Version":"2.2.17.5","Size":589824,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B4377CF98EE5F4219852780C24AD4D985AD585F556A11FFE548FEECA7CDA67692EA41090C91CF9589353A5B72CD40BBD375FAA913AC656B15F01F2DD46187C336DCF462929FD7C2AEB7B4B9C6E292D4C9D22CED282EADC087944249C308B4C3DBFCFF124C5CC2448A8A344B69C1F5AD00C89D9E5627680AAE23291D5D87FAFA8F61699332EEE0EE882616CC6F10C434A3A74329F0CF61E9136D7769D7D8B191784C95D23D9D5088B30F101FF389E4C5B23E99BB8E274BA4968F63A4B0F9BE3CA61B5ECE7468923011710363ED01C3EDB65785B564F000321FB1B4F272F9A66E88EEB390D336BE4887D2FCB46381F037D9C31F19A431F572F305ED50279CFC65D"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级OFD网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"OFD网页小程序","PID":"OfdWebApplet","Date":"2025-03-07","Desc":"PluginOK之上跨浏览器的OFD内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌数科等OFD阅读器","DownAddr":"http://local.zorrosoft.com/Files/Net/OfdWebApplet_Update.pid","MD5":"7C33B9D83ACF6540666C933420863911","Version":"2.2.17.2","Size":557056,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"02DB85955042055B16F2397E34D3219B1F5F7182E6218AEBC64973BA1B312580450DA8C02DDEFA730157989055DBC0E7D15921ABF69421A24E68744CE5C5335AB16A6453009172CDD970CBBBCFC65E303C7A8886A981D4EDB7D04D3B735B336C27A4AD3454BB48E7DAD8232A28603645E5C5E481B11023536938DA87D3C496DD0775F950B37CEFA9D5C4C7F8B1674E90F44F965A1E1F07F819AEA4A96DBAC4F5F2986A46315CA6E4A60AD48A7A28A41D79C3F1D3916FC881A52F42EDA46AB061E7E520AAA4046777A40D87C0DA0A0664EC1BCCA20C6E9502195368D6E0B2062E3727C1C1652D5C71131AC0814994FCD42618333AF46CF5D41A27DCE59011EFF8"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"OFD网页小程序","PID":"OfdWebApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的OFD内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌数科等OFD阅读器","DownAddr":"http://local.zorrosoft.com/Files/Net/OfdWebApplet_Update.pid","MD5":"B51E753049AADFCFDD42583B6101E1D3","Version":"2.2.17.5","Size":589824,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"19760C8B335567FCE9A268236D72B07EAA19E8B1E359B1589FB0DDA5E036CDF17A1BD0A2A7E602620847CB8BCEA22013887523DE9453570807A4BA9781E969430FF5D77EDE55B156A9CAEB61939E8AAB933D5B223058DC8A93C64B058B9A26E9E14DDD6C0B3D4A15A09E6B64E460171FDD76535AB0E694C021C3FD7417B873A6EF4EB0F7EDB54B4CD21F22CA9BC63C1D0A0E4F73BACBB1640959BC630BBF87F8DBD19F923B3800A3C4C23D3F70CB24340A3EFABA25DFA3173D171AED88B16DEBF46F78B058223F0FEF35FE3110B2068D678268A3DCD791650E5F4A5838952E3ED8BAF6EEDC544244770E7202DCB6CDD002658520A3CFA59B7CD26E67CC0F00C6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -369,6 +370,14 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"OFD_NetFile","rid":104,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/CadDoc/test.dwg","Url":"http://local.zorrosoft.com/Files/test.dwg"}}
 {"req":"OFD_NetFile","rid":104,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":104,"data":{"Ret":"0"}}
+
+56) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+{"req":"OFD_FloatWebInfo","rid":56,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"OFD_FloatWebInfo","rid":56,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":56,"data":{"Ret":0}}
 
 70) 请求退出小程序 福昕OFD版式办公套件和数科OFD阅读器支持
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可

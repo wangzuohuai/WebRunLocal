@@ -1,6 +1,9 @@
 #pragma once
 #include "BaseFuncLib.h"
 
+/// 通知抓图就绪
+#define	WM_APPLET_SNAPOK				WM_USER + 2990
+
 ///通知小程序关闭
 #ifndef WM_APPLET_CLOSE
 #define WM_APPLET_CLOSE					WM_USER + 3000

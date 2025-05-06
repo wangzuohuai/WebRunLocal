@@ -111,10 +111,11 @@ ID为Wrl_CatiaApplet启动小程序时返回的ID值，Alpha为透明度百分�
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
-ID为启动小程序时返回JSON中的ID值，
-File为指定截图文件保存路径或扩展名
-Base64指定为1时代表返回BASE64编码的图像内容
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+ID:启动小程序时返回JSON中的aid实例值
+File:指定截图文件保存路径或扩展名
+Base64:指定为1时代表返回BASE64编码的图像内容
+Flag:如嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可额外指定为1看效果，此外如果需要多次或框选抓图，可叠加2或4单独启动抓图工具来实现
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"Flag":2,"File":".jpg"}}
 
 8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
@@ -124,14 +125,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装CatiaCAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"B1A6E2200EDB0C7E5E022C63E13B70EF","Version":"2.2.17.3","Size":2293760,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"87E22C93592FA7F419005873E13F13F33CFFC20215CAB64332FE6D857FA00D1702BAFF266C170EDE6BC12DC1089515B351299CD51A4C14554C7BF9A537649ACD60895E4D6090CE352125D362DC2575DE5F12574EACBFD3D032F8AEAB5E37F085AAD56627DF19902021316FB24603C0B948E200C4D2EA37B9960F727ADBD69487735FF20160F0EED04EDC180A6E50F43B732FB4215ABAA191D97EDCDD4C8C7C1D69C211C5406C1019294AA8710CAB0F28031E404FB0FEFD83096293F9EFC374D66B2FDFDDC7908AA0B433437D62E59BC74A0FBEE7F4FF86961A644FF8B1D5621F3EBAA634464550AC853D12E5E56E1DD82A6F9B628E6EBEFE44C27370E3370FAE"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet.pid","MD5":"4F945EFF9C17336D8727098849FF164B","Version":"2.2.17.5","Size":2359296,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"088C1D2E5169ACC83A768B78D0D8466215F82EB2004C35B36F72F6196EA128C32AD578F27BB1A5785EE3DC5EFEA420A71270FD503F7C1063F95C538095BD2A1490AADDCBE9C789149276E0284F41C2671CFD62266B7A6F902AC7BBF4895A288CECAF2E459A04D58EA89B52A9DC169C2E844D8626B31B618B5BE2EF9FE719150B0C5C372AA2F1C5E54046B69C90467BE77A26FDA487EDB7F24983ADA2DB603523D909599774E69572CFF1C3DD1F4BF396C9FA0BE2B1E480E99D973F2365A534E3780929269D9C504826F7124D5F8D20E310FF9BE2079D6825792B68C50EB37177A1C78AF42CC09E51393BE3C69EC28710BCBD54FA1D2B670A32A0680873E94C58"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级CatiaCAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"B525DA187AE950B1C936B17CB27CFF78","Version":"2.2.17.3","Size":2293760,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B64B792F0C95A05EE89826EA995FFE8D0890EE8D38C0FA0209CA4C9773888E4783DD6289F593157094F2681142848F105B5E91C06F39642931D5779EBD91FB0338695D7351D9940A73252DE6D421EE4364C45C98A68758F829CF37B0E9B37E2A5BCE81FBA6AC4B9F284DC9BE8EE992EDCB6EC4F8D5ABA32C97EC365D414FE70444BA739390B51A8BBD7358883470976814C97AC48366DB9006940BF6EBC78C408AC0DC6F4F0C49820B8923D904FB4C9A40E388795B7BAAE8BE125346BFC17C9E992BA202B28CDA2DF58962ABAB09537B001581CD6B94DCDE0F56FE19A8A2CF3964BF100AAED409DC48E0F692F8C5BFDAFBB9F8B5ABD0A8CFE08B7C3083CC9D13"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"CatiaCAD内嵌网页组件","PID":"CatiaCadApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的CatiaCAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Catia等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/CatiaCadApplet_Update.pid","MD5":"D55F29538FAEB028AE1DCC8028430F2D","Version":"2.2.17.5","Size":2359296,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9A996F7BEAA0311331087F9BD94D1941CAEC3ABB7CB75FFD1B2931343EAFFE79426A078D0BF5CA507CDBB15AFDB7358E3B42AE7E753F40872733DD628BC969DB661229EC5B69F9134FE6A27C4CB9C3A629607A08A3AC9021183A99060AD3A6957D2C60B926D427EFA87942A9A91B257884B04F9013F886E717E31A2D2C8846EDDE753074BFAEE3A02AD7B6F2C0A8A93C7DFAE6DE8415C1321C5731DE3947F76B86C92EB494D37D5A822CC780BBA9F67D14134B5CA57577A37F19E161C2B2ECE96FE39792445935E26B045E76076D308C3A07A40143BFF29DBBE44E0378C9DD681F967DDF89074593A08655F790683C3FA2C05E411BBF572292EBEBD7FEB53C97"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -192,6 +193,14 @@ Wait为等待多少秒自动消失 0代表不自动消失
 Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
 {"req":"CAD_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
 返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+
+30) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+{"req":"CAD_FloatWebInfo","rid":30,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"CAD_FloatWebInfo","rid":30,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":30,"data":{"Ret":0}}
 
 以下是未单独封装VBA接口功能的通用请求方法
 80)、请求获取属性值

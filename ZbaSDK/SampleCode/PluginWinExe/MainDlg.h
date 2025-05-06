@@ -136,6 +136,7 @@ public:
         MESSAGE_HANDLER(WM_APP, OnInitConn)
 		MESSAGE_HANDLER(WM_TIMER, OnTimer)
 		MESSAGE_HANDLER(WM_APP_OPENURL, OnOpenUrl)
+		MESSAGE_HANDLER(WM_APPLET_CLOSE, OnAppletClose)
 		MESSAGE_HANDLER(WM_PROXYSEREREVENT_NEWCONNECT, OnNewConnect)
 		MESSAGE_HANDLER(WM_PROXYSEREREVENT_RECMESSAGE, OnRecMessage)
 		MESSAGE_HANDLER(WM_PROXYSEREREVENT_RECTEXT, OnRecText)
@@ -159,6 +160,7 @@ public:
     LRESULT OnInitConn(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/ );
 	LRESULT OnOpenUrl(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/ );
 	LRESULT OnTimer(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	LRESULT OnAppletClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
 
 	LRESULT OnNewConnect(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnRecMessage(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);

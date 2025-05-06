@@ -23,7 +23,7 @@ Url：加载网页组件所在的网页实际地址，在网页中指定小程�
 Flag掩码标记：1指定新标签加载(1和16都不指定时为当前页加载) 2显示标题栏 4不自动裁剪越界窗口 8自动适配网页高度和宽度显示 64启用Web参数 128防截屏 256强制显示到副屏 512允许同一网页加载多实例
 Web：打开配置(新增方式)，可代替Url使用，Flag值+64使用此配置，使用Web时必须指定Left、Top、Width、Height的值
 Web中参数说明：
-	Edit 代表编辑权限(除1、512、1024都支持外，其它只有WPS文字才支持，1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
+	Edit 代表编辑权限(除1、256、512、1024都支持外，其它只有WPS文字才支持，1024只有在OLE嵌入方式下生效 其中1、2、16、32、64、128互斥) 1只读方式打开 2打开后自动处于修订模式 4禁止另存 8禁止打印 16禁止复制内容 32只能修订 64只能批注 128预览模式 256禁止粘贴内容出编辑窗口 512在PageHi菜单支持上传下载文档 1024安全文档(载入后和上传后自动删除本地文档) 2048禁用全屏编辑
 	Hide 代表隐藏的界面元素(目前完整嵌入模式下只支持8和16) 1隐藏菜单 2隐藏标准工具栏 4隐藏格式工具栏 8隐藏状态栏 16隐藏右键菜单
 	User 代表编辑文档的用户名称 
 	PW 代表打开文档需要的密码 OLE嵌入方式下不支持
@@ -103,10 +103,11 @@ ID为Wrl_OfficeApplet启动网页组件时返回的ID值，Alpha为透明度百�
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对网页组件窗口内容进行截图：
-ID为启动网页组件时返回JSON中的ID值，
-File为指定截图文件保存路径或扩展名
-Base64指定为1时代表返回BASE64编码的图像内容
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+ID:启动小程序时返回JSON中的aid实例值
+File:指定截图文件保存路径或扩展名
+Base64:指定为1时代表返回BASE64编码的图像内容
+Flag:如嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可额外指定为1看效果，此外如果需要多次或框选抓图，可叠加2或4单独启动抓图工具来实现
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"Flag":2,"File":".jpg"}}
 
 8)、请求缩放网页组件，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当前网页组件所用的缩放百分比，一般和系统缩放比例一致
@@ -116,14 +117,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-04-08","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"1E57960CBD6D86308B462BD209CC1A3C","Version":"2.2.17.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1E6C2F8858A88918CE6933FF8C92CDBECF064EBCA51F53623FD4F7EACA2F29EBF8FE962CDE8BABAFA94D56397E33D5C3083F925BDDD18A0D4C007FAB12A769068E584C4FB0C7ACB950640D2D54DC89B1FC7D8BA31B06CA10BC87B25A589126E7997B51CBE0ED314E4459A148C345F472D495A86FC078329B432935D0E0167C43BF7B9D9C2E279574E8610E4DFC17C5B1149F993A4E956AB1B2AE6D9E1A1B7CA73EEF025AA5732EDD0E019A93A9F18B2AC948561F37CE2195176D7D752CA81FDE13A5F9E3A7BD688C575BC9CC29B10306C6AEAB84427130F5CEE654C5BA557511ED478A18863BFD2F13B4DFEC642CB15EE76555FB24D0E312E7275817E118CB8D"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"1D138BAD5D03BDF757F9340CC55B6956","Version":"2.2.17.5","Size":5275648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"82F76E856ECE9DC771AF56BD6645B2F1272F4ADA7CAC03CE4AFF43B903FFBEC40BDA1A0CEDC2025DBFC018FBAB5B5A2831C568E8EF1004D03F0FEA6213F02A3D6D470954A42F14AC0DCC9A28DE31084791F902050E5F10742DE0AA11EC6C64366DCDCC91C8F8E68FA44F572807EEAA34F736A28EA9AE69897BE7C02893AA3E1BEF9758C47718A738411CDE44A3DC3F981BF230B67CB4FCBC6FC55062935B29C0F7FD18B1DE2F7F72A77C018B522DF9E32B194342BA7BFEF4B194013E8A02EC49E9F6AB2A70F9D0CABE0A0248AFA24BE11A4554F66C36F5683727BE717EE4E145EA5B449F07C15A32D47CE9E5FCB4AE8C94A91CC4CC43709A8BBE71BE8D3C7FBE"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-04-08","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"215A798B18BE0E71F2F798154227980D","Version":"2.2.17.3","Size":5472256,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"676CC2A29D59623DCF7921BDE58D68D22481498B81BC9773C9E1C33BB0570A79E4E3D4444D7A7A4C0B57590F122E30D36265668446E30A114534E63F9375E3AE2833BC1B08D3CFA6D73C05CB8BEE9ED81BC62D18F154673019C967F003878203AD82A4ABCB4A071B3457AF8F8994E7930FEB761091122C2180CBDC40016379F5552BEF48F6514C1B2E2F70B7FE854D801C05EB883F2444B9B709B2716000993DBBC9BB88ADEF01D1CD0C40FA1F8608AD7CB6A293EF719867A180495254BA1AE837B6FB540D34307E544D9DC95C454FA881BA588FE667336478AD2473B072B4DCC5651B3FDCF7EB5CBED60A638885F5DCBC9EEC13D3F7C56487C476E3E1BBE32A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"430437250715FE8618EEC1ACC6D9EE26","Version":"2.2.17.5","Size":5275648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"59E2FA10BF742CEA1A7C2165BC189258F450760948ECDB37940BE3705C9DED8E2D5C03837F618173D8ED707FD3AB54CAB35269728BB6EEBBF58607B9C87A6D4273343068B9694BDAFBE60DCA42D431A8158D6BEFF79AEF876611E11AE8FFA1E141E2948FD9E7014CA32AFBA8E1EE10FF0D6C351CEF548CD21E88C60E35823FFA987D25C7ED9115BB300A26FD1D5D9AA23C8F6A8FFE1863AD941FE21626EE9720B4C5DC2513A70D1C3FC8512790C446E5CB7187E02F70968CA99864BBA9BFB2D274B544E5A44B2C0BDB26F1A7FC14F57FD5F4E38453445FEC6A304C79262DE0805959C5672E71BF3F1744024A9E89005036FC6B3211CE64B09D86EE178FFB1482"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -259,19 +260,23 @@ Text为添加批注的文字描述
 {"req":"Office_InsertComment","rid":19,"para":{"Text":"批注内容"}}
 返回：{"ret":0,"rid":19,"data":{"Ret":"0"}}
 
-20）请求获取当前文档书签数量，适用于WPS文字软件
-{"req":"Office_MarkCount","rid":20,"para":{}}
+20）请求获取当前文档书签数量，适用于Word软件
+Hidden 是否包含隐藏书签
+Sort 排序类型 0默认按名称 1按位置
+{"req":"Office_MarkCount","rid":20,"para":{"Hidden":0,"Sort":0}}
 返回：{"ret":0,"rid":2018,"data":{"Ret":"0"}}
 
-21）请求判断当前书签是否存在，适用于WPS文字软件
+21）请求判断当前书签是否存在，适用于Word软件
 Name为书签名称
 Encode 默认0,1代表书签名使用了UrlEncode编码
 {"req":"Office_MarkIsExist","rid":21,"para":{"Name":"Caption"}}
 返回：{"ret":0,"rid":21,"data":{"Ret":"0"}}
 
-22）请求获取当前文档所有书签，适用于WPS文字软件
+22）请求获取当前文档所有书签，适用于Word软件
 Encode 默认0,1代表书签名及内容使用了UrlEncode编码
-{"req":"Office_AllMark","rid":22,"para":{"Encode":0}}
+Hidden 是否包含隐藏书签
+Sort 排序类型 0默认按名称 1按位置
+{"req":"Office_AllMark","rid":22,"para":{"Encode":0,"Hidden":0,"Sort":0}}
 返回：{"ret":0,"rid":22,"data":{"Ret":[{"Name":"Caption","Text":"[请输入标题]"},{"Name":"Content","Text":"[公文内容]"},{"Name":"Description","Text":"[公文说明或描叙]"},{"Name":"Sec","Text":"[公文密级]"},{"Name":"Subject","Text":"[公文主题词]"]}]}}
 
 23）请求指定序号的书签名称或指定名称的文字内容，适用于WPS文字软件
@@ -443,11 +448,11 @@ Wrap:搜索结束后动作类型 2:wdFindAsk(搜索完所选内容或者区域�
 返回：{"ret":0,"rid":44,"data":{"Ret":"0"}}
 
 45）插入书签，适用于WPS文字软件
-Name 书签名称，书签位置就是当前光标位置，必须做UrlEncode编码
-Content 插入书签内容，必须做UrlEncode编码
-Hidden 是否隐藏书签
-Sort 排序类型 0默认按名称 1按位置
-{"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Hidden":0,"Sort":0}}
+Start 书签开始位置
+End 书签结束位置 如果没指定Start和End，插入的书签位置就是当前光标位置或选中内容区域
+Name 书签名称，不能为空，书签名称的命名有其特定要求：它必须只包含字母A-Z, a-z、阿拉伯数字0-9以及下划线_。而且必须以字母开头，如果包含中文或其它特殊字符必须做UrlEncode编码
+Content 插入书签内容，可选参数，如果包含中文或其它特殊字符必须做UrlEncode编码
+{"req":"Office_InsertMark","rid":45,"para":{"Name":"Test","Content":"[InsertMark]","Start":0,"End":0}}
 返回：{"ret":0,"rid":45,"data":{"Ret":"0"}}
 Ret 返回0代表成功
 
@@ -785,22 +790,24 @@ Name 指定属性名称 Application默认作为顶级存在，如遇到取子接
 
 101)、请求设置属性
 Name 指定属性名称 如遇到设置子接口的，名称增加子接口的名称，支持多级
+设置应用窗口是否可见
 {"req":"Office_PutProperty","rid":101,"para":{"Name":"Visible","Val":"-1"}}
+设置WORD文档是否已保存
 {"req":"Office_PutProperty","rid":101,"para":{"Name":"ActiveDocument.Saved","Val":"-1"}}
+设置PPT演示播放界面启用激光笔
+{"req":"Office_PutProperty","rid":101,"para":{"Name":"ActivePresentation.SlideShowWindow.View.PointerType","Val":"2"}}
 返回: {"ret":0,"rid":101,"data":{"Ret":0}}
 
 102)、请求无传入参数方法
-Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.play 下同
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如当前文档打印预览名称用ActiveDocument.PrintPreview 下同
 DID 也可以指定方法序号
-{"req":"Office_Invoke0","rid":102,"para":{"Name":"ScreenRefresh"}}
 {"req":"Office_Invoke0","rid":102,"para":{"Name":"ActiveDocument.PrintPreview"}}
 返回: {"ret":0,"rid":102,"data":{"Ret":0,"Val":""}}
 
 103)、请求只传入1个参数方法
-Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用VLC播放列表播放方法名称用playlist.add 下同
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用当前文档兼容模式名称用ActiveDocument.SetCompatibilityMode 下同
 DID 也可以指定方法序号
 Para1 对应参数值
-{"req":"Office_Invoke1","rid":103,"para":{"Name":"CleanString","Para1":"Test"}}
 {"req":"Office_Invoke1","rid":103,"para":{"Name":"ActiveDocument.SetCompatibilityMode","Para1":"15"}}
 返回: {"ret":0,"rid":103,"data":{"Ret":0,"Val":""}}
 
@@ -808,7 +815,6 @@ Para1 对应参数值
 Name 指定方法名称
 DID 也可以指定方法序号
 Para1和Para2分别对应参数1和2数值，如果可缺省的值可以不传，比如只传Para1，下同
-{"req":"Office_Invoke2","rid":104,"para":{"Name":"KeyString","Para1":"","Para2":""}}
 {"req":"Office_Invoke2","rid":104,"para":{"Name":"ActiveDocument.Range","Para1":"1","Para2":"5"}}
 返回: {"ret":0,"rid":104,"data":{"Ret":0,"Val":""}}
 

@@ -6,7 +6,7 @@ class officeApplet{
         {aid: 0, rid: 4,ws1:null,ws2:null},
         {aid: 0, rid: 5,ws1:null,ws2:null},
     ]  //维护一个数组 用来保存Applet实例的aid
-    static rid = 1000 //每次请求都要传递一个rid 参数 这里弄成静态变量 每次累加一次就行
+    static rid = 1000 //每次请求都要传递一个rid 参数 这里弄成静态变量 每次请求自增就行
     // 加载类型 可先通过请求Wrl_OfficeInfo获得当前需要设置的值
     // 1启动微软Word 2启动微软Excel 3启动微软PPT 5启动Adobe Pdf Reader或福昕OFD版式办公套件 8启动福昕OFD版式办公套件的OCX控件打开ofd
     // 11启动金山文字 12启动金山表格 13启动金山演示 15启动Adobe Pdf Reader或福昕OFD版式办公套件 16启动WPS PDF程序打开pdf(不支持OLE嵌入方式，必须用WPS专业版)   18启动福昕OFD版式办公套件的OCX控件打开ofd
@@ -586,17 +586,17 @@ class officeApplet{
             "rid": officeApplet.rid,
             "para": {
                 "Name": "PageHiOffice—文档在线编辑组件升级包",
-                "Date": "2025-04-08",
-                "Desc": "1、升级Sqlite数据库引擎到最新版本，解决底层库在断开WS连接时可能导致程序的偶发崩溃问题；2、优化PageHiOffice网页组件调用自动化接口通用方式，支持动态属性及方法调用；3、PageHiOffice网页组件文字模块支持插入图表功能并优化保存通知，解决微软Office的OLE嵌入方式多实例打开或同时桌面版启动打开时的界面操作问题；4、PageHiOffice网页组件解决保存时可能提示加载项错误问题，解决启动时设置修订修改文件保存标记状态问题...",
+                "Date": "2025-05-06",
+                "Desc": "1、新增支持请求本机已安装软件信息列表；2、升级高级版内嵌小程序抓图功能，可支持多次框选区域抓图，支持幻灯片等全屏播放时即时抓图操作；3、改进高级版内嵌小程序启动过程中取消操作的资源释放问题；4、叠加透明网页功能扩展支持到PageHiOffice支持幻灯片播放时叠加显示；5、改进高级版内嵌小程序连续滚动操作及改变显示位置等实现；6、解决高级版个别情况下启动内嵌小程序释放后再启动时消息窗口句柄无效引发的启动失败问题；7、PageHiOffice网页组件表格及幻灯片程序支持禁止复制内容到其它程序选项，改进文字程序书签获取及插入接口，改进微软幻灯片播放体验效果...",
                 "DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
                 "Open": "http://local.zorrosoft.com/officeJS",
-                "MD5": "F72127F270828F54FC55F43CB05C0147",
-                "Version": "2.2.17.3",
-                "Size": 36601856,
+                "MD5": "9F3E94F3D9894C0958AEE7B94602F740",
+                "Version": "2.2.17.5",
+                "Size": 35487744,
                 "HideIns": 0,
                 "Cookie": "",
                 "Auth": "",
-                "TK": "5C4288BFFAE43AE599D83AD8E2F91FA6C83428F219EBE4FA31F59512BF6A86C439FBFFC6890F254B4EB26ED354C89946778E9D9957CE5C977C22BBF108B274F93E9ACDD034D38FF26966D4ABDD537DCC40C443AB19138684EC963E639880119714E06075E00CE55CD092A10E5FF4A7AF41E2243F69D8FDEBB08E7CE882D57878AE3B2682EBFB7C0BD38346576C0867C32165EF4665A4258FFB75C061BA3DD4978687F2097700DC85BD111F8BEE9E98A2E991EDB9E7C5496A8859683DE89DA55A5584A55F51C2EDE29522421E41479F960B3FDD7381CA5F825102126246BB4052E135BCF7A1819A005446F3B24C2A1C83D4BD644F7534925765D02B73F59A7BCA"
+                "TK": "5863CF89A0842C6148FBDB9237704F0F2C646CAB33A7D7F15C44171DBEE8DF2CD49946599A93A808BB0F2C0665072D5756AA24287657D18AC6648002247BE57C8898B7C655333DC4A45336BF000DD4D5236A83BD60E591BF2C1B7678BAB46D964CAA8054A0AEA00AA253771100621FF72F221FCD120A9D85C05F1BC86B661CAC2B7903EA8D176B5201C1E9CB6B9C3E3C0D692C78621177FEBE96349B0ACB2BF12A8461C1F7DF3A35FF89C7FF206282053642987B208CA950E4C9791998D25765FDEFD95106A3FEE3B0B42590E53412753F1E5D0D3E08620A0DF5AB839C25687B01D6F2DE75C6C14550C37A722E360DF6CE5AE58C0E161162F513B7E9183F769C"
             }
         }
         this.ws.sendMessage(msg)

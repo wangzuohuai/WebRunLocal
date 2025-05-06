@@ -107,7 +107,7 @@ public:
 
 	static CString GetStringFromRGB(COLORREF& rgbColor);
 
-	static COleDateTime GetFileWriteTime(const CString& strFilePath);
+	static BOOL GetFileWriteTime(const CString& strFilePath,COleDateTime &WriteTime);
 
 	static BOOL IsWin6432(HMODULE& hKernel);
 

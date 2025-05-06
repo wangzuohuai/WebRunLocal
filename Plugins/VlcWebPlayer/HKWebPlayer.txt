@@ -128,11 +128,11 @@ ID为Wrl_HKWebPlayer启动小程序时返回的ID值，Alpha为透明度百分�
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
-ID为启动小程序时返回JSON中的ID值，
-File为指定截图文件保存路径或扩展名
-Base64指定为1时代表返回BASE64编码的图像内容
-如果嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可以额外指定参数Flag为1看看
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".png"}}
+ID:启动小程序时返回JSON中的aid实例值
+File:指定截图文件保存路径或扩展名
+Base64:指定为1时代表返回BASE64编码的图像内容
+Flag:如嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可额外指定为1看效果，此外如果需要多次或框选抓图，可叠加2或4单独启动抓图工具来实现
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"Flag":2,"File":".jpg"}}
 
 8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
@@ -142,13 +142,13 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装RTSP网页多引擎播放器
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"C1E57FE25A5F52CB78DFF7AB6696391D","Version":"2.2.17.3","Size":5701632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B562505A7CD458BC9B3002F98DB327D1D57FDEA17A4887E66BCF73311C67C8F96296BF7AF1E747A81D8373041D59F62C293E6634A4B9B356575752A3E97591EFF2C8AD15ED1DE0B0EF1EBA48C6A1EC7532399D6B37D1FACEED62F206C21C61E72F9B1617891891FA7D36C695D49D203E28A340C82B6EE84DF1B5777BCCD7BE3D23071457A97FEEEA5E87455B60D0DE705046CD9427D9711436F88D2BDC0C3A2F71369F851B3BA586D5EC370415B7F61461737007E2F0957439F0DB5F714D6ED05CFE851E25BCF8FA6ED266EC8A23BC55CD8D9E9D0DA71D00CFB69977CD60E18D858E03584A061074D272913B50D48511DCDC1A8C8613BE5FAEAB83D22B76A88C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer.pid","MD5":"1D4ACC544C362F0EF7C7EAF666975832","Version":"2.2.17.5","Size":5767168,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"1C275F488E091D7A538A891A5F1BDDE6379121A64BD48F510963A61E5EC12FF385EF6D2382CFB73646BBCCADB9C72CE2C2659026CA737A3D8E44E2511FE2CA38B4B6D876BFD3541D4E5271001A5C58FFE2F03D1201F8D11180CBADFEF73EA22E495D6C0B8F77966C64870C9E1F7D208490AF9B9F4E81922066CC6C4BB3CAFBF496F066DB4D6A530A8D86FE7BA0B3F7586E8CFE4F3E1AE7A89AAC128123346DED4430E82B5F9AA873B10F5F4BC72F7DC5A374984062EE3FD2A9094BE204853B0E4F9EF71DBA52B34D1CBC56041864CBB2A6E65B470047AC24572F35977878C56BFFB235B3F78A1D76D379A5FF8E420549D549C011963EA17960BE4B8E98A1EFDB"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级RTSP网页多引擎播放器：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"07E95DCFEE6E8E27C030C2E3E0178DF7","Version":"2.2.17.3","Size":5701632,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4246509CDADA2E9E624D41CCE3451A6BBC621FC8AA3268F922B9EBA365050329F0ADDBB0C7A775EA3AF11D2201E866C83F18FD16D82E4DE479AC8B2514B5455968B012195679F67FE61FBB4A9CCE09974C67C60EA099E60BFDA9458002612468266EADFC6EAD93D065581C42D8E3561789776C37FDCA95DBC3034B864F570E61B993FAB09C243B69C1B512865BE39FD928FC9786B79E3F44C4A08628A4E7D8B079617A942BA904AC2A6F54D6B42238054F2011DEDD5007FF5A5F1DA7132D965D678CD411E617A9FC401E91936BD596F4F8D861FDD500BB39253B883C78A613F3CD33ED24D663394DB6A05997737A9E4E2AAEC83B049A27F0C18296D85E85DE96"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"海康网页播放器","PID":"HKWebPlayer","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的海康网页播放小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中低延迟多路播放RTSP流","DownAddr":"http://local.zorrosoft.com/Files/Net/HKWebPlayer_Update.pid","MD5":"2CB9280B373396BBA67A929A2B6E3ADE","Version":"2.2.17.5","Size":5767168,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"684C29608996F330D3EC1F3A12A0408000E6FC4BA864D739023F5BE2CAFB6482AD3AD9F40944537E2B64309E3B85EB6147547A8102593C2AD2B307FBE811070FEFAB53B978BE14156F5B759F04CE1A7254A2B7B072BFB3F5EE4BD30D0A6240913AFF48EECCAB84DC601A99B76BC18E0E27DFB9B0192A2275EA143D6819BB833CAA3DE91D052A07F41D342D453CD0C8DBB6727A29A5F5C11297A392C9E63B1D74AB54270BA244C8B01D97AB648F42392B1329C64B9A5B45EE53913EEFC4237AAB98B3B5F0649491844BF36C355965F24B30220409244BF94D9FCBD9B742166111D99D6661ECE638BCA63A6FB4E9E0E5231C83220FD7BA8A04CD6A405E1D2455EC"}}
 
 3)、请求卸载RTSP网页多引擎播放器：
 正式版需要添加TK校验，具体规则请参考SDK包中文档“PluginOK中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
@@ -764,10 +764,11 @@ X和Y分别指定局部显示的坐标 W和H指定局部显示的宽度和高度
 返回：{"ret":0,"rid":119,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":119,"ID":2,"data":{"Ret":0}}
 返回Angle为当前角度
 
-80) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+80) 指定ID窗口叠加网页中的渲染内容，Widows 7及以上版本操作系统支持叠加，8.0及以上系统支持透明，本机需要安装Microsoft Edge WebView2 Runtime
 Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
-Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Alpha 透明度(0-255) 默认255不透明，Windows 7系统及以下版本不支持透明
 Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+ID指定为0时为整个分屏区域叠加，实现分屏样式个性化显示
 {"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun"},{"ID":2,"Alpha":70,"Url":"https://output.jsbin.com/dopavun"}]}
 {"req":"Player_FloatWebInfo","rid":120,"para":[{"ID":1,"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}]}
 返回：{"ret":0,"rid":120,"ID":1,"data":{"Ret":0}} 和 {"ret":0,"rid":120,"ID":2,"data":{"Ret":0}}

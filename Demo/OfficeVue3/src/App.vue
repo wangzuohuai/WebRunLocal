@@ -98,6 +98,15 @@
         </div>
         <el-button size="small" @click="CheckUpdate" type="primary">校验升级</el-button>
       </div>
+      <div class="urlbox">
+        <div class="item">叠加透明网页</div>
+				  <div class="item input">
+					  <el-input v-model="newfloatweb" placeholder="这里演示叠加透明网页内容显示" size="small"></el-input>
+				  </div>
+				  <div class="item" style="margin-left: 10px;">
+					  <el-button type="primary" @click="FloatWebInfo()" size="small">叠加显示</el-button>
+				  </div>
+			  </div>
       <el-input type="textarea" :rows="5" placeholder="调试日志" v-model="DebugLog" class="DebugLog">
       </el-input>
     </div>
@@ -123,12 +132,13 @@ let rid = 10 		// 其它请求起始序号
 let runInfo = 1    	// 获取办公软件安装信息 一般只需要在启动时获取一次
 let RunFirst = 2  	// 办公网页组件启动实例1序号
 let RunSecond = 3   	// 办公网页组件启动实例2序号
-let version = ref('2.2.17.3')   //中间件版本信息
+let version = ref('2.2.17.5')   //中间件版本信息
 let ServerOpenFile = 'http://local.zorrosoft.com/Files/template.doc'
 let MyOpenDoc = ref('c:/OfficeDoc/test.docx')
 let MyOpenExcel = 'c:/OfficeDoc/test.xlsx'
 let SaveAsDoc = 'c:/OfficeDoc/SaveAs.doc'
 let ExportDoc = 'c:/OfficeDoc/test.pdf'
+let newfloatweb = ref('https://output.jsbin.com/dopavun')
 let InsertImgFile = 'http://zorrosoft.com/wp-content/uploads/2021/07/2021072709255099-1024x576.png'
 let PrintPathFile = 'c:/OfficeDoc/testprint.pdf'
 let StartSecond = ref(0)  // 是否启动了第二个网页组件实例
@@ -350,6 +360,7 @@ function close() {
   window.removeEventListener('unload', unloadHandler,false)
 }
 
+
 function GetOfficeInfo()
 {
   isConnService = true
@@ -513,6 +524,23 @@ function CloseFirstApplet()
       socket.pop()
     isDisConnect = false
   }
+}
+
+function FloatWebInfo() 
+{
+	rid++ // 增加请求序号
+	let msg = {
+		"req": "Office_FloatWebInfo",
+		"rid": rid,
+		"para": {
+			"Url": encodeURIComponent(newfloatweb.value),
+			"Rect":{"P":4,"W":300,"H":300}
+		}
+	}
+	if(aid2 > 0 && aid2 == curID)
+		socket[3].sendObj(msg)
+	else
+		socket[1].sendObj(msg)
 }
 
 function AppletFullEdit()
@@ -1293,17 +1321,17 @@ function SendUpdateJson() {
     "rid":rid,
     "para":{
       "Name": "PageHiOffice—文档在线编辑组件升级包",
-			"Date": "2025-04-08",
-			"Desc": "1、升级Sqlite数据库引擎到最新版本，解决底层库在断开WS连接时可能导致程序的偶发崩溃问题；2、优化PageHiOffice网页组件调用自动化接口通用方式，支持动态属性及方法调用；3、PageHiOffice网页组件文字模块支持插入图表功能并优化保存通知，解决微软Office的OLE嵌入方式多实例打开或同时桌面版启动打开时的界面操作问题；4、PageHiOffice网页组件解决保存时可能提示加载项错误问题，解决启动时设置修订修改文件保存标记状态问题...",
+			"Date": "2025-05-06",
+			"Desc": "1、新增支持请求本机已安装软件信息列表；2、升级高级版内嵌小程序抓图功能，可支持多次框选区域抓图，支持幻灯片等全屏播放时即时抓图操作；3、改进高级版内嵌小程序启动过程中取消操作的资源释放问题；4、叠加透明网页功能扩展支持到PageHiOffice支持幻灯片播放时叠加显示；5、改进高级版内嵌小程序连续滚动操作及改变显示位置等实现；6、解决高级版个别情况下启动内嵌小程序释放后再启动时消息窗口句柄无效引发的启动失败问题；7、PageHiOffice网页组件表格及幻灯片程序支持禁止复制内容到其它程序选项，改进文字程序书签获取及插入接口，改进微软幻灯片播放体验效果...",
 			"DownAddr": "http://local.zorrosoft.com/Files/Update/Office_Update.pid",
 			"Open": "http://local.zorrosoft.com/office3",
-			"MD5": "F72127F270828F54FC55F43CB05C0147",
-			"Version": "2.2.17.3",
-			"Size": 36601856,
+			"MD5": "9F3E94F3D9894C0958AEE7B94602F740",
+			"Version": "2.2.17.5",
+			"Size": 35487744,
 			"HideIns": 0,
 			"Cookie": "",
 			"Auth": "",
-			"TK": "5C4288BFFAE43AE599D83AD8E2F91FA6C83428F219EBE4FA31F59512BF6A86C439FBFFC6890F254B4EB26ED354C89946778E9D9957CE5C977C22BBF108B274F93E9ACDD034D38FF26966D4ABDD537DCC40C443AB19138684EC963E639880119714E06075E00CE55CD092A10E5FF4A7AF41E2243F69D8FDEBB08E7CE882D57878AE3B2682EBFB7C0BD38346576C0867C32165EF4665A4258FFB75C061BA3DD4978687F2097700DC85BD111F8BEE9E98A2E991EDB9E7C5496A8859683DE89DA55A5584A55F51C2EDE29522421E41479F960B3FDD7381CA5F825102126246BB4052E135BCF7A1819A005446F3B24C2A1C83D4BD644F7534925765D02B73F59A7BCA"
+			"TK": "5863CF89A0842C6148FBDB9237704F0F2C646CAB33A7D7F15C44171DBEE8DF2CD49946599A93A808BB0F2C0665072D5756AA24287657D18AC6648002247BE57C8898B7C655333DC4A45336BF000DD4D5236A83BD60E591BF2C1B7678BAB46D964CAA8054A0AEA00AA253771100621FF72F221FCD120A9D85C05F1BC86B661CAC2B7903EA8D176B5201C1E9CB6B9C3E3C0D692C78621177FEBE96349B0ACB2BF12A8461C1F7DF3A35FF89C7FF206282053642987B208CA950E4C9791998D25765FDEFD95106A3FEE3B0B42590E53412753F1E5D0D3E08620A0DF5AB839C25687B01D6F2DE75C6C14550C37A722E360DF6CE5AE58C0E161162F513B7E9183F769C"
     }
   }
   socket[0].sendObj(msg)

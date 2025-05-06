@@ -9,6 +9,70 @@
 
 #include "stdafx.h"
 #include "ProxyServerEvent.h"
+#include "EngineHelper.h"
+
+#ifndef WRL_APPLET_SNAPDATA
+/// 抓图共享数据区
+#ifdef WRL_VRSION_STANDALONE
+#define	WRL_APPLET_SNAPDATA		L"WrlSnapData"
+#else
+#define	WRL_APPLET_SNAPDATA		L"ZbaSnapData"
+#endif
+#endif
+
+#ifndef WRL_SNAPCMDFILE
+#define	WRL_SNAPCMDFILE			L"SnapCmd.json"
+#endif
+
+IJsonServicePtr GetSnapConfig()
+{
+	CString strSnapConfig = CBaseFuncLib::GetAppCfgPath() + WRL_SNAPCMDFILE;
+	//CBaseFuncLib::WriteLogToFile(strSnapConfig + L" GetSnapConfig");
+	if(1 != CBaseFuncLib::IsPathExist(strSnapConfig))
+		return NULL;
+	IJsonServicePtr spiJsonConfig = CEngineHelper::GetJsonService();
+	if(NULL == spiJsonConfig)
+		return 0;
+	CComBSTR bstrVal;
+	VARIANT_BOOL bRetFlag = VARIANT_FALSE;
+	spiJsonConfig->put_CodingType(CODINGTYPE_US2);
+	spiJsonConfig->ParseFile(CComBSTR(strSnapConfig),&bRetFlag);
+	if(VARIANT_FALSE == bRetFlag)
+	{
+		spiJsonConfig->get_ErrInfo(&bstrVal);
+		if(bstrVal.Length())
+		{
+			CBaseFuncLib::WriteLogToFile(bstrVal.m_str,L"GetSnapConfig");
+			bstrVal.Empty();
+		}
+		spiJsonConfig = NULL;
+	}
+	return spiJsonConfig;
+}
+
+BOOL SaveSnapConfig(const CString& strNodeName,const CString& strNodeVule)
+{
+	IJsonServicePtr spiJsonConfig = GetSnapConfig();
+	if(NULL == spiJsonConfig)
+		return FALSE;
+	HRESULT hRet = spiJsonConfig->put_StringValue(CComBSTR(strNodeName),CComBSTR(strNodeVule));
+	if(SUCCEEDED(hRet))
+		spiJsonConfig->Save(VARIANT_FALSE);
+	spiJsonConfig = NULL;
+	if(0 == strNodeName.CompareNoCase(L"Cmd"))
+	{
+		CString strEventName(WRL_APPLET_SNAPDATA);
+		HANDLE hSnapEvent = ::OpenEvent(EVENT_MODIFY_STATE,FALSE,strEventName);
+		if(NULL != hSnapEvent && INVALID_HANDLE_VALUE != hSnapEvent)
+		{
+			//CBaseFuncLib::WriteLogToFile(strSnapInfo + L" SetEvent");
+			::SetEvent(hSnapEvent);
+			::CloseHandle(hSnapEvent);
+			hSnapEvent = NULL;
+		}
+	}
+	return SUCCEEDED(hRet);
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // CProxyServerEvent

@@ -1,0 +1,239 @@
+COM自动化组件网页小程序，基于跨浏览器的原生小程序系统-PluginOK中间件(https://github.com/wangzuohuai/WebRunLocal)网络标准版开发，提供无需界面交互的、实现了IDispatch或IDispatchEx自动化接口的COM组件代理调用服务。可用在所有支持WebSocket连接的浏览器中，包括IE8及以上版本。
+
+1、PluginOK中间件的安装：
+1)、如果是exe的安装程序，请直接运行安装；
+2)、如果是绿色版的程序包，请解压到磁盘某个目录后，双击“InstallWrl.bat”进行安装；
+3)、安装完成时会启动PluginOK中间件服务，在安装目录下的Data子目录有ZbaService.txt日志文件输出运行情况；
+4)、此小程序不能运行在系统服务下，需要修改ZbaConfig.json里的NoService为1后安装，如已生成data目录下的此配置文件，需要同步修改。
+
+2、安装升级测试：
+1、安装COM自动化组件网页小程序
+请在测试网页输入框中，分别输入如下请求，然后点击发送，完成安装：
+
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ComWebApplet","PID":"ComWebApplet","Date":"2025-05-06","Desc":"Com Web Applet","DownAddr":"http://local.zorrosoft.com/Files/Net/ComWebApplet.pid","MD5":"B389EC0D73F2E4896E4E45C70218F9FB","Version":"2.2.17.5","Size":753664,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"89CACBFDA8F57EC5248760DC77D34350DDB11A9D537CD904161EEB7C123F7059003D283FA25628CAB62423697A0CE92CF8FAE65A36B264E5382031551648D4C6AE16B433772A0003AAA609DCD24B15A99A21AFDFEEFEB4404C332D89F76B48F0874BCFFFF139A3A777C7F496450B98C005333112926C8217E13BFF871DC23F89E354D210A3813C204B4F49F2CD3B2C19322E282AD2AE8DF40488E6A9A07B31FA0EEA4715745BC88914F38005EB52497F729E1AE0E3282B2DC6801BF709300BE35D4CFA9A98C51D74C1C0000A3E752DB937D7C5B33D20DA0B82823966172C19E67D078F051205BB508D1A452B0E262726622D3B4B2167364848D14F293E4FDB16"}}
+
+3、请求升级COM自动化组件网页小程序：
+
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ComWebApplet","PID":"ComWebApplet","Date":"2025-05-06","Desc":"Com Web Applet","DownAddr":"http://local.zorrosoft.com/Files/Net/ComWebApplet_Update.pid","MD5":"3F7C86BD4289CAFF109D5D969EEFD74A","Version":"2.2.17.5","Size":753664,"HideIns":0,"Type":2,"Cookie":"","Auth":"","TK":"46BF2363CD5A8EB0ED5A59CF38CEC4429D0DAB2D256B2B93A5F1CE46852921A654423221B1167658AC5B5E10FC5EEC084F98DDA2D67271463DE7462917194071AF595C0ED5AE25E381717AA6EDE4F6CEB9F6879186674EA955908C023CAFA21AA36C74CDA53E950C7637FD8E0C6D5C19AA85E2A305F781E2CA63568B607B48E3CC68709C1A4743407257E54AB4972EB07759773209652E5E590B63D5817D4D616F2C2996BE4F431A23E93313A20494D998954F8164F2E67340812F86DE7309FF35F64BDC791E0B18625496168C9042CB94905F95FE2484F73C00DA61662BDA7D6961BB38AFE4847A5718D2E976722E4557B6D95C220FD2AFDC9E92728AB85C1B"}}
+
+4、卸载小程序：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+举例：
+{"req":"Plugin_Remove","rid":50,"para":{"PID":"ComWebApplet","Type":2}}
+
+5、前端请求卸载中间件：
+正式版需要添加TK校验，具体规则请参考SDK包中文档“中间件安全解决方案.pdf”，可在SDK包中的打包程序ZbaPackage.exe的中间件维护生成带TK的请求。
+举例：
+{"req":"Wrl_Remove","rid":22,"para":{}}
+说明：连接主服务后可执行；
+
+6、连接请求COM自动化组件网页小程序服务：
+说明：以下功能请通过Web Socket连接后可执行，如默认侦听端口不是83(关于如何配置侦听端口，请参考SDK包中的文档“PluginOK开发者手册.pdf”)，请在连接地址中指定端口号进行连接。
+
+HTTP网页在线测试：http://local.zorrosoft.com   HTTPS网页在线测试：https://local.zorrosoft.com
+以隐藏启动微软Office软件Word自动化实例为例，pid为固定值 需要实际启动的自动化实例通过指定ProgID或ClassID实现
+打开测试网页，输入地址：
+ws://localhost:83?sid=112&pid=ComWebApplet&ProgID=Word.Application&flag=1 
+或者用
+ws://localhost:83?sid=112&pid=ComWebApplet&ClassID={000209FF-0000-0000-C000-000000000046}&flag=1 
+点击连接即可启动，启动后收到当前实例的侦听端口号通知，如下所示：
+
+1）支持的协议功能如下：
+A、请求退出小程序
+正常关闭小程序流程和方法：先在此WS连接里请求此功能，前端收到关闭此连接通知时，再关闭到中间件的WS连接
+{"req":"COM_Exit","rid":1,"para":{}}
+无返回
+
+B、增加事件接收通知
+EventID事件接口UUID
+EventList需要通知的事件ID
+以Word应用事件为例的EventID，不同版本可能用到的不一样：
+ApplicationEvents4 : 00020A01-0000-0000-C000-000000000046
+ApplicationEvents3 : 00020A00-0001-0000-C000-000000000046
+ApplicationEvents2 : 000209FE-0001-0000-C000-000000000046
+ApplicationEvents : 000209F7-0000-0000-C000-000000000046
+{"req":"COM_AddEvent","rid":2,"para":{"EventID":"{00020A01-0000-0000-C000-000000000046}","EventList":[2,3,4,5,6]}}
+返回：{"ret":0,"rid":2,"data":{"Ret":"0"}}
+
+C、移除事件接收通知
+EventList需要通知的事件ID
+以Word应用事件为例：
+{"req":"COM_RemoveEvent","rid":3,"para":{"EventList":[2,3]}}
+返回：{"ret":0,"rid":3,"data":{"Ret":"0"}}
+
+D、获取COM自动化组件程序文件版本
+{"req":"COM_Version","rid":4,"para":{}}
+返回：{"ret":0,"rid":4,"data":{"Ret":"0","Version":"3.0.3"}}
+
+E、网络文件操作
+Type 1上传文件 0下载文件
+Asyn 默认0，指定1时异步上传或下载，异步上传需要单独搭配文件操作小程序使用方可使用
+Agent、Cookie及Auth Cookie可传浏览器中的Cookie或通过Auth授权验证上传权限，默认为空，非空时需要先做UrlEnocde编码
+Local 上传文件本地路径或下载文件保存路径，如果不指定默认用当前打开文档，需要做UrlEncode编码
+Url 上传或下载的地址，需要做UrlEncode编码
+Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
+Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
+{"req":"COM_NetFile","rid":5,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/PdfDoc/test.pdf","Url":"http://local.zorrosoft.com/Files/test.pdf"}}
+{"req":"COM_NetFile","rid":5,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://www.zorrosoft.com"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
+
+2）支持的自动化接口功能请求
+A、请求获取属性值
+Name 指定属性名称 如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取当前选中的文字内容用Selection.Text 下同
+{"req":"COM_GetProperty","rid":11,"para":{"Name":"Version"}}
+{"req":"COM_GetProperty","rid":11,"para":{"Name":"ActiveDocument.Name"}}
+{"req":"COM_GetProperty","rid":11,"para":{"Name":"Selection.Text"}}
+{"req":"COM_GetProperty","rid":11,"para":{"Name":"Selection.Start"}}
+{"req":"COM_GetProperty","rid":11,"para":{"Name":"Selection.End"}}
+{"req":"COM_GetProperty","rid":11,"para":{"Name":"Selection.Information","Para1":"2"}}
+返回: {"ret":0,"rid":11,"data":{"Ret":0,"Val":""}}
+如果返回的是自动化接口，Val的值类似这样的：playlist={CatchDispatch}，需要继续调用这个自动化接口的属性或方法时，接下来的请求里指定参数{CatchDispatch}，否则默认调用控件主接口的，下同
+
+B、请求设置属性
+Name 指定属性名称 如遇到设置子接口的，名称增加子接口的名称，支持多级
+Val 指定属性值，字符串用""包含，字符串中包含\或"等字符时，需要加转义符\，数值型不用""，BOOL类型设置真时数值是-1
+当需要释放缓存的自动化接口时，Name可以指定为类似这样的playlist={CatchDispatch},Val设置为0或空
+设置应用窗口是否可见
+{"req":"COM_PutProperty","rid":12,"para":{"Name":"Visible","Val":"-1"}}
+设置WORD文档是否已保存
+{"req":"COM_PutProperty","rid":12,"para":{"Name":"ActiveDocument.Saved","Val":"-1"}}
+设置PPT演示播放界面启用激光笔
+{"req":"COM_PutProperty","rid":12,"para":{"Name":"ActivePresentation.SlideShowWindow.View.PointerType","Val":"2"}}
+返回: {"ret":0,"rid":12,"data":{"Ret":0}}
+
+C、请求无传入参数方法
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如当前文档打印预览名称用ActiveDocument.PrintPreview 下同
+DID 也可以指定方法序号
+{"req":"COM_Invoke0","rid":13,"para":{"Name":"ActiveDocument.PrintPreview"}}
+返回: {"ret":0,"rid":13,"data":{"Ret":0,"Val":""}}
+
+D、请求只传入1个参数方法
+Name 指定方法名称 如遇到调用子接口的，名称增加子接口的名称，支持多级，比如调用当前文档兼容模式名称用ActiveDocument.SetCompatibilityMode 下同
+DID 也可以指定方法序号
+Para1 对应参数值
+{"req":"COM_Invoke1","rid":14,"para":{"Name":"ActiveDocument.SetCompatibilityMode","Para1":"15"}}
+返回: {"ret":0,"rid":14,"data":{"Ret":0,"Val":""}}
+
+E、请求只传入2个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1和Para2分别对应参数1和2数值，如果可缺省的值可以不传，比如只传Para1，下同
+{"req":"COM_Invoke2","rid":15,"para":{"Name":"ActiveDocument.Range","Para1":"1","Para2":"5"}}
+返回: {"ret":0,"rid":15,"data":{"Ret":0,"Val":""}}
+
+F、请求只传入3个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3分别对应参数1、2和3的数值
+{"req":"COM_Invoke3","rid":16,"para":{"Name":"printPagesFit","Para1":"1","Para2":"2","Para3":"0"}}
+返回: {"ret":0,"rid":16,"data":{"Ret":0,"Val":""}}
+
+G、请求只传入4个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4分别对应参数1、2、3和4的数值
+{"req":"COM_Invoke4","rid":17,"para":{"Name":"setCurrentHighlight","Para1":255,"Para2":0,"Para3":255,"Para4":0}}
+返回: {"ret":0,"rid":17,"data":{"Ret":0,"Val":""}}
+
+H、请求只传入5个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5分别对应参数1、2、3、4和5的数值
+福昕OFD版式办公套件OCX 调用打开文档
+{"req":"COM_Invoke5","rid":18,"para":{"Name":"openFile","Para1":"d:/zorro/test.pdf","Para2":"0","Para3":"","Para4":"","Para5":""}}
+返回: {"ret":0,"rid":18,"data":{"Ret":0,"Val":""}}
+
+I、请求只传入6个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6分别对应参数1、2、3、4、5和6的数值
+{"req":"COM_Invoke6","rid":19,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":""}}
+返回: {"ret":0,"rid":19,"data":{"Ret":0,"Val":""}}
+
+J、请求只传入7个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7分别对应参数1、2、3、4、5、6和7的数值
+{"req":"COM_Invoke7","rid":20,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":""}}
+返回: {"ret":0,"rid":20,"data":{"Ret":0,"Val":""}}
+
+K、请求只传入8个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8分别对应参数1、2、3、4、5、6、7、8的数值
+{"req":"COM_Invoke8","rid":21,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":""}}
+返回: {"ret":0,"rid":21,"data":{"Ret":0,"Val":""}}
+
+L、请求只传入9个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9分别对应参数1、2、3、4、5、6、7、8、9的数值
+{"req":"COM_Invoke9","rid":22,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":""}}
+返回: {"ret":0,"rid":22,"data":{"Ret":0,"Val":""}}
+
+M、请求只传入10个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10分别对应参数1、2、3、4、5、6、7、8、9、10的数值
+{"req":"COM_InvokeA","rid":23,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":""}}
+返回: {"ret":0,"rid":23,"data":{"Ret":0,"Val":""}}
+
+N、请求只传入11个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11分别对应参数1、2、3、4、5、6、7、8、9、10、11的数值
+{"req":"COM_InvokeB","rid":24,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":""}}
+返回: {"ret":0,"rid":24,"data":{"Ret":0,"Val":""}}
+
+O、请求只传入12个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12分别对应参数1、2、3、4、5、6、7、8、9、10、11、12的数值
+{"req":"COM_InvokeC","rid":25,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":""}}
+返回: {"ret":0,"rid":25,"data":{"Ret":0,"Val":""}}
+
+P、请求只传入13个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13的数值
+{"req":"COM_InvokeD","rid":26,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":""}}
+返回: {"ret":0,"rid":26,"data":{"Ret":0,"Val":""}}
+
+Q、请求只传入14个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14的数值
+{"req":"COM_InvokeE","rid":27,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":""}}
+返回: {"ret":0,"rid":27,"data":{"Ret":0,"Val":""}}
+
+R、请求只传入15个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15的数值
+{"req":"COM_InvokeF","rid":28,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":""}}
+返回: {"ret":0,"rid":28,"data":{"Ret":0,"Val":""}}
+
+S、请求只传入16个参数方法
+Name 指定方法名称
+DID 也可以指定方法序号
+Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10、Para11、Para12、Para13、Para14、Para15、Para16分别对应参数1、2、3、4、5、6、7、8、9、10、11、12、13、14、15、16的数值
+以Word打开文档为例，需要16个参数，不过有些参数不需要设置，为空即可
+{"req":"COM_InvokeG","rid":29,"para":{"Name":"Documents.Open","Para1":"d:\\Zorro\\Test.docx","Para3":"0","Para4":"0","Para13":"0"}}
+返回: {"ret":0,"rid":29,"data":{"Ret":0,"Val":"Documents.Open6334={CatchDispatch}"}}
+请求打开并缓存了自动化接口实例Documents.Open6334，通过这个实例名称可以继续对实例进行操作，比如请求属性：
+{"req":"COM_GetProperty","rid":30,"para":{"{CatchDispatch}":"Documents.Open6334","Name":"FullName"}}
+再次返回 {"ret":0,"rid":30,"data":{"Ret":0,"Val":"D%3A%5CZorro%5CTest.docx"}}
+或者设置属性
+{"req":"COM_PutProperty","rid":31,"para":{"{CatchDispatch}":"Documents.Open6334","Name":"Saved","Val":"-1"}}
+如果想释放缓存的自动化接口，调用以下接口即可
+{"req":"COM_PutProperty","rid":32,"para":{"Name":"Documents.Open6334={CatchDispatch}"}}
+
+3）支持的事件通知：
+COM自动化组件的事件通知举例(VLC)：
+{"event":"COM_Event","DispID":203,"data":{}} /// 代表开始播放
+{"event":"COM_Event","DispID":211,"data":{"Para1":0.903101}} /// 通知播放位置
+
+7、其它
+请求参数的JSON数据包，请确保是UTF-8无签名的编码。
+更多接口请求说明，请参考安装目录中的文档TestWrl.txt、SDK包中的“开发者手册.pdf”及“中间件安全解决方案.pdf”。
+如还有疑问请直接联系客服 加微信：ZorroSoft，或加QQ群：23126938

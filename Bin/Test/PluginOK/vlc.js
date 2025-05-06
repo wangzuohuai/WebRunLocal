@@ -1,9 +1,9 @@
 ﻿function GetDefaultConn()
 {
 	if(document.location.href.toLowerCase().indexOf("https") == -1)
-		return 'ws://127.0.0.1:80?sid=' + getrandom(5).toLocaleString() + '&flag=1';
+		return 'ws://127.0.0.1:83?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 	else
-		return 'wss://wrl.zorrosoft.com:443?sid=' + getrandom(5).toLocaleString() + '&flag=1';
+		return 'wss://wrl.zorrosoft.com:453?sid=' + getrandom(5).toLocaleString() + '&flag=1';
 }
 
 // 判断是否IE浏览器，用于区别使用Web Socket连接组件
@@ -68,6 +68,7 @@ function getrandom(nums)
 		var bRunInCurrentPage	= true;		// 是否为当前页面加载的小程序
 		var nScrollLeftOld 		= 0;		// 原横向滚动位置
 		var nScrollTopOld 		= 0;		// 原纵向滚动位置
+		var nScrollRID 		= 1;		// 滚动请求，必须自增
 
         showmessage = function (msg, type)
 		{
@@ -189,7 +190,8 @@ function getrandom(nums)
 					nScrollTopOld = nScrollTop;
 				}
 				var msg = '{"req":"Wrl_ScrollBar","rid":';
-				msg += getrandom(5).toLocaleString();
+				msg += nScrollRID;
+				nScrollRID++;
 				msg += ',"para":{"ID":';
 				msg += nAppletRunID;
 				msg += ',"BarH":';
@@ -311,7 +313,8 @@ function getrandom(nums)
 						nCode = 2; // 纵向滚动
 				}
 				var msg = '{"req":"Wrl_AppletScroll","rid":';
-				msg += getrandom(5).toLocaleString();
+				msg += nScrollRID;
+				nScrollRID++;
 				msg += ',"para":{"ID":';
 				msg += nAppletRunID;
 				msg += ',"Top":';

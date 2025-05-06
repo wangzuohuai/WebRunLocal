@@ -108,10 +108,11 @@ ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回的ID值，Alpha�
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
-ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，
-File为指定截图文件保存路径或扩展名
-Base64指定为1时代表返回BASE64编码的图像内容
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+ID:启动小程序时返回JSON中的aid实例值
+File:指定截图文件保存路径或扩展名
+Base64:指定为1时代表返回BASE64编码的图像内容
+Flag:如嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可额外指定为1看效果，此外如果需要多次或框选抓图，可叠加2或4单独启动抓图工具来实现
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"Flag":2,"File":".jpg"}}
 
 8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
@@ -121,14 +122,14 @@ ID为Wrl_AppletStart指定OcxWebApplet启动小程序时返回JSON中的ID值，
 1)、请求安装OCX嵌入网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet.pid","MD5":"A7BB6AC2E0044DE85FD233133373D106","Version":"2.2.17.3","Size":2785280,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"87B955F4C1B55AE0B4305551BB41EB95B272E18D4EF4F2FBC45482175B0CA44C4C94C5198BDF5B6CB56025CC4AD2DE5371D58226F50D3F62802D40F5DD732825283077AC1EDCCE22F73595796BE7704FE1F0176FB1ADFA95C929562FCEB6C669997719F0577AABDBD8DAE59CFFCC237D1F0ADE7D8AAD85612B20FB005DD8C46E13BC281A91FD617975C2A3A41CC39A0477E84AE7E0997C019BD402FC9395AB17A158DCC988B19E7756C55A84571A55CD4EAB2AF02F3C792DE27FE9A8256646B894CDF54254D9621F5A767140FBF8D0EF32055B14FF874AA46699138F627E144F8EE5FE8239778C675195B2E284A17733F45F7882B4FC2D02C4DC5B571EA48CA9"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet.pid","MD5":"F8FD935ABD03DA9D2B7762DBCEAC8466","Version":"2.2.17.5","Size":2883584,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"9E31C0DAFC2754D59F3C28E688526E78525419F0A6FB214D644497D5B2BFEBA3E9DF003495469550448E44449DFD7142452891FE2D3940A54359A6EE9074F3210FB70BE7D7E71B4E5A4C6286DEBFE99908284430F0A6DDA00458CC13E1172A6E32F239EEB7A49A4749B9329D20794258E78F989E417ABF7553A92677C247A8FD72E2A8E1F3C5662AE3D7046BC9567E380DAF024D00FA1B2348F662F739146BBE0D0F02137DBAEEA058F94178C87F8DAAD1C3C1864C271F117CBD41A64C30D850E25496CCF3A806A0116A168CEEC2D36D9B929B1C7625CE169066F41327B650B302D97C8CF00DF79B5BB59481ACB0C8069F73E34A57D386F73EA7DFCDA1046EA2"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级OCX嵌入网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet_Update.pid","MD5":"37A318AEBC13A0BBEC1F303DBB860FC7","Version":"2.2.17.3","Size":2785280,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"88D78AF71CD3AB6A3FDE9C487CFE7EC30C7A06DB1BB141D99E606050E075E8E5185B3DA71FA840621A934352103C04C5385CD0C3899B484330149C957A63A67C28EA2BFC5FE713F0B393B0602C08985C041B193C0C75CF529089D16EF278B30A7221EBC929D14096992A40AF6C65D2E201B53158B910ADA4D7AF2E87FFCFEE603A3D41734C4CF47C35888278CA8C96B8DA661001AFE989715960B3497F7AE86BCEAD092F59A370C4C80B162BB7F5633C1C74C5D021EC7A67542193845E4E06A67AE7274208B8A27CD9DA87331ACC17369E756700B4D10D8C97867C69BB14426671C997643C7B0FE22BBD2D28DDAF16E093375E7D48C4F2748AEA3B7CEB54BBB1"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"OCX网页小程序","PID":"OcxWebApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的指定OCX内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌指定OCX控件使用","DownAddr":"http://local.zorrosoft.com/Files/Net/OcxWebApplet_Update.pid","MD5":"4F5F46E923E30715CE80B06241084E79","Version":"2.2.17.5","Size":2883584,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B9D0E400893AC0DF5133132B0ADAE38CFB2ACD8F7314B66B2E317F405146BFB214880CE386D694B4BC6D94C21869A82204EB1DD7DB17544884EDCB2A05E42187413FCBD2DEE756FB83FE0B4B6EE230C4B85BE5DB5A0724F967C7738C161BF00FC16C4D9BFDBADFCC49DCC0582DA17CEDF2F2A4DE7C38F8C22ECBCC8158AA4B4C838963BB0CD457EBCD1DE8B2D14C12CD8FD203FF3BD8ACA72C085CC3ACD86533CB2A6205D512782CB1854A217597E0C9628BA93876559D08847B7A1DF9C405615B42D650C968B2BA875349249E08F50A140D2878525485C17FECB62B9F7B61FF94D671719A8AAD399D4DDCB8F14EB6C95E375B1EFBAA24BC2D1C9AB739B53227"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -203,6 +204,31 @@ Flag开关，1代表设置，0代表释放
 {"req":"OCX_SetWSConn","rid":6,"para":{"Name":"WebSocket","Flag":1}}
 返回：{"ret":0,"rid":6,"data":{"Ret":"0"}}
 
+7）增加事件接收通知
+EventID事件接口UUID
+EventList需要通知的事件ID
+以VLC播放控件为例：
+{"req":"OCX_AddEvent","rid":7,"para":{"EventID":"{DF48072F-5EF8-434E-9B40-E2F3AE759B5F}","EventList":[202,203,207,209,211]}}
+返回：{"ret":0,"rid":7,"data":{"Ret":"0"}}
+
+8）移除事件接收通知
+EventList需要通知的事件ID
+以VLC播放控件为例：
+{"req":"OCX_RemoveEvent","rid":8,"para":{"EventList":[202,211]}}
+返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
+
+9）获取OCX程序文件版本
+{"req":"OCX_Version","rid":9,"para":{}}
+返回：{"ret":0,"rid":9,"data":{"Ret":"0","Version":"3.0.3"}}
+
+10) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+{"req":"OCX_FloatWebInfo","rid":10,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"OCX_FloatWebInfo","rid":10,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":10,"data":{"Ret":0}}
+
 以下是未单独封装OCX控件接口功能的通用请求方法
 11)、请求获取属性值
 Name 指定属性名称 如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取VLC播放列表的数量名称用playlist.itemCount 下同
@@ -211,7 +237,7 @@ Name 指定属性名称 如遇到取子接口的，名称增加子接口的名�
 {"req":"OCX_GetProperty","rid":11,"para":{"Name":"Toolbar"}}
 {"req":"OCX_GetProperty","rid":11,"para":{"Name":"playlist.itemCount"}}
 {"req":"OCX_GetProperty","rid":11,"para":{"Name":"input.rate"}}
-{"req":"OCX_PutProperty","rid":11,"para":{"Name":"video.logo.opacity"}}
+{"req":"OCX_GetProperty","rid":11,"para":{"Name":"video.logo.opacity"}}
 返回: {"ret":0,"rid":11,"data":{"Ret":0,"Val":""}}
 如果返回的是自动化接口，Val的值类似这样的：playlist={CatchDispatch}，需要继续调用这个自动化接口的属性或方法时，接下来的请求里指定参数{CatchDispatch}，否则默认调用控件主接口的，下同
 
@@ -353,12 +379,9 @@ Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10�
 返回: {"ret":0,"rid":29,"data":{"Ret":0,"Val":""}}
 
 5、事件通知：
-A、OCX控件的事件通知：
-1) OnError回调结果通知
-{"event":"OnError","data":{}}
-
-2) OCX_OnMessage回调结果通知
-{"event":"OCX_OnMessage","data":{}}
+A、OCX控件的事件通知举例(VLC)：
+{"event":"OCX_Event","DispID":203,"data":{}} /// 代表开始播放
+{"event":"OCX_Event","DispID":211,"data":{"Para1":0.903101}} /// 通知播放位置
 
 B、PluginOK支持的事件通知：
 

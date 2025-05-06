@@ -24,8 +24,6 @@
 
 #pragma once
 
-#include "WRLBaseDef.h"
-
 /// 定义产品在注册表中的安装路径
 #define PRODUCT_COMMAN_INSPATH		L"InsPath"
 /// 定义产品在注册表中的主版本
@@ -40,6 +38,11 @@
 #define PRODUCT_COMMAN_LANGUAGE		L"Language"
 /// 定义产品在注册表中的安装语言
 #define PRODUCT_COMMAN_INSLANG		L"InsLang"
+/// 定义产品在注册表中的配置文件
+#define PRODUCT_COMMAN_CONFIGFILE	L"CfgFile"
+
+/// 定义程序关闭的HOOK值
+#define PRODUCT_APPLET_HOOKCLOSE	L"HookClose"
 
 class CWrlRegKey : public CRegKey
 {

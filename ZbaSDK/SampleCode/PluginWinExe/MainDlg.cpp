@@ -4,8 +4,9 @@
 
 #include "stdafx.h"
 #include "resource.h"
-
 #include "MainDlg.h"
+
+extern CString	g_strLang;
 
 CComVariant	g_varWebHeader = CComVariant(L"Accept: */*\r\nAccept-Language: zh-CN\r\nAccept-Charset: utf-8\r\nContent-Type:  application/x-www-form-urlencoded\r\n");
 
@@ -110,12 +111,23 @@ LRESULT CMainDlg::OnTimer ( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 			case BROWSERTYPE_OPERA:
 				strExeName = L"opera.exe";
 				break;
+			case BROWSERTYPE_YANDEX:
+				strExeName = L"browser.exe";
+				break;
+			case BROWSERTYPE_LENOVO:
+				strExeName = L"slbrowser.exe";
+				break;
+			case BROWSERTYPE_ELECTRON:
+				strExeName = L"electron.exe";
+				break;
+#ifdef WRL_VRSION_OVERSEAS
 			case BROWSERTYPE_BRAVE:
 				strExeName = L"brave.exe";
 				break;
 			case BROWSERTYPE_VIVALDI:
 				strExeName = L"vivaldi.exe";
 				break;
+#else
 			case BROWSERTYPE_360:
 				strExeName = L"360chrome.exe";
 				break;
@@ -125,15 +137,34 @@ LRESULT CMainDlg::OnTimer ( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 			case BROWSERTYPE_360SE:
 				strExeName = L"360se.exe";
 				break;
+			case BROWSERTYPE_360AI:
+				strExeName = L"360aibrowser.exe";
+				break;
 			case BROWSERTYPE_360ENT:
 				strExeName = L"360ent.exe";
 				break;
 			case BROWSERTYPE_QQ:
 				strExeName = L"qqbrowser.exe";
 				break;
+			case BROWSERTYPE_DOUBLECORE:
+				strExeName = L"chromecore.exe";
+				break;
+			case BROWSERTYPE_QUARK:
+				strExeName = L"quark.exe";
+				break;
 			case BROWSERTYPE_SOGOU:
 				strExeName = L"sogouexplorer.exe";
 				break;
+			case BROWSERTYPE_MAXTHON:
+				strExeName = L"maxthon.exe";
+				break;
+			case BROWSERTYPE_LIEBAO:
+				strExeName = L"liebao.exe";
+				break;
+			case BROWSERTYPE_DOUBAO:
+				strExeName = L"doubao.exe";
+				break;
+#endif
 			default:
 				strExeName = L"chrome.exe";
 				break;
@@ -163,7 +194,12 @@ void CMainDlg::InitWebCtrl()
             WS_CHILD|WS_VISIBLE,0,IDC_WEB_BROWSER);
         ATLASSERT(hWndWB);
 		if(!::IsWindow(hWndWB))
-			this->MessageBox(L"初始化IE控件窗口失败！");
+		{
+			if(0 == g_strLang.CompareNoCase(L"ENG"))
+				this->MessageBox(L"Failed to initialize the IE control window!");
+			else
+				this->MessageBox(L"初始化IE控件窗口失败！");
+		}
 	}
 	m_ctlWebWindow.SetWindowPos(this->m_hWnd,rcClient.left,rcClient.top,rcClient.Width(),rcClient.Height(),SWP_SHOWWINDOW);
 
@@ -187,8 +223,12 @@ void CMainDlg::InitWebCtrl()
 		//Query interface
 		hr = m_ctlWebWindow.QueryControl(&m_spiWebBrowser);
 		if(FAILED(hr))
-			this->MessageBox(L"获取IE控件对象失败！");
-
+		{
+			if(0 == g_strLang.CompareNoCase(L"ENG"))
+				this->MessageBox(L"Failed to obtain the IE control object!");
+			else
+				this->MessageBox(L"获取IE控件对象失败！");
+		}
 		if(NULL != m_spiWebBrowser)
 		{
 			m_spiWebBrowser->put_Silent(VARIANT_TRUE);
@@ -218,12 +258,18 @@ LRESULT CMainDlg::OnOpenUrl(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, BOO
 {
 	if(NULL == m_spiWebBrowser)
 	{
-		this->MessageBox(L"还未初始化IE控件！");
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			this->MessageBox(L"The IE control has not been initialized yet!");
+		else
+			this->MessageBox(L"还未初始化IE控件！");
 		return 0;
 	}
 	if(m_strOpenUrl.IsEmpty())
 	{
-		this->MessageBox(L"打开URL为空！");
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			this->MessageBox(L"The opened URL is empty!");
+		else
+			this->MessageBox(L"打开URL为空！");
 		return 0;
 	}
 	CComVariant varVal;
@@ -235,7 +281,10 @@ LRESULT CMainDlg::OnOpenUrl(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, BOO
 	else
 	{
 		CString strErrCode;
-		strErrCode.Format(L"打开网站失败，错误码:%ld",hRet);
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			strErrCode.Format(L"Failed to open the website. Error code::%ld",hRet);
+		else
+			strErrCode.Format(L"打开网站失败，错误码:%ld",hRet);
 		this->MessageBox(strErrCode);
 	}
 	return 1;
@@ -332,7 +381,10 @@ LRESULT CMainDlg::OnInitConn(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 	if(NULL == m_spiSocketProxy)
 	{
 		InitWebCtrl();
-		this->MessageBox(L"Web Socket组件还未正常注册成功！");
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			this->MessageBox(L"The Web Socket component has not been successfully registered properly!");
+		else
+			this->MessageBox(L"Web Socket组件还未正常注册成功！");
 		return 0;
 	}
 #ifdef NEED_FINAL_CONSTRUCT
@@ -351,7 +403,10 @@ LRESULT CMainDlg::OnInitConn(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 		if(!m_nPort)
 			m_nPort = 12800;
 		USHORT nTruePort = 0;
-		hRet = m_spiSocketProxy->Listen(m_nPort,CComBSTR(m_strSID),CComBSTR(m_strAuthInfo),&nTruePort);
+		/// 增加主窗口传递，便于服务中快速找到主窗口实现退出
+		CString strAuthInfo(m_strAuthInfo + L"&");
+		strAuthInfo += CBaseFuncLib::NumToStr((ULONG)m_hWnd);
+		hRet = m_spiSocketProxy->Listen(m_nPort,CComBSTR(m_strSID),CComBSTR(strAuthInfo),&nTruePort);
 		if(FAILED(hRet))
 		{
 			CComBSTR bstrErr;
@@ -374,7 +429,10 @@ LRESULT CMainDlg::OnNewConnect(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, 
 	BSTR bstrSID = (BSTR)lParam;
 	/// 这里记录连接标识，然后可以调用通知发送信息
 	m_mapConnID[bstrSID] = NULL;
-	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(CString(L"收到新连接通知：") + bstrSID);
+	if(0 == g_strLang.CompareNoCase(L"ENG"))
+		this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(CString(L"Received a new connection notification:") + bstrSID);
+	else
+		this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(CString(L"收到新连接通知：") + bstrSID);
 	return 0;
 }
 
@@ -385,7 +443,10 @@ LRESULT CMainDlg::OnHttpReq(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 	if(NULL != phd)
 	{
 		/// 这里执行阻塞操作，比如弹出模态对话框
-		this->MessageBox(L"阻塞执行",L"提示",MB_OK);
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			this->MessageBox(L"Received a blocked HTTP request.",L"Tip",MB_OK);
+		else
+			this->MessageBox(L"收到一个阻塞的HTTP请求！",L"提示",MB_OK);
 		/// 设置返回值
 		phd->strRet = L"{\"ret\":0,\"data\":{\"Ret\":0,\"Code\":1}}";
 	}
@@ -422,13 +483,16 @@ LRESULT CMainDlg::OnRecMessage(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL
 	CString strReqName = pRecData->strReqName;
 
 	CString strMsg;
-	strMsg.Format(L"收到请求为 %s 的JSON数据包:%s",strReqName,pRecData->strRecText);
+	if(0 == g_strLang.CompareNoCase(L"ENG"))
+		strMsg.Format(L"%s Received,JSON data packet:%s",strReqName,pRecData->strRecText);
+	else
+		strMsg.Format(L"收到请求为 %s 的JSON数据包:%s",strReqName,pRecData->strRecText);
 	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(strMsg);
 	strMsg.Empty();
 
 	ULONG nSendID = 0;
 	m_spiSocketProxy->AsynSendText(bstrSID,\
-		CComBSTR(CString(L"桌面APP收到请求参数:")+pRecData->strRecText),&nSendID);
+		CComBSTR(CString(L"Rec:") + pRecData->strRecText),&nSendID);
 	/// 解析收到的命令
 	VARIANT_BOOL bLoadFlag = VARIANT_FALSE;
 	spiJsonService->put_CodingType(CODINGTYPE_US2);
@@ -470,11 +534,14 @@ LRESULT CMainDlg::OnRecText(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /
 {
 	BSTR bstrContent = (BSTR)lParam;
 	CString strMsg;
-	strMsg.Format(L"收到文本数据包:%s",(CString)bstrContent);
+	if(0 == g_strLang.CompareNoCase(L"ENG"))
+		strMsg.Format(L"Received a text data packet:%s",(CString)bstrContent);
+	else
+		strMsg.Format(L"收到文本数据包:%s",(CString)bstrContent);
 	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(strMsg);
 	strMsg.Empty();
 	ULONG nReqID = 0;
-	m_spiSocketProxy->AsynSendText((BSTR)wParam,CComBSTR(CString(L"桌面APP收到内容:")+bstrContent),&nReqID);
+	m_spiSocketProxy->AsynSendText((BSTR)wParam,CComBSTR(CString(L"Rec:")+bstrContent),&nReqID);
 	return 0;
 }
 
@@ -483,7 +550,10 @@ LRESULT CMainDlg::OnCloseConnect(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 	BSTR bstrSID = (BSTR)wParam;
 	BSTR bstrContent = (BSTR)lParam;
 	CString strMsg;
-	strMsg.Format(L"收到标识为 %s 的连接通知关闭:%s",(CString)bstrSID,(CString)bstrContent);
+	if(0 == g_strLang.CompareNoCase(L"ENG"))
+		strMsg.Format(L"Received a connection notification with the identifier %s for closing: %s",(CString)bstrSID,(CString)bstrContent);
+	else
+		strMsg.Format(L"收到标识为 %s 的连接通知关闭:%s",(CString)bstrSID,(CString)bstrContent);
 	this->GetDlgItem(IDC_EDIT_LOG).SetWindowText(strMsg);
 	strMsg.Empty();
 	return 0;
@@ -524,7 +594,10 @@ LRESULT CMainDlg::OnOK(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /
 	/// 通过命令行传进来端口
 	if(VARIANT_TRUE != bIsReady)
 	{
-		this->MessageBox(L"侦听服务还未就绪！");
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			this->MessageBox(L"The listening service is not ready yet!");
+		else
+			this->MessageBox(L"侦听服务还未就绪！");
 		return 0;
 	}
 	CComBSTR bstrContent;
@@ -533,7 +606,10 @@ LRESULT CMainDlg::OnOK(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /
 	CString strContent(bstrContent.m_str);
 	if(!m_mapConnID.size())
 	{
-		this->MessageBox(L"还未有活动连接！");
+		if(0 == g_strLang.CompareNoCase(L"ENG"))
+			this->MessageBox(L"There are no active connections yet!");
+		else
+			this->MessageBox(L"还未有活动连接！");
 		return 0;
 	}
 	if(strContent.IsEmpty())
@@ -558,8 +634,16 @@ LRESULT CMainDlg::OnOK(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /
 	return 0;
 }
 
+LRESULT CMainDlg::OnAppletClose(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+{
+	CBaseFuncLib::WriteLogToFile(L"AppletClose->");
+	PostMessage(WM_CLOSE);
+	return 0;
+}
+
 LRESULT CMainDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
+	CBaseFuncLib::WriteLogToFile(L"OnCancel->");
 	UnAdviseSocket();
 
 	m_spiHtmlDoc = NULL;
@@ -573,8 +657,10 @@ LRESULT CMainDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 	}
 
 	if(m_ctlWebWindow.IsWindow())
+	{
 		m_ctlWebWindow.DestroyWindow();
-
+		m_ctlWebWindow.m_hWnd = NULL;
+	}
 	EndDialog(wID);
 	return 0;
 }

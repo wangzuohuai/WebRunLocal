@@ -82,10 +82,11 @@ ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序�
 {"req":"Wrl_AppletAlpha","rid":7,"para":{"ID":1,"Alpha":30}}
 
 7)、请求对小程序窗口内容进行截图：
-ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，
-File为指定截图文件保存路径或扩展名
-Base64指定为1时代表返回BASE64编码的图像内容
-{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"File":".jpg"}}
+ID:启动小程序时返回JSON中的aid实例值
+File:指定截图文件保存路径或扩展名
+Base64:指定为1时代表返回BASE64编码的图像内容
+Flag:如嵌入的小程序窗口(比如是DirectUI或Direct3D绘制)抓图不正常，可额外指定为1看效果，此外如果需要多次或框选抓图，可叠加2或4单独启动抓图工具来实现
+{"req":"Wrl_AppletSnap","rid":10,"para":{"ID":1,"Base64":1,"Flag":2,"File":".jpg"}}
 
 8)、请求缩放内嵌网页小程序，用于浏览器网页按比例缩放，一般不需要处理：
 ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序时返回JSON中的ID值，不指定Scale时，获取当前小程序所用的缩放百分比，一般和系统缩放比例一致
@@ -95,13 +96,13 @@ ID为Wrl_PdfWebApplet或通过Wrl_AppletStart指定PdfWebApplet启动小程序�
 1)、请求安装PDF网页小程序
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"C5BCCE5B150C3FB72D86402953A8F3E0","Version":"2.2.17.3","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"07A611C40F45F8001EE94E806B7981D4904E276E0C9704CB83B469A58C57B267013A844D9A918A198C442A38AF3F155277AB66F3E66259F0F9576290DB77D30F1799E87A376D352894982F78E4B35088EE6E7028B4E5A5299277DC614EF85A2380FF1C1135F0E955D36A0517A3F9877510231895EAC0E8ED065F9AB4210F13DC96461BBE052635E765F6B9EC80DD75008005F0AE240B9A1A4DB03472FB25D66FAD3E525C8A60BB608735D0FD6782659708112A2E696EAE9092A959F73DD745A4664E388C66E7B451ED3F7F3014DCEE6DDA518563050C78CE33AC30B585E535AB3457685CD74DA2F60F475E506A80ECC40269052274FDE0748676F2F1B205138C"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet.pid","MD5":"84E0362563B0198F73BE1A17C1F9D15F","Version":"2.2.17.5","Size":917504,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"843DC0DA949F1D28034154D3E1D2414741C52E3113CB48755E007FFDE200A01CD09FF9A96FF6BE34EE3019577C91C8E97B5442E7CD3CC85CB71275B49B5F3094331A59FB5DDBBB8E96A43CDFF3541AB284DBBD04B70EFA77279977EED68739C6E226B139830FC8F690B338C74752360DEC42C745DD6C309D34A362E7CECC961646CF4E15823130814DC2830D2F0FF45C19E21E5133E04B124629074B3E9286BB4F12620A647F18FA45D3230E27F1BB6EEBD64DB08A3233186DF98785AC312DEA819DF6FC7B5455E3A10C362F3F4F673515500CA29C44C6C1455E9505229CA5708D5EC59945A18F4DB3089D62AA0E6E3EEF8CE2E756D8DF9A2D4D53CE5F71C98C"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 
 2)、请求升级PDF网页小程序：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2025-04-07","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"D1CE87577E9BDA69D98D55C8EC898E4A","Version":"2.2.17.3","Size":819200,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"740A8F32EB8FCF21C04B26EB74C2A1960171FEFC77F90252350CC04BBC29572B2FFF3A9E724138538327DC6E2A825EFF2B474BDD1DECF5774982672F8A7C653955FC10C1640217E487ACF1AE678D0203D7FB053886B51FC2F64837F8DD6EF9746775D654B9B5AB3252EA728FBE9B53659E8C28C7CF9C4ECEB958E7AA3ACC4E6B7733048213B0FACFE21D96F323F493830605F9D7855A13BA7B1C01F24A1ACC916C191DE7E0763FB07409953F3CC499888DAFA7E76974AC866AC26257E47DDEE5428332F14C53FF8EB9A9483FC6C5F86A8675924E2222B4548A79A0F1431165069AA9033BCE622416B9BAE3FBC32C75F1C85850F17EBBD9B8D5C38777A297F0C6"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"PDF网页小程序","PID":"PdfWebApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的PDF内嵌网页小程序，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌PDF阅读及编辑器","DownAddr":"http://local.zorrosoft.com/Files/Net/PdfWebApplet_Update.pid","MD5":"084BA64D9FFED768E3BD2C8FDB3FB378","Version":"2.2.17.5","Size":917504,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"06F3A4327EBB1D21194FB129CD45B6947C1C08DE6148A4D2E6FFA515DFAF570C9FF65AB5C0DFE3BFFE3CDAC1AEB3046166D94F06B61064CFB4082C58ABC06AF4B559D31E013D47484A2C771756DABAC990C0DDCD526D43DB4614394A3DBF2DD0083865613872F9809D0CB3A53176CFC7F03E23F422850F49864117204A408E69C50AEC611C959EF6DC3629A5053F218B6FA038AC098E652231344BC0D73C6C87F132F2EEEBF2424FC49913EBBED75FD5B8AD37D6EAB29B9C3AABEA3202239D279357CC81B0C9331DA250624CAF4F19E76445FDFB93930F08ACE061BA0E2E4EED67B157D22FBC9A16AE1D6140F71A0E8305F6F28D5B9F83CC48326480E501F4C1"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -263,9 +264,17 @@ Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小�
 {"req":"PDF_NetFile","rid":77,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
 返回：{"ret":0,"rid":77,"data":{"Ret":"0"}}
 
-30) 请求退出小程序
+30) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
+Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
+Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
+{"req":"PDF_FloatWebInfo","rid":30,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"PDF_FloatWebInfo","rid":30,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":30,"data":{"Ret":0}}
+
+31) 请求退出小程序
 未连接到小程序侦听WS端口时直接关闭到中间件的WS连接即可
-请求：{"req":"PDF_Exit","rid":78,"para":{}}
+请求：{"req":"PDF_Exit","rid":31,"para":{}}
 无返回
 
 以下是未单独封装VBA接口功能的通用请求方法
