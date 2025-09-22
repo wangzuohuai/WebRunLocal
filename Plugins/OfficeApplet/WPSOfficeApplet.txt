@@ -117,14 +117,14 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装金山WPS网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet.pid","MD5":"1D138BAD5D03BDF757F9340CC55B6956","Version":"2.2.17.5","Size":5275648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"82F76E856ECE9DC771AF56BD6645B2F1272F4ADA7CAC03CE4AFF43B903FFBEC40BDA1A0CEDC2025DBFC018FBAB5B5A2831C568E8EF1004D03F0FEA6213F02A3D6D470954A42F14AC0DCC9A28DE31084791F902050E5F10742DE0AA11EC6C64366DCDCC91C8F8E68FA44F572807EEAA34F736A28EA9AE69897BE7C02893AA3E1BEF9758C47718A738411CDE44A3DC3F981BF230B67CB4FCBC6FC55062935B29C0F7FD18B1DE2F7F72A77C018B522DF9E32B194342BA7BFEF4B194013E8A02EC49E9F6AB2A70F9D0CABE0A0248AFA24BE11A4554F66C36F5683727BE717EE4E145EA5B449F07C15A32D47CE9E5FCB4AE8C94A91CC4CC43709A8BBE71BE8D3C7FBE"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-09-12","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"file:///E:/Release/22178Plugin/WpsApplet.pid","MD5":"72661E922BF4901E1A601D176FA1281F","Version":"2.2.17.8","Size":5308416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4F08B014711C27500AADCCABCD2B440ADD373989B91903DDD537A21F0129C129D7FFAC8ADDEFBCA1285FC8911647CBF948DB9CB4238E29DF2B8D6E9438F9F1EC915CD2393B021D6C69A59A1BE66C797893DF17C81CF712A03F001058D5D39A435CE84ADB9618D4471F763E428FA8B654B54615836D992F7C0B91053AA9680BF71B8D01D8AB3D108F67C300D41A26B67F6B1DD8A82570E12029589CB71265BD70AC65EF2A1506C7EB36CBBA844D5B3D8265218AA877C0C200EF36B3E60972FE142F963404F52BEB851A866D17E78B7BFF41AB555BB31A4CEE53763A2ABE465DE1EB4CC0FAF32C1B909FBFDFBB9496F90D6E89DC4B761C2C7971D9759BCE813197"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级金山WPS网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"430437250715FE8618EEC1ACC6D9EE26","Version":"2.2.17.5","Size":5275648,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"59E2FA10BF742CEA1A7C2165BC189258F450760948ECDB37940BE3705C9DED8E2D5C03837F618173D8ED707FD3AB54CAB35269728BB6EEBBF58607B9C87A6D4273343068B9694BDAFBE60DCA42D431A8158D6BEFF79AEF876611E11AE8FFA1E141E2948FD9E7014CA32AFBA8E1EE10FF0D6C351CEF548CD21E88C60E35823FFA987D25C7ED9115BB300A26FD1D5D9AA23C8F6A8FFE1863AD941FE21626EE9720B4C5DC2513A70D1C3FC8512790C446E5CB7187E02F70968CA99864BBA9BFB2D274B544E5A44B2C0BDB26F1A7FC14F57FD5F4E38453445FEC6A304C79262DE0805959C5672E71BF3F1744024A9E89005036FC6B3211CE64B09D86EE178FFB1482"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"金山WPS网页组件","PID":"WpsApplet","Date":"2025-09-12","Desc":"PluginOK之上跨浏览器的金山WPS内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌文字、表格、演示等程序进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/WpsApplet_Update.pid","MD5":"4234E0C35ED1D1DF1C71594C48F386C6","Version":"2.2.17.8","Size":5308416,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"AB6F4795B0BECBE4B48E28851DE84DB91FD9F20E81A8AD3EBA258ABB7AC34EE57D6B151B840606F9A05055C1DC93031D5ACBB4044567C11140B5036BEDC1E134AD889DE31DA2240E7D903DA9A94F6623E5C0BE33AA97477E72BCF8BA5C30364B5B701E78A0C59B6AB84BD7245A0526821EE65801B6E1E5196EA1972C08D3F62594B2DB395E9BD01300761449B72C30EFF78CF77FCA58ED110E65ADDDE2426DCF3229015EF1BBD5DA3A354654AC1B9134891AF1906489456F48AAAA2CA970CFF0B2A1690AEDF65FA89DE5B0824317DB7310A06729C7B62C995F1E1A076CB8128057B0D55045724E8A5A7C8E2EE0A55D9E8E7EEFF1080B3C06D966FBA75040FEA6"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -780,12 +780,15 @@ Index，图表序号，默认1，不设置代表所有
 以下是未单独封装VBA接口功能的通用请求方法
 100)、请求获取属性值
 Name 指定属性名称 Application默认作为顶级存在，如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取当前文档的名称用ActiveDocument.Name 下同
+{CatchDispatch} 指定缓存的对象名称，一般是上一次请求返回的，作为下一次请求的参数传递，替代默认的Application，下同
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Version"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Name"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Text"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Start"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.End"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Information","Para1":"2"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Tables"}}
+{"req":"Office_GetProperty","rid":1000,"para":{"{CatchDispatch}":"Cell11478","Name":"Range"}}
 返回: {"ret":0,"rid":100,"data":{"Ret":0,"Val":""}}
 
 101)、请求设置属性
@@ -796,6 +799,8 @@ Name 指定属性名称 如遇到设置子接口的，名称增加子接口的�
 {"req":"Office_PutProperty","rid":101,"para":{"Name":"ActiveDocument.Saved","Val":"-1"}}
 设置PPT演示播放界面启用激光笔
 {"req":"Office_PutProperty","rid":101,"para":{"Name":"ActivePresentation.SlideShowWindow.View.PointerType","Val":"2"}}
+请求设置缓存对象Range的文字
+{"req":"Office_PutProperty","rid":101,"para":{"{CatchDispatch}":"Range","Name":"Text","Val":"SetCellText..."}}
 返回: {"ret":0,"rid":101,"data":{"Ret":0}}
 
 102)、请求无传入参数方法
@@ -809,6 +814,7 @@ Name 指定方法名称 如遇到调用子接口的，名称增加子接口的�
 DID 也可以指定方法序号
 Para1 对应参数值
 {"req":"Office_Invoke1","rid":103,"para":{"Name":"ActiveDocument.SetCompatibilityMode","Para1":"15"}}
+{"req":"Office_Invoke1","rid":103,"para":{"{CatchDispatch}":"ActiveDocument.Tables","Name":"Item","Para1":"1"}}
 返回: {"ret":0,"rid":103,"data":{"Ret":0,"Val":""}}
 
 104)、请求只传入2个参数方法
@@ -816,6 +822,7 @@ Name 指定方法名称
 DID 也可以指定方法序号
 Para1和Para2分别对应参数1和2数值，如果可缺省的值可以不传，比如只传Para1，下同
 {"req":"Office_Invoke2","rid":104,"para":{"Name":"ActiveDocument.Range","Para1":"1","Para2":"5"}}
+{"req":"Office_Invoke2","rid":104,"para":{"{CatchDispatch}":"Item15724","Name":"Cell","Para1":"1","Para2":"2"}}
 返回: {"ret":0,"rid":104,"data":{"Ret":0,"Val":""}}
 
 105)、请求只传入3个参数方法
@@ -916,8 +923,27 @@ Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10�
 {"req":"Office_InvokeG","rid":118,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":"","Para16":""}}
 返回: {"ret":0,"rid":118,"data":{"Ret":0,"Val":""}}
 
+关于请求返回缓存对象的用法，下面是以WPS文字中设置第一个表格单元文字为例说明：
+第一步：请求获得单元表格集合缓存对象，发以下请求
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Tables"}} 
+返回内容 {"ret":0,"rid":100,"data":{"Ret":0,"Val":"ActiveDocument.Tables={CatchDispatch}"}}
+Val中的ActiveDocument.Tables代表临时缓存对象的名称
+第二步：请求获得第一个表格缓存对象，发以下请求
+{"req":"Office_Invoke1","rid":103,"para":{"{CatchDispatch}":"ActiveDocument.Tables","Name":"Item","Para1":"1"}} 
+返回内容 {"ret":0,"rid":103,"data":{"Ret":0,"Val":"Item15724={CatchDispatch}"}}
+第三步：请求获得指定表格缓存对象，发以下请求
+{"req":"Office_Invoke2","rid":104,"para":{"{CatchDispatch}":"Item15724","Name":"Cell","Para1":"1","Para2":"2"}}
+返回内容 {"ret":0,"rid":104,"data":{"Ret":0,"Val":"Cell11478={CatchDispatch}"}}
+第四步：请求获得指定表格的Range缓存对象，发以下请求
+ {"req":"Office_GetProperty","rid":1000,"para":{"{CatchDispatch}":"Cell11478","Name":"Range"}} 
+ 返回内容 {"ret":0,"rid":1000,"data":{"Ret":0,"Val":"Range={CatchDispatch}"}} 
+ 第五步：请求设置表格内容，发以下请求
+ {"req":"Office_PutProperty","rid":101,"para":{"{CatchDispatch}":"Range","Name":"Text","Val":"SetCellText..."}}
+
 5、事件通知：
-A、以下为WPS文字程序通知
+A、以下为WPS表格程序通知
+ Excel单元格选中变化通知
+{"event":"EXCEL_SelectionChange","aid":2,"data":{"Sheet":"Sheet1","Addr":"A2","Val":"2","Formula":"2"}}
 
 B、PluginOK支持的事件通知：
 

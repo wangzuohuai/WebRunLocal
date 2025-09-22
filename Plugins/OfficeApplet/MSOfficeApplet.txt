@@ -117,14 +117,15 @@ ID为启动网页组件时返回JSON中的ID值，不指定Scale时，获取当�
 1)、请求安装微软Office网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-05-06","Desc":"PluginO之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet.pid","MD5":"B03DDD6228EE863D09F71986A0014C78","Version":"2.2.17.5","Size":9535488,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"2D653A374B66B1F4A396950C5D901A91C873BE0DCEFDFDDEDCF02ADA0AD0AF237BA94B928F7CA3502671D639389719C3CA1721545D8A914E391F6548692CAFE2F30C77BEF47D9EF6C266CBE16D2420AE0B776CC18DC9064621CAF970C627D88EEB096E3C3319F66C32AA07803B6ADF981C09E8C1BD35396A97EA3534292FE016DEA62406B91449050B2EE4535DF0DE0E7961037F778D5487B3DDE6DE049D1C4959EC056EE833920733DC79415BF829D538FA6D2000A88454A32315D5367DF7616A40146C4073B8509BEAF69FC23DF538236B2835B8D0D33C160AE34F736B94C57C4B656657CD1CC682A8EB73AD5CD4FBB46C92319652BDCB65D7940BF43BEF31"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-09-12","Desc":"PluginO之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"file:///E:/Release/22178Plugin/MSOfficeApplet.pid","MD5":"9F3E85AC26129E0CC7EB62411E2F0AA5","Version":"2.2.17.8","Size":9601024,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7DB2B42A4DD5AC2680565B56F729E7662B36FCA391F09E5E6B2A4ACFDF781AFB3F02410BB78041BD532572939F88BCC7DF23D01EF6AD875D3FE622D5FE2AFCC2A0C9C4918570537B3D98D6F7D92CA8CF32CBC71EE1839374813326DCF75802C14E5FD1E75DF392599CEF845B681C089443E7CBE2B1448FBB1366431F8027F06CBF29E3CF514AA1D80EB1384BAAB0DDAFF66917FBF8716FD2CA7461FAFDC274D32AA9C2090567F8A92221328BF4F2781E760EDD76E63F72DC4A22A5841129AE5FB1896B046E09D54F1C710AE10533F20524D3B202B2A7423EBF11A429246E2B4228A1BCF2247309509840632AB75377BB150356DE6E6863487AE76A16B3A3F8DD"}}
+
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此网页组件目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级微软Office网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-05-06","Desc":"PluginO之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"027C6A7283E5F5B7E5B9C6E6496F5DCE","Version":"2.2.17.5","Size":9535488,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8C380AC51C713F6B7C1007B7EA86E57F649D1B6E30E0A967D4BE5AF00B6EC3A351A316F04D1F3266C758B44C9CA1CE62965316988220305CFF39651FF222D92E671747C2172078F1178E24F7CBF5A740B1F13CDDC0C744ED847DC60905D4E9140AB875C29A152C1E7012E9D440AF32420F9300B91680094A18C172D91506238A23C82611113F6092FE6E911DF1B732DD906149E850B0483C7C967A69311F240F062DC11D1C48197A38C027AD335D685F234B06E8919D3E49A6C66B04D18E3F1E6082701C93458ADA49C60AE0C9AAEF89CA8D153466C60A0327145B8BCDA452C274B22DE5FC5D40D47D198CB5D2E93F5496AD37B4AF8A3E4BC7CFF0C840BC095E"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"微软Office网页组件","PID":"MSOfficeApplet","Date":"2025-09-12","Desc":"PluginO之上跨浏览器的微软Office内嵌网页在线编辑组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌Word、Excel、PowerPoint等文档进行在线编辑或审阅各类办公文档","DownAddr":"http://local.zorrosoft.com/Files/Net/MSOfficeApplet_Update.pid","MD5":"D34D57A32A1EB67708C55B76FF6D8688","Version":"2.2.17.8","Size":9601024,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"7C38D4E630F05621DB05020BB8DE4E30EA97FF923D60B298D73A0EA3BE723E136D2E2EC33DACE21D0AF75B3D04FC734B4D3EBEED55C83A01096FEB5ABB6410BAD8C8946EF4E1C4222DA52AEA423BE059EBC36A7D510F4AD08F4A6D5F35E8361A83314219F88EE87549D6C97330DEA6622ED8B563276ECFE2043D9A990A6BC6DFEDFAAB5EC7DE48560B807A9C0083E45C7C0F09978586EB9264294D122089BBA06A1B95B863C4CAE10847E7BFE1D97F9ADD69703A4138C6A309E6B4B8DAE2D98034866E082EC672C7CD6F3B88458ECE6C6A570293D6AD0FCA41B322853891A395DBCD801C79C0E8400959245E5930F1BEC7EE9259F26D15A87C04AA67A423DCB9"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -809,12 +810,15 @@ Index，图表序号，默认1，不设置代表所有
 以下是未单独封装VBA接口功能的通用请求方法
 100)、请求获取属性值
 Name 指定属性名称 Application默认作为顶级存在，如遇到取子接口的，名称增加子接口的名称，支持多级，比如获取当前文档的名称用ActiveDocument.Name 下同
+{CatchDispatch} 指定缓存的对象名称，一般是上一次请求返回的，作为下一次请求的参数传递，替代默认的Application，下同
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Version"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Name"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Text"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Start"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.End"}}
 {"req":"Office_GetProperty","rid":100,"para":{"Name":"Selection.Information","Para1":"2"}}
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Tables"}}
+{"req":"Office_GetProperty","rid":1000,"para":{"{CatchDispatch}":"Cell11478","Name":"Range"}}
 返回: {"ret":0,"rid":100,"data":{"Ret":0,"Val":""}}
 
 101)、请求设置属性
@@ -825,6 +829,8 @@ Name 指定属性名称 如遇到设置子接口的，名称增加子接口的�
 {"req":"Office_PutProperty","rid":101,"para":{"Name":"ActiveDocument.Saved","Val":"-1"}}
 设置PPT演示播放界面启用激光笔
 {"req":"Office_PutProperty","rid":101,"para":{"Name":"ActivePresentation.SlideShowWindow.View.PointerType","Val":"2"}}
+请求设置缓存对象Range的文字
+{"req":"Office_PutProperty","rid":101,"para":{"{CatchDispatch}":"Range","Name":"Text","Val":"SetCellText..."}}
 返回: {"ret":0,"rid":101,"data":{"Ret":0}}
 
 102)、请求无传入参数方法
@@ -838,6 +844,7 @@ Name 指定方法名称 如遇到调用子接口的，名称增加子接口的�
 DID 也可以指定方法序号
 Para1 对应参数值
 {"req":"Office_Invoke1","rid":103,"para":{"Name":"ActiveDocument.SetCompatibilityMode","Para1":"15"}}
+{"req":"Office_Invoke1","rid":103,"para":{"{CatchDispatch}":"ActiveDocument.Tables","Name":"Item","Para1":"1"}}
 返回: {"ret":0,"rid":103,"data":{"Ret":0,"Val":""}}
 
 104)、请求只传入2个参数方法
@@ -845,6 +852,7 @@ Name 指定方法名称
 DID 也可以指定方法序号
 Para1和Para2分别对应参数1和2数值，如果可缺省的值可以不传，比如只传Para1，下同
 {"req":"Office_Invoke2","rid":104,"para":{"Name":"ActiveDocument.Range","Para1":"1","Para2":"5"}}
+{"req":"Office_Invoke2","rid":104,"para":{"{CatchDispatch}":"Item15724","Name":"Cell","Para1":"1","Para2":"2"}}
 返回: {"ret":0,"rid":104,"data":{"Ret":0,"Val":""}}
 
 105)、请求只传入3个参数方法
@@ -945,8 +953,27 @@ Para1、Para2、Para3、Para4、Para5、Para6、Para7、Para8、Para9、Para10�
 {"req":"Office_InvokeG","rid":118,"para":{"Name":"","Para1":"","Para2":"","Para3":"","Para4":"","Para5":"","Para6":"","Para7":"","Para8":"","Para9":"","Para10":"","Para11":"","Para12":"","Para13":"","Para14":"","Para15":"","Para16":""}}
 返回: {"ret":0,"rid":118,"data":{"Ret":0,"Val":""}}
 
+关于请求返回缓存对象的用法，下面是以Word中设置第一个表格单元文字为例说明：
+第一步：请求获得单元表格集合缓存对象，发以下请求
+{"req":"Office_GetProperty","rid":100,"para":{"Name":"ActiveDocument.Tables"}} 
+返回内容 {"ret":0,"rid":100,"data":{"Ret":0,"Val":"ActiveDocument.Tables={CatchDispatch}"}}
+Val中的ActiveDocument.Tables代表临时缓存对象的名称
+第二步：请求获得第一个表格缓存对象，发以下请求
+{"req":"Office_Invoke1","rid":103,"para":{"{CatchDispatch}":"ActiveDocument.Tables","Name":"Item","Para1":"1"}} 
+返回内容 {"ret":0,"rid":103,"data":{"Ret":0,"Val":"Item15724={CatchDispatch}"}}
+第三步：请求获得指定表格缓存对象，发以下请求
+{"req":"Office_Invoke2","rid":104,"para":{"{CatchDispatch}":"Item15724","Name":"Cell","Para1":"1","Para2":"2"}}
+返回内容 {"ret":0,"rid":104,"data":{"Ret":0,"Val":"Cell11478={CatchDispatch}"}}
+第四步：请求获得指定表格的Range缓存对象，发以下请求
+ {"req":"Office_GetProperty","rid":1000,"para":{"{CatchDispatch}":"Cell11478","Name":"Range"}} 
+ 返回内容 {"ret":0,"rid":1000,"data":{"Ret":0,"Val":"Range={CatchDispatch}"}} 
+ 第五步：请求设置表格内容，发以下请求
+ {"req":"Office_PutProperty","rid":101,"para":{"{CatchDispatch}":"Range","Name":"Text","Val":"SetCellText..."}}
+
 5、事件通知：
-A、以下为Word程序通知
+A、以下为 Excel程序通知
+ Excel单元格选中变化通知
+{"event":"EXCEL_SelectionChange","aid":2,"data":{"Sheet":"Sheet1","Addr":"A2","Val":"2","Formula":"2"}}
 
 B、PluginOK支持的事件通知：
 

@@ -127,14 +127,14 @@ ID为启动小程序时返回JSON中的ID值，不指定Scale时，获取当前�
 1)、请求安装ProE CAD网页组件
 请在测试网页输入框中，输入如下请求，然后点击发送，完成安装：
 
-{"req":"Plugin_Install","rid":1,"para":{"Name":"ProE CAD内嵌网页小程序","PID":"ProEApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的ProE CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌ProE CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ProEApplet.pid","MD5":"6B0689675A82DC25DCFE4E5E6B6219B2","Version":"2.2.17.5","Size":917504,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"8FE9238F3C6CA2A98961ED049D6AAB6BD6D3D468626EBA2AE0B39C5C018C8A2540E54271FFBC2CB363FC0CB66166E89765E8D813AADC863959F259C7C56EC9009C53FE7E84481D91948AD36B4B496952B97B1D39794F2DA59EEB0A228AF286A2F4B714307A6B6D861B1AF6A0B208348AC9AE012C60770354150ADCB875E6042C5BF8F900DF3A2E3913280420E573FDAE087EEA44E5FD59A24BCBA34E5801517BCB13C3064728BD86B72181891D02633E4C0BDD7A1B035902AFEAF0C2319C676B7020723D4D54D8F50E38F05D677EEAD69520AC024A2D274858C13681718FC5908E98DF256F83B8F5856FA29BEB13C9ED73D37BB20B7577FF3E4744D995D9199E"}}
+{"req":"Plugin_Install","rid":1,"para":{"Name":"ProE CAD内嵌网页小程序","PID":"ProEApplet","Date":"2025-09-12","Desc":"PluginOK之上跨浏览器的ProE CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌ProE CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"file:///E:/Release/22178Plugin/ProEApplet.pid","MD5":"A5C580DB605D566635158BED7F252DF0","Version":"2.2.17.8","Size":917504,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"5914F235F22D50D736B9FF7318904A548402F1E088F2AFBD0E1F1190E07210E0A2EEDA8F4C112BFED8BD63F0582022406E4D0908DBB6C8D565C50F0E1F06CC85F56E5AF1C5C02B6E6F69F084597F5E6D66FA6B538CB8065D0BC6183DFA3EBA3A90911AF935612C1AB6A76C09FD89A4232A3EA4670E4CB8434A37B8CBB94BAE136B91BFBC2045CFA871F469F2B83A1C27F7A230B0CA9BEFD31D9CD57006800DBACB927D43EF92AE772FDB490B4C58644B4E382656D5B8182CEFC8311B1A8BB8D04212E94D3A19EA62C0F455970817B39C2C193E5923A2FDD0E066645E8499EDB3E06A75750AC3D164607B4DA829E8D42538D0A463190057C43FAC3D10B3E5D196"}}
 
 启动安装后，会不断收到安装进度直到安装结束。
 在发布时，也可以把此小程序目录文件和中间件一起打包后发布，不用单独分发。
 
 2)、请求升级ProE CAD网页组件：
 
-{"req":"Plugin_Update","rid":1,"para":{"Name":"ProE CAD内嵌网页小程序","PID":"ProEApplet","Date":"2025-05-06","Desc":"PluginOK之上跨浏览器的ProE CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌ProE CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ProEApplet_Update.pid","MD5":"058710F1BF1658ED68FABAF4201BC8D0","Version":"2.2.17.5","Size":917504,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"4715D7D0EAB3C2DAA22139BE78626A2C0E4BBB22DAAF7C0421A2E8E0E5A435F22B534EDC78EF7D1129F2EB7B46B9BCB49FE9D39BA5E2391D5263DE174B2420D752B6F01BCCF034AC573E7819221E92D3B75943FF2973DB59E68F4D333469D21209A87E086C48688F33A40C897C0E4DEF9BC9BEE70415A687B490BD39C71A48B7C9406FF1B76626D0E6EA3C1E8B4161B2D6AC13A846EE263E46C5B24E66ECEF2A0E6363D5AB2E81B56B13CA21A0376A47C57FC8E24D98316300030C523480263C5EB152C4B5926AE37084077CE30434CDB2041939AE74AE2EC298369E46C106908F40721412505606969FAD5A2A3EE2FA3D33A176E888B20EED758E64762CD04A"}}
+{"req":"Plugin_Update","rid":1,"para":{"Name":"ProE CAD内嵌网页小程序","PID":"ProEApplet","Date":"2025-09-12","Desc":"PluginOK之上跨浏览器的ProE CAD内嵌网页组件，支持在Chrome、Edge、Firefox、IE、Oprea、360、QQ等最新版本浏览器网页中内嵌ProE CAD等程序进行在线编辑、查看或审阅三维工程图","DownAddr":"http://local.zorrosoft.com/Files/Net/ProEApplet_Update.pid","MD5":"3E82F6073B825FAF0B1193F2118660F5","Version":"2.2.17.8","Size":917504,"HideIns":0,"Type":8,"Cookie":"","Auth":"","TK":"B8477256E4E07DE7E1D395DE26A64EA34E94A121717C63061FE48F2558E3F7574B9B146542A24056D61FB0FAFE6F49CD64B35987914E23B16803F28F094ACF26621CE6070B8115FB5847CCEE8AF321D569115720750E8DF53263F626799396E013FC7D4CB6DE601A4EEAE6F7985B7775B6DC9A2071832147209691B8B48165E5C2927FB637DFB9CBBC77544DD8F7A005DD09DE1F99D3CCDE193E56324AF8E8815227B7D192AD0B97D74012042C35D52FA42F26C41DF5115B5C15E1A041B3DAFF67B3E903C2A087178552833503A284004DB03AEF9405FA5E05A0BA6DFF982DE64FABFDD7DD03F43A5B3D4A0036AC715BA97C85F343118A8F92C01217240F3123"}}
 
 以上安装和升级的JSON请求包，可能因版本升级导致内容不同，如遇安装或升级时报错，请联系客服获取最新的请求包。 
 
@@ -173,9 +173,9 @@ Local 上传文件本地路径或下载文件保存路径，如果不指定默�
 Url 上传或下载的地址，需要做UrlEncode编码
 Type为1时，可增加参数Para，对应POST数据包中需要传递的参数param 默认上传文件名为upfile，否则可通过NodeName设置自己的文件参数名称
 Type为0时，可增加参数MD5及FileSize，下载文件的哈希值及大小，用于校验下载文件的完整性，可默认空或0
-{"req":"CAD_NetFile","rid":9,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/CadDoc/test.frm","Url":"http://local.zorrosoft.com/Files/test.frm"}}
-{"req":"CAD_NetFile","rid":9,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
-返回：{"ret":0,"rid":35,"data":{"Ret":"0"}}
+{"req":"CAD_NetFile","rid":5,"para":{"Type":0,"Agent":"","Cookie":"","Auth":"","FileSize":0,"MD5":"","Local":"C:/CadDoc/test.frm","Url":"http://local.zorrosoft.com/Files/test.frm"}}
+{"req":"CAD_NetFile","rid":5,"para":{"Type":1,"Agent":"","Cookie":"","Auth":"","Para":"","Local":"","Url":"http://zorrosoft.com/wp-admin/admin-ajax.php"}}
+返回：{"ret":0,"rid":5,"data":{"Ret":"0"}}
 
 6）切换全屏编辑状态
 {"req":"CAD_SwitchFullScreen","rid":6,"para":{}}
@@ -186,16 +186,26 @@ Title为弹窗标题，如果是中文或特殊符号需要先做UrlEncode
 Content为弹窗内容，如果是中文或特殊符号需要先做UrlEncode
 Wait为等待多少秒自动消失 0代表不自动消失
 Type代表弹窗类型 0是MB_OK，具体见https://learn.microsoft.com/zh-cn/windows/win32/api/winuser/nf-winuser-messagebox uType定义
-{"req":"CAD_MsgBox","rid":52,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
-返回：{"ret":0,"rid":52,"data":{"Ret":"0"}}
+{"req":"CAD_MsgBox","rid":7,"para":{"Title":"Alert","Content":"This is a test message","Wait":5,"Type":0}}
+返回：{"ret":0,"rid":7,"data":{"Ret":"0"}}
 
-30) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
+8）切换全屏编辑状态
+{"req":"CAD_SwitchFullScreen","rid":8,"para":{}}
+返回：{"ret":0,"rid":8,"data":{"Ret":"0"}}
+
+9) 指定ID窗口叠加网页中的渲染内容，Widows 8及以上版本操作系统正常支持，本机需要安装Microsoft Edge WebView2 Runtime
 Url为透明网页地址，如有特殊符号请先进行UrlEncode，设置为空字符串代表取消叠加
 Alpha 透明度(0-255) 默认255不透明，Windows 7及以下版本系统不支持透明
 Rect节点设置叠加窗口位置和大小，不设置时代表全部区域，E代表边距默认1，X/Y/W/H分别代表叠加窗口在分屏窗口中显示的起始点和宽高，P为显示位置类型，大于0时替代X和Y，1左上 2右上 3左下 4右下
-{"req":"CAD_FloatWebInfo","rid":30,"para":{"Url":"https://output.jsbin.com/dopavun"}}
-{"req":"CAD_FloatWebInfo","rid":30,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
-返回：{"ret":0,"rid":30,"data":{"Ret":0}}
+{"req":"CAD_FloatWebInfo","rid":9,"para":{"Url":"https://output.jsbin.com/dopavun"}}
+{"req":"CAD_FloatWebInfo","rid":9,"para":{"Url":"https://output.jsbin.com/dopavun","Rect":{"X":0,"Y":0,"P":0,"W":300,"H":300}}}
+返回：{"ret":0,"rid":9,"data":{"Ret":0}}
+
+10) 指定ID窗口叠加网页注入脚本运行
+Script为脚本内容，请先进行UrlEncode，设置为空字符串代表取消叠加
+Init 初始化
+{"req":"CAD_FloatWebInjectScript","rid":10,"para":{"Init":0,"Script":"window.getComputedStyle(document.body).backgroundColor"}}
+返回：{"ret":0,"rid":10,"data":{"Ret":0}}
 
 B、Creo View控件专用功能请求：
 101)、对应OCX中获取sourceUrl属性 请求获取SourceUrl
