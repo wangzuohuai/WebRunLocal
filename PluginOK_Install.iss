@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "PluginOK中间件"
-#define MyAppVersion "1.5.17.8"
+#define MyAppVersion "1.5.17.9"
 #define MyAppPublisher "成都佐罗软件有限公司"
 #define MyAppURL "http://www.zorrosoft.com/"
 #define MyAppExeName "WrlSetup.exe"
